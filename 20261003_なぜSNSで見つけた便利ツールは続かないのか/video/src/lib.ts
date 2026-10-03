@@ -6,7 +6,7 @@ export const WIDTH = 1280;
 export const HEIGHT = 720;
 export const TOTAL_FRAMES = 90 * FPS;
 
-export type SceneId = "morning" | "day" | "collapse" | "remain" | "end";
+export type SceneId = "question" | "cause" | "turn" | "method" | "end";
 
 export type Scene = { id: SceneId; from: number; duration: number };
 
@@ -18,13 +18,13 @@ const scene = (id: SceneId, startSec: number, endSec: number): Scene => ({
   duration: sec(endSec) - sec(startSec),
 });
 
-// 企画書のタイムラインそのまま
+// 記事の筋：問い → 原因 → 転換 → 方法 → 結論
 export const SCENES: Scene[] = [
-  scene("morning", 0, 18),
-  scene("day", 18, 40),
-  scene("collapse", 40, 60),
-  scene("remain", 60, 80),
-  scene("end", 80, 90),
+  scene("question", 0, 15),
+  scene("cause", 15, 40),
+  scene("turn", 40, 56.6),
+  scene("method", 56.6, 77),
+  scene("end", 77, 90),
 ];
 
 export function sceneAt(frame: number): Scene {
@@ -40,44 +40,92 @@ export function readingSeconds(text: string): number {
   return [...text].length / 7 + 1;
 }
 
-export type QuoteId = "optimal" | "morningType" | "deskWork" | "others" | "reorder" | "grow" | "final";
+export const TITLE = "なぜSNSで見つけた便利ツールは続かないのか";
+// スマホから飛び出す投稿（記事の導入にある例）
+export const CARD_TEXTS = ["これが便利！", "生産性が10倍になった！"];
 
-export type Quote = {
-  id: QuoteId;
+export type BeatId =
+  | "tried"
+  | "few"
+  | "why"
+  | "others"
+  | "morningType"
+  | "deskWork"
+  | "general"
+  | "optimal"
+  | "turn"
+  | "observe"
+  | "arrange"
+  | "reorder"
+  | "grow"
+  | "final";
+
+/** 画面に出す言葉のひとまとまり。全体の絶対秒で書く。 */
+export type Beat = {
+  id: BeatId;
+  /** 画面に出る文字すべて（行の区切りなし） */
   text: string;
-  /** 文字が出始める（シーン先頭からの秒数ではなく、全体の絶対秒） */
+  /** そのうち記事の文のまま出す部分（references.md にあること） */
+  quoted: string[];
+  /** 出始める */
   inAt: number;
-  /** 引用が元の文のまま静止する瞬間 */
+  /** 文字がすべて出そろって静止する */
   settleAt: number;
-  /** 消え始める瞬間 */
+  /** 消え始める */
   outAt: number;
   holdFrames: number;
 };
 
-const quote = (id: QuoteId, text: string, inAt: number, settleAt: number, outAt: number): Quote => ({
+const beat = (id: BeatId, text: string, quoted: string[], inAt: number, settleAt: number, outAt: number): Beat => ({
   id,
   text,
+  quoted,
   inAt,
   settleAt,
   outAt,
   holdFrames: sec(outAt) - sec(settleAt),
 });
 
-// 記事の文は references.md のまま。演出で崩しても、必ずこの形で静止させる。
-export const QUOTES: Quote[] = [
-  quote("optimal", "他人がシェアしてくれた『便利』は、あくまでその人にとっての最適解なのです。", 9.4, 10.8, 17.4),
-  quote("morningType", "朝型の人が作った早朝ルーティンは、夜型の人には苦痛でしかありません。", 25.0, 26.2, 32.2),
-  quote("deskWork", "デスクワーク中心の人向けのツールは、外回りが多い人には使いづらいものです。", 32.4, 33.4, 39.8),
-  quote("others", "他人の便利さは、他人のために作られています。", 40.6, 42.4, 46.6),
-  quote("reorder", "自分の習慣に合わせて順番を入れ替えてみます。", 66.2, 68.6, 73.0),
-  quote("grow", "便利さは、育てるもの", 73.6, 74.6, 79.4),
-  quote("final", "便利さは、与えられるものではなく、作り上げるものです。", 80.6, 83.0, 89.2),
+export const BEATS: Beat[] = [
+  // 問い
+  beat("tried", "つい試して、いくつも取り入れてきた。", [], 3.9, 4.35, 8.0),
+  beat("few", "でも、今でも使い続けているものは、驚くほど少ない。", [], 8.35, 8.8, 13.4),
+  beat("why", "なぜ、続かないのか。", [], 13.8, 14.2, 16.7),
+  // 原因
+  beat("others", "他人の便利さは、他人のために作られています。", ["他人の便利さは、他人のために作られています"], 17.1, 17.8, 22.0),
+  beat("morningType", "朝型の人の早朝ルーティンは、夜型の人には、苦痛。", [], 22.4, 23.2, 27.7),
+  beat("deskWork", "デスクワーク向けのツールは、外回りの人には、使いづらい。", [], 28.1, 28.9, 34.1),
+  beat("general", "汎用的なほど、効力は薄い。特化するほど、効力は高い。", [], 34.5, 35.05, 39.8),
+  // 転換
+  beat(
+    "optimal",
+    "他人がシェアしてくれた『便利』は、あくまでその人にとっての最適解なのです。",
+    ["他人がシェアしてくれた『便利』は、あくまでその人にとっての最適解なのです。"],
+    40.2,
+    41.0,
+    47.3,
+  ),
+  beat("turn", "参考にするのはいい。でも、続いているものは、そのまま使っていない。", [], 49.9, 50.6, 56.4),
+  // 方法
+  beat("observe", "まず、自分を観察する。いつ不便かどこで集中できるか何が得意で苦手か", [], 56.8, 58.0, 63.9),
+  beat("arrange", "次に、なぜ便利なのかを考えて、自分に合わせてアレンジする。", [], 64.3, 64.9, 70.1),
+  beat("reorder", "自分の習慣に合わせて順番を入れ替えてみます。", ["自分の習慣に合わせて順番を入れ替えてみます。"], 70.5, 72.5, 76.7),
+  // 結論
+  beat("grow", "便利は、種のようなもの。便利さは、育てるもの", ["便利さは、育てるもの"], 77.1, 77.9, 82.1),
+  beat(
+    "final",
+    "便利さは、与えられるものではなく、作り上げるものです。",
+    ["便利さは、与えられるものではなく、作り上げるものです。"],
+    82.5,
+    85.0,
+    89.9,
+  ),
 ];
 
-export function quoteOf(id: QuoteId): Quote {
-  const q = QUOTES.find((x) => x.id === id);
-  if (!q) throw new Error(`unknown quote: ${id}`);
-  return q;
+export function beatOf(id: BeatId): Beat {
+  const b = BEATS.find((x) => x.id === id);
+  if (!b) throw new Error(`unknown beat: ${id}`);
+  return b;
 }
 
 /** 決定的な疑似乱数（mulberry32）。レンダリングごとに同じ値を返す。 */

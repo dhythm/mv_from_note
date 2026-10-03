@@ -1,15 +1,21 @@
+import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 import {
+  BEATS,
+  CARD_TEXTS,
   FPS,
-  QUOTES,
   SCENES,
+  TITLE,
   TOTAL_FRAMES,
   fall,
+  layoutRow,
   readingSeconds,
   sceneAt,
   seeded,
   swap,
 } from "./lib";
+
+const refs = readFileSync(new URL("../../references.md", import.meta.url), "utf8");
 
 describe("timeline", () => {
   it("is 90 seconds at 30fps", () => {
@@ -17,20 +23,18 @@ describe("timeline", () => {
     expect(TOTAL_FRAMES).toBe(2700);
   });
 
-  it("splits into the five scenes of the plan without gaps", () => {
-    expect(SCENES.map((s) => [s.from / FPS, (s.from + s.duration) / FPS])).toEqual([
-      [0, 18],
-      [18, 40],
-      [40, 60],
-      [60, 80],
-      [80, 90],
-    ]);
+  it("splits into the five parts of the article without gaps", () => {
+    expect(SCENES.map((s) => s.id)).toEqual(["question", "cause", "turn", "method", "end"]);
+    expect(SCENES[0].from).toBe(0);
+    for (let i = 1; i < SCENES.length; i++) {
+      expect(SCENES[i].from).toBe(SCENES[i - 1].from + SCENES[i - 1].duration);
+    }
+    const last = SCENES[SCENES.length - 1];
+    expect(last.from + last.duration).toBe(TOTAL_FRAMES);
   });
 
   it("finds the scene for a frame", () => {
-    expect(sceneAt(0).id).toBe("morning");
-    expect(sceneAt(18 * FPS).id).toBe("day");
-    expect(sceneAt(59 * FPS).id).toBe("collapse");
+    expect(sceneAt(0).id).toBe("question");
     expect(sceneAt(TOTAL_FRAMES - 1).id).toBe("end");
   });
 
@@ -46,19 +50,41 @@ describe("readingSeconds", () => {
   });
 });
 
-describe("quotes", () => {
-  it("each quote holds still long enough to be read", () => {
-    for (const q of QUOTES) {
-      expect(q.holdFrames / FPS, q.text).toBeGreaterThanOrEqual(readingSeconds(q.text));
+describe("beats (words on screen)", () => {
+  it("each beat holds still long enough to be read", () => {
+    for (const b of BEATS) {
+      expect(b.holdFrames / FPS, b.text).toBeGreaterThanOrEqual(readingSeconds(b.text));
     }
   });
 
-  it("are verbatim lines from references.md", async () => {
-    const { readFile } = await import("node:fs/promises");
-    const refs = await readFile(new URL("../../references.md", import.meta.url), "utf8");
-    for (const q of QUOTES) {
-      expect(refs, q.text).toContain(q.text);
+  it("never overlap: the next one starts after the previous one has gone", () => {
+    for (let i = 1; i < BEATS.length; i++) {
+      expect(BEATS[i].inAt, BEATS[i].id).toBeGreaterThanOrEqual(BEATS[i - 1].outAt + 0.3);
     }
+  });
+
+  it("fit inside the video", () => {
+    expect(BEATS[0].inAt).toBeGreaterThanOrEqual(0);
+    expect(BEATS[BEATS.length - 1].outAt).toBeLessThanOrEqual(90);
+  });
+
+  it("quote parts are verbatim from references.md and appear in the beat text", () => {
+    for (const b of BEATS) {
+      for (const part of b.quoted) {
+        expect(refs, part).toContain(part);
+        expect(b.text, part).toContain(part);
+      }
+    }
+  });
+
+  it("have unique ids", () => {
+    expect(new Set(BEATS.map((b) => b.id)).size).toBe(BEATS.length);
+  });
+});
+
+describe("other verbatim words", () => {
+  it("card texts and the title come from the article", () => {
+    for (const s of [...CARD_TEXTS, TITLE]) expect(refs, s).toContain(s);
   });
 });
 
@@ -106,11 +132,8 @@ describe("swap", () => {
   });
 });
 
-import { layoutRow } from "./lib";
-
 describe("layoutRow", () => {
   it("places items of the given order side by side, centered", () => {
-    // widths by id: 0→100, 1→50, 2→30 ; gap 10 → total 200, centered at 500 → starts at 400
     const xs = layoutRow([100, 50, 30], [2, 0, 1], 10, 500);
     expect(xs[2]).toBe(400);
     expect(xs[0]).toBe(440);

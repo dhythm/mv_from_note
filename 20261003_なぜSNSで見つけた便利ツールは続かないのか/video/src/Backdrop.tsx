@@ -5,20 +5,25 @@ import { ip, inOutCubic } from "./anim";
 // [ファイル, フェードイン開始秒, フェードイン終了秒]
 const STILLS: [string, number, number][] = [
   ["01-empty-desk.webp", -1, 0],
-  ["02-phone-glow.webp", 4.0, 4.9],
-  ["03-mismatched-stack.webp", 16.4, 18.0],
-  // 03→04 は画角が変わる。崩れる文字が画面を埋めている間に切り替える
-  ["04-just-collapsed.webp", 47.2, 48.2],
-  ["05-one-change.webp", 64.2, 65.2],
+  ["02-phone-glow.webp", 0.3, 1.0],
+  // 「なぜ、続かないのか。」の間に、積まれた山へ
+  ["03-mismatched-stack.webp", 15.0, 16.2],
+  // 03→04 は画角が変わる。崩れる紙片が画面を埋めている間に切り替える
+  ["04-just-collapsed.webp", 47.9, 48.9],
+  // 「自分に合わせてアレンジする」で手がノートの角度を変える
+  ["05-one-change.webp", 64.3, 65.3],
   // 06 はノートの角度が 05 の前に戻っている。根が覆っている間にゆっくり替える
-  ["06-one-remains.webp", 75.4, 79.4],
+  ["06-one-remains.webp", 78.0, 81.0],
 ];
 
 export function Backdrop({ t }: { t: number }) {
-  // 一日の光：朝はわずかに暖かく、夜に動く一日は青く沈み、崩れたあとに戻る
-  const night = Math.min(ip(t, [21.2, 26], [0, 1], inOutCubic), ip(t, [46.6, 49.5], [1, 0]));
-  const warm = Math.max(ip(t, [0, 3, 14, 18], [0.0, 0.5, 0.5, 0]), ip(t, [80, 86], [0, 0.45]));
-  const tremor = ip(t, [43.5, 46.6, 47.4], [0, 1, 0]);
+  // 原因のパートは白い文字が読めるよう少し沈め、「夜型」の間だけ夜の色まで落とす
+  const night = Math.min(
+    ip(t, [15.6, 17.0], [0, 0.6]) + ip(t, [23.4, 24.4, 27.6, 28.4], [0, 0.4, 0.4, 0]),
+    ip(t, [47.3, 49.5], [1, 0]),
+  );
+  const warm = Math.max(ip(t, [0, 2, 12, 15], [0.0, 0.4, 0.4, 0]), ip(t, [82, 88], [0, 0.45]));
+  const tremor = ip(t, [44.5, 47.3, 48.0], [0, 1, 0]);
 
   return (
     <AbsoluteFill style={{ backgroundColor: "#d8d2c8" }}>

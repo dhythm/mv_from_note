@@ -7,3 +7,7 @@ export const mincho = loadMincho("normal", { weights: ["600"], subsets: ["japane
 
 export const INK = "#1f1c19";
 export const PAPER = "#f6f1e8";
+
+export const AMBER = "rgba(242,184,75,0.8)";
+export const INDIGO = "rgba(120,140,235,0.8)";
+export const RED = "#d0443a";
