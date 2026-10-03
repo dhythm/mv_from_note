@@ -6,11 +6,13 @@
     "studio": "remotion studio src/index.ts",
     "render": "remotion render src/index.ts Main ../../output/20261003.mp4 --codec=h264 --crf=18",
     "test": "vitest run",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "bgm": "node bgm/compose.ts"
   },
   "dependencies": {
     "@remotion/cli": "^4.0.532",
     "@remotion/google-fonts": "^4.0.532",
+    "@remotion/media": "^4.0.532",
     "react": "^19.3.0",
     "react-dom": "^19.3.0",
     "remotion": "^4.0.532"
