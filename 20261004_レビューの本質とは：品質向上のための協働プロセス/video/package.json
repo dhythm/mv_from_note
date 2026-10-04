@@ -1,0 +1,27 @@
+{
+  "name": "mv-20261004-mouichido-mekuru",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "prep": "node scripts/export-timeline.ts && ${PREP_PYTHON:-python3} prep/build_parts.py",
+    "sfx": "esbuild scripts/compose-sfx.ts --bundle --platform=node --format=esm --log-level=warning --outfile=node_modules/.cache/compose-sfx.mjs && node node_modules/.cache/compose-sfx.mjs",
+    "hands": "esbuild scripts/hand-events.ts --bundle --platform=node --format=esm --log-level=warning --loader:.tsx=tsx --outfile=node_modules/.cache/hand-events.mjs && node node_modules/.cache/hand-events.mjs",
+    "studio": "remotion studio src/index.ts",
+    "render:proto": "remotion render src/index.ts Proto ../../output/opus-video/proto-c08-c11.mp4 --codec=h264 --crf=18",
+    "render": "remotion render src/index.ts Film ../../output/opus-video/mouichido-mekuru.mp4 --codec=h264 --crf=18",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@remotion/cli": "^4.0.532",
+    "@remotion/media": "^4.0.532",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "remotion": "^4.0.532"
+  },
+  "devDependencies": {
+    "@types/react": "^19.3.0",
+    "typescript": "^7.0.2",
+    "vitest": "^5.0.3"
+  }
+}
