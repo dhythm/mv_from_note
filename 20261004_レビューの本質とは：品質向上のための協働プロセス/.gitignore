@@ -1,0 +1,7 @@
+# Keep source PNGs, alternate generations, and exports out of this project.
+/assets/**/*.png
+/assets/**/*.jpg
+/assets/**/*.jpeg
+/assets/source/
+/.production/
+/exports/
