@@ -1,0 +1,28 @@
+{
+  "name": "mv-20261004-review-kinetic",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "studio": "remotion studio src/index.ts",
+    "audio": "node scripts/score.ts",
+    "render:proto": "remotion render src/index.ts Opening ../../output/opus-kinetic/prototype.mp4 --codec=h264 --crf=18 --scale=0.6667",
+    "render:preview": "remotion render src/index.ts Main ../../output/opus-kinetic/review-kinetic-preview.mp4 --codec=h264 --crf=23 --scale=0.6667 --pixel-format=yuv420p --audio-codec=aac",
+    "render": "remotion render src/index.ts Main ../../output/opus-kinetic/work/review-kinetic-remotion.mp4 --codec=h264 --crf=16 --audio-codec=aac --audio-bitrate=192k && npm run -s finalize",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "finalize": "ffmpeg -y -loglevel error -i ../../output/opus-kinetic/work/review-kinetic-remotion.mp4 -vf scale=out_range=tv:in_range=pc,format=yuv420p -c:v libx264 -crf 17 -preset slow -profile:v high -c:a copy -movflags +faststart ../../output/opus-kinetic/review-kinetic.mp4"
+  },
+  "dependencies": {
+    "@remotion/cli": "^4.0.532",
+    "@remotion/google-fonts": "^4.0.532",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "remotion": "^4.0.532",
+    "@remotion/media": "^4.0.532"
+  },
+  "devDependencies": {
+    "@types/react": "^19.3.0",
+    "typescript": "^7.0.2",
+    "vitest": "^5.0.3"
+  }
+}
