@@ -1,0 +1,255 @@
+{
+  "version": 2,
+  "date": "2026-10-04",
+  "generator": "built-in image_gen",
+  "status": "reference artwork; not finished animation frames or separated rigs",
+  "image_count": 11,
+  "total_bytes": 964534,
+  "source_total_bytes": 24691951,
+  "assets": [
+    {
+      "id": "K01",
+      "title": "作り手の机・美術基準",
+      "file": "keyframes/01-worktable.webp",
+      "cuts": [
+        "C02",
+        "C03"
+      ],
+      "role": "acting-keyframe-reference",
+      "width": 1600,
+      "height": 900,
+      "bytes": 163488,
+      "alpha": false,
+      "sha256": "41b3b0bcf013594706302a4a3b16a69021598f5fe0c07d3335e61765d90425a5",
+      "source_basename": "exec-ead4baa4-b582-46a6-abf6-69197e8e34ab.png",
+      "source_bytes": 2784296,
+      "encoding": {
+        "format": "webp",
+        "quality": 82,
+        "method": 6
+      }
+    },
+    {
+      "id": "K02",
+      "title": "承認済みの表紙",
+      "file": "keyframes/02-approved-cover.webp",
+      "cuts": [
+        "C04"
+      ],
+      "role": "acting-keyframe-reference",
+      "width": 1600,
+      "height": 900,
+      "bytes": 147762,
+      "alpha": false,
+      "sha256": "514a5be46612283e3098d24f8cf2c41e3cedf714d714f7f82900b1d1d71dc1fe",
+      "source_basename": "exec-b3b1462e-22e6-404f-afa1-bfeb508b5027.png",
+      "source_bytes": 2620536,
+      "encoding": {
+        "format": "webp",
+        "quality": 82,
+        "method": 6
+      }
+    },
+    {
+      "id": "K03",
+      "title": "もう一度開く",
+      "file": "keyframes/03-open-again.webp",
+      "cuts": [
+        "C05",
+        "C06",
+        "C07"
+      ],
+      "role": "acting-keyframe-reference",
+      "width": 1600,
+      "height": 900,
+      "bytes": 136766,
+      "alpha": false,
+      "sha256": "a821c52f768be6a83bc6dec758056da640078ae3bf5e6d63a4dc566e189d75c1",
+      "source_basename": "exec-c65ecab4-b596-42a4-a4c1-97f2c6fe22cc.png",
+      "source_bytes": 2478236,
+      "encoding": {
+        "format": "webp",
+        "quality": 82,
+        "method": 6
+      }
+    },
+    {
+      "id": "K04",
+      "title": "他者の目・指摘",
+      "file": "keyframes/04-inspect-together.webp",
+      "cuts": [
+        "C07",
+        "C08",
+        "C09",
+        "C12"
+      ],
+      "role": "acting-keyframe-reference",
+      "width": 1600,
+      "height": 900,
+      "bytes": 134286,
+      "alpha": false,
+      "sha256": "e4397fe0599b91085c1fc1a7dac5b71e8a12121d8207559f277145994276dcff",
+      "source_basename": "exec-644ba751-ac93-447a-ac49-87bb9d8e3ee1.png",
+      "source_bytes": 2542801,
+      "encoding": {
+        "format": "webp",
+        "quality": 82,
+        "method": 6
+      }
+    },
+    {
+      "id": "K05",
+      "title": "作り手が描き、相手が支える",
+      "file": "keyframes/05-draw-with-support.webp",
+      "cuts": [
+        "C10",
+        "C12"
+      ],
+      "role": "acting-keyframe-reference",
+      "width": 1600,
+      "height": 900,
+      "bytes": 151092,
+      "alpha": false,
+      "sha256": "4d0fc7131ae23a4ab4bca876d93465893ba107f617260f9eb04554f7056801b6",
+      "source_basename": "exec-c8ec0267-43ea-4cea-a581-0b47e84c5665.png",
+      "source_bytes": 2659025,
+      "encoding": {
+        "format": "webp",
+        "quality": 82,
+        "method": 6
+      }
+    },
+    {
+      "id": "K06",
+      "title": "二人で見届けた後",
+      "file": "keyframes/06-shared-rest.webp",
+      "cuts": [
+        "C14"
+      ],
+      "role": "acting-keyframe-reference",
+      "width": 1600,
+      "height": 900,
+      "bytes": 118758,
+      "alpha": false,
+      "sha256": "d117d41fcdcc5dead7714a184926322be1339035499c93bec05850544ccd4697",
+      "source_basename": "exec-0be36f20-fc6f-4a74-a6f1-94c9cc47403a.png",
+      "source_bytes": 2382653,
+      "encoding": {
+        "format": "webp",
+        "quality": 82,
+        "method": 6
+      }
+    },
+    {
+      "id": "P00",
+      "title": "事前修正前：カップの形の不整合",
+      "file": "inner/page-00-shape-error.webp",
+      "cuts": [
+        "C01",
+        "C02"
+      ],
+      "role": "state-reference",
+      "width": 1280,
+      "height": 720,
+      "bytes": 22012,
+      "alpha": false,
+      "sha256": "7fda4a93f514075b6554bdbfef87cf455af32168910b03af142524c17d5a41a8",
+      "source_basename": "exec-dc344de7-6864-4b39-8075-144cbfecd7fa.png",
+      "source_bytes": 1777479,
+      "encoding": {
+        "format": "webp",
+        "quality": 82,
+        "method": 6
+      }
+    },
+    {
+      "id": "P01",
+      "title": "基準姿勢：渡す前のためらい",
+      "file": "inner/page-01-offer.webp",
+      "cuts": [
+        "C01",
+        "C02",
+        "C13"
+      ],
+      "role": "state-reference",
+      "width": 1280,
+      "height": 720,
+      "bytes": 25536,
+      "alpha": false,
+      "sha256": "5ccbc69a51bd14f5f3f4db271d94d14fff13b96ff6007a2585db7413dffbd779",
+      "source_basename": "exec-7183f92e-f7ee-411e-9de2-cffeb7392119.png",
+      "source_bytes": 2010347,
+      "encoding": {
+        "format": "webp",
+        "quality": 82,
+        "method": 6
+      }
+    },
+    {
+      "id": "P02",
+      "title": "接続不良：カップと手が離れる",
+      "file": "inner/page-02-contact-gap.webp",
+      "cuts": [
+        "C05",
+        "C08",
+        "C09"
+      ],
+      "role": "state-reference",
+      "width": 1280,
+      "height": 720,
+      "bytes": 22604,
+      "alpha": false,
+      "sha256": "2a946f4c8766ee9572e100c280f6375c1c7678cf14a3e1061381760515f590cb",
+      "source_basename": "exec-31a54eee-cc79-4a79-bec0-d21cb650d6cc.png",
+      "source_bytes": 1816894,
+      "encoding": {
+        "format": "webp",
+        "quality": 82,
+        "method": 6
+      }
+    },
+    {
+      "id": "P03",
+      "title": "再修正前：受け手が先に手を下げる",
+      "file": "inner/page-03-too-early.webp",
+      "cuts": [
+        "C11"
+      ],
+      "role": "state-reference",
+      "width": 1280,
+      "height": 720,
+      "bytes": 20386,
+      "alpha": false,
+      "sha256": "0012961c15661a1dc91d9665d5a73906858a6fd9d8bd395cf00096687ca0fad8",
+      "source_basename": "exec-26ad933d-b058-42ae-9a86-d3b62372cdf7.png",
+      "source_bytes": 1806816,
+      "encoding": {
+        "format": "webp",
+        "quality": 82,
+        "method": 6
+      }
+    },
+    {
+      "id": "P04",
+      "title": "受け渡し成立",
+      "file": "inner/page-04-received.webp",
+      "cuts": [
+        "C13",
+        "C14"
+      ],
+      "role": "state-reference",
+      "width": 1280,
+      "height": 720,
+      "bytes": 21844,
+      "alpha": false,
+      "sha256": "0f15923e38599a0122031a0452e35c79c3035b9fe2898560df3f552747e9a14b",
+      "source_basename": "exec-fa187363-37e1-4aef-895a-515b8729e0ee.png",
+      "source_bytes": 1812868,
+      "encoding": {
+        "format": "webp",
+        "quality": 82,
+        "method": 6
+      }
+    }
+  ]
+}
