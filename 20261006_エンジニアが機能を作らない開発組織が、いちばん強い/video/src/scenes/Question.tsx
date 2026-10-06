@@ -1,111 +1,192 @@
 import React from "react";
-import { AbsoluteFill, useCurrentFrame, interpolate } from "remotion";
-import { COLOR, WIDTH } from "../theme";
-import { ReadingLine, jpFont, EASE_OUT, fade } from "../components/ui";
+import { AbsoluteFill, useCurrentFrame } from "remotion";
+import { K, prog, mix, EASE_IN, OVERSHOOT } from "../kinetic/design";
+import { Glyph, Phrase, Key } from "../kinetic/glyph";
 
-// 問い 0:00–0:14 。二つの声が横から衝突し、震えは収束。
-// 意見の色・文字は後半の役割へ引き継がない。
+// 問い 0:00–0:14 。文字が画面を支配する。
+// 前提「エンジニアではない人が、AIで作る。」→ 大きな「作る」が左右に裂け、
+// 二つの声の面（朱＝左／藍＝右）が突進して衝突。言葉の圧力で対立を見せる。
+// 最後は面が割れて「そのたびに、二つの声がぶつかる。」が中央を打つ。
 
-const VoiceBlock: React.FC<{
-  frame: number;
-  text: string;
-  side: "L" | "R";
-}> = ({ frame, text, side }) => {
-  const w = 236;
-  const h = 300;
-  const gap = 14;
-  const restX =
-    side === "L" ? WIDTH / 2 - gap / 2 - w / 2 : WIDTH / 2 + gap / 2 + w / 2;
-  const fromX = side === "L" ? -w : WIDTH + w;
+const SEAM = 640;
 
-  // 55–150 で中央へ。150 で接触、以後 震えを約14フレームで収束。
-  const slide = interpolate(frame, [55, 150], [fromX, restX], {
-    extrapolateLeft: "clamp",
-    extrapolateRight: "clamp",
-    easing: EASE_OUT,
-  });
-  const dir = side === "L" ? 1 : -1; // 接触後、互いに押し合う向き
-  const shake =
-    frame <= 150
-      ? 0
-      : Math.sin((frame - 150) * 0.9) *
-        Math.exp(-(frame - 150) / 13) *
-        9 *
-        dir;
-  const x = slide + shake;
-
-  // 接触の一瞬だけ軽い縦圧（スケール）。
-  const squash =
-    frame <= 150
-      ? 1
-      : 1 + Math.sin((frame - 150) * 0.9) * Math.exp(-(frame - 150) / 10) * 0.03;
-
-  const opacity = fade(frame, 55, 420, 10, 24);
-  const textOpacity = interpolate(frame, [120, 158], [0, 1], {
-    extrapolateLeft: "clamp",
-    extrapolateRight: "clamp",
-    easing: EASE_OUT,
-  });
-
-  return (
-    <div
-      style={{
-        position: "absolute",
-        left: x - w / 2,
-        top: 370 - h / 2,
-        width: w,
-        height: h,
-        borderRadius: 18,
-        background: side === "L" ? COLOR.voiceL : COLOR.voiceR,
-        opacity,
-        scale: `1 ${squash}`,
-        boxShadow: "0 12px 26px rgba(40,40,40,0.14)",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        padding: "0 22px",
-        boxSizing: "border-box",
-      }}
-    >
-      <span
-        style={{
-          color: "#f6f1e8",
-          fontSize: 29,
-          lineHeight: 1.5,
-          textAlign: "center",
-          opacity: textOpacity,
-          ...jpFont(700),
-        }}
-      >
-        {text}
-      </span>
-    </div>
-  );
-};
+// 「作」：中央から左へ裂けて朱の面の種になる
+const sakuKeys: Key[] = [
+  { f: 40, x: 468, y: 430, size: 120, weight: 900, color: K.ink, opacity: 0 },
+  { f: 58, size: 160, opacity: 1, easing: OVERSHOOT },
+  { f: 86 },
+  { f: 104, x: 120, y: 330, size: 74, color: K.shu, opacity: 0, easing: EASE_IN },
+];
+// 「る」：中央から右へ裂けて藍の面の種になる
+const ruKeys: Key[] = [
+  { f: 40, x: 628, y: 430, size: 120, weight: 900, color: K.ink, opacity: 0 },
+  { f: 58, size: 160, opacity: 1, easing: OVERSHOOT },
+  { f: 86 },
+  { f: 104, x: 1086, y: 330, size: 74, color: K.ai, opacity: 0, easing: EASE_IN },
+];
 
 export const Question: React.FC = () => {
   const frame = useCurrentFrame();
+
+  // 前提の一行
+  const premiseIn = prog(frame, 6, 20);
+  const premiseOut = 1 - prog(frame, 80, 92, EASE_IN);
+  const premise = premiseIn * premiseOut;
+
+  // 面の侵入（左右から突進）
+  const leftIn = prog(frame, 96, 116);
+  const rightIn = prog(frame, 100, 120);
+  // 衝突の二度の押し合い（270–300）
+  const shove =
+    (prog(frame, 270, 278) - prog(frame, 278, 286)) +
+    (prog(frame, 286, 294) - prog(frame, 294, 302));
+  // 面の退場（315–332）
+  const leftOut = prog(frame, 315, 332, EASE_IN);
+  const rightOut = prog(frame, 318, 335, EASE_IN);
+
+  const leftX = mix(-680, 0, leftIn) + shove * 16 - leftOut * 760;
+  const rightX = mix(680, 0, rightIn) - shove * 16 + rightOut * 760;
+
+  const seamOpacity = prog(frame, 110, 120) * (1 - prog(frame, 315, 326));
+  const seamFlash = shove; // 押し合いで朱に光る
+  const knock = prog(frame, 112, 128); // ヌキ文字の出
+  // 読ませる区間にも交互の強調を置き、対立する声の応酬を続ける。
+  // 64BPMの半拍ごと。文字の内容と読み順は保持する。
+  const accent = (beats: number[]) =>
+    beats.reduce((v, f) => v + prog(frame, f, f + 4) - prog(frame, f + 4, f + 10), 0);
+  const leftAccent = accent([140, 196, 252]);
+  const rightAccent = accent([168, 224, 280]);
+
+  // まとめ「そのたびに、二つの声がぶつかる。」
+  const sumSmall = prog(frame, 322, 334) * (1 - prog(frame, 406, 416, EASE_IN));
+  const sumBig = prog(frame, 322, 338, OVERSHOOT) * (1 - prog(frame, 406, 416, EASE_IN));
+  const bigSize = mix(92, 144, sumBig > 0 ? prog(frame, 322, 338, OVERSHOOT) : 0);
+
   return (
-    <AbsoluteFill>
-      <ReadingLine
-        frame={frame}
-        text="エンジニアではない人が、AIで作る。"
-        from={15}
-        to={150}
-        centerY={118}
-        fontSize={48}
-        weight={700}
+    <AbsoluteFill style={{ overflow: "hidden" }}>
+      {/* 前提 */}
+      <Phrase
+        text="エンジニアではない人が、AIで"
+        left={80}
+        top={232}
+        width={1120}
+        align="center"
+        size={50}
+        weight={600}
+        color={K.ink}
+        opacity={premise}
+        dy={(1 - premiseIn) * -24}
       />
-      <VoiceBlock frame={frame} text="「メンテナンスできるはずがない」" side="L" />
-      <VoiceBlock frame={frame} text="「AIに任せればいい」" side="R" />
-      <ReadingLine
-        frame={frame}
-        text="そのたびに、二つの声がぶつかる。"
-        from={300}
-        to={418}
-        centerY={600}
-        fontSize={46}
-        color={COLOR.ink}
+      {/* 大きな「作る」（裂ける） */}
+      <Glyph char="作" keys={sakuKeys} frame={frame} />
+      <Glyph char="る" keys={ruKeys} frame={frame} />
+
+      {/* 左の面（朱） */}
+      <div
+        style={{
+          position: "absolute",
+          left: 0,
+          top: 0,
+          width: SEAM,
+          height: 720,
+          background: K.shu,
+          translate: `${leftX}px 0px`,
+        }}
+      >
+        <div
+          style={{
+            position: "absolute",
+            left: 76,
+            top: 236,
+            width: 520,
+            color: K.knock,
+            fontSize: 56,
+            fontWeight: 800,
+            fontVariationSettings: "'wght' 800",
+            lineHeight: 1.34,
+            opacity: knock,
+            letterSpacing: "0.01em",
+            whiteSpace: "pre",
+            scale: 1 + leftAccent * 0.1,
+            transformOrigin: "left center",
+          }}
+        >
+          「メンテナンス
+          <br />
+          できるはずがない」
+        </div>
+      </div>
+
+      {/* 右の面（藍） */}
+      <div
+        style={{
+          position: "absolute",
+          left: SEAM,
+          top: 0,
+          width: 1280 - SEAM,
+          height: 720,
+          background: K.ai,
+          translate: `${rightX}px 0px`,
+        }}
+      >
+        <div
+          style={{
+            position: "absolute",
+            left: 70,
+            top: 248,
+            color: K.knock,
+            fontSize: 58,
+            fontWeight: 800,
+            fontVariationSettings: "'wght' 800",
+            lineHeight: 1.32,
+            opacity: knock,
+            letterSpacing: "0.01em",
+            scale: 1 + rightAccent * 0.1,
+            transformOrigin: "left center",
+          }}
+        >
+          「AIに
+          <br />
+          任せればいい」
+        </div>
+      </div>
+
+      {/* 継ぎ目の罫線（押し合いで朱に光る） */}
+      <div
+        style={{
+          position: "absolute",
+          left: SEAM - 4,
+          top: 0,
+          width: 8,
+          height: 720,
+          background: seamFlash > 0.2 ? K.shu : K.ink,
+          opacity: seamOpacity,
+        }}
+      />
+
+      {/* まとめ */}
+      <Phrase
+        text="そのたびに、二つの声が"
+        left={80}
+        top={262}
+        width={1120}
+        align="center"
+        size={50}
+        weight={600}
+        color={K.ink}
+        opacity={sumSmall}
+        dy={(1 - prog(frame, 322, 334)) * 20}
+      />
+      <Phrase
+        text="ぶつかる。"
+        left={80}
+        top={400}
+        width={1120}
+        align="center"
+        size={bigSize}
+        weight={900}
+        color={K.shu}
+        opacity={sumBig}
       />
     </AbsoluteFill>
   );

@@ -1,6 +1,6 @@
 import React from "react";
 import { AbsoluteFill, Audio, Sequence, staticFile } from "remotion";
-import { SCENES } from "./theme";
+import { SCENES, FONT } from "./theme";
 import { Paper } from "./components/ui";
 import { Question } from "./scenes/Question";
 import { Cause1 } from "./scenes/Cause1";
@@ -14,7 +14,7 @@ const len = (s: readonly [number, number]) => s[1] - s[0];
 
 export const Main: React.FC = () => {
   return (
-    <AbsoluteFill style={{ backgroundColor: "#efe8da" }}>
+    <AbsoluteFill style={{ backgroundColor: "#efe8da", fontFamily: FONT }}>
       <Paper />
 
       {/* BGM（器楽1本、115秒）。効果音・生成音声は使わない */}

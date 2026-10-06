@@ -1,165 +1,123 @@
 import React from "react";
-import { AbsoluteFill, Sequence, useCurrentFrame, interpolate, staticFile } from "remotion";
+import { AbsoluteFill, useCurrentFrame, staticFile } from "remotion";
 import { Video } from "@remotion/media";
-import { COLOR, LAYER, WIDTH } from "../theme";
-import { ReadingLine, jpFont, EASE_OUT, EASE_IN_OUT, fade } from "../components/ui";
+import { K, prog, mix, EASE_IN, EASE_INOUT, OVERSHOOT } from "../kinetic/design";
+import { Phrase } from "../kinetic/glyph";
 
-// 転換 0:41–0:57 。AIで実務家も作れる→現場を知る人が形にする（動画A）→
-// 意見の文字を消し、共通色の形を回して上下に積む（一度だけの大きな変形）。
-// local: 動画A 150–300、変形 310–440、ラベル 418–475。
+// 転換 0:41–0:57 。
+// A（0–150）いまはAIで、実務家も機能を作れる。
+// B（150–300）動画Aを画面の大きな面として使い、左の紙面に文字。
+// C（300–480）意見を消した共通色（墨）の空の形が、縦の並びから横の二層へ
+//   向きを変えて積み上がり、役割ラベルが出る。角丸・影は使わない。
 
-const MORPH_START = 312;
-const MORPH_END = 438; // 約4.2秒。横の対立→縦の二層へ。
+const SPLIT = 520; // 左の紙面と動画面の境
 
-const MorphBlock: React.FC<{
-  frame: number;
-  fromCx: number;
-  fromCy: number;
-  toCx: number;
-  toCy: number;
-  delay: number;
-  label: string;
+const CenterLine: React.FC<{
+  text: string;
+  yc: number;
+  size: number;
+  weight: number;
   color: string;
-}> = ({ frame, fromCx, fromCy, toCx, toCy, delay, label, color }) => {
-  const s = MORPH_START + delay;
-  const e = MORPH_END + delay;
-  const p = interpolate(frame, [s, e], [0, 1], {
-    extrapolateLeft: "clamp",
-    extrapolateRight: "clamp",
-    easing: EASE_IN_OUT,
-  });
-  const fromW = 210;
-  const fromH = 280;
-  const cx = interpolate(p, [0, 1], [fromCx, toCx]);
-  const cy = interpolate(p, [0, 1], [fromCy, toCy]);
-  const w = interpolate(p, [0, 1], [fromW, LAYER.w]);
-  const h = interpolate(p, [0, 1], [fromH, LAYER.h]);
-  // 立ち上がりの出現（312 の少し前から）。
-  const appear = interpolate(frame, [s - 18, s], [0, 1], {
-    extrapolateLeft: "clamp",
-    extrapolateRight: "clamp",
-    easing: EASE_OUT,
-  });
-  // 回転の気配（±4度、着地で0へ）。
-  const wob = Math.sin(p * Math.PI) * 4;
-  const labelOpacity = interpolate(frame, [e - 8, e + 24], [0, 1], {
-    extrapolateLeft: "clamp",
-    extrapolateRight: "clamp",
-    easing: EASE_OUT,
-  });
-  return (
-    <div
-      style={{
-        position: "absolute",
-        left: cx - w / 2,
-        top: cy - h / 2,
-        width: w,
-        height: h,
-        borderRadius: LAYER.r,
-        background: color,
-        opacity: appear,
-        rotate: `${wob}deg`,
-        boxShadow: "0 10px 24px rgba(40,40,40,0.12)",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-      }}
-    >
-      <span
-        style={{ color: "#f3efe6", fontSize: 40, opacity: labelOpacity, letterSpacing: "0.04em", ...jpFont(800) }}
-      >
-        {label}
-      </span>
-    </div>
-  );
-};
+  opacity: number;
+  dy?: number;
+}> = ({ text, yc, size, weight, color, opacity, dy = 0 }) => (
+  <Phrase text={text} left={0} top={yc - size * 0.72 + dy} width={1280} align="center" size={size} weight={weight} color={color} opacity={opacity} letterSpacing="0.03em" />
+);
 
 export const Pivot: React.FC = () => {
   const frame = useCurrentFrame();
 
-  // 動画窓（右）。
-  const vidOpacity = fade(frame, 150, 300, 14, 16);
-  const vidScale = interpolate(frame, [150, 176], [0.95, 1], {
-    extrapolateLeft: "clamp",
-    extrapolateRight: "clamp",
-    easing: EASE_OUT,
-  });
+  // A
+  const aSmall = prog(frame, 8, 20) * (1 - prog(frame, 136, 148, EASE_IN));
+  const aBig = prog(frame, 22, 38, OVERSHOOT);
+  const aBigOut = 1 - prog(frame, 136, 150, EASE_IN);
+  const aBigSize = mix(60, 88, prog(frame, 22, 38, OVERSHOOT));
+  const aBigDx = -prog(frame, 136, 150, EASE_IN) * 420; // 動画の侵入と反対方向に抜ける
 
-  // 13 の左テキスト。
-  const t13 = fade(frame, 158, 300, 14, 16);
+  // B 動画面
+  const vIn = prog(frame, 150, 166);
+  const vOut = prog(frame, 300, 316, EASE_IN);
+  const videoX = mix(760, 0, vIn) + vOut * 760;
+  const vTextIn = prog(frame, 170, 184) * (1 - prog(frame, 300, 314, EASE_IN));
+
+  // C 変形（共通色の空の形 → 二層）
+  const p = prog(frame, 330, 356, EASE_INOUT);
+  const barsIn = prog(frame, 316, 330, OVERSHOOT);
+  const lead = prog(frame, 318, 332) * (1 - prog(frame, 470, 478, EASE_IN));
+  const labelIn = prog(frame, 356, 372, OVERSHOOT) * (1 - prog(frame, 470, 478, EASE_IN));
+
+  const bar = (fromCx: number, toCy: number) => {
+    const cx = mix(fromCx, 640, p);
+    const cy = mix(400, toCy, p);
+    const w = mix(200, 800, p);
+    const h = mix(320, 150, p);
+    return { left: cx - w / 2, top: cy - h / 2, width: w, height: h };
+  };
+  const up = bar(530, 300);
+  const lo = bar(750, 470);
+  const barOpacity = barsIn * (1 - prog(frame, 470, 478, EASE_IN));
 
   return (
-    <AbsoluteFill>
-      {/* 12 */}
-      <ReadingLine frame={frame} text="いまはAIで、実務家も機能を作れる。" from={15} to={150} centerY={320} fontSize={50} weight={700} />
+    <AbsoluteFill style={{ overflow: "hidden" }}>
+      {/* A */}
+      <CenterLine text="いまはAIで、実務家も" yc={248} size={50} weight={600} color={K.ink} opacity={aSmall} dy={(1 - prog(frame, 8, 20)) * -18} />
+      <Phrase text="機能を作れる。" left={0} top={430 - aBigSize * 0.72} width={1280} align="center" size={aBigSize} weight={900} color={K.ink} opacity={aBig * aBigOut} dx={aBigDx} letterSpacing="0.02em" />
 
-      {/* 13 現場を知る人が形にする（左テキスト＋動画A右） */}
-      {t13 > 0 ? (
+      {/* B 動画面（右・大きな面）＋左の紙面に文字 */}
+      {vIn > 0 && vOut < 1 ? (
         <div
           style={{
             position: "absolute",
-            left: 64,
-            top: 300,
-            width: 452,
-            opacity: t13,
-            color: COLOR.ink,
-            fontSize: 42,
-            lineHeight: 1.5,
-            ...jpFont(700),
-          }}
-        >
-          現場をいちばん知る人が、自分で形にする。
-        </div>
-      ) : null}
-
-      <Sequence from={150} durationInFrames={150} layout="none">
-        <div
-          style={{
-            position: "absolute",
-            left: 686,
-            top: 356 - 254 / 2,
-            width: 452,
-            height: 254,
-            opacity: vidOpacity,
-            scale: `${vidScale}`,
-            borderRadius: 16,
+            left: SPLIT,
+            top: 0,
+            width: 1280 - SPLIT,
+            height: 720,
             overflow: "hidden",
-            border: `6px solid ${COLOR.slate}`,
-            boxShadow: "0 16px 36px rgba(40,40,40,0.22)",
-            boxSizing: "border-box",
+            translate: `${videoX}px 0px`,
           }}
         >
           <Video
             src={staticFile("cut-A.mp4")}
             muted
-            style={{ width: "100%", height: "100%", objectFit: "cover" }}
+            style={{ position: "absolute", left: -230, top: 0, width: 1280, height: 720 }}
           />
         </div>
-      </Sequence>
+      ) : null}
+      {/* 境界の罫線 */}
+      <div style={{ position: "absolute", left: SPLIT - 3, top: 0, width: 6, height: 720, background: K.ink, opacity: vIn * (1 - vOut) }} />
+      {/* 左の紙面テキスト */}
+      <div
+        style={{
+          position: "absolute",
+          left: 50,
+          top: 236,
+          width: SPLIT - 70,
+          color: K.ink,
+          fontSize: 50,
+          fontWeight: 900,
+          fontVariationSettings: "'wght' 900",
+          lineHeight: 1.42,
+          letterSpacing: "0.02em",
+          opacity: vTextIn,
+          translate: `${(1 - prog(frame, 170, 184)) * -20}px 0px`,
+        }}
+      >
+        現場をいちばん
+        <br />
+        知る人が、
+        <br />
+        自分で形にする。
+      </div>
 
-      {/* 14 ＋ 変形 */}
-      <ReadingLine frame={frame} text="どちらが正しいかではなく、役割分担で解く。" from={312} to={478} centerY={110} />
+      {/* C 変形：共通色（墨）の空の形 */}
+      <div style={{ position: "absolute", left: up.left, top: up.top, width: up.width, height: up.height, background: K.ink, opacity: barOpacity }} />
+      <div style={{ position: "absolute", left: lo.left, top: lo.top, width: lo.width, height: lo.height, background: K.ink, opacity: barOpacity }} />
+      {/* 役割ラベル（着地後） */}
+      <Phrase text="機能／実務家" left={0} top={300 - 54 * 0.72} width={1280} align="center" size={54} weight={900} color={K.knock} opacity={labelIn} letterSpacing="0.06em" />
+      <Phrase text="土台／エンジニア" left={0} top={470 - 54 * 0.72} width={1280} align="center" size={54} weight={900} color={K.knock} opacity={labelIn} letterSpacing="0.06em" />
 
-      <MorphBlock
-        frame={frame}
-        fromCx={WIDTH / 2 - 112}
-        fromCy={408}
-        toCx={LAYER.cx}
-        toCy={LAYER.upY}
-        delay={0}
-        label="機能／実務家"
-        color={COLOR.slateUp}
-      />
-      <MorphBlock
-        frame={frame}
-        fromCx={WIDTH / 2 + 112}
-        fromCy={408}
-        toCx={LAYER.cx}
-        toCy={LAYER.loY}
-        delay={26}
-        label="土台／エンジニア"
-        color={COLOR.slateLo}
-      />
+      {/* 14 */}
+      <CenterLine text="どちらが正しいかではなく、役割分担で解く。" yc={120} size={44} weight={700} color={K.ink} opacity={lead} dy={(1 - prog(frame, 318, 332)) * -14} />
     </AbsoluteFill>
   );
 };
