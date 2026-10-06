@@ -1,107 +1,96 @@
 import React from "react";
-import { AbsoluteFill, useCurrentFrame, interpolate } from "remotion";
-import { COLOR } from "../theme";
-import { ReadingLine, EASE_IN_OUT, EASE_OUT } from "../components/ui";
+import { AbsoluteFill, useCurrentFrame } from "remotion";
+import { K, prog, mix, EASE_IN, OVERSHOOT } from "../kinetic/design";
+import { Phrase } from "../kinetic/glyph";
 
-// 原因1 0:14–0:30 。扱うものの重さで判断が変わる。天秤で対比し、
-// 最後は水平へ戻して「どちらにも一理ある」を示す。
+// 原因1 0:14–0:30 。扱うものの重さで判断が変わる。
+// 「ケースバイケース」→ 軽い側（問題ない：細く小さく上へ）と
+// 重い側（怖い：太く大きく下へ）を文字の重量で対比し、最後に一理ずつ。
+
+// 中央寄せの一行（サイズは上下中心 yc 基準）
+const CenterLine: React.FC<{
+  text: string;
+  yc: number;
+  size: number;
+  weight: number;
+  color: string;
+  opacity: number;
+  dy?: number;
+}> = ({ text, yc, size, weight, color, opacity, dy = 0 }) => (
+  <Phrase
+    text={text}
+    left={0}
+    top={yc - size * 0.72 + dy}
+    width={1280}
+    align="center"
+    size={size}
+    weight={weight}
+    color={color}
+    opacity={opacity}
+    letterSpacing="0.03em"
+  />
+);
 
 export const Cause1: React.FC = () => {
   const frame = useCurrentFrame();
 
-  // 右下がり＝重い側が下がる。小さな軽い荷（左）→大きな重い荷（右）→ほぼ水平へ。
-  const angle = interpolate(
-    frame,
-    [0, 150, 205, 285, 340, 410, 470],
-    [0, 0, -3.5, -3.5, 11, 11, 1.5],
-    { extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: EASE_IN_OUT },
-  );
+  // A: 「答えは、」→「ケースバイケース。」大きく出て、天井のヘッダへ縮む
+  const ansOpacity = prog(frame, 6, 16) * (1 - prog(frame, 70, 82, EASE_IN));
+  const heroPunch = prog(frame, 40, 56, OVERSHOOT);
+  const heroToHeader = prog(frame, 92, 110);
+  const heroSize = mix(100, 46, heroToHeader);
+  const heroY = mix(400, 86, heroToHeader);
+  const heroWeight = mix(900, 700, heroToHeader);
+  const heroColor = heroToHeader > 0.5 ? K.grey : K.ink;
+  const heroOpacity =
+    heroPunch * (1 - prog(frame, 452, 466, EASE_IN)); // 最後まで天井に残す
 
-  const sLeft = interpolate(frame, [158, 205], [0, 1], {
-    extrapolateLeft: "clamp",
-    extrapolateRight: "clamp",
-    easing: EASE_OUT,
-  });
-  const sRight = interpolate(frame, [288, 338], [0, 1], {
-    extrapolateLeft: "clamp",
-    extrapolateRight: "clamp",
-    easing: EASE_OUT,
-  });
+  // B: 軽い側
+  const lightQualIn = prog(frame, 120, 134) * (1 - prog(frame, 236, 248, EASE_IN));
+  const lightWord = prog(frame, 150, 164) * (1 - prog(frame, 232, 244, EASE_IN));
+  const lightRise = mix(24, -16, prog(frame, 150, 232)); // ゆっくり上へ漂う
 
-  const cube = (
-    cx: number,
-    baseY: number,
-    size: number,
-    s: number,
-    color: string,
-  ) => {
-    if (s <= 0.001) return null;
-    const half = size / 2;
-    const cy = baseY - half;
-    return (
-      <g transform={`translate(${cx} ${cy}) scale(${s})`} opacity={s}>
-        <rect
-          x={-half}
-          y={-half}
-          width={size}
-          height={size}
-          rx={10}
-          fill={color}
-        />
-      </g>
-    );
-  };
+  // C: 重い側
+  const heavyQualIn = prog(frame, 236, 250) * (1 - prog(frame, 372, 384, EASE_IN));
+  const heavyWord = prog(frame, 250, 262, OVERSHOOT) * (1 - prog(frame, 384, 396, EASE_IN));
+  const heavyDrop = mix(-60, 0, prog(frame, 250, 268, OVERSHOOT));
+  const heavySize = mix(120, 172, prog(frame, 250, 266, OVERSHOOT));
+  const ruleW = 560 * prog(frame, 262, 280);
+
+  // D: 一理ずつ
+  const dSmall = prog(frame, 388, 400);
+  const dBig = prog(frame, 404, 418, OVERSHOOT);
+  const dBigSize = mix(54, 82, prog(frame, 404, 418, OVERSHOOT));
 
   return (
-    <AbsoluteFill>
-      <ReadingLine frame={frame} text="答えは、ケースバイケースだ。" from={15} to={150} centerY={110} />
-      <ReadingLine
-        frame={frame}
-        text="自分用や仲間内の道具なら問題ない。"
-        from={150}
-        to={282}
-        centerY={110}
-      />
-      <ReadingLine
-        frame={frame}
-        text="個人情報や、止まると困るものなら怖い。"
-        from={282}
-        to={402}
-        centerY={110}
-      />
-      <ReadingLine
-        frame={frame}
-        text="どちらにも一理あり、片方だけが正しくはない。"
-        from={402}
-        to={478}
-        centerY={110}
+    <AbsoluteFill style={{ overflow: "hidden" }}>
+      {/* A */}
+      <CenterLine text="答えは、" yc={250} size={56} weight={600} color={K.ink} opacity={ansOpacity} dy={(1 - prog(frame, 6, 16)) * -20} />
+      <CenterLine text="ケースバイケース。" yc={heroY} size={heroSize} weight={heroWeight} color={heroColor} opacity={heroOpacity} />
+
+      {/* B 軽い側（細く・小さく・上へ） */}
+      <CenterLine text="自分用や、仲間内の道具なら" yc={248} size={46} weight={500} color={K.ink} opacity={lightQualIn} dy={(1 - prog(frame, 120, 134)) * 16} />
+      <CenterLine text="問題ない" yc={352} size={84} weight={400} color={K.ai} opacity={lightWord} dy={lightRise} />
+
+      {/* C 重い側（太く・大きく・下へ） */}
+      <CenterLine text="個人情報や、止まると困るものは" yc={298} size={46} weight={500} color={K.ink} opacity={heavyQualIn} dy={(1 - prog(frame, 236, 250)) * 16} />
+      <CenterLine text="怖い。" yc={516} size={heavySize} weight={900} color={K.shu} opacity={heavyWord} dy={heavyDrop} />
+      {/* 重さの底線 */}
+      <div
+        style={{
+          position: "absolute",
+          left: 640 - ruleW / 2,
+          top: 596,
+          width: ruleW,
+          height: 10,
+          background: K.ink,
+          opacity: heavyWord,
+        }}
       />
 
-      <svg
-        width={1280}
-        height={720}
-        viewBox="0 0 1280 720"
-        style={{ position: "absolute", left: 0, top: 0 }}
-      >
-        <g transform="translate(0 -54)">
-        {/* 支柱と台（回転しない） */}
-        <rect x={635} y={430} width={10} height={120} rx={5} fill={COLOR.inkSoft} />
-        <polygon points="600,560 680,560 640,428" fill={COLOR.inkSoft} />
-
-        {/* 回転する天秤一式 */}
-        <g transform={`rotate(${angle} 640 430)`}>
-          <rect x={380} y={424} width={520} height={12} rx={6} fill={COLOR.ink} />
-          {/* 左の吊り */}
-          <line x1={400} y1={430} x2={400} y2={508} stroke={COLOR.inkSoft} strokeWidth={4} />
-          <line x1={350} y1={508} x2={450} y2={508} stroke={COLOR.inkSoft} strokeWidth={6} strokeLinecap="round" />
-          {cube(400, 506, 66, sLeft, COLOR.calm)}
-          {/* 右の吊り */}
-          <line x1={880} y1={430} x2={880} y2={508} stroke={COLOR.inkSoft} strokeWidth={4} />
-          <line x1={820} y1={508} x2={940} y2={508} stroke={COLOR.inkSoft} strokeWidth={6} strokeLinecap="round" />
-          {cube(880, 506, 112, sRight, COLOR.heavy)}
-        </g>
-        </g>
-      </svg>
+      {/* D 一理ずつ */}
+      <CenterLine text="どちらにも、一理あり。" yc={282} size={52} weight={600} color={K.ink} opacity={dSmall * (1 - prog(frame, 470, 478, EASE_IN))} dy={(1 - dSmall) * 16} />
+      <CenterLine text="片方だけが、正しくはない。" yc={430} size={dBigSize} weight={900} color={K.ink} opacity={dBig * (1 - prog(frame, 470, 478, EASE_IN))} />
     </AbsoluteFill>
   );
 };
