@@ -20,7 +20,7 @@ export const TabletScreen: React.FC<{ localFrame: number }> = ({ localFrame }) =
         gap: "4%",
       }}
     >
-      <div style={{ fontSize: 40, color: "#292d31", ...jpFont(800) }}>作業記録</div>
+      <div style={{ fontSize: 36, color: "#292d31", ...jpFont(800) }}>作業記録</div>
       {rows.map((r, i) => {
         const check = interpolate(localFrame, [30 + i * 22, 50 + i * 22], [0, 1], {
           extrapolateLeft: "clamp",
@@ -28,11 +28,11 @@ export const TabletScreen: React.FC<{ localFrame: number }> = ({ localFrame }) =
           easing: EASE_OUT,
         });
         return (
-          <div key={i} style={{ display: "flex", alignItems: "center", gap: 22, marginTop: "2%" }}>
+          <div key={i} style={{ display: "flex", alignItems: "center", gap: 16, marginTop: "2%" }}>
             <div
               style={{
-                width: 34,
-                height: 34,
+                width: 30,
+                height: 30,
                 borderRadius: 6,
                 border: "3px solid #405868",
                 background: check > 0.5 ? "#405868" : "transparent",
@@ -46,7 +46,7 @@ export const TabletScreen: React.FC<{ localFrame: number }> = ({ localFrame }) =
             >
               {check > 0.5 ? "✓" : ""}
             </div>
-            <div style={{ fontSize: 30, color: "#292d31", ...jpFont(400) }}>{r}</div>
+            <div style={{ fontSize: 26, whiteSpace: "nowrap", color: "#292d31", ...jpFont(400) }}>{r}</div>
           </div>
         );
       })}

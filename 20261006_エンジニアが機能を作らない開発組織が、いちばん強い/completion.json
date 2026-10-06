@@ -1,33 +1,36 @@
 {
   "date": "2026-10-06",
-  "producer": "Claude Opus 4.8",
-  "file": "video/output/main.mp4",
-  "bytes": 7890337,
-  "sha256": "a4908f3ded9852bf2b3aea34e508f2e1fbcb8d2fb196022199edf540c71fba9e",
+  "producer": "Opusによる初版・デザイン試作、Codexによる余白調整・全編改稿",
+  "file": "video/output/main-polished.mp4",
+  "bytes": 8746077,
+  "sha256": "f93f077c7c21c4b9ff425172e2c87c7a876baaf535c026d22aaab1a802143dbd",
   "media": {
     "programs": [],
     "stream_groups": [],
     "streams": [
       {
+        "codec_name": "h264",
         "codec_type": "video",
         "width": 1280,
         "height": 720,
-        "avg_frame_rate": "30/1",
+        "r_frame_rate": "30/1",
         "nb_frames": "3450",
         "side_data_list": [
           {}
         ]
       },
       {
+        "codec_name": "aac",
         "codec_type": "audio",
-        "avg_frame_rate": "0/0",
+        "r_frame_rate": "0/0",
         "nb_frames": "5393"
       }
     ],
     "format": {
-      "duration": "115.008000"
+      "duration": "115.008000",
+      "size": "8746077"
     }
   },
-  "git_policy": "動画MP4は既存.gitignoreに従い管理外。編集用コード・制作資料・素材台帳をコミットする。",
-  "verification": "書き出しと代表フレームを確認済み。全編等速視聴と初見理解確認は未実施。"
+  "git_policy": "MP4は既存.gitignoreに従い管理外。編集ソース・制作資料・完成記録をコミット。",
+  "verification": "型検査・全フレームデコード・代表構図と端末合成を確認。全編等速視聴と初見理解確認は未実施。"
 }

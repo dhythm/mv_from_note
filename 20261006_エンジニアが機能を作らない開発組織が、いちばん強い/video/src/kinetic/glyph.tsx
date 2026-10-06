@@ -100,6 +100,7 @@ export const Phrase: React.FC<{
   align?: "left" | "center" | "right";
   width?: number;
   lineHeight?: number;
+  centered?: boolean;
 }> = ({
   text,
   left,
@@ -114,6 +115,7 @@ export const Phrase: React.FC<{
   align = "left",
   width,
   lineHeight = 1.3,
+  centered = false,
 }) => {
   if (opacity <= 0.001) return null;
   return (
@@ -123,7 +125,7 @@ export const Phrase: React.FC<{
         left,
         top,
         width,
-        translate: `${dx}px ${dy}px`,
+        translate: `${dx}px ${centered ? `calc(-50% + ${dy}px)` : `${dy}px`}`,
         textAlign: align,
         color,
         opacity,

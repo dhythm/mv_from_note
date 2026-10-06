@@ -1,3 +1,5 @@
+> 更新：改善版の全編は `video/output/main-polished.mp4` に完成。最新記録は `full-design-report.md`。以下は初版／試作時点の記録。
+
 # production-report — エンジニアが機能を作らない開発組織が、いちばん強い
 
 2026-10-06。Claude（Opus）が本企画の動画を Remotion で実装・試作・全編書き出しまで行った記録。

@@ -10,23 +10,23 @@ import { TabletScreen } from "./TabletScreen";
 //
 // 端末画面の四隅（1280×720実座標、代表フレームから採寸）:
 const QUAD = {
-  tl: [628, 178],
-  tr: [1055, 192],
-  br: [1040, 455],
-  bl: [614, 442],
+  tl: [620, 179],
+  tr: [1062, 179],
+  br: [1071, 466],
+  bl: [619, 466],
 } as const;
 
 const polygon = `polygon(${QUAD.tl[0]}px ${QUAD.tl[1]}px, ${QUAD.tr[0]}px ${QUAD.tr[1]}px, ${QUAD.br[0]}px ${QUAD.br[1]}px, ${QUAD.bl[0]}px ${QUAD.bl[1]}px)`;
 
 // UI配置用の外接矩形と傾き。
-const UI_LEFT = 614;
-const UI_TOP = 176;
-const UI_W = 441;
-const UI_H = 281;
-const UI_ROT = -1.9; // 端末のわずかな傾き（右が上がる）
+const UI_LEFT = 619;
+const UI_TOP = 179;
+const UI_W = 452;
+const UI_H = 287;
+const UI_ROT = 0; // 実素材はほぼ水平。四辺はclipPathで合わせる。
 
 // 端末画面のおおよその灰色。
-const SCREEN_GRAY = "#8b8c8e";
+const SCREEN_GRAY = "#7d7f80";
 
 export const BTablet: React.FC = () => {
   const frame = useCurrentFrame();
@@ -64,7 +64,7 @@ export const BTablet: React.FC = () => {
           src={staticFile("cut-B.mp4")}
           muted
           effects={[
-            colorKey({ keyColor: SCREEN_GRAY, similarity: 0.32, smoothness: 0.14, spillSuppression: 0.1 }),
+            colorKey({ keyColor: SCREEN_GRAY, similarity: 0.04, smoothness: 0.02, spillSuppression: 0 }),
           ]}
           style={{ position: "absolute", inset: 0, width: 1280, height: 720, objectFit: "cover" }}
         />

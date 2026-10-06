@@ -1,36 +1,23 @@
 import React from "react";
-import { AbsoluteFill, useCurrentFrame, interpolate } from "remotion";
-import { ReadingLine, EASE_IN_OUT } from "../components/ui";
-import { TwoLayer } from "../components/TwoLayer";
-
-// 結論 1:31–1:55 。思考実験の留保を残し、関与の光を機能側から
-// 環境・品質側へ徐々に移す。機能側の光も残し、完全移行を示さない。最後は静止。
+import { AbsoluteFill, useCurrentFrame } from "remotion";
+import { K, prog } from "../kinetic/design";
+import { Phrase } from "../kinetic/glyph";
+import { Statement } from "../kinetic/Statement";
 
 export const Conclusion: React.FC = () => {
-  const frame = useCurrentFrame();
-
-  const glowIn = interpolate(frame, [470, 520], [0, 1], {
-    extrapolateLeft: "clamp",
-    extrapolateRight: "clamp",
-  });
-  const shift = interpolate(frame, [540, 675], [0, 1], {
-    extrapolateLeft: "clamp",
-    extrapolateRight: "clamp",
-    easing: EASE_IN_OUT,
-  });
-  const upGlow = glowIn * interpolate(shift, [0, 1], [0.62, 0.34]);
-  const loGlow = glowIn * interpolate(shift, [0, 1], [0.16, 0.66]);
-
-  return (
-    <AbsoluteFill>
-      <TwoLayer frame={frame} appear={1} labelOpacity={1} upGlow={upGlow} loGlow={loGlow} chips={4} />
-
-      <ReadingLine frame={frame} text="大きな組織を率いているわけではない。" from={20} to={150} centerY={100} />
-      <ReadingLine frame={frame} text="思考実験で、間違っているかもしれない。" from={155} to={285} centerY={100} />
-      <ReadingLine frame={frame} text="それでも、自分ならこうするだろう。" from={290} to={405} centerY={100} />
-      <ReadingLine frame={frame} text="大切なものは、今も変わらない。" from={410} to={525} centerY={100} />
-      <ReadingLine frame={frame} text="機能を作ることから、作れる環境を支えることへ。" from={530} to={655} centerY={100} fontSize={44} />
-      <ReadingLine frame={frame} text="その比重が、少しずつ変わる。" from={620} to={720} centerY={620} fadeOut={1} />
-    </AbsoluteFill>
-  );
+  const f = useCurrentFrame();
+  const final = prog(f, 530, 538);
+  const ratio = prog(f, 620, 628);
+  // 下線の中心が少し移る。割合の数値や機能開発からの完全撤退は示さない。
+  const focus = prog(f, 548, 592);
+  return <AbsoluteFill style={{ overflow: "hidden" }}>
+    <Statement frame={f} from={0} to={150} lead="大きな組織を" main="率いているわけではない。" size={76} weight={600} />
+    <Statement frame={f} from={155} to={285} lead="思考実験で、" main="間違っているかもしれない。" size={72} weight={600} />
+    <Statement frame={f} from={290} to={405} lead="それでも、自分なら" main="こうするだろう。" size={102} />
+    <Statement frame={f} from={410} to={525} lead="大切なものは、" main="今も変わらない。" size={102} />
+    <Phrase text="機能を作ることから、" left={80} top={220} centered width={1120} align="center" size={50} weight={600} opacity={final} dx={(1-final)*-64} />
+    <div style={{ position: "absolute", left: 80, top: 312, width: 1120, display: "flex", flexDirection: "column", alignItems: "center", gap: 0, fontSize: 90, fontWeight: 900, fontVariationSettings: "'wght' 900", lineHeight: 1.2, color: K.ink, opacity: final, translate: `0px ${(1-final)*32}px` }}><span>作れる環境を</span><span>支えることへ。</span></div>
+    <div style={{ position: "absolute", left: 240 + focus * 96, top: 548, width: 640, height: 6, background: K.ink, opacity: final }} />
+    <Phrase text="その比重が、少しずつ変わる。" left={80} top={624} centered width={1120} align="center" size={42} weight={500} opacity={ratio} dy={(1-ratio)*16} />
+  </AbsoluteFill>;
 };

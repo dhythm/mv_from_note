@@ -1,62 +1,23 @@
 import React from "react";
-import { AbsoluteFill, useCurrentFrame, interpolate } from "remotion";
-import { COLOR } from "../theme";
-import { ReadingLine, EASE_IN_OUT, jpFont } from "../components/ui";
-import { TwoLayer } from "../components/TwoLayer";
-
-// 方法1 0:57–1:11 。二層を保持し、視野の枠が中長期・成長まで広がる。
-// 人の能力の優劣は描かない。
+import { AbsoluteFill, useCurrentFrame } from "remotion";
+import { K, prog, mix } from "../kinetic/design";
+import { Phrase } from "../kinetic/glyph";
+import { Statement } from "../kinetic/Statement";
 
 export const Method1: React.FC = () => {
-  const frame = useCurrentFrame();
-
-  const p = interpolate(frame, [175, 265], [0, 1], {
-    extrapolateLeft: "clamp",
-    extrapolateRight: "clamp",
-    easing: EASE_IN_OUT,
-  });
-  const cx = 640;
-  const cy = interpolate(p, [0, 1], [285, 380]);
-  const w = interpolate(p, [0, 1], [520, 900]);
-  const h = interpolate(p, [0, 1], [184, 404]);
-  const tagOpacity = interpolate(frame, [230, 275], [0, 1], {
-    extrapolateLeft: "clamp",
-    extrapolateRight: "clamp",
-  });
-
-  return (
-    <AbsoluteFill>
-      <TwoLayer frame={frame} appear={1} labelOpacity={1} />
-
-      <svg width={1280} height={720} viewBox="0 0 1280 720" style={{ position: "absolute", left: 0, top: 0 }}>
-        <rect
-          x={cx - w / 2}
-          y={cy - h / 2}
-          width={w}
-          height={h}
-          rx={22}
-          fill="none"
-          stroke={COLOR.amber}
-          strokeWidth={3}
-          strokeDasharray="12 10"
-          opacity={0.85}
-        />
-        <text
-          x={cx + w / 2 - 14}
-          y={cy - h / 2 - 12}
-          textAnchor="end"
-          fontSize={24}
-          fill={COLOR.amber}
-          opacity={tagOpacity}
-          style={jpFont(700)}
-        >
-          中長期・成長
-        </text>
-      </svg>
-
-      <ReadingLine frame={frame} text="ただし、エンジニアがゼロでいいわけではない。" from={15} to={150} centerY={110} />
-      <ReadingLine frame={frame} text="中長期の影響まで、見渡せないこともある。" from={150} to={285} centerY={110} />
-      <ReadingLine frame={frame} text="「ほしい」だけでは、要件は決まらない。" from={285} to={415} centerY={110} />
-    </AbsoluteFill>
-  );
+  const f = useCurrentFrame();
+  const compact = prog(f, 12, 26);
+  const barsOut = 1 - prog(f, 140, 148);
+  const viewIn = prog(f, 164, 174);
+  const viewOut = 1 - prog(f, 276, 284);
+  const viewW = mix(720, 1120, prog(f, 180, 196));
+  return <AbsoluteFill style={{ overflow: "hidden" }}>
+    {[{ y: 326, end: 536, label: "機能／実務家" }, { y: 494, end: 616, label: "土台／エンジニア" }].map(({y,end,label}) => <div key={label} style={{ position: "absolute", left: mix(240, 80, compact), top: mix(y, end, compact) - mix(144, 64, compact) / 2, width: mix(800, 1120, compact), height: mix(144, 64, compact), background: K.ink, color: K.knock, display: "flex", alignItems: "center", justifyContent: "center", fontSize: mix(54, 32, compact), fontWeight: 900, fontVariationSettings: "'wght' 900", opacity: barsOut }}>{label}</div>)}
+    <Phrase text="ただし、エンジニアが" left={80} top={232} centered width={1120} align="center" size={48} opacity={prog(f, 28, 36) * barsOut} />
+    <Phrase text="ゼロでいいわけではない。" left={80} top={362} centered width={1120} align="center" size={78} weight={900} opacity={prog(f, 40, 48) * barsOut} dx={(1-prog(f,40,48))*80} />
+    <Statement frame={f} from={150} to={285} lead="中長期の影響まで、" main="見渡せないこともある。" size={80} />
+    <div style={{ position: "absolute", left: (1280 - viewW)/2, top: 172, width: viewW, height: 376, border: `3px solid ${K.ink}`, boxSizing: "border-box", opacity: viewIn * viewOut }} />
+    <Phrase text="中長期・成長" left={80} top={600} centered width={1120} align="center" size={38} color={K.grey} opacity={viewIn * viewOut} />
+    <Statement frame={f} from={285} to={420} lead="「ほしい」だけでは、" main="要件は決まらない。" size={96} color={K.ai} />
+  </AbsoluteFill>;
 };

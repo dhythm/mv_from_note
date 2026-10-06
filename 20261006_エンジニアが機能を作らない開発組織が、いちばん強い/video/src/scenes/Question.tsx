@@ -12,14 +12,14 @@ const SEAM = 640;
 
 // 「作」：中央から左へ裂けて朱の面の種になる
 const sakuKeys: Key[] = [
-  { f: 40, x: 468, y: 430, size: 120, weight: 900, color: K.ink, opacity: 0 },
+  { f: 40, x: 468, y: 416, size: 120, weight: 900, color: K.ink, opacity: 0 },
   { f: 58, size: 160, opacity: 1, easing: OVERSHOOT },
   { f: 86 },
   { f: 104, x: 120, y: 330, size: 74, color: K.shu, opacity: 0, easing: EASE_IN },
 ];
 // 「る」：中央から右へ裂けて藍の面の種になる
 const ruKeys: Key[] = [
-  { f: 40, x: 628, y: 430, size: 120, weight: 900, color: K.ink, opacity: 0 },
+  { f: 40, x: 628, y: 416, size: 120, weight: 900, color: K.ink, opacity: 0 },
   { f: 58, size: 160, opacity: 1, easing: OVERSHOOT },
   { f: 86 },
   { f: 104, x: 1086, y: 330, size: 74, color: K.ai, opacity: 0, easing: EASE_IN },
@@ -68,7 +68,7 @@ export const Question: React.FC = () => {
       <Phrase
         text="エンジニアではない人が、AIで"
         left={80}
-        top={232}
+        top={220}
         width={1120}
         align="center"
         size={50}
@@ -96,14 +96,15 @@ export const Question: React.FC = () => {
         <div
           style={{
             position: "absolute",
-            left: 76,
-            top: 236,
-            width: 520,
+            left: 72,
+            top: "50%",
+            width: 496,
+            translate: "0 -50%",
             color: K.knock,
-            fontSize: 56,
+            fontSize: 54,
             fontWeight: 800,
             fontVariationSettings: "'wght' 800",
-            lineHeight: 1.34,
+            lineHeight: 1.36,
             opacity: knock,
             letterSpacing: "0.01em",
             whiteSpace: "pre",
@@ -132,13 +133,15 @@ export const Question: React.FC = () => {
         <div
           style={{
             position: "absolute",
-            left: 70,
-            top: 248,
+            left: 72,
+            top: "50%",
+            width: 496,
+            translate: "0 -50%",
             color: K.knock,
-            fontSize: 58,
+            fontSize: 54,
             fontWeight: 800,
             fontVariationSettings: "'wght' 800",
-            lineHeight: 1.32,
+            lineHeight: 1.36,
             opacity: knock,
             letterSpacing: "0.01em",
             scale: 1 + rightAccent * 0.1,
@@ -168,7 +171,7 @@ export const Question: React.FC = () => {
       <Phrase
         text="そのたびに、二つの声が"
         left={80}
-        top={262}
+        top={224}
         width={1120}
         align="center"
         size={50}
@@ -180,7 +183,7 @@ export const Question: React.FC = () => {
       <Phrase
         text="ぶつかる。"
         left={80}
-        top={400}
+        top={344}
         width={1120}
         align="center"
         size={bigSize}
