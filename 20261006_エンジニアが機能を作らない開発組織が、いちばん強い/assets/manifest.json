@@ -1,0 +1,123 @@
+{
+  "date": "2026-10-06",
+  "video_generated_by_agent": false,
+  "user_supplied_videos_received": 10,
+  "user_supplied_videos_retained": 2,
+  "files": [
+    {
+      "file": "assets/.DS_Store",
+      "bytes": 6148,
+      "sha256": "995d9cfacdefa2cad2897fc909996907027e76dcd4c74c2806ece005af09392f"
+    },
+    {
+      "file": "assets/bgm-115s.mp3",
+      "bytes": 2761388,
+      "sha256": "6a1644da45483ccbbfab65523063fd4cab81bf3d40235d4f2860c65e86876cf8"
+    },
+    {
+      "file": "assets/bgm-115s.wav",
+      "bytes": 22080078,
+      "sha256": "6924152c31f36aa947ab471688ab99899aef139028196e8026d4b5ee5e98662b"
+    },
+    {
+      "file": "assets/bgm.mp3",
+      "bytes": 800643,
+      "sha256": "c26f4981eb0e14f08c34e3443b3a052b7187856d1671f2980012ce3425b4096c"
+    },
+    {
+      "file": "assets/fonts/NotoSansJP-wght.ttf",
+      "bytes": 9589900,
+      "sha256": "c2f3b4d463500a2ddcd3849cded1fceeb9fd6d1c32e6cbecd568453ba50fc68f"
+    },
+    {
+      "file": "assets/fonts/OFL.txt",
+      "bytes": 4387,
+      "sha256": "babcfe66c8a098b2fa279bc724a3a342f8124f77ce18941fbcc1bbb39823cded"
+    },
+    {
+      "file": "assets/fonts/type-specimen.png",
+      "bytes": 71432,
+      "sha256": "5326a51fd0c3604dd1d21d241046c2f054aa070e0981f9c7d09410a92d2b15ba"
+    },
+    {
+      "file": "assets/icon-person.svg",
+      "bytes": 314,
+      "sha256": "d1bf474428f3af899d85184b08fca0d2918ea763156b0849612de538230eab7d"
+    },
+    {
+      "file": "assets/icon-person.webp",
+      "bytes": 5084,
+      "sha256": "9872f82317286593f9f1ef866ec57527ce7d211500608630eb10e659cf593772"
+    },
+    {
+      "file": "assets/icon-shield.svg",
+      "bytes": 272,
+      "sha256": "51c272783f75dbdfd10c016d7de303d073f09a4f13cb06d9ca41320da5a413d6"
+    },
+    {
+      "file": "assets/icon-shield.webp",
+      "bytes": 4022,
+      "sha256": "8844020d2cfb35105d3f5c85c0a05a77d645d619881df6b4e2d3f21718fb6b99"
+    },
+    {
+      "file": "assets/tablet-ui.svg",
+      "bytes": 691,
+      "sha256": "ce3245190f7192c7c626cbce6e4e5ce442e4fde571bdcecb59ede8c261c0051a"
+    },
+    {
+      "file": "assets/video-references/cut-A-paper-tracing.mp4",
+      "bytes": 1268572,
+      "sha256": "e3137e17bc86a8f44a63c09f7bc5e4b0ddedad5b203291977f8771c33df5abe3"
+    },
+    {
+      "file": "assets/video-references/cut-B-tablet-tapping.mp4",
+      "bytes": 1441126,
+      "sha256": "edaa4fd3c3bd050174508489b318a01b3c0c69ac606fb31e9a51689a55f68237"
+    },
+    {
+      "file": "assets/video-references/layout-A.svg",
+      "bytes": 2801642,
+      "sha256": "caaa19d1deb54aede9160ffc1b6f2952f0fed9c2e862b78465fca8ee28734d53"
+    },
+    {
+      "file": "assets/video-references/layout-B.svg",
+      "bytes": 2801796,
+      "sha256": "47e70af81e638d3a7a5ad4285570968cbc392ae56d87dabae2c67ed6fc363458"
+    },
+    {
+      "file": "assets/video-references/shared-scene.png",
+      "bytes": 2100652,
+      "sha256": "02211d9d439a1b382e9ad62fba5c581eb0003b7a792241f7637b1a9e8979133b"
+    },
+    {
+      "file": "assets/video-review/cleanup.json",
+      "bytes": 4562,
+      "sha256": "a9a27d98948561a9f7fda696df5bfa4a95efd48806a08149978934bf87052a89"
+    },
+    {
+      "file": "assets/video-review/cut-A-paper-tracing-5s.mp4",
+      "bytes": 970886,
+      "sha256": "07bc9e81fe04f3a46815d4d08608c442b71c4af9ddd79a88b9132e18a3eb47c2"
+    },
+    {
+      "file": "assets/video-review/cut-B-tablet-tapping-5s.mp4",
+      "bytes": 1121064,
+      "sha256": "efb19eed443d5e6f232ca550bb9bbf9fa9c9ff6e0ce84310444721db7fc42ffc"
+    },
+    {
+      "file": "assets/video-review/metadata.json",
+      "bytes": 1775,
+      "sha256": "4c6afd9258074b3150417de3cf63965793a7c366e2d9358e07e05afa81e8e31d"
+    },
+    {
+      "file": "assets/video-review/renames.json",
+      "bytes": 1011,
+      "sha256": "5f7a3c5c7711cde727f03d5724bdba95cd5f41fb9df3cfadd3dedef6f89360ae"
+    },
+    {
+      "file": "assets/video-review/review.md",
+      "bytes": 8450,
+      "sha256": "d93efc2cfccf85feac1a43d080225ec02551f7f29a43a8a16101277c5af3fc1d"
+    }
+  ]
+}

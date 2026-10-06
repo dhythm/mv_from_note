@@ -1,0 +1,25 @@
+{
+  "date": "2026-10-06",
+  "files": [
+    {
+      "previous": "assets/video-references/Hand_tracing_line_on_paper_20261006102835_2.mp4",
+      "current": "assets/video-references/cut-A-paper-tracing.mp4",
+      "sha256": "e3137e17bc86a8f44a63c09f7bc5e4b0ddedad5b203291977f8771c33df5abe3"
+    },
+    {
+      "previous": "assets/video-references/Hand_tapping_tablet_on_desk_20261006102835_2.mp4",
+      "current": "assets/video-references/cut-B-tablet-tapping.mp4",
+      "sha256": "edaa4fd3c3bd050174508489b318a01b3c0c69ac606fb31e9a51689a55f68237"
+    },
+    {
+      "previous": "assets/video-review/recommended-A-5s.mp4",
+      "current": "assets/video-review/cut-A-paper-tracing-5s.mp4",
+      "sha256": "07bc9e81fe04f3a46815d4d08608c442b71c4af9ddd79a88b9132e18a3eb47c2"
+    },
+    {
+      "previous": "assets/video-review/recommended-B-5s.mp4",
+      "current": "assets/video-review/cut-B-tablet-tapping-5s.mp4",
+      "sha256": "efb19eed443d5e6f232ca550bb9bbf9fa9c9ff6e0ce84310444721db7fc42ffc"
+    }
+  ]
+}

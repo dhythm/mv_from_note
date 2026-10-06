@@ -1,0 +1,15 @@
+node_modules/
+.remotion/
+out/
+output/
+build/
+dist/
+*.log
+.DS_Store
+.debug-still/
+# public/ の素材は assets/ からのコピー（バンドラがルート外シンボリックリンクを配信しないため）。
+# 元本は ../assets 側。Git にはコピーを含めない。
+public/cut-A.mp4
+public/cut-B.mp4
+public/bgm.wav
+public/NotoSansJP.ttf

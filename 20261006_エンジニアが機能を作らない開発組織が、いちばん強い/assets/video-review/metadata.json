@@ -1,0 +1,92 @@
+[
+  {
+    "id": 1,
+    "file": "Hand_tapping_tablet_on_desk_20261006102835.mp4",
+    "duration": 6.016,
+    "width": 1280,
+    "height": 720,
+    "fps": "24/1",
+    "audio": true
+  },
+  {
+    "id": 2,
+    "file": "Hand_tapping_tablet_on_desk_20261006102835_2.mp4",
+    "duration": 6.016,
+    "width": 1280,
+    "height": 720,
+    "fps": "24/1",
+    "audio": true
+  },
+  {
+    "id": 3,
+    "file": "Hand_tapping_tablet_on_desk_20261006102835_3.mp4",
+    "duration": 6.016,
+    "width": 1280,
+    "height": 720,
+    "fps": "24/1",
+    "audio": true
+  },
+  {
+    "id": 4,
+    "file": "Hand_tapping_tablet_on_desk_20261006102835_4.mp4",
+    "duration": 6.016,
+    "width": 1280,
+    "height": 720,
+    "fps": "24/1",
+    "audio": true
+  },
+  {
+    "id": 5,
+    "file": "Hand_tracing_line_on_paper_20261006102835.mp4",
+    "duration": 6.016,
+    "width": 1280,
+    "height": 720,
+    "fps": "24/1",
+    "audio": true
+  },
+  {
+    "id": 6,
+    "file": "Hand_tracing_line_on_paper_20261006102835_2.mp4",
+    "duration": 6.016,
+    "width": 1280,
+    "height": 720,
+    "fps": "24/1",
+    "audio": true
+  },
+  {
+    "id": 7,
+    "file": "Hand_tracing_line_on_paper_20261006102836.mp4",
+    "duration": 6.016,
+    "width": 1280,
+    "height": 720,
+    "fps": "24/1",
+    "audio": true
+  },
+  {
+    "id": 8,
+    "file": "Hand_tracing_line_on_paper_20261006102836_2.mp4",
+    "duration": 6.016,
+    "width": 1280,
+    "height": 720,
+    "fps": "24/1",
+    "audio": true
+  },
+  {
+    "id": 9,
+    "file": "grok-video-A.mp4",
+    "duration": 6.041667,
+    "width": 1264,
+    "height": 720,
+    "fps": "24/1",
+    "audio": true
+  },
+  {
+    "id": 10,
+    "file": "grok-video-B.mp4",
+    "duration": 6.041667,
+    "width": 1264,
+    "height": 720,
+    "fps": "24/1",
+    "audio": true
+  }
+]

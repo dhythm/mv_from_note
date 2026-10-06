@@ -1,0 +1,127 @@
+{
+  "date": "2026-10-06",
+  "reason": "ユーザーの容量削減依頼により本企画で不採用の8本と再作成可能な確認素材を削除",
+  "deleted_bytes": 18452575,
+  "deleted_files": [
+    {
+      "file": "assets/video-references/Hand_tapping_tablet_on_desk_20261006102835.mp4",
+      "bytes": 1333001,
+      "sha256": "ef908e95524ed38c4710720ce21117f87bf89821e0517f626abdd66eca332fc7"
+    },
+    {
+      "file": "assets/video-references/Hand_tapping_tablet_on_desk_20261006102835_3.mp4",
+      "bytes": 1450564,
+      "sha256": "c7c27d581f068ffadb7ecfd7d9fd0abf5e0a671704c67194162a8109b92b0a45"
+    },
+    {
+      "file": "assets/video-references/Hand_tapping_tablet_on_desk_20261006102835_4.mp4",
+      "bytes": 1433674,
+      "sha256": "8415092d8daf702cc5729c1fd46013589058d450d75e99135d3827e6894922e9"
+    },
+    {
+      "file": "assets/video-references/Hand_tracing_line_on_paper_20261006102835.mp4",
+      "bytes": 1214254,
+      "sha256": "a7cd2a52a9eb8b933c5b4fd4ed2d4634607811c20e68d4b01678a0c4d07b3a05"
+    },
+    {
+      "file": "assets/video-references/Hand_tracing_line_on_paper_20261006102836.mp4",
+      "bytes": 1298913,
+      "sha256": "db60e27d2d20a0caf57ec0386b1678225cfd13bec55b4be750a6fc9136e4a537"
+    },
+    {
+      "file": "assets/video-references/Hand_tracing_line_on_paper_20261006102836_2.mp4",
+      "bytes": 1325201,
+      "sha256": "5242016de86c3d94892107962680e02facbff3e57a5ff88f8a9293ce4399e29b"
+    },
+    {
+      "file": "assets/video-references/grok-video-A.mp4",
+      "bytes": 2104370,
+      "sha256": "d484b1d31292cbca69845de267b2477ba21eb30f235ae15abb8ccdb0c6cb98e9"
+    },
+    {
+      "file": "assets/video-references/grok-video-B.mp4",
+      "bytes": 2267740,
+      "sha256": "17b7c8cc7122fce10f9ff32dace6a45531434113f86417129c207f8e14f0a3d0"
+    },
+    {
+      "file": "assets/video-review/01-contact.jpg",
+      "bytes": 190210,
+      "sha256": "e4076e945d78c1ad0b11c6cde7813e3f640f1510841dda19f0a3599fe887db61"
+    },
+    {
+      "file": "assets/video-review/02-contact.jpg",
+      "bytes": 189356,
+      "sha256": "5c7453a112693ef2dd98164d340f4fc733d98c70716ae371904b4932ea7a5cc8"
+    },
+    {
+      "file": "assets/video-review/02-detail.jpg",
+      "bytes": 405934,
+      "sha256": "e710809c955df713ad47a3c1097ca36f684083f4c2f6a26f574caf82b04516be"
+    },
+    {
+      "file": "assets/video-review/03-contact.jpg",
+      "bytes": 190639,
+      "sha256": "111ff6bc781073f61d06f29be8fa8d5a0077ba5ac51fe29adab7c2e62e13dc39"
+    },
+    {
+      "file": "assets/video-review/04-contact.jpg",
+      "bytes": 188529,
+      "sha256": "321c8c9dfa01772173c75fb99a2ded86968d52113c1b8ae2714881dcd1939c5d"
+    },
+    {
+      "file": "assets/video-review/04-detail.jpg",
+      "bytes": 410491,
+      "sha256": "06e50738f8a7ddc9a1d07e1c93dea33a71702ac31e606c9ce21a86e912eb59df"
+    },
+    {
+      "file": "assets/video-review/05-contact.jpg",
+      "bytes": 190979,
+      "sha256": "3a84f5aa9e05955603e01a680657b4f0dc33c1f6a0888506ad39310843c65aa8"
+    },
+    {
+      "file": "assets/video-review/06-contact.jpg",
+      "bytes": 191666,
+      "sha256": "009af8d34bc5761eaee70fd22fea98bfd761d7c8d8990314bf1ddd2a60859be9"
+    },
+    {
+      "file": "assets/video-review/06-detail.jpg",
+      "bytes": 437080,
+      "sha256": "4bf90ba7a1a6d0323101f15087bcc80fd051488ec0358d1df6e2c1d7133cf7b3"
+    },
+    {
+      "file": "assets/video-review/07-contact.jpg",
+      "bytes": 191559,
+      "sha256": "97507815135e80bb935d2a74faf175cfbce9e2c9342e7f8f9bc3373b82974bcf"
+    },
+    {
+      "file": "assets/video-review/08-contact.jpg",
+      "bytes": 191689,
+      "sha256": "36bf84394eff2678f84bcae3fed362a69c8292ac3e097b52ad0da8324076dd5a"
+    },
+    {
+      "file": "assets/video-review/09-contact.jpg",
+      "bytes": 197726,
+      "sha256": "b2933886295923e8091ed483d070b11803098efa2b54e0e49dc68d577f8c773a"
+    },
+    {
+      "file": "assets/video-review/09-detail.jpg",
+      "bytes": 436019,
+      "sha256": "2bf2decc2fff34e3a25e7311cea07fdc19ee271d7bf9c6e1460081aa9ebf787a"
+    },
+    {
+      "file": "assets/video-review/10-contact.jpg",
+      "bytes": 194432,
+      "sha256": "afc6d2e4db53f550a5f3fde085823f6bc07634a8d69b37a5d7574d3783a8d99d"
+    },
+    {
+      "file": "assets/video-review/10-detail.jpg",
+      "bytes": 416930,
+      "sha256": "365d11d44756a4b77b8aa2989a45656dbd506edcf4889bc23cc353f093d5dac7"
+    },
+    {
+      "file": "assets/video-review/recommended-pair-preview.mp4",
+      "bytes": 2001619,
+      "sha256": "e5da00ace572fbe33f8d7984f47d785ba9cbc6f079566be3db297b1400e69012"
+    }
+  ]
+}

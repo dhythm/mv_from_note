@@ -1,0 +1,33 @@
+{
+  "date": "2026-10-06",
+  "producer": "Claude Opus 4.8",
+  "file": "video/output/main.mp4",
+  "bytes": 7890337,
+  "sha256": "a4908f3ded9852bf2b3aea34e508f2e1fbcb8d2fb196022199edf540c71fba9e",
+  "media": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_type": "video",
+        "width": 1280,
+        "height": 720,
+        "avg_frame_rate": "30/1",
+        "nb_frames": "3450",
+        "side_data_list": [
+          {}
+        ]
+      },
+      {
+        "codec_type": "audio",
+        "avg_frame_rate": "0/0",
+        "nb_frames": "5393"
+      }
+    ],
+    "format": {
+      "duration": "115.008000"
+    }
+  },
+  "git_policy": "動画MP4は既存.gitignoreに従い管理外。編集用コード・制作資料・素材台帳をコミットする。",
+  "verification": "書き出しと代表フレームを確認済み。全編等速視聴と初見理解確認は未実施。"
+}

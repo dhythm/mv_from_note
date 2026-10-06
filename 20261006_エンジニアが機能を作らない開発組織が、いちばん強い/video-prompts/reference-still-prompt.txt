@@ -1,0 +1,5 @@
+共通参考画像の生成記録（組み込みimagegenを使用、静止画1枚、動画生成は未実施）
+
+Photorealistic editorial overhead photograph of a fictional non-medical workplace. Light oak desk; cream paper work log at left with gray rules and three empty boxes, no readable writing. Unbranded charcoal landscape tablet at right, uniform matte gray screen for later replacement. One adult right hand with slate-blue sleeve points near the second paper row. Soft upper-left daylight, quiet warm ivory/oak/charcoal palette, no face, personal data, logos, code or medical equipment. Camera fixed directly above, crisp object corners and quiet margins.
+
+これは実行した生成指示の要約。出力にはコーヒーカップ・植木・ノートが追加されており、A・Bで位置を固定する共通小物として採用した。画像は紙の一部に手が重なるが、3つの欄と端末の四隅は確認できる。実在現場の記録ではない。
