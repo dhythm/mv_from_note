@@ -10,7 +10,7 @@ import { Phrase } from "../kinetic/glyph";
 // C（300–480）意見を消した共通色（墨）の空の形が、縦の並びから横の二層へ
 //   向きを変えて積み上がり、役割ラベルが出る。角丸・影は使わない。
 
-const SPLIT = 520; // 左の紙面と動画面の境
+const SPLIT = 560; // 左の紙面と動画面の境
 
 const CenterLine: React.FC<{
   text: string;
@@ -21,7 +21,7 @@ const CenterLine: React.FC<{
   opacity: number;
   dy?: number;
 }> = ({ text, yc, size, weight, color, opacity, dy = 0 }) => (
-  <Phrase text={text} left={0} top={yc - size * 0.72 + dy} width={1280} align="center" size={size} weight={weight} color={color} opacity={opacity} letterSpacing="0.03em" />
+  <Phrase text={text} left={80} top={yc + dy} centered width={1120} align="center" size={size} weight={weight} color={color} opacity={opacity} letterSpacing="0.01em" />
 );
 
 export const Pivot: React.FC = () => {
@@ -37,7 +37,7 @@ export const Pivot: React.FC = () => {
   // B 動画面
   const vIn = prog(frame, 150, 166);
   const vOut = prog(frame, 300, 316, EASE_IN);
-  const videoX = mix(760, 0, vIn) + vOut * 760;
+  const videoX = mix(1280 - SPLIT, 0, vIn) + vOut * (1280 - SPLIT);
   const vTextIn = prog(frame, 170, 184) * (1 - prog(frame, 300, 314, EASE_IN));
 
   // C 変形（共通色の空の形 → 二層）
@@ -50,18 +50,18 @@ export const Pivot: React.FC = () => {
     const cx = mix(fromCx, 640, p);
     const cy = mix(400, toCy, p);
     const w = mix(200, 800, p);
-    const h = mix(320, 150, p);
+    const h = mix(320, 144, p);
     return { left: cx - w / 2, top: cy - h / 2, width: w, height: h };
   };
-  const up = bar(530, 300);
-  const lo = bar(750, 470);
+  const up = bar(530, 326);
+  const lo = bar(750, 494);
   const barOpacity = barsIn * (1 - prog(frame, 470, 478, EASE_IN));
 
   return (
     <AbsoluteFill style={{ overflow: "hidden" }}>
       {/* A */}
-      <CenterLine text="いまはAIで、実務家も" yc={248} size={50} weight={600} color={K.ink} opacity={aSmall} dy={(1 - prog(frame, 8, 20)) * -18} />
-      <Phrase text="機能を作れる。" left={0} top={430 - aBigSize * 0.72} width={1280} align="center" size={aBigSize} weight={900} color={K.ink} opacity={aBig * aBigOut} dx={aBigDx} letterSpacing="0.02em" />
+      <CenterLine text="いまはAIで、実務家も" yc={280} size={50} weight={600} color={K.ink} opacity={aSmall} dy={(1 - prog(frame, 8, 20)) * -18} />
+      <Phrase text="機能を作れる。" left={80} top={420} centered width={1120} align="center" size={aBigSize} weight={900} color={K.ink} opacity={aBig * aBigOut} dx={aBigDx} letterSpacing="0.02em" />
 
       {/* B 動画面（右・大きな面）＋左の紙面に文字 */}
       {vIn > 0 && vOut < 1 ? (
@@ -89,17 +89,17 @@ export const Pivot: React.FC = () => {
       <div
         style={{
           position: "absolute",
-          left: 50,
-          top: 236,
-          width: SPLIT - 70,
+          left: 80,
+          top: "50%",
+          width: SPLIT - 160,
           color: K.ink,
-          fontSize: 50,
+          fontSize: 48,
           fontWeight: 900,
           fontVariationSettings: "'wght' 900",
-          lineHeight: 1.42,
+          lineHeight: 1.4,
           letterSpacing: "0.02em",
           opacity: vTextIn,
-          translate: `${(1 - prog(frame, 170, 184)) * -20}px 0px`,
+          translate: `${(1 - prog(frame, 170, 184)) * -20}px -50%`,
         }}
       >
         現場をいちばん
@@ -113,11 +113,11 @@ export const Pivot: React.FC = () => {
       <div style={{ position: "absolute", left: up.left, top: up.top, width: up.width, height: up.height, background: K.ink, opacity: barOpacity }} />
       <div style={{ position: "absolute", left: lo.left, top: lo.top, width: lo.width, height: lo.height, background: K.ink, opacity: barOpacity }} />
       {/* 役割ラベル（着地後） */}
-      <Phrase text="機能／実務家" left={0} top={300 - 54 * 0.72} width={1280} align="center" size={54} weight={900} color={K.knock} opacity={labelIn} letterSpacing="0.06em" />
-      <Phrase text="土台／エンジニア" left={0} top={470 - 54 * 0.72} width={1280} align="center" size={54} weight={900} color={K.knock} opacity={labelIn} letterSpacing="0.06em" />
+      <Phrase text="機能／実務家" left={240} top={326} centered width={800} align="center" size={54} weight={900} color={K.knock} opacity={labelIn} letterSpacing="0.06em" />
+      <Phrase text="土台／エンジニア" left={240} top={494} centered width={800} align="center" size={54} weight={900} color={K.knock} opacity={labelIn} letterSpacing="0.06em" />
 
       {/* 14 */}
-      <CenterLine text="どちらが正しいかではなく、役割分担で解く。" yc={120} size={44} weight={700} color={K.ink} opacity={lead} dy={(1 - prog(frame, 318, 332)) * -14} />
+      <CenterLine text="どちらが正しいかではなく、役割分担で解く。" yc={138} size={44} weight={700} color={K.ink} opacity={lead} dy={(1 - prog(frame, 318, 332)) * -14} />
     </AbsoluteFill>
   );
 };
