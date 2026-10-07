@@ -156,8 +156,8 @@
   "current_revision": {
     "model_id": "eleven_v4",
     "language_code": "ja",
-    "output": "out/itsuka-cost-narrated-v4.mp4",
-    "record": "audio/narration/revision-v2/production-record.json",
-    "status": "v4試聴版をユーザーが承認。本編を生成・配置済み。本編全編の聴感は未確認。"
+    "output": "out/itsuka-cost-narrated-v4-synced.mp4",
+    "record": "audio/narration-v4-sync-report.json",
+    "status": "前半の既存音声を句ごとに再配置。後半44秒以降は位置・ナレーション波形を維持。ユーザー試聴用。"
   }
 }

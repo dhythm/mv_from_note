@@ -1,0 +1,145 @@
+{
+  "source_voice": "public/narration-v4.wav",
+  "source_record": "audio/narration/revision-v2/production-record.json",
+  "method": "既存v4音声を文間の無音で分割し、画面の句の表示時刻へ移動。cut2cのみ読点の無音を計約0.35秒短縮。発話の速度・ピッチ・イントネーションは加工しない。",
+  "pause_detection": {
+    "threshold_db": -35,
+    "minimum_seconds": 0.12
+  },
+  "preserve_from_seconds": 44,
+  "segments": [
+    {
+      "id": "p1a",
+      "cut": 1,
+      "source_ranges": [
+        [
+          0,
+          1.7
+        ]
+      ],
+      "target_start": 0.9,
+      "text": "「いつか使うかもしれない」"
+    },
+    {
+      "id": "p1b",
+      "cut": 1,
+      "source_ranges": [
+        [
+          2.25,
+          5.2
+        ]
+      ],
+      "target_start": 5.2,
+      "text": "そう言って、物もファイルも取っておく。"
+    },
+    {
+      "id": "p2a",
+      "cut": 2,
+      "source_ranges": [
+        [
+          0,
+          1.72
+        ]
+      ],
+      "target_start": 10.05,
+      "text": "「せっかく買ったのに」。"
+    },
+    {
+      "id": "p2b",
+      "cut": 2,
+      "source_ranges": [
+        [
+          2.45,
+          5.68
+        ]
+      ],
+      "target_start": 13.35,
+      "text": "捨てられない気持ちを、サンクコストが強める。"
+    },
+    {
+      "id": "p2c",
+      "cut": 2,
+      "source_ranges": [
+        [
+          6.34,
+          7.47
+        ],
+        [
+          7.51,
+          8.28
+        ],
+        [
+          8.38,
+          9.28
+        ],
+        [
+          9.48,
+          11.4
+        ]
+      ],
+      "target_start": 17.05,
+      "text": "取っておく間に、劣化し、場所を占め、心の余裕まで圧迫する。"
+    },
+    {
+      "id": "p3a",
+      "cut": 3,
+      "source_ranges": [
+        [
+          -0.04,
+          1.4
+        ]
+      ],
+      "target_start": 22.51,
+      "text": "データは資産だ。",
+      "note": "開始直前40msも含めて波形の立ち上がりを維持。発話は22.55秒付近。"
+    },
+    {
+      "id": "p3b",
+      "cut": 3,
+      "source_ranges": [
+        [
+          1.9,
+          4.72
+        ]
+      ],
+      "target_start": 26.95,
+      "text": "同時に、維持管理の負債でもある。"
+    },
+    {
+      "id": "p3c",
+      "cut": 3,
+      "source_ranges": [
+        [
+          5.3,
+          7.4
+        ]
+      ],
+      "target_start": 30.7,
+      "text": "多いほど、たどり着きにくい。"
+    },
+    {
+      "id": "p4a",
+      "cut": 4,
+      "source_ranges": [
+        [
+          0,
+          3.65
+        ]
+      ],
+      "target_start": 34.45,
+      "text": "デジタルも同じだ。多すぎると、探せない。"
+    },
+    {
+      "id": "p4b",
+      "cut": 4,
+      "source_ranges": [
+        [
+          4.2,
+          7.04
+        ]
+      ],
+      "target_start": 38.75,
+      "text": "検索できなければ、それはコストだ。"
+    }
+  ]
+}
