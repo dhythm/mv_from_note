@@ -1,0 +1,29 @@
+{
+  "bpm": 120,
+  "totalSec": 78,
+  "cuts": [
+    {"id": 1, "start": 0, "end": 10, "name": "avalanche"},
+    {"id": 2, "start": 10, "end": 22, "name": "compress"},
+    {"id": 3, "start": 22, "end": 34, "name": "flip"},
+    {"id": 4, "start": 34, "end": 44, "name": "gap"},
+    {"id": 5, "start": 44, "end": 54, "name": "dive-shelf"},
+    {"id": 6, "start": 54, "end": 66, "name": "rag"},
+    {"id": 7, "start": 66, "end": 78, "name": "conclusion"}
+  ],
+  "beatIntensity": [
+    [0, 0.0], [1.5, 0.5], [10, 1.0], [21.5, 0.0], [22, 0.55], [34, 0.9],
+    [44, 1.0], [54, 0.85], [58, 0.45], [62, 0.9], [66, 1.0], [76, 0.25]
+  ],
+  "accents": {
+    "compressSteps": [12, 14, 16, 18, 20],
+    "impact": 22,
+    "flipStart": 26.5,
+    "flipHit": 28,
+    "gapHit": 34,
+    "shelfHit": 48,
+    "shelfCrash": 50,
+    "deleteHit": 62,
+    "pullBack": 66,
+    "finalHit": 76
+  }
+}
