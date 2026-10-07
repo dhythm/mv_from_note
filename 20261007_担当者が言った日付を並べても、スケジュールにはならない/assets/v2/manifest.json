@@ -1,0 +1,80 @@
+{
+  "canvas": [
+    1280,
+    720
+  ],
+  "fps": 30,
+  "source": "原稿とplan.md。すべてローカルの作画。外部生成なし",
+  "cost": 0,
+  "status": "静止状態の編集用素材。アニメーション・可読性・音楽同期は試作で確認する",
+  "files": [
+    {
+      "file": "01-added-task.svg",
+      "scene": 1,
+      "editable": "SVGのid付きg要素・text・path・rect",
+      "role": "配置見本兼編集元。SVG画像の切替だけで本編を作らない"
+    },
+    {
+      "file": "02-blanket-shift.svg",
+      "scene": 2,
+      "editable": "SVGのid付きg要素・text・path・rect",
+      "role": "配置見本兼編集元。SVG画像の切替だけで本編を作らない"
+    },
+    {
+      "file": "03-delay-impact.svg",
+      "scene": 3,
+      "editable": "SVGのid付きg要素・text・path・rect",
+      "role": "配置見本兼編集元。SVG画像の切替だけで本編を作らない"
+    },
+    {
+      "file": "04-shortening-cases.svg",
+      "scene": 4,
+      "editable": "SVGのid付きg要素・text・path・rect",
+      "role": "配置見本兼編集元。SVG画像の切替だけで本編を作らない"
+    },
+    {
+      "file": "05-split-work.svg",
+      "scene": 5,
+      "editable": "SVGのid付きg要素・text・path・rect",
+      "role": "配置見本兼編集元。SVG画像の切替だけで本編を作らない"
+    },
+    {
+      "file": "06-readable-record.svg",
+      "scene": 6,
+      "editable": "SVGのid付きg要素・text・path・rect",
+      "role": "配置見本兼編集元。SVG画像の切替だけで本編を作らない"
+    },
+    {
+      "file": "07-options-risks.svg",
+      "scene": 7,
+      "editable": "SVGのid付きg要素・text・path・rect",
+      "role": "配置見本兼編集元。SVG画像の切替だけで本編を作らない"
+    },
+    {
+      "file": "08-conclusion.svg",
+      "scene": 8,
+      "editable": "SVGのid付きg要素・text・path・rect",
+      "role": "配置見本兼編集元。SVG画像の切替だけで本編を作らない"
+    }
+  ],
+  "review": {
+    "static": "SVG8枚を1280×720のPNGに変換して目視確認。主要文言の切れ・重なりなし。プレビューは環境の日本語フォントで描画",
+    "motion": "未検証。動く完成素材や完成映像ではない",
+    "audio": "デコード成功。約205.035秒、44100Hz、mono、128kbps、最大-11.3dBFS。試聴・楽節の接続・同期は未検証"
+  },
+  "audio": {
+    "file": "bgm-205s-draft.mp3",
+    "source": "../bgm.mp3",
+    "source_duration_seconds": 190.040816,
+    "source_sha256": "7df7c6ff5837b65d0867b35eb5729b71c082e65152385c8a7b3da2be5e36d252",
+    "edit": "0–174秒と143–175秒を1秒クロスフェード。202–205秒フェードアウト。楽節に一致するか未確認",
+    "license": "既存referencesの自作合成という記録を継承。新規外部音源なし。制作履歴の独立検証は未実施",
+    "status": "仮編集。尺確定と試聴後に最終化"
+  },
+  "font": {
+    "file": "../fonts/NotoSansJP-wght.ttf",
+    "license": "../fonts/OFL.txt",
+    "origin": "20261006企画の同名ファイルをライセンス文とともにコピー",
+    "usage": "本編でローカル読み込み。本文400、主要語700〜900を候補に実表示で確認"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "units": "説明用の時間位置。実測日付・進捗率・工数ではない",
+  "now": 4,
+  "deadline": 7,
+  "completed": [
+    0,
+    4
+  ],
+  "original_remaining": [
+    4,
+    6
+  ],
+  "additional": [
+    4,
+    6
+  ],
+  "replanned_remaining": [
+    6,
+    8
+  ],
+  "downstream": [
+    8,
+    10
+  ],
+  "progress_example": "原稿の7割。横幅の比率とは対応させない"
+}
