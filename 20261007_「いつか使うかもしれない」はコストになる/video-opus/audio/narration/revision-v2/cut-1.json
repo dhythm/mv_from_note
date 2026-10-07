@@ -1,0 +1,20 @@
+{
+  "cut": 1,
+  "voice_id": "S9yQN3065fl76yl0gxsW",
+  "body": {
+    "text": "「いつか使うかもしれない」。そう言って、物もファイルも取っておく。",
+    "model_id": "eleven_v4",
+    "language_code": "ja",
+    "voice_settings": {
+      "stability": 0.6,
+      "similarity_boost": 0.75
+    },
+    "seed": 20261007
+  },
+  "response": {
+    "request-id": "qYMmmYel4zrVcAy4z2wk",
+    "character-cost": "4",
+    "content-type": "audio/mpeg"
+  },
+  "duration": 5.250612
+}

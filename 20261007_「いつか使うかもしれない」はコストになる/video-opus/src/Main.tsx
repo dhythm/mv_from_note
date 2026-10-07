@@ -32,7 +32,7 @@ function useFont() {
   return ready;
 }
 
-export const Main: React.FC = () => {
+export const Main: React.FC<{audioTrack?: string}> = ({audioTrack = 'bgm.mp3'}) => {
   const ready = useFont();
   return (
     <AbsoluteFill style={{backgroundColor: C.paper}}>
@@ -48,7 +48,7 @@ export const Main: React.FC = () => {
           <Scene />
         </ThreeCanvas>
       ) : null}
-      <Audio src={staticFile('bgm.mp3')} />
+      <Audio src={staticFile(audioTrack)} />
     </AbsoluteFill>
   );
 };

@@ -1,0 +1,20 @@
+{
+  "cut": 6,
+  "voice_id": "S9yQN3065fl76yl0gxsW",
+  "body": {
+    "text": "ラグで、以前より探しやすくなることもある。それでも、まだ届かないことは多い。だから、見直しと削除が要る。",
+    "model_id": "eleven_v4",
+    "language_code": "ja",
+    "voice_settings": {
+      "stability": 0.6,
+      "similarity_boost": 0.75
+    },
+    "seed": 20261007
+  },
+  "response": {
+    "request-id": "phYZnXa8PyKvq02o0PiC",
+    "character-cost": "6",
+    "content-type": "audio/mpeg"
+  },
+  "duration": 9.482449
+}

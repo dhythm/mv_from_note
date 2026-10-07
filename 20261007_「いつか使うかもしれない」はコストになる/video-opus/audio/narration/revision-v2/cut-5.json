@@ -1,0 +1,20 @@
+{
+  "cut": 5,
+  "voice_id": "S9yQN3065fl76yl0gxsW",
+  "body": {
+    "text": "たどり着けないなら、宝の持ち腐れだ。必要なのは、捨てる勇気と、整理する習慣だ。",
+    "model_id": "eleven_v4",
+    "language_code": "ja",
+    "voice_settings": {
+      "stability": 0.6,
+      "similarity_boost": 0.75
+    },
+    "seed": 20261007
+  },
+  "response": {
+    "request-id": "UBjyLE8lm8dP5x9f5aBU",
+    "character-cost": "5",
+    "content-type": "audio/mpeg"
+  },
+  "duration": 7.157551
+}
