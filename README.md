@@ -44,13 +44,14 @@ YYYYMMDD_記事タイトル/
 ## 制作の流れ
 
 1. 元記事を全文読み、主張の骨組み（問い → 原因 → 転換 → 方法 → 結論など）に分ける。
-2. `plan.md`・`references.md`・`script.md` で企画と画面の言葉を固め、レビューを受ける。
-3. Remotion で映像を実装し、テストで台本・引用・タイミングを検査する。
+2. `plan.md`・`references.md`・`script.md` で企画と画面の言葉を固め、レビューを受ける。手元で使える素材の棚卸し、カット表、その後の新規外部素材の順は [AGENTS.md](AGENTS.md) の作業手順に従う。
+3. Remotion で映像を実装し、テストで台本・引用・タイミングを検査する。画面全体の強い動きには three.js を推奨する（同ファイル）。
 4. 書き出した映像を確認し、`feedback.md` に振り返りを残す。
 
 ## 技術スタック
 
 - [Remotion](https://www.remotion.dev/)（React + TypeScript）で映像を組み立てる
+- 画面全体の動きの実装には [three.js](https://threejs.org/) を推奨する。Remotion と併用するときのフレーム再現は [AGENTS.md](AGENTS.md)
 - [Vitest](https://vitest.dev/) でタイムライン・読了時間・引用の一致をテスト
 - ffmpeg で音声の書き出しや最終エンコード
 - フォントは `@remotion/google-fonts`（Noto Sans JP／しっぽり明朝）。レンダリング時にネット接続が必要
