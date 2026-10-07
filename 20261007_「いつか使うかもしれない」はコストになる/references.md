@@ -90,6 +90,30 @@ plan.md カット表 v2 と一致。合計 **299字**（16文）。読了目安�
 - 本パッケージ内ポインタ: `PLAN_LOCATION.md`
 - v1→v2の主な変更: 画面文言の確定、字数299字の明記、カット2・3・6・7の秒目安を留保・理由の読了に合わせて延伸、素材列を assets ファイル名に更新、「整理すればたどり着ける」の断定回避。
 
+はじめ／おわりのコマ画は `assets/storyboard/`。文言だけの表は完成にしない。一覧: [contact-sheet.svg](assets/storyboard/contact-sheet.svg)（1はじ／1おわ … 7はじ／7おわ）。
+
+| カット | はじめ | おわり |
+|---|---|---|
+| 1 | [cut-01-start.svg](assets/storyboard/cut-01-start.svg) | [cut-01-end.svg](assets/storyboard/cut-01-end.svg) |
+| 2 | [cut-02-start.svg](assets/storyboard/cut-02-start.svg) | [cut-02-end.svg](assets/storyboard/cut-02-end.svg) |
+| 3 | [cut-03-start.svg](assets/storyboard/cut-03-start.svg) | [cut-03-end.svg](assets/storyboard/cut-03-end.svg) |
+| 4 | [cut-04-start.svg](assets/storyboard/cut-04-start.svg) | [cut-04-end.svg](assets/storyboard/cut-04-end.svg) |
+| 5 | [cut-05-start.svg](assets/storyboard/cut-05-start.svg) | [cut-05-end.svg](assets/storyboard/cut-05-end.svg) |
+| 6 | [cut-06-start.svg](assets/storyboard/cut-06-start.svg) | [cut-06-end.svg](assets/storyboard/cut-06-end.svg) |
+| 7 | [cut-07-start.svg](assets/storyboard/cut-07-start.svg) | [cut-07-end.svg](assets/storyboard/cut-07-end.svg) |
+
+| カット | はじめ | おわり |
+|---|---|---|
+| 1 | ![1はじ](assets/storyboard/cut-01-start.svg) | ![1おわ](assets/storyboard/cut-01-end.svg) |
+| 2 | ![2はじ](assets/storyboard/cut-02-start.svg) | ![2おわ](assets/storyboard/cut-02-end.svg) |
+| 3 | ![3はじ](assets/storyboard/cut-03-start.svg) | ![3おわ](assets/storyboard/cut-03-end.svg) |
+| 4 | ![4はじ](assets/storyboard/cut-04-start.svg) | ![4おわ](assets/storyboard/cut-04-end.svg) |
+| 5 | ![5はじ](assets/storyboard/cut-05-start.svg) | ![5おわ](assets/storyboard/cut-05-end.svg) |
+| 6 | ![6はじ](assets/storyboard/cut-06-start.svg) | ![6おわ](assets/storyboard/cut-06-end.svg) |
+| 7 | ![7はじ](assets/storyboard/cut-07-start.svg) | ![7おわ](assets/storyboard/cut-07-end.svg) |
+
+![1はじ／1おわから7はじ／7おわ](assets/storyboard/contact-sheet.svg)
+
 ## 5. 本編から外したもの
 
 - 冒頭の主題宣言（タイトルを最初に大写しする演出）
@@ -121,6 +145,8 @@ plan.md カット表 v2 と一致。合計 **299字**（16文）。読了目安�
 | `assets/label-asset-liability.svg` | 両面概念の参考。実装は Plane＋rotateY で表「資産」／裏「負債」。着地で両方見える（並べる／半開き）。 |
 | `assets/cards-gap-open.svg` | 隙間が開き奥の一枚が光る参考（カット4〜5）。 |
 | `assets/shelf-lines.svg` | 任意。整列の本棚ライン（カット5）。実写不要。 |
+
+カット表のはじめ／おわりのコマ画は `assets/storyboard/`（`cut-01-start.svg` … `cut-07-end.svg`、一覧 `contact-sheet.svg`）。カードの形とストローク `#3a3a3a` は上と同じ。背景は薄い紙色。ファイルとカットの対応は第4節。
 
 BGM: 本パッケージに自作音源は入れない（下記「これがあればもっと良くなる」）。20261007ガント不採用 `bgm.mp3` は流用禁止。
 
