@@ -1,0 +1,24 @@
+{
+  "name": "video-opus",
+  "version": "1.0.0",
+  "description": "Opus production: 担当者が言った日付を並べても、スケジュールにはならない",
+  "private": true,
+  "license": "UNLICENSED",
+  "dependencies": {
+    "@remotion/cli": "4.0.533",
+    "@remotion/effects": "^4.0.533",
+    "@remotion/fonts": "^4.0.533",
+    "@remotion/media": "^4.0.533",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "remotion": "4.0.533"
+  },
+  "devDependencies": {
+    "@types/react": "19.2.7",
+    "typescript": "5.9.3"
+  },
+  "scripts": {
+    "dev": "remotion studio",
+    "build": "remotion bundle"
+  }
+}
