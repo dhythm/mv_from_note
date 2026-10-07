@@ -90,6 +90,20 @@ plan.md カット表 v2 と一致。合計 **299字**（16文）。読了目安�
 - 本パッケージ内ポインタ: `PLAN_LOCATION.md`
 - v1→v2の主な変更: 画面文言の確定、字数299字の明記、カット2・3・6・7の秒目安を留保・理由の読了に合わせて延伸、素材列を assets ファイル名に更新、「整理すればたどり着ける」の断定回避。
 
+はじめ／おわりのコマ画は生成画像 `assets/storyboard/`（`cut-01-start.jpg` … `cut-07-end.jpg`）。一覧 [contact-sheet.jpg](assets/storyboard/contact-sheet.jpg)（1はじ／1おわ … 7はじ／7おわ）。並びの意味は変えない: 雪崩れ込み → 圧縮 → 資産／負債の裏返し（両方見える）→ 滑って隙間が開く。手作業の SVG 絵コンテは不採用。文言だけの表は完成にしない。
+
+| カット | はじめ | おわり |
+|---|---|---|
+| 1 | ![1はじ](assets/storyboard/cut-01-start.jpg) | ![1おわ](assets/storyboard/cut-01-end.jpg) |
+| 2 | ![2はじ](assets/storyboard/cut-02-start.jpg) | ![2おわ](assets/storyboard/cut-02-end.jpg) |
+| 3 | ![3はじ](assets/storyboard/cut-03-start.jpg) | ![3おわ](assets/storyboard/cut-03-end.jpg) |
+| 4 | ![4はじ](assets/storyboard/cut-04-start.jpg) | ![4おわ](assets/storyboard/cut-04-end.jpg) |
+| 5 | ![5はじ](assets/storyboard/cut-05-start.jpg) | ![5おわ](assets/storyboard/cut-05-end.jpg) |
+| 6 | ![6はじ](assets/storyboard/cut-06-start.jpg) | ![6おわ](assets/storyboard/cut-06-end.jpg) |
+| 7 | ![7はじ](assets/storyboard/cut-07-start.jpg) | ![7おわ](assets/storyboard/cut-07-end.jpg) |
+
+![1はじ／1おわから7はじ／7おわ](assets/storyboard/contact-sheet.jpg)
+
 ## 5. 本編から外したもの
 
 - 冒頭の主題宣言（タイトルを最初に大写しする演出）
@@ -121,6 +135,8 @@ plan.md カット表 v2 と一致。合計 **299字**（16文）。読了目安�
 | `assets/label-asset-liability.svg` | 両面概念の参考。実装は Plane＋rotateY で表「資産」／裏「負債」。着地で両方見える（並べる／半開き）。 |
 | `assets/cards-gap-open.svg` | 隙間が開き奥の一枚が光る参考（カット4〜5）。 |
 | `assets/shelf-lines.svg` | 任意。整列の本棚ライン（カット5）。実写不要。 |
+
+カット表のはじめ／おわりの正本は生成画像 `assets/storyboard/`（`cut-01-start.jpg` … `cut-07-end.jpg`、一覧 `contact-sheet.jpg`、ラベルは 1はじ／1おわ … 7はじ／7おわ）。手作業 SVG の絵コンテは不採用。上表の SVG はカード図形の制作参照であり、絵コンテの代わりではない。対応は第4節。
 
 BGM: 本パッケージに自作音源は入れない（下記「これがあればもっと良くなる」）。20261007ガント不採用 `bgm.mp3` は流用禁止。
 
