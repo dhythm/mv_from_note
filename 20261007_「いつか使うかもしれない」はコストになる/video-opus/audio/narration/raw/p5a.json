@@ -1,0 +1,25 @@
+{
+  "id": "p5a",
+  "voice_id": "S9yQN3065fl76yl0gxsW",
+  "voice_name": "Kouichi - Calm Japanese Narrator",
+  "body": {
+    "text": "たどり着けないなら、宝の持ち腐れだ。",
+    "model_id": "eleven_multilingual_v2",
+    "voice_settings": {
+      "stability": 0.6,
+      "similarity_boost": 0.75,
+      "style": 0.15,
+      "use_speaker_boost": true,
+      "speed": 1.05
+    },
+    "seed": 20261007,
+    "previous_text": "検索できなければ、それはコストだ。",
+    "next_text": "必要なのは、捨てる勇気と、整理する習慣だ。"
+  },
+  "response": {
+    "request-id": "r6zfZuBho6QMyTg7Wboe",
+    "character-cost": "8",
+    "content-type": "audio/mpeg"
+  },
+  "duration": 3.787755
+}

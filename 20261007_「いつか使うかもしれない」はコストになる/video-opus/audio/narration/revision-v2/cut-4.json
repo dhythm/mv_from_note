@@ -1,0 +1,20 @@
+{
+  "cut": 4,
+  "voice_id": "S9yQN3065fl76yl0gxsW",
+  "body": {
+    "text": "デジタルも同じだ。多すぎると、探せない。検索できなければ、それはコストだ。",
+    "model_id": "eleven_v4",
+    "language_code": "ja",
+    "voice_settings": {
+      "stability": 0.6,
+      "similarity_boost": 0.75
+    },
+    "seed": 20261007
+  },
+  "response": {
+    "request-id": "bNPefgswzY1fCOdv5leF",
+    "character-cost": "4",
+    "content-type": "audio/mpeg"
+  },
+  "duration": 7.079184
+}

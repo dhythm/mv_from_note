@@ -1,0 +1,21 @@
+{
+  "voice_id": "S9yQN3065fl76yl0gxsW",
+  "body": {
+    "text": "「いつか使うかもしれない」。そう言って、物もファイルも取っておく。データは資産だ。同時に、維持管理の負債でもある。",
+    "model_id": "eleven_v4",
+    "language_code": "ja",
+    "voice_settings": {
+      "stability": 0.6,
+      "similarity_boost": 0.75
+    },
+    "seed": 20261007
+  },
+  "response": {
+    "request-id": "cMj57XUnDSaIvm4ctjts",
+    "character-cost": "7",
+    "content-type": "audio/mpeg"
+  },
+  "duration": 10.03102,
+  "listening_review": "未確認・ユーザー試聴用",
+  "time_stretch": false
+}

@@ -1,0 +1,20 @@
+{
+  "cut": 2,
+  "voice_id": "S9yQN3065fl76yl0gxsW",
+  "body": {
+    "text": "「せっかく買ったのに」。捨てられない気持ちを、サンクコストが強める。取っておく間に、劣化し、場所を占め、心の余裕まで圧迫する。",
+    "model_id": "eleven_v4",
+    "language_code": "ja",
+    "voice_settings": {
+      "stability": 0.6,
+      "similarity_boost": 0.75
+    },
+    "seed": 20261007
+  },
+  "response": {
+    "request-id": "2R9iH7rx5COQM899yMHa",
+    "character-cost": "8",
+    "content-type": "audio/mpeg"
+  },
+  "duration": 11.650612
+}

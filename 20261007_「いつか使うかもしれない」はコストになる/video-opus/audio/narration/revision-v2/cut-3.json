@@ -1,0 +1,20 @@
+{
+  "cut": 3,
+  "voice_id": "S9yQN3065fl76yl0gxsW",
+  "body": {
+    "text": "データは資産だ。同時に、維持管理の負債でもある。多いほど、たどり着きにくい。",
+    "model_id": "eleven_v4",
+    "language_code": "ja",
+    "voice_settings": {
+      "stability": 0.6,
+      "similarity_boost": 0.75
+    },
+    "seed": 20261007
+  },
+  "response": {
+    "request-id": "I2MLKdzmIRcUN9tKhoac",
+    "character-cost": "5",
+    "content-type": "audio/mpeg"
+  },
+  "duration": 7.549388
+}

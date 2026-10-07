@@ -1,0 +1,174 @@
+{
+  "model_id": "eleven_v4",
+  "language_code": "ja",
+  "voice_id": "S9yQN3065fl76yl0gxsW",
+  "successful_full_generations": 7,
+  "successful_trial_generations": 1,
+  "full_cost": 40,
+  "trial_cost": 7,
+  "status": "v4試聴版をユーザーが承認。本編を生成・配置済み。本編全編の聴感は未確認。",
+  "speed_processing": false,
+  "placements": [
+    {
+      "cut": 1,
+      "start": 0.9,
+      "end": 6.150612000000001,
+      "duration": 5.250612,
+      "tempo": 1,
+      "body": {
+        "text": "「いつか使うかもしれない」。そう言って、物もファイルも取っておく。",
+        "model_id": "eleven_v4",
+        "language_code": "ja",
+        "voice_settings": {
+          "stability": 0.6,
+          "similarity_boost": 0.75
+        },
+        "seed": 20261007
+      },
+      "response": {
+        "request-id": "qYMmmYel4zrVcAy4z2wk",
+        "character-cost": "4",
+        "content-type": "audio/mpeg"
+      }
+    },
+    {
+      "cut": 2,
+      "start": 10.199388,
+      "end": 21.85,
+      "duration": 11.650612,
+      "tempo": 1,
+      "body": {
+        "text": "「せっかく買ったのに」。捨てられない気持ちを、サンクコストが強める。取っておく間に、劣化し、場所を占め、心の余裕まで圧迫する。",
+        "model_id": "eleven_v4",
+        "language_code": "ja",
+        "voice_settings": {
+          "stability": 0.6,
+          "similarity_boost": 0.75
+        },
+        "seed": 20261007
+      },
+      "response": {
+        "request-id": "2R9iH7rx5COQM899yMHa",
+        "character-cost": "8",
+        "content-type": "audio/mpeg"
+      }
+    },
+    {
+      "cut": 3,
+      "start": 22.3,
+      "end": 29.849388,
+      "duration": 7.549388,
+      "tempo": 1,
+      "body": {
+        "text": "データは資産だ。同時に、維持管理の負債でもある。多いほど、たどり着きにくい。",
+        "model_id": "eleven_v4",
+        "language_code": "ja",
+        "voice_settings": {
+          "stability": 0.6,
+          "similarity_boost": 0.75
+        },
+        "seed": 20261007
+      },
+      "response": {
+        "request-id": "I2MLKdzmIRcUN9tKhoac",
+        "character-cost": "5",
+        "content-type": "audio/mpeg"
+      }
+    },
+    {
+      "cut": 4,
+      "start": 34.3,
+      "end": 41.379183999999995,
+      "duration": 7.079184,
+      "tempo": 1,
+      "body": {
+        "text": "デジタルも同じだ。多すぎると、探せない。検索できなければ、それはコストだ。",
+        "model_id": "eleven_v4",
+        "language_code": "ja",
+        "voice_settings": {
+          "stability": 0.6,
+          "similarity_boost": 0.75
+        },
+        "seed": 20261007
+      },
+      "response": {
+        "request-id": "bNPefgswzY1fCOdv5leF",
+        "character-cost": "4",
+        "content-type": "audio/mpeg"
+      }
+    },
+    {
+      "cut": 5,
+      "start": 44.3,
+      "end": 51.457550999999995,
+      "duration": 7.157551,
+      "tempo": 1,
+      "body": {
+        "text": "たどり着けないなら、宝の持ち腐れだ。必要なのは、捨てる勇気と、整理する習慣だ。",
+        "model_id": "eleven_v4",
+        "language_code": "ja",
+        "voice_settings": {
+          "stability": 0.6,
+          "similarity_boost": 0.75
+        },
+        "seed": 20261007
+      },
+      "response": {
+        "request-id": "UBjyLE8lm8dP5x9f5aBU",
+        "character-cost": "5",
+        "content-type": "audio/mpeg"
+      }
+    },
+    {
+      "cut": 6,
+      "start": 54.3,
+      "end": 63.782449,
+      "duration": 9.482449,
+      "tempo": 1,
+      "body": {
+        "text": "ラグで、以前より探しやすくなることもある。それでも、まだ届かないことは多い。だから、見直しと削除が要る。",
+        "model_id": "eleven_v4",
+        "language_code": "ja",
+        "voice_settings": {
+          "stability": 0.6,
+          "similarity_boost": 0.75
+        },
+        "seed": 20261007
+      },
+      "response": {
+        "request-id": "phYZnXa8PyKvq02o0PiC",
+        "character-cost": "6",
+        "content-type": "audio/mpeg"
+      }
+    },
+    {
+      "cut": 7,
+      "start": 66.3,
+      "end": 77.61102,
+      "duration": 11.31102,
+      "tempo": 1,
+      "body": {
+        "text": "「いつか使うかもしれない」は、今の生産性を確実に下げる。定期的な見直しと、思い切った削除が、真の資産につながるのかもしれない。",
+        "model_id": "eleven_v4",
+        "language_code": "ja",
+        "voice_settings": {
+          "stability": 0.6,
+          "similarity_boost": 0.75
+        },
+        "seed": 20261007
+      },
+      "response": {
+        "request-id": "VhoIkbXg1LHdYWpw1Fka",
+        "character-cost": "8",
+        "content-type": "audio/mpeg"
+      }
+    }
+  ],
+  "user_trial_feedback": "いい感じ。進めてください。",
+  "checks": {
+    "speed_processing": false,
+    "duration": 78,
+    "video_stream_unchanged": true,
+    "typecheck": "passed"
+  }
+}

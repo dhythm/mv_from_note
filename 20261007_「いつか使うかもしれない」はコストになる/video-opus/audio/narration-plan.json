@@ -1,0 +1,163 @@
+{
+  "status": "rejected_by_user_unnatural_japanese_intonation",
+  "provider": "ElevenLabs",
+  "model_id": "eleven_multilingual_v2",
+  "voice_id": "S9yQN3065fl76yl0gxsW",
+  "subtitles": false,
+  "video_duration_seconds": 78,
+  "trial": {
+    "cut": 1,
+    "window_seconds": [
+      0,
+      10
+    ],
+    "text": "「いつか使うかもしれない」そう言って、物もファイルも取っておく。",
+    "characters": 32,
+    "generations": 0,
+    "note": "冒頭2フレーズを本編へ再利用。別の試聴生成なし。"
+  },
+  "segments": [
+    {
+      "id": "p1a",
+      "cut": 1,
+      "start": 0.9,
+      "end": 5.5,
+      "text": "「いつか使うかもしれない」"
+    },
+    {
+      "id": "p1b",
+      "cut": 1,
+      "start": 5.2,
+      "end": 10.0,
+      "text": "そう言って、物もファイルも取っておく。"
+    },
+    {
+      "id": "p2a",
+      "cut": 2,
+      "start": 10.05,
+      "end": 13.7,
+      "text": "「せっかく買ったのに」。"
+    },
+    {
+      "id": "p2b",
+      "cut": 2,
+      "start": 13.35,
+      "end": 17.4,
+      "text": "捨てられない気持ちを、サンクコストが強める。"
+    },
+    {
+      "id": "p2c",
+      "cut": 2,
+      "start": 17.05,
+      "end": 21.8,
+      "text": "取っておく間に、劣化し、場所を占め、心の余裕まで圧迫する。"
+    },
+    {
+      "id": "p3a",
+      "cut": 3,
+      "start": 22.55,
+      "end": 26.7,
+      "text": "データは資産だ。"
+    },
+    {
+      "id": "p3b",
+      "cut": 3,
+      "start": 26.95,
+      "end": 31.0,
+      "text": "同時に、維持管理の負債でもある。"
+    },
+    {
+      "id": "p3c",
+      "cut": 3,
+      "start": 30.7,
+      "end": 34.2,
+      "text": "多いほど、たどり着きにくい。"
+    },
+    {
+      "id": "p4a",
+      "cut": 4,
+      "start": 34.45,
+      "end": 39.1,
+      "text": "デジタルも同じだ。多すぎると、探せない。"
+    },
+    {
+      "id": "p4b",
+      "cut": 4,
+      "start": 38.75,
+      "end": 43.9,
+      "text": "検索できなければ、それはコストだ。"
+    },
+    {
+      "id": "p5a",
+      "cut": 5,
+      "start": 44.3,
+      "end": 48.45,
+      "text": "たどり着けないなら、宝の持ち腐れだ。"
+    },
+    {
+      "id": "p5b",
+      "cut": 5,
+      "start": 48.25,
+      "end": 54.0,
+      "text": "必要なのは、捨てる勇気と、整理する習慣だ。"
+    },
+    {
+      "id": "p6a",
+      "cut": 6,
+      "start": 54.3,
+      "end": 58.55,
+      "text": "ラグで、以前より探しやすくなることもある。"
+    },
+    {
+      "id": "p6b",
+      "cut": 6,
+      "start": 58.25,
+      "end": 62.05,
+      "text": "それでも、まだ届かないことは多い。"
+    },
+    {
+      "id": "p6c",
+      "cut": 6,
+      "start": 61.75,
+      "end": 65.95,
+      "text": "だから、見直しと削除が要る。"
+    },
+    {
+      "id": "p7a",
+      "cut": 7,
+      "start": 66.3,
+      "end": 71.55,
+      "text": "「いつか使うかもしれない」は、今の生産性を確実に下げる。"
+    },
+    {
+      "id": "p7b",
+      "cut": 7,
+      "start": 71.2,
+      "end": 78.0,
+      "text": "定期的な見直しと、思い切った削除が、真の資産につながるのかもしれない。"
+    }
+  ],
+  "total_characters": 324,
+  "mixing": "既存キネティック文字を維持。読み上げ字幕は追加せず、発話中のみBGMを下げる。尺は測定後に各場面へ配置。",
+  "generation_credit_estimate": null,
+  "voice_name": "Kouichi - Calm Japanese Narrator",
+  "generations": 17,
+  "api_reported_character_cost": 141,
+  "actual_subscription_credit_delta": 141,
+  "checks": {
+    "duration_seconds": 78,
+    "video_stream_identical_to_base": true,
+    "added_subtitle_streams": 0,
+    "typecheck": "passed",
+    "integrated_loudness_lufs": -15.19,
+    "true_peak_dbtp": -2.41,
+    "listening_review": "ユーザー試聴で日本語イントネーションが不自然と指摘。不採用。技術チェックのみで聴感を確認せず本編化した。"
+  },
+  "current_revision": {
+    "model_id": "eleven_v4",
+    "language_code": "ja",
+    "output": "out/itsuka-cost-narrated-v4.mp4",
+    "record": "audio/narration/revision-v2/production-record.json",
+    "status": "v4試聴版をユーザーが承認。本編を生成・配置済み。本編全編の聴感は未確認。"
+  }
+}

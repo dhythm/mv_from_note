@@ -1,0 +1,20 @@
+{
+  "cut": 7,
+  "voice_id": "S9yQN3065fl76yl0gxsW",
+  "body": {
+    "text": "「いつか使うかもしれない」は、今の生産性を確実に下げる。定期的な見直しと、思い切った削除が、真の資産につながるのかもしれない。",
+    "model_id": "eleven_v4",
+    "language_code": "ja",
+    "voice_settings": {
+      "stability": 0.6,
+      "similarity_boost": 0.75
+    },
+    "seed": 20261007
+  },
+  "response": {
+    "request-id": "VhoIkbXg1LHdYWpw1Fka",
+    "character-cost": "8",
+    "content-type": "audio/mpeg"
+  },
+  "duration": 11.31102
+}

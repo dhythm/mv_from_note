@@ -1,0 +1,25 @@
+{
+  "id": "p6a",
+  "voice_id": "S9yQN3065fl76yl0gxsW",
+  "voice_name": "Kouichi - Calm Japanese Narrator",
+  "body": {
+    "text": "ラグで、以前より探しやすくなることもある。",
+    "model_id": "eleven_multilingual_v2",
+    "voice_settings": {
+      "stability": 0.6,
+      "similarity_boost": 0.75,
+      "style": 0.15,
+      "use_speaker_boost": true,
+      "speed": 1.05
+    },
+    "seed": 20261007,
+    "previous_text": "必要なのは、捨てる勇気と、整理する習慣だ。",
+    "next_text": "それでも、まだ届かないことは多い。"
+  },
+  "response": {
+    "request-id": "J9yzyiMTXI7gSeHRrGUZ",
+    "character-cost": "9",
+    "content-type": "audio/mpeg"
+  },
+  "duration": 3.657143
+}

@@ -1,0 +1,25 @@
+{
+  "id": "p3c",
+  "voice_id": "S9yQN3065fl76yl0gxsW",
+  "voice_name": "Kouichi - Calm Japanese Narrator",
+  "body": {
+    "text": "多いほど、たどり着きにくい。",
+    "model_id": "eleven_multilingual_v2",
+    "voice_settings": {
+      "stability": 0.6,
+      "similarity_boost": 0.75,
+      "style": 0.15,
+      "use_speaker_boost": true,
+      "speed": 1.05
+    },
+    "seed": 20261007,
+    "previous_text": "同時に、維持管理の負債でもある。",
+    "next_text": "デジタルも同じだ。多すぎると、探せない。"
+  },
+  "response": {
+    "request-id": "D7HGOloeyN1kbQs63pfC",
+    "character-cost": "6",
+    "content-type": "audio/mpeg"
+  },
+  "duration": 2.925714
+}
