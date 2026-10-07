@@ -3,7 +3,10 @@
 # commit-able: png, jpg, jpeg, svg, webp, wav, and mp3.
 
 # Dependencies
-node_modules/
+node_modules
+
+# Claude's isolated working copies are local tooling state.
+/.claude/worktrees/
 
 # Caches and build output
 .cache/
