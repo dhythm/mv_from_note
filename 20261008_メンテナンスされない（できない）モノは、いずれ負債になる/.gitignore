@@ -1,0 +1,4 @@
+# Opusの一時実行ログ（制作判断はMarkdownに記録）
+opus-stream*.jsonl
+opus-stderr*.log
+opus-process*.json
