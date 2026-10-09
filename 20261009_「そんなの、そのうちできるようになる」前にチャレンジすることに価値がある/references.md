@@ -18,7 +18,7 @@
 
 ## 参考エフェクト
 
-- plan.md の「NANKA DEKIRU 検証」を参照（093、081、109、090、014、021、140、095、074、058、026）。
+- plan.md の「NANKA DEKIRU 検証」を参照（v1の番号は現行サイトと不一致。effects-direction.mdの名称・URLを正とする）。
 
 ## 絵コンテ
 
@@ -31,3 +31,7 @@
 ## エンドロゴ
 
 - リポジトリ直下の `okady-work-logo.svg`（AGENTS.md「エンドロゴ（制作表示）」に従う）
+
+## 2026-10-09 v2
+
+plan.mdのカット表v2、reading-timeline.json、effects-direction.md、feedback.md、asset-manifest.md、music-brief.mdを制作正本とする。v1画像は質感参照、v2画像は文字配置検討。原稿の90%以上は目標、99%以上は現在の実績。
