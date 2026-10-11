@@ -41,6 +41,7 @@
 - 素材の自然な動作と、編集による画面全体の躍動感を組み合わせる。素材自体の激しい動きを一律に要求しない。
 - 用途が分かる名前、原本、採用区間、実際の仕様、参照・プロンプト、生成履歴・費用・利用条件の確認状況を引き渡す。使わない重い素材は保存方針に沿って整理し、判断の記録は残す。
 - ローカルで作業するとき、追加で素材を作る場合は GIMP・Inkscape・Blender や、MCP 接続した PhotoCraft・VectorCraft・EffectCraft・FilmCraft も使える（必要であれば使う。必須ではない）。
+- 素材づくりの参考手順書: [Claude Code × Blender MCP で 3D シーン素材を作る手順](docs/techniques/blender-mcp-scene.md)。
 
 ## 作業手順
 
