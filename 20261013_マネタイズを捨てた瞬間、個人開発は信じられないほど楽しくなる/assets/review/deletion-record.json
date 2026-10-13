@@ -1,0 +1,66 @@
+{
+  "date": "2026-10-13",
+  "authorization": "ユーザー: 採用したもの以外は削除してOK。",
+  "retained_ids": [
+    "M1-2",
+    "M2-1",
+    "M3-2"
+  ],
+  "deleted": [
+    {
+      "id": "M1-1",
+      "file": "Mascot_showing_hesitation_animat…_20261013164946.mp4",
+      "bytes": 1093923,
+      "sha256": "a9c2699e0b0a37f48c160654f40ce17db52f6307c90774e080c59411e14bf35a"
+    },
+    {
+      "id": "M1-3",
+      "file": "Mascot_showing_hesitation_animat…_20261013164946_3.mp4",
+      "bytes": 1147524,
+      "sha256": "f73225ef50fa9d6bf5f37d22c3136c9b31e8392fb582eb7548b98c740a3a4ac7"
+    },
+    {
+      "id": "M1-4",
+      "file": "Mascot_showing_hesitation_animat…_20261013164946_4.mp4",
+      "bytes": 1234400,
+      "sha256": "8772f978b602cbc6a969ab971e0f7c9c7516c10ca018238aa89066ed3af63575"
+    },
+    {
+      "id": "M2-2",
+      "file": "Mascot_discovering_useful_thing_…_20261013164946_2.mp4",
+      "bytes": 1264798,
+      "sha256": "bbddf6896ca949747a87ff16481f95e5c42a614a5deac6fc71ba499ed5f51be3"
+    },
+    {
+      "id": "M2-3",
+      "file": "Mascot_discovering_useful_thing_…_20261013164946_3.mp4",
+      "bytes": 1150363,
+      "sha256": "8f3c7faa8b8bcaac361cc8c6a7d9193e04a73062ee9a1dccb2f55a3aab2527d6"
+    },
+    {
+      "id": "M2-4",
+      "file": "Mascot_discovering_useful_thing_…_20261013164946_4.mp4",
+      "bytes": 1084983,
+      "sha256": "aaa63077125ca9a61942d56d0f1f10bfe5dae978016736ae71e4c643e4d8a757"
+    },
+    {
+      "id": "M3-1",
+      "file": "Mascot_animating_on_green_screen_20261013164946.mp4",
+      "bytes": 1457881,
+      "sha256": "5a2e68e4539abdd2757a7e976897b39cd3754c59a0af97171be545bbaca87b9f"
+    },
+    {
+      "id": "M3-3",
+      "file": "Mascot_animating_on_green_screen_20261013164946_3.mp4",
+      "bytes": 2684606,
+      "sha256": "e9b026b17ab76005118480290ffafca0a4037c1dda4559b3ec352bea0d2fbc47"
+    },
+    {
+      "id": "M3-4",
+      "file": "Mascot_animating_on_green_screen_20261013164946_4.mp4",
+      "bytes": 1390883,
+      "sha256": "56512f1ba1bd6636b56279ffe3fbcc4ba8c729c6af513c713f3333ae17476427"
+    }
+  ],
+  "comparison_images_and_review_trials": "temporary inspection files removed for handoff; selection reasons retained in review.md"
+}

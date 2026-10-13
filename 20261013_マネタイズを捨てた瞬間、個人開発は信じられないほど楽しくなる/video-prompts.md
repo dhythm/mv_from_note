@@ -1,122 +1,93 @@
-# AI動画素材の独立プロンプトと生成前レビュー票
+# 企画側用：キャラクター動画の生成指示
 
-> **文書のみ・動画生成未承認／未実施。** [plan.md](plan.md) v2の素材依頼案。各コードブロックはそれ単体で1本を再生成できる。共通条件を省略せず内包している。サービス別に同じ内容を複数生成する計画ではない。
+採用動画3本は用意済み。通常の本編制作は [制作指示書](plan.md) と同梱素材を使う。この資料は追加・再制作が必要になった場合に企画側が使う。作業者へ新規動画生成を依頼するものではない。
 
-## 希望尺・本編使用・サービスの制作前提
+## 生成する場合の仕様と用途
 
-ユーザー申告の制作前提: 6〜10秒ならGemini Omni Flash／Grok Imagine、15秒ならGrok Imagine／Seedance、Seedanceの30秒も選択肢だが失敗範囲を小さくするため短く分ける。**公式最新仕様・アカウントの利用可能設定として検証したものではない。** 現在の呼称を記録し、モデル名・尺・参照機能・画質・料金・利用条件は生成を依頼する時点で確認する。30秒の一括生成は本案にはない。
+| ID／制作時の命名例 | 希望原本尺 | 採用予定区間 → 本編 | AIが担当 | 編集が担当 |
+|---|---:|---|---|---|
+| M1-brace-8／`M1-brace-source.mp4` | 8秒 | 1.0–7.0秒 → 5.0–11.0秒 | 上を見る、身構える、手が止まる | 圧迫する看板・責任の札、文字、キャラを隠す前景、影、全画面の移動 |
+| M2-discover-8／`M2-discover-source.mp4` | 8秒 | 0.5–6.2秒 → 14.3–20.0秒 | 一度タッチ、驚きから発見へ、うなずく | 指先の道具と凹み、波紋、時計、雲、「自分」の文字、全画面の旋回 |
+| M3-tinker-10／`M3-tinker-source.mp4` | 10秒 | 0.5–5.5秒 → 27.0–32.0秒、5.5–9.5秒 → 35.0–39.0秒 | 小さな手直し、見守る、愛着、手を引く | 道具のつまみ・跳ね、32–35秒の閉じる図形と「楽しい」、後半の構図変更、結論 |
 
-| 素材ID／プロンプトID | 対象カットと表示尺 | 原本の希望尺 | 採用区間案（原本の秒）／余裕 | 候補（未選択） |
-|---|---|---|---|---|
-| A / A-8 | 2、6.0秒 | 8秒 | 1.0–7.0。前後各1秒 | Gemini Omni Flash／Grok Imagine |
-| B / B-8 | 4、5.7秒 | 8秒 | 0.5–6.2。前0.5秒・後1.8秒 | Gemini Omni Flash／Grok Imagine |
-| C / C-15 | 7の前半5.0秒、8の前半8.0秒 | 15秒 | 0.5–5.5と5.5–13.5。前0.5秒・後1.5秒 | Grok Imagine／Seedance |
-| C1 / C1-6（Cの置換案） | 7の前半5.0秒 | 6秒 | 0.5–5.5。前後各0.5秒 | Gemini Omni Flash／Grok Imagine |
-| C2 / C2-10（Cの置換案） | 8の前半8.0秒 | 10秒 | 1.0–9.0。前後各1秒 | Gemini Omni Flash／Grok Imagine |
+計3本・希望原本26秒、採用20.7秒。M3の途中に3秒の文字場面を挟む。35秒では新構図に切り替えるのでピクセル単位の連続性は不要。動作の正確なタイミングは生成後に選び、対応する図形の拍を合わせる。長いフリーズ、逆再生、不自然な繰返しで尺を埋めない。
 
-Cの前後余裕は前0.5秒・後1.5秒で、採用13秒と合わせ15秒になる。C1/C2は**Cと同時に採用しない**。基本は8＋8＋15＝31秒・3本、分割を選ぶ場合は8＋8＋6＋10＝32秒・4本。どちらでも完成動画のAI区間24.7秒と全体50.5秒は変わらない。
+サービス・モデル・尺の対応・背景参照機能・料金は未確認。旧文書にあったユーザー申告のモデル呼称を、現在利用できる製品仕様として転記しない。選ぶ時点で公式情報と実際の利用画面を確認する。
 
-採用区間は生成品質を見て動かしてよいが、各表示尺と主動作を保つ。希望より短い原本をループ／フリーズ／無理な倍速で埋めない。別尺しか選べなければ利用画面の実値・費用と動作配分を記録してレビュー票を更新する。
+## 共通デザイン参照と背景分離
 
-## 共通仕様と編集者への引き渡し
+- **共通参照v1:** [単体画像](assets/character/character-master-v1.png)を3本共通の参照にし、[シート](assets/character/character-sheet-v1.png)は形・表情の説明用とする。シート全体を動画の開始フレームに使わない。参照には一体の全身・無地背景だけを入れ、文字つき絵コンテや記事本文を送らない。テキストだけで同じキャラクターになると保証しない。参照機能がなければ一貫性の実現方法を見直す。
+- 第一案は、クリーム色の丸い体、短い手足、濃茶の楕円の目、無地のテラコッタ色ベストの一体。毛・細かい指・透明部分・緑や青の服・アクセサリーなし。実在人物や既存キャラクターの模倣ではない。
+- 原本では頭頂から足先まで中央80%内、キャラ全身高は画面高の約65%。左右に手が動ける空間を残す。完成画面の左側の文字余白を、原本の半分に空ける必要はない。切り抜いてから配置する。
+- 第一案は均一な鮮やかな緑（目標#00FF00、実際の生成色は変動しうる）のサイクロラマ。画面全域同色、地平線なし、模様なし。体に緑を映し込ませず、強い影・ブラーなし。アルファ付き動画が生成されるとは想定しない。
+- 背景色が衣装や目の輪郭と競合する場合は、生成**前**に全3本の背景方針を合わせて青などに変える。下の英語プロンプトの背景段落も置換し、緑・青を同時に依頼しない。
+- 共通の固定カメラ、正面から少し左が見える角度、目の高さ、全身。カメラ運動・編集トランジション・文字・道具の生成は不要。躍動感は完成画面の移動と図形で作る。
 
-- 希望は横16:9、720p以上、余白を含む1ショット。正確なfps・解像度・秒数は取得後に記録。重要物は中央より右、外周10%より内側。完成画面の文字は左に置く。数値・文字・URL・UI・ロゴのないクリーンな原本を受け取る。
-- 暗いAと白いB/Cでもライムの角丸タイルの形・色・マットな材質を揃える。B/Cの机・白い受け皿・光は同一。参照画像は未作成で、全プロンプトはテキストのみでも場面が定義される。絵コンテ確定後、利用可能なら文字なしの共通スタイル画像を1枚用意し、選んだ1サービス内で共有する。開始・終了画像の指定機能を全モデルにあると仮定しない。
-- 音は編集で除去。板の接触・道具の開く動きと、後段の文字・図形・BGMを組み合わせる。面追跡、実UIの貼込み、人の前後マスクは必要ない構成。カメラが動いても文字は編集上の独立した面に置く。
-- Aから切り替える0.3秒、BからURLへ移る1秒、Cの間に挟む3秒、ロゴ前の2秒はすべて後段で作る。生成原本の中にトランジションや重要文字を入れない。
-- 以下は日本語本文の逐語翻訳ではなく、架空の比喩素材を生成する英語指示。ユーザーの私生活・実績を再現した映像とは表示しない。
+## M1-brace-8 — 圧迫され、作る手が止まる
 
-## A-8: 重い前提が積み上がる（単独でコピー）
-
-```text
-Create one eight-second continuous landscape 16:9 shot, 720p or higher if supported. Editorial miniature-object footage with realistic contact shadows, restrained physical motion and matte paper-and-resin textures. This is a fictional visual metaphor, not a real person's workspace or a demonstration of an app.
-
-A charcoal-gray tabletop and seamless charcoal background. On the RIGHT side, at about 72% frame width and 65% frame height, sits one small lime-green rounded rectangular resin tile, about 12% of frame width, with an ivory shallow tray underneath it. Its surface is completely blank. Three broad, heavy, unmarked dark-gray slabs are poised above the tray, occupying only the right half of the composition. Preserve the lime tile's geometry and the number and material of the slabs. Leave the LEFT 50% as low-detail dark negative space for typography added by the editor. Keep all important objects inside the central 80% of the image; no slab may cross into the left text area.
-
-Hard but controlled light from upper left, long contact shadows, tactile matte surfaces, a quiet low-key charcoal palette and a small lime accent. No sparks, smoke, shattering or destruction. Camera: medium close three-quarter view, a very slow dolly-in over the shot, with no fast pan, camera roll, cut or focus pumping. The editor will supply the dramatic full-screen motion.
-
-Timing: 0-1 seconds, establish the small tile and the poised slabs. Between 1-6 seconds, the three slabs lower one after another and stack on the tray, leaving the lime tile visibly present at the front edge. Each contact causes a small grounded settling motion, making the growing stack feel heavy. The slabs never crush, destroy or morph the tile. Between 6-8 seconds, keep the stack intact with only a slight final settling movement and the ongoing slow camera move. Finish with a clear silhouette of the stack and the same tile still visible. No disappearance; the editor will remove the entire video plane with a smash cut later.
-
-No people, hands, animals, screens, interfaces, letters, words, digits, URLs, diagrams, logos, watermarks or symbols on any surface. No extra objects appearing, changes of object identity, melting geometry or flickering lighting. Do not generate transitions, titles or subtitles. No speech or music; any generated audio will be discarded.
-```
-
-採用判断: 重さが接触・影・沈み込みで見える。タイルが壊れない。3つの板が同じ形のまま積み上がり、6秒の採用範囲内で動作が分かる。完成の文字は左、札／バーは後合成。生成物体へ札を貼りつける追跡精度を採用条件にしない。終端の看板再登場と全消失は編集が担当。
-
-## B-8: 自分の手元に収まる（単独でコピー）
+**使用:** カット2、5.0–11.0秒。手や頭の上に物体を持たせず、視線と体の緊張を採る。上左の看板は後合成し、表情を囲む。参照する配置: [開始](assets/storyboard/cut-02-start.png)／[終了](assets/storyboard/cut-02-end.png)。これらの文字つき配置図を生成サービスへ送らない。
 
 ```text
-Create one eight-second continuous landscape 16:9 shot, 720p or higher if supported. Editorial miniature-object footage, matte paper-and-resin materials, realistic gentle contact shadows, a tactile and light-hearted feel. This is a fictional visual metaphor of a small useful tool, not evidence of actual software development or a real person's possessions.
+Create one continuous eight-second landscape 16:9 animation plate, ideally 1920x1080 or higher if available. This is an isolated acting element for later compositing, NOT a finished scene. Use the supplied approved character reference consistently. Do not create a new character if a reference is supplied.
 
-Use an off-white tabletop merging into a clean warm-white background. A single shallow ivory rounded rectangular tray sits on the RIGHT, centered near 72% frame width and 65% frame height. One small lime-green rounded rectangular resin tile, about 12% of frame width, starts just in front of that tray. The tray and tile have completely blank surfaces; the tile is not a phone or a screen. Leave the LEFT 50% as quiet empty white space for typography added in editing. Keep the tray and tile within the central 80% of the image throughout. There are no other props.
+Exactly one original, friendly miniature mascot: a smooth matte cream-colored rounded body, short rounded limbs, simple dark-brown oval eyes, a small expressive mouth, and a plain terracotta vest. Two arms and two legs, mitten-like hands without individual fingers. No hair, fur, antennae, transparent parts, patterns, lettering, accessories, green or blue parts. Preserve its anatomy, face, costume, proportions and material throughout. The performance represents hesitation under expectations, not injury, terror or physical crushing.
 
-Soft diffuse daylight from upper left, stable exposure, gentle contact shadows, muted ivory and matte lime, no glossy neon or holograms. Camera: a medium close three-quarter view and a subtle clockwise arc of at most 10 degrees across the shot. Keep the object on the right and preserve the empty left area. No fast orbit, camera roll, whip pan, cut, zoom jump or focus change.
+Locked camera, eye level, nearly frontal with a slight view of its left side. Keep its full body and both feet visible in the central 80 percent throughout. Body height about 65 percent of image height. Leave room around both hands and above its head. Keep the figure near the center; no large travel across the frame. Soft neutral frontal lighting on the character. Use an entirely uniform vivid green background and floor, target #00FF00, with no horizon, texture, gradient, cast shadow or green reflection on the character. Clean opaque edges, minimal motion blur. The green will be removed in editing.
 
-Timing: 0-1 seconds, establish the tile just in front of the tray. Between 1-4 seconds, the tile slides a short distance into the tray, fitting neatly, then gives one small buoyant settling bounce. The movement feels easy and practical, not triumphant or magical. Between 4-8 seconds, the tile stays fitted while slight natural settling and the gentle camera arc continue. The tile does not multiply, open, disappear or change its shape. End with the same tile resting in the same tray, fully visible.
+0-1 seconds: the mascot is attentive with a small forward lean, both hands low in front, relaxed but ready to do something.
+1-3 seconds: its eyes look toward the upper left outside its body; shoulders slowly rise and its ready hand pauses. The imagined object is NOT visible.
+3-6 seconds: it slightly leans back, draws its hands closer to its chest, and looks between upper left and straight ahead with a worried, hesitant expression. Convey a recognizable pause in enthusiasm through the eyes, posture and timing.
+6-8 seconds: remain apprehensive, with a small breath and a blink, not a frozen pose. No relief, celebration, escape or disappearance.
 
-No people, hands, animals, screens, interfaces, letters, words, digits, URLs, diagrams, logos, watermarks or symbols. No extra objects, morphing geometry, flickering lighting, explosions or confetti. Do not generate transitions, titles or subtitles. No speech or music; any generated audio will be discarded. All meaningful text, clock graphics, cloud graphics and full-screen motion will be controlled by the editor.
+No actual objects, boards, labels, weights, walls, desk, screens, interface, letters, words, numbers, symbols, logos, subtitles or watermark. Do not render anything the mascot is looking at. No cuts, zoom, pan, roll, camera shake, depth-of-field shifts, transitions, speech or music. Any automatically generated audio will be discarded.
 ```
 
-採用判断: 0.5–6.2秒の5.7秒で「手元にぴたりと収まる」が伝わる。左余白と道具の輪郭を保つ。時計・無料枠・今日は独立した後合成で、原本の精密な動きに貼り付けない。Cと机・光・タイルの見た目を揃える。
+**合成指示・採用条件:** 1.0–7.0秒内で視線→肩→手の停止が読めること。原本の左上視線に合わせて看板を配置し、前景の札で下半身の一部を隠す。腕が看板を支える芝居に変更しない。必要な表情が小さすぎる、手足が増える、身体が潰れる場合は不採用。図形の縮尺だけで同じ感情が伝わるなら、AIを追加する意味を再評価する。
 
-## C-15: 小さな道具を育てる（基本案、単独でコピー）
+## M2-discover-8 — 小さな手応えに目が輝く
+
+**使用:** カット4、14.3–20.0秒。最初に1本だけ試す候補。キャラの右手（画面左側）が触れる空間に編集側の道具を合わせる。参照配置: [開始](assets/storyboard/cut-04-start.png)／[終了](assets/storyboard/cut-04-end.png)。
 
 ```text
-Create one fifteen-second continuous landscape 16:9 shot, 720p or higher if supported. Editorial miniature-object footage with matte paper-and-resin materials, gentle realistic shadows and playful but restrained physical motion. This is a fictional visual metaphor of tending small useful tools, not a literal app interface, business growth, user-count growth or a real person's development history.
+Create one continuous eight-second landscape 16:9 animation plate, ideally 1920x1080 or higher if available. This is an isolated acting element for later compositing, NOT a finished scene. Use the supplied approved character reference consistently. Do not create a new character if a reference is supplied.
 
-An off-white tabletop merging into a clean warm-white background. On the RIGHT half are exactly three small lime-green rounded rectangular resin tiles, each seated in a shallow ivory rounded rectangular tray. One is near 72% frame width and 65% frame height, with two similar tiles slightly farther back, arranged as a compact triangular cluster. Each tile is a simple hinged object with a blank lid, not a phone, screen or letter. Preserve exactly three tiles and three trays throughout. Leave the LEFT 50% as quiet empty white space for typography added by the editor. All important objects remain inside the central 80% of the frame.
+Exactly one original, friendly miniature mascot: smooth matte cream-colored rounded body, short rounded limbs, simple dark-brown oval eyes, a small expressive mouth, and a plain terracotta vest. Two arms and two legs, mitten-like hands without individual fingers. No hair, fur, antennae, transparent parts, patterns, lettering, accessories, green or blue parts. Preserve its anatomy, face, costume, proportions and material. The emotion is quiet discovery that a small useful thing works for oneself, not a grand victory.
 
-Soft diffuse daylight from upper left, stable exposure, gentle contact shadows, warm white and matte lime. Same simple proportions and tactile material on all tiles. No plants, additional props, human figures or neon. Camera: start in a medium-close three-quarter view; slowly crane upward and arc clockwise by at most 15 degrees over the whole shot, gradually revealing a more top-down view. The cluster stays on the right and never spreads into the left text area. No sudden zoom, whip pan, roll, cut or focus change.
+Locked camera, eye level, nearly frontal with a slight view of its left side. Keep its full body and both feet visible in the central 80 percent throughout. Body height about 65 percent of image height. Keep it near the center with room for its right hand to extend toward screen-left. Soft neutral frontal character lighting. Entirely uniform vivid green background and floor, target #00FF00, no horizon, texture, gradient, cast shadow or green reflection. Opaque clean edges, minimal motion blur. The background will be removed.
 
-Timing: 0-0.5 seconds, establish the three closed tiles. Between 0.5-5.5 seconds, the three blank lids tilt open in a gentle staggered sequence, revealing simple blank lime inner surfaces; each remains connected by its hinge and settles with a small spring-like motion. Between 5.5-13.5 seconds, the three already-open tiles remain the same objects, continuing gentle settling motion while the camera slowly rises to show the compact group. Growth is suggested by opening and gaining a new view, not by multiplying objects or producing extra tiles. Between 13.5-15 seconds, keep the final group clearly visible with the slow camera movement continuing. Do not close a tile: the editor will illustrate the option to close a public tool separately using a graphic icon.
+0-1 seconds: a curious forward lean, looking at empty space slightly below and to screen-left at waist height, approximately x=38%, y=62% of the frame.
+1-2.5 seconds: extend the character's right mitten-hand toward that empty point and make ONE gentle downward tap, then withdraw just enough to see what happened. The left hand stays close to the body. Nothing is held. No object is visible. The location is an approximate acting target, not a requirement for pixel-perfect placement.
+2.5-4.5 seconds: its eyes open in pleased recognition, it leans closer, then gives one small satisfied nod. Let the expression change clearly from curiosity to delight.
+4.5-6.5 seconds: relax the shoulders, smile subtly, and look again toward that same empty point with a warm feeling of usefulness.
+6.5-8 seconds: maintain that engaged expression with a small breath or blink, hands relaxed. Do not walk off or launch into a dance.
 
-No people, hands, animals, screens, interfaces, letters, words, digits, URLs, diagrams, logos, watermarks or symbols on any surface. No extra objects, object multiplication, melting, discontinuous geometry, flashing light, confetti or victory spectacle. Do not generate transitions, titles or subtitles. No speech or music; any generated audio will be discarded. All typography and all large composition changes will be controlled by the editor.
+No object, device, tray, tool, desk, floor marking, spark, ripple, light beam, graphic, letters, words, digits, interface, logo, subtitle or watermark. The editor will add the touched object and its reaction. No camera movement, cuts, transitions, zoom, roll, focus changes, speech or music. Any generated audio will be discarded.
 ```
 
-採用判断: Cの0.5–5.5秒で開く、5.5–13.5秒で俯瞰へ移る。間の文字場面は編集で挿入するため、生成原本は15秒連続のまま。3つの道具が同一性を保ち、片側の余白を維持すること。開く／俯瞰の両方が崩れた場合に全15秒を繰り返すのではなく、次の分割案を検討する。
+**合成指示・採用条件:** 採用0.5–6.2秒でタッチから発見まで含むこと。手先の位置に合わせて道具を置く。接触した1〜2fを基準に道具を凹ませ、輪を文字へ走らせる。前景の縁が手の下部を短く隠すマスクを作る。指の間へ複雑な道具を通さない。「自分」の文字は目や手に被せない。境界・表情・接触が生成り／墨色／アプリコット背景と全体の旋回の中で成立するかを5.7秒の動画で確認する。原本が綺麗なだけでは採用しない。
 
-## C1-6: 開く動作だけ（Cの分割代替、単独でコピー）
+## M3-tinker-10 — 手直ししながら、愛着が生まれる
+
+**使用:** カット7前半とカット8冒頭。M2との連続演技ではなく、同じキャラが再登場する。配置: [カット7開始](assets/storyboard/cut-07-start.png)／[カット8開始](assets/storyboard/cut-08-start.png)。
 
 ```text
-Create one six-second continuous landscape 16:9 shot, 720p or higher if supported. Editorial miniature-object footage with tactile matte paper-and-resin surfaces and gentle contact shadows. A fictional visual metaphor of small useful tools, not a real app or real person's history.
+Create one continuous ten-second landscape 16:9 animation plate, ideally 1920x1080 or higher if available. This is an isolated acting element for later compositing, NOT a finished scene. Use the supplied approved character reference consistently. Do not create a new character if a reference is supplied.
 
-An off-white tabletop merging into a warm-white background. Exactly three small lime-green rounded rectangular hinged resin tiles sit in three shallow ivory rounded rectangular trays in a compact triangle on the RIGHT half, the front tile near 72% frame width and 65% frame height. Lids and inner surfaces are completely blank. Preserve the objects' count, dimensions and hinge connections. Keep the LEFT 50% empty and low-detail for later typography. All objects remain inside the central 80% of the image. Soft diffuse daylight from upper left, steady exposure, matte lime and ivory, no neon or extra props.
+Exactly one original friendly miniature mascot: smooth matte cream-colored rounded body, short rounded limbs, simple dark-brown oval eyes, a small expressive mouth, and a plain terracotta vest. Two arms and two legs, mitten-like hands without individual fingers. No hair, fur, antennae, transparent parts, patterns, lettering, accessories, green or blue parts. Preserve anatomy, face, clothing and material throughout. Show absorbed, playful care for a small useful thing, not professional manufacturing, commercial success or a dramatic celebration.
 
-Camera: medium-close three-quarter view, locked position with no pan, zoom, cut or focus shift. Timing: 0-0.5 seconds, three closed tiles. Between 0.5-4.5 seconds, the three lids open in a gentle stagger, remaining attached, with slight spring-like settling. Between 4.5-6 seconds, the same three open tiles continue gently settling. No closing or object multiplication. End with all three lids open and clearly visible.
+Locked eye-level camera, nearly frontal with a slight view of its left side. Keep the entire body and feet within the central 80 percent throughout, body height about 65 percent of the frame. Keep it centered with room toward screen-left for the right hand. Soft neutral frontal character lighting. Entirely uniform vivid green background and floor, target #00FF00, no horizon, texture, gradient, cast shadow or green reflection. Clean opaque silhouette, minimal motion blur. The background will be removed in editing.
 
-No people, hands, animals, screens, interfaces, letters, words, digits, URLs, diagrams, logos, watermarks or symbols. No added objects, morphing geometry, flicker, confetti, transitions, titles or subtitles. No speech or music; generated audio will be discarded. The editor supplies all text and large full-screen motion.
+0-0.5 seconds: engaged forward lean, looking at empty space slightly below and toward screen-left at waist height, approximately x=38%, y=62%.
+0.5-3 seconds: use the character's right mitten-hand to make one short sideways adjusting gesture near that point, then pause to inspect it. Keep the other hand near the body. Do not grasp or hold an object; all objects will be added later.
+3-5.5 seconds: make one small follow-up adjustment with the same hand, then tilt the head with interested concentration. Keep the face visible and the feet planted.
+5.5-8 seconds: stop adjusting, watch the imagined result, and develop an affectionate, satisfied smile. A small nod or shoulder bounce can show pleasure without becoming a dance.
+8-10 seconds: withdraw the right hand toward the body, straighten slightly, and keep looking fondly at the empty work point, with a breath and blink. No farewell gesture, disappearance, multiplication or growth of the body.
+
+Do not render the imagined object. No props, tools, desk, plants, buttons, icons, graphics, effects, letters, words, digits, interfaces, logos, subtitles or watermark. No camera movement, cuts, transitions, focus shifts, speech or music. Any generated audio will be discarded. The editor will split this performance with a typography-only passage and will supply all tool movement, scene changes and large composition movement.
 ```
 
-## C2-10: 俯瞰の動きだけ（Cの分割代替、単独でコピー）
+**合成指示・採用条件:** 0.5–5.5秒では手の横移動に合わせて道具のつまみを動かし、直った手応えは図形の小さな跳ねで表す。物の生成・把持を要求しない。5.5–9.5秒は笑顔と手を引く演技を使う。カット8はキャラを左へ移すが左右反転しない。手の左下の道具も一緒に移す。カット7末尾の閉じるアイコンは編集の説明図で、M3がツールを破棄する演技ではない。3つの道具やユーザー数を増やす表現へ戻さない。
 
-```text
-Create one ten-second continuous landscape 16:9 shot, 720p or higher if supported. Editorial miniature-object footage with tactile matte paper-and-resin surfaces and gentle contact shadows. A fictional visual metaphor of tending small useful tools, not business growth, actual user counts or a real person's history.
+## 追加制作の扱い
 
-An off-white tabletop merging into a warm-white background. Exactly three small lime-green rounded rectangular hinged resin tiles, each with its blank lid ALREADY OPEN, sit in three shallow ivory rounded rectangular trays. Arrange them in a compact triangle on the RIGHT half, the front tile near 72% frame width and 65% frame height. Preserve exactly three tiles and three trays; all surfaces are blank. Keep the LEFT 50% empty and low-detail for later typography and all objects inside the central 80% of the image. Soft diffuse daylight from upper left, steady exposure, matte lime and ivory, no neon or other props.
-
-Camera and timing: 0-1 seconds, establish a medium-close three-quarter view of the already-open group. Between 1-9 seconds, slowly crane upward and arc clockwise by at most 15 degrees, revealing a more top-down view while the same three open tiles gently settle. Keep the cluster on the right throughout. Between 9-10 seconds, continue the gentle motion with all objects clearly visible. No lids opening or closing, no object multiplication, no abrupt cuts, focus shifts, zoom jumps or camera roll.
-
-No people, hands, animals, screens, interfaces, letters, words, digits, URLs, diagrams, logos, watermarks or symbols. No extra objects, morphing geometry, flicker, confetti, transitions, titles or subtitles. No speech or music; generated audio will be discarded. The editor supplies all text and large full-screen motion.
-```
-
-分割時はC1の0.5–5.5秒、C2の1.0–9.0秒を採用する。間にカット7の3秒の文字場面があるので、C1の終了とC2の開始のピクセル一致は不要。同じ場所・材質・3つの道具に見えることは必要。カット7の閉じるアイコンは説明図であり、C2に3つの比喩素材が再登場することは再公開や実開発件数を示さない。
-
-## 将来の生成前レビュー票（まだ承認依頼できる完成票ではない）
-
-| 項目 | 現在の案／未確認事項 |
-|---|---|
-| 生成対象 | 基本A-8・B-8・C-15、各1候補で合計3回を提案。分割を最初から選ぶ場合はA-8・B-8・C1-6・C2-10の合計4回。両方まとめて生成しない |
-| 指示・画面配置 | 上の独立プロンプトとplan v2。絵コンテ画像と文字なし共通参照は未作成 |
-| 実際のサービス・モデル・尺・解像度・参照機能 | 未選択／利用画面と必要なら公式最新情報で確認 |
-| 1回・合計の費用／クレジット | 未確認。無料・定額内・消費量を推測しない |
-| 保存・利用条件 | 原本のダウンロード、編集、公開可否、透かし等を利用プランで確認 |
-| 初期生成の順序案 | 絵コンテを確定→対象・費用・回数を埋めて明示承認→Bを1候補で文字と合成確認→その結果を共通スタイルに反映→承認範囲内でA/C。候補を大量生成しない |
-| 再生成・分割への変更 | 破綻箇所とプロンプト変更を記録。C失敗後にC1/C2を追加する場合は追加回数・費用を再レビューし、承認範囲を超えない。自動追加生成なし |
-| 現在の承認・実行 | 課金生成・テスト生成とも未承認／未実施。今回の文書改訂は生成の許可ではない |
-
-## 採用確認と納品の記録
-
-1. 冒頭・途中・末尾を等速で確認。形／数／光の連続性、不要な文字やロゴ、採用範囲の主動作を点検。
-2. planの日本語・図形を実際に重ね、1280×720で可読性・切り取り・大きな画面運動を検証してから残りを追加。不適合は「形／動きの破綻」「企画との不一致」「使用可能だが不要」を分ける。
-3. 原本の実仕様、生成サービス・モデル、日時、プロンプトIDと修正履歴、入力参照、回数・費用、利用条件、採用区間・不採用理由を台帳へ記録。原本と30fps編集版を区別する。
-4. 後続の素材名は `cut-A-weight-source.mp4` / `cut-B-fit-source.mp4` / `cut-C-grow-source.mp4`、分割時は `cut-C1-open-source.mp4` / `cut-C2-overview-source.mp4` 等、役割を含める。現在これらは存在しない。動画バイナリはGit管理外の作業先に保存し、本PRに追加しない。
-5. 不採用なら該当部分だけを改訂・再生成するか、同じ板／タイルの動作をモーションで代替。完成映像の尺・論旨・接続は維持する。
+企画側で必要カット・参照・動作・採用条件を定めて制作する。クレジットを使う生成は共通方針の事前レビューに従う。既存素材の実ファイル・採用区間は制作指示書を参照する。

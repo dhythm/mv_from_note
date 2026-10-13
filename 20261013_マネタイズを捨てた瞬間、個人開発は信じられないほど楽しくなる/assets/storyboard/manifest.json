@@ -1,0 +1,80 @@
+{
+  "version": 3,
+  "fps": 30,
+  "boundaries": [
+    0,
+    150,
+    330,
+    429,
+    600,
+    630,
+    810,
+    1050,
+    1350,
+    1515
+  ],
+  "frames": [
+    "cut-01-start.png",
+    "cut-01-end.png",
+    "cut-02-start.png",
+    "cut-02-end.png",
+    "cut-03-start.png",
+    "cut-03-end.png",
+    "cut-04-start.png",
+    "cut-04-end.png",
+    "cut-05-start.png",
+    "cut-05-end.png",
+    "cut-06-start.png",
+    "cut-06-end.png",
+    "cut-07-start.png",
+    "cut-07-end.png",
+    "cut-08-start.png",
+    "cut-08-end.png",
+    "cut-09-start.png",
+    "cut-09-end.png"
+  ],
+  "assets": [
+    {
+      "id": "M1-brace-8",
+      "duration": 8,
+      "uses": [
+        [
+          1,
+          7,
+          5,
+          11
+        ]
+      ]
+    },
+    {
+      "id": "M2-discover-8",
+      "duration": 8,
+      "uses": [
+        [
+          0.5,
+          6.2,
+          14.3,
+          20
+        ]
+      ]
+    },
+    {
+      "id": "M3-tinker-10",
+      "duration": 10,
+      "uses": [
+        [
+          0.5,
+          5.5,
+          27,
+          32
+        ],
+        [
+          5.5,
+          9.5,
+          35,
+          39
+        ]
+      ]
+    }
+  ]
+}

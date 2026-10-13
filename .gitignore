@@ -83,3 +83,8 @@ venv/
 **/public/bgm.wav
 **/audio/bgm.wav
 **/public/mix.wav
+
+# Approved source video plates included in the 20261013 handoff.
+!/20261013_マネタイズを捨てた瞬間、個人開発は信じられないほど楽しくなる/assets/videos/Mascot_animating_on_green_screen_20261013164946_2.mp4
+!/20261013_マネタイズを捨てた瞬間、個人開発は信じられないほど楽しくなる/assets/videos/Mascot_discovering_useful_thing_…_20261013164946.mp4
+!/20261013_マネタイズを捨てた瞬間、個人開発は信じられないほど楽しくなる/assets/videos/Mascot_showing_hesitation_animat…_20261013164946_2.mp4
