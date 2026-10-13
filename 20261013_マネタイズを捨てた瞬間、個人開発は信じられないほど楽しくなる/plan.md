@@ -82,3 +82,15 @@
 - `assets/storyboard/cut-XX-start.jpg`／`cut-XX-end.jpg`（18コマ）と `contact-sheet.jpg`。生成画像に、配置見本として日本語を重ねている。書体と位置は本番で決め直す。
 - カット5のおわりとカット6のはじめは同じ画（ホイップパンでURLカードに着地し、そのまま続く）。
 - カット9はライム #d2ff1a とロゴの完成状態の見本。
+
+## 絵コンテ
+- 一覧: [contact-sheet.jpg](assets/storyboard/contact-sheet.jpg)
+- カット1: [cut-01-start.jpg](assets/storyboard/cut-01-start.jpg) / [cut-01-end.jpg](assets/storyboard/cut-01-end.jpg)
+- カット2: [cut-02-start.jpg](assets/storyboard/cut-02-start.jpg) / [cut-02-end.jpg](assets/storyboard/cut-02-end.jpg)
+- カット3: [cut-03-start.jpg](assets/storyboard/cut-03-start.jpg) / [cut-03-end.jpg](assets/storyboard/cut-03-end.jpg)
+- カット4: [cut-04-start.jpg](assets/storyboard/cut-04-start.jpg) / [cut-04-end.jpg](assets/storyboard/cut-04-end.jpg)
+- カット5: [cut-05-start.jpg](assets/storyboard/cut-05-start.jpg) / [cut-05-end.jpg](assets/storyboard/cut-05-end.jpg)
+- カット6: [cut-06-start.jpg](assets/storyboard/cut-06-start.jpg) / [cut-06-end.jpg](assets/storyboard/cut-06-end.jpg)
+- カット7: [cut-07-start.jpg](assets/storyboard/cut-07-start.jpg) / [cut-07-end.jpg](assets/storyboard/cut-07-end.jpg)
+- カット8: [cut-08-start.jpg](assets/storyboard/cut-08-start.jpg) / [cut-08-end.jpg](assets/storyboard/cut-08-end.jpg)
+- カット9: [cut-09-start.jpg](assets/storyboard/cut-09-start.jpg) / [cut-09-end.jpg](assets/storyboard/cut-09-end.jpg)
