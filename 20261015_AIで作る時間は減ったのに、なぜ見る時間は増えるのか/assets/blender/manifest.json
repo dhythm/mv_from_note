@@ -1,0 +1,46 @@
+[
+  {
+    "file": "07_before.mp4",
+    "width": 1920,
+    "height": 1080,
+    "fps": "30/1",
+    "frames": 330,
+    "seconds": 11.0,
+    "bytes": 5001506,
+    "decode_check": "pass",
+    "strict_decode_check": "pass"
+  },
+  {
+    "file": "08_backlog.mp4",
+    "width": 1920,
+    "height": 1080,
+    "fps": "30/1",
+    "frames": 480,
+    "seconds": 16.0,
+    "bytes": 13969368,
+    "decode_check": "pass",
+    "strict_decode_check": "pass"
+  },
+  {
+    "file": "13_quality_gates.mp4",
+    "width": 1920,
+    "height": 1080,
+    "fps": "30/1",
+    "frames": 480,
+    "seconds": 16.0,
+    "bytes": 18736887,
+    "decode_check": "pass",
+    "strict_decode_check": "pass"
+  },
+  {
+    "file": "15_feedback_loop.mp4",
+    "width": 1920,
+    "height": 1080,
+    "fps": "30/1",
+    "frames": 360,
+    "seconds": 12.0,
+    "bytes": 7993236,
+    "decode_check": "pass",
+    "strict_decode_check": "pass"
+  }
+]

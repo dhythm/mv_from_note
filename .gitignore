@@ -49,6 +49,16 @@ pnpm-debug.log*
 .debug/
 hyperframes-extract-cache*/
 
+# Blender render intermediates, diagnostic logs, and automatic backups.
+# Keep editable .blend scenes, scripts, tracks, stills, and license records.
+**/assets/blender/renders/
+**/assets/blender/**/*.log
+*.blend[0-9]*
+*.blend@
+
+# Rebuildable delivery archive; its source files remain separately available.
+**/assets/blender-materials.zip
+
 # OS junk
 .DS_Store
 Thumbs.db
@@ -88,3 +98,9 @@ venv/
 !/20261013_マネタイズを捨てた瞬間、個人開発は信じられないほど楽しくなる/assets/videos/Mascot_animating_on_green_screen_20261013164946_2.mp4
 !/20261013_マネタイズを捨てた瞬間、個人開発は信じられないほど楽しくなる/assets/videos/Mascot_discovering_useful_thing_…_20261013164946.mp4
 !/20261013_マネタイズを捨てた瞬間、個人開発は信じられないほど楽しくなる/assets/videos/Mascot_showing_hesitation_animat…_20261013164946_2.mp4
+
+# Approved Blender source clips for the 20261015 handoff.
+!/20261015_AIで作る時間は減ったのに、なぜ見る時間は増えるのか/assets/blender/07_before.mp4
+!/20261015_AIで作る時間は減ったのに、なぜ見る時間は増えるのか/assets/blender/08_backlog.mp4
+!/20261015_AIで作る時間は減ったのに、なぜ見る時間は増えるのか/assets/blender/13_quality_gates.mp4
+!/20261015_AIで作る時間は減ったのに、なぜ見る時間は増えるのか/assets/blender/15_feedback_loop.mp4
