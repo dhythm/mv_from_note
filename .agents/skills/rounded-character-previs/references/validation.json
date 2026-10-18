@@ -1,0 +1,42 @@
+{
+  "blender": "5.2.2 LTS",
+  "machine": "User M5 MacBook Pro",
+  "asset_files": 6,
+  "asset_total_bytes": 1714990,
+  "tested": [
+    "Python syntax compile",
+    "CLI help",
+    "asset SHA-256 verification",
+    "approved walk independent copy and overwrite refusal",
+    "BVH sampling at 30 fps",
+    "six-frame standard retarget",
+    "480x270 six-frame EEVEE16 render",
+    "H264 encode and full six-frame decode",
+    "six-frame mesh contact and camera inspection",
+    "two-shot 78-frame assembly and reload with no linked IDs",
+    "reconstructed and copied meshes: 2026 vertices,2088 faces,closed,approved rest hash matches"
+  ],
+  "not_tested": [
+    "New long motions through this packaged CLI",
+    "arbitrary humanoid rigs or non-30fps retargeting",
+    "deep bend/overhead branches through this packaged front-end",
+    "full-body hidden-surface collision and physical dynamics",
+    "actual live catalog refresh in a newly opened target-project task"
+  ],
+  "official_validator": "quick_validate.py could not import PyYAML in existing Python; no installation performed. Frontmatter parsed with system Ruby YAML; naming/required fields/limits/local links checked separately.",
+  "independent_review": {
+    "result": "passed lightweight offline reuse scenario",
+    "checks": [
+      "asset checks before/after",
+      "standalone walk copy byte-identical to source",
+      "existing destination refused",
+      "documented CLI flags matched help"
+    ],
+    "not_performed": [
+      "Blender launch",
+      "GPU render",
+      "download",
+      "target-repo edits"
+    ]
+  }
+}

@@ -1,0 +1,32 @@
+[
+  {
+    "file": "approved_character.blend",
+    "bytes": 164162,
+    "sha256": "fc192c00b4bcfd0b73e94aabb0509c2d00d445c209ec8f07e72113a93e28cd6e"
+  },
+  {
+    "file": "approved_walk.blend",
+    "bytes": 684837,
+    "sha256": "6d704e69c46158fcf037a06bc0ad61509a2a5dc6cb8648ae763aa3289c82c4a2"
+  },
+  {
+    "file": "walk_sampled.json",
+    "bytes": 544425,
+    "sha256": "450f6e0cba2ef79e946f61626310076fee5042f224cf85c29920b1aa6e342083"
+  },
+  {
+    "file": "walk_audit.json",
+    "bytes": 66669,
+    "sha256": "ab2a623d28d6f44fc07ab458b750c77beed78fc04745d7a9a3e43c1926f8dd8f"
+  },
+  {
+    "file": "07_01.bvh",
+    "bytes": 241649,
+    "sha256": "f8d82ea6ed1aab0cb7d9ee680f476b65471e2322e1da84add8a8527a2cb0b9a2"
+  },
+  {
+    "file": "SOURCE_README.txt",
+    "bytes": 13248,
+    "sha256": "8e6fe2e640b3728ef2e43e722cb5ae9cdf0010028c0517c4226ed165f9037930"
+  }
+]
