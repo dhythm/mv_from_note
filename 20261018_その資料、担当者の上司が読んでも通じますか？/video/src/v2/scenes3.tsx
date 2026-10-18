@@ -53,10 +53,10 @@ export function scene10(t: number) {
         </Lay>
       </Cam>
       <Lay o={1 - dive}>
-        <Line t={t} text="話す内容は、" x={LX} y={80} size={110} weight={800} t0={74.4} t1={79.2} slide={14} />
-        <Line t={t} text="その場に合わせて削る。" x={LX} y={215} size={130} t0={74.7} t1={79.25} colorAt={(i) => (i >= 8 && i < 10 ? C.teal : undefined)} slide={-10} />
-        <Line t={t} text="資料には、その先の読み手に" x={LX} y={80} size={104} weight={800} t0={79.4} t1={85.3} slide={14} />
-        <Line t={t} text="必要な情報を残す。" x={LX} y={215} size={130} t0={79.75} t1={85.35} mark={[0, 7, 80.6]} slide={-10} />
+        <Line t={t} text="話す内容は、" x={LX} y={80} size={110} weight={800} t0={74.4} t1={79.2} />
+        <Line t={t} text="その場に合わせて削る。" x={LX} y={215} size={130} t0={74.7} t1={79.25} colorAt={(i) => (i >= 8 && i < 10 ? C.teal : undefined)} />
+        <Line t={t} text="資料には、その先の読み手に" x={LX} y={80} size={104} weight={800} t0={79.4} t1={85.3} />
+        <Line t={t} text="必要な情報を残す。" x={LX} y={215} size={130} t0={79.75} t1={85.35} mark={[0, 7, 80.6]} />
       </Lay>
     </>
   );
@@ -92,7 +92,7 @@ export function scene11(t: number) {
           return <Box key={k} x={x} y={y} w={330} h={120} text={`候補 ${k}`} size={52} kind={isB ? (pick > 0.1 ? 'yellow' : 'plain') : pick > 0.5 ? 'gray' : 'plain'} s={popK(t, 86.4 + i * 0.15) * (isB ? lerp(1, 0.7, pick) : 1)} o={isB ? 1 : lerp(1, 0.55, pick) * (1 - loom * 0.7)} />;
         })}
         {/* B だけが書かれた紙面。理由の欄はない */}
-        <Lay o={clamp((t - 88.9) * 4)}>
+        <Lay o={clamp((t - 88.9) * 4) * (1 - loom * 0.9)}>
           <Paper x={760} y={560} w={390} h={470} lines={3} r={-2}>
             <div style={{position: 'absolute', left: 50, top: 330, width: 280, height: 90}}>
               <svg style={{position: 'absolute', left: 0, top: 0, overflow: 'visible'}} width={280} height={90}>
@@ -105,12 +105,12 @@ export function scene11(t: number) {
         <Bubble x={qx} y={qy} text="他のやり方は？" kind="ask" size={56} tail={1} s={popK(t, 92.0) * qs} ox="50% 50%" />
       </Cam>
       <Lay o={1 - dive}>
-        <Line t={t} text="選んだものは、" x={LX} y={110} size={130} t0={86.5} t1={90.2} slide={14} />
-        <Line t={t} text="書いてある。" x={LX} y={270} size={130} t0={86.8} t1={90.25} slide={-10} />
-        <Line t={t} text="でも、" x={LX} y={110} size={120} weight={800} t0={90.4} t1={93.7} slide={14} />
-        <Line t={t} text="選んだ理由がない。" x={LX} y={260} size={150} t0={90.6} t1={93.75} colorAt={(i) => (i >= 3 && i < 5 ? C.purple : undefined)} slide={-10} />
-        <Line t={t} text="「他のやり方は？」" x={LX} y={110} size={140} color={C.purple} t0={93.8} t1={96.3} slide={14} />
-        <Line t={t} text="が残る。" x={LX} y={280} size={140} t0={94.1} t1={96.35} slide={-10} />
+        <Line t={t} text="選んだものは、" x={LX} y={110} size={130} t0={86.5} t1={90.2} />
+        <Line t={t} text="書いてある。" x={LX} y={270} size={130} t0={86.8} t1={90.25} />
+        <Line t={t} text="でも、" x={LX} y={110} size={120} weight={800} t0={90.4} t1={93.7} />
+        <Line t={t} text="選んだ理由がない。" x={LX} y={260} size={150} t0={90.6} t1={93.75} colorAt={(i) => (i >= 3 && i < 5 ? C.purple : undefined)} />
+        <Line t={t} text="「他のやり方は？」" x={LX} y={110} size={140} color={C.purple} t0={93.8} t1={96.3} />
+        <Line t={t} text="が残る。" x={LX} y={280} size={140} t0={94.1} t1={96.35} />
       </Lay>
     </>
   );
@@ -165,8 +165,8 @@ export function scene12(t: number) {
         <Sprite id="staff-read" x={330} feetY={1040} h={330} opacity={clamp((t - 101.6) * 3)} />
         <Sprite id="boss-read" x={1590} feetY={1040} h={330} opacity={clamp((t - 101.7) * 3)} />
       </Cam>
-      <Line t={t} text="理由は、目的のすぐ近くへ。" x={LX} y={110} size={120} weight={800} t0={97.5} t1={104.3} slide={14} />
-      <Line t={t} text="他の候補も、一言。" x={LX} y={110} size={150} t0={104.5} t1={108.5} mark={[5, 7, 105.2]} slide={14} />
+      <Line t={t} text="理由は、目的のすぐ近くへ。" x={LX} y={110} size={120} weight={800} t0={97.5} t1={104.3} />
+      <Line t={t} text="他の候補も、一言。" x={LX} y={110} size={150} t0={104.5} t1={108.5} mark={[6, 8, 105.2]} />
       <Wipe t={t} a={108.45} b={109.25} color={C.ink} />
     </>
   );
@@ -195,14 +195,14 @@ export function scene13(t: number) {
             return <div key={i} style={{position: 'absolute', left: 1195 + (i % 3) * 160, top: 505 + Math.floor(i / 3) * 125, width: 130, height: 95, background: odd ? C.lilac : C.pale, border: `4px solid ${odd ? C.purple : C.teal}`, borderRadius: 12}} />;
           })}
         </Lay>
-        <Bubble x={lerp(980, 900, sort)} y={lerp(300, 470, sort)} text="なぜ、ここだけ違う？" kind="ask" size={50} s={popK(t, 113.3) * (1 - inExpo(prog(t, 118.2, 118.6)))} />
-        <Bubble x={lerp(1420, 900, sort)} y={lerp(810, 700, sort)} text="境目は？" kind="ask" size={50} tail={1} s={popK(t, 114.1) * (1 - inExpo(prog(t, 118.3, 118.7)))} />
+        <Bubble x={lerp(980, 900, sort)} y={lerp(300, 470, sort)} text="なぜ、ここだけ違う？" kind="ask" size={50} s={popK(t, 113.3) * (1 - inExpo(prog(t, 117.75, 118.15)))} />
+        <Bubble x={lerp(1420, 900, sort)} y={lerp(810, 700, sort)} text="境目は？" kind="ask" size={50} tail={1} s={popK(t, 114.1) * (1 - inExpo(prog(t, 117.85, 118.25)))} />
         <Box x={840} y={420} w={760} h={150} text="資料に足す一行" size={66} kind="yellow" s={popK(t, 118.4)} />
         <Box x={840} y={620} w={760} h={150} text="当日、答えを用意する" size={66} kind="teal" s={popK(t, 118.6)} />
       </Cam>
-      <Line t={t} text="自分が初めて聞くなら？" x={LX} y={110} size={140} t0={109.45} t1={117.1} colorAt={(i) => (i >= 3 && i < 8 ? C.purple : undefined)} slide={10} />
-      <Line t={t} text="足す一行、" x={LX} y={90} size={130} t0={118.8} t1={121.4} mark={[0, 4, 119.4]} slide={14} />
-      <Line t={t} text="備える答えが見える。" x={LX} y={240} size={130} t0={119.05} t1={121.45} colorAt={(i) => (i < 5 ? C.teal : undefined)} slide={-10} />
+      <Line t={t} text="自分が初めて聞くなら？" x={LX} y={110} size={140} t0={109.45} t1={117.1} colorAt={(i) => (i >= 3 && i < 8 ? C.purple : undefined)} />
+      <Line t={t} text="足す一行、" x={LX} y={90} size={130} t0={118.8} t1={121.4} mark={[0, 4, 119.4]} />
+      <Line t={t} text="備える答えが見える。" x={LX} y={240} size={130} t0={119.05} t1={121.45} colorAt={(i) => (i < 5 ? C.teal : undefined)} />
     </Lay>
   );
 }
@@ -251,10 +251,10 @@ export function scene14(t: number) {
         {small(t, 122.6, '上司', 1610, 1022)}
       </Cam>
       <Lay o={1 - pack}>
-        <Line t={t} text="違いをつけるなら、" x={LX} y={90} size={120} weight={800} t0={122.4} t1={125.8} slide={14} />
-        <Line t={t} text="理由を。" x={LX} y={230} size={150} t0={122.7} t1={125.85} colorAt={(i) => (i < 2 ? C.purple : undefined)} slide={-10} />
-        <Line t={t} text="意味のある範囲は区別し、" x={LX} y={90} size={110} weight={800} t0={125.9} t1={132.4} mark={[8, 10, 126.6]} slide={7} />
-        <Line t={t} text="説明できない違いは、そろえる。" x={LX} y={230} size={110} weight={800} t0={129.1} t1={132.45} colorAt={(i) => (i >= 11 && i < 14 ? C.teal : undefined)} slide={-7} />
+        <Line t={t} text="違いをつけるなら、" x={LX} y={90} size={120} weight={800} t0={122.4} t1={125.8} />
+        <Line t={t} text="理由を。" x={LX} y={230} size={150} t0={122.7} t1={125.85} colorAt={(i) => (i < 2 ? C.purple : undefined)} />
+        <Line t={t} text="意味のある範囲は区別し、" x={LX} y={90} size={110} weight={800} t0={125.9} t1={132.4} mark={[8, 10, 126.6]} />
+        <Line t={t} text="説明できない違いは、そろえる。" x={LX} y={230} size={110} weight={800} t0={129.1} t1={132.45} colorAt={(i) => (i >= 11 && i < 14 ? C.teal : undefined)} />
       </Lay>
     </Lay>
   );
@@ -295,10 +295,10 @@ export function scene15(t: number) {
           <Paper x={850} y={680} w={240} h={320} lines={3} marks={[0, 1, 0]} />
         </Lay>
       </Cam>
-      <Line t={t} text="記録も、報告も。" x={LX} y={140} size={190} t0={133.3} t1={137.5} slide={14} />
-      <Line t={t} text="誰の手に渡り、" x={LX} y={80} size={140} t0={137.6} t1={147.25} colorAt={(i) => (i === 0 ? C.purple : undefined)} slide={10} />
-      <Line t={t} text="どこで読まれるか。" x={LX} y={240} size={140} t0={137.9} t1={147.3} colorAt={(i) => (i < 3 ? C.purple : undefined)} slide={-7} />
-      <Line t={t} text="作る前に、決めておく。" x={LX} y={420} size={150} t0={143.0} t1={147.35} mark={[0, 4, 143.7]} slide={7} />
+      <Line t={t} text="記録も、報告も。" x={LX} y={140} size={190} t0={133.3} t1={137.5} />
+      <Line t={t} text="誰の手に渡り、" x={LX} y={80} size={140} t0={137.6} t1={147.25} colorAt={(i) => (i === 0 ? C.purple : undefined)} />
+      <Line t={t} text="どこで読まれるか。" x={LX} y={240} size={140} t0={137.9} t1={147.3} colorAt={(i) => (i < 3 ? C.purple : undefined)} />
+      <Line t={t} text="作る前に、決めておく。" x={LX} y={420} size={150} t0={143.0} t1={147.35} mark={[0, 4, 143.7]} />
       <Iris t={t} a={147.15} b={147.95} cx={970} cy={840} color={C.lime} r0={10} />
     </Lay>
   );

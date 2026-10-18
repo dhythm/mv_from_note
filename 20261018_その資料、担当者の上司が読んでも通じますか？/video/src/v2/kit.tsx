@@ -20,9 +20,9 @@ export const typeBase: React.CSSProperties = {
   position: 'absolute',
 };
 
-// ---- 画面全体（カメラ）。中心を原点に移動・拡縮・回転 ----
+// ---- 画面全体（カメラ）。移動と拡縮だけ（20261018 の評価で、ゆっくりした回転・漂いは外した） ----
 export const Cam: React.FC<{x?: number; y?: number; s?: number; r?: number; ox?: number; oy?: number; children: React.ReactNode}> = ({x = 0, y = 0, s = 1, r = 0, ox = W / 2, oy = H / 2, children}) => (
-  <div style={{position: 'absolute', inset: 0, transform: `translate(${x}px, ${y}px) rotate(${r}deg) scale(${s})`, transformOrigin: `${ox}px ${oy}px`}}>{children}</div>
+  <div style={{position: 'absolute', inset: 0, transform: `translate(${x}px, ${y}px) scale(${s})`, transformOrigin: `${ox}px ${oy}px`}}>{children}</div>
 );
 // 位置・回転・拡縮をまとめた層
 export const Lay: React.FC<{x?: number; y?: number; s?: number; r?: number; ox?: number; oy?: number; o?: number; children: React.ReactNode}> = ({x = 0, y = 0, s = 1, r = 0, ox = W / 2, oy = H / 2, o = 1, children}) =>
@@ -57,18 +57,27 @@ export const Line: React.FC<{
   return (
     <div style={{...typeBase, transform: `translateX(${slide * Math.max(0, Math.min(t, t1) - t0)}px)`, left: x, top: y - size * 0.12, height: size * 1.24, overflow: 'hidden', fontSize: size, fontWeight: weight, color, letterSpacing: `${spacing}em`, ...style}}>
       <div style={{paddingTop: size * 0.12}}>
-        {chars.map((ch, i) => {
-          const kin = outExpo(prog(t, t0 + i * stagger, t0 + i * stagger + dur));
-          const kout = inExpo(prog(t, t1 + i * stagger * 0.6, t1 + i * stagger * 0.6 + outDur));
-          const ty = (1 - kin) * 115 - kout * 115;
-          const inMark = mark && i >= mark[0] && i < mark[1];
-          const mk = inMark ? outExpo(prog(t, mark[2] + (i - mark[0]) * 0.06, mark[2] + (i - mark[0]) * 0.06 + 0.22)) * (1 - inExpo(prog(t, markOut, markOut + 0.3))) : 0;
+        {(() => {
+          const span = (i: number, ch: string) => {
+            const kin = outExpo(prog(t, t0 + i * stagger, t0 + i * stagger + dur));
+            const kout = inExpo(prog(t, t1 + i * stagger * 0.6, t1 + i * stagger * 0.6 + outDur));
+            return (
+              <span key={i} style={{display: 'inline-block', transform: `translateY(${(1 - kin) * 115 - kout * 115}%)`, color: colorAt?.(i) ?? color}}>
+                {ch}
+              </span>
+            );
+          };
+          if (!mark) return chars.map((ch, i) => span(i, ch));
+          const [a, b, at] = mark;
+          const mk = outExpo(prog(t, at, at + 0.35)) * (1 - inExpo(prog(t, markOut, markOut + 0.3)));
           return (
-            <span key={i} style={{display: 'inline-block', transform: `translateY(${ty}%)`, color: colorAt?.(i) ?? color, backgroundImage: mk > 0 ? `linear-gradient(${C.yellow}, ${C.yellow})` : undefined, backgroundSize: `${mk * 100}% 78%`, backgroundPosition: '0 70%', backgroundRepeat: 'no-repeat'}}>
-              {ch}
-            </span>
+            <>
+              {chars.slice(0, a).map((ch, i) => span(i, ch))}
+              <span style={{display: 'inline-block', backgroundImage: `linear-gradient(${C.yellow}, ${C.yellow})`, backgroundSize: `${mk * 100}% 78%`, backgroundPosition: '0 70%', backgroundRepeat: 'no-repeat'}}>{chars.slice(a, b).map((ch, j) => span(a + j, ch))}</span>
+              {chars.slice(b).map((ch, j) => span(b + j, ch))}
+            </>
           );
-        })}
+        })()}
       </div>
     </div>
   );

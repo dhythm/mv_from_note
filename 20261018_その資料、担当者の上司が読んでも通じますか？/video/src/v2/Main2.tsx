@@ -56,8 +56,7 @@ export const Main2: React.FC<{audioTrack?: string}> = ({audioTrack}) => {
   return (
     <AbsoluteFill style={{backgroundColor: C.bg, overflow: 'hidden'}}>
       {ready && !logo && sc ? (
-        // 画面全体のゆっくりした漂い（塊としての動き。文字の形は崩さない）
-        <AbsoluteFill style={{transform: `translate(${16 * Math.sin(t * 0.83)}px, ${10 * Math.sin(t * 0.61 + 1)}px) rotate(${0.45 * Math.sin(t * 0.47 + 2)}deg) scale(${1.015 + 0.012 * Math.sin(t * 0.73)})`}}>{sc[2](t)}</AbsoluteFill>
+        <AbsoluteFill>{sc[2](t)}</AbsoluteFill>
       ) : null}
       {logo ? (
         <AbsoluteFill style={{backgroundColor: LOGO_BG, alignItems: 'center', justifyContent: 'center'}}>

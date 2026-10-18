@@ -35,10 +35,10 @@ export function scene1(t: number) {
           <div style={{...typeBase, left: box.bossX - 30, top: feet + 14, fontSize: 30, fontWeight: 700, color: C.sub, opacity: clamp((t - 0.9) * 3)}}>上司</div>
         </div>
         {/* 問い */}
-        <Line t={t} text="その資料、" x={LX} y={120} size={120} weight={800} t0={0.15} t1={out} slide={14} />
-        <Line t={t} text="担当者の上司が" x={LX} y={270} size={166} t0={0.85} t1={out + 0.05} mark={[4, 6, 2.3]} slide={8} />
-        <Line t={t} text="読んでも" x={LX} y={460} size={166} t0={2.55} t1={out + 0.1} slide={4} />
-        <Line t={t} text="通じますか？" x={LX} y={670} size={180} color={C.purple} t0={3.55} t1={out + 0.15} stagger={0.04} slide={16} />
+        <Line t={t} text="その資料、" x={LX} y={120} size={120} weight={800} t0={0.15} t1={out} />
+        <Line t={t} text="担当者の上司が" x={LX} y={270} size={166} t0={0.85} t1={out + 0.05} mark={[4, 6, 2.3]} />
+        <Line t={t} text="読んでも" x={LX} y={460} size={166} t0={2.55} t1={out + 0.1} />
+        <Line t={t} text="通じますか？" x={LX} y={670} size={180} color={C.purple} t0={3.55} t1={out + 0.15} stagger={0.04} />
       </Cam>
       {/* 「？」から紫の円 */}
       <Iris t={t} a={7.35} b={8.0} cx={LX + 5.45 * 180} cy={670 + 92} color={C.purple} r0={20} />
@@ -64,8 +64,8 @@ export function scene2(t: number) {
       <Cam {...cam}>
         {!ink && (
           <>
-            <Line t={t} text="レビュー" x={LX} y={260} size={260} color={C.bg} t0={8.15} t1={10.2} slide={10} />
-            <Line t={t} text="してほしい。" x={LX} y={560} size={150} weight={800} color={C.bg} t0={8.55} t1={10.25} slide={30} />
+            <Line t={t} text="レビュー" x={LX} y={260} size={260} color={C.bg} t0={8.15} t1={10.2} />
+            <Line t={t} text="してほしい。" x={LX} y={560} size={150} weight={800} color={C.bg} t0={8.55} t1={10.25} />
             {/* 依頼された資料 */}
             <div style={{position: 'absolute', inset: 0, transform: `translate(${lerp(700, 0, outExpo(prog(t, 8.3, 9.0))) - inExpo(prog(t, 10.2, 10.6)) * 1200}px, 0) rotate(${lerp(18, -6, outExpo(prog(t, 8.3, 9.0)))}deg)`, transformOrigin: '1500px 540px'}}>
               <Paper x={1300} y={230} w={420} h={560} marks={[]} />
@@ -75,13 +75,13 @@ export function scene2(t: number) {
         {ink && (
           <>
             <div style={{position: 'absolute', inset: 0, transform: `translate(${-shrink * 20}px, ${-shrink * 160}px) scale(${lerp(1, 0.48, shrink)})`, transformOrigin: `${LX}px 120px`}}>
-              <Line t={t} text="まず聞く。" x={LX} y={380} size={250} color={C.bg} t0={10.62} t1={14.4} slide={30} />
+              <Line t={t} text="まず聞く。" x={LX} y={380} size={250} color={C.bg} t0={10.62} t1={14.4} />
             </div>
             {/* 誰に渡る資料？ */}
             <div style={{position: 'absolute', inset: 0, transform: `scale(${1 + zoomWho * 14})`, transformOrigin: `${whoX + 230}px ${whoY + 250}px`}}>
               <Line t={t} text="誰" x={whoX} y={whoY} size={500} color={C.yellow} t0={12.0} dur={0.5} />
-              <Line t={t} text="に渡る" x={whoX + 520} y={whoY + 150} size={150} color={C.bg} t0={12.3} t1={14.3} slide={-14} />
-              <Line t={t} text="資料？" x={whoX + 520} y={whoY + 320} size={150} color={C.bg} t0={12.45} t1={14.35} slide={14} />
+              <Line t={t} text="に渡る" x={whoX + 520} y={whoY + 150} size={150} color={C.bg} t0={12.3} t1={14.3} />
+              <Line t={t} text="資料？" x={whoX + 520} y={whoY + 320} size={150} color={C.bg} t0={12.45} t1={14.35} />
             </div>
             {/* 行き先の二人（明るい札の上） */}
             <div style={{position: 'absolute', left: 1340, top: 300, width: 470, height: 560, transform: `translateX(${(1 - card) * 700 + inExpo(prog(t, 14.2, 14.6)) * 800}px)`}}>
@@ -141,9 +141,9 @@ export function scene3(t: number) {
         <Label t={t} a={19.75} text="説明は？" x={640} y={470} size={46} />
         <Label t={t} a={20.1} text="理由は？" x={640} y={760} size={46} />
         {/* 決まると、直す所が見えてくる。 */}
-        <Line t={t} text="決まると、" x={990} y={330} size={104} weight={800} t0={18.25} t1={21.3} slide={-12} />
-        <Line t={t} text="直す所が" x={990} y={480} size={150} t0={18.6} t1={21.32} mark={[0, 3, 19.35]} slide={10} />
-        <Line t={t} text="見えてくる。" x={990} y={660} size={150} t0={19.0} t1={21.34} slide={-10} />
+        <Line t={t} text="決まると、" x={990} y={330} size={104} weight={800} t0={18.25} t1={21.3} />
+        <Line t={t} text="直す所が" x={990} y={480} size={150} t0={18.6} t1={21.32} mark={[0, 3, 19.35]} />
+        <Line t={t} text="見えてくる。" x={990} y={660} size={150} t0={19.0} t1={21.34} />
       </Cam>
       <Wipe t={t} a={21.3} b={22.1} color={C.ink} />
     </>

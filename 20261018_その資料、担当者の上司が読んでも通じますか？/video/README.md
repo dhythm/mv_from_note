@@ -17,7 +17,7 @@
 
 1. Node.js・Python 3・ffmpeg を用意し、`npm ci`、`python3 -m venv .venv && .venv/bin/pip install -r requirements.txt`、`npm run prepare:assets`（フォント・ロゴをリポジトリ内の原本から `public/` へコピー）。
 2. 素材: `sh tools/extract_clips.sh`（採用動画3本の透過WebM → `public/clips/<id>/NNNN.png`。透過を保つため VP9 デコーダを明示）、`.venv/bin/python tools/crop_sprites.py`（共通キャラクター参照 → `public/sprites/` の10姿勢）。どちらも企画側の原本から再生成できるため Git 管理外。
-3. BGM: `.venv/bin/python audio/bgm.py` → `audio/bgm.wav`、`public/bgm.m4a`（固定シード）。
+3. BGM: `.venv/bin/python audio/bgm.py` → `audio/bgm.wav`、`public/bgm.m4a`（固定シード）。ナレーション: `.venv/bin/python audio/tts.py`（ElevenLabs `eleven_v4`。原稿 `audio/narration.json` が変わった区切りだけ生成。キーは環境変数か `.env.local`）→ `audio/voice/*.mp3`。混ぜる: `.venv/bin/python audio/mix.py` → `public/mix.m4a`（v2 の `Main2` が使う。声の間は BGM を 9 dB 下げる）。
 4. 全編: `V2=1 node render.mjs full` → `out/final.mp4`（初版は `V2` なし）（スチル `node render.mjs stills 0.4 10,20`、区間 `node render.mjs range S E name 0.5 [1]`）。
 5. 点検: `npx tsc --noEmit`、`.venv/bin/python tools/review.py out/final.mp4`（1秒ごとの一覧と動きの量）、`.venv/bin/python tools/motion.py <区間動画> <開始秒>`、`.venv/bin/python tools/check_logo.py` と `node tools/logo_compare.mjs`（エンドロゴを原本SVGと照合）。
 

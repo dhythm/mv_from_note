@@ -10,7 +10,7 @@ export const RemotionRoot: React.FC = () => (
     {/* 完成版（BGMつき） */}
     <Composition id="Main" component={Main} defaultProps={{audioTrack: 'bgm.m4a'}} durationInFrames={TOTAL_FRAMES} fps={FPS} width={W} height={H} />
     {/* v2: タイポグラフィー中心の作り直し */}
-    <Composition id="Main2" component={Main2} defaultProps={{audioTrack: 'bgm.m4a'}} durationInFrames={TOTAL_FRAMES} fps={FPS} width={W} height={H} />
+    <Composition id="Main2" component={Main2} defaultProps={{audioTrack: 'mix.m4a'}} durationInFrames={TOTAL_FRAMES} fps={FPS} width={W} height={H} />
     <Composition id="Silent2" component={Main2} defaultProps={{}} durationInFrames={TOTAL_FRAMES} fps={FPS} width={W} height={H} />
     {/* 映像のみ（確認用） */}
     <Composition id="Silent" component={Main} defaultProps={{}} durationInFrames={TOTAL_FRAMES} fps={FPS} width={W} height={H} />

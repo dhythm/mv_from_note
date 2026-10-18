@@ -1,0 +1,182 @@
+{
+ "requests": 22,
+ "characters": 625,
+ "segments": {
+  "01": {
+   "hash": "aa1355b27c9a",
+   "text": "その資料、担当者の上司が読んでも、通じますか？",
+   "speed": 1.0,
+   "duration": 4.24,
+   "room": 7.0,
+   "fits": true
+  },
+  "02a": {
+   "hash": "1800c1771fc7",
+   "text": "レビューしてほしい、と頼まれたら。",
+   "speed": 1.0,
+   "duration": 2.64,
+   "room": 2.2,
+   "fits": false
+  },
+  "02b": {
+   "hash": "32bb02217841",
+   "text": "まず聞きます。この資料は、誰に渡るのか。",
+   "speed": 1.0,
+   "duration": 4.16,
+   "room": 3.75,
+   "fits": false
+  },
+  "03": {
+   "hash": "f0ea67982f65",
+   "text": "誰が読むかが決まると、直す所が見えてきます。",
+   "speed": 1.0,
+   "duration": 3.68,
+   "room": 5.9,
+   "fits": true
+  },
+  "04": {
+   "hash": "f312d7f84a27",
+   "text": "その場では、資料は通じます。参加者は経緯を知っていて、口頭で言葉も足せるからです。",
+   "speed": 1.0,
+   "duration": 7.2,
+   "room": 7.1,
+   "fits": false
+  },
+  "05": {
+   "hash": "1445b7324bb3",
+   "text": "でも資料は、その場で終わるとは限りません。担当者から、その上司へ渡ります。",
+   "speed": 1.0,
+   "duration": 6.24,
+   "room": 6.9,
+   "fits": true
+  },
+  "06": {
+   "hash": "f349bcba2556",
+   "text": "上司は思います。なぜ、このやり方なのか。その理由は、資料にありますか？",
+   "speed": 1.0,
+   "duration": 6.56,
+   "room": 7.4,
+   "fits": true
+  },
+  "07a": {
+   "hash": "1b320d095656",
+   "text": "資料に欠けがあると、担当者も説明できません。",
+   "speed": 1.0,
+   "duration": 3.76,
+   "room": 5.1,
+   "fits": true
+  },
+  "07b": {
+   "hash": "68220ce217c5",
+   "text": "そこで、話が止まってしまいます。",
+   "speed": 1.0,
+   "duration": 2.64,
+   "room": 3.3,
+   "fits": true
+  },
+  "08": {
+   "hash": "20eeca591cb0",
+   "text": "読み手が、その言葉を知っているとは限りません。初めて出てくる言葉には、一言そえておきます。",
+   "speed": 1.0,
+   "duration": 7.28,
+   "room": 8.9,
+   "fits": true
+  },
+  "09": {
+   "hash": "b85cc04b16ba",
+   "text": "知っている相手なら、説明は飛ばせます。でも、必要なページまで消さなくていい。",
+   "speed": 1.0,
+   "duration": 5.92,
+   "room": 6.5,
+   "fits": true
+  },
+  "10": {
+   "hash": "47415d5aae95",
+   "text": "話す内容は、その場の相手に合わせて削る。資料には、その先の読み手に必要な情報を残す。この二つを分けて考えます。",
+   "speed": 1.0,
+   "duration": 10.32,
+   "room": 10.9,
+   "fits": true
+  },
+  "11": {
+   "hash": "88a80e2055cb",
+   "text": "選んだ方法は書いてある。でも、それを選んだ理由がない。すると、他のやり方は？という疑問が残ります。",
+   "speed": 1.0,
+   "duration": 8.96,
+   "room": 9.9,
+   "fits": true
+  },
+  "12a": {
+   "hash": "e5320270e083",
+   "text": "理由は、目的のすぐ近くに置きます。",
+   "speed": 1.0,
+   "duration": 3.36,
+   "room": 3.7,
+   "fits": true
+  },
+  "12b": {
+   "hash": "b66984e3b8a9",
+   "text": "目的、選んだ理由、進め方。",
+   "speed": 1.0,
+   "duration": 3.44,
+   "room": 2.5,
+   "fits": false
+  },
+  "12c": {
+   "hash": "7d4fa385a6ec",
+   "text": "他の候補にも、一言ふれておきます。",
+   "speed": 1.0,
+   "duration": 2.8,
+   "room": 3.8,
+   "fits": true
+  },
+  "13a": {
+   "hash": "db491fd4c033",
+   "text": "自分が初めて聞くなら、どこで引っかかるか。なぜ、ここだけ違うのか。境目はどこか。",
+   "speed": 1.0,
+   "duration": 7.52,
+   "room": 7.7,
+   "fits": true
+  },
+  "13b": {
+   "hash": "d2ed46eb055b",
+   "text": "資料に足す一行と、当日に備える答えに分けます。",
+   "speed": 1.0,
+   "duration": 4.48,
+   "room": 3.8,
+   "fits": false
+  },
+  "14": {
+   "hash": "835fef580b1c",
+   "text": "色や線で違いをつけるなら、理由を持たせる。意味のある範囲は区別して、説明できない違いは、そろえます。",
+   "speed": 1.0,
+   "duration": 8.8,
+   "room": 9.9,
+   "fits": true
+  },
+  "15a": {
+   "hash": "2a9058f168a9",
+   "text": "記録も、報告も、同じです。",
+   "speed": 1.0,
+   "duration": 2.96,
+   "room": 4.0,
+   "fits": true
+  },
+  "15b": {
+   "hash": "cc9392f866ad",
+   "text": "誰の手に渡り、どこで読まれるのか。",
+   "speed": 1.0,
+   "duration": 3.12,
+   "room": 5.1,
+   "fits": true
+  },
+  "15c": {
+   "hash": "4d53f8b1944c",
+   "text": "作る前に、決めておきましょう。",
+   "speed": 1.0,
+   "duration": 2.24,
+   "room": 4.1,
+   "fits": true
+  }
+ }
+}
