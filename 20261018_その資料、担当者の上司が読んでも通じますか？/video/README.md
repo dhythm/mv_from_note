@@ -2,14 +2,23 @@
 
 [企画書](../plan.html) に従って作った動画のプロジェクト一式。完成版は `../renders/final.mp4`（1920×1080・30fps・153秒＝4590フレーム、H.264／AAC 48kHz ステレオ。Git 管理外）。
 
-20261015 の制作プロジェクト（three.js の舞台・文字の部品・エンドロゴ・書き出しと点検のスクリプト）を土台に、配色・カット・素材の再生・BGM をこの作品用に作り直した。
+**現行版は `src/v2/`（タイポグラフィー中心、DOM／CSS）。** 書き出しは `V2=1 node render.mjs ...`（コンポジション `Main2`／`Silent2`）。初版（three.js、`src/cuts*.tsx`・`src/parts.tsx`、コンポジション `Main`／`Silent`）は比較のために残している。ユーザーの評価で不採用になった理由は `../feedback.md`。
+
+### v2 の構成
+
+- `src/v2/Main2.tsx`: 場面の時刻表と、画面全体のゆっくりした漂い。148 秒からエンドロゴ
+- `src/v2/kit.tsx`: 文字と図形の部品。`Line`（行のマスク表示・詰め組・文字ごとの黄色の印・行ごとの流れ）、`Cam`／`Lay`（層の移動・拡縮・回転）、`Wipe`／`Iris`（色の面の転換）、`ClipImg`／`Sprite`（採用動画と静止姿勢）、`Paper`、`Box`、`DashRect`、`Bubble`（本体と尾を一つの輪郭で描く）、`ArrowSvg`（線と先端を一体で描く）
+- `src/v2/scenes1.tsx`（01–03）、`scenes2.tsx`（04–09）、`scenes3.tsx`（10–15）
+- 文字の層と図・人物の層を分け、カメラの寄りは図・人物の層にだけ掛ける
+
+以下は初版と共通の再現手順と、初版の構成。
 
 ## 再現手順（このフォルダで）
 
 1. Node.js・Python 3・ffmpeg を用意し、`npm ci`、`python3 -m venv .venv && .venv/bin/pip install -r requirements.txt`、`npm run prepare:assets`（フォント・ロゴをリポジトリ内の原本から `public/` へコピー）。
 2. 素材: `sh tools/extract_clips.sh`（採用動画3本の透過WebM → `public/clips/<id>/NNNN.png`。透過を保つため VP9 デコーダを明示）、`.venv/bin/python tools/crop_sprites.py`（共通キャラクター参照 → `public/sprites/` の10姿勢）。どちらも企画側の原本から再生成できるため Git 管理外。
 3. BGM: `.venv/bin/python audio/bgm.py` → `audio/bgm.wav`、`public/bgm.m4a`（固定シード）。
-4. 全編: `node render.mjs full` → `out/final.mp4`（スチル `node render.mjs stills 0.4 10,20`、区間 `node render.mjs range S E name 0.5 [1]`）。
+4. 全編: `V2=1 node render.mjs full` → `out/final.mp4`（初版は `V2` なし）（スチル `node render.mjs stills 0.4 10,20`、区間 `node render.mjs range S E name 0.5 [1]`）。
 5. 点検: `npx tsc --noEmit`、`.venv/bin/python tools/review.py out/final.mp4`（1秒ごとの一覧と動きの量）、`.venv/bin/python tools/motion.py <区間動画> <開始秒>`、`.venv/bin/python tools/check_logo.py` と `node tools/logo_compare.mjs`（エンドロゴを原本SVGと照合）。
 
 ## 構成
@@ -22,7 +31,7 @@
 
 ## three.js の採否
 
-採用（@remotion/three）。文字・人物・資料・札を同じ px 座標の3D空間に置き、カメラの移動・ロール・ズームと文字層の独立した運動で画面全体を動かす。会議の場の後退（05）、紙面への寄り（06）、二つの空間の開き（10）、候補の巡回（11）、理由の札の横断（12）は奥行きを使う。すべての動きは `useCurrentFrame` から計算し、実時間・順序依存の乱数は使っていない。
+現行版（v2）は不採用。文字を主役にするために行のマスク・詰め組・くっきりした字面・文字ごとの印が必要で、DOM／CSS の方が品質と確実さで勝ったため。以下は初版の記録。初版は採用（@remotion/three）。文字・人物・資料・札を同じ px 座標の3D空間に置き、カメラの移動・ロール・ズームと文字層の独立した運動で画面全体を動かす。会議の場の後退（05）、紙面への寄り（06）、二つの空間の開き（10）、候補の巡回（11）、理由の札の横断（12）は奥行きを使う。すべての動きは `useCurrentFrame` から計算し、実時間・順序依存の乱数は使っていない。
 
 ## 素材の使い方
 

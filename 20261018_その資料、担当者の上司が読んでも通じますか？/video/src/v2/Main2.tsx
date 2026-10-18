@@ -6,6 +6,8 @@ import {C, FPS, LOGO_START} from '../lib/anim';
 import {FONT} from '../components/prims';
 import {LOGO_BG, Logo} from '../components/Logo';
 import {scene1, scene2, scene3} from './scenes1';
+import {scene4, scene5, scene6, scene7, scene8, scene9} from './scenes2';
+import {scene10, scene11, scene12, scene13, scene14, scene15} from './scenes3';
 
 function useFonts() {
   const [handle] = useState(() => delayRender('load fonts'));
@@ -31,6 +33,18 @@ const SCENES: [number, number, (t: number) => React.ReactNode][] = [
   [0, 8, scene1],
   [8, 15, scene2],
   [15, 22, scene3],
+  [22, 30, scene4],
+  [30, 38, scene5],
+  [38, 47, scene6],
+  [47, 57, scene7],
+  [57, 67, scene8],
+  [67, 74, scene9],
+  [74, 86, scene10],
+  [86, 97, scene11],
+  [97, 109, scene12],
+  [109, 122, scene13],
+  [122, 133, scene14],
+  [133, 148, scene15],
 ];
 
 export const Main2: React.FC<{audioTrack?: string}> = ({audioTrack}) => {
@@ -41,7 +55,10 @@ export const Main2: React.FC<{audioTrack?: string}> = ({audioTrack}) => {
   const sc = SCENES.find(([a, b]) => t >= a && t < b);
   return (
     <AbsoluteFill style={{backgroundColor: C.bg, overflow: 'hidden'}}>
-      {ready && !logo && sc ? sc[2](t) : null}
+      {ready && !logo && sc ? (
+        // 画面全体のゆっくりした漂い（塊としての動き。文字の形は崩さない）
+        <AbsoluteFill style={{transform: `translate(${16 * Math.sin(t * 0.83)}px, ${10 * Math.sin(t * 0.61 + 1)}px) rotate(${0.45 * Math.sin(t * 0.47 + 2)}deg) scale(${1.015 + 0.012 * Math.sin(t * 0.73)})`}}>{sc[2](t)}</AbsoluteFill>
+      ) : null}
       {logo ? (
         <AbsoluteFill style={{backgroundColor: LOGO_BG, alignItems: 'center', justifyContent: 'center'}}>
           <Logo tau={t - LOGO_START} width={1500} />

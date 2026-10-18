@@ -21,9 +21,14 @@ export const typeBase: React.CSSProperties = {
 };
 
 // ---- 画面全体（カメラ）。中心を原点に移動・拡縮・回転 ----
-export const Cam: React.FC<{x?: number; y?: number; s?: number; r?: number; children: React.ReactNode}> = ({x = 0, y = 0, s = 1, r = 0, children}) => (
-  <div style={{position: 'absolute', inset: 0, transform: `translate(${x}px, ${y}px) rotate(${r}deg) scale(${s})`, transformOrigin: '50% 50%'}}>{children}</div>
+export const Cam: React.FC<{x?: number; y?: number; s?: number; r?: number; ox?: number; oy?: number; children: React.ReactNode}> = ({x = 0, y = 0, s = 1, r = 0, ox = W / 2, oy = H / 2, children}) => (
+  <div style={{position: 'absolute', inset: 0, transform: `translate(${x}px, ${y}px) rotate(${r}deg) scale(${s})`, transformOrigin: `${ox}px ${oy}px`}}>{children}</div>
 );
+// 位置・回転・拡縮をまとめた層
+export const Lay: React.FC<{x?: number; y?: number; s?: number; r?: number; ox?: number; oy?: number; o?: number; children: React.ReactNode}> = ({x = 0, y = 0, s = 1, r = 0, ox = W / 2, oy = H / 2, o = 1, children}) =>
+  o <= 0.001 ? null : (
+    <div style={{position: 'absolute', inset: 0, opacity: o, transform: `translate(${x}px, ${y}px) rotate(${r}deg) scale(${s})`, transformOrigin: `${ox}px ${oy}px`}}>{children}</div>
+  );
 
 // ---- 行のマスク表示 ----
 // t0 から1文字ずつマスクの下からせり上がり、t1 からマスクの上へ抜ける。文字の形は崩さない。
@@ -173,3 +178,55 @@ export const Label: React.FC<{t: number; a: number; text: string; x: number; y: 
     </div>
   );
 };
+
+// ---- 札（角丸の箱＋文字）。kind で意味の色 ----
+export type BoxKind = 'plain' | 'yellow' | 'teal' | 'purple' | 'gray' | 'ink';
+const BOX: Record<BoxKind, {fill: string; border: string; text: string}> = {
+  plain: {fill: C.card, border: C.ink, text: C.ink},
+  yellow: {fill: C.yellow, border: C.yellowDeep, text: C.ink},
+  teal: {fill: C.pale, border: C.teal, text: C.teal},
+  purple: {fill: C.lilac, border: C.purple, text: C.purple},
+  gray: {fill: '#eef2f5', border: C.line, text: C.gray},
+  ink: {fill: C.ink, border: C.ink, text: C.bg},
+};
+export const Box: React.FC<{x: number; y: number; w: number; h: number; text?: string; size?: number; kind?: BoxKind; s?: number; r?: number; o?: number; dashed?: boolean; march?: number; style?: React.CSSProperties; children?: React.ReactNode}> = ({x, y, w, h, text, size = 56, kind = 'plain', s = 1, r = 0, o = 1, dashed = false, march = 0, style, children}) => {
+  if (o <= 0.001 || s <= 0.001) return null;
+  const st = BOX[kind];
+  return (
+    <div style={{position: 'absolute', left: x, top: y, width: w, height: h, opacity: o, transform: `rotate(${r}deg) scale(${s})`, ...style}}>
+      <div style={{position: 'absolute', inset: 0, background: st.fill, borderRadius: Math.min(22, h * 0.22), border: dashed ? 'none' : `4px solid ${st.border}`}} />
+      {dashed && <DashRect w={w} h={h} color={st.border} march={march} />}
+      {text && <div style={{...typeBase, inset: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: size, fontWeight: 900, color: st.text}}>{text}</div>}
+      {children}
+    </div>
+  );
+};
+// 破線の枠（不足）。march で破線が流れる
+export const DashRect: React.FC<{w: number; h: number; color?: string; march?: number; sw?: number}> = ({w, h, color = C.purple, march = 0, sw = 5}) => (
+  <svg style={{position: 'absolute', left: 0, top: 0, overflow: 'visible'}} width={w} height={h}>
+    <rect x={sw / 2} y={sw / 2} width={w - sw} height={h - sw} rx={Math.min(22, h * 0.22)} fill="none" stroke={color} strokeWidth={sw} strokeDasharray="22 14" strokeDashoffset={-march} />
+  </svg>
+);
+// 吹き出し（本体と尾を一つの輪郭で描く）。tail: 尾の向き（-1 左下 / 1 右下）
+export const Bubble: React.FC<{x: number; y: number; text: string; size?: number; kind?: 'talk' | 'ask'; tail?: number; s?: number; o?: number; w?: number; ox?: string}> = ({x, y, text, size = 46, kind = 'talk', tail = -1, s = 1, o = 1, w, ox = '50% 100%'}) => {
+  if (o <= 0.001 || s <= 0.001) return null;
+  const color = kind === 'ask' ? C.purple : C.teal;
+  const fill = kind === 'ask' ? C.lilac : C.pale;
+  const ww = w ?? Array.from(text).length * size * 0.96 + size * 1.4;
+  const hh = size * 2.0;
+  const r = hh / 2;
+  const tx = tail < 0 ? ww * 0.24 : ww * 0.76;
+  const th = size * 0.75;
+  const tw = size * 0.6;
+  const d = `M${r},0 H${ww - r} A${r},${r} 0 0 1 ${ww - r},${hh} H${tx + tw / 2} L${tx + (tail < 0 ? -tw * 0.7 : tw * 0.7)},${hh + th} L${tx - tw / 2},${hh} H${r} A${r},${r} 0 0 1 ${r},0 Z`;
+  return (
+    <div style={{position: 'absolute', left: x, top: y, width: ww, height: hh + th, opacity: o, transform: `scale(${s})`, transformOrigin: ox}}>
+      <svg style={{position: 'absolute', left: 0, top: 0, overflow: 'visible'}} width={ww} height={hh + th}>
+        <path d={d} fill={fill} stroke={color} strokeWidth={4} strokeLinejoin="round" />
+      </svg>
+      <div style={{...typeBase, left: 0, top: 0, width: ww, height: hh, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: size, fontWeight: 800, color}}>{text}</div>
+    </div>
+  );
+};
+// 登場の拡大（outBack、行き過ぎは小さく）
+export const popK = (t: number, a: number, d = 0.4) => clamp(ease.outBack(prog(t, a, a + d), 1.4), 0, 1.15);
