@@ -114,7 +114,7 @@ export function scene6(t: number) {
       <Cam {...cam}>
         <Lay x={peopleOut * 1300}>
           <ClipImg id="question" f={f} staffX={S6.staffX} feetY={S6.feet} h={S6.h} />
-          <Bubble x={b.bossX + 40} y={S6.feet - S6.h - 260} text="？" size={70} kind="ask" s={popK(t, 40.1)} ox="25% 100%" />
+          <Bubble x={b.bossX - 20} y={S6.feet - S6.h - 215} text="？" size={70} kind="ask" s={popK(t, 40.1)} ox="25% 100%" />
           {small(t, 38.9, '担当者', S6.staffX - 45, S6.feet + 14)}
           {small(t, 38.9, '上司', b.bossX - 30, S6.feet + 14)}
         </Lay>

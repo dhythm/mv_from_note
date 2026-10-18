@@ -221,13 +221,22 @@ export const Bubble: React.FC<{x: number; y: number; text: string; size?: number
   if (o <= 0.001 || s <= 0.001) return null;
   const color = kind === 'ask' ? C.purple : C.teal;
   const fill = kind === 'ask' ? C.lilac : C.pale;
-  const ww = w ?? Array.from(text).length * size * 0.96 + size * 1.4;
   const hh = size * 2.0;
-  const r = hh / 2;
-  const tx = tail < 0 ? ww * 0.24 : ww * 0.76;
   const th = size * 0.75;
   const tw = size * 0.6;
-  const d = `M${r},0 H${ww - r} A${r},${r} 0 0 1 ${ww - r},${hh} H${tx + tw / 2} L${tx + (tail < 0 ? -tw * 0.7 : tw * 0.7)},${hh + th} L${tx - tw / 2},${hh} H${r} A${r},${r} 0 0 1 ${r},0 Z`;
+  // 角の丸みは幅に合わせて小さくし、尾の付け根は必ず下辺のまっすぐな部分に置く（丸みの下に入ると段差になる）
+  const ww0 = w ?? Array.from(text).length * size * 0.96 + size * 1.4;
+  const cr = Math.min(hh / 2, ww0 * 0.3);
+  const ww = Math.max(ww0, cr * 2 + tw + 16);
+  const lo = cr + tw / 2 + 4;
+  const hi = ww - cr - tw / 2 - 4;
+  const tx = clamp(tail < 0 ? ww * 0.3 : ww * 0.7, lo, hi);
+  const tip = tx + (tail < 0 ? -1 : 1) * tw * 0.75;
+  const d = [
+    `M${cr},0 H${ww - cr} A${cr},${cr} 0 0 1 ${ww},${cr} V${hh - cr} A${cr},${cr} 0 0 1 ${ww - cr},${hh}`,
+    tail < 0 ? `H${tx + tw / 2} L${tip},${hh + th} L${tx - tw / 2},${hh}` : `H${tx + tw / 2} L${tip},${hh + th} L${tx - tw / 2},${hh}`,
+    `H${cr} A${cr},${cr} 0 0 1 0,${hh - cr} V${cr} A${cr},${cr} 0 0 1 ${cr},0 Z`,
+  ].join(' ');
   return (
     <div style={{position: 'absolute', left: x, top: y, width: ww, height: hh + th, opacity: o, transform: `scale(${s})`, transformOrigin: ox}}>
       <svg style={{position: 'absolute', left: 0, top: 0, overflow: 'visible'}} width={ww} height={hh + th}>
