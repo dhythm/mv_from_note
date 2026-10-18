@@ -216,8 +216,8 @@ export const DashRect: React.FC<{w: number; h: number; color?: string; march?: n
     <rect x={sw / 2} y={sw / 2} width={w - sw} height={h - sw} rx={Math.min(22, h * 0.22)} fill="none" stroke={color} strokeWidth={sw} strokeDasharray="22 14" strokeDashoffset={-march} />
   </svg>
 );
-// 吹き出し（本体と尾を一つの輪郭で描く）。tail: 尾の向き（-1 左下 / 1 右下）
-export const Bubble: React.FC<{x: number; y: number; text: string; size?: number; kind?: 'talk' | 'ask'; tail?: number; s?: number; o?: number; w?: number; ox?: string}> = ({x, y, text, size = 46, kind = 'talk', tail = -1, s = 1, o = 1, w, ox = '50% 100%'}) => {
+// 吹き出し（本体と尾を一つの輪郭で描く）。尾は話し手・指す物の方へ向ける。tail: 尾の向き（-1 左 / 1 右）、up: 上辺から尾を出す、at: 尾の付け根の位置（幅に対する割合）
+export const Bubble: React.FC<{x: number; y: number; text: string; size?: number; kind?: 'talk' | 'ask'; tail?: number; up?: boolean; at?: number; s?: number; o?: number; w?: number; ox?: string}> = ({x, y, text, size = 46, kind = 'talk', tail = -1, up = false, at, s = 1, o = 1, w, ox = '50% 100%'}) => {
   if (o <= 0.001 || s <= 0.001) return null;
   const color = kind === 'ask' ? C.purple : C.teal;
   const fill = kind === 'ask' ? C.lilac : C.pale;
@@ -230,13 +230,15 @@ export const Bubble: React.FC<{x: number; y: number; text: string; size?: number
   const ww = Math.max(ww0, cr * 2 + tw + 16);
   const lo = cr + tw / 2 + 4;
   const hi = ww - cr - tw / 2 - 4;
-  const tx = clamp(tail < 0 ? ww * 0.3 : ww * 0.7, lo, hi);
+  const tx = clamp(at !== undefined ? ww * at : tail < 0 ? ww * 0.3 : ww * 0.7, lo, hi);
   const tip = tx + (tail < 0 ? -1 : 1) * tw * 0.75;
-  const d = [
-    `M${cr},0 H${ww - cr} A${cr},${cr} 0 0 1 ${ww},${cr} V${hh - cr} A${cr},${cr} 0 0 1 ${ww - cr},${hh}`,
-    tail < 0 ? `H${tx + tw / 2} L${tip},${hh + th} L${tx - tw / 2},${hh}` : `H${tx + tw / 2} L${tip},${hh + th} L${tx - tw / 2},${hh}`,
-    `H${cr} A${cr},${cr} 0 0 1 0,${hh - cr} V${cr} A${cr},${cr} 0 0 1 ${cr},0 Z`,
-  ].join(' ');
+  const d = up
+    ? [`M${cr},0 H${tx - tw / 2} L${tip},${-th} L${tx + tw / 2},0 H${ww - cr} A${cr},${cr} 0 0 1 ${ww},${cr} V${hh - cr} A${cr},${cr} 0 0 1 ${ww - cr},${hh}`, `H${cr} A${cr},${cr} 0 0 1 0,${hh - cr} V${cr} A${cr},${cr} 0 0 1 ${cr},0 Z`].join(' ')
+    : [
+        `M${cr},0 H${ww - cr} A${cr},${cr} 0 0 1 ${ww},${cr} V${hh - cr} A${cr},${cr} 0 0 1 ${ww - cr},${hh}`,
+        `H${tx + tw / 2} L${tip},${hh + th} L${tx - tw / 2},${hh}`,
+        `H${cr} A${cr},${cr} 0 0 1 0,${hh - cr} V${cr} A${cr},${cr} 0 0 1 ${cr},0 Z`,
+      ].join(' ');
   return (
     <div style={{position: 'absolute', left: x, top: y, width: ww, height: hh + th, opacity: o, transform: `scale(${s})`, transformOrigin: ox}}>
       <svg style={{position: 'absolute', left: 0, top: 0, overflow: 'visible'}} width={ww} height={hh + th}>

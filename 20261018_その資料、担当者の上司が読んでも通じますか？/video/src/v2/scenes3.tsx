@@ -195,8 +195,8 @@ export function scene13(t: number) {
             return <div key={i} style={{position: 'absolute', left: 1195 + (i % 3) * 160, top: 505 + Math.floor(i / 3) * 125, width: 130, height: 95, background: odd ? C.lilac : C.pale, border: `4px solid ${odd ? C.purple : C.teal}`, borderRadius: 12}} />;
           })}
         </Lay>
-        <Bubble x={lerp(980, 900, sort)} y={lerp(300, 470, sort)} text="なぜ、ここだけ違う？" kind="ask" size={50} s={popK(t, 113.3) * (1 - inExpo(prog(t, 117.75, 118.15)))} />
-        <Bubble x={lerp(1420, 900, sort)} y={lerp(810, 700, sort)} text="境目は？" kind="ask" size={50} tail={1} s={popK(t, 114.1) * (1 - inExpo(prog(t, 117.85, 118.25)))} />
+        <Bubble x={lerp(980, 900, sort)} y={lerp(300, 470, sort)} text="なぜ、ここだけ違う？" kind="ask" size={50} tail={1} at={0.72} s={popK(t, 113.3) * (1 - inExpo(prog(t, 117.75, 118.15)))} />
+        <Bubble x={lerp(1420, 900, sort)} y={lerp(810, 700, sort)} text="境目は？" kind="ask" size={50} tail={-1} up at={0.3} ox="30% 0%" s={popK(t, 114.1) * (1 - inExpo(prog(t, 117.85, 118.25)))} />
         <Box x={840} y={420} w={760} h={150} text="資料に足す一行" size={66} kind="yellow" s={popK(t, 118.4)} />
         <Box x={840} y={620} w={760} h={150} text="当日、答えを用意する" size={66} kind="teal" s={popK(t, 118.6)} />
       </Cam>
