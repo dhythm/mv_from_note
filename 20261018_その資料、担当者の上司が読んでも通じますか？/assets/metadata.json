@@ -89,5 +89,17 @@
     "usage_terms_status": "Not separately re-reviewed during this task."
   },
   "displayed_total_credits": 60,
-  "credit_basis": "UI display, not account-balance reconciliation."
+  "credit_basis": "UI display, not account-balance reconciliation.",
+  "thumbnail": {
+    "file": "../thumbnail.png",
+    "width": 1920,
+    "height": 1080,
+    "format": "PNG",
+    "service": "OpenAI ImageGen (built-in)",
+    "reference": "character/character-reference-imagegen-v1.webp",
+    "title": "その資料、担当者の上司が読んでも通じますか？",
+    "prompt": "Create one finished 16:9 Japanese YouTube thumbnail. Preserve the approved navy pictograms: open-collar staff and orange-tie supervisor. Use a bright off-white background, the complete title in three bold Japanese Gothic lines, and emphasize 通じますか？ on a warm yellow band. Put the report handoff and a question mark on the right. No extra slogans, role labels, logos, or watermark.",
+    "source_image": "/Users/yuta.okada/.codex/generated_images/01a14c94-16a6-7d70-a4ae-96c218d1b9b0/exec-aa31c0a0-d0d6-4f08-be66-30dda17e6cbf.png",
+    "export_note": "Exact 16:9 PNG export for upload; no JPEG re-encoding."
+  }
 }
