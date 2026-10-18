@@ -1,0 +1,105 @@
+{
+  "created": "2026-10-18",
+  "purpose": "Asset source and processing metadata. Not a generation task for the video producer.",
+  "character": {
+    "file": "character/character-reference-imagegen-v1.webp",
+    "service": "OpenAI ImageGen",
+    "generations": 1,
+    "prompt": "Use case: logo-brand / character reference for kinetic typography.\nCreate a genuinely polished, art-directed flat pictogram CHARACTER POSE SHEET for a Japanese motion-design explainer about a staff member handing a report to a supervisor. This should look like an expensive contemporary motion-design studio's identity system, NOT generic clip art, NOT a stick man made of pills.\n\nLayout: wide landscape transparent canvas, precise equal 5-column by 2-row grid of TEN isolated full-body pictogram poses. NO text, NO labels, NO lines between cells. Keep each whole body with feet visible, generous empty padding in its own cell. Same physical height and proportions throughout. Two characters: top row the staff member, bottom row the supervisor. They share the same sophisticated silhouette design language.\nColumns in BOTH rows: 1 standing relaxed confidently with arms down; 2 presenting/handing a report to the RIGHT with a naturally bent elbow and open hand; 3 holding and reading a report in front of the chest; 4 asking a calm question while indicating a report to the LEFT with a bent arm and open other hand; 5 a small thoughtful puzzled lean with one palm open, composed not comic.\nPaper is a small clean off-white rectangular report with 2 dark lines, only for columns 2,3,4.\n\nArt direction: crisp solid navy #23364b, elegant angular shoulder line, expertly balanced geometric head and body proportions, compact head, tailored jacket-like torso using a few clever negative-space collar cuts, long clean trouser silhouettes, shoes integrated as subtle directional wedges, believable elbow bends, visually connected shoulders rather than floating arms, rounded corners only where deliberate. Refined geometric pictogram, completely flat vector-like color shapes. Strong graphic rhythm, assertive but approachable, cut-paper precision, compact professional human silhouette. Faces featureless. The STAFF has an open neck/collar with no tie. The SUPERVISOR has a narrow ochre-orange #e48032 tie, and otherwise exactly the same body proportions, design family, and color. Do not make the boss taller or heavier. Do not use orange anywhere except the supervisor's tie.\nNo gradients, no 3D, no shadows, no texture, no facial features, no hair, no fingers detail, no cartoon comedy, no floating ball joints, no thick uniform sausage limbs, no extraneous icons, no extra people, no environment. Truly transparent background. This sheet will be used as the single shared reference and sprite source for storyboard stills. All ten poses must be beautifully consistent.",
+    "encoding": "Lossless WebP; RGBA equality with original PNG verified."
+  },
+  "videos": [
+    {
+      "id": "handoff",
+      "original": "video/handoff-source.mp4",
+      "production_asset": "video/handoff-alpha.webm",
+      "width": 1280,
+      "height": 720,
+      "fps": 24,
+      "duration_seconds": 6,
+      "source_service": "Google Flow",
+      "model": "Omni 1.1 Flash",
+      "prompt": "Create one continuous 6-second animation using the supplied first and last frames. Preserve these exact two flat navy pictogram characters: left staff has an open white collar and no tie; right supervisor has an orange tie. Preserve equal proportions, featureless heads, crisp flat silhouettes, collar and cuff details. The staff member presents the single paper report to the supervisor. The supervisor reaches for it, both briefly support the same paper, then the staff releases it and lowers the hand. The supervisor brings the report toward the chest and begins reading. The paper stays physically connected to a hand throughout, with no duplicate or disappearing report. Smooth readable motion through shoulders, elbows and wrists, with slight natural body weight shifts. Begin and end with a brief settled pose. Locked wide camera, full bodies and feet always visible, one take, no cuts, no zoom, no camera motion. Plain perfectly uniform chroma green #00ff00 background. No shadows, floor, environment, reflections, gradients, textures, new accessories, facial features, labels, text, arrows, voice, music, or sound effects. Keep this a flat 2D pictogram graphic, never photorealistic or 3D. Only the characters and one paper report move.",
+      "generations": 1,
+      "displayed_credits": 10,
+      "source_url": "https://flow.google.com/project/3969dc17-a357-4654-86f1-c25401619f7e/edit/24d26e39-2bfd-4afc-968a-64f4ac4e9602"
+    },
+    {
+      "id": "question",
+      "original": "video/question-source.mp4",
+      "production_asset": "video/question-alpha.webm",
+      "width": 1280,
+      "height": 720,
+      "fps": 24,
+      "duration_seconds": 6,
+      "source_service": "Google Flow",
+      "model": "Omni 1.1 Flash",
+      "prompt": "Create one continuous 6-second animation using the supplied first and last frames. Preserve these exact two flat navy pictogram characters: left staff has an open white collar and no tie; right supervisor has an orange tie. Preserve equal proportions, featureless heads, crisp flat silhouettes, collar and cuff details. The supervisor starts reading the report, then looks toward the staff and calmly opens one hand in a questioning gesture while holding the report with the other. The staff begins a small explanatory gesture, hesitates, then thoughtfully brings one hand toward the chin and opens the other palm. Neutral collegial tone, no scolding. Smooth readable motion through shoulders, elbows and wrists, with slight natural body weight shifts. Begin and end with a brief settled pose. Locked wide camera, full bodies and feet always visible, one take, no cuts, no zoom, no camera motion. Plain perfectly uniform chroma green #00ff00 background. No shadows, floor, environment, reflections, gradients, textures, new accessories, facial features, labels, text, arrows, voice, music, or sound effects. Keep this a flat 2D pictogram graphic, never photorealistic or 3D. Only the characters and one paper report move.",
+      "generations": 1,
+      "displayed_credits": 10,
+      "source_url": "https://flow.google.com/project/3969dc17-a357-4654-86f1-c25401619f7e/edit/15c979b1-578b-48d7-8210-5507a6b59ebb"
+    },
+    {
+      "id": "reader",
+      "original": "video/reader-source.mp4",
+      "production_asset": "video/reader-alpha.webm",
+      "width": 1280,
+      "height": 720,
+      "fps": 24,
+      "duration_seconds": 6,
+      "source_service": "Google Flow",
+      "model": "Omni 1.1 Flash",
+      "prompt": "Create one continuous 6-second flat pictogram animation from these first and last frames. There is exactly ONE person: the same navy staff character with an open white collar and NO necktie. Preserve the supplied character's featureless head, proportions, crisp navy silhouette, white collar and cuffs. One simple navy table stays fixed in the center. One single white report initially lies on the table. The staff member moves with a few brisk natural steps from the left of the table, around the NEAR side of it, to the right side. Do not pass through the table. On reaching the other side, the person picks up the SAME report, turns it toward themselves and rereads it, then briefly pauses as if noticing something to question. End in the supplied reading pose. Convey a purposeful change of viewpoint, not confusion or approval. Keep the walk and pickup decisive and fairly quick, not slow motion. The paper remains on the table until picked up, then remains attached to the hands; no duplicate or vanishing paper. Keep one person, one table, one report throughout. Locked wide camera, full figure including feet always visible, one take, no cuts or zoom. Uniform pure chroma green #00ff00 background. Flat 2D pictogram look throughout, no 3D rendering or photorealism. No shadows, floor, textures, labels, writing, arrows, facial features, voice, music or sound effects. Leave the upper part of the frame empty for text added later.",
+      "generations": 4,
+      "displayed_credits": 40,
+      "selected_candidate": "03",
+      "candidates": [
+        {
+          "candidate": "01",
+          "url": "https://flow.google.com/project/3969dc17-a357-4654-86f1-c25401619f7e/edit/c22a5f9e-a27b-41c5-a320-9d6c8c50a993",
+          "decision": "使用可能だが今回は不要。右側へ着いてからの足踏みと回転がやや長い。",
+          "local_rejected_video_retained": false
+        },
+        {
+          "candidate": "02",
+          "url": "https://flow.google.com/project/3969dc17-a357-4654-86f1-c25401619f7e/edit/0de5df1c-bc1f-4e1c-8371-fe71f47d908d",
+          "decision": "使用可能だが今回は不要。歩き始めが遅く、前半の動きが弱い。",
+          "local_rejected_video_retained": false
+        },
+        {
+          "candidate": "03",
+          "url": "https://flow.google.com/project/3969dc17-a357-4654-86f1-c25401619f7e/edit/351f182a-3a63-4053-bf74-7f98a99502fd",
+          "decision": "採用。早めに歩き出し、机の手前を通って紙を受け取り、読む姿勢へ自然につながる。",
+          "local_rejected_video_retained": false
+        },
+        {
+          "candidate": "04",
+          "url": "https://flow.google.com/project/3969dc17-a357-4654-86f1-c25401619f7e/edit/3606dd3d-79fd-4b0e-9185-7bc377b6d5b4",
+          "decision": "使用可能だが今回は不要。片脚を上げた姿勢がやや目立ち、動作のつながりは03の方がよい。",
+          "local_rejected_video_retained": false
+        }
+      ]
+    }
+  ],
+  "processing": {
+    "alpha_codec": "VP9 yuva420p",
+    "background_key": "format=rgba,colorkey=0x00ff00:0.22:0.08,despill=type=green",
+    "production_audio": "removed; original audio retained only in sources",
+    "quality_checks": "All 144 frames checked for bounds and outer background alpha; continuity checked with frame sequences.",
+    "usage_terms_status": "Not separately re-reviewed during this task."
+  },
+  "displayed_total_credits": 60,
+  "credit_basis": "UI display, not account-balance reconciliation.",
+  "thumbnail": {
+    "file": "../thumbnail.png",
+    "width": 1920,
+    "height": 1080,
+    "format": "PNG",
+    "service": "OpenAI ImageGen (built-in)",
+    "reference": "character/character-reference-imagegen-v1.webp",
+    "title": "その資料、担当者の上司が読んでも通じますか？",
+    "prompt": "Create one finished 16:9 Japanese YouTube thumbnail. Preserve the approved navy pictograms: open-collar staff and orange-tie supervisor. Use a bright off-white background, the complete title in three bold Japanese Gothic lines, and emphasize 通じますか？ on a warm yellow band. Put the report handoff and a question mark on the right. No extra slogans, role labels, logos, or watermark.",
+    "source_image": "/Users/yuta.okada/.codex/generated_images/01a14c94-16a6-7d70-a4ae-96c218d1b9b0/exec-aa31c0a0-d0d6-4f08-be66-30dda17e6cbf.png",
+    "export_note": "Exact 16:9 PNG export for upload; no JPEG re-encoding."
+  }
+}
