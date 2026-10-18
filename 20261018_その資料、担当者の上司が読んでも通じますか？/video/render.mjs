@@ -13,7 +13,8 @@ const mode = process.argv[2] || 'stills';
 const FPS = 30;
 const serveUrl = await bundle({entryPoint: path.resolve('src/index.ts'), outDir: path.resolve('.remotion/bundle')});
 const chromiumOptions = {gl: 'angle'};
-const pick = (id, inputProps = {}) => selectComposition({serveUrl, id, chromiumOptions, inputProps});
+const V = process.env.V2 ? '2' : ''; // V2=1 で v2（タイポグラフィー中心）を書き出す
+const pick = (id, inputProps = {}) => selectComposition({serveUrl, id: id === 'Main' || id === 'Silent' ? id + V : id, chromiumOptions, inputProps});
 fs.mkdirSync('out/review', {recursive: true});
 const log = (m) => console.log(`[render] ${m}`);
 
