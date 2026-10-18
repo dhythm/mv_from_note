@@ -1,0 +1,14 @@
+# 再生成できる中間物
+public/clips/
+public/sprites/
+.remotion/
+out/
+.venv/
+node_modules/
+
+# Recreated from tracked source assets and audio/bgm.py.
+public/NotoSansJP-wght.ttf
+public/NotoSansJP-OFL.txt
+public/okady-work-logo.svg
+public/bgm.m4a
+audio/bgm.wav
