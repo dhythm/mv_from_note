@@ -1,0 +1,15 @@
+# 再生成できる中間物
+.remotion/
+out/
+.venv/
+node_modules/
+# 企画フォルダの素材から tools/prepare-public.mjs でコピーする
+public/*.ttf
+public/*.svg
+public/*.jpg
+public/typing.mp4
+# audio/bgm.py・audio/mix.py で再生成する
+public/bgm.m4a
+public/mix.m4a
+audio/bgm.wav
+audio/mix.wav

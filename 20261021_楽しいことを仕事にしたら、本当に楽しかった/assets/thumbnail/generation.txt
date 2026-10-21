@@ -1,0 +1,17 @@
+作成日: 2026-10-21
+生成方法: 組み込み image_gen
+用途: 完成動画のサムネイル
+成果物: thumbnail.png
+参照: video/out/review/still_13.png、still_140.png（本編の配色・文字表現）。参照画像は完成後に中間物として削除済み。制作環境を復元し、video/ で node render.mjs stills 0.4 13,140 を実行すると再出力できる。
+確認: 生成画像を目視し、日本語の文言・文字切れ・本編の配色との整合を確認。
+
+最終プロンプト:
+Use case: ads-marketing.
+Create one finished Japanese video thumbnail, landscape 16:9, 1920x1080 desired. Bold, sophisticated Japanese kinetic-typography poster, matching the supplied reference images' amber yellow-orange, near-black ink, extra-heavy expressive Japanese gothic typography and angled color planes. The references are for style only: create a new static thumbnail composition, not a screenshot or a two-image collage.
+Message: It is genuinely possible to enjoy work and get paid; this is the author's lived experience. Joyful, confident, energetic, editorial, never get-rich-quick.
+Exact text, correctly written Japanese, and NO other text:
+Main line 1: 「楽しく働く。」
+Main line 2: 「お金をもらう。」
+Supporting smaller line: 「好きなことを仕事にした、私の話。」
+Do not print the outer corner quote symbols; they delimit the intended text.
+Composition: main two lines dominate the whole image, very large, carefully optically spaced, extra-heavy Japanese gothic inspired by Dela Gothic One. Line 1 near-black on a rich amber field; line 2 high-contrast warm-cream lettering on a broad ink-black band tilted very slightly upward, fully inside the image. Keep letterforms undistorted and all text fully legible. Supporting line at top in a much smaller but readable weight. Strong asymmetric dynamic composition, rich amber #ffb238, ink #172024, warm cream #fff4dc; subtle wide diagonal amber planes echo the video. Confident professional typographic design, no cute cartoon. Plenty of outer safe margin, keep bottom-right clear for video-duration overlay. The headline must be readable as a small thumbnail. No people, no invented faces, no cash, no coins, no laptop, no arrows, no flames, no sparkles, no logos, no watermark, no UI, no photographic scenery. Crisp finished graphic.
