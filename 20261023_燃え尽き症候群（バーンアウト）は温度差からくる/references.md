@@ -31,24 +31,27 @@
 
 - 出典：原稿が「DeNA南場さんの言葉を借りると」として挙げる記事（原稿内のリンク。企画では本文を参照・引用していません）。
 - 使うのは**「起点力」という語と、画面の小さな添え書き「DeNA 南場さんの言葉」だけ**。肖像・写真・記事画面・記事の文章は使いません。
-- 記事の画面を見せるかどうかは、ユーザーの判断事項です（plan.html「未確定事項」）。既定は「見せない」。
+- 企画では記事の画面を見せない。語と出典名だけを用いる。
 
-## 実写素材（07 の炎の窓）
+## 実写素材（07 の炎の窓、採用済み）
 
-動画ファイルはリポジトリに含めません（動画ファイルは含めない運用のため）。**実ファイルの手渡しは 未確定**で、ユーザーの判断事項です。
+- 作者：Jahobr。作品名：White candle video。公開元：Wikimedia Commons。
+- 出典：https://commons.wikimedia.org/wiki/File:White_candle_video.webm
+- 原本：https://upload.wikimedia.org/wikipedia/commons/1/17/White_candle_video.webm
+- 2026-10-23に出典ページでCC0 1.0の表示を再確認。実写原本を取得・同梱。
+- ライセンス：https://creativecommons.org/publicdomain/zero/1.0/ （帰属表示不要。出典と作者はこの記録で保持。）
+- 原本：`assets/footage/white-candle-source.webm`、800×600、VP9、30fps、41.766秒、音声なし。
+- 原本sha256：`7b78a3e8ddd95f3a6ee8d7abda1da589d67234b17774eebe1f81c4b4ad504636`（既存記録と一致）。
+- 編集用：`assets/footage/white-candle-02-07.mp4`。原本2〜7秒を等速で切り出し、H.264 / yuv420p、30fps、5秒、音声なしに変換。
+- 使用：07後半の5秒（本編0:59〜1:04を目安）。右側の小窓で中央を基準に左右を切り、炎・芯・ろうそく上面を残す。具体的な配置と確認範囲は `asset-review.md`。
+- 意味：手元にある小さな熱を示す一般的なイメージ映像。本人の撮影記録や私物とは説明しない。
+- `assets/footage/white-candle-poster.webp` は参照静止画。動画の代わりに使わない。
+- 新規生成は行っていない。追加候補の取得も不要。小窓での自然なゆらぎに、制作側の窓・色面・文字の動きを組み合わせる。
 
-| 項目 | 内容 |
-|---|---|
-| 候補（第一） | White candle video（Jahobr 作・Wikimedia Commons） https://commons.wikimedia.org/wiki/File:White_candle_video.webm |
-| ライセンス | CC0（帰属表示は不要。エンドクレジットも置きません） |
-| 仕様 | 800×600・約 41.8 秒・VP9 |
-| sha256 | `7b78a3e8ddd95f3a6ee8d7abda1da589d67234b17774eebe1f81c4b4ad504636` |
-| 使う区間（案） | 0:02–0:07（約 5 秒）を 07 の窓に（小さな窓なので解像度は足りる想定） |
-| 候補（第二） | Pink candle burning（Jahobr 作・CC0・720×720・18 秒） https://commons.wikimedia.org/wiki/File:Pink_candle_burning.webm |
-| 同梱したもの | `assets/footage/white-candle-poster.webp`（ポスター静止画 1 枚。動画ではない） |
-| 不採用 | Candle and Match（CC BY-SA：帰属表示と継承の条件があり、エンドクレジットを置かない方針に合わない） |
+## フォントとロゴ
 
-素材ファイルを確認したのは企画側の手元（取得・静止画の確認）までで、07 に実際に組み込んだ映像は作っていません。
+- `assets/fonts/NotoSansJP-wght.ttf` と `NotoSansJP-OFL.txt`：既存の20261021企画で採用済みの同一ファイルを複製。全編の太ゴシックに採用。SIL Open Font License 1.1を同梱。
+- `assets/logo/okady-work-logo.svg`：リポジトリ直下の共通ロゴと一致を確認。カット10のみに使用。
 
 ## 確認できていないこと
 
