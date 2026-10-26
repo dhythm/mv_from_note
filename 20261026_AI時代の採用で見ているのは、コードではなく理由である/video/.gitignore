@@ -1,0 +1,7 @@
+public/
+out/
+.remotion/
+.venv/
+footage-src/
+audio/bgm.wav
+audio/mix.wav
