@@ -1,0 +1,17 @@
+YouTube thumbnail / 2026-10-26
+Generation: built-in image_gen (CLI/API fallback not used)
+Generated original: thumbnail.png (1672 x 941)
+Upload export: thumbnail.jpg (1280 x 720, JPEG quality 88)
+Source context: plan.html, production-report.md, final.mp4 frame at 19 seconds.
+No reference image was sent to the generation tool. The thumbnail was generated from the following prompt.
+
+PROMPT
+Use case: ads-marketing.
+Create one finished YouTube thumbnail, landscape 16:9, preferably 1280x720 pixels. A polished, striking Japanese editorial graphic for a completed kinetic-typography video about the creator's approach to engineering hiring in the AI era: code can be copied, but candidates need to explain their choices in their own words.
+Art direction: premium Japanese typographic poster, bold and energetic, warm off-white paper #fbf8f1, near-black #1f2630, vivid vermilion #e8452c. Echo kinetic typography through oversized type, an assertive diagonal composition and precise offset layers, while keeping the actual glyphs undistorted and easy to read. Clean crisp edges, subtle paper texture only, high contrast, excellent readability at phone thumbnail size.
+Only these three Japanese text blocks, reproduced exactly:
+Small top label: "AI時代の採用"
+Large main first line: "コードより、"
+Even larger main second line, the hero: "理由。"
+The main headline occupies about 75–85% of the canvas width with generous safe margins. Use a very heavy Japanese Gothic sans serif. First line near-black, second line vivid vermilion. Make 理由 the unmistakable focal point. Keep the full text inside the image, no cut-off glyphs. Top label is clearly subordinate.
+Supporting imagery: a restrained field of faint grey programming-code lines on an angled paper layer behind the left/top headline, fading away toward the bold red 理由; suggest the shift from code output to human reasoning. Supporting details must not compete with the words. No people, robot, brain, stock-photo laptop, company logos, icons, charts, badges, border, watermark or additional captions. Avoid neon or cyberpunk. Leave the lower-right corner visually quiet for the YouTube duration overlay. Produce the actual final thumbnail, not a mockup or framed poster.
