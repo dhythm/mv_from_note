@@ -1,0 +1,24 @@
+{
+  "name": "cut04-lamp-floor-tiles",
+  "ok": true,
+  "returned_path": "/Users/yuta.okada/.grok/sessions/footage-1e66a130f2ef7a22/01a18f49-f427-7b91-b5e3-9bec179d7d59/videos/1.mp4",
+  "output": "/Users/yuta.okada/local/mv_from_note/20261031_AIは頭を使わなくなる、と言われるが、以前より頭を使っている/assets/footage/cut04-lamp-floor-tiles_grok_t1.mp4",
+  "tool_result": {
+    "path": "/Users/yuta.okada/.grok/sessions/footage-1e66a130f2ef7a22/01a18f49-f427-7b91-b5e3-9bec179d7d59/videos/1.mp4",
+    "filename": "1.mp4",
+    "session_folder": "videos",
+    "message": "Video generated and saved to /Users/yuta.okada/.grok/sessions/footage-1e66a130f2ef7a22/01a18f49-f427-7b91-b5e3-9bec179d7d59/videos/1.mp4. Do not read or re-display it, and do not describe how it appears to the user."
+  },
+  "probe": {
+    "format_name": "mov,mp4,m4a,3gp,3g2,mj2",
+    "duration": "8.041667",
+    "size": "2268979",
+    "video": {
+      "codec_name": "h264",
+      "width": 1280,
+      "height": 720,
+      "avg_frame_rate": "24/1",
+      "nb_frames": "193"
+    }
+  }
+}
