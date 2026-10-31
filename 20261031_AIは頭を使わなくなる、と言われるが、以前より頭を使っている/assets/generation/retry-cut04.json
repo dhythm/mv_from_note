@@ -1,0 +1,12 @@
+{
+  "name": "cut04-lamp-floor-tiles",
+  "output": "/Users/yuta.okada/local/mv_from_note/20261031_AIは頭を使わなくなる、と言われるが、以前より頭を使っている/assets/footage/cut04-lamp-floor-tiles_grok_t1.mp4",
+  "prompt": "Photoreal cinematic shot, 16:9. A vast, quiet, minimalist room with a matte pale warm-grey tiled floor and soft dim overcast light; shadows stay mid-grey, never black, low contrast, airy haze. In the center, a plain wooden desk with a single brass desk lamp turned on. At first only the tiles right around the desk are softly lit. Over the shot, the floor tiles light up one by one, outward from the desk in an irregular pattern, each tile gently brightening to warm off-white, like unknown territory being discovered. Camera: slow crane up over 8 seconds, rising from eye level to a gentle high angle, smooth, no shake. Steady exposure, no flicker. No people, no text, no logos, no screens. Aspect ratio 16:9. Avoid: people, hands, silhouettes, text, letters, logos, screens, monitors, black crushed shadows, horror mood, flicker, fast camera, handheld shake, lens flare, extra lamps, furniture other than the desk. Keep the setting and objects consistent with <IMAGE_1>. Silent footage: no speech, no music.",
+  "first_frame": "/Users/yuta.okada/local/mv_from_note/20261031_AIは頭を使わなくなる、と言われるが、以前より頭を使っている/assets/reference/cut04-lamp-floor-tiles_first-frame.webp",
+  "images": [
+    "/Users/yuta.okada/local/mv_from_note/20261031_AIは頭を使わなくなる、と言われるが、以前より頭を使っている/assets/reference/common_room-lamp_style-ref.webp"
+  ],
+  "duration": 8,
+  "aspect_ratio": "16:9",
+  "resolution_name": "720p"
+}

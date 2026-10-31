@@ -1,0 +1,39 @@
+[
+  {
+    "name": "cut04-lamp-floor-tiles",
+    "output": "/Users/yuta.okada/local/mv_from_note/20261031_AIは頭を使わなくなる、と言われるが、以前より頭を使っている/assets/footage/cut04-lamp-floor-tiles_grok_t1.mp4",
+    "prompt": "Photoreal cinematic shot, 16:9. A vast, quiet, minimalist room with a matte pale warm-grey tiled floor and soft dim overcast light; shadows stay mid-grey, never black, low contrast, airy haze. In the center, a plain wooden desk with a single brass desk lamp turned on. At first only the tiles right around the desk are softly lit. Over the shot, the floor tiles light up one by one, outward from the desk in an irregular pattern, each tile gently brightening to warm off-white, like unknown territory being discovered. Camera: slow crane up over 8 seconds, rising from eye level to a gentle high angle, smooth, no shake. Steady exposure, no flicker. No people, no text, no logos, no screens. Aspect ratio 16:9. Avoid: people, hands, silhouettes, text, letters, logos, screens, monitors, black crushed shadows, horror mood, flicker, fast camera, handheld shake, lens flare, extra lamps, furniture other than the desk. Keep the setting and objects consistent with <IMAGE_1>. Silent footage: no speech, no music.",
+    "first_frame": "/Users/yuta.okada/local/mv_from_note/20261031_AIは頭を使わなくなる、と言われるが、以前より頭を使っている/assets/reference/cut04-lamp-floor-tiles_first-frame.webp",
+    "images": [
+      "/Users/yuta.okada/local/mv_from_note/20261031_AIは頭を使わなくなる、と言われるが、以前より頭を使っている/assets/reference/common_room-lamp_style-ref.webp"
+    ],
+    "duration": 8,
+    "aspect_ratio": "16:9",
+    "resolution_name": "720p"
+  },
+  {
+    "name": "cut07-tiles-rush",
+    "output": "/Users/yuta.okada/local/mv_from_note/20261031_AIは頭を使わなくなる、と言われるが、以前より頭を使っている/assets/footage/cut07-tiles-rush_grok_t1.mp4",
+    "prompt": "Photoreal cinematic shot, 16:9, same minimalist room as the reference: matte pale warm-grey square floor tiles, soft dim overcast light, low contrast, shadows mid-grey not black. Low camera just above the floor, facing away from the desk. Camera: fast dolly forward, gliding low over the tiles, accelerating. As the camera rushes forward, tiles directly ahead light up to warm off-white just a moment before the camera reaches them, and the unlit tiles further ahead remain muted grey fading into haze. Stable horizon, no shake, slight motion blur. No people, no text, no logos. Aspect ratio 16:9. Avoid: people, feet, shadows of people, text, logos, black void, horror mood, tunnel, sci-fi neon, glowing lines, camera roll, shake, flicker. Keep the setting and objects consistent with <IMAGE_1>. Silent footage: no speech, no music.",
+    "first_frame": "/Users/yuta.okada/local/mv_from_note/20261031_AIは頭を使わなくなる、と言われるが、以前より頭を使っている/assets/reference/cut07-tiles-rush_first-frame.webp",
+    "images": [
+      "/Users/yuta.okada/local/mv_from_note/20261031_AIは頭を使わなくなる、と言われるが、以前より頭を使っている/assets/reference/common_room-lamp_style-ref.webp"
+    ],
+    "duration": 6,
+    "aspect_ratio": "16:9",
+    "resolution_name": "720p"
+  },
+  {
+    "name": "cut10-lit-floor-crane",
+    "output": "/Users/yuta.okada/local/mv_from_note/20261031_AIは頭を使わなくなる、と言われるが、以前より頭を使っている/assets/footage/cut10-lit-floor-crane_grok_t1.mp4",
+    "prompt": "Photoreal cinematic shot, 16:9, same minimalist room, wooden desk and brass desk lamp as the reference. Start at eye level, medium-wide, the desk and lamp in the center, soft light around the desk. Camera: slow, smooth crane up over 8 seconds, rising and tilting down until looking down at the desk from high above. As the camera rises, it reveals that a large, irregular area of floor tiles around the desk is softly lit warm off-white, spreading outward; beyond its edge, the remaining tiles are pale muted grey fading into haze. Bright, airy, hopeful, low contrast. No people, no text, no logos. Aspect ratio 16:9. Avoid: people, text, logos, black shadows, dark vignette, gloomy mood, flicker, shake, extra furniture, lens flare, spotlight cone from ceiling. Keep the setting and objects consistent with <IMAGE_1>. Silent footage: no speech, no music.",
+    "first_frame": "/Users/yuta.okada/local/mv_from_note/20261031_AIは頭を使わなくなる、と言われるが、以前より頭を使っている/assets/reference/common_room-lamp_style-ref.webp",
+    "images": [
+      "/Users/yuta.okada/local/mv_from_note/20261031_AIは頭を使わなくなる、と言われるが、以前より頭を使っている/assets/reference/common_room-lamp_style-ref.webp"
+    ],
+    "duration": 8,
+    "aspect_ratio": "16:9",
+    "resolution_name": "720p",
+    "last_frame": "/Users/yuta.okada/local/mv_from_note/20261031_AIは頭を使わなくなる、と言われるが、以前より頭を使っている/assets/reference/cut10-lit-floor-crane_last-frame.webp"
+  }
+]

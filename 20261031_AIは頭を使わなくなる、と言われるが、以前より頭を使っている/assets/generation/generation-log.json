@@ -1,0 +1,177 @@
+{
+  "date": "2026-10-31",
+  "method": "Grok Build CLI; built-in reference_to_video; existing login; no separate API key",
+  "video_model_observed": "grok-imagine-video-1.5",
+  "generations_submitted": 4,
+  "successful_videos": 3,
+  "failed_submissions": 1,
+  "failure_reason": "HTTP 429: limit 2 requests per second. Only the failed cut04 request was retried, sequentially.",
+  "video_generation_cost_or_credit_usage": "not disclosed by the tool; unknown; CLI model cost is separate",
+  "cli_model_costs": [
+    {
+      "sessionId": "01a18f48-2907-7961-8b3d-f40069ce53ec",
+      "stopReason": "cancelled",
+      "total_cost_usd": 0.04683704,
+      "modelUsage": {
+        "grok-4.6-build": {
+          "inputTokens": 51956,
+          "outputTokens": 3998,
+          "cacheReadInputTokens": 19712,
+          "cacheCreationInputTokens": 0,
+          "modelCalls": 3,
+          "costUSD": 0.04683704
+        }
+      }
+    },
+    {
+      "sessionId": "01a18f49-f427-7b91-b5e3-9bec179d7d59",
+      "stopReason": "end_turn",
+      "total_cost_usd": 0.09397464,
+      "modelUsage": {
+        "grok-4.7-build-fast": {
+          "inputTokens": 43130,
+          "outputTokens": 3003,
+          "cacheReadInputTokens": 67840,
+          "cacheCreationInputTokens": 0,
+          "modelCalls": 5,
+          "costUSD": 0.09397464
+        }
+      }
+    }
+  ],
+  "source_images": "existing project references",
+  "outputs": [
+    {
+      "id": "F1",
+      "cut": 4,
+      "file": "assets/footage/cut04-lamp-floor-tiles.mp4",
+      "original": "assets/footage/cut04-lamp-floor-tiles_grok_t1.mp4",
+      "duration_seconds": 8.041667,
+      "width": 1280,
+      "height": 720,
+      "fps": "24/1",
+      "audio_streams": 0,
+      "use_start_seconds": 0.75,
+      "use_end_seconds": 7.75,
+      "review": "タイルが段階的に点灯し、カメラが上昇する。机とランプの形状を維持。",
+      "sha256": "0845429a78500d676061a21ad83da762a57d31bfcccd5dceec9cda65b47179c2"
+    },
+    {
+      "id": "F2",
+      "cut": 7,
+      "file": "assets/footage/cut07-tiles-rush.mp4",
+      "original": "assets/footage/cut07-tiles-rush_grok_t1.mp4",
+      "duration_seconds": 6.041667,
+      "width": 1280,
+      "height": 720,
+      "fps": "24/1",
+      "audio_streams": 0,
+      "use_start_seconds": 1.5,
+      "use_end_seconds": 5.5,
+      "review": "前進につれて床の継ぎ目が流れる。中央の暖色の床を字形に入れ、机とランプは切り取りで避ける。",
+      "sha256": "b9448fb4a9601089a910e22fc0090f96986019ee0f0bfe1eaedd6198efc7cb25"
+    },
+    {
+      "id": "F3",
+      "cut": 10,
+      "file": "assets/footage/cut10-lit-floor-crane.mp4",
+      "original": "assets/footage/cut10-lit-floor-crane_grok_t1.mp4",
+      "duration_seconds": 8.041667,
+      "width": 1280,
+      "height": 720,
+      "fps": "24/1",
+      "audio_streams": 0,
+      "use_start_seconds": 0,
+      "use_end_seconds": 8,
+      "review": "机から上昇し、最後は参照画像に近い見下ろし。明るい床の広がりを維持。",
+      "sha256": "4435dce035b06ffefa35c4f604935b99d1af511bc663da71132d74b0b17a7668"
+    }
+  ],
+  "events": [
+    {
+      "input": {
+        "prompt": "Photoreal cinematic shot, 16:9. A vast, quiet, minimalist room with a matte pale warm-grey tiled floor and soft dim overcast light; shadows stay mid-grey, never black, low contrast, airy haze. In the center, a plain wooden desk with a single brass desk lamp turned on. At first only the tiles right around the desk are softly lit. Over the shot, the floor tiles light up one by one, outward from the desk in an irregular pattern, each tile gently brightening to warm off-white, like unknown territory being discovered. Camera: slow crane up over 8 seconds, rising from eye level to a gentle high angle, smooth, no shake. Steady exposure, no flicker. No people, no text, no logos, no screens. Aspect ratio 16:9. Avoid: people, hands, silhouettes, text, letters, logos, screens, monitors, black crushed shadows, horror mood, flicker, fast camera, handheld shake, lens flare, extra lamps, furniture other than the desk. Keep the setting and objects consistent with <IMAGE_1>. Silent footage: no speech, no music.",
+        "aspect_ratio": "16:9",
+        "duration": 8,
+        "resolution_name": "720p",
+        "first_frame": "/Users/yuta.okada/local/mv_from_note/20261031_AIは頭を使わなくなる、と言われるが、以前より頭を使っている/assets/reference/cut04-lamp-floor-tiles_first-frame.webp",
+        "images": [
+          "/Users/yuta.okada/local/mv_from_note/20261031_AIは頭を使わなくなる、と言われるが、以前より頭を使っている/assets/reference/common_room-lamp_style-ref.webp"
+        ]
+      },
+      "status": "failed",
+      "result": {
+        "error": "tool_execution_failed",
+        "message": "Video generation failed with HTTP 429 Too Many Requests: {\"code\":\"resource-exhausted\",\"error\":\"Too many requests for team 25433ed6-a072-4efc-869c-ce9e459f8328 and model grok-imagine-video-1.5. Your team's rate limit is — Requests per Second (actual/limit): 2/2. Your rate limit tier is determined based on your historical API spend. To learn how to increase your rate limit tier, please visit https://console.x.ai/team/default/rate-limits.\"}"
+      }
+    },
+    {
+      "input": {
+        "prompt": "Photoreal cinematic shot, 16:9, same minimalist room as the reference: matte pale warm-grey square floor tiles, soft dim overcast light, low contrast, shadows mid-grey not black. Low camera just above the floor, facing away from the desk. Camera: fast dolly forward, gliding low over the tiles, accelerating. As the camera rushes forward, tiles directly ahead light up to warm off-white just a moment before the camera reaches them, and the unlit tiles further ahead remain muted grey fading into haze. Stable horizon, no shake, slight motion blur. No people, no text, no logos. Aspect ratio 16:9. Avoid: people, feet, shadows of people, text, logos, black void, horror mood, tunnel, sci-fi neon, glowing lines, camera roll, shake, flicker. Keep the setting and objects consistent with <IMAGE_1>. Silent footage: no speech, no music.",
+        "aspect_ratio": "16:9",
+        "duration": 6,
+        "resolution_name": "720p",
+        "first_frame": "/Users/yuta.okada/local/mv_from_note/20261031_AIは頭を使わなくなる、と言われるが、以前より頭を使っている/assets/reference/cut07-tiles-rush_first-frame.webp",
+        "images": [
+          "/Users/yuta.okada/local/mv_from_note/20261031_AIは頭を使わなくなる、と言われるが、以前より頭を使っている/assets/reference/common_room-lamp_style-ref.webp"
+        ]
+      },
+      "status": "completed",
+      "result": {
+        "type": "ReferenceToVideo",
+        "path": "/Users/yuta.okada/.grok/sessions/footage-1e66a130f2ef7a22/01a18f48-2907-7961-8b3d-f40069ce53ec/videos/1.mp4",
+        "filename": "1.mp4",
+        "session_folder": "videos"
+      }
+    },
+    {
+      "input": {
+        "prompt": "Photoreal cinematic shot, 16:9, same minimalist room, wooden desk and brass desk lamp as the reference. Start at eye level, medium-wide, the desk and lamp in the center, soft light around the desk. Camera: slow, smooth crane up over 8 seconds, rising and tilting down until looking down at the desk from high above. As the camera rises, it reveals that a large, irregular area of floor tiles around the desk is softly lit warm off-white, spreading outward; beyond its edge, the remaining tiles are pale muted grey fading into haze. Bright, airy, hopeful, low contrast. No people, no text, no logos. Aspect ratio 16:9. Avoid: people, text, logos, black shadows, dark vignette, gloomy mood, flicker, shake, extra furniture, lens flare, spotlight cone from ceiling. Keep the setting and objects consistent with <IMAGE_1>. Silent footage: no speech, no music.",
+        "aspect_ratio": "16:9",
+        "duration": 8,
+        "resolution_name": "720p",
+        "first_frame": "/Users/yuta.okada/local/mv_from_note/20261031_AIは頭を使わなくなる、と言われるが、以前より頭を使っている/assets/reference/common_room-lamp_style-ref.webp",
+        "last_frame": "/Users/yuta.okada/local/mv_from_note/20261031_AIは頭を使わなくなる、と言われるが、以前より頭を使っている/assets/reference/cut10-lit-floor-crane_last-frame.webp",
+        "images": [
+          "/Users/yuta.okada/local/mv_from_note/20261031_AIは頭を使わなくなる、と言われるが、以前より頭を使っている/assets/reference/common_room-lamp_style-ref.webp"
+        ]
+      },
+      "status": "completed",
+      "result": {
+        "type": "ReferenceToVideo",
+        "path": "/Users/yuta.okada/.grok/sessions/footage-1e66a130f2ef7a22/01a18f48-2907-7961-8b3d-f40069ce53ec/videos/2.mp4",
+        "filename": "2.mp4",
+        "session_folder": "videos"
+      }
+    },
+    {
+      "input": {
+        "prompt": "Photoreal cinematic shot, 16:9. A vast, quiet, minimalist room with a matte pale warm-grey tiled floor and soft dim overcast light; shadows stay mid-grey, never black, low contrast, airy haze. In the center, a plain wooden desk with a single brass desk lamp turned on. At first only the tiles right around the desk are softly lit. Over the shot, the floor tiles light up one by one, outward from the desk in an irregular pattern, each tile gently brightening to warm off-white, like unknown territory being discovered. Camera: slow crane up over 8 seconds, rising from eye level to a gentle high angle, smooth, no shake. Steady exposure, no flicker. No people, no text, no logos, no screens. Aspect ratio 16:9. Avoid: people, hands, silhouettes, text, letters, logos, screens, monitors, black crushed shadows, horror mood, flicker, fast camera, handheld shake, lens flare, extra lamps, furniture other than the desk. Keep the setting and objects consistent with <IMAGE_1>. Silent footage: no speech, no music.",
+        "aspect_ratio": "16:9",
+        "duration": 8,
+        "first_frame": "/Users/yuta.okada/local/mv_from_note/20261031_AIは頭を使わなくなる、と言われるが、以前より頭を使っている/assets/reference/cut04-lamp-floor-tiles_first-frame.webp",
+        "images": [
+          "/Users/yuta.okada/local/mv_from_note/20261031_AIは頭を使わなくなる、と言われるが、以前より頭を使っている/assets/reference/common_room-lamp_style-ref.webp"
+        ],
+        "resolution_name": "720p"
+      },
+      "status": "completed",
+      "result": {
+        "type": "ReferenceToVideo",
+        "path": "/Users/yuta.okada/.grok/sessions/footage-1e66a130f2ef7a22/01a18f49-f427-7b91-b5e3-9bec179d7d59/videos/1.mp4",
+        "filename": "1.mp4",
+        "session_folder": "videos"
+      }
+    }
+  ],
+  "processing": "Canonical MP4s are lossless remuxes of the generated video stream only. Generated audio and poster attachment removed. No frame interpolation or re-encoding.",
+  "verification": {
+    "technical": "All canonical files decode fully; 1280x720, 24fps, H.264, no audio.",
+    "visual": "Frame sequences and 1920x1080 still compositing tests reviewed. Raw materials played at normal speed in QuickTime; sampled screens checked. This is not a review of the unproduced main video.",
+    "composition_previews": [
+      "assets/footage-review/cut04-composite.webp",
+      "assets/footage-review/cut07-composite.webp",
+      "assets/footage-review/cut10-composite.webp"
+    ]
+  }
+}
