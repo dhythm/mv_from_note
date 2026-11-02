@@ -1,0 +1,11 @@
+Use case: ads-marketing
+Asset type: Finished Japanese YouTube thumbnail, widescreen 16:9, 1920x1080.
+Create one polished, striking editorial thumbnail for a thoughtful video about prompt engineering. The argument: prompting has not disappeared; the work moved beneath a simple input into deeper context, specifications and requirements.
+Art direction: exceptionally bold Japanese typography and a single sculptural geological cutaway, modern Japanese book-cover / motion-design aesthetics. Warm ivory paper background #F6F4EF, almost-black #14161A typography, vivid vermilion #FF4D1F hero line, sand/beige and blue-gray geological strata with a deep navy foundation. High contrast and instantly legible at mobile thumbnail size.
+Layout: generous 5% safe margins. Across top, a black heavy Japanese sans-serif question, large and clearly readable, in one line. In left/lower central 70% put the reply in two lines: the first black and substantial, the second vermilion and the largest text on the entire image. All typography is upright, thick, clean, dense professional Japanese typesetting, no distorted glyphs. On right/lower 35%, integrate a dramatic editorial 3D cutaway slab with a very thin flat ivory surface and 4 thick irregular strata underneath, viewed slightly from above. The strata reveal the hidden depth under the surface and extend to the lower right edge. The deep layers are visibly much thicker than the surface. Leave text on clean background; the illustration must not obstruct the letters. Use a fine horizontal surface line continuing behind the composition. Subtle paper grain and tactile sediment texture, crisp cut edges and restrained soft shadows, vivid and sophisticated, not a busy infographic.
+Text (verbatim; only these three lines, no extra text):
+プロンプトは、もう不要？
+消えたんじゃない。
+潜っただけ。
+Make the last line the dominant visual hook. Text may slightly overlap empty space beside the slab but always remain on a clear, high-contrast plane. Keep bottom-right area free of essential text for YouTube's timestamp.
+Constraints: No people, robots, brains, laptops, circuit boards, logos, watermark, decorative badges, small explanatory labels, or additional words. No arrows or misleading comparison graphs. This is a finished thumbnail, not a mockup of a screen.
