@@ -1,0 +1,284 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>作っていたミニアプリを繋ぐと、化けた話｜動画企画書</title><style>
+/* デジタル庁デザインシステム（DADS）のデザイントークン（@digital-go-jp/design-tokens）に沿ったスタイル。
+   本文の内容は変えず、見た目だけを DADS の色・タイポグラフィ・余白・角丸・フォーカスリングへ揃える。 */
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Noto+Sans+Mono:wght@400;700&display=swap");
+:root{
+  /* Primitive / Neutral */
+  --white:#ffffff;--black:#000000;
+  --gray-50:#f2f2f2;--gray-100:#e6e6e6;--gray-200:#cccccc;--gray-420:#949494;--gray-536:#767676;--gray-600:#666666;--gray-700:#4d4d4d;--gray-800:#333333;--gray-900:#1a1a1a;
+  /* Key color（Blue） */
+  --key-50:#e8f1fe;--key-100:#d9e6ff;--key-200:#c5d7fb;--key-900:#0017c1;--key-1000:#00118f;--key-1100:#000071;
+  /* Semantic */
+  --success-bg:#e6f5ec;--success-1:#259d63;--success-2:#197a4b;
+  --warning-bg:#fbf5e0;--warning-yellow-1:#b78f00;--warning-text:#806300;
+  --warning-orange-bg:#ffeee2;--warning-orange-1:#fb5b01;--warning-orange-2:#c74700;
+  --error-1:#ec0000;--focus-yellow:#ffd43d;--visited:#8b008b;
+  /* Typography */
+  --font-sans:"Noto Sans JP",-apple-system,BlinkMacSystemFont,"Hiragino Sans",sans-serif;
+  --font-mono:"Noto Sans Mono","Noto Sans JP",monospace;
+  /* Radius / Elevation */
+  --r-4:.25rem;--r-8:.5rem;--r-12:.75rem;--r-16:1rem;--r-full:624.9375rem;
+  --elevation-1:0 2px 8px 1px rgba(0,0,0,.1),0 1px 5px 0 rgba(0,0,0,.3);
+  /* 互換（既存のインライン指定・記号のため残す） */
+  --ink:var(--gray-900);--line:var(--gray-200);--mut:var(--gray-700);
+}
+*{box-sizing:border-box}
+/* Std-16N-170：本文 16px / 400 / 行間 1.7 / 字間 0.02em */
+body{margin:0;background:var(--white);color:var(--gray-800);font-family:var(--font-sans);font-size:1rem;font-weight:400;line-height:1.7;letter-spacing:.02em;-webkit-font-smoothing:antialiased}
+header .inner,main,nav .in,footer .inner{max-width:1120px;margin:0 auto;padding:0 24px}
+
+/* ヘッダー */
+header{background:var(--white);border-bottom:1px solid var(--gray-420)}
+header .inner{padding-top:40px;padding-bottom:24px}
+.strata{height:4px;background:var(--key-900)}
+.eyebrow{display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px;font-size:.875rem;line-height:1.5;color:var(--gray-700);letter-spacing:.04em}
+/* Std-36B-140 */
+h1{font-size:2.25rem;line-height:1.4;font-weight:700;color:var(--gray-900);letter-spacing:.01em;margin:16px 0 8px}
+/* Std-28B-150 */
+h2{font-size:1.75rem;line-height:1.5;font-weight:700;color:var(--gray-900);margin:64px 0 24px;padding:0 0 8px;border-bottom:1px solid var(--gray-420);scroll-margin-top:72px}
+/* Std-20B-150 */
+h3{font-size:1.25rem;line-height:1.5;font-weight:700;color:var(--gray-900);margin:32px 0 12px}
+.cuthead h3{margin:0}
+p{margin:0 0 16px}
+/* Std-18B-160 */
+.lead{font-size:1.125rem;line-height:1.6;font-weight:700;color:var(--gray-900)}
+/* Dns-14N-130 相当の補足（灰でもコントラスト比 4.5:1 以上の gray-700） */
+.small{font-size:.875rem;line-height:1.7;color:var(--gray-700)}
+b,strong{font-weight:700;color:var(--gray-900)}
+
+/* リンク・フォーカス（DADS：下線あり、ホバーで下線を太く、フォーカスは黒＋黄のリング） */
+a{color:var(--key-1000);text-decoration:underline;text-underline-offset:.2em;text-decoration-thickness:1px}
+a:visited{color:var(--visited)}
+a:hover{color:var(--key-1100);text-decoration-thickness:3px}
+a:active{color:var(--warning-orange-2)}
+a:focus-visible{outline:4px solid var(--black);outline-offset:2px;background:var(--focus-yellow);color:var(--black);border-radius:var(--r-4)}
+
+/* ラベル（チップ） */
+.chip{display:inline-block;background:var(--key-50);color:var(--key-1000);border:1px solid var(--key-900);border-radius:var(--r-4);padding:2px 8px;font-size:.875rem;line-height:1.5;font-weight:700;letter-spacing:.02em}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin:24px 0 0;padding:0;list-style:none}
+.meta span{background:var(--gray-50);border:1px solid var(--gray-200);border-radius:var(--r-4);padding:4px 12px;font-size:.875rem;line-height:1.5;color:var(--gray-800)}
+
+/* 目次ナビ */
+nav{position:sticky;top:0;background:var(--white);border-bottom:1px solid var(--gray-420);z-index:5;box-shadow:0 1px 4px rgba(0,0,0,.08)}
+nav .in{display:flex;flex-wrap:wrap;gap:4px 20px;padding-top:12px;padding-bottom:12px;font-size:.875rem;line-height:1.5}
+nav a,nav a:visited{color:var(--key-1000);font-weight:700}
+
+/* ボックス（DADS のお知らせバナー／パネルに相当） */
+.box{background:var(--white);border:1px solid var(--gray-420);border-radius:var(--r-8);padding:24px;margin:16px 0}
+.box > :last-child{margin-bottom:0}
+.box.accent{background:var(--key-50);border:1px solid var(--key-900);border-left:8px solid var(--key-900)}
+.box.accent .lead{margin:0}
+
+/* テーブル */
+.tablewrap{overflow-x:auto;margin:16px 0}
+table{border-collapse:collapse;width:100%;background:var(--white);font-size:1rem;line-height:1.7;margin:16px 0;border-top:1px solid var(--gray-420)}
+.tablewrap table{margin:0}
+th,td{border-bottom:1px solid var(--gray-420);padding:12px 16px;text-align:left;vertical-align:top}
+th{background:var(--gray-50);color:var(--gray-900);font-weight:700;font-size:.875rem;line-height:1.5;border-bottom:2px solid var(--gray-800);white-space:nowrap}
+tr:hover td{background:var(--key-50)}
+
+/* カット（カード） */
+.cut{background:var(--white);border:1px solid var(--gray-420);border-radius:var(--r-16);padding:32px;margin:32px 0;scroll-margin-top:72px}
+.cuthead{display:flex;gap:16px;align-items:center;margin-bottom:24px;padding-bottom:16px;border-bottom:1px solid var(--gray-200)}
+.cuthead p{margin:4px 0 0}
+.num{font-size:1.5rem;line-height:1;font-weight:700;color:var(--white);background:var(--key-900);border-radius:var(--r-8);min-width:56px;height:56px;display:flex;align-items:center;justify-content:center;flex:none;font-feature-settings:"tnum"}
+.frames{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+figure{margin:0}
+figure img{width:100%;height:auto;display:block;border:1px solid var(--gray-200);border-radius:var(--r-8);background:var(--white)}
+figure a:focus-visible{display:block;background:none}
+figcaption{font-size:.875rem;line-height:1.7;margin-top:8px;color:var(--gray-800)}
+.details{display:grid;grid-template-columns:1fr 1.15fr;gap:8px 40px;margin-top:32px}
+.details p{margin:4px 0}
+/* 項目名：Dns-14B-130 相当 */
+.label{font-size:.875rem;line-height:1.3;font-weight:700;color:var(--key-1000);margin-top:20px;padding-left:8px;border-left:4px solid var(--key-900)}
+.details > div > .label:first-child{margin-top:0}
+.words{font-size:1.125rem;line-height:1.6;font-weight:700;color:var(--gray-900);margin:8px 0}
+/* 引用ブロック */
+.voice{background:var(--gray-50);border-left:4px solid var(--gray-600);border-radius:0 var(--r-4) var(--r-4) 0;padding:12px 16px;margin:8px 0;font-size:1rem;line-height:1.7;color:var(--gray-800)}
+ul{margin:8px 0 16px;padding-left:1.5em}
+li{margin:4px 0}
+li::marker{color:var(--gray-600)}
+.mot li{font-size:1rem;line-height:1.7;margin:8px 0}
+code{font-family:var(--font-mono);background:var(--gray-50);border:1px solid var(--gray-200);padding:0 4px;border-radius:var(--r-4);font-size:.875em;color:var(--gray-900);word-break:break-all}
+
+.prompt{white-space:pre-wrap;font-family:var(--font-mono);font-size:.875rem;line-height:1.7;background:var(--white);border:1px solid var(--gray-420);border-radius:var(--r-8);padding:12px 16px;margin:8px 0;color:var(--gray-900)}
+
+/* 色見本（映像の配色そのものはインライン指定のまま） */
+.sw{display:inline-block;width:16px;height:16px;border-radius:var(--r-4);vertical-align:-3px;margin-right:8px;border:1px solid var(--gray-420)}
+.specimen{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin:16px 0}
+.specimen div{background:var(--white);border:1px solid var(--gray-420);border-radius:var(--r-8);padding:16px;font-size:.875rem;line-height:1.6;font-weight:700;color:var(--gray-900)}
+.specimen .small{font-weight:400}
+
+/* ステータスラベル */
+.tag{display:inline-block;border-radius:var(--r-4);padding:0 8px;font-size:.8125rem;line-height:1.7;font-weight:700;margin-right:8px;border:1px solid}
+.t-un{background:var(--warning-bg);color:var(--warning-text);border-color:var(--warning-yellow-1)}
+.t-ok{background:var(--success-bg);color:var(--success-2);border-color:var(--success-1)}
+
+footer{border-top:1px solid var(--gray-420);background:var(--gray-50);margin-top:80px;padding:24px 0;font-size:.875rem;color:var(--gray-700)}
+
+/* 前半（概要・構成・絵コンテ）と後半（詳細）の区切り */
+h2.part{margin-top:96px;padding:16px 24px;border:none;border-radius:var(--r-8);background:var(--gray-50);border-left:8px solid var(--gray-800);font-size:1.5rem}
+h2.part + .small{margin-top:-8px}
+#structure + .tablewrap td:nth-child(-n+3){white-space:nowrap}
+.navsep{color:var(--gray-700);font-weight:700;padding-left:12px;border-left:1px solid var(--gray-420)}
+
+/* 要判断：ユーザーが決める点。決定済みの情報（無彩色・青）と色で分ける。DADS の注意色（orange） */
+.decide{margin:48px 0 16px;padding:24px 32px 24px;background:var(--warning-orange-bg);border:1px solid var(--warning-orange-1);border-left:8px solid var(--warning-orange-1);border-radius:var(--r-8)}
+.decide h2{margin:0 0 8px;border-bottom:none;padding:0;color:var(--gray-900)}
+.decide > .small{color:var(--gray-800)}
+.decide-list{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:12px}
+.decide-list li{display:flex;gap:12px;align-items:flex-start;background:var(--white);border:1px solid var(--gray-420);border-radius:var(--r-8);padding:12px 16px;margin:0}
+.decide-list .need{min-width:28px;justify-content:center;margin:2px 0 0}
+.where{display:block;font-size:.875rem;color:var(--gray-700);margin-top:4px}
+.need{display:inline-flex;align-items:center;background:var(--warning-orange-2);color:var(--white);border-radius:var(--r-4);padding:0 8px;font-size:.8125rem;line-height:1.7;font-weight:700;letter-spacing:.02em;margin:0 8px;vertical-align:.15em;white-space:nowrap}
+h2 .need{font-size:.875rem}
+.lead .need{margin-left:0}
+p.small + p.small,.need + p.small{margin-top:0}
+nav a.nav-need,nav a.nav-need:visited{background:var(--warning-orange-2);color:var(--white);padding:0 8px;border-radius:var(--r-4);text-decoration:none}
+nav a.nav-need:hover{text-decoration:underline}
+
+@media(max-width:760px){
+  header .inner,main,nav .in,footer .inner{padding:0 16px}
+  header .inner{padding-top:24px;padding-bottom:16px}
+  .frames,.details,.specimen{grid-template-columns:1fr}
+  h1{font-size:1.75rem;line-height:1.5}
+  h2{font-size:1.5rem;margin-top:48px}
+  .cut{padding:20px;border-radius:var(--r-12)}
+  .box{padding:16px}
+  .decide{padding:16px}
+  table{font-size:.875rem}
+  th,td{padding:8px 12px}
+  th{white-space:normal}
+}
+@media print{nav{position:static;box-shadow:none}.cut{break-inside:avoid}}
+</style>
+<style>.stage1{background:#e8f1fe}.stage2{background:#e6f5ec}.stage3{background:#fff1e3}.stage9{background:#fdecec}.sw{display:inline-block;width:14px;height:14px;border-radius:3px;vertical-align:middle;margin-right:6px;border:1px solid #999}</style></head><body>
+<header><div class="inner"><div class="eyebrow">VIDEO PLAN / 2026.11.05 <span class="chip">企画・絵コンテ（ライト）</span></div>
+<h1>作っていたミニアプリを繋ぐと、化けた話</h1><p class="lead" id="top">題：小さく作る。ちゃんと動く。つなぐと、化ける。</p>
+<p>元にした note 記事：「作っていたミニアプリを繋ぐと、化けた話」<a href="https://note.com/dhythm/n/nbb545a6dfbdc">https://note.com/dhythm/n/nbb545a6dfbdc</a>（公開済み）<br>原稿：<code>dhythm/private-note</code>（main）の <code>Zettelkasten/PermanentNote/20260727_作っていたミニアプリを繋ぐと、化けた話.md</code>（非公開。本文は同梱しない）</p>
+<div class="meta"><span>16:9・1920×1080・30fps</span><span>本編 2:06＋エンドロゴ 5 秒＝約 2:11（判断点：2 分以内案あり）</span><span>12 カット（本編 11＋ロゴ）</span><span>ナレーション案 563 字／画面の文字 約286 字</span><span>実写素材：未定（候補のみ）</span><span>BGM・効果音：後回し（検討もしない）</span><span>等速通し：未確認</span></div></div><div class="strata"></div></header>
+<nav><div class="in"><a href="#claim">主張</a><a href="#viewer">視聴者</a><a href="#roles">声・文字・素材</a><a href="#structure">構成と尺</a><a href="#cuts">カット表</a><a href="#symbols">形と記号・色</a><a href="#claim-map">references 対応</a><a href="#handoff">企画側／制作側</a><a href="#status">状態</a><a href="#decide">判断してほしい点</a></div></nav><main>
+<h2 id="claim">この動画で伝える一文</h2>
+<div class="box accent"><p class="lead">「小さな道具をいくら作っても、大きな仕事は変わらない」と思っている人に、小さく作っても一つひとつがちゃんと機能していれば、つないだとき大きく仕事を変えられる、と伝え、「作っていたミニアプリたちは、つないだ瞬間に化けた」という本人の実感を残す。</p></div>
+<div class="box"><p><b>ユーザー本人の言葉（2026-11-05、原文）</b><br>「ここの本質は、小さく作って、一個一個がちゃんと機能すれば、つないだ時に大きく何かを変える、そういう便利なものになるっていう、そういうところをしっかりと伝えていきたい。」</p>
+<p><b>構成への反映</b>：この言葉を「小さく作る」→「一つひとつがちゃんと機能する」→「つないだときに大きく変わる」の 3 段に分け、そのまま本編の骨組みにした（段1＝02–03、段2＝04–05、段3＝07–09）。尺は段3を最も厚くし（35 秒）、段1 20 秒・段2 23 秒。動画ネタ案の「合体させるな（塊に潰れて割れる）」は 06 の 1 カット（12 秒）だけの脇役にし、段2の弱点（量が増えると手渡しが重い）から段3へ移る理由づけに使う。</p>
+<p><b>絵への反映</b>：主役の形は「凹凸のついた青いコマ（ミニアプリ）」1 種類だけ。段1では 1 つずつ置かれ（02）、止めたものは灰に沈む（03）。段2では 1 つのコマが緑の枠で「ちゃんと動く」印を受け、オレンジの粒を入れて出す（04）。段3では出口と入口が噛み合って粒が流れ（07）、引くと 1 本の線になる（09）。最後の 11 で 3 段を「小さく作る。／ちゃんと動く。／つなぐと、化ける。」の階段状の 3 行に要約し、コマを順に見るだけで 3 段が追えるようにした。</p>
+<p><b>留保と閉じ方</b>：「一発で作っても同じ形にはならない」「本当に化けたのは経験だったのかもしれない」（10）を声と文字の両方に残し、最後は本人の肯定「作っていたミニアプリたちは、つないだ瞬間に、化けました」（11）で閉じる。視聴者への問いかけや一般論には置き換えない。</p>
+<p class="small">冒頭（01「数珠つなぎで動かせたら」）と最後（11「つなぐと、化ける。」）の文言だけで「つなぐと変わる」が伝わることを確認済み（文面上）。</p></div>
+<h2 id="viewer">対象視聴者と持ち帰ってほしいこと</h2>
+<div class="box"><p><b>対象</b>：社内向けの小さなツールや自動化を作っている／作ろうとしているエンジニア、業務改善の担当者。「小さいものをいくつ作っても大した変化にならない」「やるなら最初から大きなシステムを」と感じている人。</p>
+<p><b>持ち帰ってほしいこと</b>：①まず小さく、1 つに 1 つの仕事で作ってよい ②ただし一つひとつがちゃんと動く（現場で使われ、入力と出力が分かれている）状態にしておく ③そうしておけば、後からつないだときに大きく変わる。合体させず、流れだけをつなぐ。</p></div>
+<h2 id="roles">声・文字・素材の役割分担</h2>
+<div class="tablewrap"><table><tr><th>担い手</th><th>役割</th><th>載せないもの</th></tr>
+<tr><td>声（ナレーション）</td><td>経緯と理由を話す：現場の一言、作っては止めてきたこと、量が増えて負荷になったこと、合体させずにつないだこと、留保。文として聞かせる部分。</td><td>コマの数や色の説明（絵で見える）</td></tr>
+<tr><td>文字（キネティックタイポグラフィ）</td><td>3 段の要の語だけを強く印象づける：「小さく作る」「ちゃんと動く」「つなぐ。」「点が、線になった。」「つなぐと、化ける。」。声の全文字幕にはしない（画面の文字は約286字で声の半分以下）。</td><td>経緯の説明文、オーケストレーターの仕組みの説明</td></tr>
+<tr><td>素材（図形・ピクト・実写・AI映像）</td><td>「小さい／ちゃんと動く／つながる」を感じさせる：青いコマの置き方、緑の枠、オレンジの粒の流れ、引きの線。実写は「現場」「手渡し」の手触り（候補のみ）。</td><td>実在の画面・顧客名・人物の顔・他社ロゴ</td></tr></table></div>
+<p class="small">ナレーションは案。音声生成の許可ではない（AGENTS.md「APIによるナレーション生成」）。ナレーションを使わない場合は、画面の文字を増やす必要があり尺も変わる（判断点）。</p>
+<h2 id="structure">全体構成と尺配分</h2>
+<div class="tablewrap"><table><tr><th>カット</th><th>段</th><th>時間</th><th>尺</th><th>声の字数</th><th>役割</th><th>見出し</th></tr>
+<tr class=""><td><a href="#cut-01">01</a></td><td>導入・留保・結論</td><td>0:00–0:09</td><td>9秒</td><td>37</td><td>導入（現場の一言）</td><td>「数珠つなぎで動かせたら」</td></tr>
+<tr class="stage1"><td><a href="#cut-02">02</a></td><td>段1 小さく作る</td><td>0:09–0:19</td><td>10秒</td><td>44</td><td>段1：小さく作る（1アプリ1仕事）</td><td>小さく作る</td></tr>
+<tr class="stage1"><td><a href="#cut-03">03</a></td><td>段1 小さく作る</td><td>0:19–0:29</td><td>10秒</td><td>44</td><td>段1：小さく作る（育てて、止める）</td><td>使われないものは、止める。</td></tr>
+<tr class="stage2"><td><a href="#cut-04">04</a></td><td>段2 一つひとつがちゃんと機能する</td><td>0:29–0:40</td><td>11秒</td><td>50</td><td>段2：一つひとつがちゃんと機能する</td><td>一つひとつが、ちゃんと動く</td></tr>
+<tr class="stage2"><td><a href="#cut-05">05</a></td><td>段2 一つひとつがちゃんと機能する</td><td>0:40–0:52</td><td>12秒</td><td>54</td><td>段2の弱点（量が増えると、分かれていること自体が負荷）</td><td>どれに、何を入れた？</td></tr>
+<tr class="stage9"><td><a href="#cut-06">06</a></td><td>脇役の対比（段2→段3の間）</td><td>0:52–1:04</td><td>12秒</td><td>55</td><td>脇役の対比：合体させる案（塊に潰れて割れる）</td><td>がっちゃんこ？</td></tr>
+<tr class="stage3"><td><a href="#cut-07">07</a></td><td>段3 つなぐと大きく変わる</td><td>1:04–1:15</td><td>11秒</td><td>52</td><td>段3：つなぐ（オーケストレーター）</td><td>流れだけを、つなぐ。</td></tr>
+<tr class="stage3"><td><a href="#cut-08">08</a></td><td>段3 つなぐと大きく変わる</td><td>1:15–1:26</td><td>11秒</td><td>47</td><td>段3：個別利用と連続処理の両立</td><td>1つだけ使う日も、そのまま。</td></tr>
+<tr class="stage3"><td><a href="#cut-09">09</a></td><td>段3 つなぐと大きく変わる</td><td>1:26–1:39</td><td>13秒</td><td>52</td><td>段3：大きく変わる（見せ場）</td><td>点が、線になった。</td></tr>
+<tr class=""><td><a href="#cut-10">10</a></td><td>導入・留保・結論</td><td>1:39–1:52</td><td>13秒</td><td>63</td><td>留保（一発では作れない／化けたのは経験）</td><td>本当に化けたのは、経験かもしれない</td></tr>
+<tr class=""><td><a href="#cut-11">11</a></td><td>導入・留保・結論</td><td>1:52–2:06</td><td>14秒</td><td>65</td><td>本人の結論（肯定で閉じる）</td><td>小さいまま、終わらない。</td></tr>
+<tr class=""><td><a href="#cut-12">12</a></td><td>エンドロゴ</td><td>2:06–2:11</td><td>5秒</td><td>0</td><td>制作表示</td><td>エンドロゴ</td></tr>
+</table></div>
+<p class="small">尺の算出：ナレーション 563 字（句読点・かぎ括弧を除く）÷ 5.5 字/秒 ≒ 102 秒。各カットに息継ぎと見せ場の余白 1.5 秒（切り上げ）、09 の Zoom out と Freeze に +2 秒、エンドロゴ 5 秒。合計 約 2:11。秒数は目安で、等速での読了・観察時間は制作側の試作で確かめる。</p>
+<p><b>段ごとの配分</b>：導入 9 秒 → 段1 小さく作る 20 秒 → 段2 ちゃんと機能する 23 秒 → 脇役の対比 12 秒 → 段3 つなぐと変わる 35 秒 → 留保 13 秒 → 結論 14 秒 → ロゴ 5 秒。</p>
+<div class="box"><p><b>判断点：尺</b>　既定は約 2:11（ネタ案の約 2 分 10 秒とほぼ同じ）。2 分以内にする場合は、脇役の 06（12 秒）を外して約 1:59 にする案を推す（3 段の主役は削らない）。05 の最後から 07 の「合体ではなく、」へ直接つなぐ。3 分には伸ばさない。</p></div>
+<h2 id="cuts">カット表・絵コンテ</h2>
+<p>各カットに「はじめ」「おわり」の 2 コマと間の動きを書いています。コマ画は構図のラフ（1280×720、明るい紙色）で、完成画ではありません。秒数・位置は参考値で、実装の手順は制作側の裁量です（画面全体を大きく動かすこと、可読性、留保は緩めない）。three.js を推奨（コマ・粒・カメラは three.js の層、文字は DOM／CSS の層に分ける）。章表示・テロップ帯・エンドクレジットは入れない。</p>
+<section class="cut" id="cut-01"><div class="cuthead"><div class="num">01</div><div><h3>「数珠つなぎで動かせたら」</h3><p class="small">0:00–0:09 / 約9秒 ・ 導入・留保・結論 ・ 導入（現場の一言）</p></div></div>
+<div class="frames"><figure><a href="assets/storyboard/cut-01-start.webp"><img loading="lazy" src="assets/storyboard/cut-01-start.webp" width="1280" height="720" alt="カット01 はじめ"></a><figcaption><b>はじめ</b> 中央に引用2行が大きく、画面の上下いっぱいに組まれている。</figcaption></figure><figure><a href="assets/storyboard/cut-01-end.webp"><img loading="lazy" src="assets/storyboard/cut-01-end.webp" width="1280" height="720" alt="カット01 おわり"></a><figcaption><b>おわり</b> 引用が左上へ縮んで退き、画面に小さな青いコマ（ミニアプリ）が散らばる。左寄せ「現場の、ひと言から。」</figcaption></figure></div>
+<div class="details"><div><div class="label">画面の文字</div><p class="words">「数珠つなぎで<br>動かせたら、うれしいです」<br>現場の、ひと言から。</p><div class="label">ナレーション案</div><p class="voice">「数珠つなぎで動かせたら、うれしいです」。現場のメンバーの、この一言がきっかけでした。</p><div class="label">字数</div><p class="small">声 37字 ／ 画面 30字</p><div class="label">構図と字組みの変化</div><p>はじめ：中央・2行の大見出し（面の重心は中央）。おわり：文字は左中、コマが画面の四方に散る（重心が分散）。</p></div>
+<div><div class="label">動き（秒は参考値）</div><ul class="mot"><li>0〜2秒：引用の2行が行マスクで下から入り、同時に画面全体を Dolly in（寄り）。</li><li>2〜5秒：読む間、行ごとに逆向きへ流す（1行目は左へ、2行目は右へ）。</li><li>5〜7秒：Dolly out（引き）。引きの途中で、散らばったコマが奥から手前へ現れる。コマの数で「たくさんある」を見せる。</li></ul><div class="label">カメラ</div><p>Dolly in → Dolly out</p><div class="label">差し替え素材案</div><ul><li>実写素材：作業机の上に付箋とノートPCが並ぶ手元（人物の顔なし・ストック）。「現場」を感じさせる 2 秒</li><li>ピクトグラムアニメ：吹き出しから引用が出る人型ピクト（顔なし）</li></ul></div></div></section>
+<section class="cut" id="cut-02"><div class="cuthead"><div class="num">02</div><div><h3>小さく作る</h3><p class="small">0:09–0:19 / 約10秒 ・ 段1 小さく作る ・ 段1：小さく作る（1アプリ1仕事）</p></div></div>
+<div class="frames"><figure><a href="assets/storyboard/cut-02-start.webp"><img loading="lazy" src="assets/storyboard/cut-02-start.webp" width="1280" height="720" alt="カット02 はじめ"></a><figcaption><b>はじめ</b> 画面中央に青いコマが1つ。下に特大の「小さく作る」。</figcaption></figure><figure><a href="assets/storyboard/cut-02-end.webp"><img loading="lazy" src="assets/storyboard/cut-02-end.webp" width="1280" height="720" alt="カット02 おわり"></a><figcaption><b>おわり</b> コマが横一列に5つ並び、それぞれ白抜きの仕事名（仮）。下段左寄せで「1つのアプリに、／1つの仕事。」</figcaption></figure></div>
+<div class="details"><div><div class="label">画面の文字</div><p class="words">小さく作る<br>1つのアプリに、1つの仕事。</p><div class="label">ナレーション案</div><p class="voice">自社では、いくつものミニアプリを作ってきました。ひとつのアプリが受け持つのは、ひとつの仕事です。</p><div class="label">字数</div><p class="small">声 44字 ／ 画面 19字</p><div class="label">構図と字組みの変化</div><p>はじめ：中央に縦積み（コマ＋文字）。おわり：上段に横一列のコマ、下段に左寄せの2段見出し。重心が中央から下左へ。</p></div>
+<div><div class="label">動き（秒は参考値）</div><ul class="mot"><li>0〜2秒：「小さく作る」が塊ごと画面外の下から叩き込まれ、少し回転して水平に収まる。</li><li>2〜6秒：コマが1つずつ左から右へポンと置かれる（間隔は一定）。カメラは右へ Truck。</li><li>6〜12秒：「1つの仕事。」を大きく、行マスクで入れる。読む間は文字の塊を左へゆっくり流し、コマの列は右へ流す（逆向き）。</li></ul><div class="label">カメラ</div><p>固定 → Truck right</p><div class="label">差し替え素材案</div><ul><li>図解：1つの箱に1つの仕事名を入れたアイコン列（汎用の仕事名に置き換え）</li><li>ピクトグラムアニメ：工具箱から小さな道具が1本ずつ並ぶ</li></ul></div></div></section>
+<section class="cut" id="cut-03"><div class="cuthead"><div class="num">03</div><div><h3>使われないものは、止める。</h3><p class="small">0:19–0:29 / 約10秒 ・ 段1 小さく作る ・ 段1：小さく作る（育てて、止める）</p></div></div>
+<div class="frames"><figure><a href="assets/storyboard/cut-03-start.webp"><img loading="lazy" src="assets/storyboard/cut-03-start.webp" width="1280" height="720" alt="カット03 はじめ"></a><figcaption><b>はじめ</b> 2段に並んだ9つの青いコマ。下に「使って、直して。」</figcaption></figure><figure><a href="assets/storyboard/cut-03-end.webp"><img loading="lazy" src="assets/storyboard/cut-03-end.webp" width="1280" height="720" alt="カット03 おわり"></a><figcaption><b>おわり</b> 9つのうち4つが灰色に沈む（止めたアプリ）。下に「使われないものは、／止める。」</figcaption></figure></div>
+<div class="details"><div><div class="label">画面の文字</div><p class="words">使って、直して。<br>使われないものは、止める。</p><div class="label">ナレーション案</div><p class="voice">便利なら残し、不便なら直す。使われなくなったら止める。そうして、使われるものだけを磨いてきました。</p><div class="label">字数</div><p class="small">声 44字 ／ 画面 21字</p><div class="label">構図と字組みの変化</div><p>はじめ：上2/3にコマの格子、下に横1行。おわり：格子に灰の穴、下段2行の見出しが大きくなり重心が下へ。</p></div>
+<div><div class="label">動き（秒は参考値）</div><ul class="mot"><li>0〜4秒：コマの列全体を Crane up（俯瞰へ）。各コマが一度ずつ軽く押される（使われている）。</li><li>4〜8秒：4つのコマが青から灰へ変わり、奥へ沈む（z 方向に下がる）。</li><li>8〜12秒：「止める。」を大きく叩き込み、残った青いコマが詰め寄って並び直す。</li></ul><div class="label">カメラ</div><p>Crane up</p><div class="label">差し替え素材案</div><ul><li>図解：電源スイッチが OFF になるアイコン（ホスティング停止の比喩）</li><li>AI生成映像（未承認）：机の上で白い小さなブロックがいくつか静かに沈んで消える 3 秒。生成はしない</li></ul></div></div></section>
+<section class="cut" id="cut-04"><div class="cuthead"><div class="num">04</div><div><h3>一つひとつが、ちゃんと動く</h3><p class="small">0:29–0:40 / 約11秒 ・ 段2 一つひとつがちゃんと機能する ・ 段2：一つひとつがちゃんと機能する</p></div></div>
+<div class="frames"><figure><a href="assets/storyboard/cut-04-start.webp"><img loading="lazy" src="assets/storyboard/cut-04-start.webp" width="1280" height="720" alt="カット04 はじめ"></a><figcaption><b>はじめ</b> 大きなコマ1つに寄った画。左に「入口」、右に「出口」の矢印。下に「一つひとつが、ちゃんと動く」。</figcaption></figure><figure><a href="assets/storyboard/cut-04-end.webp"><img loading="lazy" src="assets/storyboard/cut-04-end.webp" width="1280" height="720" alt="カット04 おわり"></a><figcaption><b>おわり</b> コマ3つが少し間を空けて並び、それぞれ緑の枠（ちゃんと機能している印）。左右にオレンジの粒（入力・出力）。下に「入力と出力を／分けて作っていた。」</figcaption></figure></div>
+<div class="details"><div><div class="label">画面の文字</div><p class="words">一つひとつが、ちゃんと動く<br>入力と出力を<br>分けて作っていた。</p><div class="label">ナレーション案</div><p class="voice">小さくても、現場で何度も使われてきた道具です。独立して動くように、インプットとアウトプットも分けていました。</p><div class="label">字数</div><p class="small">声 50字 ／ 画面 28字</p><div class="label">構図と字組みの変化</div><p>はじめ：中央に1つの大きな図、文字は下中央1行。おわり：上段に3つの図、下段に左寄せ2行。寄りから引きへ。</p></div>
+<div><div class="label">動き（秒は参考値）</div><ul class="mot"><li>0〜3秒：1つのコマへ Dolly in。入口からオレンジの粒が入り、出口から出る（1回）。</li><li>3〜6秒：緑の枠が描かれる（線が一周）。「ちゃんと動く」に合わせる。</li><li>6〜12秒：カメラが Truck left で引きながら横に3つ並ぶ。3つとも、粒が入って出る（ばらばらの拍で）。まだ粒は次のコマへは渡らない。</li></ul><div class="label">カメラ</div><p>Dolly in → Truck left</p><div class="label">差し替え素材案</div><ul><li>図解：入力→箱→出力の3点図（汎用の書類アイコン）</li><li>ピクトグラムアニメ：小さな機械が1枚ずつ紙を受け取り、加工して出す</li></ul></div></div></section>
+<section class="cut" id="cut-05"><div class="cuthead"><div class="num">05</div><div><h3>どれに、何を入れた？</h3><p class="small">0:40–0:52 / 約12秒 ・ 段2 一つひとつがちゃんと機能する ・ 段2の弱点（量が増えると、分かれていること自体が負荷）</p></div></div>
+<div class="frames"><figure><a href="assets/storyboard/cut-05-start.webp"><img loading="lazy" src="assets/storyboard/cut-05-start.webp" width="1280" height="720" alt="カット05 はじめ"></a><figcaption><b>はじめ</b> 3つのコマの間を、オレンジの矢印が交差して行き来する。下に「量が増えると、／手で渡すのが重い。」</figcaption></figure><figure><a href="assets/storyboard/cut-05-end.webp"><img loading="lazy" src="assets/storyboard/cut-05-end.webp" width="1280" height="720" alt="カット05 おわり"></a><figcaption><b>おわり</b> 3つのコマの下に大きなオレンジの「？」。下に「どれに、何を入れた？」</figcaption></figure></div>
+<div class="details"><div><div class="label">画面の文字</div><p class="words">量が増えると、<br>手で渡すのが重い。<br>どれに、何を入れた？</p><div class="label">ナレーション案</div><p class="voice">ところが量が増えると、分かれていること自体が負荷になりました。結果を手で次へ渡す。どれに何を入れたか、分からなくなる。</p><div class="label">字数</div><p class="small">声 54字 ／ 画面 26字</p><div class="label">構図と字組みの変化</div><p>はじめ：上にコマ、間に斜めの矢印、下に2行。おわり：中央に記号1つ、下に横1行。斜めの線で画面が乱れる。</p></div>
+<div><div class="label">動き（秒は参考値）</div><ul class="mot"><li>0〜5秒：手渡しの矢印が1本、2本、4本と増え、カメラが小刻みに Whip pan で左右のコマを行き来する（受け渡しの往復）。</li><li>5〜9秒：矢印が絡まって止まり、「？」が落ちてくる。</li><li>9〜13秒：画面全体を少し傾ける（Roll 4°）。</li></ul><div class="label">カメラ</div><p>Whip pan（往復）→ Roll</p><div class="label">差し替え素材案</div><ul><li>実写素材：机の上で紙の書類を手で次の人へ渡す手元（顔なし・ストック）</li><li>ピクトグラムアニメ：人型ピクトが箱から箱へ紙を運び続けて汗をかく</li></ul></div></div></section>
+<section class="cut" id="cut-06"><div class="cuthead"><div class="num">06</div><div><h3>がっちゃんこ？</h3><p class="small">0:52–1:04 / 約12秒 ・ 脇役の対比（段2→段3の間） ・ 脇役の対比：合体させる案（塊に潰れて割れる）</p></div></div>
+<div class="frames"><figure><a href="assets/storyboard/cut-06-start.webp"><img loading="lazy" src="assets/storyboard/cut-06-start.webp" width="1280" height="720" alt="カット06 はじめ"></a><figcaption><b>はじめ</b> 散らばったコマが中央へ向かう矢印。中央に「がっちゃんこ？」</figcaption></figure><figure><a href="assets/storyboard/cut-06-end.webp"><img loading="lazy" src="assets/storyboard/cut-06-end.webp" width="1280" height="720" alt="カット06 おわり"></a><figcaption><b>おわり</b> コマが1つの大きな青い塊に潰れ、赤いひびが走る。下に「一か所で、全部止まる。」</figcaption></figure></div>
+<div class="details"><div><div class="label">画面の文字</div><p class="words">がっちゃんこ？<br>一か所で、全部止まる。</p><div class="label">ナレーション案</div><p class="voice">全部を「がっちゃんこ」した巨大なアプリも考えました。でもそれでは個別に使える良さが消え、どこかが止まれば全体に響きます。</p><div class="label">字数</div><p class="small">声 55字 ／ 画面 18字</p><div class="label">構図と字組みの変化</div><p>はじめ：四方に散る図、中央に1語。おわり：中央に大きな塊、下に横1行。ここだけ赤が出る。</p></div>
+<div><div class="label">動き（秒は参考値）</div><ul class="mot"><li>0〜3秒：コマが中央へ吸い寄せられ、1つの塊に潰れる（約0.8秒・速い）。</li><li>3〜6秒：塊の1か所が赤く欠け、ひびが全体へ走る。</li><li>6〜9秒：画面ごと巻き戻し（逆再生の速い動き）で、コマがばらばらに戻る。07 へ。</li></ul><div class="label">カメラ</div><p>Dolly in（吸い寄せ）→ 逆再生</p><div class="label">差し替え素材案</div><ul><li>図解：大きな一枚岩にひびが入るアイコン</li><li>ピクトグラムアニメ：積み木を接着剤で固めた塊が1か所欠けて崩れる</li></ul></div></div></section>
+<section class="cut" id="cut-07"><div class="cuthead"><div class="num">07</div><div><h3>流れだけを、つなぐ。</h3><p class="small">1:04–1:15 / 約11秒 ・ 段3 つなぐと大きく変わる ・ 段3：つなぐ（オーケストレーター）</p></div></div>
+<div class="frames"><figure><a href="assets/storyboard/cut-07-start.webp"><img loading="lazy" src="assets/storyboard/cut-07-start.webp" width="1280" height="720" alt="カット07 はじめ"></a><figcaption><b>はじめ</b> 3つのコマが少し離れて横に並ぶ。上に「合体ではなく、」</figcaption></figure><figure><a href="assets/storyboard/cut-07-end.webp"><img loading="lazy" src="assets/storyboard/cut-07-end.webp" width="1280" height="720" alt="カット07 おわり"></a><figcaption><b>おわり</b> 4つのコマの出口と入口が噛み合って一列に。オレンジの粒が左から右へ流れる。上「流れだけを、」・下に特大の「つなぐ。」</figcaption></figure></div>
+<div class="details"><div><div class="label">画面の文字</div><p class="words">合体ではなく、<br>流れだけを、<br>つなぐ。</p><div class="label">ナレーション案</div><p class="voice">必要なのは、合体ではありませんでした。各ツールを包んで順番に動かす仕組みを作り、出口と入口だけをつないだのです。</p><div class="label">字数</div><p class="small">声 52字 ／ 画面 17字</p><div class="label">構図と字組みの変化</div><p>はじめ：中央に横一列、上に1行。おわり：上1行・中央の列・下に特大1語の3層。字の大きさの差が最大。</p></div>
+<div><div class="label">動き（秒は参考値）</div><ul class="mot"><li>0〜3秒：「合体ではなく、」を行マスクで出し、コマを左右から寄せる。</li><li>3〜7秒：出口と入口がカチッと噛み合う（1か所0.3秒ずつ、拍に合わせて4回）。噛み合うたびに画面全体が少し押される。</li><li>7〜12秒：「つなぐ。」を叩き込み、オレンジの粒が左から右へ流れる。カメラは粒を追って Truck right。</li></ul><div class="label">カメラ</div><p>固定 → Truck right（粒を追う）</p><div class="label">差し替え素材案</div><ul><li>AI生成映像（未承認）：白い小さなモジュールのブロックが噛み合い、光の粒が通り抜ける Tracking shot 5 秒（ネタ案の英語プロンプトを流用）。生成はしない</li><li>ピクトグラムアニメ：パイプが1本ずつつながり、水が流れる</li></ul></div></div></section>
+<section class="cut" id="cut-08"><div class="cuthead"><div class="num">08</div><div><h3>1つだけ使う日も、そのまま。</h3><p class="small">1:15–1:26 / 約11秒 ・ 段3 つなぐと大きく変わる ・ 段3：個別利用と連続処理の両立</p></div></div>
+<div class="frames"><figure><a href="assets/storyboard/cut-08-start.webp"><img loading="lazy" src="assets/storyboard/cut-08-start.webp" width="1280" height="720" alt="カット08 はじめ"></a><figcaption><b>はじめ</b> 噛み合った4つのコマを粒が流れる。下に「最初の入力を1つ渡せば、／次へ、次へ。」</figcaption></figure><figure><a href="assets/storyboard/cut-08-end.webp"><img loading="lazy" src="assets/storyboard/cut-08-end.webp" width="1280" height="720" alt="カット08 おわり"></a><figcaption><b>おわり</b> 4つのうち1つがスッと下へ抜け、単独で緑の枠をつけて動く。残りの列はそのまま。下に「1つだけ使う日も、そのまま。」</figcaption></figure></div>
+<div class="details"><div><div class="label">画面の文字</div><p class="words">最初の入力を1つ渡せば、<br>次へ、次へ。<br>1つだけ使う日も、そのまま。</p><div class="label">ナレーション案</div><p class="voice">最初の入力をひとつ渡せば、結果が次へ流れていく。ひとつだけ使いたい日は、これまでどおり個別に使えます。</p><div class="label">字数</div><p class="small">声 47字 ／ 画面 32字</p><div class="label">構図と字組みの変化</div><p>はじめ：上に列、下に2行の左寄せ。おわり：列に1つ欠けた段差、下に横1行。重心が上下に割れる。</p></div>
+<div><div class="label">動き（秒は参考値）</div><ul class="mot"><li>0〜4秒：粒が次々に流れる。「次へ、次へ。」の語が粒と同じ向きに押し出される。</li><li>4〜8秒：2つ目のコマが下へ抜け出し（Crane down で追う）、単独で粒を受けて出す。</li><li>8〜12秒：カメラが上へ戻り、列と単独のコマを1画面に収める。</li></ul><div class="label">カメラ</div><p>Truck → Crane down → Crane up</p><div class="label">差し替え素材案</div><ul><li>図解：同じ道具を「単体モード」と「連続モード」で並べた2画面</li><li>ピクトグラムアニメ：電車の車両が1両だけ切り離されても走る</li></ul></div></div></section>
+<section class="cut" id="cut-09"><div class="cuthead"><div class="num">09</div><div><h3>点が、線になった。</h3><p class="small">1:26–1:39 / 約13秒 ・ 段3 つなぐと大きく変わる ・ 段3：大きく変わる（見せ場）</p></div></div>
+<div class="frames"><figure><a href="assets/storyboard/cut-09-start.webp"><img loading="lazy" src="assets/storyboard/cut-09-start.webp" width="1280" height="720" alt="カット09 はじめ"></a><figcaption><b>はじめ</b> 4つのコマに寄った画。上に「つないだ瞬間、」</figcaption></figure><figure><a href="assets/storyboard/cut-09-end.webp"><img loading="lazy" src="assets/storyboard/cut-09-end.webp" width="1280" height="720" alt="カット09 おわり"></a><figcaption><b>おわり</b> カメラが大きく引き、12個のコマが1本の線に。粒が線を流れる。上に「点が、線になった。」下に「ひとまとまりの仕事が動く」</figcaption></figure></div>
+<div class="details"><div><div class="label">画面の文字</div><p class="words">つないだ瞬間、<br>点が、線になった。<br>ひとまとまりの仕事が動く</p><div class="label">ナレーション案</div><p class="voice">ひとつずつは小さな道具でも、つなぐと、できることがぐっと増える。点が線になり、ひとまとまりの仕事が動き出しました。</p><div class="label">字数</div><p class="small">声 52字 ／ 画面 28字</p><div class="label">構図と字組みの変化</div><p>はじめ：大きな図4つ、文字は左上の小さな1行。おわり：細い横線と中央寄せの見出し。寄りから引きへ、密から疎へ。</p></div>
+<div><div class="label">動き（秒は参考値）</div><ul class="mot"><li>0〜3秒：オレンジの粒が4つのコマを抜けるのを追う。</li><li>3〜8秒：Zoom out（約3秒・ゆっくり）。画面の外にもコマが続いていて、1本の線になる。</li><li>8〜13秒：「点が、線になった。」を中央上に大きく。線全体を光の粒が一気に流れ、最後は Freeze frame 1 秒。</li></ul><div class="label">カメラ</div><p>Zoom out（大きく）→ Freeze</p><div class="label">差し替え素材案</div><ul><li>実写素材：夜の線路や道路を光の筋が流れるタイムラプス（ストック、場所が特定されないもの）</li><li>図解：点の並びが線でつながる地図風の図</li></ul></div></div></section>
+<section class="cut" id="cut-10"><div class="cuthead"><div class="num">10</div><div><h3>本当に化けたのは、経験かもしれない</h3><p class="small">1:39–1:52 / 約13秒 ・ 導入・留保・結論 ・ 留保（一発では作れない／化けたのは経験）</p></div></div>
+<div class="frames"><figure><a href="assets/storyboard/cut-10-start.webp"><img loading="lazy" src="assets/storyboard/cut-10-start.webp" width="1280" height="720" alt="カット10 はじめ"></a><figcaption><b>はじめ</b> 下に灰の混じった過去のコマの列（止めたものも並ぶ）。上に「一発で作っても、／同じ形にはならない。」</figcaption></figure><figure><a href="assets/storyboard/cut-10-end.webp"><img loading="lazy" src="assets/storyboard/cut-10-end.webp" width="1280" height="720" alt="カット10 おわり"></a><figcaption><b>おわり</b> 上に「本当に化けたのは、／積み重ねた経験／だったのかもしれない。」下に小さなコマが積み重なる。</figcaption></figure></div>
+<div class="details"><div><div class="label">画面の文字</div><p class="words">一発で作っても、<br>同じ形にはならない。<br>本当に化けたのは、<br>積み重ねた経験<br>だったのかもしれない。</p><div class="label">ナレーション案</div><p class="voice">同じものを一発で作ろうとしても、きっと同じ形にはなりません。本当に化けたのは、アプリではなく、積み重ねてきた経験だったのかもしれません。</p><div class="label">字数</div><p class="small">声 63字 ／ 画面 45字</p><div class="label">構図と字組みの変化</div><p>はじめ：上に2行、下端に列。おわり：左寄せの3段、強弱つき。下端に小さな列。</p></div>
+<div><div class="label">動き（秒は参考値）</div><ul class="mot"><li>0〜5秒：カメラが Crane down で、線の下に積もった過去のコマ（灰も含む）を見せる。</li><li>5〜9秒：「積み重ねた経験」を大きく、行マスクで下から入れる。</li><li>9〜14秒：小さなコマが1つずつ積み上がる。文字の塊は上へゆっくり流す。</li></ul><div class="label">カメラ</div><p>Crane down</p><div class="label">差し替え素材案</div><ul><li>実写素材：ノートに手書きでメモを重ねていく手元（顔なし・ストック）</li><li>ピクトグラムアニメ：階段を1段ずつ作りながら登る人型</li></ul></div></div></section>
+<section class="cut" id="cut-11"><div class="cuthead"><div class="num">11</div><div><h3>小さいまま、終わらない。</h3><p class="small">1:52–2:06 / 約14秒 ・ 導入・留保・結論 ・ 本人の結論（肯定で閉じる）</p></div></div>
+<div class="frames"><figure><a href="assets/storyboard/cut-11-start.webp"><img loading="lazy" src="assets/storyboard/cut-11-start.webp" width="1280" height="720" alt="カット11 はじめ"></a><figcaption><b>はじめ</b> 中央に小さなコマが1つだけ。上に「小さく作る。」（02 のはじめと呼応）</figcaption></figure><figure><a href="assets/storyboard/cut-11-end.webp"><img loading="lazy" src="assets/storyboard/cut-11-end.webp" width="1280" height="720" alt="カット11 おわり"></a><figcaption><b>おわり</b> 左上から階段状に3行「小さく作る。」「ちゃんと動く。」「つなぐと、化ける。」（下の行ほど大きい）。下端に線になった12個のコマと粒。</figcaption></figure></div>
+<div class="details"><div><div class="label">画面の文字</div><p class="words">小さく作る。<br>ちゃんと動く。<br>つなぐと、化ける。</p><div class="label">ナレーション案</div><p class="voice">小さく作っても、一つひとつがちゃんと動いていれば、つないだとき、大きく何かを変えられる。作っていたミニアプリたちは、つないだ瞬間に、化けました。</p><div class="label">字数</div><p class="small">声 65字 ／ 画面 22字</p><div class="label">構図と字組みの変化</div><p>はじめ：中央の点＋上1行（02 はじめと呼応）。おわり：3行が左上から右下へ階段状に大きくなる（3段の要約）、下端に線。</p></div>
+<div><div class="label">動き（秒は参考値）</div><ul class="mot"><li>0〜3秒：1つのコマに寄った状態から始まる（02 のはじめと同じ構図で呼応）。</li><li>3〜8秒：コマの左右に次々とコマが噛み合い、カメラが引いて線になる。</li><li>8〜12秒：「つなぐと、化ける。」を最大の字で叩き込み、画面全体を右へ押し出してロゴ画面のライムへ Whip pan。</li></ul><div class="label">カメラ</div><p>Zoom out → Whip pan（ロゴへ）</p><div class="label">差し替え素材案</div><ul><li>図解：1つの点から線が伸びるだけの最小図</li><li>AI生成映像（未承認）：机の上の白い小さなブロックが1つずつ連なっていく俯瞰 4 秒。生成はしない</li></ul></div></div></section>
+<section class="cut" id="cut-12"><div class="cuthead"><div class="num">12</div><div><h3>エンドロゴ</h3><p class="small">2:06–2:11 / 約5秒 ・ エンドロゴ ・ 制作表示</p></div></div>
+<div class="frames"><figure><a href="assets/storyboard/cut-12-start.webp"><img loading="lazy" src="assets/storyboard/cut-12-start.webp" width="1280" height="720" alt="カット12 はじめ"></a><figcaption><b>はじめ</b> ライム #d2ff1a の全面。o が落ちてくる（SVG のアニメーションどおり）。</figcaption></figure><figure><a href="assets/storyboard/cut-12-end.webp"><img loading="lazy" src="assets/storyboard/cut-12-end.webp" width="1280" height="720" alt="カット12 おわり"></a><figcaption><b>おわり</b> ライムの全面の中央に okady-work-logo.svg の完成状態。</figcaption></figure></div>
+<div class="details"><div><div class="label">画面の文字</div><p class="words">（ロゴのみ）</p><div class="label">ナレーション案</div><p class="voice">（なし）</p><div class="label">字数</div><p class="small">声 0字 ／ 画面 4字</p><div class="label">構図と字組みの変化</div><p>ロゴ以外の文字・要素は置かない。</p></div>
+<div><div class="label">動き（秒は参考値）</div><ul class="mot"><li>SVG 内の CSS アニメーション（0〜2.6秒 o の落下とバウンド、2.6〜3.2秒 左へスライド、3.0〜4.0秒「.work」出現）をフレーム時刻から再現。</li><li>完成状態を約1〜1.5秒保持して終わる。</li></ul><div class="label">カメラ</div><p>固定</p><div class="label">差し替え素材案</div><ul><li>（差し替えなし）</li></ul></div></div></section>
+<h2 id="symbols">キャラ・形の設定と記号・色の一覧</h2>
+<div class="box"><p><b>主役の形「コマ」</b>：左に凹（入口）、右に凸（出口）のついた青い四角。1 つ＝1 つのミニアプリ。顔や手足は付けない。大きさは場面で変えてよいが、凹凸の向き（左が入口・右が出口）は全編で固定。コマの数は絵の都合で、実際のアプリ数ではない。</p></div>
+<div class="tablewrap"><table><tr><th>記号・色</th><th>意味（1 記号 1 意味）</th><th>出るカット</th></tr>
+<tr><td><span class="sw" style="background:#2b59ff"></span>青 #2b59ff のコマ</td><td>ミニアプリ（使われているもの）</td><td>01–11</td></tr>
+<tr><td><span class="sw" style="background:#bebebe"></span>灰 #bebebe のコマ</td><td>止めたミニアプリ</td><td>03・10</td></tr>
+<tr><td><span class="sw" style="background:#1a9e5a"></span>緑 #1a9e5a の枠・字</td><td>ちゃんと機能している（段2）</td><td>04・08・11（「ちゃんと動く。」）</td></tr>
+<tr><td><span class="sw" style="background:#ff7a00"></span>オレンジ #ff7a00 の粒・矢印</td><td>仕事（入力・出力）の流れ。05 では手で渡す流れ、07 以降は自動で流れる流れ。どちらも「流れ」</td><td>04・05・07・08・09・11</td></tr>
+<tr><td>オレンジの「？」</td><td>流れを見失った（どれに何を入れたか）。流れの色の派生として 05 だけ</td><td>05</td></tr>
+<tr><td><span class="sw" style="background:#e5322d"></span>赤 #e5322d のひび</td><td>合体させた塊が壊れる（06 のみ）</td><td>06</td></tr>
+<tr><td>大きな青い塊</td><td>全部を合体させた巨大アプリ（脇役）</td><td>06</td></tr>
+<tr><td>灰の矢印</td><td>合体へ向かう動き（流れではない）</td><td>06</td></tr>
+<tr><td>墨 #1a1a1a の字／灰 #6e6e6e の字</td><td>主役の語／前置き・補足</td><td>全編</td></tr>
+<tr><td>紙色 #f7f5ef の背景</td><td>本編の地。暗い全面背景は使わない</td><td>01–11</td></tr>
+<tr><td><span class="sw" style="background:#d2ff1a"></span>ライム #d2ff1a</td><td>エンドロゴの背景だけ（本編では使わない）</td><td>12</td></tr></table></div>
+<p class="small">点検：オレンジは「流れ」以外に使っていない（以前の案で「動いている印」の枠をオレンジにしていたが、緑へ分けた）。赤は 06 のひびだけ。緑は「ちゃんと機能する」だけ。</p>
+<h2 id="claim-map">references.md との対応</h2>
+<div class="tablewrap"><table><tr><th>役割</th><th>内容</th><th>references.md</th><th>画面文言（カット）</th></tr>
+<tr><td>主張</td><td>小さく作っても、一つひとつがちゃんと機能していれば、つないだとき大きく変えられる</td><td>ユーザー原文・A11・A13</td><td>小さく作る。ちゃんと動く。つなぐと、化ける。（11）</td></tr>
+<tr><td>根拠 段1</td><td>1アプリ1仕事、使われないものは止める</td><td>A2・A3</td><td>02・03</td></tr>
+<tr><td>根拠 段2</td><td>現場で使われてきた道具、入力と出力を分けていた</td><td>A4・A5</td><td>04</td></tr>
+<tr><td>段2の弱点</td><td>量が増えると分かれていること自体が負荷</td><td>A6</td><td>05</td></tr>
+<tr><td>対比（脇役）</td><td>合体すると個別利用の良さが消え、不具合が全体へ</td><td>A7</td><td>06</td></tr>
+<tr><td>根拠 段3</td><td>流れだけをつなぐ／個別利用も残る／点が線に</td><td>A8–A11</td><td>07・08・09</td></tr>
+<tr><td>留保</td><td>一発では同じ形にならない／化けたのは経験かもしれない</td><td>A12・A14</td><td>10</td></tr>
+<tr><td>結論</td><td>つないだ瞬間に化けた</td><td>A13</td><td>11</td></tr></table></div>
+<h2 id="handoff">企画側と制作側の担当範囲</h2>
+<div class="tablewrap"><table><tr><th>企画側（この企画書）</th><th>制作側</th></tr>
+<tr><td>主張・構成・尺の目安・画面の文言・ナレーション案・絵コンテ・記号と色・差し替え素材の候補と採否の判断・新規の画像／動画素材の用意（採用が決まったら）・AI 生成映像の承認取り</td><td>three.js（推奨）または同等の手段での実装、文字層（DOM／CSS）と図の層の分離、フレーム時刻から決まる動き、<b>文字のはみ出し・重なりの機械検査</b>（各文字の外接矩形を全カットで一定間隔ごとに取り、安全域外と、文字×図形・矢印の交差を書き出す。AGENTS.md の手順）、代表区間の等速確認、エンドロゴのアニメーション再現、BGM・効果音（後工程）</td></tr></table></div>
+<p class="small">絵コンテの文字は、企画側でも PIL の外接矩形で安全域（左右 40px・上下 30px）外と文字同士の重なりを検査し、該当なしを確認済み。これは制作側の機械検査の代わりではない。</p>
+<h2 id="status">状態</h2>
+<ul><li>等速通し：<b>未確認</b>（映像はまだない）</li><li>BGM・効果音：<b>後回し</b>（今回は検討もしない）</li><li>NANKA DEKIRU：候補確認済み（説明文ベース、デモの動きは未確認）→ <a href="effects-direction.md">effects-direction.md</a></li><li>AI 生成映像：候補に挙げただけで<b>未承認・未生成</b></li><li>レンダリング・書き出し・投稿：していない</li></ul>
+<h2 id="decide">未確定事項と、判断してほしい点</h2>
+<ol><li><b>尺</b>：約 2:11（既定）で行くか、06 を外して約 1:59 の 2 分以内にするか。</li>
+<li><b>ナレーションの有無</b>：声ありの前提で組んでいる。声なしなら画面の文字を増やして組み直し、尺も変わる。</li>
+<li><b>06 の「一か所で、全部止まる。」</b>：原稿は「影響が広がり」。強めの言い換えなので「一か所が、全体に響く。」へ弱めるか。</li>
+<li><b>02 のコマの仮ラベル</b>（集計・整形・確認・変換・通知）：汎用語のまま残すか、ラベルなしにするか（実在のアプリ名は出さない）。</li>
+<li><b>11 のナレーション</b>：「一つひとつがちゃんと動いていれば、つないだとき、大きく何かを変えられる」は原稿ではなく 2026-11-05 のご本人の言葉に基づく。この言い方でよいか。</li>
+<li><b>差し替え素材</b>：実写ストック（01・05・09・10）を使うか、全編を図形とピクトで通すか。</li>
+<li><b>AI 生成映像</b>（03・07・11 の候補）：使う場合はクレジット消費の承認が要る（未承認）。</li></ol>
+</main><footer><div class="inner"><p class="small">作成：2026-11-05（企画側）。原稿の本文は同梱しない。</p></div></footer></body></html>
