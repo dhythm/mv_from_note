@@ -1,0 +1,29 @@
+{
+  "text": "動画生成の手順を確認してから、指定どおり1本だけ作ります。テキストから動画への生成ツールはありません。動画は参照画像が必須のため、今回は生成していません。\n\n**結論:** 純テキストからの動画生成（text-to-video）は使えません。使えるのは `reference_to_video`（または `image_to_video`）のみで、どちらも参照画像が必要です。指示どおり、参照画像なしでは生成していません。\n\n**必要な入力**\n\n`reference_to_video` は次のうち少なくとも1つが必須です。\n\n- `images`（最大14枚、スタイル／被写体の参照）\n- `first_frame`（先頭フレームとして固定する画像）\n- `last_frame`（末尾フレームとして固定する画像）\n- `keyframes`（クリップ内部の固定フレーム、最大4）\n- `voices`（プリセット音声。今回は無音指定のため不使用）\n\n今回のショットでは、開始構図を固定するために **16:9 のフォトリアルな静止画を `first_frame` に渡す**のが適切です。内容はプロンプトどおり、デスク上の右手・マウス・袖口・キーボード端のみ。\n\n**指定していたパラメータ（未実行）**\n\n| 項目 | 値 |\n|---|---|\n| tool | `reference_to_video` |\n| prompt | ユーザー指定のビデオプロンプト（verbatim） |\n| aspect_ratio | `16:9` |\n| duration | `6` |\n| resolution_name | `720p` |\n| first_frame / images | **未指定のため未実行** |\n| voices | なし（無音） |\n\n**未生成のため返せないもの**\n\n- 生成済みローカルパス: なし\n- 実際のモデル名: 未呼び出しのため不明\n- usage / cost: 未呼び出しのためなし（金額は作っていません）\n\n参照用の 16:9 静止画（手元の写真、または生成してよい場合はその旨）を渡してもらえれば、同じプロンプト・6秒・16:9・720p・1本だけで `reference_to_video` を実行できます。",
+  "stopReason": "end_turn",
+  "sessionId": "01a1a9d5-4719-7242-aa9b-29b3a05f3828",
+  "requestId": "3717c35d-e109-420e-bf3e-f3cfd5c60200",
+  "cwd": "/private/tmp",
+  "thought": "I will generate exactly one photorealistic video asset using the built-in tool.\n\nI will use the existing authenticated Grok account. The output must be 6 seconds, 16:9, 720p. I will return the local path, tool parameters, model name, and usage details.\n\nI am reviewing the available video generation tools. Text-to-video is not available, so I will use image_to_video or reference_to_video instead.No text-to-video tool is available. Video generation requires reference images.\n\nI will report the required reference-image input without generating footage.\n\n`image_to_video` and `reference_to_video` both require a source image. No text-to-video tool exists.\n\nThe imagine skill suggests staging a first frame with image_gen before using reference_to_video. This would violate the no-generation instruction.",
+  "usage": {
+    "input_tokens": 31656,
+    "cache_read_input_tokens": 1664,
+    "cache_creation_input_tokens": 0,
+    "output_tokens": 1711,
+    "reasoning_tokens": 1198,
+    "total_tokens": 35031
+  },
+  "num_turns": 2,
+  "total_cost_usd": 0.0252994,
+  "total_cost_usd_ticks": 252994000,
+  "modelUsage": {
+    "grok-4.6-build": {
+      "inputTokens": 31656,
+      "outputTokens": 1711,
+      "cacheReadInputTokens": 1664,
+      "cacheCreationInputTokens": 0,
+      "modelCalls": 2,
+      "costUSD": 0.0252994
+    }
+  }
+}

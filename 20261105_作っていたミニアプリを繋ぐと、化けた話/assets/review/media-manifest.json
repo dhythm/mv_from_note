@@ -1,0 +1,85 @@
+[
+  {
+    "file": "assets/source/cut05-hand-mouse-grok-source.mp4",
+    "sha256": "0e729c04c90d06847991ba79242e08eba14d2bb1842db05a560ee7e25227d2c9",
+    "bytes": 1945442,
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 1280,
+        "height": 720,
+        "r_frame_rate": "24/1"
+      },
+      {
+        "codec_name": "mjpeg",
+        "codec_type": "video",
+        "width": 1280,
+        "height": 720,
+        "r_frame_rate": "90000/1"
+      }
+    ],
+    "format": {
+      "duration": "6.041667"
+    }
+  },
+  {
+    "file": "assets/footage/cut05-hand-mouse-4s.mp4",
+    "sha256": "14dca524e3fa50b3ced284c7c10a28d2b807d788d5a78582825ca34b9b75b6aa",
+    "bytes": 1140609,
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 1280,
+        "height": 720,
+        "r_frame_rate": "24/1"
+      }
+    ],
+    "format": {
+      "duration": "4.000000"
+    }
+  },
+  {
+    "file": "assets/footage/cut05-manual-transfer-ui.mp4",
+    "sha256": "7914840d37d101c11aad259b3fe6581f51fc9b50aa80337666bd7afcee35d6d1",
+    "bytes": 99015,
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 1200,
+        "height": 680,
+        "r_frame_rate": "30/1"
+      }
+    ],
+    "format": {
+      "duration": "4.000000"
+    }
+  },
+  {
+    "file": "assets/review/cut05-placement-4s.mp4",
+    "sha256": "925b0562109b4a6c338c7c25521a40417b566fba97da16af09cc2f6409906494",
+    "bytes": 632223,
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 1920,
+        "height": 1080,
+        "r_frame_rate": "30/1"
+      }
+    ],
+    "format": {
+      "duration": "3.966667"
+    }
+  }
+]

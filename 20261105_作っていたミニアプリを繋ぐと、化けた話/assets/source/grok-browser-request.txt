@@ -1,0 +1,4 @@
+Photorealistic live-action closeup, 16:9. A single adult worker’s anatomically correct right hand rests on a plain unbranded black wireless mouse on a warm off-white desk. Light gray sleeve from lower right, narrow white keyboard edge upper left, no monitor, no text, no face. High three-quarter view, fixed camera, bright soft neutral daylight. During the shot the hand makes two small mouse movements and two gentle index-finger clicks with natural pauses, then returns a little. Preserve five normal fingers and stable mouse shape. Clean realistic skin. No dramatic lighting, no camera motion, no extra hands, no logos. Silent.
+
+Grok Imagine browser UI settings: Video / 720p / 6s / 16:9 / audio off.
+Successful generations: 1.
