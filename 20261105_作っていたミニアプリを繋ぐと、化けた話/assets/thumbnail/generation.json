@@ -1,0 +1,22 @@
+{
+  "method": "built-in image_gen",
+  "generations": 1,
+  "text": [
+    "ミニアプリ",
+    "つないだら、",
+    "化けた。"
+  ],
+  "reference": "../storyboard/cut-07-end.webp",
+  "original_size": [
+    1672,
+    941
+  ],
+  "output": "youtube-thumbnail.jpg",
+  "output_size": [
+    1280,
+    720
+  ],
+  "bytes": 239631,
+  "prompt": "prompt.txt",
+  "export": "中央基準で16:9へ微調整し1280×720 JPEGに変換。文言・図形の追加編集なし。"
+}

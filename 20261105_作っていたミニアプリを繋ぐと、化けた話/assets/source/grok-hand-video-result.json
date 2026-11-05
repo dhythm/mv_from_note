@@ -1,0 +1,29 @@
+{
+  "text": "指定の静止画を先頭フレームに固定し、6秒・16:9・720pの映像を1本だけ生成します。映像は生成されていません。`reference_to_video` を1回呼びましたが、ゼロデータ保持（ZDR）のため動画生成ツールが使えず失敗しました。ローカルパス、実モデル、利用量、コストは返っていません。\n\nエラー: `Video generation tools are unavailable under zero data retention (ZDR). To enable, either turn off /privacy mode to disable ZDR or supply a user-hosted storage bucket (see https://docs.x.ai/build/settings/zdr-video-storage).`\n\n使ったパラメータ:\n\n- `first_frame`: `/Users/yuta.okada/local/dev/mv_from_note/20261105_作っていたミニアプリを繋ぐと、化けた話/assets/source/cut05-hand-first-frame.png`\n- `aspect_ratio`: `16:9`\n- `duration`: `6`\n- `resolution_name`: `720p`\n- `voices`: なし\n- `images` / `last_frame` / `keyframes`: なし\n- `prompt`: 指定の手とマウスのマクロ映像プロンプト（無音、スピーチなし、音楽なし）\n\n再試行や別タスクはしていません。",
+  "stopReason": "end_turn",
+  "sessionId": "01a1a9d6-53bd-7dd0-8dc2-81c31ca2aaaf",
+  "requestId": "6a1c9dc9-8ed8-4a5c-8a16-45825fc058b4",
+  "cwd": "/private/tmp",
+  "thought": "Preparing to generate one photorealistic video using the reference_to_video tool.\n\nThe reference image path is set. The output will be 6 seconds at 16:9 and 720p. Only one candidate will be generated.\n\nLoading the imagine skill before calling reference_to_video. This is required by the skill system.\n\nConfirmed the reference_to_video parameters. The first_frame path alone satisfies the required input fields.\n\nThe reference image will be passed only as first_frame. It will not also be included in the images parameter.The search failed to locate reference_to_video because it is a built-in tool, not an MCP tool.\n\nI cannot read files with the available tools. I will call reference_to_video directly as requested.\n\nI am preparing the reference_to_video parameters. The first frame path is set. I am weighing whether to pass the image as a reference for consistency.\n\nI will pass the same image as both first_frame and a content reference. This preserves anatomy and framing throughout the video.\n\nI decided to pass only first_frame. The user specified that parameter precisely, and the prompt does not use image tags.Video generation failed due to zero data retention or privacy mode restrictions.\n\nNo generated file, model, or usage data was produced. I will report the failure honestly without inventing details.",
+  "usage": {
+    "input_tokens": 10808,
+    "cache_read_input_tokens": 23680,
+    "cache_creation_input_tokens": 0,
+    "output_tokens": 2774,
+    "reasoning_tokens": 2129,
+    "total_tokens": 37262
+  },
+  "num_turns": 3,
+  "total_cost_usd": 0.034068,
+  "total_cost_usd_ticks": 340680000,
+  "modelUsage": {
+    "grok-4.7-build-fast": {
+      "inputTokens": 10808,
+      "outputTokens": 2774,
+      "cacheReadInputTokens": 23680,
+      "cacheCreationInputTokens": 0,
+      "modelCalls": 3,
+      "costUSD": 0.034068
+    }
+  }
+}

@@ -1,0 +1,13 @@
+Use case: ads-marketing. Create ONE finished Japanese YouTube thumbnail, landscape 16:9, ideally 1920x1080. Use the supplied image only as reference for the signature blue app-block silhouette and palette; redesign the whole composition as a striking professional thumbnail.
+
+Topic: individually useful small software tools become far more useful when their outputs and inputs are connected. No fabricated numerical results, no money promises, no AI buzzwords. Main feeling: satisfying discovery, unexpectedly powerful, energetic and clear.
+
+Exact Japanese text, and no other text:
+Top smaller line: 「ミニアプリ」
+Second large line: 「つないだら、」
+Third largest line: 「化けた。」
+Do not render Japanese quote brackets. All three lines must be spelled precisely. Bold condensed Japanese gothic typography with clean, stable character outlines. Third line is massive. Legible in a 320px thumbnail.
+
+Composition: light warm ivory background #f7f5ef. Powerful editorial typography in near-black #1a1a1a, occupying the left 60%. Balanced asymmetric typography, tight purposeful spacing and generous outer margins. Use the cobalt blue #2b59ff and orange #ff7a00 sparingly to emphasize the connection and final word. On the right 40%, depict a diagonal perspective chain of 5-7 interlocking cobalt blue rectangular app modules, each with a left-side notch and matching right-side tab like the reference. The modules remain visibly distinct, individually intact and join end to end. A vivid orange line with a few orange data dots flows through the centers of the connected blocks. Make this a bold tactile 3D/2.5D graphic with crisp bevels and controlled soft shadows, chunky forms, a strong diagonal sweep, and a satisfying sense of scale. A couple of smaller separated blue modules below the beginning can hint at the before state without arrows or labels. No circular jigsaw lobes; use rectangular notches/tabs.
+
+The lettering is the star and the blue modular chain supports it. The imagery and text must not overlap. Keep all text inside 6% safe margins. Keep bottom-right corner relatively quiet for a video duration overlay. High visual contrast, premium Japanese motion-design poster, energetic but clean. Avoid split-screen templates, faces, people, hands, robots, badges, logos, watermarks, dark backgrounds, excessive particles, explosions, lightning, illegible interface text and extra wording.
