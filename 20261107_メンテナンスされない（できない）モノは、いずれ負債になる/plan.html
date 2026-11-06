@@ -1,0 +1,363 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>メンテナンスされない（できない）モノは、いずれ負債になる｜動画企画書</title><style>
+/* デジタル庁デザインシステム（DADS）のデザイントークン（@digital-go-jp/design-tokens）に沿ったスタイル。
+   本文の内容は変えず、見た目だけを DADS の色・タイポグラフィ・余白・角丸・フォーカスリングへ揃える。 */
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Noto+Sans+Mono:wght@400;700&display=swap");
+:root{
+  /* Primitive / Neutral */
+  --white:#ffffff;--black:#000000;
+  --gray-50:#f2f2f2;--gray-100:#e6e6e6;--gray-200:#cccccc;--gray-420:#949494;--gray-536:#767676;--gray-600:#666666;--gray-700:#4d4d4d;--gray-800:#333333;--gray-900:#1a1a1a;
+  /* Key color（Blue） */
+  --key-50:#e8f1fe;--key-100:#d9e6ff;--key-200:#c5d7fb;--key-900:#0017c1;--key-1000:#00118f;--key-1100:#000071;
+  /* Semantic */
+  --success-bg:#e6f5ec;--success-1:#259d63;--success-2:#197a4b;
+  --warning-bg:#fbf5e0;--warning-yellow-1:#b78f00;--warning-text:#806300;
+  --warning-orange-bg:#ffeee2;--warning-orange-1:#fb5b01;--warning-orange-2:#c74700;
+  --error-1:#ec0000;--focus-yellow:#ffd43d;--visited:#8b008b;
+  /* Typography */
+  --font-sans:"Noto Sans JP",-apple-system,BlinkMacSystemFont,"Hiragino Sans",sans-serif;
+  --font-mono:"Noto Sans Mono","Noto Sans JP",monospace;
+  /* Radius / Elevation */
+  --r-4:.25rem;--r-8:.5rem;--r-12:.75rem;--r-16:1rem;--r-full:624.9375rem;
+  --elevation-1:0 2px 8px 1px rgba(0,0,0,.1),0 1px 5px 0 rgba(0,0,0,.3);
+  /* 互換（既存のインライン指定・記号のため残す） */
+  --ink:var(--gray-900);--line:var(--gray-200);--mut:var(--gray-700);
+}
+*{box-sizing:border-box}
+/* Std-16N-170：本文 16px / 400 / 行間 1.7 / 字間 0.02em */
+body{margin:0;background:var(--white);color:var(--gray-800);font-family:var(--font-sans);font-size:1rem;font-weight:400;line-height:1.7;letter-spacing:.02em;-webkit-font-smoothing:antialiased}
+header .inner,main,nav .in,footer .inner{max-width:1120px;margin:0 auto;padding:0 24px}
+
+/* ヘッダー */
+header{background:var(--white);border-bottom:1px solid var(--gray-420)}
+header .inner{padding-top:40px;padding-bottom:24px}
+.strata{height:4px;background:var(--key-900)}
+.eyebrow{display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px;font-size:.875rem;line-height:1.5;color:var(--gray-700);letter-spacing:.04em}
+/* Std-36B-140 */
+h1{font-size:2.25rem;line-height:1.4;font-weight:700;color:var(--gray-900);letter-spacing:.01em;margin:16px 0 8px}
+/* Std-28B-150 */
+h2{font-size:1.75rem;line-height:1.5;font-weight:700;color:var(--gray-900);margin:64px 0 24px;padding:0 0 8px;border-bottom:1px solid var(--gray-420);scroll-margin-top:72px}
+/* Std-20B-150 */
+h3{font-size:1.25rem;line-height:1.5;font-weight:700;color:var(--gray-900);margin:32px 0 12px}
+.cuthead h3{margin:0}
+p{margin:0 0 16px}
+/* Std-18B-160 */
+.lead{font-size:1.125rem;line-height:1.6;font-weight:700;color:var(--gray-900)}
+/* Dns-14N-130 相当の補足（灰でもコントラスト比 4.5:1 以上の gray-700） */
+.small{font-size:.875rem;line-height:1.7;color:var(--gray-700)}
+b,strong{font-weight:700;color:var(--gray-900)}
+
+/* リンク・フォーカス（DADS：下線あり、ホバーで下線を太く、フォーカスは黒＋黄のリング） */
+a{color:var(--key-1000);text-decoration:underline;text-underline-offset:.2em;text-decoration-thickness:1px}
+a:visited{color:var(--visited)}
+a:hover{color:var(--key-1100);text-decoration-thickness:3px}
+a:active{color:var(--warning-orange-2)}
+a:focus-visible{outline:4px solid var(--black);outline-offset:2px;background:var(--focus-yellow);color:var(--black);border-radius:var(--r-4)}
+
+/* ラベル（チップ） */
+.chip{display:inline-block;background:var(--key-50);color:var(--key-1000);border:1px solid var(--key-900);border-radius:var(--r-4);padding:2px 8px;font-size:.875rem;line-height:1.5;font-weight:700;letter-spacing:.02em}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin:24px 0 0;padding:0;list-style:none}
+.meta span{background:var(--gray-50);border:1px solid var(--gray-200);border-radius:var(--r-4);padding:4px 12px;font-size:.875rem;line-height:1.5;color:var(--gray-800)}
+
+/* 目次ナビ */
+nav{position:sticky;top:0;background:var(--white);border-bottom:1px solid var(--gray-420);z-index:5;box-shadow:0 1px 4px rgba(0,0,0,.08)}
+nav .in{display:flex;flex-wrap:wrap;gap:4px 20px;padding-top:12px;padding-bottom:12px;font-size:.875rem;line-height:1.5}
+nav a,nav a:visited{color:var(--key-1000);font-weight:700}
+
+/* ボックス（DADS のお知らせバナー／パネルに相当） */
+.box{background:var(--white);border:1px solid var(--gray-420);border-radius:var(--r-8);padding:24px;margin:16px 0}
+.box > :last-child{margin-bottom:0}
+.box.accent{background:var(--key-50);border:1px solid var(--key-900);border-left:8px solid var(--key-900)}
+.box.accent .lead{margin:0}
+
+/* テーブル */
+.tablewrap{overflow-x:auto;margin:16px 0}
+table{border-collapse:collapse;width:100%;background:var(--white);font-size:1rem;line-height:1.7;margin:16px 0;border-top:1px solid var(--gray-420)}
+.tablewrap table{margin:0}
+th,td{border-bottom:1px solid var(--gray-420);padding:12px 16px;text-align:left;vertical-align:top}
+th{background:var(--gray-50);color:var(--gray-900);font-weight:700;font-size:.875rem;line-height:1.5;border-bottom:2px solid var(--gray-800);white-space:nowrap}
+tr:hover td{background:var(--key-50)}
+
+/* カット（カード） */
+.cut{background:var(--white);border:1px solid var(--gray-420);border-radius:var(--r-16);padding:32px;margin:32px 0;scroll-margin-top:72px}
+.cuthead{display:flex;gap:16px;align-items:center;margin-bottom:24px;padding-bottom:16px;border-bottom:1px solid var(--gray-200)}
+.cuthead p{margin:4px 0 0}
+.num{font-size:1.5rem;line-height:1;font-weight:700;color:var(--white);background:var(--key-900);border-radius:var(--r-8);min-width:56px;height:56px;display:flex;align-items:center;justify-content:center;flex:none;font-feature-settings:"tnum"}
+.frames{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+figure{margin:0}
+figure img{width:100%;height:auto;display:block;border:1px solid var(--gray-200);border-radius:var(--r-8);background:var(--white)}
+figure a:focus-visible{display:block;background:none}
+figcaption{font-size:.875rem;line-height:1.7;margin-top:8px;color:var(--gray-800)}
+.details{display:grid;grid-template-columns:1fr 1.15fr;gap:8px 40px;margin-top:32px}
+.details p{margin:4px 0}
+/* 項目名：Dns-14B-130 相当 */
+.label{font-size:.875rem;line-height:1.3;font-weight:700;color:var(--key-1000);margin-top:20px;padding-left:8px;border-left:4px solid var(--key-900)}
+.details > div > .label:first-child{margin-top:0}
+.words{font-size:1.125rem;line-height:1.6;font-weight:700;color:var(--gray-900);margin:8px 0}
+/* 引用ブロック */
+.voice{background:var(--gray-50);border-left:4px solid var(--gray-600);border-radius:0 var(--r-4) var(--r-4) 0;padding:12px 16px;margin:8px 0;font-size:1rem;line-height:1.7;color:var(--gray-800)}
+ul{margin:8px 0 16px;padding-left:1.5em}
+li{margin:4px 0}
+li::marker{color:var(--gray-600)}
+.mot li{font-size:1rem;line-height:1.7;margin:8px 0}
+code{font-family:var(--font-mono);background:var(--gray-50);border:1px solid var(--gray-200);padding:0 4px;border-radius:var(--r-4);font-size:.875em;color:var(--gray-900);word-break:break-all}
+
+.prompt{white-space:pre-wrap;font-family:var(--font-mono);font-size:.875rem;line-height:1.7;background:var(--white);border:1px solid var(--gray-420);border-radius:var(--r-8);padding:12px 16px;margin:8px 0;color:var(--gray-900)}
+
+/* 色見本（映像の配色そのものはインライン指定のまま） */
+.sw{display:inline-block;width:16px;height:16px;border-radius:var(--r-4);vertical-align:-3px;margin-right:8px;border:1px solid var(--gray-420)}
+.specimen{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin:16px 0}
+.specimen div{background:var(--white);border:1px solid var(--gray-420);border-radius:var(--r-8);padding:16px;font-size:.875rem;line-height:1.6;font-weight:700;color:var(--gray-900)}
+.specimen .small{font-weight:400}
+
+/* ステータスラベル */
+.tag{display:inline-block;border-radius:var(--r-4);padding:0 8px;font-size:.8125rem;line-height:1.7;font-weight:700;margin-right:8px;border:1px solid}
+.t-un{background:var(--warning-bg);color:var(--warning-text);border-color:var(--warning-yellow-1)}
+.t-ok{background:var(--success-bg);color:var(--success-2);border-color:var(--success-1)}
+
+footer{border-top:1px solid var(--gray-420);background:var(--gray-50);margin-top:80px;padding:24px 0;font-size:.875rem;color:var(--gray-700)}
+
+/* 前半（概要・構成・絵コンテ）と後半（詳細）の区切り */
+h2.part{margin-top:96px;padding:16px 24px;border:none;border-radius:var(--r-8);background:var(--gray-50);border-left:8px solid var(--gray-800);font-size:1.5rem}
+h2.part + .small{margin-top:-8px}
+#structure + .tablewrap td:nth-child(-n+3){white-space:nowrap}
+.navsep{color:var(--gray-700);font-weight:700;padding-left:12px;border-left:1px solid var(--gray-420)}
+
+/* 要判断：ユーザーが決める点。決定済みの情報（無彩色・青）と色で分ける。DADS の注意色（orange） */
+.decide{margin:48px 0 16px;padding:24px 32px 24px;background:var(--warning-orange-bg);border:1px solid var(--warning-orange-1);border-left:8px solid var(--warning-orange-1);border-radius:var(--r-8)}
+.decide h2{margin:0 0 8px;border-bottom:none;padding:0;color:var(--gray-900)}
+.decide > .small{color:var(--gray-800)}
+.decide-list{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:12px}
+.decide-list li{display:flex;gap:12px;align-items:flex-start;background:var(--white);border:1px solid var(--gray-420);border-radius:var(--r-8);padding:12px 16px;margin:0}
+.decide-list .need{min-width:28px;justify-content:center;margin:2px 0 0}
+.where{display:block;font-size:.875rem;color:var(--gray-700);margin-top:4px}
+.need{display:inline-flex;align-items:center;background:var(--warning-orange-2);color:var(--white);border-radius:var(--r-4);padding:0 8px;font-size:.8125rem;line-height:1.7;font-weight:700;letter-spacing:.02em;margin:0 8px;vertical-align:.15em;white-space:nowrap}
+h2 .need{font-size:.875rem}
+.lead .need{margin-left:0}
+p.small + p.small,.need + p.small{margin-top:0}
+nav a.nav-need,nav a.nav-need:visited{background:var(--warning-orange-2);color:var(--white);padding:0 8px;border-radius:var(--r-4);text-decoration:none}
+nav a.nav-need:hover{text-decoration:underline}
+
+@media(max-width:760px){
+  header .inner,main,nav .in,footer .inner{padding:0 16px}
+  header .inner{padding-top:24px;padding-bottom:16px}
+  .frames,.details,.specimen{grid-template-columns:1fr}
+  h1{font-size:1.75rem;line-height:1.5}
+  h2{font-size:1.5rem;margin-top:48px}
+  .cut{padding:20px;border-radius:var(--r-12)}
+  .box{padding:16px}
+  .decide{padding:16px}
+  table{font-size:.875rem}
+  th,td{padding:8px 12px}
+  th{white-space:normal}
+}
+@media print{nav{position:static;box-shadow:none}.cut{break-inside:avoid}}
+</style></head><body>
+
+<header><div class="inner"><div class="eyebrow">VIDEO PLAN / 2026.11.07　<span class="chip">企画・絵コンテ（ライト）・本編は全編作画（写真・動画の質感は要判断）</span></div>
+<h1>メンテナンスされない（できない）モノは、いずれ負債になる</h1><p class="lead" id="top">題：放置は、保存ではない。</p>
+<p>元にした note 記事：「メンテナンスされない（できない）モノは、いずれ負債になる」<a href="https://note.com/dhythm/n/nae8b372ac2a5">https://note.com/dhythm/n/nae8b372ac2a5</a>（公開済み）<br>原稿：<code>dhythm/private-note</code>（main）の <code>Zettelkasten/PermanentNote/20261001_メンテナンスされない（できない）モノは、いずれ負債になる.md</code>（非公開。本文は同梱しない）<br>起点：2026-11-07 朝の動画ネタ案 1 本目（整った架空のアプリ画面に雑草と錆が侵食する早回し、約 2 分 10 秒）</p>
+<div class="meta"><span>16:9・1920×1080・30fps</span><span>本編 2:14＋エンドロゴ 5 秒＝約 2:19（短縮案あり <span class="need">要判断 2</span>）</span><span>15 カット（本編 14＋ロゴ）</span><span>ナレーション案 594 字／画面の文字 約 340 字</span><span>写真・動画：既定は使わない（要判断 5・6）</span><span>BGM・効果音：後回し</span><span>等速通し：未確認</span></div></div></header>
+<nav><div class="in"><a class="nav-need" href="#decide">判断してほしい点（6）</a><a href="#claim">主張</a><a href="#viewer">視聴者</a><a href="#structure">構成と尺</a><a href="#cuts">カット表</a><span class="navsep">詳細：</span><a href="#roles">声・文字・素材</a><a href="#claim-map">主張・根拠・留保</a><a href="#handoff">企画側／制作側</a><a href="#design">デザインシステム</a><a href="#motion">動きの言語</a><a href="#symbols">記号と色</a><a href="#character">キャラ設定</a><a href="#swap">差し替え候補</a><a href="#assets">素材</a><a href="#sound">音</a><a href="#evidence">根拠</a><a href="#done">完成条件・確認状態</a></div></nav><main>
+<section class="decide" id="decide"><h2>未確定事項と判断してほしい点</h2>
+<p class="small">ここに挙げた 6 点だけが判断の要る点です。ほかの節は決定済みの情報です。各項目から本文の該当箇所へ移れます（本文には同じ番号の「要判断 n」の印があります）。</p>
+<ol class="decide-list">
+<li><span class="need">1</span><div><b>同じ記事の既存動画との関係</b>：この記事は <code>20261008_メンテナンスされない（できない）モノは、いずれ負債になる/</code> で一度動画になっている（約 154 秒・制作済み）。今回は「架空のアプリ画面が雑草と錆に侵食される」1 つの舞台で全編を通す別の版として企画した。差し替え（作り直し）として扱うか、別の版として並べるか。<span class="where">→ <a href="#claim">この動画で伝える一文</a></span></div></li>
+<li><span class="need">2</span><div><b>尺</b>：既定は約 2:19（ナレーション 594 字から算出）。2 分を超えるため、短縮案は (A) 12「買い切りで、生涯保証？」を外して約 2:06、(B) A に加えて 06 を 07 に統合して約 2:00。どれにするか。<span class="where">→ <a href="#structure">構成と尺</a></span></div></li>
+<li><span class="need">3</span><div><b>ナレーションの有無</b>：声ありの前提で、声と文字の分担を組んでいる。声なしにする場合は画面の文字を増やして組み直し、尺も変わる。<span class="where">→ <a href="#roles">声・文字・素材の役割分担</a></span></div></li>
+<li><span class="need">4</span><div><b>結論の言い方</b>：原稿の結びは「〜一番の近道ではないでしょうか」という問いの形。動画では本人の言い切り「一番の近道だと、私は思います」（画面は「私は思う。」）に変えた。この言い方でよいか。<span class="where">→ <a href="#cut-14">カット 14</a></span></div></li>
+<li><span class="need">5</span><div><b>形のあるモノ（土地・自転車・車・家）の質感</b>：既定は全編作画。写真やストックの早回し動画にする場合は、04・11・14 のすべてで同じ質感にそろえる（一部だけ変えない）。窓（ソフト）は全編作画のまま。<span class="where">→ <a href="#swap">差し替え候補</a></span></div></li>
+<li><span class="need">6</span><div><b>02 の早回しを AI 生成映像にするか</b>：ネタ案にあった素材動画案。窓は 01 から 14 まで同じ作画で続くため、02 だけ生成映像にすると質感が途中で切り替わる。企画側の推しは「使わない（作画で描く）」。使う場合はクレジット消費の承認が要る（<b>未承認・未生成</b>）。<span class="where">→ <a href="#swap">差し替え候補</a>／<a href="#cut-02">カット 02</a></span></div></li>
+</ol></section>
+<h2 id="claim">この動画で伝える一文 <span class="need">要判断 1</span></h2>
+<div class="box accent"><p class="lead">「何もしなければ、今のまま保てる」と思っている人に、手入れされないモノは形があってもなくても止まらずに劣化し、いずれ負債になると伝え、「メンテナンスに正当な対価を払うことが、自分の生活と資産を守る一番の近道だ」という本人の結論を残す。</p></div>
+<div class="box"><p><b>主張・根拠・留保の役割</b>：主張は「何もしないことは現状維持ではなく、劣化へのカウントダウン」（03）。根拠は、形のあるモノ（04）、ソフトの見えない腐食（05–07）、担い手がいなくなったツール（09）、買い物の維持費（11）、買い切りの取引（12）。留保は「ソフトは錆が見えないから錯覚しやすい」（06）、「自分で作ること自体は素晴らしい挑戦」（08）、「提供側だけが消耗する取引は続かない」という条件つきの言い方（12）。最後は本人の言い切り（14）で閉じ、視聴者への問いかけや一般論に置き換えない。</p>
+<p><b>絵の骨組み</b>：全編を、明るい机の上の架空のアプリ画面（以下「窓」）1 枚を舞台にして通す。01 で整っていた窓が、02 の早回しで雑草（外から伸びる変化）と錆（内側の腐食）に覆われ、14 では定期的に落ちるコイン（対価）と青い手入れの一筆で、修繕跡を残したまま使える状態を保つ。冒頭の「「何もしない」は、現状維持？」と最後の「手入れに、正当な対価を。」の文言だけで、同じ主張が伝わる。</p>
+<p class="small">既存の 20261008 版（畑・歯車・天秤・循環図）とは舞台と絵柄を分けた。過去版の構図や部品は流用していない。</p></div>
+<h2 id="viewer">視聴者</h2>
+<div class="box"><p><b>対象</b>：自分や身近な組織で道具・仕組み・ソフトを作ったり買ったりする人。「AI で自分たちで作れるなら保守費は要らない」「一度作れば（買えば）しばらくは大丈夫」と感じている人。PTA や理事会などで便利ツールを導入する立場の人も含む。</p>
+<p><b>持ち帰ってほしいこと</b>：①何もしないことは現状維持ではない ②ソフトは見えないだけで、中で腐食が進む ③作るなら、誰かの助けで回せる形にする ④手入れには手間とお金がかかり、その対価は自分の道具を守る保険でもある。</p></div>
+<h2 id="structure">構成と尺 <span class="need">要判断 2</span></h2>
+<div class="tablewrap"><table><tr><th>カット</th><th>区分</th><th>時間</th><th>尺</th><th>声の字数</th><th>この区間で分かってほしいこと</th><th>見出し</th></tr>
+<tr><td><a href="#cut-01">01</a></td><td>問い</td><td>0:00–0:06</td><td>6秒</td><td>23</td><td>「何もしない＝現状維持」という思い込みを、問いとして出す</td><td>「何もしない」は、現状維持？</td></tr>
+<tr><td><a href="#cut-02">02</a></td><td>主張</td><td>0:06–0:14</td><td>8秒</td><td>20</td><td>手入れをやめると、止まらずに劣化が進む（絵で一瞬で分かる）</td><td>手入れを、やめると。</td></tr>
+<tr><td><a href="#cut-03">03</a></td><td>主張</td><td>0:14–0:21</td><td>7秒</td><td>29</td><td>主張：何もしないことは劣化へのカウントダウン</td><td>劣化への、カウントダウン。</td></tr>
+<tr><td><a href="#cut-04">04</a></td><td>形のあるモノ</td><td>0:21–0:30</td><td>9秒</td><td>43</td><td>形のあるモノは、どれも同じ構造で劣化する</td><td>身の回りでも、同じこと。</td></tr>
+<tr><td><a href="#cut-05">05</a></td><td>ソフトウェア</td><td>0:30–0:38</td><td>8秒</td><td>34</td><td>ソフトウェアも同じ構造に入る</td><td>ソフトウェアも、放置された山。</td></tr>
+<tr><td><a href="#cut-06">06</a></td><td>ソフトウェア</td><td>0:38–0:46</td><td>8秒</td><td>35</td><td>ソフトは劣化が見えないので、錯覚しやすい（留保）</td><td>錆も、埃も、見えない。</td></tr>
+<tr><td><a href="#cut-07">07</a></td><td>ソフトウェア</td><td>0:46–0:57</td><td>11秒</td><td>50</td><td>見えないところで腐食が進み、負債になる</td><td>見えないところで、腐食が進む。</td></tr>
+<tr><td><a href="#cut-08">08</a></td><td>作る・担い手</td><td>0:57–1:10</td><td>13秒</td><td>62</td><td>作ることは肯定する。ただし作ったあとの手入れが要る（留保）</td><td>作るのは、素晴らしい挑戦。</td></tr>
+<tr><td><a href="#cut-09">09</a></td><td>作る・担い手</td><td>1:10–1:20</td><td>10秒</td><td>46</td><td>担い手がいなくなると、良かれと思ったツールも負債になる</td><td>「これ、誰が作ったの？」</td></tr>
+<tr><td><a href="#cut-10">10</a></td><td>作る・担い手</td><td>1:20–1:28</td><td>8秒</td><td>32</td><td>解決の像：誰かの助けで回せる、標準化された仕組み</td><td>誰かの助けで、回せる仕組みに。</td></tr>
+<tr><td><a href="#cut-11">11</a></td><td>買い物と対価</td><td>1:28–1:38</td><td>10秒</td><td>48</td><td>どんなモノも、買った瞬間から維持費がかかる</td><td>買った瞬間から、サブスク。</td></tr>
+<tr><td><a href="#cut-12">12</a></td><td>買い物と対価</td><td>1:38–1:51</td><td>13秒</td><td>64</td><td>提供側だけが消耗する取引は続かず、困るのは利用者（条件つき）</td><td>買い切りで、生涯保証？</td></tr>
+<tr><td><a href="#cut-13">13</a></td><td>買い物と対価</td><td>1:51–2:01</td><td>10秒</td><td>44</td><td>維持費は、自分の道具を守る保険でもある</td><td>維持費は、自分の道具を守る保険。</td></tr>
+<tr><td><a href="#cut-14">14</a></td><td>本人の結論</td><td>2:01–2:14</td><td>13秒</td><td>64</td><td>本人の結論：手入れに正当な対価を払うことが近道</td><td>手入れに、正当な対価を。</td></tr>
+<tr><td><a href="#cut-15">15</a></td><td>制作表示</td><td>2:14–2:19</td><td>5秒</td><td>0</td><td>制作表示</td><td>エンドロゴ</td></tr>
+</table></div>
+<p class="small">尺の算出：各カットのナレーション案の字数（句読点・かぎ括弧・中黒を除く）÷ 5.5 字/秒 ＋ 息継ぎ 1 秒を切り上げ。5.5 字/秒は、同じ記事の 20261008 版で実測した読み上げの速さ（777 字・141 秒）。絵を見せる時間が要るカットは下限を置いた（02 の早回し 8 秒、10 の組み直し 8 秒、13 の手入れ 10 秒）。ナレーション合計 594 字 ÷ 5.5 ≒ 108 秒 → 本編 134 秒＋エンドロゴ 5 秒＝約 2:19。秒数は目安で、等速での読了・観察時間は制作側の試作で確かめる。</p>
+<div class="box"><p><b><span class="need">要判断 2</span>短縮案</b>　(A) 12（13 秒）を外す → 約 2:06。11 の「サブスク」から 13 の「保険」へ直接つなぐ。主張・留保は欠けない（12 は根拠の 1 つ）。(B) A に加えて 06（8 秒）を 07 に統合し、07 の冒頭を「ソフトは錆も埃も見えない。けれど…」とする → 約 2:00。留保（見えないから錯覚する）は 07 の声に残す。3 分には伸ばさない。</p></div>
+<h2 id="cuts">カット表・絵コンテ</h2>
+<p>各カットに「はじめ」「おわり」の 2 コマと間の動きを書いています。コマ画は構図のラフ（1280×720、明るい紙色）で、完成画ではありません。秒数・位置・大きさは参考値で、実装の手順とパラメータは制作側の裁量です（画面全体を大きく動かすこと、可読性、留保は緩めない）。カメラの名前は <a href="../docs/techniques/camera-cheatsheet.md">カメラワークと切り替えの名前</a>、動きの用語は <a href="#motion">動きの言語</a>、記号の意味は <a href="#symbols">記号と色</a> を参照。章表示・テロップ帯・エンドクレジットは入れない。</p>
+<section class="cut" id="cut-01"><div class="cuthead"><div class="num">01</div><div><h3>「何もしない」は、現状維持？</h3><p class="small">0:00–0:06 / 約6秒　・　問い　・　問い（思い込みを出す）</p></div></div>
+<div class="frames"><figure><a href="assets/storyboard/cut-01-start.webp"><img loading="lazy" src="assets/storyboard/cut-01-start.webp" width="1280" height="720" alt="カット01 はじめ"></a><figcaption><b>はじめ</b>　明るい机の上に、整った架空のアプリ画面（窓）が1枚。ボタンも文字も新品。画面下に細い時間の目盛りが1本。</figcaption></figure><figure><a href="assets/storyboard/cut-01-end.webp"><img loading="lazy" src="assets/storyboard/cut-01-end.webp" width="1280" height="720" alt="カット01 おわり"></a><figcaption><b>おわり</b>　窓の左上に「「何もしない」は、／現状維持？」。時間の目盛りの点が、左端で動き出す。</figcaption></figure></div>
+<div class="details"><div><div class="label">画面の文字</div><p class="words">「何もしない」は、<br>現状維持？</p><div class="label">ナレーション案</div><p class="voice">何もしなければ、今のままでいられる。本当でしょうか。</p><div class="label">字数</div><p class="small">声 23字 ／ 画面 10字</p><div class="label">主役の語と、その文字がすること</div><p>「現状維持？」の「？」だけを墨の特大で置き、窓よりも大きく見せる。疑問符の大きさで、続きを見る理由（本当に保てるのか）を立てる。</p><div class="label">字組みと構図の変化</div><p>はじめ：窓が中央、余白は均等（整った状態の象徴）。おわり：文字は左上の横組み2行、「？」は窓の右上の角に重なる特大。重心は中央→左上へ。</p></div>
+<div><div class="label">動き（秒は参考値）</div><ul class="mot"><li>0〜2秒：窓が奥から手前へ滑り込み、机に置かれて止まる（Dolly in で寄りながら）。</li><li>2〜5秒：問いの2行が行マスクで左から入る。「？」だけ遅れて落ち、窓の角に掛かって止まる。</li><li>5〜6秒：時間の目盛りの点が動き出し、カメラは止めずにゆっくり窓の縁へ寄る（02 の侵食が始まる場所へ視線を渡す）。</li></ul><div class="label">カメラ</div><p>Dolly in（ゆっくり）</p><div class="label">次へのつながり</div><p>寄った窓の縁を、そのまま 02 の始まりの画にする（切らずにつなぐ）。</p><div class="label">差し替え素材案</div><ul><li>実写（任意）：白い机の天板の写真を背景に敷き、窓を合成する（人物・実在の画面なし）。</li><li>図形のみ：机は紙色の面と影だけで描く（既定）。</li></ul></div></div></section>
+<section class="cut" id="cut-02"><div class="cuthead"><div class="num">02</div><div><h3>手入れを、やめると。<span class="need">要判断 6</span></h3><p class="small">0:06–0:14 / 約8秒　・　主張　・　見せ場：時間の早回し（侵食）</p></div></div>
+<div class="frames"><figure><a href="assets/storyboard/cut-02-start.webp"><img loading="lazy" src="assets/storyboard/cut-02-start.webp" width="1280" height="720" alt="カット02 はじめ"></a><figcaption><b>はじめ</b>　窓に寄った画。縁の外から緑の雑草の線が数本、伸び始めている。</figcaption></figure><figure><a href="assets/storyboard/cut-02-end.webp"><img loading="lazy" src="assets/storyboard/cut-02-end.webp" width="1280" height="720" alt="カット02 おわり"></a><figcaption><b>おわり</b>　窓の縁から緑の雑草が絡み、ボタンと文字に錆色のひびが広がる。ボタンは薄い灰に変わり押せない。時間の目盛りの点は右端近く。</figcaption></figure></div>
+<div class="details"><div><div class="label">画面の文字</div><p class="words">手入れを、やめると。</p><div class="label">ナレーション案</div><p class="voice">手入れをやめても、草木は止まらずに育ちます。</p><div class="label">字数</div><p class="small">声 20字 ／ 画面 8字</p><div class="label">主役の語と、その文字がすること</div><p>文字は「手入れを、やめると。」1行だけを小さめに置き、主役を絵（侵食）に譲る。言葉は短く、見る時間を取る。</p><div class="label">字組みと構図の変化</div><p>はじめ：窓が画面いっぱい（寄り）。おわり：窓は同じ大きさのまま、雑草と錆で輪郭が崩れて見える。文字は左下に1行、小さめ。</p></div>
+<div><div class="label">動き（秒は参考値）</div><ul class="mot"><li>0〜1秒：時間の目盛りの点が加速（Time-lapse の開始）。</li><li>1〜7秒：Time-lapse（約6秒・速い）。雑草は窓の外の縁から内側へ、錆のひびはボタンの角から外側へ、向きを逆にして同時に広がる。ボタンが1つずつ薄い灰に変わる。</li><li>7〜9秒：カメラは窓の周りを Orbit（Arc shot）で約20°回り込み、絡んだ雑草の厚みを見せる。最後のフレームで止めず、03 の Smash cut へ。</li></ul><div class="label">カメラ</div><p>Time-lapse ＋ Orbit（Arc shot・小さく）</p><div class="label">次へのつながり</div><p>侵食しきった瞬間に Smash cut（0.3秒）で 03 の白い紙面へ。</p><div class="label">差し替え素材案</div><ul><li>AI生成映像（未承認・生成しない）：明るい机の上の架空のアプリ窓が雑草と錆に覆われる早回し 6 秒（プロンプト案は「素材」の節）。</li><li>図形のみ（既定）：雑草はフレームから決まる枝分かれの線、錆は広がるマスクで描く。</li></ul></div></div></section>
+<section class="cut" id="cut-03"><div class="cuthead"><div class="num">03</div><div><h3>劣化への、カウントダウン。</h3><p class="small">0:14–0:21 / 約7秒　・　主張　・　主張（早めに言い切る）</p></div></div>
+<div class="frames"><figure><a href="assets/storyboard/cut-03-start.webp"><img loading="lazy" src="assets/storyboard/cut-03-start.webp" width="1280" height="720" alt="カット03 はじめ"></a><figcaption><b>はじめ</b>　白い紙面。左に灰の前置き「「何もしない」は、／「現状維持」ではない。」。</figcaption></figure><figure><a href="assets/storyboard/cut-03-end.webp"><img loading="lazy" src="assets/storyboard/cut-03-end.webp" width="1280" height="720" alt="カット03 おわり"></a><figcaption><b>おわり</b>　右側に縦組みの特大「劣化への／カウントダウン」。時間の目盛りが縦に倒れて、文字の横を下から上へ刻む。</figcaption></figure></div>
+<div class="details"><div><div class="label">画面の文字</div><p class="words">「何もしない」は、<br>「現状維持」ではない。<br>劣化への<br>カウントダウン</p><div class="label">ナレーション案</div><p class="voice">何もしないことは、現状維持ではない。劣化へのカウントダウンです。</p><div class="label">字数</div><p class="small">声 29字 ／ 画面 25字</p><div class="label">主役の語と、その文字がすること</div><p>「カウントダウン」を縦組みで画面の高さいっぱいに置く。横組みの前置きとの向きの違いで、言い切りの強さを出す。</p><div class="label">字組みと構図の変化</div><p>はじめ：左に横組み2行（重心は左）。おわり：右に縦組みの特大（重心は右）。窓は出さない（主張だけの画）。</p></div>
+<div><div class="label">動き（秒は参考値）</div><ul class="mot"><li>0〜0.3秒：Smash cut。02 の侵食した画から、何もない紙面へ。</li><li>0.3〜3秒：前置きの2行が左で行マスクから入る。</li><li>3〜6秒：縦組みの「劣化への／カウントダウン」が上から叩き込まれ、画面全体が一度だけ下へ沈んで戻る。</li><li>6〜8秒：時間の目盛りが横から縦へ90° 回転 し、文字の横で刻み続ける。カメラはTracking shot で右へ流れながら 04 のカードの列へ渡す。</li></ul><div class="label">カメラ</div><p>Smash cut → Tracking shot（右へ）</p><div class="label">次へのつながり</div><p>縦の時間の目盛りを横へ倒し直し、04 のカードの下に敷く線にする。</p><div class="label">差し替え素材案</div><ul><li>図形のみ（既定）：文字と時間の目盛りだけ。</li><li>効果（任意）：叩き込みの瞬間だけ文字の層を小さく揺らす（字形は崩さない）。</li></ul></div></div></section>
+<section class="cut" id="cut-04"><div class="cuthead"><div class="num">04</div><div><h3>身の回りでも、同じこと。<span class="need">要判断 5</span></h3><p class="small">0:21–0:30 / 約9秒　・　形のあるモノ　・　根拠：形のあるモノ（土地・自転車・車）</p></div></div>
+<div class="frames"><figure><a href="assets/storyboard/cut-04-start.webp"><img loading="lazy" src="assets/storyboard/cut-04-start.webp" width="1280" height="720" alt="カット04 はじめ"></a><figcaption><b>はじめ</b>　時間の目盛りの上に、3枚のカード（土地・自転車・車）が斜めに並ぶ。どれも整った状態。</figcaption></figure><figure><a href="assets/storyboard/cut-04-end.webp"><img loading="lazy" src="assets/storyboard/cut-04-end.webp" width="1280" height="720" alt="カット04 おわり"></a><figcaption><b>おわり</b>　3枚とも、同じ時間の目盛りの進みに合わせて、雑草（土地）と錆（チェーン）と灰（電池の目盛りが空）に変わる。各カードの下に短いラベル。</figcaption></figure></div>
+<div class="details"><div><div class="label">画面の文字</div><p class="words">手入れを放棄した土地<br>錆びたチェーン<br>上がったバッテリー</p><div class="label">ナレーション案</div><p class="voice">手入れを放棄した土地は荒れ、乗らない自転車はチェーンが錆び、放置した車はバッテリーが上がる。</p><div class="label">字数</div><p class="small">声 43字 ／ 画面 26字</p><div class="label">主役の語と、その文字がすること</div><p>主役の語はラベル3つ。同じ大きさ・同じ位置関係で並べ、「同じ構造」を字組みの反復で見せる。</p><div class="label">字組みと構図の変化</div><p>はじめ：カードは右上がりの斜めの列（重心は中央右）。おわり：同じ列のまま、各カードの下にラベル。上部に余白。</p></div>
+<div><div class="label">動き（秒は参考値）</div><ul class="mot"><li>0〜2秒：カードが右から1枚ずつ差し込まれ、斜めの列に並ぶ（Tracking shot（右へ）の続き）。</li><li>2〜8秒：時間の目盛りの点が進むと、3枚に同時に劣化が広がる。土地は雑草、チェーンは錆、車は電池の目盛りが減って灰へ。</li><li>8〜10秒：列全体を Tilt で少し起こし、右の空いた場所へ視線を送る（05 の5枚目が入る場所）。</li></ul><div class="label">カメラ</div><p>Tracking shot（右へ）→ Tilt（小さく起こす）</p><div class="label">次へのつながり</div><p>列の右端に空いた1枠へ、05 で窓が入る。</p><div class="label">差し替え素材案</div><ul><li>実写の質感（任意・要判断）：土地・チェーン・車の3枚を、ストックの写真または早回し動画にする。04・11・14 の「形のあるモノ」すべてで同じ質感にそろえる。</li><li>AI生成映像（未承認・生成しない）：草が伸びる畑、錆びていく自転車のチェーンの早回し各 4 秒。</li></ul></div></div></section>
+<section class="cut" id="cut-05"><div class="cuthead"><div class="num">05</div><div><h3>ソフトウェアも、放置された山。</h3><p class="small">0:30–0:38 / 約8秒　・　ソフトウェア　・　根拠：ソフトも同じ構造</p></div></div>
+<div class="frames"><figure><a href="assets/storyboard/cut-05-start.webp"><img loading="lazy" src="assets/storyboard/cut-05-start.webp" width="1280" height="720" alt="カット05 はじめ"></a><figcaption><b>はじめ</b>　04 の列の右端の空き枠に、01 の整った窓が小さく入る。</figcaption></figure><figure><a href="assets/storyboard/cut-05-end.webp"><img loading="lazy" src="assets/storyboard/cut-05-end.webp" width="1280" height="720" alt="カット05 おわり"></a><figcaption><b>おわり</b>　窓だけが拡大して画面の右半分を占め、縁に雑草。左に「ソフトウェアも、／放置された山と同じ。」。カードの列は左奥へ退く。</figcaption></figure></div>
+<div class="details"><div><div class="label">画面の文字</div><p class="words">ソフトウェアも、<br>放置された山と同じ。</p><div class="label">ナレーション案</div><p class="voice">ソフトウェアも同じです。作ったきりのソフトは、放置された山と変わりません。</p><div class="label">字数</div><p class="small">声 34字 ／ 画面 16字</p><div class="label">主役の語と、その文字がすること</div><p>「放置された山」を墨の太字で大きく、「ソフトウェアも、」は灰の小さめ。物の列から窓へ主役が移る。</p><div class="label">字組みと構図の変化</div><p>はじめ：カードの列の中の1枠（小）。おわり：窓は右半分、文字は左の2行（重心は右→左右に分かれる）。</p></div>
+<div><div class="label">動き（秒は参考値）</div><ul class="mot"><li>0〜2秒：空き枠へ窓が落ちて収まる（他のカードと同じ大きさ）。</li><li>2〜6秒：窓だけが Dolly in で手前へ出て拡大、ほかのカードは左奥へ流れて小さくなる（奥行きの速度差）。</li><li>6〜8秒：窓の縁に雑草が伸びる（02 と同じ描き方）。文字の塊は窓と逆向き（左へ）にゆっくり流れる。</li></ul><div class="label">カメラ</div><p>Dolly in（窓だけ）</p><div class="label">次へのつながり</div><p>窓の縁の雑草が、06 で窓の表面から一度消える（見えない、への転換）。</p><div class="label">差し替え素材案</div><ul><li>図形のみ（既定）：窓は 01 と同じ作画。</li><li>実写（不採用寄り）：実在のアプリ画面は使えないため、窓は全編作画で通す。</li></ul></div></div></section>
+<section class="cut" id="cut-06"><div class="cuthead"><div class="num">06</div><div><h3>錆も、埃も、見えない。</h3><p class="small">0:38–0:46 / 約8秒　・　ソフトウェア　・　留保：見えないから錯覚する</p></div></div>
+<div class="frames"><figure><a href="assets/storyboard/cut-06-start.webp"><img loading="lazy" src="assets/storyboard/cut-06-start.webp" width="1280" height="720" alt="カット06 はじめ"></a><figcaption><b>はじめ</b>　窓の表面が一度きれいに見える（雑草が表面からすっと退く）。左に「ソフトは、」。</figcaption></figure><figure><a href="assets/storyboard/cut-06-end.webp"><img loading="lazy" src="assets/storyboard/cut-06-end.webp" width="1280" height="720" alt="カット06 おわり"></a><figcaption><b>おわり</b>　左に「錆が見えない。／埃も見えない。」の大きな2行、下に灰の「だから、大丈夫だと錯覚する。」。窓は新品のように見える。</figcaption></figure></div>
+<div class="details"><div><div class="label">画面の文字</div><p class="words">ソフトは、<br>錆が見えない。<br>埃も見えない。<br>だから、大丈夫だと錯覚する。</p><div class="label">ナレーション案</div><p class="voice">ただ、ソフトには錆も埃も見えない。だから、放置しても大丈夫だと錯覚しがちです。</p><div class="label">字数</div><p class="small">声 35字 ／ 画面 28字</p><div class="label">主役の語と、その文字がすること</div><p>「錆が見えない。」「埃も見えない。」を同じ大きさで左揃えに2段で積む。整った字組み自体が「大丈夫そう」の見た目を作る。</p><div class="label">字組みと構図の変化</div><p>はじめ：窓が右、文字は左に小さく。おわり：左に大きな2段の文字（重心は左）。窓は右で静かに光る。</p></div>
+<div><div class="label">動き（秒は参考値）</div><ul class="mot"><li>0〜2秒：窓の雑草が表面から退き、新品の見た目に戻る（戻るのは見た目だけ）。</li><li>2〜6秒：2行が行マスクで交互に入る（1行目は左から、2行目は右から）。カメラは窓の正面で Pan（左へ）、文字の塊へ寄る。</li><li>6〜9秒：灰の「錯覚する」が入る瞬間、窓の表面にだけ細い光の線が横切る（表面の下に何かある、の予告）。</li></ul><div class="label">カメラ</div><p>Pan（左へ・小さく）</p><div class="label">次へのつながり</div><p>光の線の位置から窓の表面がめくれ、07 の断面（Crane で降りる）へ。</p><div class="label">差し替え素材案</div><ul><li>図形のみ（既定）。</li><li>効果（任意）：表面を横切る光の線は、文字には掛けない。</li></ul></div></div></section>
+<section class="cut" id="cut-07"><div class="cuthead"><div class="num">07</div><div><h3>見えないところで、腐食が進む。</h3><p class="small">0:46–0:57 / 約11秒　・　ソフトウェア　・　根拠：ソフトの中の腐食</p></div></div>
+<div class="frames"><figure><a href="assets/storyboard/cut-07-start.webp"><img loading="lazy" src="assets/storyboard/cut-07-start.webp" width="1280" height="720" alt="カット07 はじめ"></a><figcaption><b>はじめ</b>　窓の表面がめくれ、下に層が見える。上から「窓（表面）／ライブラリ／環境」の3層。</figcaption></figure><figure><a href="assets/storyboard/cut-07-end.webp"><img loading="lazy" src="assets/storyboard/cut-07-end.webp" width="1280" height="720" alt="カット07 おわり"></a><figcaption><b>おわり</b>　カメラが層の中まで降りる。ライブラリの層に錆色の腐食が広がり、環境の層は外から雑草がはみ出して形を変えている。下に「見えないところで、／腐食が進む。」</figcaption></figure></div>
+<div class="details"><div><div class="label">画面の文字</div><p class="words">環境は、変わる。<br>ライブラリ<br>脆弱性<br>見えないところで、<br>腐食が進む。</p><div class="label">ナレーション案</div><p class="voice">けれど環境は変わり、ライブラリは古くなり、脆弱性も見つかる。見えないところで腐食は進み、負債になっていきます。</p><div class="label">字数</div><p class="small">声 50字 ／ 画面 27字</p><div class="label">主役の語と、その文字がすること</div><p>「腐食が進む。」を錆色ではなく墨の特大で置き、錆の広がる層の上に被らない下段に置く（色は絵が受け持つ）。</p><div class="label">字組みと構図の変化</div><p>はじめ：窓の表面が上部に残り、層が下へ続く断面（重心は上）。おわり：層が画面を横に埋め、文字は下段の左寄せ2行（重心は下）。</p></div>
+<div><div class="label">動き（秒は参考値）</div><ul class="mot"><li>0〜3秒：Crane（降りる）。窓の表面から層の中へ降りる。</li><li>3〜8秒：環境の層は左から右へ流れ続け（変わり続ける）、ライブラリの層には錆が点から面へ広がる。「脆弱性」の小札が錆の中に1つ浮かぶ。</li><li>8〜11秒：下段の2行が入る。読む間も層の流れは止めない。最後にカメラが Crane up で表面まで戻る。</li></ul><div class="label">カメラ</div><p>Crane（降りる）→ Crane up（戻る）</p><div class="label">次へのつながり</div><p>表面へ戻ったところで、窓の横から人の手（ピクト）が入り 08 へ。</p><div class="label">差し替え素材案</div><ul><li>3D（任意）：層を three.js の薄い板にして、断面を斜めから見せる。</li><li>図形のみ（既定）：平面の帯3本で層を描く。</li></ul></div></div></section>
+<section class="cut" id="cut-08"><div class="cuthead"><div class="num">08</div><div><h3>作るのは、素晴らしい挑戦。</h3><p class="small">0:57–1:10 / 約13秒　・　作る・担い手　・　留保：作ること自体は肯定する</p></div></div>
+<div class="frames"><figure><a href="assets/storyboard/cut-08-start.webp"><img loading="lazy" src="assets/storyboard/cut-08-start.webp" width="1280" height="720" alt="カット08 はじめ"></a><figcaption><b>はじめ</b>　顔のない人のピクトが、新しい窓を組み立てている。上に灰の「AIで作れるなら、保守費は無駄？」。</figcaption></figure><figure><a href="assets/storyboard/cut-08-end.webp"><img loading="lazy" src="assets/storyboard/cut-08-end.webp" width="1280" height="720" alt="カット08 おわり"></a><figcaption><b>おわり</b>　窓が完成し、ピクトが手を離す。右上がりに傾けた大きな「自分で作るのは、／素晴らしい挑戦。」。下に灰の「ただ、作ったあとの手入れを見落とさない。」</figcaption></figure></div>
+<div class="details"><div><div class="label">画面の文字</div><p class="words">AIで作れるなら、保守費は無駄？<br>自分で作るのは、<br>素晴らしい挑戦。<br>ただ、作ったあとの手入れを<br>見落とさない。</p><div class="label">ナレーション案</div><p class="voice">AIで作れるなら保守費は無駄、という声もあります。自分で作るのは、素晴らしい挑戦です。ただ、作ったあとの手入れを見落としてはいけません。</p><div class="label">字数</div><p class="small">声 62字 ／ 画面 46字</p><div class="label">主役の語と、その文字がすること</div><p>「素晴らしい挑戦。」を傾けた特大で置き、作ることを肯定する。留保の「ただ、」以下は灰で小さく、否定に見せない。</p><div class="label">字組みと構図の変化</div><p>はじめ：ピクトと窓が中央、文字は上に1行。おわり：文字が右上がりに傾いた特大2行（重心は右上）、留保は左下に小さく。</p></div>
+<div><div class="label">動き（秒は参考値）</div><ul class="mot"><li>0〜3秒：ピクトの手元で窓の部品が組み上がる（部品が飛んできて収まる）。</li><li>3〜8秒：「素晴らしい挑戦。」が -6° 傾いて叩き込まれ、画面全体が同じ角度へ少し傾ける（Dutch angle）。</li><li>8〜12秒：傾きを戻しながら、灰の留保の1行が下から入る。窓の縁に、ごく小さく雑草の芽が1本見える（時間はまた進む）。</li></ul><div class="label">カメラ</div><p>Dutch angle（-6° → 0°）</p><div class="label">次へのつながり</div><p>小さな芽を手がかりに、09 で時間を進め、作った人が去る。</p><div class="label">差し替え素材案</div><ul><li>ピクトグラムアニメ（既定）：顔なしの人型。</li><li>実写（任意）：手元だけが部品を組む写真（顔なし・ストック）。</li></ul></div></div></section>
+<section class="cut" id="cut-09"><div class="cuthead"><div class="num">09</div><div><h3>「これ、誰が作ったの？」</h3><p class="small">1:10–1:20 / 約10秒　・　作る・担い手　・　根拠：担い手がいないと負債になる</p></div></div>
+<div class="frames"><figure><a href="assets/storyboard/cut-09-start.webp"><img loading="lazy" src="assets/storyboard/cut-09-start.webp" width="1280" height="720" alt="カット09 はじめ"></a><figcaption><b>はじめ</b>　08 のピクト（作った人）が窓の横に立つ。窓は整っている。左上に小さく「PTA・理事会」。</figcaption></figure><figure><a href="assets/storyboard/cut-09-end.webp"><img loading="lazy" src="assets/storyboard/cut-09-end.webp" width="1280" height="720" alt="カット09 おわり"></a><figcaption><b>おわり</b>　作った人が右へ去り、別のピクト（後任）が左から入る。窓は雑草と錆に覆われている。後任の頭上に「「これ、誰が作ったの？」」「「どうやって直すの？」」が大きく交差する。</figcaption></figure></div>
+<div class="details"><div><div class="label">画面の文字</div><p class="words">PTA・理事会<br>「これ、誰が作ったの？」<br>「どうやって直すの？」</p><div class="label">ナレーション案</div><p class="voice">PTAや理事会でも、良かれと思って作ったツールが、役員の交代で誰にも直せなくなり、後任の負債になる。</p><div class="label">字数</div><p class="small">声 46字 ／ 画面 22字</p><div class="label">主役の語と、その文字がすること</div><p>2つの問いを、向きと大きさを変えて交差させる（1つは横組み、1つは縦組み）。混乱を字組みで見せる。</p><div class="label">字組みと構図の変化</div><p>はじめ：左上に小さい場所の札、窓は中央。おわり：問いが画面の左上と右側で交差（重心が分散）。後任は左下。</p></div>
+<div><div class="label">動き（秒は参考値）</div><ul class="mot"><li>0〜3秒：作った人が去る。去る動きと同時に時間の目盛りの点が一気に進む（1年の交代の早回し）。</li><li>3〜6秒：後任が入るころ、窓は侵食しきっている（02 と同じ描き方を短く）。</li><li>6〜11秒：問いの2つが逆方向から飛び込み、交差して止まる。カメラは後任の背中側へ Orbit（Arc shot）で回り込む。</li></ul><div class="label">カメラ</div><p>Time-lapse（短く）＋ Orbit（Arc shot）</p><div class="label">次へのつながり</div><p>交差した問いが外へ散り、10 で窓が標準の部品に組み直される。</p><div class="label">差し替え素材案</div><ul><li>ピクトグラムアニメ（既定）：作った人と後任は同じ形・別の立ち位置で区別する（色で区別しない）。</li><li>実写（不採用）：実在のコミュニティの画面や人物は出さない。</li></ul></div></div></section>
+<section class="cut" id="cut-10"><div class="cuthead"><div class="num">10</div><div><h3>誰かの助けで、回せる仕組みに。</h3><p class="small">1:20–1:28 / 約8秒　・　作る・担い手　・　解決の像：標準化</p></div></div>
+<div class="frames"><figure><a href="assets/storyboard/cut-10-start.webp"><img loading="lazy" src="assets/storyboard/cut-10-start.webp" width="1280" height="720" alt="カット10 はじめ"></a><figcaption><b>はじめ</b>　侵食した窓が、同じ形の小さな部品（標準のパネル）にほどける。</figcaption></figure><figure><a href="assets/storyboard/cut-10-end.webp"><img loading="lazy" src="assets/storyboard/cut-10-end.webp" width="1280" height="720" alt="カット10 おわり"></a><figcaption><b>おわり</b>　同じ形のパネルが格子に並び直し、3人のピクトがそれぞれ1枚ずつ手入れしている。上に「自分が倒れても、」、中央に大きな「誰かの助けで回せる仕組みに。」</figcaption></figure></div>
+<div class="details"><div><div class="label">画面の文字</div><p class="words">自分が倒れても、<br>誰かの助けで回せる仕組みに。</p><div class="label">ナレーション案</div><p class="voice">必要なのは、自分が倒れても、誰かの助けで回せる、標準化された仕組みです。</p><div class="label">字数</div><p class="small">声 32字 ／ 画面 20字</p><div class="label">主役の語と、その文字がすること</div><p>「誰かの助けで回せる」を中央の横組みで大きく。左右対称の格子と字組みで「誰でも扱える」を見せる。</p><div class="label">字組みと構図の変化</div><p>はじめ：中央の窓（崩れた形）。おわり：俯瞰の格子、文字は上下で挟む対称の組み（重心は中央）。</p></div>
+<div><div class="label">動き（秒は参考値）</div><ul class="mot"><li>0〜3秒：窓がパネルに分解され、雑草と錆がはがれ落ちる。</li><li>3〜7秒：パネルが同じ間隔の格子へ整列（Crane up で俯瞰へ）。</li><li>7〜10秒：3人のピクトが入れ替わり立ち替わりパネルに触れ、触れた所に青い手入れの印が付く。</li></ul><div class="label">カメラ</div><p>Crane up（俯瞰へ）</p><div class="label">次へのつながり</div><p>格子のパネルの1枚が家の形に変わり、11 の買い物へ。</p><div class="label">差し替え素材案</div><ul><li>ピクトグラムアニメ（既定）。</li><li>図形のみ：人を出さず、手入れの青い印が格子を順に巡るだけにする。</li></ul></div></div></section>
+<section class="cut" id="cut-11"><div class="cuthead"><div class="num">11</div><div><h3>買った瞬間から、サブスク。<span class="need">要判断 5</span></h3><p class="small">1:28–1:38 / 約10秒　・　買い物と対価　・　根拠：維持費のかからないモノはない</p></div></div>
+<div class="frames"><figure><a href="assets/storyboard/cut-11-start.webp"><img loading="lazy" src="assets/storyboard/cut-11-start.webp" width="1280" height="720" alt="カット11 はじめ"></a><figcaption><b>はじめ</b>　家と車のカードが2枚。どちらも新品。上から黄色のコイン（維持費）が1枚落ちてくる。</figcaption></figure><figure><a href="assets/storyboard/cut-11-end.webp"><img loading="lazy" src="assets/storyboard/cut-11-end.webp" width="1280" height="720" alt="カット11 おわり"></a><figcaption><b>おわり</b>　時間の目盛りの拍に合わせて、コインが定期的に落ち続ける。画面を横切る特大の「サブスク。」。家の下に「修繕積立金」、車の下に「車検・保険」。</figcaption></figure></div>
+<div class="details"><div><div class="label">画面の文字</div><p class="words">買った瞬間から、<br>サブスク。<br>修繕積立金<br>車検・保険</p><div class="label">ナレーション案</div><p class="voice">家には修繕積立金、車には車検や保険。どんなモノも、買った瞬間から、維持費のかかるサブスクのようなものです。</p><div class="label">字数</div><p class="small">声 48字 ／ 画面 20字</p><div class="label">主役の語と、その文字がすること</div><p>「サブスク。」を画面の横幅いっぱいの特大で置き、落ちるコインがその字の隙間を抜ける。言葉と記号（定期の支払い）が同じ拍で動く。</p><div class="label">字組みと構図の変化</div><p>はじめ：カード2枚が中央に縦並び。おわり：特大の横組み1語が画面を横断（重心は中央の横帯）、ラベルはカードの下。</p></div>
+<div><div class="label">動き（秒は参考値）</div><ul class="mot"><li>0〜3秒：家と車のカードが上下から入る。</li><li>3〜8秒：コインが拍ごとに落ちる（時間の目盛りと同期）。「買った瞬間から、」が先に入り、「サブスク。」が横から突き抜けて止まる。</li><li>8〜11秒：カメラが引き（Dolly in の逆）、コインの落ちる列が2本に増える（家と車の両方）。</li></ul><div class="label">カメラ</div><p>引き（Dolly in の逆）</p><div class="label">次へのつながり</div><p>コインの列の1本が止まり、12 の「買い切り」の札に変わる。</p><div class="label">差し替え素材案</div><ul><li>実写の質感（任意・要判断）：家と車は 04 と同じ質感（写真）にそろえる。</li><li>図形のみ（既定）。</li></ul></div></div></section>
+<section class="cut" id="cut-12"><div class="cuthead"><div class="num">12</div><div><h3>買い切りで、生涯保証？</h3><p class="small">1:38–1:51 / 約13秒　・　買い物と対価　・　根拠と留保：提供側だけが消耗する取引</p></div></div>
+<div class="frames"><figure><a href="assets/storyboard/cut-12-start.webp"><img loading="lazy" src="assets/storyboard/cut-12-start.webp" width="1280" height="720" alt="カット12 はじめ"></a><figcaption><b>はじめ</b>　大きな札「買い切りで、生涯保証？」。コインは1枚だけ落ちて、それきり止まる。</figcaption></figure><figure><a href="assets/storyboard/cut-12-end.webp"><img loading="lazy" src="assets/storyboard/cut-12-end.webp" width="1280" height="720" alt="カット12 おわり"></a><figcaption><b>おわり</b>　天秤の左（提供側）の皿からコインが減り続けて上がり、右（利用側）は動かない。提供側の窓にシャッターが降り、利用側の手元のデータの箱だけが取り残される。下に「一番困るのは、利用者。」</figcaption></figure></div>
+<div class="details"><div><div class="label">画面の文字</div><p class="words">買い切りで、生涯保証？<br>提供側だけが消耗する取引は、続かない。<br>一番困るのは、利用者。</p><div class="label">ナレーション案</div><p class="voice">だから私は、買い切りで生涯保証、という言葉に不安を覚えます。提供側だけが消耗する取引は続かない。サービスが終われば、一番困るのは利用者です。</p><div class="label">字数</div><p class="small">声 64字 ／ 画面 35字</p><div class="label">主役の語と、その文字がすること</div><p>「生涯保証？」は札の上の字、「続かない。」は天秤の支点の真上に置き、条件（提供側だけが消耗する取引）と一緒に読ませる。</p><div class="label">字組みと構図の変化</div><p>はじめ：札が中央上（重心は上）。おわり：天秤が対角線上に傾き、文字は支点の上と画面下に分かれる（重心は対角）。</p></div>
+<div><div class="label">動き（秒は参考値）</div><ul class="mot"><li>0〜3秒：札が上から振り子のように降りて止まる。</li><li>3〜9秒：札が天秤に変わり、提供側の皿からコインが1枚ずつ抜けていく。天秤は傾き続ける。</li><li>9〜13秒：提供側の窓にシャッターが降りる（灰）。利用側のデータの箱にカメラが Dolly in。</li></ul><div class="label">カメラ</div><p>Dolly in</p><div class="label">次へのつながり</div><p>取り残された箱の上に、13 でコインが落ちる。</p><div class="label">差し替え素材案</div><ul><li>図形のみ（既定）。</li><li>留保の扱い：買い切りのサービスすべてが終わる、とは見せない（提供側だけが消耗する条件を画面に残す）。</li></ul></div></div></section>
+<section class="cut" id="cut-13"><div class="cuthead"><div class="num">13</div><div><h3>維持費は、自分の道具を守る保険。</h3><p class="small">1:51–2:01 / 約10秒　・　買い物と対価　・　根拠：対価は保険でもある</p></div></div>
+<div class="frames"><figure><a href="assets/storyboard/cut-13-start.webp"><img loading="lazy" src="assets/storyboard/cut-13-start.webp" width="1280" height="720" alt="カット13 はじめ"></a><figcaption><b>はじめ</b>　雑草と錆の残る窓。上から黄色のコインが1枚落ちてくる。</figcaption></figure><figure><a href="assets/storyboard/cut-13-end.webp"><img loading="lazy" src="assets/storyboard/cut-13-end.webp" width="1280" height="720" alt="カット13 おわり"></a><figcaption><b>おわり</b>　コインが窓に入るたびに、青い手入れの一筆が雑草と錆を払う。払った所には青い修繕跡の線が残る（新品には戻らない）。右に「自分の道具を守る、／保険。」</figcaption></figure></div>
+<div class="details"><div><div class="label">画面の文字</div><p class="words">維持費は、<br>相手のためだけじゃない。<br>自分の道具を守る、<br>保険。</p><div class="label">ナレーション案</div><p class="voice">維持費は、相手を儲けさせるためだけのものではない。自分の道具を長く保つための、保険でもあります。</p><div class="label">字数</div><p class="small">声 44字 ／ 画面 25字</p><div class="label">主役の語と、その文字がすること</div><p>「保険。」を短く大きく、修繕跡の青い線の真横に置く。言葉と手入れの跡を隣り合わせにする。</p><div class="label">字組みと構図の変化</div><p>はじめ：窓が左寄り、上の空からコイン（重心は左上）。おわり：窓は左、文字は右の縦に積んだ3段（重心は右）。</p></div>
+<div><div class="label">動き（秒は参考値）</div><ul class="mot"><li>0〜3秒：コインが窓に落ち、波紋の代わりに青い一筆が窓を横切る。</li><li>3〜9秒：拍ごとにコインと一筆が続き、窓が少しずつ使える状態に戻る。ボタンの灰が濃灰に戻る。</li><li>9〜12秒：カメラが引き（Dolly in の逆）、14 の全体の格子へ引きの準備。</li></ul><div class="label">カメラ</div><p>引き（Dolly in の逆）</p><div class="label">次へのつながり</div><p>引いたカメラが、14 で全部のモノを並べた俯瞰になる。</p><div class="label">差し替え素材案</div><ul><li>図形のみ（既定）：修繕跡は青い細線。金継ぎのような金色は使わない（黄はコイン＝対価に限る）。</li><li>効果（任意）：一筆の線はフレームで決まる描画（線が描かれていく図の仕組み）。</li></ul></div></div></section>
+<section class="cut" id="cut-14"><div class="cuthead"><div class="num">14</div><div><h3>手入れに、正当な対価を。<span class="need">要判断 4</span><span class="need">要判断 5</span></h3><p class="small">2:01–2:14 / 約13秒　・　本人の結論　・　本人の結論</p></div></div>
+<div class="frames"><figure><a href="assets/storyboard/cut-14-start.webp"><img loading="lazy" src="assets/storyboard/cut-14-start.webp" width="1280" height="720" alt="カット14 はじめ"></a><figcaption><b>はじめ</b>　俯瞰の格子に、土地・自転車・車・家・窓が並ぶ。半分は侵食されている。</figcaption></figure><figure><a href="assets/storyboard/cut-14-end.webp"><img loading="lazy" src="assets/storyboard/cut-14-end.webp" width="1280" height="720" alt="カット14 おわり"></a><figcaption><b>おわり</b>　時間の目盛りが進み続ける中、コインが定期的に落ちる列だけが手入れされ、青い修繕跡を持ったまま使える状態を保つ。中央に特大の「手入れに、／正当な対価を。」、下に「それが、生活と資産を守る一番の近道だと、私は思う。」</figcaption></figure></div>
+<div class="details"><div><div class="label">画面の文字</div><p class="words">手入れに、<br>正当な対価を。<br>それが、生活と資産を守る<br>一番の近道だと、私は思う。</p><div class="label">ナレーション案</div><p class="voice">手入れを怠れば、土地も道具もソフトウェアも荒れ果てる。メンテナンスに正当な対価を払うことが、生活と資産を守る一番の近道だと、私は思います。</p><div class="label">字数</div><p class="small">声 64字 ／ 画面 32字</p><div class="label">主役の語と、その文字がすること</div><p>「正当な対価を。」を全編でいちばん大きく、左揃えの2行で置く。最後の1行は墨の通常の大きさで、言い切りの形で閉じる。</p><div class="label">字組みと構図の変化</div><p>はじめ：俯瞰の格子（重心は全面）。おわり：格子は下半分で流れ、上半分に特大の左揃え2行（重心は左上）。</p></div>
+<div><div class="label">動き（秒は参考値）</div><ul class="mot"><li>0〜4秒：Crane up で俯瞰へ。各モノの下を時間の目盛りが流れ、手入れされない列は侵食が進む。</li><li>4〜9秒：コインの列が全部のモノへ広がり、青い一筆が順に走る。侵食は止まり、修繕跡が残る。</li><li>9〜13秒：特大の2行が入る。読む間、格子は左へ流れ続け、時間の目盛りは止めない（時間は進み、手入れも続く）。</li><li>13〜14秒：最後の1行のあと、画面全体を右へ Whip pan してエンドロゴへ。</li></ul><div class="label">カメラ</div><p>Crane up → Whip pan</p><div class="label">次へのつながり</div><p>Whip pan でライムの全面へ。</p><div class="label">差し替え素材案</div><ul><li>実写の質感（任意・要判断）：土地・自転車・車・家のカードは 04・11 と同じ質感にそろえる。窓だけは作画。</li><li>図形のみ（既定）。</li></ul></div></div></section>
+<section class="cut" id="cut-15"><div class="cuthead"><div class="num">15</div><div><h3>エンドロゴ</h3><p class="small">2:14–2:19 / 約5秒　・　制作表示　・　制作表示</p></div></div>
+<div class="frames"><figure><a href="assets/storyboard/cut-15-start.webp"><img loading="lazy" src="assets/storyboard/cut-15-start.webp" width="1280" height="720" alt="カット15 はじめ"></a><figcaption><b>はじめ</b>　ライム #d2ff1a の全面。o が上から落ちてくる。</figcaption></figure><figure><a href="assets/storyboard/cut-15-end.webp"><img loading="lazy" src="assets/storyboard/cut-15-end.webp" width="1280" height="720" alt="カット15 おわり"></a><figcaption><b>おわり</b>　中央に okady.work の完成形。</figcaption></figure></div>
+<div class="details"><div><div class="label">画面の文字</div><p class="words">なし（ロゴのみ）</p><div class="label">ナレーション案</div><p class="voice">なし</p><div class="label">字数</div><p class="small">声 0字 ／ 画面 0字</p><div class="label">主役の語と、その文字がすること</div><p>ロゴ以外を置かない。</p><div class="label">字組みと構図の変化</div><p>ライムの全面にロゴだけ。引き伸ばさず中央、安全域内。</p></div>
+<div><div class="label">動き（秒は参考値）</div><ul class="mot"><li>0〜2.6秒：o が落ちてバウンドし定位置へ。</li><li>2.6〜3.2秒：全体が左へスライド。</li><li>3.0〜4.0秒：「.work」が一文字ずつ出る。完成状態を約1〜1.5秒保持して終わる（ロゴの動きは okady-work-logo.svg の CSS アニメーションのとおり）。</li></ul><div class="label">カメラ</div><p>固定</p><div class="label">次へのつながり</div><p>—</p><div class="label">差し替え素材案</div><ul><li>差し替えなし（規定の表示）。</li></ul></div></div></section>
+<h2 id="details" class="part">詳細（ここから下は補足）</h2>
+<p class="small">ここまでで、どんな動画で、どう組み、どう見えるかを示した。以下は制作に必要な分担・デザインシステム・動きの言語・記号・素材・音・根拠・完成条件。</p>
+
+<h2 id="roles">声・文字・素材の役割分担 <span class="need">要判断 3</span></h2>
+<div class="tablewrap"><table><tr><th>担い手</th><th>受け持つこと</th><th>受け持たないこと</th></tr>
+<tr><td>声（ナレーション案）</td><td>例と理由をつなぐ文。土地・自転車・車の例、ソフトの腐食の中身（環境・ライブラリ・脆弱性）、PTA・理事会の経緯、維持費の例、買い切りの取引の条件。「なぜそうなるのか」を文で運ぶ。</td><td>画面の語の読み上げだけの繰り返し。全文字幕は付けない。</td></tr>
+<tr><td>文字（キネティックタイポグラフィ）</td><td>問い・主張・決め語・留保の短い語。「現状維持？」「劣化へのカウントダウン」「錆が見えない。」「腐食が進む。」「素晴らしい挑戦。」「誰かの助けで回せる仕組みに。」「サブスク。」「保険。」「正当な対価を。」。画面の文字は約 340 字で、声（594 字）の6割以下。</td><td>経緯の説明文、例の列挙の全文、原稿にない数字。</td></tr>
+<tr><td>図形（窓・雑草・錆・コイン・ピクト）</td><td>時間とともに劣化が溜まる様子（雑草と錆の早回し）、手入れの効き目（青い一筆と修繕跡）、対価が定期であること（拍ごとに落ちるコイン）。three.js の層で奥行きとカメラを付ける。</td><td>説明のための飾り。意味のない粒子・火花・速度線。</td></tr>
+<tr><td>写真・動画（任意）</td><td>既定は使わない。使う場合は「形のあるモノ」（土地・自転車・車・家）の実物の手触りだけを受け持ち、04・11・14 で同じ質感にそろえる（要判断 5）。</td><td>実在の人物・実在のアプリ画面・他社のロゴ。本人の記録映像と誤認させる素材。</td></tr></table></div>
+<p class="small">ナレーションは入れる前提で組んでいる。役割の検討は音声生成の許可ではない（AGENTS.md「APIによるナレーション生成」）。声なしにする場合は、例と理由を画面の文字へ移す必要があり、文量と尺が増える。</p>
+
+<h2 id="claim-map">主張・根拠・留保の対応</h2>
+<div class="tablewrap"><table><tr><th>役割</th><th>内容（動画での言い方）</th><th>カット</th><th>references.md</th></tr>
+<tr><td>問い</td><td>何もしなければ、今のままでいられるのか</td><td>01</td><td>R1</td></tr>
+<tr><td>主張</td><td>何もしないことは現状維持ではなく、劣化へのカウントダウン</td><td>02・03</td><td>R2・R3</td></tr>
+<tr><td>根拠</td><td>手入れを放棄した土地は荒れ、自転車のチェーンは錆び、車のバッテリーは上がる</td><td>04</td><td>R4</td></tr>
+<tr><td>根拠</td><td>作ったきりのソフトは放置された山と同じ。環境は変わり、ライブラリは古くなり、脆弱性が見つかる</td><td>05・07</td><td>R5・R7</td></tr>
+<tr><td>留保</td><td>ソフトは錆も埃も見えないので、放置しても大丈夫だと錯覚しやすい</td><td>06</td><td>R6</td></tr>
+<tr><td>留保</td><td>AI で作れるなら保守費は無駄、という声がある。自分で作ること自体は素晴らしい挑戦。ただ、作ったあとの手入れを見落とさない</td><td>08</td><td>R8</td></tr>
+<tr><td>根拠</td><td>PTA・理事会で良かれと思って作ったツールが、役員の交代で誰にも直せなくなり、後任の負債になる</td><td>09</td><td>R9</td></tr>
+<tr><td>解決の像</td><td>自分が倒れても、誰かの助けで回せる標準化された仕組み</td><td>10</td><td>R10</td></tr>
+<tr><td>根拠</td><td>家には修繕積立金、車には車検や保険。どんなモノも買った瞬間から維持費のかかるサブスクのようなもの</td><td>11</td><td>R11</td></tr>
+<tr><td>根拠＋条件</td><td>買い切りで生涯保証に不安を覚える。提供側だけが消耗する取引は続かず、サービスが終われば一番困るのは利用者。すべての買い切りが終わるとは言わない</td><td>12</td><td>R12</td></tr>
+<tr><td>根拠</td><td>維持費は相手を儲けさせるためだけではなく、自分の道具を守る保険でもある</td><td>13</td><td>R13</td></tr>
+<tr><td>本人の結論</td><td>手入れを怠れば荒れ果てる。メンテナンスに正当な対価を払うことが、生活と資産を守る一番の近道だと、私は思う</td><td>14</td><td>R14</td></tr></table></div>
+
+<h2 id="handoff">企画側が渡すもの／制作側が判断・制作するもの</h2>
+<div class="tablewrap"><table><tr><th>企画側（この企画書と同梱物）</th><th>制作側</th></tr>
+<tr><td>主張・構成・尺の目安・画面の文言・ナレーション案・絵コンテ 30 コマ・記号と色・動きの狙い・差し替え候補と採否の判断材料。写真・動画を使うと決まった場合は、その実ファイル・使用区間・切り取り・出典と利用条件（要判断 5・6 の回答後に企画側が用意する）。AI 生成映像の承認取り。</td><td>three.js（推奨）または同等の手段での実装。文字は DOM／CSS の層、窓・雑草・錆・コイン・ピクトは下の層に分け、カメラの寄り・回転は図の層に掛ける。雑草と錆の広がりはフレーム時刻から決まるマスク／線で作る（実時間の計算にしない）。<b>文字のはみ出し・重なりの機械検査</b>（各文字の外接矩形を全カットで一定間隔ごとに取り、安全域の外と、文字×窓・カード・雑草・コインの交差を書き出す。AGENTS.md「画面全体の動きの実装（three.js）」の手順）。代表区間（02→03、13→14）の等速確認、エンドロゴのアニメーション再現、BGM・効果音・ナレーションの制作と調整。</td></tr></table></div>
+<p class="small">完了の分け方：企画と絵コンテの準備は完了。写真・動画は既定では使わないため、要判断 5・6 で使うと決まるまで用意しない。音声と本編は制作側。絵コンテの文字は企画側でも PIL の外接矩形で安全域（左右 40px・上下 30px）外・文字同士・文字×主要な図形の重なりを検査し、該当なしを確認した。これは制作側の機械検査の代わりではない。</p>
+
+<h2 id="design">デザインシステム（映像の文字・色・グリッド）</h2>
+<div class="box"><p><b>地</b>：紙色 #f8f7f3 の明るい面。全面が暗い画面は作らない（12 のシャッターも窓の中だけ）。</p>
+<p><b>文字</b>：Noto Sans JP。主役の語は 700〜900、前置き・補足は 400〜500 の灰。大きさは 4 段（1920 幅で：特大 220–320px／大 120–160px／中 64–80px／小 40–48px）。各カットの主役の語は 1 つだけ特大か大にする。縦組みは 03 と 09 だけ。詰め組（palt）を使う。</p>
+<p><b>グリッド</b>：左右の余白 120px（1920 幅）、12 列。文字の塊は列にそろえ、窓やカードは列をまたいでよい。重心はカットごとに動かす（01 中央 → 03 右 → 06 左 → 07 下 → 08 右上 → 10 中央対称 → 11 横帯 → 12 対角 → 13 右 → 14 左上）。</p>
+<p><b>窓</b>：角丸の明るい灰の枠＋白い中身、灰の文字の棒 3 本とボタン 2 つ。実在のアプリや OS の見た目（信号色の丸、ロゴ、実在のアイコン）にしない。</p></div>
+
+<h2 id="motion">動きの言語</h2>
+<div class="tablewrap"><table><tr><th>名前</th><th>動き</th><th>使う所</th></tr>
+<tr><td id="m-mask">行マスク</td><td>行ごとに、見えない枠の下から文字が滑り出る。文字の形は崩さない。</td><td>全編の文字の登場</td></tr>
+<tr><td id="m-slam">叩き込み</td><td>主役の語が塊ごと画面外から速く入り、少し行き過ぎて戻る。画面全体を一度だけ小さく沈ませてよい。</td><td>03・08・11・14</td></tr>
+<tr><td id="m-counter">逆向きの流れ</td><td>読む間、文字の塊と図の層を逆向きにゆっくり流す。止めない。</td><td>05・06・14</td></tr>
+<tr><td id="m-erode">侵食の早回し</td><td>時間の目盛りの点の進みと同期して、雑草は外の縁から内へ、錆は角から外へ広がる。フレーム時刻から決まる。</td><td>02・04・09・14</td></tr>
+<tr><td id="m-stroke">手入れの一筆</td><td>青い線が一本描かれ、通った所の雑草と錆が払われる。払った跡に細い青の修繕跡が残る（新品には戻らない）。</td><td>10・13・14</td></tr>
+<tr><td id="m-coin">定期のコイン</td><td>黄のコインが拍ごとに上から落ちる。拍は時間の目盛りの刻みと同じ。</td><td>11・12・13・14</td></tr>
+<tr><td>カメラ</td><td>Dolly in、Pan、Tilt、Tracking shot、Orbit（Arc shot）、Crane up、Dutch angle、Time-lapse、Smash cut、Whip pan（<a href="../docs/techniques/camera-cheatsheet.md">カメラワークと切り替えの名前</a>）。「引き」は Dolly in の逆、「Crane（降りる）」は Crane up の逆向き。</td><td>各カット</td></tr></table></div>
+<p class="small">緩急：01・06 は寄りと流れで静かめ、02・03・09 は速い。後半（10〜14）も構図を組み替え、画面全体を動かし続ける。「大きな変形は一度だけ」「後半は小さな動き」は採らない。</p>
+
+<h2 id="symbols">記号・色一覧（1 記号＝1 意味）</h2>
+<div class="tablewrap"><table><tr><th>記号・色</th><th>意味</th><th>出るカット</th></tr>
+<tr><td>窓（明るい灰の枠＋白い中身）</td><td>作った道具・ソフト（架空）</td><td>01・02・05–10・12–14</td></tr>
+<tr><td><span class="sw" style="background:#3a3f47"></span>濃灰 #3a3f47 のボタン</td><td>使える状態の操作部</td><td>01・05・06・08・13・14</td></tr>
+<tr><td><span class="sw" style="background:#c4c7cc"></span>薄灰 #c4c7cc のボタン</td><td>押せなくなった（使えない）</td><td>02・09・10・13</td></tr>
+<tr><td><span class="sw" style="background:#3f9a4a"></span>緑 #3f9a4a の雑草</td><td>外から止まらずに押し寄せる変化（時間・環境）</td><td>02・04–07・09・10・13・14</td></tr>
+<tr><td><span class="sw" style="background:#b5562b"></span>錆色 #b5562b のひび・染み</td><td>内側で進む腐食</td><td>02・04・05・07・09・10・13・14</td></tr>
+<tr><td><span class="sw" style="background:#2b59ff"></span>青 #2b59ff の一筆・線</td><td>手入れ（した行為とその跡）</td><td>10・13・14</td></tr>
+<tr><td><span class="sw" style="background:#e2a400"></span>黄 #e2a400 のコイン</td><td>対価（維持費）</td><td>11–14</td></tr>
+<tr><td><span class="sw" style="background:#8a8f98"></span>灰の時間の目盛り</td><td>時間の経過</td><td>01–05・09・11・14</td></tr>
+<tr><td>顔なしのピクト</td><td>担い手（作った人・後任・手入れする人）</td><td>08–10</td></tr>
+<tr><td>窓の中の灰のシャッター</td><td>サービスの終了</td><td>12</td></tr>
+<tr><td>天秤</td><td>提供側と利用側のバランス</td><td>12</td></tr>
+<tr><td>墨 #1a1a1a の字／灰 #6b6f76 の字</td><td>主役の語／前置き・補足</td><td>全編</td></tr>
+<tr><td><span class="sw" style="background:#d2ff1a"></span>ライム #d2ff1a</td><td>エンドロゴの背景だけ（本編では使わない）</td><td>15</td></tr></table></div>
+<p class="small">点検：緑は雑草だけ（04 の電池の残量は濃灰で描き、減ると薄灰になる。緑の残量表示にしない）。錆色は腐食だけで、文字には使わない。青は手入れだけ（ボタンや窓の飾りに青を使わない）。黄はコインだけ（修繕跡を金色にしない）。赤は使わない（シャッターは灰）。</p>
+
+<h2 id="character">キャラ設定</h2>
+<div class="box"><p><b>主役は窓</b>：顔や手足は付けない。全編で同じ形・同じ大きさの比率を保ち、状態（整う／侵食される／手入れされる）だけが変わる。</p>
+<p><b>人物はピクト</b>：顔のない濃灰の人型。08 の作った人、09 の後任、10 の手入れする 3 人は同じ形で、立ち位置と出入りの向きで区別する（色で区別しない。色は記号に使っているため）。実在の人物・実在のコミュニティを想起させる服装や名札は付けない。</p></div>
+
+<h2 id="swap">差し替え候補 <span class="need">要判断 5</span><span class="need">要判断 6</span></h2>
+<p>モチーフが出る全カットを並べて確かめた。窓は 01–14 に続けて出るため、一部だけ写真・生成映像にしない（02 の生成映像を推さない理由）。形のあるモノ（土地・自転車・車・家）は 04・11・14 にだけ出るため、質感を変えるならこの 3 カットをまとめて変える。変える理由は「形のあるモノ（目に見えて劣化する）とソフト（見えない）」の対比を質感で分けられること。</p>
+<div class="tablewrap"><table><tr><th>対象</th><th>候補</th><th>調達</th><th>状態</th></tr>
+<tr><td>04・11・14 の形のあるモノ <span class="need">要判断 5</span></td><td>(a) 全編作画（既定） (b) ストックの写真（放棄された畑、錆びた自転車のチェーン、車、家）を同じ切り抜き・同じ明るさでカードに入れる (c) ストックの早回し動画（草が伸びる畑など、4 秒程度）</td><td>(b)(c) は企画側が実ファイル・区間・出典と利用条件をそろえてから渡す</td><td>未調達（回答待ち）</td></tr>
+<tr><td>02 の早回し <span class="need">要判断 6</span></td><td>(a) 作画（既定・推し） (b) AI 生成映像 6 秒</td><td>(b) はクレジット消費の承認が要る</td><td><b>未承認・未生成</b></td></tr>
+<tr><td>01 の机</td><td>(a) 紙色の面と影（既定） (b) 白い机の天板の写真を背景に敷く（人物・実在の画面なし）</td><td>企画側がストックから用意</td><td>任意</td></tr></table></div>
+<p class="small">AI 生成映像のプロンプト案（<b>未承認・生成しない</b>。02 用）：「Time-lapse, 6s, fast. A clean light-gray fictional app window resting on a white desk in bright daylight. Thin green weeds creep in from the window edges while orange-brown rust cracks spread from the corners of the UI buttons; the buttons fade to pale gray. Locked-off camera with a slight orbit at the end. No people, no real brands, no real UI, no text.」 生成する場合も、窓の形・色・ボタンの配置は 01 の作画に合わせる。</p>
+<p class="small">各カットの差し替え素材案は、カット表の「差し替え素材案」に 1〜2 個ずつ記載した。</p>
+
+<h2 id="assets">素材（実ファイル）</h2>
+<div class="tablewrap"><table><tr><th>素材</th><th>ファイル</th><th>用途</th></tr>
+<tr><td>絵コンテ 30 コマ</td><td><code>assets/storyboard/cut-01-start.webp</code> 〜 <code>cut-15-end.webp</code>（1280×720・ライト）</td><td>構図と動きの参考。完成画ではない</td></tr>
+<tr><td>エンドロゴ</td><td>リポジトリ直下の <code>okady-work-logo.svg</code></td><td>15。形・色・比率は変えない</td></tr>
+<tr><td>書体</td><td>Noto Sans JP（制作側の環境のもの。フォントファイルは同梱しない）</td><td>文字の層</td></tr></table></div>
+<p class="small">既定は全編作画のため、外部の写真・動画は同梱していない。要判断 5・6 で使うと決まったら、企画側が実ファイルを用意してから制作に渡す（ファイルが無いまま制作を始めない）。</p>
+
+<h2 id="sound">音（BGM・効果音・ナレーション）</h2>
+<div class="box"><p><b>ナレーション</b>：落ち着いた語りで、断定しすぎない。各カットのナレーション案を原稿にする（全 594 字）。14 の最後の「私は思います」は、少し間を置いてから言う。生成の可否と手段は AGENTS.md「APIによるナレーション生成」に従う。</p>
+<p><b>BGM</b>：<span class="tag t-un">後回し</span>今回は検討しない。</p>
+<p><b>効果音</b>：<span class="tag t-un">後回し</span>今回は検討しない。</p></div>
+
+<h2 id="evidence">根拠（原稿）との対応</h2>
+<p>原稿の抜粋（R1〜R14）と、主張・根拠・留保・画面文言の対応表は <a href="references.md">references.md</a>。原稿にない事実は足していない。原稿にある実在の企業名・SNS の投稿は動画に出さない（references.md「足していないこと／出さないこと」）。NANKA DEKIRU の確認結果は <a href="effects-direction.md">effects-direction.md</a>。</p>
+
+<h2 id="done">完成条件・確認状態</h2>
+<div class="box"><p><b>完成条件</b>：①冒頭 20 秒以内（03）で「何もしない＝劣化へのカウントダウン」が伝わる ②06・08・12 の留保が声と文字で読める・聞ける ③最後は本人の言い切りで終わる ④全編で画面全体が動き続け、後半も構図が組み替わる ⑤文字のはみ出し・重なりの機械検査で該当なし ⑥最後はライム #d2ff1a の上にロゴだけ。章表示・テロップ帯・エンドクレジットなし。</p>
+<ul><li>等速での通し確認：<span class="tag t-un">未確認</span>（映像はまだない）</li>
+<li>BGM・効果音：<span class="tag t-un">後回し</span></li>
+<li>絵コンテの文字の検査（企画側・PIL）：<span class="tag t-ok">該当なし</span>（安全域外・文字同士・文字×主要な図形）</li>
+<li>NANKA DEKIRU：候補を確認済み。デモはヘッドレスのブラウザで 2 時刻の静止画を取っただけで、等速の再生は未確認 → <a href="effects-direction.md">effects-direction.md</a></li>
+<li>AI 生成映像：<span class="tag t-un">未承認・未生成</span></li>
+<li>レンダリング・書き出し・投稿：していない</li></ul></div>
+
+</main><footer><div class="inner"><p class="small">作成：2026-11-07（企画側）。原稿の本文は同梱しない。レンダリング・書き出し・投稿はしていない。</p></div></footer></body></html>
