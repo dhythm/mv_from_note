@@ -1,0 +1,539 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>出張は刺激になるが、回復の余白も削っていく｜動画企画書</title><style>
+/* デジタル庁デザインシステム（DADS）のデザイントークン（@digital-go-jp/design-tokens）に沿ったスタイル。
+   20261102 の plan.html の style を複製。動画本編の配色とは別。 */
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Noto+Sans+Mono:wght@400;700&display=swap");
+:root{
+  --white:#ffffff;--black:#000000;
+  --gray-50:#f2f2f2;--gray-100:#e6e6e6;--gray-200:#cccccc;--gray-420:#949494;--gray-536:#767676;--gray-600:#666666;--gray-700:#4d4d4d;--gray-800:#333333;--gray-900:#1a1a1a;
+  --key-50:#e8f1fe;--key-100:#d9e6ff;--key-200:#c5d7fb;--key-900:#0017c1;--key-1000:#00118f;--key-1100:#000071;
+  --success-bg:#e6f5ec;--success-1:#259d63;--success-2:#197a4b;
+  --warning-bg:#fbf5e0;--warning-yellow-1:#b78f00;--warning-text:#806300;
+  --warning-orange-bg:#ffeee2;--warning-orange-1:#fb5b01;--warning-orange-2:#c74700;
+  --error-1:#ec0000;--focus-yellow:#ffd43d;--visited:#8b008b;
+  --font-sans:"Noto Sans JP",-apple-system,BlinkMacSystemFont,"Hiragino Sans",sans-serif;
+  --font-mono:"Noto Sans Mono","Noto Sans JP",monospace;
+  --r-4:.25rem;--r-8:.5rem;--r-12:.75rem;--r-16:1rem;--r-full:624.9375rem;
+  --elevation-1:0 2px 8px 1px rgba(0,0,0,.1),0 1px 5px 0 rgba(0,0,0,.3);
+  --ink:var(--gray-900);--line:var(--gray-200);--mut:var(--gray-700);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--white);color:var(--gray-800);font-family:var(--font-sans);font-size:1rem;font-weight:400;line-height:1.7;letter-spacing:.02em;-webkit-font-smoothing:antialiased}
+header .inner,main,nav .in,footer .inner{max-width:1120px;margin:0 auto;padding:0 24px}
+header{background:var(--white);border-bottom:1px solid var(--gray-420)}
+header .inner{padding-top:40px;padding-bottom:24px}
+.strata{height:4px;background:var(--key-900)}
+.eyebrow{display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px;font-size:.875rem;line-height:1.5;color:var(--gray-700);letter-spacing:.04em}
+h1{font-size:2.25rem;line-height:1.4;font-weight:700;color:var(--gray-900);letter-spacing:.01em;margin:16px 0 8px}
+h2{font-size:1.75rem;line-height:1.5;font-weight:700;color:var(--gray-900);margin:64px 0 24px;padding:0 0 8px;border-bottom:1px solid var(--gray-420);scroll-margin-top:72px}
+h3{font-size:1.25rem;line-height:1.5;font-weight:700;color:var(--gray-900);margin:32px 0 12px}
+.cuthead h3{margin:0}
+p{margin:0 0 16px}
+.lead{font-size:1.125rem;line-height:1.6;font-weight:700;color:var(--gray-900)}
+.small{font-size:.875rem;line-height:1.7;color:var(--gray-700)}
+b,strong{font-weight:700;color:var(--gray-900)}
+a{color:var(--key-1000);text-decoration:underline;text-underline-offset:.2em;text-decoration-thickness:1px}
+a:visited{color:var(--visited)}
+a:hover{color:var(--key-1100);text-decoration-thickness:3px}
+a:active{color:var(--warning-orange-2)}
+a:focus-visible{outline:4px solid var(--black);outline-offset:2px;background:var(--focus-yellow);color:var(--black);border-radius:var(--r-4)}
+.chip{display:inline-block;background:var(--key-50);color:var(--key-1000);border:1px solid var(--key-900);border-radius:var(--r-4);padding:2px 8px;font-size:.875rem;line-height:1.5;font-weight:700;letter-spacing:.02em}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin:24px 0 0;padding:0;list-style:none}
+.meta span{background:var(--gray-50);border:1px solid var(--gray-200);border-radius:var(--r-4);padding:4px 12px;font-size:.875rem;line-height:1.5;color:var(--gray-800)}
+nav{position:sticky;top:0;background:var(--white);border-bottom:1px solid var(--gray-420);z-index:5;box-shadow:0 1px 4px rgba(0,0,0,.08)}
+nav .in{display:flex;flex-wrap:wrap;gap:4px 20px;padding-top:12px;padding-bottom:12px;font-size:.875rem;line-height:1.5}
+nav a,nav a:visited{color:var(--key-1000);font-weight:700}
+.box{background:var(--white);border:1px solid var(--gray-420);border-radius:var(--r-8);padding:24px;margin:16px 0}
+.box > :last-child{margin-bottom:0}
+.box.accent{background:var(--key-50);border:1px solid var(--key-900);border-left:8px solid var(--key-900)}
+.box.accent .lead{margin:0}
+.tablewrap{overflow-x:auto;margin:16px 0}
+table{border-collapse:collapse;width:100%;background:var(--white);font-size:1rem;line-height:1.7;margin:16px 0;border-top:1px solid var(--gray-420)}
+.tablewrap table{margin:0}
+th,td{border-bottom:1px solid var(--gray-420);padding:12px 16px;text-align:left;vertical-align:top}
+th{background:var(--gray-50);color:var(--gray-900);font-weight:700;font-size:.875rem;line-height:1.5;border-bottom:2px solid var(--gray-800);white-space:nowrap}
+tr:hover td{background:var(--key-50)}
+.cut{background:var(--white);border:1px solid var(--gray-420);border-radius:var(--r-16);padding:32px;margin:32px 0;scroll-margin-top:72px}
+.cuthead{display:flex;gap:16px;align-items:center;margin-bottom:24px;padding-bottom:16px;border-bottom:1px solid var(--gray-200)}
+.cuthead p{margin:4px 0 0}
+.num{font-size:1.5rem;line-height:1;font-weight:700;color:var(--white);background:var(--key-900);border-radius:var(--r-8);min-width:56px;height:56px;display:flex;align-items:center;justify-content:center;flex:none;font-feature-settings:"tnum"}
+.frames{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+figure{margin:0}
+figure img{width:100%;height:auto;display:block;border:1px solid var(--gray-200);border-radius:var(--r-8);background:var(--white)}
+figure a:focus-visible{display:block;background:none}
+figcaption{font-size:.875rem;line-height:1.7;margin-top:8px;color:var(--gray-800)}
+.details{display:grid;grid-template-columns:1fr 1.15fr;gap:8px 40px;margin-top:32px}
+.details p{margin:4px 0}
+.label{font-size:.875rem;line-height:1.3;font-weight:700;color:var(--key-1000);margin-top:20px;padding-left:8px;border-left:4px solid var(--key-900)}
+.details > div > .label:first-child{margin-top:0}
+.words{font-size:1.125rem;line-height:1.6;font-weight:700;color:var(--gray-900);margin:8px 0}
+.voice{background:var(--gray-50);border-left:4px solid var(--gray-600);border-radius:0 var(--r-4) var(--r-4) 0;padding:12px 16px;margin:8px 0;font-size:1rem;line-height:1.7;color:var(--gray-800)}
+ul{margin:8px 0 16px;padding-left:1.5em}
+li{margin:4px 0}
+li::marker{color:var(--gray-600)}
+code{font-family:var(--font-mono);background:var(--gray-50);border:1px solid var(--gray-200);padding:0 4px;border-radius:var(--r-4);font-size:.875em;color:var(--gray-900);word-break:break-all}
+.sw{display:inline-block;width:16px;height:16px;border-radius:var(--r-4);vertical-align:-3px;margin-right:8px;border:1px solid var(--gray-420)}
+.tag{display:inline-block;border-radius:var(--r-4);padding:0 8px;font-size:.8125rem;line-height:1.7;font-weight:700;margin-right:8px;border:1px solid}
+.t-un{background:var(--warning-bg);color:var(--warning-text);border-color:var(--warning-yellow-1)}
+footer{border-top:1px solid var(--gray-420);background:var(--gray-50);margin-top:80px;padding:24px 0;font-size:.875rem;color:var(--gray-700)}
+h2.part{margin-top:96px;padding:16px 24px;border:none;border-radius:var(--r-8);background:var(--gray-50);border-left:8px solid var(--gray-800);font-size:1.5rem}
+h2.part + .small{margin-top:-8px}
+.navsep{color:var(--gray-700);font-weight:700;padding-left:12px;border-left:1px solid var(--gray-420)}
+.decide{margin:48px 0 16px;padding:24px 32px 24px;background:var(--warning-orange-bg);border:1px solid var(--warning-orange-1);border-left:8px solid var(--warning-orange-1);border-radius:var(--r-8)}
+.decide h2{margin:0 0 8px;border-bottom:none;padding:0;color:var(--gray-900)}
+.decide > .small{color:var(--gray-800)}
+.decide-list{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:12px}
+.decide-list li{display:flex;gap:12px;align-items:flex-start;background:var(--white);border:1px solid var(--gray-420);border-radius:var(--r-8);padding:12px 16px;margin:0}
+.decide-list .need{min-width:28px;justify-content:center;margin:2px 0 0}
+.where{display:block;font-size:.875rem;color:var(--gray-700);margin-top:4px}
+.need{display:inline-flex;align-items:center;background:var(--warning-orange-2);color:var(--white);border-radius:var(--r-4);padding:0 8px;font-size:.8125rem;line-height:1.7;font-weight:700;letter-spacing:.02em;margin:0 8px;vertical-align:.15em;white-space:nowrap}
+h2 .need{font-size:.875rem}
+nav a.nav-need,nav a.nav-need:visited{background:var(--warning-orange-2);color:var(--white);padding:0 8px;border-radius:var(--r-4);text-decoration:none}
+nav a.nav-need:hover{text-decoration:underline}
+.swap{margin-top:8px}
+@media(max-width:760px){
+  header .inner,main,nav .in,footer .inner{padding:0 16px}
+  header .inner{padding-top:24px;padding-bottom:16px}
+  .frames,.details{grid-template-columns:1fr}
+  h1{font-size:1.75rem;line-height:1.5}
+  h2{font-size:1.5rem;margin-top:48px}
+  .cut{padding:20px;border-radius:var(--r-12)}
+  .box,.decide{padding:16px}
+  table{font-size:.875rem}
+  th,td{padding:8px 12px}
+  th{white-space:normal}
+}
+@media print{nav{position:static;box-shadow:none}.cut{break-inside:avoid}}
+</style></head><body>
+<header><div class="inner"><div class="eyebrow">VIDEO PLAN / 2026.11.08　<span class="chip">企画・絵コンテ（ライト）・実写なし</span></div>
+<h1>出張は刺激になるが、<br>回復の余白も削っていく</h1>
+<p class="lead">刺激は、入る。余白は、減る。予防が、先。</p>
+<p>元にした note 記事：「出張は刺激になるが、回復の余白も削っていく」<a href="https://note.com/dhythm/n/n1ef714aae61c">https://note.com/dhythm/n/n1ef714aae61c</a>（公開済み）<br>原稿：<code>dhythm/private-note</code> の <code>Zettelkasten/PermanentNote/20260424_出張は刺激になるが、回復の余白も削っていく.md</code>（非公開。本文は同梱しない）</p>
+<div class="meta"><span>16:9・1920×1080・30fps</span><span>本編 1:31＋エンドロゴ 5秒＝約 1:36</span><span>11カット（本編 10＋ロゴ）</span><span>ナレーション 353字／画面の文字 130字</span><span>実写・生成動画：なし</span><span>BGM・効果音：後回し</span><span>等速の通し確認：未確認</span></div>
+</div><div class="strata"></div></header>
+<nav><div class="in"><a class="nav-need" href="#decide">判断してほしい点（4）</a><a href="#claim">主張</a><a href="#viewer">視聴者</a><a href="#structure">構成と尺</a><a href="#cuts">カット表</a><span class="navsep">詳細：</span><a href="#roles">声・文字・素材の分担</a><a href="#claim-map">主張・根拠・留保の対応</a><a href="#handoff">企画側／制作側</a><a href="#design">デザインシステム</a><a href="#motion">動きの言語</a><a href="#symbols">記号と色</a><a href="#character">キャラ設定</a><a href="#swaps">差し替え候補</a><a href="#assets">素材</a><a href="#sound">音</a><a href="#evidence">根拠</a><a href="#done">完成条件・確認状態</a></div></nav>
+<main>
+
+<section class="decide" id="decide">
+<h2>未確定事項と判断してほしい点</h2>
+<p class="small">ここだけが判断です。ほかの節は、現行の指示として読めます。番号は本文の「要判断」と同じです。</p>
+<ol class="decide-list">
+<li><span class="need">1</span><div>地名と会社名は出していません。原稿にある訪問先・空港・地方名も出していません。出す語があれば、語を指定してください。<span class="where"><a href="#evidence">根拠</a></span></div></li>
+<li><span class="need">2</span><div>「子供」「家族」「奥さん」「娘」は、画面にも声にも出していません。声は「今の生活では、使える時間は自分だけのものではなくなっていきます」までです。残す語があれば指定してください。<span class="where"><a href="#cut-07">カット07</a></span></div></li>
+<li><span class="need">3</span><div>結びは、原稿の問いかけではなく、本人の決定「自分に許します」にしています。原稿の「許してみてもいいのではないでしょうか」に戻すかは、ここで決めてください。<span class="where"><a href="#cut-10">カット10</a></span></div></li>
+<li><span class="need">4</span><div>差し替え候補はすべて未採用です。使う案があれば、カットと案の番号を指定してください。AI生成を含む案は未承認です。承認があるまで生成せず、クレジットも使いません。<span class="where"><a href="#swaps">差し替え候補</a></span></div></li>
+</ol>
+</section>
+
+<h2 id="claim">この動画で伝える一文</h2>
+<p class="lead">出張の刺激はありがたい。でも回復の余白がない生活では、疲れてからでは遅い。続けるには、予防が先。</p>
+<p>視聴者の思い込みは、充実した出張の疲れは帰ってから休めば戻る、です。残す気持ちは、刺激を手放さなくてよい、疲れきる前に立ち止まることを自分に許してよい、です。全員への休み方の保証にはしません。根拠と留保の表は、絵コンテのあとです。</p>
+
+<h2 id="viewer">視聴者</h2>
+<p>出張や移動のあと、刺激は残っているのに体が重く、翌日の生活が待っている人。リモートが基本で、たまに遠出する働き方の人を先に想定します。家族の有無を条件にはしません。</p>
+
+<h2 id="structure">構成と尺</h2>
+<p>声で経緯を運び、文字は句だけを残し、図は刺激の柱と回復の余白の二軸です。ナレーションありで尺を組んでいます。音声ファイルはまだありません。</p>
+<div class="tablewrap"><table>
+<thead><tr><th>カット</th><th>役</th><th>参考の長さ</th><th>声</th><th>画面</th></tr></thead>
+<tbody>
+<tr><td>01 刺激は入る。余白は減る</td><td>主張</td><td>0:00–0:07（7秒）</td><td>24字・4.4秒</td><td>10字</td></tr>
+<tr><td>02 場所、人、情報</td><td>根拠</td><td>0:07–0:15（8秒）</td><td>31字・5.6秒</td><td>5字</td></tr>
+<tr><td>03 体が重い</td><td>根拠</td><td>0:15–0:23（8秒）</td><td>31字・5.6秒</td><td>9字</td></tr>
+<tr><td>04 得たものは、ある</td><td>留保</td><td>0:23–0:31（8秒）</td><td>28字・5.1秒</td><td>11字</td></tr>
+<tr><td>05 予定は続く。手元は止まる</td><td>根拠</td><td>0:31–0:40（9秒）</td><td>37字・6.7秒</td><td>11字</td></tr>
+<tr><td>06 日常は待ってくれない</td><td>根拠</td><td>0:40–0:50（10秒）</td><td>36字・6.5秒</td><td>12字</td></tr>
+<tr><td>07 回復の日は、ない</td><td>根拠</td><td>0:50–1:01（11秒）</td><td>49字・8.9秒</td><td>11字</td></tr>
+<tr><td>08 予防が、先</td><td>主張</td><td>1:01–1:10（9秒）</td><td>32字・5.8秒</td><td>13字</td></tr>
+<tr><td>09 それでも、無理はする</td><td>留保</td><td>1:10–1:19（9秒）</td><td>35字・6.4秒</td><td>19字</td></tr>
+<tr><td>10 自分に許す</td><td>本人の結論</td><td>1:19–1:31（12秒）</td><td>50字・9.1秒</td><td>29字</td></tr>
+<tr><td>11 エンドロゴ</td><td>制作表示</td><td>1:31–1:36（5秒）</td><td>0字</td><td>0字</td></tr>
+</tbody>
+</table></div>
+<p class="small">尺の計算：ナレーション 353字（句読点・かぎ括弧・空白・改行を除く）÷ 5.5字/秒 = 64.2秒。5.5は過去作の読み上げ実測の目安で、理解度の測定値ではありません。各カットの長さは、この声の秒に、柱と余白を見る時間を足した参考値です。本編の合計は 91秒（1:31）。エンドロゴは動き 4秒＋保持 1秒で 5秒。合計は約 1:36。2分は超えません。秒数は、ロゴのタイミングと「余白を満タンに戻さない」を除き、参考値です。等速の通し確認は未確認です。</p>
+<p>入れていない日記（時刻、件数、食事の名）は <a href="#evidence">根拠</a> に書いてあります。主張が届くために要る留保（得たものはある、それでも無理はする、今の生活では）は残しています。</p>
+
+<h2 id="cuts">カット表・絵コンテ</h2>
+<p>コマは 1280×720、明るい紙色です。完成画ではありません。軸ラベル「刺激」「回復の余白」は毎カットの図の名前で、下の画面字数には入れていません。図の層は three.js を推奨します。文字は DOM／CSS です。動きの名前は <a href="#motion">動きの言語</a> に定義があります。</p>
+
+<section class="cut" id="cut-01"><div class="cuthead"><div class="num">01</div><div><h3>刺激は、入る。余白は、減る。</h3><p class="small">0:00–0:07 / 約7秒　・　主張</p></div></div>
+<div class="frames">
+<figure><a href="assets/storyboard/cut-01-start.webp"><img src="assets/storyboard/cut-01-start.webp" width="1280" height="720" alt="カット01 はじめ"></a><figcaption><b>はじめ</b>　柱は低い。余白の白は広い。二つの句はまだ小さい。</figcaption></figure>
+<figure><a href="assets/storyboard/cut-01-end.webp"><img src="assets/storyboard/cut-01-end.webp" width="1280" height="720" alt="カット01 おわり"></a><figcaption><b>おわり</b>　左に大きな「入る。」。柱は中ほど。右の余白は上下の灰が寄って、白が狭い。「余白は、減る。」は右下。</figcaption></figure>
+</div>
+<div class="details"><div>
+<div class="label">画面の文字</div><p class="words">刺激は、<br>入る。<br>余白は、減る。</p>
+<div class="label">ナレーション</div><p class="voice">出張は、刺激になります。同時に、回復の余白も削られます。</p>
+<div class="label">字数</div><p class="small">声 24字 ／ 画面 10字</p>
+<div class="label">主役の語</div><p>「入る。」が左で一番大きい。刺激は増える側だと、大きさで示す。「余白は、減る。」は右下で、柱より余白の変化と組む。</p>
+</div><div>
+<div class="label">字組みと構図の変化</div><p>はじめは句が小さく、二軸が中央。おわりは左の縦二段と、右下の一行。重心が中央から左右に割れる。</p>
+<div class="label">動き</div><p>図の層が <a href="#motion">Dolly in</a> で寄る。柱は下を固定して伸びる。余白の灰は上下から寄る。文字は行のマスクから、左と右が逆方向に入る。着地したあとも、伸びと寄りは続く。字の形は崩さない。</p>
+<div class="label">次へ</div><p>柱が上がる勢いで、02 の三語が左へ入る。余白はまだ広い。</p>
+<div class="label">軸</div><p>柱は低から中。余白は広から、やや狭。両方を同時に動かす。</p>
+<div class="label">差し替え <span class="need">要判断 4</span></div>
+<p class="swap">案A　全カット共通の生成ループを、図の層の下に敷く。明るい机。人物・文字・ロゴなし。二軸の質感を 01〜10 で揃えるときだけ。AI生成。未承認。生成しない。費用は未確認。</p>
+<p class="swap">案B　白い机の実写。実ファイルはない。利用条件を確認できる該当ファイルが手元になく、一般のストックを本人の机とは扱わない。</p>
+</div></div>
+</section>
+
+<section class="cut" id="cut-02"><div class="cuthead"><div class="num">02</div><div><h3>場所。人。情報。</h3><p class="small">0:07–0:15 / 約8秒　・　根拠</p></div></div>
+<div class="frames">
+<figure><a href="assets/storyboard/cut-02-start.webp"><img src="assets/storyboard/cut-02-start.webp" width="1280" height="720" alt="カット02 はじめ"></a><figcaption><b>はじめ</b>　三語は左で同じ大きさ。二軸は右。柱は 01 のおわりと同じ高さ。</figcaption></figure>
+<figure><a href="assets/storyboard/cut-02-end.webp"><img src="assets/storyboard/cut-02-end.webp" width="1280" height="720" alt="カット02 おわり"></a><figcaption><b>おわり</b>　三語が階段で大きくなる。「情報。」が最大。柱は三段で上がる。余白の白はまだ広い。</figcaption></figure>
+</div>
+<div class="details"><div>
+<div class="label">画面の文字</div><p class="words">場所。<br>人。<br>情報。</p>
+<div class="label">ナレーション</div><p class="voice">普段と違う場所へ行き、違う人と会い、いつもと違う情報が入ってきます。</p>
+<div class="label">字数</div><p class="small">声 31字 ／ 画面 5字</p>
+<div class="label">主役の語</div><p>「情報。」が三段のいちばん大きく、最後に着く。刺激の中身は場所・人・情報の三つで、行き先の名は置かない。</p>
+</div><div>
+<div class="label">字組みと構図の変化</div><p>01 の左右対称から、左の階段と右の二軸へ。字の大きさが三段になる。余白は脇に残し、主役を刺激側に寄せる。</p>
+<div class="label">動き</div><p>三語は塊のまま、大きなスケールから着地する。1字ずつは跳ねない。着地の順に柱が一段ずつ伸びる。着地後、画面は <a href="#motion">Truck</a> で左へ寄り、柱を見る。余白はほとんど狭めない。</p>
+<div class="label">次へ</div><p>高い柱を右へ残したまま、03 の「楽しいのに、」が上から入る。</p>
+<div class="label">軸</div><p>柱は中から高。余白はほぼ維持。刺激を肯定するあいだは、余白を削りきらない。</p>
+<div class="label">差し替え <span class="need">要判断 4</span></div>
+<p class="swap">案A　「場所」の背後に、匿名の街の実写を短い窓で。実ファイルはない。看板・地名・ナンバーが映らず、ライセンスも確認できるファイルが手元にない。要判断 1 ともぶつかる。</p>
+<p class="swap">案B　街を歩く生成映像。未承認。生成しない。人物と看板が出やすく、特定につながる。</p>
+</div></div>
+</section>
+
+<section class="cut" id="cut-03"><div class="cuthead"><div class="num">03</div><div><h3>楽しいのに、体が重い。</h3><p class="small">0:15–0:23 / 約8秒　・　根拠</p></div></div>
+<div class="frames">
+<figure><a href="assets/storyboard/cut-03-start.webp"><img src="assets/storyboard/cut-03-start.webp" width="1280" height="720" alt="カット03 はじめ"></a><figcaption><b>はじめ</b>　上に「楽しいのに、」。下の「体が重い。」はまだ小さい。柱は高い。余白はまだ開いている。</figcaption></figure>
+<figure><a href="assets/storyboard/cut-03-end.webp"><img src="assets/storyboard/cut-03-end.webp" width="1280" height="720" alt="カット03 おわり"></a><figcaption><b>おわり</b>　「体が重い。」が画面下で最大。柱の高さは維持。余白の白が半分近くまで狭まる。</figcaption></figure>
+</div>
+<div class="details"><div>
+<div class="label">画面の文字</div><p class="words">楽しいのに、<br>体が重い。</p>
+<div class="label">ナレーション</div><p class="voice">楽しいはずなのに、帰ると体が重い。刺激が入るほど、余白は先に減ります。</p>
+<div class="label">字数</div><p class="small">声 31字 ／ 画面 9字</p>
+<div class="label">主役の語</div><p>「体が重い。」が沈んで最大になる。上の「楽しいのに、」は小さく残し、楽しいことと重さの対比にする。柱は下げない。</p>
+</div><div>
+<div class="label">字組みと構図の変化</div><p>02 の左階段から、上の小と下の大へ。二軸は右端に細く寄る。重心が下へ落ちる。</p>
+<div class="label">動き</div><p>下の行が上から落ちて着地する。着地後、カメラは余白側へ <a href="#motion">Crane</a> で下り、白が狭まるのを見る。柱の高さは保つ。字の形は崩さない。</p>
+<div class="label">次へ</div><p>狭まった余白の幅を 04 でも保つ。削る動きは一度止める。</p>
+<div class="label">軸</div><p>柱は高のまま。余白は広い状態から、半分近くまで。</p>
+<div class="label">差し替え <span class="need">要判断 4</span></div>
+<p class="swap">案A　窓の光だけの実写。室内の社名は映さない。実ファイルはない。条件を満たすファイルが手元にない。</p>
+<p class="swap">案B　体が重いしぐさの生成。未承認。生成しない。実在の人物に見える生成は使わない。柱と文字で足りる。</p>
+</div></div>
+</section>
+
+<section class="cut" id="cut-04"><div class="cuthead"><div class="num">04</div><div><h3>得たものは、ある。</h3><p class="small">0:23–0:31 / 約8秒　・　留保</p></div></div>
+<div class="frames">
+<figure><a href="assets/storyboard/cut-04-start.webp"><img src="assets/storyboard/cut-04-start.webp" width="1280" height="720" alt="カット04 はじめ"></a><figcaption><b>はじめ</b>　左の柱の脇に、琥珀の印と「挨拶」「縁」。余白の幅は 03 のおわりと同じ。</figcaption></figure>
+<figure><a href="assets/storyboard/cut-04-end.webp"><img src="assets/storyboard/cut-04-end.webp" width="1280" height="720" alt="カット04 おわり"></a><figcaption><b>おわり</b>　印は柱に吸い込まれ、柱はさらに高い。中央に「ある。」が大きい。余白の幅は変わらない。</figcaption></figure>
+</div>
+<div class="details"><div>
+<div class="label">画面の文字</div><p class="words">得たものは、<br>ある。<br>縁は、残る。</p>
+<div class="label">ナレーション</div><p class="voice">ご挨拶はできて、人の縁は残りました。得たものは、確かにあります。</p>
+<div class="label">字数</div><p class="small">声 28字 ／ 画面 11字。はじめの「挨拶」「縁」は、おわりの文に吸い込むので字数に足していない。</p>
+<div class="label">主役の語</div><p>「ある。」が最大。出張を否定しない留保を、刺激の柱が伸びる側に置く。余白はここでは削らない。</p>
+</div><div>
+<div class="label">字組みと構図の変化</div><p>03 の下段の大から、左の太い柱と中央の縦二段へ。余白は右に小さく残る。琥珀の印は刺激に加算される印で、灰の板ではない。</p>
+<div class="label">動き</div><p>「挨拶」「縁」が弧を描いて柱へ入る。入った分だけ柱が伸びる。読む間、カメラは柱に寄り、文字は左下から中央の大へ組み替わる。余白の幅は固定。</p>
+<div class="label">次へ</div><p>高い柱を右端の細い柱へ渡し、05 で余白を横に倒す。</p>
+<div class="label">軸</div><p>柱は高から、さらに高。余白の幅は 03 のおわりを維持。</p>
+<div class="label">差し替え <span class="need">要判断 4</span></div>
+<p class="swap">案A　食卓の実写。土地の食事は特定につながるので、現行では使わない。実ファイルは探していない。</p>
+<p class="swap">案B　料理の生成。未承認。生成しない。同上。</p>
+</div></div>
+</section>
+
+<section class="cut" id="cut-05"><div class="cuthead"><div class="num">05</div><div><h3>予定は、続く。手元は、止まる。</h3><p class="small">0:31–0:40 / 約9秒　・　根拠</p></div></div>
+<div class="frames">
+<figure><a href="assets/storyboard/cut-05-start.webp"><img src="assets/storyboard/cut-05-start.webp" width="1280" height="720" alt="カット05 はじめ"></a><figcaption><b>はじめ</b>　余白を横に倒す。上に間隔のある灰の駒。白の隙間は 04 と同じくらい開いている。右に高い柱。</figcaption></figure>
+<figure><a href="assets/storyboard/cut-05-end.webp"><img src="assets/storyboard/cut-05-end.webp" width="1280" height="720" alt="カット05 おわり"></a><figcaption><b>おわり</b>　駒は一本の灰に潰れる。余白の白は細い。下に二行。</figcaption></figure>
+</div>
+<div class="details"><div>
+<div class="label">画面の文字</div><p class="words">予定は、続く。<br>手元は、止まる。</p>
+<div class="label">ナレーション</div><p class="voice">予定は続き、移動のあいだに手元の作業は止まります。仕事はしているのに、進みません。</p>
+<div class="label">字数</div><p class="small">声 37字 ／ 画面 11字</p>
+<div class="label">主役の語</div><p>「止まる。」が下段で「続く。」と対になる。予定の中身は書かない。駒の数は数えない。原稿の件数を、駒の個数にしない。</p>
+</div><div>
+<div class="label">字組みと構図の変化</div><p>04 の縦の二軸から、上の横帯と下の二行へ。柱だけ右端に縦のまま残し、余白だけ向きが変わる。</p>
+<div class="label">動き</div><p>余白の枠が <a href="#motion">Roll</a> で横になる。灰の駒が間隔を失って一本になる。その分、白が細くなる。読む間も駒は押し合い、画面が横に詰まる。倒れる物理にはしない。</p>
+<div class="label">次へ</div><p>細い白を、06 で縦の余白に戻して閉じる。</p>
+<div class="label">軸</div><p>柱は高を維持。余白は 04 の幅から、細い隙間まで。</p>
+<div class="label">差し替え <span class="need">要判断 4</span></div>
+<p class="swap">案A　予定表の画面収録。実ファイルはない。本人の予定は顧客情報になり得るので使わない。</p>
+<p class="swap">案B　カレンダーの生成。未承認。生成しない。同上。</p>
+</div></div>
+</section>
+
+<section class="cut" id="cut-06"><div class="cuthead"><div class="num">06</div><div><h3>日常は、待ってくれない。</h3><p class="small">0:40–0:50 / 約10秒　・　根拠</p></div></div>
+<div class="frames">
+<figure><a href="assets/storyboard/cut-06-start.webp"><img src="assets/storyboard/cut-06-start.webp" width="1280" height="720" alt="カット06 はじめ"></a><figcaption><b>はじめ</b>　余白は縦に戻り、白はまだ細い。左の柱は高い。「翌日も、日常は始まる。」</figcaption></figure>
+<figure><a href="assets/storyboard/cut-06-end.webp"><img src="assets/storyboard/cut-06-end.webp" width="1280" height="720" alt="カット06 おわり"></a><figcaption><b>おわり</b>　余白の灰が中央で接し、白がない。柱は満タン。「日常は、待ってくれない。」と、別の灰のカード「翌日」。</figcaption></figure>
+</div>
+<div class="details"><div>
+<div class="label">画面の文字</div><p class="words">日常は、<br>待ってくれない。<br>翌日</p>
+<div class="label">ナレーション</div><p class="voice">帰った夜に作業が残り、翌日はいつもの生活が始まります。日常は、待ってくれません。</p>
+<div class="label">字数</div><p class="small">声 36字 ／ 画面 12字。はじめの「翌日も、日常は始まる。」は、おわりの文に替わる。</p>
+<div class="label">主役の語</div><p>「待ってくれない。」が最大。柱が満タンなのに余白がゼロ、という対比の上に置く。「翌日」は灰のカードの名前で、余白を塞ぐ側。</p>
+</div><div>
+<div class="label">字組みと構図の変化</div><p>05 の横帯から、左の満タンの柱、中央の大、右の閉じた余白、下のカードへ。余白の枠は再び縦。</p>
+<div class="label">動き</div><p>白が閉じて灰が接したあと、右の余白だけ <a href="#motion">Freeze</a> で止める。柱の高さは保ったまま、図のピントを柱から閉じた余白へ送る。文字の層はシャープなまま。「翌日」のカードは <a href="#motion">Whip pan</a> で入る。入りに短い放射ぶれを足してよい。白く光る瞬間は入れない。読む間はぼかさない。</p>
+<div class="label">次へ</div><p>閉じた余白と「翌日」のカードを、07 の横の合わせ目へ渡す。</p>
+<div class="label">軸</div><p>柱は満タンで固定。余白は細からゼロ。ゼロのまま止める。</p>
+<div class="label">差し替え <span class="need">要判断 4</span></div>
+<p class="swap">案A　夜の雨の実写。原稿の天候を絵にすると記録映像に寄る。実ファイルはない。ライセンスを確認できる匿名の雨は手元にない。</p>
+<p class="swap">案B　雨窓の生成。未承認。生成しない。</p>
+</div></div>
+</section>
+
+<section class="cut" id="cut-07"><div class="cuthead"><div class="num">07</div><div><h3>回復の日は、ない。 <span class="need">要判断 2</span></h3><p class="small">0:50–1:01 / 約11秒　・　根拠</p></div></div>
+<div class="frames">
+<figure><a href="assets/storyboard/cut-07-start.webp"><img src="assets/storyboard/cut-07-start.webp" width="1280" height="720" alt="カット07 はじめ"></a><figcaption><b>はじめ</b>　余白はまだ縦で、閉じたまま。「翌日」のカードが横に伸びはじめる。</figcaption></figure>
+<figure><a href="assets/storyboard/cut-07-end.webp"><img src="assets/storyboard/cut-07-end.webp" width="1280" height="720" alt="カット07 おわり"></a><figcaption><b>おわり</b>　余白は横の合わせ目になり、白がない。左端に琥珀の帯。右に「ない。」と「休みの日」。</figcaption></figure>
+</div>
+<div class="details"><div>
+<div class="label">画面の文字</div><p class="words">回復の日は、<br>ない。<br>休みの日</p>
+<div class="label">ナレーション</div><p class="voice">休める日も、回復のためだけにはなりません。今の生活では、使える時間は自分だけのものではなくなっていきます。</p>
+<div class="label">字数</div><p class="small">声 49字 ／ 画面 11字</p>
+<div class="label">主役の語</div><p>「ない。」が右で最大。休みの日が余白を開けない、という意味を大きさで置く。家族の呼称は、要判断 2 の現行では入れない。</p>
+</div><div>
+<div class="label">字組みと構図の変化</div><p>06 の縦の二軸から、画面を横切る合わせ目と、右に積んだ短い行へ。柱は左端の帯になる。後半で向きを変える。</p>
+<div class="label">動き</div><p>閉じた縦の余白が <a href="#motion">Roll</a> して横の合わせ目になる。白は開かない。「休みの日」は合わせ目の名前として右に残る。読む間、帯と合わせ目は固定せず、カメラが右の「ない。」へ寄る。</p>
+<div class="label">次へ</div><p>閉じた合わせ目を 08 の上に残し、その上へ大きな文を置く。</p>
+<div class="label">軸</div><p>刺激は満タンのまま左の帯。余白はゼロのまま。向きだけが変わる。</p>
+<div class="label">差し替え <span class="need">要判断 4</span></div>
+<p class="swap">案A　家庭の実写。家族は出さない。ファイルは探さない。</p>
+<p class="swap">案B　家庭や子供の生成。未承認。生成しない。実在の人物に寄る。</p>
+</div></div>
+</section>
+
+<section class="cut" id="cut-08"><div class="cuthead"><div class="num">08</div><div><h3>予防が、先。</h3><p class="small">1:01–1:10 / 約9秒　・　主張</p></div></div>
+<div class="frames">
+<figure><a href="assets/storyboard/cut-08-start.webp"><img src="assets/storyboard/cut-08-start.webp" width="1280" height="720" alt="カット08 はじめ"></a><figcaption><b>はじめ</b>　紙の上に「遅い。」が大きい。下の合わせ目はまだ閉じている。</figcaption></figure>
+<figure><a href="assets/storyboard/cut-08-end.webp"><img src="assets/storyboard/cut-08-end.webp" width="1280" height="720" alt="カット08 おわり"></a><figcaption><b>おわり</b>　「予防が、先。」が最大。墨の一本線が合わせ目を少し押し開き、緑の縁のあいだに細い白が戻る。満タンではない。</figcaption></figure>
+</div>
+<div class="details"><div>
+<div class="label">画面の文字</div><p class="words">疲れてからでは、遅い。<br>予防が、先。</p>
+<div class="label">ナレーション</div><p class="voice">だから、疲れてから立て直すのでは遅い。崩れにくい状態を、先につくります。</p>
+<div class="label">字数</div><p class="small">声 32字 ／ 画面 13字</p>
+<div class="label">主役の語</div><p>はじめは「遅い。」が最大。おわりはそれが小さく上に残り、「予防が、先。」が替わって最大になる。予防は新しい色ではなく、墨の一本線。</p>
+</div><div>
+<div class="label">字組みと構図の変化</div><p>07 の右寄せの短文から、上半分が紙の大見出し、下半分が合わせ目へ。余白が画面のいちばん広いカット。</p>
+<div class="label">動き</div><p>「遅い。」の行が上へ退く。予防の線は一筆で描かれ、描き終わってから板を少し押し広げる。開く幅は指一本ぶんまで。出張前の広さには戻さない。戻さないことは厳守。カメラは引いて、帯と線と見出しを一つの画面に戻す。</p>
+<div class="label">次へ</div><p>開いた細い幅を 09 の縦の余白へ戻す。それ以上は開かない。</p>
+<div class="label">軸</div><p>刺激は満タンの帯のまま。余白はゼロから、細い白へ。</p>
+<div class="label">差し替え <span class="need">要判断 4</span></div>
+<p class="swap">案A　予防接種や医療の実写。比喩が手順に見えるので使わない。実ファイルは採用しない。</p>
+<p class="swap">案B　注射器などの生成。未承認。生成しない。</p>
+</div></div>
+</section>
+
+<section class="cut" id="cut-09"><div class="cuthead"><div class="num">09</div><div><h3>それでも、無理はする。</h3><p class="small">1:10–1:19 / 約9秒　・　留保</p></div></div>
+<div class="frames">
+<figure><a href="assets/storyboard/cut-09-start.webp"><img src="assets/storyboard/cut-09-start.webp" width="1280" height="720" alt="カット09 はじめ"></a><figcaption><b>はじめ</b>　余白は縦に戻り、白は細い。左に二行。留保の行はまだ小さい。</figcaption></figure>
+<figure><a href="assets/storyboard/cut-09-end.webp"><img src="assets/storyboard/cut-09-end.webp" width="1280" height="720" alt="カット09 おわり"></a><figcaption><b>おわり</b>　二軸が左へ寄り、「溜めない。」が大きい。右下に小さい「それでも、無理はする。」余白の幅は変わらない。</figcaption></figure>
+</div>
+<div class="details"><div>
+<div class="label">画面の文字</div><p class="words">飲みすぎない。<br>溜めない。<br>それでも、無理はする。</p>
+<div class="label">ナレーション</div><p class="voice">飲みすぎない。疲れを溜めない。それでも、わかっていて無理をすることはあります。</p>
+<div class="label">字数</div><p class="small">声 35字 ／ 画面 19字</p>
+<div class="label">主役の語</div><p>「溜めない。」が最大。留保の「それでも、無理はする。」は同じ墨で、サイズだけ小さくする。留保用の別色は置かない。余白はこれ以上開かない。</p>
+</div><div>
+<div class="label">字組みと構図の変化</div><p>08 の中央大から、左の二軸と右の大きな二行、その下の小さい留保へ。大きさの差がいちばん開くカットの一つ。</p>
+<div class="label">動き</div><p>二行は左のマスクから入る。留保の行は右から遅れて入る。入ったあと、画面は Truck で留保の方へ寄る。余白の幅は固定。予防が万能に見えないように、白を広げない。</p>
+<div class="label">次へ</div><p>細い余白と満タンの柱を、10 の隅の小さい二軸へ縮める。</p>
+<div class="label">軸</div><p>08 で開いた幅のまま。縦に戻すだけ。</p>
+<div class="label">差し替え <span class="need">要判断 4</span></div>
+<p class="swap">案A　酒器の実写。銘柄や店が映る。実ファイルはない。条件を満たすファイルが手元にない。</p>
+<p class="swap">案B　酒器の生成。未承認。生成しない。文字で足りる。</p>
+</div></div>
+</section>
+
+<section class="cut" id="cut-10"><div class="cuthead"><div class="num">10</div><div><h3>自分に許す。 <span class="need">要判断 3</span></h3><p class="small">1:19–1:31 / 約12秒　・　本人の結論</p></div></div>
+<div class="frames">
+<figure><a href="assets/storyboard/cut-10-start.webp"><img src="assets/storyboard/cut-10-start.webp" width="1280" height="720" alt="カット10 はじめ"></a><figcaption><b>はじめ</b>　二軸は右上で小さい。第一行だけが大きい。余白の白は細いまま。</figcaption></figure>
+<figure><a href="assets/storyboard/cut-10-end.webp"><img src="assets/storyboard/cut-10-end.webp" width="1280" height="720" alt="カット10 おわり"></a><figcaption><b>おわり</b>　左上の小さい二軸。三行が階段で大きくなり、最後の「自分に許す。」が最大。</figcaption></figure>
+</div>
+<div class="details"><div>
+<div class="label">画面の文字</div><p class="words">刺激は、ありがたい。<br>余白を、前提にする。<br>立ち止まることを、<br>自分に許す。</p>
+<div class="label">ナレーション</div><p class="voice">刺激は、ありがたい。受け取り続けるには、回復の余白を前提にします。疲れきる前に立ち止まることを、自分に許します。</p>
+<div class="label">字数</div><p class="small">声 50字 ／ 画面 29字</p>
+<div class="label">主役の語</div><p>「自分に許す。」が最大で、最後に残る。問いかけにしない。原稿の結びは「許してみてもいいのではないでしょうか」です。現行は本人の決定に言い切っています。戻すかは要判断 3。</p>
+</div><div>
+<div class="label">字組みと構図の変化</div><p>09 の左の大きい二軸から、隅の小さい凡例と、左上から右下へ階段の四行へ。01 の二軸が、小さくもう一度見える。</p>
+<div class="label">動き</div><p><a href="#motion">Zoom out</a> で二軸と四行が一つの画面に入る。行は順に着地し、最後の行がいちばん大きい。着地後もカメラは少し引き、余韻を置く。柱は高く、余白は細いまま。白を全開にしない。</p>
+<div class="label">次へ</div><p>本編の要素を残さず、ライムの全面へ渡して 11 へ。</p>
+<div class="label">軸</div><p>09 と同じ比率。小さくするだけ。満タンには戻さない。</p>
+<div class="label">差し替え <span class="need">要判断 4</span></div>
+<p class="swap">案A　立ち止まる足元の実写。靴や場所が本人の記録に見える。実ファイルはない。</p>
+<p class="swap">案B　足元の生成。未承認。生成しない。</p>
+</div></div>
+</section>
+
+<section class="cut" id="cut-11"><div class="cuthead"><div class="num">11</div><div><h3>エンドロゴ</h3><p class="small">1:31–1:36 / 5秒　・　制作表示</p></div></div>
+<div class="frames">
+<figure><a href="assets/storyboard/cut-11-start.webp"><img src="assets/storyboard/cut-11-start.webp" width="1280" height="720" alt="カット11 はじめ"></a><figcaption><b>はじめ</b>　全面が <code>#d2ff1a</code>。印と、右上から落ちる途中の o。kady と .work はまだない。</figcaption></figure>
+<figure><a href="assets/storyboard/cut-11-end.webp"><img src="assets/storyboard/cut-11-end.webp" width="1280" height="720" alt="カット11 おわり"></a><figcaption><b>おわり</b>　同じライムの上に、ロゴだけを中央へ。引き伸ばさない。</figcaption></figure>
+</div>
+<div class="details"><div>
+<div class="label">画面の文字</div><p class="words">（ロゴのみ）</p>
+<div class="label">ナレーション</div><p class="voice">（なし）</p>
+<div class="label">字数</div><p class="small">声 0字 ／ 画面 0字</p>
+<div class="label">規定</div><p>ロゴの形・書体・色・比率は変えない。背景は <code>#d2ff1a</code>。ロゴ以外を重ねない。本編のライム使用はしない。</p>
+</div><div>
+<div class="label">動き</div><p>リポジトリ直下の <code>../okady-work-logo.svg</code> のタイミングを、フレーム時刻から再現する。0〜2.6秒は o が落ちてバウンドし定位置へ。2.6〜3.2秒は全体が左へスライド。3.0〜4.0秒は「.work」が一文字ずつ出る。4.0秒で完成し、1秒保持する。保持は 1〜1.5秒の範囲で調整してよい。その場合ロゴ区間は 5〜5.5秒。本編からの切り替えは勢いでよい。ロゴ自体の動きは変えない。</p>
+<div class="label">差し替え</div><p>なし。ロゴの規定を差し替え候補にしない。</p>
+</div></div>
+</section>
+
+<h2 class="part" id="details">詳細（ここから下は補足）</h2>
+<p class="small">絵コンテまでが、どんな動画かです。ここから下は、制作に必要な決まりです。</p>
+
+<h2 id="roles">声・文字・素材の分担</h2>
+<div class="tablewrap"><table>
+<thead><tr><th>層</th><th>担うこと</th><th>担わないこと</th></tr></thead>
+<tbody>
+<tr><td>声</td><td>経緯と判断。刺激の中身、体が重いこと、縁が残ること、手元が止まること、翌日、時間は自分だけのものではないこと、予防、無理をしてしまうこと、結びの決定。</td><td>柱の色や余白の形の説明。画面の全文の読み上げ。</td></tr>
+<tr><td>文字</td><td>そのカットで残す句。大きさの対比。</td><td>声の字幕。軸の名前以外の注釈。</td></tr>
+<tr><td>図</td><td>刺激の柱と回復の余白。予防の一本線。余白を塞ぐ灰。</td><td>人物、地名、記録映像、点数。</td></tr>
+</tbody>
+</table></div>
+<p>ナレーションはあり、です。この有無で文量を組んでいます。音声の生成は、この企画書だけでは始めません。<a href="#sound">音</a>に条件を書いてあります。</p>
+
+<h2 id="claim-map">主張・根拠・留保の対応</h2>
+<p>対応の全文は <a href="references.md">references.md</a> です。映像での位置だけをここに置きます。</p>
+<div class="tablewrap"><table>
+<thead><tr><th>役割</th><th>カット</th><th>残し方</th></tr></thead>
+<tbody>
+<tr><td>主張</td><td>01 と 08 と 10</td><td>刺激は入る。余白は減る。予防が先。結びは本人の肯定。</td></tr>
+<tr><td>根拠</td><td>02、03、05、06、07</td><td>場所・人・情報。体が重い。予定で手元が止まる。翌日が始まる。回復の日がない。</td></tr>
+<tr><td>留保</td><td>04 と 09</td><td>得たものはある。それでも無理はする。余白を、そのあいだ広げない。</td></tr>
+<tr><td>言わないこと</td><td>全カット</td><td>出張をやめろ、とは言わない。予防で疲れが消える、とは見せない。全員の家庭の話にしない。</td></tr>
+</tbody>
+</table></div>
+
+<h2 id="handoff">企画側／制作側</h2>
+<div class="tablewrap"><table>
+<thead><tr><th>企画側が渡すもの</th><th>制作側が判断・制作するもの</th></tr></thead>
+<tbody>
+<tr><td>主張、画面の文言、ナレーション原稿、構成、絵コンテ、記号と色、ロゴの原本、音の条件、完成条件。採用する写真・動画は、この作品では使わないと判断済み。</td><td>three.js（推奨）または同等での図の層。文字は DOM／CSS。フレーム時刻から決まる動き。文字のはみ出しと、文字と図の交差の機械検査。代表区間の等速確認のあと全編。エンドロゴの再現。BGM と効果音は後工程。ナレーション音声は、明示の依頼があるまで API を呼ばない。</td></tr>
+</tbody>
+</table></div>
+<p>音源ファイルがないことは、制作を止める理由にしません。画像・動画を使う判断に変えるときは、実ファイルと区間が揃ってから制作側へ渡します。制作側は動画 AI で新規に作りません。不足は企画側へ返します。</p>
+<p>イージングの関数、各句のフレーム、回転の角度は、意味と完成条件を外さない範囲で制作側が決めます。厳守は、余白を満タンに戻さないこと、06 で余白だけが空のまま止まること、ロゴのタイミング、字の形を崩さないこと、地名・人物・他社ロゴを出さないこと、章表示・テロップ帯・エンドクレジットを入れないことです。</p>
+
+<h2 id="design">デザインシステム（映像の文字・色・グリッド）</h2>
+<p>この節は本編の見た目です。この企画書の見た目（青と灰）とは別です。</p>
+<ul>
+<li>画面は 1920×1080、30fps、16:9。背景は明るい紙 <code>#F6F3EC</code>。全面が暗いカットは作らない。</li>
+<li>文字は Noto Sans CJK（または Noto Sans JP）の 400 と 700。詰め組（palt）。行のマスクで入る。1字ずつの変形はしない。</li>
+<li>安全域の目安は左右 80px、上下 64px。機械検査は左右 40px、上下 30px を下回った文字を不合格にします。0.25秒間隔で、全カットの文字の外接矩形を取ります。図・灰・線との交差も取ります。</li>
+<li>文字の層と図の層を分ける。カメラの寄り・回転・ピントは図の層だけ。文字が切れたり、図に埋もれたりしない。</li>
+<li>本編にライム <code>#d2ff1a</code> は使わない。ライムは 11 の背景だけ。</li>
+<li>章表示、下部のテロップ帯、エンドクレジット、出典の注は入れない。</li>
+</ul>
+<p>字組みはカットごとに変えます。01 は左右、02 は階段、03 は上小下大、04 は左の柱と中央、05 は上の帯と下の二行、06 は左の柱と中央の大、07 は横の合わせ目と右の行、08 は上の大と下の線、09 は左の図と右の大小、10 は隅の凡例と階段、11 は中央のロゴだけです。</p>
+
+<h2 id="motion">動きの言語</h2>
+<p>名前は狙いの共有です。秒数と角度は、ロゴと「余白を満タンに戻さない」以外は参考です。図の層は three.js を推奨します。文字を three.js のテクスチャにして字幕のように置かないでください。実時間の <code>requestAnimationFrame</code> で本編の状態を決めないでください。シークしても同じ絵になるよう、フレーム時刻から位置・回転・スケール・線の進行・ピントを決めます。</p>
+<div class="tablewrap"><table>
+<thead><tr><th>名前</th><th>意味</th><th>使うカット</th></tr></thead>
+<tbody>
+<tr><td>Dolly in</td><td>図の層が寄る。文字は切れない。</td><td>01</td></tr>
+<tr><td>Truck</td><td>横へ移動し、見る側を変える。</td><td>02、09</td></tr>
+<tr><td>Crane</td><td>余白の方へ下り、白が狭まるのを見る。</td><td>03</td></tr>
+<tr><td>Roll</td><td>同じ余白の向きを、縦と横で入れ替える。意味は変えない。</td><td>05、07、09</td></tr>
+<tr><td>Whip pan</td><td>翌日のカードが短い勢いで入る。参考 0.4秒。放射ぶれを足してよい。白い閃光は入れない。</td><td>06</td></tr>
+<tr><td>Freeze</td><td>右の余白だけ、閉じた状態で止める。画面全体の停止にはしない。</td><td>06</td></tr>
+<tr><td>Zoom out</td><td>引いて、二軸と結びの行を一つの画面にする。</td><td>10</td></tr>
+<tr><td>予防の線</td><td>一筆で描き、描き終わってから板を少し押し広げる。</td><td>08</td></tr>
+</tbody>
+</table></div>
+<p>読む間も、行・塊・図・カメラのどれかを動かす。1字ずつの揺れ、拍ごとの脈動、意味のない粒子は使わない。登場のあとで止めない。後半の 07〜10 も、向き・大きさ・引きを変える。</p>
+<p>効果の採否は <a href="effects-direction.md">effects-direction.md</a> にあります。デモの再生確認はしていません。ソースから仕組みを読んだ範囲と、未確認の範囲はそちらに書いてあります。</p>
+
+<h2 id="symbols">記号と色</h2>
+<p>1つの形に1つの意味です。前後を通して混ぜていません。</p>
+<div class="tablewrap"><table>
+<thead><tr><th>記号</th><th>色</th><th>意味</th><th>使わない読み</th></tr></thead>
+<tbody>
+<tr><td>下から伸びる柱</td><td><span class="sw" style="background:#E07A2F"></span><code>#E07A2F</code></td><td>刺激の量。上がる＝入る。下がらない。</td><td>点数、健康、達成</td></tr>
+<tr><td>緑の縁の内側の白い隙間</td><td><span class="sw" style="background:#2F6F62"></span><code>#2F6F62</code> は縁だけ</td><td>回復の余白。白い幅が余白。狭い＝少ない。ゼロ＝ない。</td><td>緑を「順調」や「進行」に使わない</td></tr>
+<tr><td>灰の板・駒・カード</td><td><span class="sw" style="background:#D6CEC0"></span><code>#D6CEC0</code></td><td>余白を塞ぐもの。予定、翌日、休みの日。</td><td>過去、注釈、別の感情</td></tr>
+<tr><td>墨の一本線</td><td><span class="sw" style="background:#1C1915"></span><code>#1C1915</code></td><td>予防。余白を少しだけ戻す。</td><td>経路、予定、満点への回復</td></tr>
+<tr><td>紙</td><td><span class="sw" style="background:#F6F3EC"></span><code>#F6F3EC</code></td><td>地。余白の白と同じ紙。</td><td>暗い全面にはしない</td></tr>
+<tr><td>文字の大小</td><td>墨。留保も同じ墨</td><td>強調。意味の種類ではない。</td><td>留保専用の色は置かない</td></tr>
+<tr><td>ライムの全面</td><td><span class="sw" style="background:#d2ff1a"></span><code>#d2ff1a</code></td><td>11 のロゴ背景だけ。</td><td>本編の強調に使わない</td></tr>
+</tbody>
+</table></div>
+<p>赤、ひび、数字、飛行機、建物の名、人のピクトは置きません。琥珀は刺激だけ、緑は余白の縁だけ、灰は塞ぐものだけ、墨の線は予防だけです。</p>
+
+<h2 id="character">キャラ設定</h2>
+<p>人物は出ません。丸頭の人型も使いません。この主張は、人の芝居ではなく二軸で足ります。家族や先方の顔、手、靴も出ません。</p>
+
+<h2 id="swaps">差し替え候補 <span class="need">要判断 4</span></h2>
+<p>現行は、上の絵コンテのモーショングラフィックスだけです。下の案は未採用です。使う番号が指定されるまで、ファイルは作りません。</p>
+<p>琥珀の柱と緑縁の余白は 01 から 10 まで続き、11 では消えます。この本体を、一部のカットだけ実写や生成映像にしないでください。質感を変えるなら、ゲージが出る全カットで揃えます。脇に窓を足す場合も、窓が本人の記録映像に見えないことを先に決めます。</p>
+<p>各カットの案は、カットの枠に書いてあります。まとめます。</p>
+<div class="tablewrap"><table>
+<thead><tr><th>カット</th><th>案</th><th>状態</th></tr></thead>
+<tbody>
+<tr><td>01</td><td>A 全編共通の机上の二軸ループ（生成）／ B 白い机の実写</td><td>A は未承認。B は実ファイルなし</td></tr>
+<tr><td>02</td><td>A 匿名の街の実写窓／ B 街歩きの生成</td><td>実ファイルなし。B は未承認</td></tr>
+<tr><td>03</td><td>A 窓の光の実写／ B しぐさの生成</td><td>実ファイルなし。B は未承認</td></tr>
+<tr><td>04</td><td>A 食卓の実写／ B 料理の生成</td><td>特定につながるので現行では使わない。B は未承認</td></tr>
+<tr><td>05</td><td>A 予定表の画面収録／ B カレンダーの生成</td><td>顧客情報になり得るので使わない。B は未承認</td></tr>
+<tr><td>06</td><td>A 夜の雨の実写／ B 雨窓の生成</td><td>実ファイルなし。B は未承認</td></tr>
+<tr><td>07</td><td>A 家庭の実写／ B 家庭の生成</td><td>家族は出さない。B は未承認</td></tr>
+<tr><td>08</td><td>A 医療の実写／ B 注射器の生成</td><td>手順の絵になるので使わない。B は未承認</td></tr>
+<tr><td>09</td><td>A 酒器の実写／ B 酒器の生成</td><td>実ファイルなし。B は未承認</td></tr>
+<tr><td>10</td><td>A 足元の実写／ B 足元の生成</td><td>実ファイルなし。B は未承認</td></tr>
+<tr><td>11</td><td>なし</td><td>ロゴの規定</td></tr>
+</tbody>
+</table></div>
+<p>生成するとしても、この企画書の時点では 0 本です。承認時に、対象カット、尺、内容、本数、想定クレジットを別途確認します。費用は未確認です。1,000クレジット規模にはしません。テスト生成も承認が要ります。</p>
+<p>実写を採用するなら、ライセンスを確認できる実ファイル、使用区間、切り取り、文字との位置、出典を、企画側が揃えてから渡します。候補の URL だけでは渡しません。</p>
+
+<h2 id="assets">素材</h2>
+<p>採用する写真と動画はありません。絵と文字とロゴで作ります。この判断は指示書に書いてあるので、素材不足として制作を止めません。</p>
+<div class="tablewrap"><table>
+<thead><tr><th>ファイル</th><th>用途</th><th>区間</th></tr></thead>
+<tbody>
+<tr><td><code>assets/storyboard/cut-01-start.webp</code> から <code>cut-11-end.webp</code> まで 22 枚</td><td>絵コンテ。1280×720。明るい背景。Noto Sans CJK で組んだ。</td><td>各カットのはじめとおわり</td></tr>
+<tr><td><code>../okady-work-logo.svg</code></td><td>11 のロゴ原本。形と色は変えない。アニメーションはフレーム時刻へ翻訳する。</td><td>1:31–1:36</td></tr>
+</tbody>
+</table></div>
+<p>手元の棚卸し：共通ロゴはリポジトリ直下にあります。過去企画の映像と写真は、別の記事のものなので使いません。この記事の出張を写した実ファイルは、この引き渡しにありません。フォントファイルは同梱しません。絵コンテは環境の Noto Sans CJK JP で描いています。</p>
+<p>絵コンテの検査：各文字の外接矩形が、1280×720 の安全域（左右 56px、上下 40px）の外に出ていないこと、文字どうしが重なっていないこと、文字が柱・灰・緑の縁・予防の線と交差していないことを、生成時に確認しました。違反は 0 です。「翌日」の文字は灰のカードの内側に収めています。本編 1920×1080 の検査は制作側です。読む間に流れる位置は、静止画の検査では分かりません。</p>
+
+<h2 id="sound">音</h2>
+<p><span class="tag t-un">後回し</span> BGM と効果音は、この引き渡しでは選びません。検討もしません。条件だけを渡します。</p>
+<ul>
+<li>この作品用に新しく作る。過去企画の曲、とくに 20261007 の BGM とその延長は使わない。</li>
+<li>トーンは、明るい紙に乗るが、疲れを陽気だけで打ち消さない。運動に合う拍とアクセントがある。ゆっくりした曲に合わせて、映像の動きを遅くしない。</li>
+<li>展開は、01〜02 で二軸が動く推進、05 で横に詰まる密度、06 の余白が閉じる瞬間は音を薄くしてよい。無音の必須区間は置かない。08 で線が開くときに一拍、10 で着地、11 の終わりで収める。</li>
+<li>尺は、エンドロゴの終わりまで覆う。映像より短い音源を、余裕ありとは扱わない。</li>
+<li>音量は声の邪魔をしない。勢いを弱くすることとは分ける。</li>
+</ul>
+<p>ナレーションの原稿は上の各カットです。声の方向は、説明しすぎない、落ち着いた速さ、です。性別とサービスは指定しません。ユーザー指定の候補名は、BGM が Lyria 3.5、ナレーションが Gemini 3.8 Flash TTS または Eleven v4 です。これらは確認済みの API 識別子ではありません。実行するときは公式のモデル ID・提供状況・料金を確認します。料金は未確認です。この企画書は、API を呼ぶ許可ではありません。キーは環境変数か Git 管理外の <code>.env</code> から読み、値を書かないでください。</p>
+<p>有料の音楽生成を比べるときは、ローカル制作と、品質・時間・費用を一行で比べてから選んでください。無料であることだけでは選ばないでください。確認できない有料生成はしないでください。</p>
+
+<h2 id="evidence">根拠 <span class="need">要判断 1</span></h2>
+<p>原稿との対応、出していない事実、図がどの文に対応するかは <a href="references.md">references.md</a> です。</p>
+<p>現行では、地名と会社名を出していません。原稿にある訪問先、空港、地方名、前の勤務地への訪問、家族旅行の行き先も出していません。出す場合は、語を指定してください。顧客名、実在の人物、他社のロゴは、指定があっても出しません。</p>
+<p>時刻、件数、食事の固有名、体調管理の道具の名も出していません。主張に要る留保は、04 と 09 と 07 の「今の生活では」に残しています。</p>
+
+<h2 id="done">完成条件・確認状態</h2>
+<p><span class="tag t-un">未確認</span> 等速の通し確認は未確認です。本編の書き出しも、音声も、BGM も、まだありません。</p>
+<p><span class="tag t-un">後回し</span> BGM と効果音は後回しです。</p>
+<ul>
+<li>01 の「刺激は、入る。余白は、減る。」と、10 の「刺激は、ありがたい。余白を、前提にする。自分に許す。」が、同じ主張に着地する。</li>
+<li>琥珀の柱と、白い余白が、01 から 10 まで切れずに読める。11 では両方が無い。</li>
+<li>06 で、柱は高いまま、余白だけが空になって止まる。</li>
+<li>08 の線が余白を少し戻し、10 まで満タンにしない。</li>
+<li>04 の「得たものは、ある。」と、09 の「それでも、無理はする。」が、声か文字にある。</li>
+<li>10 は問いかけで終わらない。要判断 3 の回答が「原稿の問いかけに戻す」なら、その文言へ差し替える。</li>
+<li>地名、顧客、家族の顔と呼称、他社ロゴが無い。要判断 1 と 2 の回答で残すと指定された語だけを足す。</li>
+<li>章表示、テロップ帯、エンドクレジットが無い。</li>
+<li>11 はライムの上にロゴだけで、規定のタイミングで終わる。BGM はそこまで覆う。</li>
+<li>文字のはみ出しと、文字と図の交差の機械検査を、全編の前に通す。代表の区間を等速で見てから、残りへ広げる。</li>
+</ul>
+<p>企画側の準備は、主張・構成・絵コンテ・記号・音の条件までです。音声と本編の実装は制作側です。</p>
+</main>
+<footer><div class="inner"><p>絵コンテ 22 枚は <code>assets/storyboard/</code>。根拠は <a href="references.md">references.md</a>。効果の採否は <a href="effects-direction.md">effects-direction.md</a>。</p></div></footer>
+</body></html>
