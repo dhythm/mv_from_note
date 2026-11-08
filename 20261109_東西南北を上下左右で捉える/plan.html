@@ -1,0 +1,719 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>東西南北を上下左右で捉える｜動画企画書</title><style>
+/* デジタル庁デザインシステム（DADS）のデザイントークン（@digital-go-jp/design-tokens）に沿ったスタイル。
+   20261102 の plan.html の style を複製。動画本編の配色とは別。 */
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Noto+Sans+Mono:wght@400;700&display=swap");
+:root{
+  --white:#ffffff;--black:#000000;
+  --gray-50:#f2f2f2;--gray-100:#e6e6e6;--gray-200:#cccccc;--gray-420:#949494;--gray-536:#767676;--gray-600:#666666;--gray-700:#4d4d4d;--gray-800:#333333;--gray-900:#1a1a1a;
+  --key-50:#e8f1fe;--key-100:#d9e6ff;--key-200:#c5d7fb;--key-900:#0017c1;--key-1000:#00118f;--key-1100:#000071;
+  --success-bg:#e6f5ec;--success-1:#259d63;--success-2:#197a4b;
+  --warning-bg:#fbf5e0;--warning-yellow-1:#b78f00;--warning-text:#806300;
+  --warning-orange-bg:#ffeee2;--warning-orange-1:#fb5b01;--warning-orange-2:#c74700;
+  --error-1:#ec0000;--focus-yellow:#ffd43d;--visited:#8b008b;
+  --font-sans:"Noto Sans JP",-apple-system,BlinkMacSystemFont,"Hiragino Sans",sans-serif;
+  --font-mono:"Noto Sans Mono","Noto Sans JP",monospace;
+  --r-4:.25rem;--r-8:.5rem;--r-12:.75rem;--r-16:1rem;--r-full:624.9375rem;
+  --elevation-1:0 2px 8px 1px rgba(0,0,0,.1),0 1px 5px 0 rgba(0,0,0,.3);
+  --ink:var(--gray-900);--line:var(--gray-200);--mut:var(--gray-700);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--white);color:var(--gray-800);font-family:var(--font-sans);font-size:1rem;font-weight:400;line-height:1.7;letter-spacing:.02em;-webkit-font-smoothing:antialiased}
+header .inner,main,nav .in,footer .inner{max-width:1120px;margin:0 auto;padding:0 24px}
+header{background:var(--white);border-bottom:1px solid var(--gray-420)}
+header .inner{padding-top:40px;padding-bottom:24px}
+.strata{height:4px;background:var(--key-900)}
+.eyebrow{display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px;font-size:.875rem;line-height:1.5;color:var(--gray-700);letter-spacing:.04em}
+h1{font-size:2.25rem;line-height:1.4;font-weight:700;color:var(--gray-900);letter-spacing:.01em;margin:16px 0 8px}
+h2{font-size:1.75rem;line-height:1.5;font-weight:700;color:var(--gray-900);margin:64px 0 24px;padding:0 0 8px;border-bottom:1px solid var(--gray-420);scroll-margin-top:72px}
+h3{font-size:1.25rem;line-height:1.5;font-weight:700;color:var(--gray-900);margin:32px 0 12px}
+.cuthead h3{margin:0}
+p{margin:0 0 16px}
+.lead{font-size:1.125rem;line-height:1.6;font-weight:700;color:var(--gray-900)}
+.small{font-size:.875rem;line-height:1.7;color:var(--gray-700)}
+b,strong{font-weight:700;color:var(--gray-900)}
+a{color:var(--key-1000);text-decoration:underline;text-underline-offset:.2em;text-decoration-thickness:1px}
+a:visited{color:var(--visited)}
+a:hover{color:var(--key-1100);text-decoration-thickness:3px}
+a:active{color:var(--warning-orange-2)}
+a:focus-visible{outline:4px solid var(--black);outline-offset:2px;background:var(--focus-yellow);color:var(--black);border-radius:var(--r-4)}
+.chip{display:inline-block;background:var(--key-50);color:var(--key-1000);border:1px solid var(--key-900);border-radius:var(--r-4);padding:2px 8px;font-size:.875rem;line-height:1.5;font-weight:700;letter-spacing:.02em}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin:24px 0 0;padding:0;list-style:none}
+.meta span{background:var(--gray-50);border:1px solid var(--gray-200);border-radius:var(--r-4);padding:4px 12px;font-size:.875rem;line-height:1.5;color:var(--gray-800)}
+nav{position:sticky;top:0;background:var(--white);border-bottom:1px solid var(--gray-420);z-index:5;box-shadow:0 1px 4px rgba(0,0,0,.08)}
+nav .in{display:flex;flex-wrap:wrap;gap:4px 20px;padding-top:12px;padding-bottom:12px;font-size:.875rem;line-height:1.5}
+nav a,nav a:visited{color:var(--key-1000);font-weight:700}
+.box{background:var(--white);border:1px solid var(--gray-420);border-radius:var(--r-8);padding:24px;margin:16px 0}
+.box > :last-child{margin-bottom:0}
+.box.accent{background:var(--key-50);border:1px solid var(--key-900);border-left:8px solid var(--key-900)}
+.box.accent .lead{margin:0}
+.tablewrap{overflow-x:auto;margin:16px 0}
+table{border-collapse:collapse;width:100%;background:var(--white);font-size:1rem;line-height:1.7;margin:16px 0;border-top:1px solid var(--gray-420)}
+.tablewrap table{margin:0}
+th,td{border-bottom:1px solid var(--gray-420);padding:12px 16px;text-align:left;vertical-align:top}
+th{background:var(--gray-50);color:var(--gray-900);font-weight:700;font-size:.875rem;line-height:1.5;border-bottom:2px solid var(--gray-800);white-space:nowrap}
+tr:hover td{background:var(--key-50)}
+.cut{background:var(--white);border:1px solid var(--gray-420);border-radius:var(--r-16);padding:32px;margin:32px 0;scroll-margin-top:72px}
+.cuthead{display:flex;gap:16px;align-items:center;margin-bottom:24px;padding-bottom:16px;border-bottom:1px solid var(--gray-200)}
+.cuthead p{margin:4px 0 0}
+.num{font-size:1.5rem;line-height:1;font-weight:700;color:var(--white);background:var(--key-900);border-radius:var(--r-8);min-width:56px;height:56px;display:flex;align-items:center;justify-content:center;flex:none;font-feature-settings:"tnum"}
+.frames.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+.frames{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+figure{margin:0}
+figure img{width:100%;height:auto;display:block;border:1px solid var(--gray-200);border-radius:var(--r-8);background:var(--white)}
+figure a:focus-visible{display:block;background:none}
+figcaption{font-size:.875rem;line-height:1.7;margin-top:8px;color:var(--gray-800)}
+.details{display:grid;grid-template-columns:1fr 1.15fr;gap:8px 40px;margin-top:32px}
+.details p{margin:4px 0}
+.label{font-size:.875rem;line-height:1.3;font-weight:700;color:var(--key-1000);margin-top:20px;padding-left:8px;border-left:4px solid var(--key-900)}
+.details > div > .label:first-child{margin-top:0}
+.words{font-size:1.125rem;line-height:1.6;font-weight:700;color:var(--gray-900);margin:8px 0}
+.voice{background:var(--gray-50);border-left:4px solid var(--gray-600);border-radius:0 var(--r-4) var(--r-4) 0;padding:12px 16px;margin:8px 0;font-size:1rem;line-height:1.7;color:var(--gray-800)}
+ul{margin:8px 0 16px;padding-left:1.5em}
+li{margin:4px 0}
+li::marker{color:var(--gray-600)}
+code{font-family:var(--font-mono);background:var(--gray-50);border:1px solid var(--gray-200);padding:0 4px;border-radius:var(--r-4);font-size:.875em;color:var(--gray-900);word-break:break-all}
+.sw{display:inline-block;width:16px;height:16px;border-radius:var(--r-4);vertical-align:-3px;margin-right:8px;border:1px solid var(--gray-420)}
+.tag{display:inline-block;border-radius:var(--r-4);padding:0 8px;font-size:.8125rem;line-height:1.7;font-weight:700;margin-right:8px;border:1px solid}
+.t-un{background:var(--warning-bg);color:var(--warning-text);border-color:var(--warning-yellow-1)}
+footer{border-top:1px solid var(--gray-420);background:var(--gray-50);margin-top:80px;padding:24px 0;font-size:.875rem;color:var(--gray-700)}
+h2.part{margin-top:96px;padding:16px 24px;border:none;border-radius:var(--r-8);background:var(--gray-50);border-left:8px solid var(--gray-800);font-size:1.5rem}
+h2.part + .small{margin-top:-8px}
+.navsep{color:var(--gray-700);font-weight:700;padding-left:12px;border-left:1px solid var(--gray-420)}
+.decide{margin:48px 0 16px;padding:24px 32px 24px;background:var(--warning-orange-bg);border:1px solid var(--warning-orange-1);border-left:8px solid var(--warning-orange-1);border-radius:var(--r-8)}
+.decide h2{margin:0 0 8px;border-bottom:none;padding:0;color:var(--gray-900)}
+.decide > .small{color:var(--gray-800)}
+.decide-list{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:12px}
+.decide-list li{display:flex;gap:12px;align-items:flex-start;background:var(--white);border:1px solid var(--gray-420);border-radius:var(--r-8);padding:12px 16px;margin:0}
+.decide-list .need{min-width:28px;justify-content:center;margin:2px 0 0}
+.where{display:block;font-size:.875rem;color:var(--gray-700);margin-top:4px}
+.need{display:inline-flex;align-items:center;background:var(--warning-orange-2);color:var(--white);border-radius:var(--r-4);padding:0 8px;font-size:.8125rem;line-height:1.7;font-weight:700;letter-spacing:.02em;margin:0 8px;vertical-align:.15em;white-space:nowrap}
+h2 .need{font-size:.875rem}
+nav a.nav-need,nav a.nav-need:visited{background:var(--warning-orange-2);color:var(--white);padding:0 8px;border-radius:var(--r-4);text-decoration:none}
+nav a.nav-need:hover{text-decoration:underline}
+.swap{margin-top:8px}
+@media(max-width:760px){
+  header .inner,main,nav .in,footer .inner{padding:0 16px}
+  header .inner{padding-top:24px;padding-bottom:16px}
+  .frames,.frames.three,.details{grid-template-columns:1fr}
+  h1{font-size:1.75rem;line-height:1.5}
+  h2{font-size:1.5rem;margin-top:48px}
+  .cut{padding:20px;border-radius:var(--r-12)}
+  .box,.decide{padding:16px}
+  table{font-size:.875rem}
+  th,td{padding:8px 12px}
+  th{white-space:normal}
+}
+@media print{nav{position:static;box-shadow:none}.cut{break-inside:avoid}}
+</style></head>
+<body>
+<header>
+<div class="inner">
+<div class="eyebrow">VIDEO PLAN / 2026.11.09 <span class="chip">企画・絵コンテ</span></div>
+<h1>東西南北を上下左右で捉える</h1>
+<p class="lead">北を上と言うのは、盤面で自分を動かす頭の使い方。</p>
+<p>元にした note 記事：「東西南北を上下左右で捉える」<a href="https://note.com/dhythm/n/na143aff93730">https://note.com/dhythm/n/na143aff93730</a>（公開済み）<br>
+原稿：<code>dhythm/private-note</code> の <code>Zettelkasten/PermanentNote/20260105_東西南北を上下左右で捉える.md</code>（本文は同梱しない）</p>
+<div class="meta">
+<span>16:9・1920×1080・30fps</span>
+<span>本編 1:51＋ロゴ 5 秒＝約 1:56</span>
+<span>本編 10 カット＋ロゴ</span>
+<span>声 535 字／画面 248 字</span>
+<span>採用する画像・動画ファイルはなし（MG）</span>
+<span>等速での通し確認は未確認</span>
+<span>BGM・効果音は後回し</span>
+</div>
+</div>
+<div class="strata"></div>
+</header>
+
+<nav><div class="in">
+<a class="nav-need" href="#decide">判断してほしい点（4）</a>
+<a href="#claim">主張</a>
+<a href="#viewer">視聴者</a>
+<a href="#structure">構成と尺</a>
+<a href="#cuts">カット表</a>
+<span class="navsep">詳細：</span>
+<a href="#roles">声・文字・素材</a>
+<a href="#claim-map">主張・根拠・留保</a>
+<a href="#handoff">企画側／制作側</a>
+<a href="#design">デザインシステム</a>
+<a href="#motion">動き</a>
+<a href="#symbols">記号と色</a>
+<a href="#character">キャラ設定</a>
+<a href="#swaps">差し替え候補</a>
+<a href="#assets">素材</a>
+<a href="#sound">音</a>
+<a href="#evidence">根拠</a>
+<a href="#done">完成条件・確認状態</a>
+</div></nav>
+
+<main>
+<div class="decide" id="decide">
+<h2>未確定事項と判断してほしい点</h2>
+<p class="small">ここだけが判断の依頼です。ほかの節は決定済みの情報です。AI で映像を生成する選択は、承認が必要です。この企画では生成していません。</p>
+<ol class="decide-list">
+<li><span class="need">1</span><div>冒頭の街を、明るいブロックのモーショングラフィックスのままにするか、真上からの生成動画にするか。<span class="where">選択肢：A 明るい MG（基本。カット 01 の絵コンテ）／ B 昼の真上ショットを動画 AI で 5 秒、1 本（<a href="#cut-01">カット 01</a>・<a href="#swaps">差し替え候補</a>）。B は未承認。夜の発光する街にはしない。</span></div></li>
+<li><span class="need">2</span><div>原稿にある、身近な人が呆れて、のちに同じ言い方をした話を入れるか。<span class="where">選択肢：A 出さない（基本。実在の人物を画面にも声にも出さない）／ B 続柄を出さず、声だけで「身近な人が、あとから同じ言い方をした」と入れる。<a href="#character">キャラ設定</a></span></div></li>
+<li><span class="need">3</span><div>見下ろしの 2D の由来として、作品名を声に出すか。<span class="where">選択肢：A 出さない。声も画面も「見下ろしの2Dマップ」（基本）／ B 声だけで作品名を言う。画面の文字、ロゴ、ゲーム画面は出さない。<a href="#cut-05">カット 05</a></span></div></li>
+<li><span class="need">4</span><div>盤面の地を、ベタ塗りのままにするか、紙の質感を足すか。<span class="where">選択肢：A ベタ塗り（基本）／ B 明るい紙の地を、盤面が出るすべてのカットに同じ質感で足す。一部のカットだけ実写や生成動画にしない。生成動画は承認が必要。<a href="#swaps">差し替え候補</a></span></div></li>
+</ol>
+</div>
+
+<h2 id="claim">この動画で伝える一文</h2>
+<div class="box accent"><p class="lead">北を「上」と言うのは、方角を知らない癖ではない。地図を回さず、北が上の盤面で自分のコマを動かす。筆者は、その頭の使い方を、わかる人に通じる共通言語として誇っている。</p></div>
+<p>「北を上と言うのは、方角が分かっていない人の言い方だ」という思い込みに対して、地図を固定して自分を動かす感覚だと伝えます。ニッチでも、本人はそれを誇らしいと感じています。全員の空間認知が優れている、という話にはしません。</p>
+
+<h2 id="viewer">視聴者</h2>
+<p>地図を回して歩く人、北を上にしたまま見る人。どちらかに自分を重ねて、自分の頭の使い方を確かめたくなる人。ゲームの経験は条件にしません。</p>
+
+<h2 id="structure">構成と尺</h2>
+<p>声は経緯と理由、文字は決め語、図は「盤面が回るか、コマが進むか」を運びます。説明の全文は画面に載せません。ナレーションありで尺を計算しています。この企画書は、API で音声を生成する許可ではありません。</p>
+<div class="tablewrap"><table>
+<thead><tr><th>カット</th><th>参考区間</th><th>この区間で伝えること</th><th>声／画面</th></tr></thead>
+<tbody>
+<tr><td><a href="#cut-01">01 地図、回してますか？</a></td><td>0:00–0:08（8秒）</td><td>地図は回るのか、という続きを見る理由</td><td>48字／11字</td></tr>
+<tr><td><a href="#cut-02">02 上に行く。</a></td><td>0:08–0:16（8秒）</td><td>北を上、東を右と言う本人の感覚</td><td>40字／31字</td></tr>
+<tr><td><a href="#cut-03">03 回る派、回らない派。</a></td><td>0:16–0:30（14秒）</td><td>進行方向を上にする見方と、北を上に固定する見方</td><td>62字／22字</td></tr>
+<tr><td><a href="#cut-04">04 動くのは、自分。</a></td><td>0:30–0:44（14秒）</td><td>筆者は地図を回さず、盤面でコマを進める</td><td>45字／24字</td></tr>
+<tr><td><a href="#cut-05">05 上を押せば、北。</a></td><td>0:44–0:53（9秒）</td><td>見下ろしの 2D で、その操作が染みたという本人の考え</td><td>50字／18字</td></tr>
+<tr><td><a href="#cut-06">06 8割以上は、回す。</a></td><td>0:53–1:04（11秒）</td><td>回す方が使いやすい、という調査。本人は少数派</td><td>70字／35字</td></tr>
+<tr><td><a href="#cut-07">07 上は、前。</a></td><td>1:04–1:13（9秒）</td><td>回すと、上は方角ではなくなる</td><td>44字／16字</td></tr>
+<tr><td><a href="#cut-08">08 江東区の、上。</a></td><td>1:13–1:25（12秒）</td><td>頭の中の配置が、そのまま共通言語になる</td><td>49字／28字</td></tr>
+<tr><td><a href="#cut-09">09 仮説です。</a></td><td>1:25–1:38（13秒）</td><td>全員の話ではない。迷子のあとでも、固定した地図を呼び出す</td><td>73字／39字</td></tr>
+<tr><td><a href="#cut-10">10 少し、誇らしい。</a></td><td>1:38–1:51（13秒）</td><td>わかる人にはわかる、という本人の結論</td><td>54字／24字</td></tr>
+<tr><td><a href="#cut-11">11 エンドロゴ</a></td><td>1:51–1:56（5秒）</td><td>制作表示</td><td>0字／0字</td></tr>
+</tbody></table></div>
+<p class="small">尺の計算：声 535 字 ÷ 約 7 字/秒 ≒ 76 秒。30 文の間（1 文あたり約 0.4 秒で約 12 秒）と、01 の寄り、03 の対比、04 の吸着を見る時間を足して本編 111 秒。ロゴ 5 秒で合計 116 秒（1 分 56 秒）。2 分は超えていません。字数は読了の目安です。等速で読む時間と、盤面を見る時間が足りるかは、制作側の試作で判断します。試作で伸びる場合は、08 の脇の地名と 09 の地下の一文から削ります。04 と 10 の主張は残します。</p>
+
+<h2 id="cuts">カット表・絵コンテ</h2>
+<p>1280×720、明るい背景の構図ラフです。番号と「はじめ／おわり」は、このページの見出しとキャプションにだけあります。画像の中には入れていません。絵コンテの文字は Noto Sans CJK JP です。秒数・角度・位置は参考値で、実装の手順は制作側が決めます。画面全体を大きく動かすこと、文字が読めること、留保を残すことは緩めません。</p>
+<p>動きの軸は一つです。盤面を回すか、盤面は固定してコマを進めるか。北の辺は、固定した盤では画面の上に残り、回る盤では盤と一緒に画面の上から外れます。</p>
+
+<section class="cut" id="cut-01">
+<div class="cuthead"><div class="num">01</div><div>
+<h3>地図、回してますか？</h3>
+<p class="small">0:00–0:08 / 約 8 秒 ・ 導入の問い</p>
+</div></div>
+<div class="frames">
+<figure><a href="assets/storyboard/cut-01-start.webp"><img src="assets/storyboard/cut-01-start.webp" width="1280" height="720" alt="明るいブロックの街を真上から見る。北の列が上にあり、中央に橙のコマ。"></a>
+<figcaption><b>はじめ</b> 真上のブロック街。北の列は上。橙のコマは中央で止まっている。</figcaption></figure>
+<figure><a href="assets/storyboard/cut-01-end.webp"><img src="assets/storyboard/cut-01-end.webp" width="1280" height="720" alt="同じ街が回り、北の列は右へ移る。橙のコマは中央のまま。"></a>
+<figcaption><b>おわり</b> 街だけが 90° 回る。北の列は右へ移り、コマは中央に残る。</figcaption></figure>
+</div>
+<div class="details"><div>
+<div class="label">画面の文字</div>
+<p class="words">地図、回してますか？</p>
+<div class="label">ナレーション</div>
+<p class="voice">地図を見るとき、北を上のままにしていますか。それとも、進行方向が上になるように、回していますか。</p>
+<div class="label">字数</div>
+<p class="small">声 48 字／画面 11 字（盤面の「北」を含む）</p>
+<div class="label">主役の語</div>
+<p>「回してますか？」。主張そのものではなく、自分はどちらかと確かめたくなる問いです。</p>
+</div><div>
+<div class="label">字組みと構図</div>
+<p>はじめもおわりも、問いが上、街が下の二段です。変わるのは街の向きです。北の列が上から右へ移るので、回ったことが一枚でも分かります。コマは橙のまま、向きを変えません。</p>
+<div class="label">動きの狙い</div>
+<p>街の層へ <a href="#drift">寄り</a>、そのあと街だけを <a href="#orbit">回す</a>。コマと問いは回しません。読む間も街を少し寄せ続け、問いの行はマスクから入れます。字の形は崩しません。</p>
+<div class="label">次へ</div>
+<p>回った街が引け、方位の語がばらけた盤面へ <a href="#push">押し出す</a>。</p>
+<div class="label">使う素材</div>
+<p>ブロック街とコマはモーショングラフィックス。画像・動画ファイルは使いません。</p>
+<div class="label">差し替え <span class="need">要判断 1</span></div>
+<p class="swap">A（基本）：いまの明るいブロック街。B：昼の真上ショット 5 秒。プロンプト案は <a href="#swaps">差し替え候補</a>。未承認で、生成していません。夜の街にはしません。B を採っても、02 以降の盤面は同じ MG のままにします。01 だけ質感が変わるのは、場所を想起する導入で、図解の盤面とは役割が違うためです。</p>
+</div></div>
+</section>
+
+<section class="cut" id="cut-02">
+<div class="cuthead"><div class="num">02</div><div>
+<h3>上に行く。</h3>
+<p class="small">0:08–0:16 / 約 8 秒 ・ 主張の入口</p>
+</div></div>
+<div class="frames">
+<figure><a href="assets/storyboard/cut-02-start.webp"><img src="assets/storyboard/cut-02-start.webp" width="1280" height="720" alt="北東南西が盤面の交点からずれて浮かんでいる。"></a>
+<figcaption><b>はじめ</b> 北・東・南・西が、盤の交点からずれている。</figcaption></figure>
+<figure><a href="assets/storyboard/cut-02-end.webp"><img src="assets/storyboard/cut-02-end.webp" width="1280" height="720" alt="北＝上、東＝右、南＝下、西＝左がマスに収まり、中央に橙のコマ。"></a>
+<figcaption><b>おわり</b> 四つの等式がマスに吸着する。中央のコマは動かない。</figcaption></figure>
+</div>
+<div class="details"><div>
+<div class="label">画面の文字</div>
+<p class="words">北に行く、じゃない。<br>上に行く。<br>北＝上　東＝右　南＝下　西＝左</p>
+<div class="label">ナレーション</div>
+<p class="voice">私は、北に行く、ではなく、上に行く、と言ってしまいます。東は右。西は左。南は下。</p>
+<div class="label">字数</div>
+<p class="small">声 40 字／画面 31 字</p>
+<div class="label">主役の語</div>
+<p>「上に行く。」。北を言い換えた本人の言葉なので、朱で着地させます。</p>
+</div><div>
+<div class="label">字組みと構図</div>
+<p>はじめは、見出しが左上、方位が盤の外側にばらけた構図です。おわりは、右半分の 3×3 に等式が入り、左上に決め語が残ります。盤は回しません。</p>
+<div class="label">動きの狙い</div>
+<p>四つの語が交点へ <a href="#snap">吸着</a> し、等式に入れ替わります。「上に行く。」は塊で <a href="#slam">着地</a> します。読む間は盤ごと少し寄ります。</p>
+<div class="label">次へ</div>
+<p>固定した盤を右へ残し、左から回る盤が入って 03 の二面になります。</p>
+<div class="label">使う素材</div>
+<p>文字と盤面の図形。追加の画像・動画は使いません。</p>
+<div class="label">差し替え <span class="need">要判断 4</span></div>
+<p class="swap">紙の地を敷く場合は、盤面が出る全カットで同じ質感にします。このカットだけ紙にしたり、生成動画にしたりはしません。基本はベタ塗りです。</p>
+</div></div>
+</section>
+
+<section class="cut" id="cut-03">
+<div class="cuthead"><div class="num">03</div><div>
+<h3>回る派、回らない派。</h3>
+<p class="small">0:16–0:30 / 約 14 秒 ・ 対比の見せ場</p>
+</div></div>
+<div class="frames">
+<figure><a href="assets/storyboard/cut-03-start.webp"><img src="assets/storyboard/cut-03-start.webp" width="1280" height="720" alt="傾いた盤面。北は盤の角の外にあり、中央のコマは傾いていない。"></a>
+<figcaption><b>はじめ</b> 画面いっぱいが回る途中の盤。北は画面の上から外れかけている。</figcaption></figure>
+<figure><a href="assets/storyboard/cut-03-end.webp"><img src="assets/storyboard/cut-03-end.webp" width="1280" height="720" alt="左は縦長に回った盤で北が横にあり、右は北が上の盤でコマが一つ上にいる。"></a>
+<figcaption><b>おわり</b> 左は北が横へ回った盤。右は北が上のまま、コマが一つ上へ進む。</figcaption></figure>
+</div>
+<div class="details"><div>
+<div class="label">画面の文字</div>
+<p class="words">回る派<br>進行方向が、上。<br>回らない派<br>北が、上。</p>
+<div class="label">ナレーション</div>
+<p class="voice">地図アプリには、進行方向を上にする回し方と、北を上に固定する見方があります。あなたの地図は、回る派ですか。回らない派ですか。</p>
+<div class="label">字数</div>
+<p class="small">声 62 字／画面 22 字</p>
+<div class="label">主役の語</div>
+<p>「北が、上。」。回らない側の決め語だけ朱にします。回る側は灰のままです。</p>
+</div><div>
+<div class="label">字組みと構図</div>
+<p>はじめは、左上の二行と、右下に傾いた一つの盤です。おわりは左右の二面です。左の盤は横長から縦長へ回り、北の太い辺が横に来ます。右の盤は正立のまま、コマが上のマスへ進みます。このカットの二つの橙は、同じ自分を二つの見方に置いたものです。色の意味は増やしません。</p>
+<div class="label">動きの狙い</div>
+<p>左の盤は <a href="#orbit">回し</a> 続け、右の盤は固定してコマを 1 マス進めます。画面は左から右へ流れ、二面が並んだあとも左だけゆっくり回します。読む間を止めません。</p>
+<div class="label">次へ</div>
+<p>右の固定盤が画面を埋めて、04 の主張になります。</p>
+<div class="label">使う素材</div>
+<p>二つの盤とコマ。追加の画像・動画は使いません。左右を上下に積み替えるのは、制作側が二面の対比を保てる範囲で判断してよいです。</p>
+<div class="label">差し替え <span class="need">要判断 4</span></div>
+<p class="swap">紙の地を足すなら、左右の盤と 02・04 以降も同じ質感にします。回る側だけ実写や生成動画にはしません。</p>
+</div></div>
+</section>
+
+<section class="cut" id="cut-04">
+<div class="cuthead"><div class="num">04</div><div>
+<h3>動くのは、自分。</h3>
+<p class="small">0:30–0:44 / 約 14 秒 ・ 主張の見せ場</p>
+</div></div>
+<div class="frames">
+<figure><a href="assets/storyboard/cut-04-start.webp"><img src="assets/storyboard/cut-04-start.webp" width="1280" height="720" alt="北が上の正立の盤。コマは中央。見出しは地図は、回さない。"></a>
+<figcaption><b>はじめ</b> 北が上の盤が画面を占める。コマは中央。</figcaption></figure>
+<figure><a href="assets/storyboard/cut-04-end.webp"><img src="assets/storyboard/cut-04-end.webp" width="1280" height="720" alt="北＝上が盤の上に、東＝右が右に吸着し、コマは右上のマスにいる。"></a>
+<figcaption><b>おわり</b> 北＝上、東＝右が軸に吸着する。コマは上へ、それから右へ進む。</figcaption></figure>
+</div>
+<div class="details"><div>
+<div class="label">画面の文字</div>
+<p class="words">地図は、回さない。<br>動くのは、自分。<br>北＝上　東＝右</p>
+<div class="label">ナレーション</div>
+<p class="voice">多くの人は、頭の中で地図を回します。私は回しません。北が上の盤面で、自分のコマを進めます。</p>
+<div class="label">字数</div>
+<p class="small">声 45 字／画面 24 字</p>
+<div class="label">主役の語</div>
+<p>「動くのは、自分。」。地図を回さない、の次に、何が動くかを置きます。</p>
+</div><div>
+<div class="label">字組みと構図</div>
+<p>見出しは左上の一行のまま、盤が中央から右へ大きくなります。03 の二面から、固定盤だけの一面へ重心が移ります。等式は盤の上と右に付き、マスの中には入れません。</p>
+<div class="label">動きの狙い</div>
+<p>盤は回しません。コマが上に 1 マス、右に 1 マス、<a href="#snap">吸着</a> しながら進みます。「北＝上」「東＝右」はその拍で軸に付きます。「動くのは、自分。」は塊で <a href="#slam">着地</a> します。カメラはコマに沿って寄ります。three.js は、この固定盤とコマの高さを同じ空間で扱うために使います。</p>
+<div class="label">次へ</div>
+<p>盤を右へ残し、左から操作の十字が入って 05 になります。</p>
+<div class="label">使う素材</div>
+<p>盤、コマ、文字。追加の画像・動画は使いません。</p>
+<div class="label">差し替え <span class="need">要判断 4</span></div>
+<p class="swap">コマを少し浮かせるのは、three.js の範囲で制作側が判断します。新しい画像は要りません。紙の地を足すなら全盤面カットで揃えます。</p>
+</div></div>
+</section>
+
+<section class="cut" id="cut-05">
+<div class="cuthead"><div class="num">05</div><div>
+<h3>上を押せば、北。 <span class="need">要判断 3</span></h3>
+<p class="small">0:44–0:53 / 約 9 秒 ・ 根拠</p>
+</div></div>
+<div class="frames">
+<figure><a href="assets/storyboard/cut-05-start.webp"><img src="assets/storyboard/cut-05-start.webp" width="1280" height="720" alt="左に十字のボタン。上のボタンが青い。右の盤ではコマが上のマスにいる。"></a>
+<figcaption><b>はじめ</b> 上のボタンが押され、コマが北のマスへ進む。</figcaption></figure>
+<figure><a href="assets/storyboard/cut-05-end.webp"><img src="assets/storyboard/cut-05-end.webp" width="1280" height="720" alt="右のボタンが青い。盤のコマは右上のマスにいる。"></a>
+<figcaption><b>おわり</b> 右のボタンが押され、コマが東のマスへ進む。</figcaption></figure>
+</div>
+<div class="details"><div>
+<div class="label">画面の文字</div>
+<p class="words">上を押せば、北。<br>右を押せば、東。</p>
+<div class="label">ナレーション</div>
+<p class="voice">由来は、十中八九、見下ろしの2Dマップです。上を押せば北、右を押せば東。その感覚が染みついています。</p>
+<div class="label">字数</div>
+<p class="small">声 50 字／画面 18 字</p>
+<div class="label">主役の語</div>
+<p>「上を押せば、北。」。由来は本人の考えなので、声の「十中八九」を落とさないでください。</p>
+</div><div>
+<div class="label">字組みと構図</div>
+<p>左に操作の十字、右に固定盤です。04 の盤だけの画面から、左右の非対称になります。十字の押された面は青で、橙にはしません。橙はコマだけです。</p>
+<div class="label">動きの狙い</div>
+<p>盤は固定です。上のボタンが満ち、コマが北へ 1 マス。続いて右のボタンが満ち、コマが東へ 1 マス。ボタンとコマは同じ拍で動きます。読む間は十字ごと左へ少し流します。</p>
+<div class="label">次へ</div>
+<p>十字が引け、大きな「8割以上」が左から入って 06 になります。</p>
+<div class="label">使う素材</div>
+<p>自作の十字と盤。実在の機器、ゲームの画面、ロゴは使いません。</p>
+<div class="label">差し替え <span class="need">要判断 3</span></div>
+<p class="swap">基本は、声も画面も「見下ろしの2Dマップ」です。作品名を声だけに出す選択は要判断 3。画面の文字にはしません。十字をキーボードの四つのキーに描き替えるのは、特定製品の形にしない範囲で制作側が判断してよいです。</p>
+</div></div>
+</section>
+
+<section class="cut" id="cut-06">
+<div class="cuthead"><div class="num">06</div><div>
+<h3>8割以上は、回す。</h3>
+<p class="small">0:53–1:04 / 約 11 秒 ・ 留保</p>
+</div></div>
+<div class="frames">
+<figure><a href="assets/storyboard/cut-06-start.webp"><img src="assets/storyboard/cut-06-start.webp" width="1280" height="720" alt="左に大きな8割以上。右に北が上の小さな盤と橙のコマ。"></a>
+<figcaption><b>はじめ</b> 「8割以上」が大きく、右にはまだ北が上の小さな盤がある。</figcaption></figure>
+<figure><a href="assets/storyboard/cut-06-end.webp"><img src="assets/storyboard/cut-06-end.webp" width="1280" height="720" alt="右上の盤は傾きコマがない。下の小さな正立の盤にだけ橙のコマがいる。出典は左下。"></a>
+<figcaption><b>おわり</b> 多数派の盤は傾く。自分のコマは、下の固定した盤に残る。出典は読める。</figcaption></figure>
+</div>
+<div class="details"><div>
+<div class="label">画面の文字</div>
+<p class="words">8割以上<br>回した方が、使いやすい。<br>少数派らしい。<br>江戸川大学・2015</p>
+<div class="label">ナレーション</div>
+<p class="voice">2015年の江戸川大学の調査では、大学生の8割以上が、地図を自分の進行方向に回した方が使いやすい、と答えています。私の感覚は、少数派らしい。</p>
+<div class="label">字数</div>
+<p class="small">声 70 字／画面 35 字（二つの盤の「北」を含む）</p>
+<div class="label">主役の語</div>
+<p>「8割以上」。原稿の言い方のままです。80% や、より細かい率にはしません。出典は画面に残します。</p>
+</div><div>
+<div class="label">字組みと構図</div>
+<p>左に大きな数字、右に盤、という左右です。おわりで、傾いた盤（多数派）と、下の小さな正立の盤（自分）が分かれます。橙のコマは固定盤にだけいます。傾いた盤に橙を置いて、自分も回しているように見せないでください。</p>
+<div class="label">動きの狙い</div>
+<p>「8割以上」は塊で <a href="#slam">着地</a> します。右の盤はそこから <a href="#orbit">回し</a>、コマは回る盤から離れて、下の固定盤へ移ります。出典は後から行マスクで入れ、数字より小さくしますが、安全域の中で読める大きさにします。</p>
+<div class="label">次へ</div>
+<p>傾いた盤が残り、07 で「上」が「前」に入れ替わります。</p>
+<div class="label">使う素材</div>
+<p>文字と二つの盤。調査の紙面やグラフは使いません。</p>
+<div class="label">差し替え</div>
+<p class="swap">棒グラフや、桁が回る数字にはしません。出典を声だけにして画面から消すこともありません。紙の地は <a href="#decide">要判断 4</a> で、足すなら全盤面です。</p>
+</div></div>
+</section>
+
+<section class="cut" id="cut-07">
+<div class="cuthead"><div class="num">07</div><div>
+<h3>上は、前。</h3>
+<p class="small">1:04–1:13 / 約 9 秒 ・ 根拠</p>
+</div></div>
+<div class="frames">
+<figure><a href="assets/storyboard/cut-07-start.webp"><img src="assets/storyboard/cut-07-start.webp" width="1280" height="720" alt="左に上は、前。右に傾いた盤。北は盤の外、右にある。"></a>
+<figcaption><b>はじめ</b> 盤が傾き、北は画面の上から外れている。コマは中央で傾かない。</figcaption></figure>
+<figure><a href="assets/storyboard/cut-07-end.webp"><img src="assets/storyboard/cut-07-end.webp" width="1280" height="720" alt="中央に大きな前。下に方角ではなくなる。左下に北が上の小さな盤とコマ。"></a>
+<figcaption><b>おわり</b> 「前」が画面を占める。左下の固定盤に、自分のコマが残る。</figcaption></figure>
+</div>
+<div class="details"><div>
+<div class="label">画面の文字</div>
+<p class="words">上は、前。<br>方角ではなくなる。</p>
+<div class="label">ナレーション</div>
+<p class="voice">地図が進行方向に合わせて回っていたら、上はただの前です。方角としての北ではなくなります。</p>
+<div class="label">字数</div>
+<p class="small">声 44 字／画面 16 字</p>
+<div class="label">主役の語</div>
+<p>「前」。回した地図の「上」が、方角ではなく向きになる、という一点です。</p>
+</div><div>
+<div class="label">字組みと構図</div>
+<p>はじめは左の見出しと右の傾いた盤です。おわりは、中央の一文字「前」と、その下の一行、左下の小さな固定盤です。後半で構図を、盤から巨大な一語へ移します。</p>
+<div class="label">動きの狙い</div>
+<p>盤が回り切り、北が画面の外方向へ流れます。「前」は塊で <a href="#slam">着地</a> します。左下の固定盤は回さず、コマを北へ 1 マス進めます。読む間は「前」の行ごと少し寄ります。字の形は崩しません。</p>
+<div class="label">次へ</div>
+<p>「前」が上へ抜け、縦に積んだ二つの区のブロックへ <a href="#push">押し出す</a>。</p>
+<div class="label">使う素材</div>
+<p>文字と盤。矢印の記号は、ここではまだ出しません。矢印は 09 の自分視点だけです。</p>
+<div class="label">差し替え</div>
+<p class="swap">「前」の字の中に映像を入れる案は採りません。紙の地は要判断 4 で全盤面共通です。</p>
+</div></div>
+</section>
+
+<section class="cut" id="cut-08">
+<div class="cuthead"><div class="num">08</div><div>
+<h3>江東区の、上。</h3>
+<p class="small">1:13–1:25 / 約 12 秒 ・ 根拠</p>
+</div></div>
+<div class="frames">
+<figure><a href="assets/storyboard/cut-08-start.webp"><img src="assets/storyboard/cut-08-start.webp" width="1280" height="720" alt="下のブロックに江東区とコマ。上の枠は空。"></a>
+<figcaption><b>はじめ</b> 下に江東区。上の枠はまだ空。コマは江東区にいる。</figcaption></figure>
+<figure><a href="assets/storyboard/cut-08-end.webp"><img src="assets/storyboard/cut-08-end.webp" width="1280" height="720" alt="上に墨田区、下に江東区。コマは墨田区。左に東京の左、右に千葉の右下。"></a>
+<figcaption><b>おわり</b> コマが上の墨田区へ進む。脇に、東京の左と千葉の右下。</figcaption></figure>
+</div>
+<div class="details"><div>
+<div class="label">画面の文字</div>
+<p class="words">江東区の、上。<br>墨田区<br>千葉の右下<br>東京の左<br>頭の中の配置</p>
+<div class="label">ナレーション</div>
+<p class="voice">頭の中では、江東区の上が墨田区です。千葉の右下。東京の左。わかる人には、説明しなくても伝わります。</p>
+<div class="label">字数</div>
+<p class="small">声 49 字／画面 28 字</p>
+<div class="label">主役の語</div>
+<p>「墨田区」。江東区の上、という配置そのものが言葉です。「頭の中の配置」を添えて、実在の地図の正確な形ではないと分かるようにします。</p>
+</div><div>
+<div class="label">字組みと構図</div>
+<p>このカットだけ、縦に二つのブロックを積みます。左に「東京の左」、右下に「千葉の右下」で、横の広がりも残します。区の色は、コマの橙とも、回る盤の灰とも別にします。</p>
+<div class="label">動きの狙い</div>
+<p>空の上枠に墨田区の面が上から <a href="#snap">吸着</a> し、コマが江東区から墨田区へ 1 マス進みます。脇の二語は左右から逆向きに入ります。盤は回しません。</p>
+<div class="label">次へ</div>
+<p>二つのブロックが奥へ小さくなり、手前に「前」の矢印が立つ 09 になります。</p>
+<div class="label">使う素材</div>
+<p>二つのブロックと文字。東京の地図、航空写真、地図アプリの画面は使いません。</p>
+<div class="label">差し替え</div>
+<p class="swap">実在の区界を描いた地図や、生成した街の俯瞰にはしません。ブロックの色を入れ替えるのは、橙のコマと混ざらない範囲で制作側が判断してよいです。</p>
+</div></div>
+</section>
+
+<section class="cut" id="cut-09">
+<div class="cuthead"><div class="num">09</div><div>
+<h3>仮説です。</h3>
+<p class="small">1:25–1:38 / 約 13 秒 ・ 留保</p>
+</div></div>
+<div class="frames">
+<figure><a href="assets/storyboard/cut-09-start.webp"><img src="assets/storyboard/cut-09-start.webp" width="1280" height="720" alt="左に仮説です。右奥に小さな盤。手前に上向きの矢印と前。"></a>
+<figcaption><b>はじめ</b> 固定盤は奥に小さい。手前の矢印が「前」。</figcaption></figure>
+<figure><a href="assets/storyboard/cut-09-end.webp"><img src="assets/storyboard/cut-09-end.webp" width="1280" height="720" alt="固定した地図を呼び出す、の文字。右に北が上の盤と、上へ進んだコマ。脇に明るい折れ線。"></a>
+<figcaption><b>おわり</b> 矢印が退き、固定盤が戻る。コマは北へ進む。地下は明るい折れ線だけ。</figcaption></figure>
+</div>
+<div class="details"><div>
+<div class="label">画面の文字</div>
+<p class="words">仮説です。<br>全員の話ではない。<br>固定した地図を、呼び出す。<br>地下では、私も失う。</p>
+<div class="label">ナレーション</div>
+<p class="voice">これは私の仮説です。矢印が出る地図に慣れた人には、伝わりにくいかもしれません。地下では、私も方向を失います。それでも、固定した地図を呼び出します。</p>
+<div class="label">字数</div>
+<p class="small">声 73 字／画面 39 字</p>
+<div class="label">主役の語</div>
+<p>「呼び出す。」。留保のあと、本人のやり方に戻る語です。灰の「仮説です。」を先に読ませ、朱は戻った側に使います。</p>
+</div><div>
+<div class="label">字組みと構図</div>
+<p>はじめは、左の留保、右奥の小さな盤、手前の大きな矢印、という奥行きです。おわりは矢印がなくなり、左の二行と右の大きな固定盤です。後半も、手前と奥を入れ替えます。地下は夜の絵にせず、紙色の上の明るい折れ線にします。</p>
+<div class="label">動きの狙い</div>
+<p>盤が奥へ引き、矢印が手前に <a href="#slam">着地</a> します。そのあと矢印が退き、盤が手前へ戻ってコマが北へ 1 マス進みます。留保の間も、盤か矢印かが動いています。世代の名前や「DNA」は出しません。</p>
+<div class="label">次へ</div>
+<p>戻った固定盤を残し、左の文字が結論の二行へ <a href="#push">押し出す</a>。</p>
+<div class="label">使う素材</div>
+<p>矢印、盤、折れ線は図形です。夜の街、地下街の写真、スマホをかざす手元の動画は使いません。</p>
+<div class="label">差し替え</div>
+<p class="swap">矢印を大きくする、折れ線を盤の後ろに回す、は制作側が判断してよいです。写真や生成動画で地下や街を足す案は採りません。暗い画面にはしません。</p>
+</div></div>
+</section>
+
+<section class="cut" id="cut-10">
+<div class="cuthead"><div class="num">10</div><div>
+<h3>少し、誇らしい。</h3>
+<p class="small">1:38–1:51 / 約 13 秒 ・ 本人の結論</p>
+</div></div>
+<div class="frames">
+<figure><a href="assets/storyboard/cut-10-start.webp"><img src="assets/storyboard/cut-10-start.webp" width="1280" height="720" alt="左にわかる人には、。右に北が上の盤と中央のコマ。"></a>
+<figcaption><b>はじめ</b> 「わかる人には、」と、北が上の盤。コマはまだ中央。</figcaption></figure>
+<figure><a href="assets/storyboard/cut-10-end.webp"><img src="assets/storyboard/cut-10-end.webp" width="1280" height="720" alt="左に痛いほどわかる。少し、誇らしい。右の盤ではコマが北のマスにいる。"></a>
+<figcaption><b>おわり</b> 結論の二行。コマは北へ一歩進んで止まる。</figcaption></figure>
+</div>
+<div class="details"><div>
+<div class="label">画面の文字</div>
+<p class="words">わかる人には、<br>痛いほどわかる。<br>少し、誇らしい。</p>
+<div class="label">ナレーション</div>
+<p class="voice">わかる人には、痛いほどわかる。この共通言語を持っていることが、少し誇らしい。私は、この言い方を使い続けます。</p>
+<div class="label">字数</div>
+<p class="small">声 54 字／画面 24 字</p>
+<div class="label">主役の語</div>
+<p>「少し、誇らしい。」。視聴者への問いでは閉じません。本人の言葉で閉じます。</p>
+</div><div>
+<div class="label">字組みと構図</div>
+<p>左に結論の行、右に固定盤です。09 の奥行きから、左右の安定した構図へ戻します。ただし盤の中のコマは北へ進み、静止画の切り替えにはしません。</p>
+<div class="label">動きの狙い</div>
+<p>二行は逆方向のマスクから入り、「痛いほどわかる。」は塊で <a href="#slam">着地</a> します。盤は回さず、コマが北へ 1 マス進みます。読む間は盤ごと少し寄ります。最後は上へ <a href="#push">押し出し</a>、ライムのロゴへ渡します。</p>
+<div class="label">次へ</div>
+<p>文字と盤が上へ抜け、11 のライム全面になります。</p>
+<div class="label">使う素材</div>
+<p>文字と盤とコマ。追加の画像・動画は使いません。</p>
+<div class="label">差し替え</div>
+<p class="swap">結びを「みなさんはどうでしょうか」に戻す案は採りません。紙の地は要判断 4 です。</p>
+</div></div>
+</section>
+
+<section class="cut" id="cut-11">
+<div class="cuthead"><div class="num">11</div><div>
+<h3>エンドロゴ</h3>
+<p class="small">1:51–1:56 / 約 5 秒 ・ 制作表示</p>
+</div></div>
+<div class="frames">
+<figure><a href="assets/storyboard/cut-11-start.webp"><img src="assets/storyboard/cut-11-start.webp" width="1280" height="720" alt="ライムの画面。窓の印と、まだ定位置に着いていない o。"></a>
+<figcaption><b>はじめ</b> ライム #d2ff1a の全面。o はまだ定位置の途中。</figcaption></figure>
+<figure><a href="assets/storyboard/cut-11-end.webp"><img src="assets/storyboard/cut-11-end.webp" width="1280" height="720" alt="ライムの中央に okady.work のロゴ。"></a>
+<figcaption><b>おわり</b> 中央にロゴの完成形。ほかの文字はない。</figcaption></figure>
+</div>
+<div class="details"><div>
+<div class="label">画面の文字</div>
+<p class="small">なし。ロゴ以外を重ねません。</p>
+<div class="label">ナレーション</div>
+<p class="voice">なし</p>
+<div class="label">字数</div>
+<p class="small">声 0 字／画面 0 字</p>
+<div class="label">主役の語</div>
+<p>ロゴだけです。形、書体、色、比率は変えません。ファイルはリポジトリ直下の <code>../okady-work-logo.svg</code> です。</p>
+</div><div>
+<div class="label">字組みと構図</div>
+<p>ライムの全面の中央に、引き伸ばさないロゴです。本編の文字も盤も残しません。</p>
+<div class="label">動きの狙い</div>
+<p>10 からのつなぎは勢いがあってよいです。ロゴ自体は、0〜2.6 秒で o が落ちてバウンドし定位置へ、2.6〜3.2 秒で全体が左へスライド、3.0〜4.0 秒で「.work」が一文字ずつ出ます。そのあと完成形を約 1 秒保持します。SVG を画像のまま置くだけではフレームと同期しないので、同じタイミングをフレーム時刻から再現します。</p>
+<div class="label">次へ</div>
+<p>ここで終わります。BGM もロゴの終わりに合わせて収めます。</p>
+<div class="label">使う素材</div>
+<p><code>../okady-work-logo.svg</code> だけです。</p>
+<div class="label">差し替え</div>
+<p class="swap">ありません。章表示、テロップ帯、エンドクレジットは入れません。</p>
+</div></div>
+</section>
+
+<h2 class="part" id="details">詳細（ここから下は補足）</h2>
+<p class="small">ここまでで、どんな動画で、どう組み、どう見えるかを示しました。以下は分担、デザイン、動きの名前、素材、音、根拠、完成条件です。</p>
+
+<h2 id="roles">声・文字・素材の分担</h2>
+<div class="tablewrap"><table>
+<thead><tr><th>担当</th><th>受け持つこと</th><th>受け持たないこと</th></tr></thead>
+<tbody>
+<tr><td>声</td><td>経緯、調査の文、由来が本人の考えであること、仮説であること、結論の文。</td><td>画面の語の読み上げそのもの。全文字幕。</td></tr>
+<tr><td>文字</td><td>問い、決め語、等式、留保の短い句、出典、区の名前。</td><td>ナレーションの全文。原稿にない数字。</td></tr>
+<tr><td>図（盤・コマ・十字・矢印・ブロック）</td><td>回る見方と、固定した盤でコマが進む見方。北が画面の上に残るか。</td><td>説明の文。特定のゲームや地図アプリの画面。</td></tr>
+<tr><td>画像・動画ファイル</td><td>基本は使わない。冒頭の生成動画は要判断 1 で、未承認。</td><td>夜の街。実在の地図。人物。</td></tr>
+</tbody></table></div>
+<p>声ありで文量と尺を組んでいます。画面に声の全文は足しません。ナレーションの有無を変えると、画面の文量と尺を組み直す必要があります。</p>
+
+<h2 id="claim-map">主張・根拠・留保の対応</h2>
+<div class="tablewrap"><table>
+<thead><tr><th>役割</th><th>内容</th><th>カット</th></tr></thead>
+<tbody>
+<tr><td>主張</td><td>北を上と言うのは、地図を回さず、北が上の盤面で自分のコマを動かす頭の使い方だ。</td><td>02、04、10</td></tr>
+<tr><td>根拠</td><td>見下ろしの 2D で上は北、右は東だった、という本人の考え。回すと上は前になる。頭の中では江東区の上が墨田区。</td><td>05、07、08</td></tr>
+<tr><td>留保</td><td>2015 年の江戸川大学の調査では、大学生の 8 割以上が回した方が使いやすいと答え、本人は少数派らしい。これは仮説で、全員の話ではない。地下では本人も方向を失う。</td><td>06、09。声と文字の両方に残す</td></tr>
+<tr><td>最後に残す本人の結論</td><td>わかる人には痛いほどわかる。この共通言語を持っていることが、少し誇らしい。この言い方を使い続ける。</td><td>10</td></tr>
+</tbody></table></div>
+<p class="small">冒頭の問いは 01、主張の核は 04「動くのは、自分。」、結びは 10「少し、誇らしい。」です。この三つを続けて読んでも、同じ主張に着きます。原稿との文言の対応は <a href="references.md">references.md</a> にあります。</p>
+
+<h2 id="handoff">企画側／制作側</h2>
+<div class="tablewrap"><table>
+<thead><tr><th>企画側が渡すもの</th><th>制作側が判断・制作するもの</th></tr></thead>
+<tbody>
+<tr><td>主張の一文、構成と尺、画面の文言、ナレーション案、絵コンテ 22 枚、字組みと色、動きの狙い、効果の採否（<a href="effects-direction.md">effects-direction.md</a>）、ロゴへの参照、根拠の対応</td><td>three.js と DOM の文字層による実装、動きの細かな値、BGM と効果音、書き出し</td></tr>
+<tr><td>画像・動画の採用ファイルはなし。冒頭の生成動画は未承認で、生成していない</td><td>不足する画像・動画が出たら、作らずに企画側へ返す</td></tr>
+<tr><td>絵コンテ上の文字について、安全域と、文字どうし・文字とコマの重なりを検査済み（下記の完成条件）</td><td>本編の機械検査。全カットを約 0.25 秒ごとに、文字の外接矩形が安全域の外へ出ていないか、図と重なっていないかを見る</td></tr>
+<tr><td>ナレーションの原稿と、声は経緯・文字は決め語という分担</td><td>声の選定と生成。明示の依頼と、使える API キーがあるときだけ。この企画書は生成の許可ではない</td></tr>
+</tbody></table></div>
+<p>音源ファイルがまだないことは、制作を始めない理由にしません。会話を知らない制作者が、この plan.html と絵コンテと <code>../okady-work-logo.svg</code> だけで着手できる状態にしています。</p>
+
+<h2 id="design">デザインシステム（映像の文字・色・グリッド）</h2>
+<p>これは本編の見た目です。この企画書のページの色（青と橙の注意色）とは別です。本編でライムは、エンドロゴの背景だけに使います。</p>
+<div class="tablewrap"><table>
+<thead><tr><th>名前</th><th>値</th><th>使い道</th></tr></thead>
+<tbody>
+<tr><td>紙</td><td><span class="sw" style="background:#f4f1ea"></span>#f4f1ea</td><td>画面の地。暗い全面にはしない</td></tr>
+<tr><td>墨</td><td><span class="sw" style="background:#1a1a1a"></span>#1a1a1a</td><td>主文。問い、操作、区の名前</td></tr>
+<tr><td>朱</td><td><span class="sw" style="background:#b42318"></span>#b42318</td><td>筆者の決め語。上に行く、動くのは自分、北が上、呼び出す、誇らしい</td></tr>
+<tr><td>灰</td><td><span class="sw" style="background:#5c5854"></span>#5c5854</td><td>留保と、多数派・回る側の文字</td></tr>
+<tr><td>青</td><td><span class="sw" style="background:#1d4e89"></span>#1d4e89</td><td>固定盤の線。北のラベル</td></tr>
+<tr><td>青の面</td><td><span class="sw" style="background:#d9e6f5"></span>#d9e6f5</td><td>固定盤のマス。墨田区のブロック</td></tr>
+<tr><td>暖灰</td><td><span class="sw" style="background:#e8e2d6"></span>#e8e2d6</td><td>回る盤の面</td></tr>
+<tr><td>北の辺</td><td><span class="sw" style="background:#8a7c6c"></span>#8a7c6c</td><td>回る盤の、北だった辺。太くする</td></tr>
+<tr><td>橙</td><td><span class="sw" style="background:#f26b1d"></span>#f26b1d</td><td>自分のコマだけ</td></tr>
+<tr><td>江東の面</td><td><span class="sw" style="background:#f6e3d4"></span>#f6e3d4</td><td>江東区のブロック。橙とは別</td></tr>
+<tr><td>ライム</td><td><span class="sw" style="background:#d2ff1a"></span>#d2ff1a</td><td>エンドロゴの背景だけ</td></tr>
+</tbody></table></div>
+<p>文字は DOM（または同等の層）で、詰め組と行のマスクが効く組み方にします。盤・コマ・カメラは three.js の層です。カメラの寄りと回転は盤の層に掛け、文字が盤に埋もれたり、画面の端で欠けたりしないようにします。本編の安全域の目安は、1920×1080 で左右 80px、上下 64px です。</p>
+<p>字組みはカットごとに変えます。</p>
+<ul>
+<li>01 は上の問いと、下の街。</li>
+<li>02 は左上の決め語と、右の 3×3。</li>
+<li>03 は左右の二面。このカットだけです。</li>
+<li>04 は盤が画面を占める一面。</li>
+<li>05 は左の十字と右の盤。</li>
+<li>06 は左の巨大な数字と、右から下へ分かれる二つの盤。</li>
+<li>07 は中央の一文字「前」。</li>
+<li>08 は縦に積んだ二つの区。</li>
+<li>09 は手前の矢印と、奥の小さな盤。おわりで逆転します。</li>
+<li>10 は左の二行と、右の盤。コマが北へ進みます。</li>
+<li>11 はライムの中央にロゴだけ。</li>
+</ul>
+
+<h2 id="motion">動きの言語</h2>
+<p>名前は狙いの共有です。秒数とイージングの式は固定しません。読む間は、行、語の塊、盤、画面（カメラ）を動かします。文字の形そのものは崩しません。1 字ずつの揺れ、拍ごとの脈動、意味のない粒子では「動いている」にしません。</p>
+<div class="tablewrap"><table>
+<thead><tr><th>名前</th><th>狙い</th></tr></thead>
+<tbody>
+<tr><td id="snap">吸着</td><td>語やコマが、盤の交点・マス・北の辺へ吸い付く。この作品の軸の、固定側の動き。</td></tr>
+<tr><td id="orbit">回す</td><td>盤面だけが回る。コマと文字は回さない。北の辺が画面の上から外れる。回る側の動き。</td></tr>
+<tr><td id="slam">着地</td><td>決め語の塊が大きく出て、水平に収まる。収まったあとも、盤かカメラは動かし続ける。</td></tr>
+<tr><td id="drift">寄り</td><td>読む間の、盤や行ごとのゆっくりした移動。止めないための動き。</td></tr>
+<tr><td id="push">押し出す</td><td>次のカットへ、盤か語を勢いのまま渡す。場面の境で止めない。</td></tr>
+</tbody></table></div>
+<p>three.js を使います。回る盤と、固定盤の上のコマを、同じカメラで寄ったり回したりするためです。文字はテクスチャにせず、DOM の層に置きます。Remotion で組むときは、位置・回転・スケールをフレーム時刻から決めて、同じ状態を再現します。</p>
+<p>効果の採否は <a href="effects-direction.md">effects-direction.md</a> にあります。採用するのは、層の速度差、語の塊の着地、北の辺が描かれること、の三つです。見本の暗い背景、章題、1 字の揺れは使いません。</p>
+
+<h2 id="symbols">記号と色</h2>
+<p>一つの記号に一つの意味があるかを、全カットで点検しています。</p>
+<div class="tablewrap"><table>
+<thead><tr><th>記号</th><th>意味</th><th>出るカット</th><th>混ぜないこと</th></tr></thead>
+<tbody>
+<tr><td>橙の角丸</td><td>自分のコマ（現在地）</td><td>01〜10。03 は同じ自分を二つの見方に並べる</td><td>多数派の印、ボタン、区の面</td></tr>
+<tr><td>青の正立の盤</td><td>北が上で固定された地図</td><td>02、03 右、04、05、06 の小さな盤、07 左下、08 の積み方、09 おわり、10</td><td>回る盤と同じ色にしない</td></tr>
+<tr><td>暖灰で傾く盤と、太い北の辺</td><td>進行方向が上になる地図。北は画面の上から外れる</td><td>01 のおわり（街の北列）、03 左、06 の大きな盤、07 はじめ</td><td>固定盤。自分のコマをこの上に残さない（03 の対比を除く）</td></tr>
+<tr><td>「北」の字</td><td>その盤における北</td><td>盤があるカット</td><td>ナレーションの印、ロゴ</td></tr>
+<tr><td>朱の文字</td><td>筆者の決め語</td><td>02、03 右、04、09 おわり、10</td><td>留保、出典、多数派</td></tr>
+<tr><td>灰の文字</td><td>留保、または回る側の説明</td><td>02 はじめ、03 左、06、07、09 はじめ</td><td>決め語</td></tr>
+<tr><td>十字のボタン</td><td>見下ろしの操作。上で北、右で東</td><td>05 だけ</td><td>特定の機器やゲームのボタン</td></tr>
+<tr><td>上向きの矢印と「前」</td><td>自分が見ている向き。方角の北ではない</td><td>矢印は 09 はじめだけ。「前」の字は 07 と 09</td><td>北の印。07 では矢印を出さず、字だけで示す</td></tr>
+<tr><td>上下のブロック</td><td>頭の中の配置にある場所</td><td>08 だけ</td><td>実在の地図の形。コマの橙</td></tr>
+<tr><td>明るい折れ線</td><td>地下で方向を失うことの示唆</td><td>09 おわりだけ</td><td>夜の街、道の正確な形</td></tr>
+<tr><td>ライムの全面</td><td>制作表示</td><td>11 だけ</td><td>本編の強調色</td></tr>
+</tbody></table></div>
+
+<h2 id="character">キャラ設定</h2>
+<p>人物は出しません。自分は橙のコマです。顔、体、家族の絵は置きません。<span class="need">要判断 2</span></p>
+<p>原稿にある、身近な人が呆れて、のちに同じ言い方をした話は、基本では入れません。実在の人物だからです。入れる場合は、続柄を出さず、声の一文だけにします。絵は足しません。</p>
+
+<h2 id="swaps">差し替え候補</h2>
+<p>基本は、各カットのモーショングラフィックスです。下の候補を採るかは <a href="#decide">冒頭の判断</a> です。AI の映像は未承認で、生成していません。</p>
+<div class="tablewrap"><table>
+<thead><tr><th>候補</th><th>内容</th><th>採らないときの形</th></tr></thead>
+<tbody>
+<tr><td><span class="need">要判断 1</span> 冒頭 5 秒</td><td>昼の真上ショット。プロンプト案：「Top-down view of a bright daytime city made of simple pastel blocks, soft daylight, no people, no text, no logos, no recognizable real-world map. The camera slowly dolly-ins from high altitude, then the whole map rotates 90 degrees while a single orange dot stays fixed at the center.」5 秒、1 本。承認が必要。</td><td>カット 01 のブロック街。夜の発光する街にはしない</td></tr>
+<tr><td><span class="need">要判断 4</span> 紙の地</td><td>明るい紙の質感を、盤面が出るすべてのカットに同じように敷く。作画で、生成動画ではない。</td><td>ベタ塗りの盤</td></tr>
+<tr><td>05 の十字</td><td>四つのキーのような四角に描き替える。特定製品の形にはしない。</td><td>いまの十字</td></tr>
+<tr><td>08 の色</td><td>二つの区の面の色を入れ替える。橙にはしない。</td><td>上を青の面、下を薄い桃</td></tr>
+</tbody></table></div>
+<p>盤面そのものを、一部のカットだけ実写や生成動画にする候補は挙げていません。01 の街だけ役割が違います。導入で場所を想起し、02 以降は図解の盤面です。</p>
+
+<h2 id="assets">素材</h2>
+<div class="tablewrap"><table>
+<thead><tr><th>ファイル</th><th>用途</th><th>区間</th></tr></thead>
+<tbody>
+<tr><td><code>assets/storyboard/cut-01-start.webp</code> から <code>cut-11-end.webp</code> までの 22 枚</td><td>構図のラフ。完成映像ではない</td><td>各カットのはじめ／おわり</td></tr>
+<tr><td><code>../okady-work-logo.svg</code></td><td>エンドロゴ。形・色・比率は変えない</td><td>11（1:51–1:56）</td></tr>
+</tbody></table></div>
+<p>採用する写真・動画ファイルはありません。生成動画は未承認、未生成です。フォントファイルは同梱していません。絵コンテは Noto Sans CJK JP で描きました。</p>
+
+<h2 id="sound">音</h2>
+<p>BGM と効果音は後回しです。音源は同梱していません。制作側が、次の条件で作ります。過去の企画の曲は使いません。20261007 の音源も使いません。</p>
+<ul>
+<li>トーンは、盤の上を正確に進む軽さです。感傷や、暗い環境音にはしません。</li>
+<li>拍が立ちます。吸着と 90° の回転が拍に載ります。目安は 108〜120 BPM です。遅い曲に合わせて映像を遅くしません。</li>
+<li>01 で入り、03 と 04 で層を足します。09 の留保は一段下げますが、拍は残します。10 で戻り、ロゴの終わり（約 1:56）で収めます。映像より短い音源を、余裕があるとは書きません。</li>
+<li>無音は、「私は回しません」の頭で半拍だけ抜いてよい、という程度です。それ以外は無音にしません。</li>
+<li>効果音を足すなら、マスに吸着する短いクリックです。特定のゲームの音は使いません。効果音も後回しです。</li>
+<li>ナレーションは、各カットの原稿を使います。画面の全文を字幕にしません。声の生成は、明示の依頼と、使える API キーがあるときだけです。有料の音楽生成を比べる場合は、品質・時間・費用の理由を一行残して選びます。料金が未確認の有料生成はしません。</li>
+</ul>
+
+<h2 id="evidence">根拠</h2>
+<p>原稿の抜粋、画面文言、出典、画面にしない情報は <a href="references.md">references.md</a> にまとめています。調査の数字は、原稿の「大学生の8割以上」だけを使い、画面に「江戸川大学・2015」と出します。PDF は開いておらず、原稿にない率や人数は足していません。</p>
+
+<h2 id="done">完成条件・確認状態</h2>
+<ul>
+<li>等速での通し確認は未確認です。本編は未制作です。静止画の絵コンテは、躍動感の合格ではありません。</li>
+<li>BGM・効果音は後回しです。ナレーションも未制作です。</li>
+<li>絵コンテ 22 枚について、文字の外接矩形が安全域（1280×720 で左右 64px、上下 48px）の中にあること、文字どうしが 6px 以内で重ならないこと、文字と橙のコマが重ならないことを検査しました。不合格は 0 でした。盤の線は検査の対象外なので、線に乗ったラベルは目で動かして外しました。</li>
+<li>章表示、テロップ帯、エンドクレジットは入れません。最後はライムの上のロゴだけです。</li>
+<li>制作側は、代表の一区間（03 の対比か、04 の吸着）を等速で確かめてから全編へ広げます。本編では、約 0.25 秒ごとの文字の外接矩形で、はみ出しと、盤・矢印・コマとの重なりを検査します。</li>
+<li>要判断 1〜4 が未回答でも、基本案（MG、人物なし、作品名なし、ベタ塗り）で実装を始められます。生成動画を選ぶ場合は、その時点で承認が必要です。</li>
+</ul>
+</main>
+<footer><div class="inner">
+<p>企画書。絵コンテは構図のラフです。等速での通し確認は未確認。BGM・効果音は後回し。</p>
+</div></footer>
+</body></html>
