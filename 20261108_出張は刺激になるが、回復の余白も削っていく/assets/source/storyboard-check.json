@@ -1,0 +1,8 @@
+{
+  "safe_area": "40px left/right, 25px top, 20px bottom; 1280x720",
+  "frames": 20,
+  "out_of_bounds": 0,
+  "text_overlaps": 0,
+  "broken_plan_references": 0,
+  "scope": "static storyboard; final video not tested"
+}
