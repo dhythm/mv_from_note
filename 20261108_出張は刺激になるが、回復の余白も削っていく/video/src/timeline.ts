@@ -1,0 +1,14 @@
+import TL from './timeline.json';
+
+export const FPS = 30;
+export const CUTS = (() => {
+  let s = 0;
+  return TL.cuts.map((c) => {
+    const r = {id: c.id, start: s, dur: c.dur, vo: c.vo};
+    s += c.dur;
+    return r;
+  });
+})();
+export const LOGO_START = CUTS[CUTS.length - 1].start + CUTS[CUTS.length - 1].dur;
+export const TOTAL = LOGO_START + TL.logoDur;
+export const TOTAL_FRAMES = Math.round(TOTAL * FPS);
