@@ -1,8 +1,12 @@
 {
   "safe_area": "40px left/right, 25px top, 20px bottom; 1280x720",
-  "frames": 20,
+  "frames": 25,
+  "regenerated_typographic_frames": 20,
+  "full_screen_insert_frames": 3,
+  "unchanged_logo_frames": 2,
   "out_of_bounds": 0,
   "text_overlaps": 0,
+  "production_labels_drawn": 0,
   "broken_plan_references": 0,
-  "scope": "static storyboard; final video not tested"
+  "scope": "static storyboard; full-screen insert sequence; final video not tested"
 }

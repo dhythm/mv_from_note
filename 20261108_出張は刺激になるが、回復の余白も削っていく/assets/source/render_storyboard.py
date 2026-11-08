@@ -1,6 +1,6 @@
 """Render editable, deterministic composition diagrams; not final video frames."""
 from pathlib import Path
-import json
+import json, sys, re
 from PIL import Image, ImageDraw, ImageFont, ImageOps
 P=Path(__file__).resolve().parents[2]
 C=json.loads((P/'assets/source/cuts.json').read_text())
@@ -10,6 +10,7 @@ BG='#F6F3EC'; INK='#1C1915'; OCH='#E07A2F'; GRAY='#D6CEC0'; GREEN='#2F6F62'
 checks=[]
 def font(n,b=True):return ImageFont.truetype(F if b else R,n)
 def txt(im,text,x,y,size=40,fill=INK,bold=True,maxwidth=None):
+ if re.search(r'はじめ|おわり|インサート中|^[0-9０-９]+\s*[/／]|^第.+章',text):raise ValueError('Production label inside image: '+text)
  d=ImageDraw.Draw(im)
  while maxwidth and d.textbbox((0,0),text,font=font(size,bold))[2]>maxwidth:size-=1
  box=d.textbbox((x,y),text,font=font(size,bold));d.text((x,y),text,font=font(size,bold),fill=fill)
@@ -35,15 +36,16 @@ def box(im,rect,state,details=False,compact=False):
    for j,s in enumerate(details):txt(im,s,x+22,y+70+j*49,29,maxwidth=aw-42)
  return (x+aw+gw,y)
 
-for name in ['family-time','rest-before-exhaustion','drink-in-moderation']:
+only_cut=int(sys.argv[1]) if len(sys.argv)>1 else None
+for name in ([] if only_cut else ['family-time','rest-before-exhaustion','drink-in-moderation']):
  src=Image.open(P/f'assets/broll/{name}.png').convert('RGB')
  ImageOps.fit(src,(1920,1080),method=Image.Resampling.LANCZOS).save(P/f'assets/broll/{name}.webp',quality=93)
 
 for c in C:
+ if only_cut and c['n']!=only_cut:continue
  for stage in ['start','end']:
   n=c['n'];end=stage=='end';state=c['state'][end]
   im=Image.new('RGB',(1280,720),BG);d=ImageDraw.Draw(im);checks=[]
-  txt(im,f'{n:02d}  /  '+('おわり' if end else 'はじめ'),64,26,20,bold=False)
   # Labels here describe the metaphor, not percentages or a scientific measurement.
   if n==1:
    txt(im,'刺激は、得られる。',70,105,64 if end else 55)
@@ -85,30 +87,31 @@ for c in C:
    txt(im,'翌日',800 if end else 1010,603,43)
    txt(im,'やれたはずのこと',74,633,22,bold=False)
   elif n in [7,8,9]:
-   asset=Image.open(P/f'assets/broll/{c["asset"]}.webp')
-   crop=ImageOps.fit(asset,(570,342),method=Image.Resampling.LANCZOS,centering=(0.72,.5) if n==7 else (.5,.5))
-   if end:crop=ImageOps.fit(asset.resize((2112,1188)),(570,342),method=Image.Resampling.LANCZOS,centering=(.72,.5) if n==7 else (.55,.5))
-   if not (end and n in [7,9]):
-    im.paste(crop,(640,103));d.rectangle((640,103,1210,445),outline='#B9AA97',width=2)
+   # These are the shots BEFORE and AFTER the full-screen insert.
+   # The illustration itself is exported separately as the third storyboard state.
    if n==7:
-    txt(im,'使える時間は、',68,132,40,maxwidth=535)
-    txt(im,'自分だけの',68 if not end else 184,220,58 if not end else 76,maxwidth=535 if not end else 950)
-    txt(im,'ものではない。',68 if not end else 276,307,54 if not end else 76,maxwidth=535 if not end else 930)
+    txt(im,'使える時間は、',68,132,45)
+    if end:
+     txt(im,'自分だけの',184,220,76,maxwidth=950)
+     txt(im,'ものではない。',276,307,76,maxwidth=930)
    elif n==8:
-    txt(im,'疲れてからでは、',68,133,37,maxwidth=535)
-    txt(im,'遅い。',68,201,64)
-    txt(im,'予防が、先。',68,322,65 if end else 58,maxwidth=535)
+    if not end:
+     txt(im,'疲れてからでは、',68,133,49)
+     txt(im,'遅い。',300,228,86)
+    else:
+     txt(im,'予防が、先。',130,205,94,maxwidth=1050)
    else:
-    txt(im,'飲みすぎない。',68,139,48,maxwidth=535)
-    txt(im,'溜めない。',68 if not end else 244,232,90 if end else 60,maxwidth=790 if end else 535)
-    txt(im,'それでも、無理はする。',68 if not end else 660,380,31,maxwidth=550)
+    if not end:txt(im,'飲みすぎない。',100,179,80,maxwidth=1080)
+    else:
+     txt(im,'溜めない。',130,150,94,maxwidth=1050)
+     txt(im,'それでも、無理はする。',530,343,43,maxwidth=680)
    txt(im,'自分のキャパ',74,477,22)
    box(im,(74,521,1130,90),state,compact=True)
    if n==7:txt(im,'やれたはずのこと・使えたはずの時間',74,651,24,bold=False)
   else:
    box(im,(891,64,311,78),state,compact=True)
    lines=c['words']
-   for i,s in enumerate(lines):txt(im,s,70+i*52,172+i*116,51 if i<3 else (76 if end else 61),maxwidth=1130-i*52)
+   for i,s in enumerate(lines):txt(im,s,70+i*35,168+i*95,43 if i<3 else (58 if end else 50),maxwidth=1130-i*35)
   failures=[b for b in checks if b['box'][0]<40 or b['box'][1]<25 or b['box'][2]>1240 or b['box'][3]>700]
   if failures:raise RuntimeError((n,stage,failures))
   for i,a in enumerate(checks):
@@ -117,9 +120,14 @@ for c in C:
     if min(aa[2],bb[2])>max(aa[0],bb[0]) and min(aa[3],bb[3])>max(aa[1],bb[1]):
      raise RuntimeError(('text overlap',n,stage,a['text'],b['text']))
   im.save(P/f'assets/storyboard/cut-{n:02d}-{stage}.webp',quality=93)
+# Full-screen inserts carry only the existing illustration, no labels or diagram.
+for c in C:
+ if 'asset' not in c or (only_cut and c['n']!=only_cut):continue
+ asset=Image.open(P/f'assets/broll/{c["asset"]}.webp')
+ ImageOps.fit(asset,(1280,720),method=Image.Resampling.LANCZOS).save(P/f'assets/storyboard/cut-{c["n"]:02d}-insert.webp',quality=93)
 # Compact overview of all end compositions for human QA.
 imgs=[Image.open(P/f'assets/storyboard/cut-{n:02d}-end.webp').resize((384,216)) for n in range(1,12)]
 canvas=Image.new('RGB',(1152,864),'#ffffff')
 for i,img in enumerate(imgs):canvas.paste(img,((i%3)*384,(i//3)*216))
 canvas.save(P/'assets/storyboard/overview.webp',quality=91)
-print('20 revised frames, 3 full-HD B-roll stills, overview rendered; text bounds passed')
+print('Storyboard frames rendered without production labels; full-screen inserts exported; bounds and overlaps passed')

@@ -56,6 +56,7 @@ tr:hover td{background:var(--key-50)}
 .cuthead{display:flex;gap:16px;align-items:center;margin-bottom:24px;padding-bottom:16px;border-bottom:1px solid var(--gray-200)}
 .cuthead p{margin:4px 0 0}
 .num{font-size:1.5rem;line-height:1;font-weight:700;color:var(--white);background:var(--key-900);border-radius:var(--r-8);min-width:56px;height:56px;display:flex;align-items:center;justify-content:center;flex:none;font-feature-settings:"tnum"}
+.frames.three{grid-template-columns:repeat(3,minmax(0,1fr))}
 .frames{display:grid;grid-template-columns:1fr 1fr;gap:24px}
 figure{margin:0}
 figure img{width:100%;height:auto;display:block;border:1px solid var(--gray-200);border-radius:var(--r-8);background:var(--white)}
@@ -93,7 +94,7 @@ nav a.nav-need:hover{text-decoration:underline}
 @media(max-width:760px){
   header .inner,main,nav .in,footer .inner{padding:0 16px}
   header .inner{padding-top:24px;padding-bottom:16px}
-  .frames,.details{grid-template-columns:1fr}
+  .frames,.frames.three,.details{grid-template-columns:1fr}
   h1{font-size:1.75rem;line-height:1.5}
   h2{font-size:1.5rem;margin-top:48px}
   .cut{padding:20px;border-radius:var(--r-12)}
@@ -112,15 +113,9 @@ nav a.nav-need:hover{text-decoration:underline}
 <div class="strata"></div>
 </header>
 
-<nav><div class="in"><a class="nav-need" href="#decide">判断してほしい点（1）</a><a href="#claim">主張</a><a href="#viewer">視聴者</a><a href="#structure">構成と尺</a><a href="#cuts">カット表</a><span class="navsep">詳細：</span><a href="#roles">役割</a><a href="#handoff">企画側／制作側</a><a href="#design">デザイン</a><a href="#motion">動き</a><a href="#symbols">記号</a><a href="#assets">素材</a><a href="#sound">音</a><a href="#evidence">根拠</a><a href="#done">確認状態</a></div>
+<nav><div class="in"><a href="#claim">主張</a><a href="#viewer">視聴者</a><a href="#structure">構成と尺</a><a href="#cuts">カット表</a><span class="navsep">詳細：</span><a href="#roles">役割</a><a href="#handoff">企画側／制作側</a><a href="#design">デザイン</a><a href="#motion">動き</a><a href="#symbols">記号</a><a href="#assets">素材</a><a href="#sound">音</a><a href="#evidence">根拠</a><a href="#done">確認状態</a></div>
 </nav>
 <main>
-<section class="decide" id="decide"><h2>未確定事項と判断してほしい点</h2>
-<p class="small">残る判断は結びの表現だけです。ほかの節は現行の指示です。番号3は従来の判断番号を維持しています。</p>
-<ol class="decide-list"><li><span class="need">3</span><div>結びを現行の本人の決定「自分に許します」で閉じるか、原稿の問いかけ「許してみてもいいのではないでしょうか」に戻すか。現行案は前者です。<span class="where"><a href="#cut-10">カット10</a></span></div>
-</li></ol>
-</section>
-
 <h2 id="claim">この動画で伝える一文</h2>
 <p class="lead">出張では刺激を得られる一方、回復に使える余白を失う。刺激を受け取り続けるために、疲れきる前に立ち止まる。</p>
 <p>「充実した出張の疲れは、帰ってから休めば戻る」という思い込みに対して、今の生活では、その回復に使える時間自体が残っていないことを伝えます。刺激を否定せず、余白を前提に選んでよいという気持ちを残します。本人の実感として語り、全員への保証にはしません。</p>
@@ -129,7 +124,7 @@ nav a.nav-need:hover{text-decoration:underline}
 <p>出張や移動で学びや出会いを得ながら、翌日の作業や生活に疲れを持ち越す人。家庭の有無は視聴者の条件にしません。</p>
 
 <h2 id="structure">構成と尺</h2>
-<p>声は経緯、文字は「得られる／失われる」の対比、図は一つのキャパの中の変化を運びます。学び・新しい出会い・縁を「得られたもの」の内訳に置き、回復する時間や、やれたはずのことを失う側へ視線を移します。07〜09では生活・休息・お酒のイラストを短く差し込みます。</p>
+<p>声は経緯、文字は「得られる／失われる」の対比、図は一つのキャパの中の変化を運びます。学び・新しい出会い・縁を「得られたもの」の内訳に置き、回復する時間や、やれたはずのことを失う側へ視線を移します。07〜09では文字・図から生活・休息・お酒の全面イラストへ約3秒切り替え、声を続けたまま文字・図へ戻ります。</p>
 
 <div class="tablewrap"><table><thead><tr><th>カット</th><th>役割</th><th>参考区間</th><th>声／文字</th></tr>
 </thead><tbody><tr><td><a href="#cut-01">01 刺激は、得られる。余白は、失われる。</a></td><td>主張</td><td>0:00–0:07（7秒）</td><td>34字／14字</td></tr>
@@ -141,12 +136,12 @@ nav a.nav-need:hover{text-decoration:underline}
 <tr><td><a href="#cut-07">07 時間は、自分だけのものではない。</a></td><td>根拠</td><td>0:50–1:01（11秒）</td><td>49字／17字</td></tr>
 <tr><td><a href="#cut-08">08 予防が、先。</a></td><td>主張</td><td>1:01–1:10（9秒）</td><td>38字／13字</td></tr>
 <tr><td><a href="#cut-09">09 それでも、無理はする。</a></td><td>根拠と留保</td><td>1:10–1:19（9秒）</td><td>35字／19字</td></tr>
-<tr><td><a href="#cut-10">10 自分に許す。</a></td><td>本人の結論</td><td>1:19–1:31（12秒）</td><td>50字／29字</td></tr>
+<tr><td><a href="#cut-10">10 許してみてもいいのではないでしょうか。</a></td><td>本人の結論</td><td>1:19–1:31（12秒）</td><td>54字／45字</td></tr>
 </tbody></table>
 </div>
-<p class="small">声は計394字、画面の主文・内訳は計148字（空白・句読点を除く、共通の図のラベルは別）。本編91秒＋ロゴ5秒の参考尺を維持。イラストは各カットの中に約3秒ずつ挿入し、尺を足しません。音声の実尺と等速再生は制作時に確認し、読みにくい場合は文量・構図・配分を調整します。</p>
+<p class="small">声は計398字、画面の主文・内訳は計164字（空白・句読点を除く、共通の図のラベルは別）。本編91秒＋ロゴ5秒の参考尺を維持。イラストは各カットの中に約3秒ずつ挿入し、尺を足しません。音声の実尺と等速再生は制作時に確認し、読みにくい場合は文量・構図・配分を調整します。</p>
 <h2 id="cuts">カット表・絵コンテ</h2>
-<p>1280×720、明るい背景の構図ラフです。共通の箱は「自分のキャパ」を示す比喩で、実測の割合や、学びと疲労の交換率ではありません。内部は、琥珀＝得られたもの、灰＝移動・予定などの負荷、白＝回復に使える余白。得たものを残したまま、負荷が白を押し狭めます。家族を負荷の物体として箱に詰めません。</p>
+<p>1280×720、明るい背景の構図ラフです。番号と「はじめ／インサート中／おわり」は画像外だけに表示し、映像になる画像内には入れません。07〜09は、前→全面インサート→後の3コマです。共通の箱は「自分のキャパ」を示す比喩で、実測の割合や、学びと疲労の交換率ではありません。内部は、琥珀＝得られたもの、灰＝移動・予定などの負荷、白＝回復に使える余白。得たものを残したまま、負荷が白を押し狭めます。家族を負荷の物体として箱に詰めません。</p>
 <p>絵コンテは構図と意味の受け渡しを示します。具体的な字組みの仕上げ、立体感、カメラの軌道、動きの調整は制作側に任せます。</p>
 <section class="cut" id="cut-01"><div class="cuthead"><div class="num">01</div>
 <div><h3>刺激は、得られる。余白は、失われる。</h3>
@@ -309,8 +304,10 @@ nav a.nav-need:hover{text-decoration:underline}
 <p class="small">0:50–1:01 / 約11秒 ・ 根拠</p>
 </div>
 </div>
-<div class="frames"><figure><a href="assets/storyboard/cut-07-start.webp"><img src="assets/storyboard/cut-07-start.webp" width="1280" height="720" alt="カット07 はじめ：左に言葉、右に家で過ごす二人のイラスト。下に同じ箱を残す。"></a><figcaption><b>はじめ</b> 左に言葉、右に家で過ごす二人のイラスト。下に同じ箱を残す。</figcaption></figure>
-<figure><a href="assets/storyboard/cut-07-end.webp"><img src="assets/storyboard/cut-07-end.webp" width="1280" height="720" alt="カット07 おわり：インサート窓が寄りながら左へ抜け、同じ箱と「自分だけのものではない。」へ戻る。"></a><figcaption><b>おわり</b> インサート窓が寄りながら左へ抜け、同じ箱と「自分だけのものではない。」へ戻る。</figcaption></figure>
+<div class="frames three"><figure><a href="assets/storyboard/cut-07-start.webp"><img src="assets/storyboard/cut-07-start.webp" width="1280" height="720" alt="カット07 はじめ：文字「使える時間は、」と閉じた余白の箱。画像はまだ表示しない。"></a><figcaption><b>はじめ</b> 文字「使える時間は、」と閉じた余白の箱。画像はまだ表示しない。</figcaption></figure>
+<figure><a href="assets/storyboard/cut-07-insert.webp"><img src="assets/storyboard/cut-07-insert.webp" width="1280" height="720" alt="カット07 インサート中：家で一緒に本を見る二人のイラストを画面全面にインサート。文字と箱は一時的に画面外へ退き、声だけが続く。"></a><figcaption><b>インサート中</b> 家で一緒に本を見る二人のイラストを画面全面にインサート。文字と箱は一時的に画面外へ退き、声だけが続く。</figcaption></figure>
+
+<figure><a href="assets/storyboard/cut-07-end.webp"><img src="assets/storyboard/cut-07-end.webp" width="1280" height="720" alt="カット07 おわり：イラストから紙色の面へ戻り、「自分だけのものではない。」と同じ箱を大きく見せる。"></a><figcaption><b>おわり</b> イラストから紙色の面へ戻り、「自分だけのものではない。」と同じ箱を大きく見せる。</figcaption></figure>
 </div>
 <div class="details"><div><div class="label">画面の文字</div>
 <p class="words">使える時間は、<br>自分だけのものではない。</p>
@@ -320,13 +317,13 @@ nav a.nav-need:hover{text-decoration:underline}
 <p>「自分だけのものではない。」が主役。「子供」「家族」「奥さん」「娘」は画面にも声にも出さず、暮らしの具体像だけをイラストで補う。</p>
 </div>
 <div><div class="label">字組みと構図</div>
-<p>左の短い行と、右の横長のインサート。下の箱は得たものと閉じた余白を保つ。</p>
+<p>はじめは文字と箱、インサート中は全面イラストのみ、おわりは文字と箱。右上の小窓や図との常設併置にしない。</p>
 <div class="label">動きの狙い</div>
-<p>箱の外に残った時間の札から、Bロールの窓を大きく開く。絵の中へ寄りながら窓ごと横へ送る。二人を負荷の灰に入れたり、押しつぶしたりしない。読む行も段階的に位置を変える。</p>
+<p>0:50〜0:52を目安に「使える時間は、」を箱と組む。0:52〜0:55は文字と箱を横へ送り、イラストへ全画面で切り替える。声は「今の生活では、使える時間は自分だけのものではなくなっていきます」へ続く。見る間は二人と本を残して素材全体へ寄る。0:55以降は紙色の面を押し出し、「自分だけのものではない。」と元の箱へ戻る。二人を灰の負荷に入れない。</p>
 <div class="label">次へ</div>
-<p>生活の窓を閉じる動きから、08の休息の窓へマッチカット。余白がない状態を解決済みにしない。</p>
+<p>イラストから戻った文字と閉じた箱を保持して08へ渡す。08の休息の全面インサートとは、間に主張の文字画面を挟む。</p>
 <div class="label">使う素材</div>
-<p><a href="assets/broll/family-time.webp">family-time.webp</a>。0:52–0:55（参考3秒）。採用済みの静止画を寄り・横移動・窓のマスクでBロールにする。本人の記録写真ではなく、生活を表すイラスト。文字は絵の外の紙色の面へ置く。</p>
+<p><a href="assets/broll/family-time.webp">family-time.webp</a>。0:52–0:55（参考3秒）。採用済みの静止画を全面の主画面として約3秒インサートする。挿入中は文字・箱を表示せず声を続け、素材へ寄る・横へ移動したあと、文字と箱の画面へ戻る。本人の記録写真ではなく生活を表すイラスト。</p>
 </div>
 </div>
 </section>
@@ -335,8 +332,10 @@ nav a.nav-need:hover{text-decoration:underline}
 <p class="small">1:01–1:10 / 約9秒 ・ 主張</p>
 </div>
 </div>
-<div class="frames"><figure><a href="assets/storyboard/cut-08-start.webp"><img src="assets/storyboard/cut-08-start.webp" width="1280" height="720" alt="カット08 はじめ：閉じた箱から、閉じたパソコンと休息の椅子のイラストへ。"></a><figcaption><b>はじめ</b> 閉じた箱から、閉じたパソコンと休息の椅子のイラストへ。</figcaption></figure>
-<figure><a href="assets/storyboard/cut-08-end.webp"><img src="assets/storyboard/cut-08-end.webp" width="1280" height="720" alt="カット08 おわり：大きな「予防が、先。」。同じ箱の中に、ごく細い余白を確保する線が引かれる。"></a><figcaption><b>おわり</b> 大きな「予防が、先。」。同じ箱の中に、ごく細い余白を確保する線が引かれる。</figcaption></figure>
+<div class="frames three"><figure><a href="assets/storyboard/cut-08-start.webp"><img src="assets/storyboard/cut-08-start.webp" width="1280" height="720" alt="カット08 はじめ：閉じた余白の箱と「疲れてからでは、遅い。」。画像はまだ表示しない。"></a><figcaption><b>はじめ</b> 閉じた余白の箱と「疲れてからでは、遅い。」。画像はまだ表示しない。</figcaption></figure>
+<figure><a href="assets/storyboard/cut-08-insert.webp"><img src="assets/storyboard/cut-08-insert.webp" width="1280" height="720" alt="カット08 インサート中：閉じたパソコン・水・椅子のイラストを画面全面へ。文字と箱を表示せず、声で疲れを溜める前の立ち止まりにつなぐ。"></a><figcaption><b>インサート中</b> 閉じたパソコン・水・椅子のイラストを画面全面へ。文字と箱を表示せず、声で疲れを溜める前の立ち止まりにつなぐ。</figcaption></figure>
+
+<figure><a href="assets/storyboard/cut-08-end.webp"><img src="assets/storyboard/cut-08-end.webp" width="1280" height="720" alt="カット08 おわり：紙色の画面へ戻り、大きな「予防が、先。」と箱を見せる。ごく細い余白を確保する線が残る。"></a><figcaption><b>おわり</b> 紙色の画面へ戻り、大きな「予防が、先。」と箱を見せる。ごく細い余白を確保する線が残る。</figcaption></figure>
 </div>
 <div class="details"><div><div class="label">画面の文字</div>
 <p class="words">疲れてからでは、遅い。<br>予防が、先。</p>
@@ -346,13 +345,13 @@ nav a.nav-need:hover{text-decoration:underline}
 <p>「予防が、先。」。予防は疲れを溜めないための休息・立ち止まりの意味で、医療の比喩にしない。</p>
 </div>
 <div><div class="label">字組みと構図</div>
-<p>左に大きな語、右に休息のインサート。下の共通の箱は小さく保ち、白い領域をわずかに確保する。</p>
+<p>主張の文字画面→休息の全面イラスト→「予防が、先。」の文字画面。挿入中には図や見出しを重ねない。</p>
 <div class="label">動きの狙い</div>
-<p>休息の窓を大きくスライドさせ、見出しと構図を組み替える。境界に墨の線を一筆で描き、ごく細い白を確保する。これは方針の図で、休めば即座に回復する経過の再現ではない。</p>
+<p>1:01〜1:03を目安に「疲れてからでは、遅い。」を見せる。1:03〜1:06は全面の休息イラストへ切り替え、声を継続する。見る間はパソコン・水・椅子を残して横へ移動。1:06以降は紙色の面へ戻り、「予防が、先。」を大きく出す。境界に墨の線を描き、ごく細い白を確保する。これは方針の図で、休めば即座に回復する経過の再現ではない。</p>
 <div class="label">次へ</div>
-<p>休息の窓が抜ける方向を引き継ぎ、09では飲みすぎないことへ。</p>
+<p>「予防が、先。」と細い余白の箱を09へ渡し、具体例の飲みすぎないことにつなぐ。</p>
 <div class="label">使う素材</div>
-<p><a href="assets/broll/rest-before-exhaustion.webp">rest-before-exhaustion.webp</a>。1:03–1:06（参考3秒）。採用済みの静止画を寄り・横移動・窓のマスクでBロールにする。本人の記録写真ではなく、生活を表すイラスト。文字は絵の外の紙色の面へ置く。</p>
+<p><a href="assets/broll/rest-before-exhaustion.webp">rest-before-exhaustion.webp</a>。1:03–1:06（参考3秒）。採用済みの静止画を全面の主画面として約3秒インサートする。挿入中は文字・箱を表示せず声を続け、素材へ寄る・横へ移動したあと、文字と箱の画面へ戻る。本人の記録写真ではなく生活を表すイラスト。</p>
 </div>
 </div>
 </section>
@@ -361,8 +360,10 @@ nav a.nav-need:hover{text-decoration:underline}
 <p class="small">1:10–1:19 / 約9秒 ・ 根拠と留保</p>
 </div>
 </div>
-<div class="frames"><figure><a href="assets/storyboard/cut-09-start.webp"><img src="assets/storyboard/cut-09-start.webp" width="1280" height="720" alt="カット09 はじめ：酒器と水のイラストに「飲みすぎない。」。同じ箱の細い白は保つ。"></a><figcaption><b>はじめ</b> 酒器と水のイラストに「飲みすぎない。」。同じ箱の細い白は保つ。</figcaption></figure>
-<figure><a href="assets/storyboard/cut-09-end.webp"><img src="assets/storyboard/cut-09-end.webp" width="1280" height="720" alt="カット09 おわり：インサート窓が退き、「溜めない。」と「それでも、無理はする。」が残る。"></a><figcaption><b>おわり</b> インサート窓が退き、「溜めない。」と「それでも、無理はする。」が残る。</figcaption></figure>
+<div class="frames three"><figure><a href="assets/storyboard/cut-09-start.webp"><img src="assets/storyboard/cut-09-start.webp" width="1280" height="720" alt="カット09 はじめ：紙色の画面に「飲みすぎない。」と、細い余白が残る箱。画像はまだ表示しない。"></a><figcaption><b>はじめ</b> 紙色の画面に「飲みすぎない。」と、細い余白が残る箱。画像はまだ表示しない。</figcaption></figure>
+<figure><a href="assets/storyboard/cut-09-insert.webp"><img src="assets/storyboard/cut-09-insert.webp" width="1280" height="720" alt="カット09 インサート中：少量の酒と水のイラストへ画面全面を切り替える。文字や箱は退き、声は続く。"></a><figcaption><b>インサート中</b> 少量の酒と水のイラストへ画面全面を切り替える。文字や箱は退き、声は続く。</figcaption></figure>
+
+<figure><a href="assets/storyboard/cut-09-end.webp"><img src="assets/storyboard/cut-09-end.webp" width="1280" height="720" alt="カット09 おわり：紙色の画面へ戻って「溜めない。」を大きくし、「それでも、無理はする。」を読める大きさで残す。"></a><figcaption><b>おわり</b> 紙色の画面へ戻って「溜めない。」を大きくし、「それでも、無理はする。」を読める大きさで残す。</figcaption></figure>
 </div>
 <div class="details"><div><div class="label">画面の文字</div>
 <p class="words">飲みすぎない。<br>溜めない。<br>それでも、無理はする。</p>
@@ -372,35 +373,35 @@ nav a.nav-need:hover{text-decoration:underline}
 <p>「溜めない。」が最大。留保の一行は小さくても読める大きさで残す。酒を禁止する話に変えない。</p>
 </div>
 <div><div class="label">字組みと構図</div>
-<p>左の二行と、右の酒器・水の窓。最後は窓を退け、右下に留保を組む。</p>
+<p>文字と箱→酒器と水の全面イラスト→大きな文字と留保。画像を右上に残さない。</p>
 <div class="label">動きの狙い</div>
-<p>酒器から水に向かう横移動と窓の押し出しを使う。文字は行単位で入れ替わり、留保へ大きく画面を移す。白い領域は広げない。</p>
+<p>1:10〜1:11を目安に「飲みすぎない。」を出し、1:11〜1:14は全面の酒器と水へインサートする。声を継続し、見る間は酒器から水へ素材の中で視線を移す。1:14以降は紙色の面へ戻り、「溜めない。」と留保を見せる。文字は行単位で大きく動かす。箱の白い領域は広げない。</p>
 <div class="label">次へ</div>
-<p>同じ比率の箱を小さくし、10の本人の結論へ。</p>
+<p>細い余白の箱と留保を10の結びへ渡す。</p>
 <div class="label">使う素材</div>
-<p><a href="assets/broll/drink-in-moderation.webp">drink-in-moderation.webp</a>。1:10–1:13（参考3秒）。採用済みの静止画を寄り・横移動・窓のマスクでBロールにする。本人の記録写真ではなく、生活を表すイラスト。文字は絵の外の紙色の面へ置く。</p>
+<p><a href="assets/broll/drink-in-moderation.webp">drink-in-moderation.webp</a>。1:11–1:14（参考3秒）。採用済みの静止画を全面の主画面として約3秒インサートする。挿入中は文字・箱を表示せず声を続け、素材へ寄る・横へ移動したあと、文字と箱の画面へ戻る。本人の記録写真ではなく生活を表すイラスト。</p>
 </div>
 </div>
 </section>
 <section class="cut" id="cut-10"><div class="cuthead"><div class="num">10</div>
-<div><h3>自分に許す。 <span class="need">要判断 3</span></h3>
+<div><h3>許してみてもいいのではないでしょうか。</h3>
 <p class="small">1:19–1:31 / 約12秒 ・ 本人の結論</p>
 </div>
 </div>
 <div class="frames"><figure><a href="assets/storyboard/cut-10-start.webp"><img src="assets/storyboard/cut-10-start.webp" width="1280" height="720" alt="カット10 はじめ：得たものと細い白を残した箱が右上に小さく見える。「刺激は、ありがたい。」が大きい。"></a><figcaption><b>はじめ</b> 得たものと細い白を残した箱が右上に小さく見える。「刺激は、ありがたい。」が大きい。</figcaption></figure>
-<figure><a href="assets/storyboard/cut-10-end.webp"><img src="assets/storyboard/cut-10-end.webp" width="1280" height="720" alt="カット10 おわり：「自分に許す。」が最大。箱には得たものと細い白の両方が残っている。"></a><figcaption><b>おわり</b> 「自分に許す。」が最大。箱には得たものと細い白の両方が残っている。</figcaption></figure>
+<figure><a href="assets/storyboard/cut-10-end.webp"><img src="assets/storyboard/cut-10-end.webp" width="1280" height="720" alt="カット10 おわり：「自分に許してみても／いいのではないでしょうか。」を大きな二行で残す。箱には得たものと細い白の両方が残っている。"></a><figcaption><b>おわり</b> 「自分に許してみても／いいのではないでしょうか。」を大きな二行で残す。箱には得たものと細い白の両方が残っている。</figcaption></figure>
 </div>
 <div class="details"><div><div class="label">画面の文字</div>
-<p class="words">刺激は、ありがたい。<br>余白を、前提にする。<br>立ち止まることを、<br>自分に許す。</p>
+<p class="words">刺激は、ありがたい。<br>余白を、前提にする。<br>立ち止まることを、<br>自分に許してみても<br>いいのではないでしょうか。</p>
 <div class="label">ナレーション</div>
-<p class="voice">刺激は、ありがたい。受け取り続けるには、回復の余白を前提にします。疲れきる前に立ち止まることを、自分に許します。</p>
+<p class="voice">刺激は、ありがたい。回復の余白を前提に、疲れきる前に少し立ち止まることを、自分に許してみてもいいのではないでしょうか。</p>
 <div class="label">主役の語</div>
-<p>「自分に許す。」で閉じる。結びの言い切り／問いかけだけは要判断3。</p>
+<p>「許してみてもいいのではないでしょうか。」で閉じる。本人の実感を土台に、疲れきる前の立ち止まりを自分に許す提案として残す。</p>
 </div>
 <div><div class="label">字組みと構図</div>
-<p>箱を隅に縮め、四行を階段に組む。冒頭の得られる／失われると同じ意味を、今後の選び方に着地させる。</p>
+<p>箱を隅に縮め、五行を階段に組む。冒頭の得られる／失われると同じ意味を、今後の選び方に着地させる。</p>
 <div class="label">動きの狙い</div>
-<p>箱を大きく引いて余白をつくり、行を順に押し出す。最後の行が最大になる。読む間も行の塊と画面の引きを続け、字形は崩さない。</p>
+<p>箱を大きく引いて余白をつくり、行を順に押し出す。結びの二行を大きく保ち、全文を読める時間を確保する。読む間も行の塊と画面の引きを続け、字形は崩さない。</p>
 <div class="label">次へ</div>
 <p>本文とナレーションを終えてから、ライムの全面へ切り替え、11の規定ロゴへ。</p>
 <div class="label">使う素材</div>
@@ -458,16 +459,16 @@ nav a.nav-need:hover{text-decoration:underline}
 </div>
 
 <h2 id="handoff">企画側／制作側</h2>
-<p>企画側は、主張・文言・声の原稿・構成・開始と終了の絵コンテ・採用イラスト3点・使用区間・切り取り方・音の条件を渡します。制作側は、図形と文字の仕上げ、Bロールの窓と寄り引き、合成、再生確認、書き出しを担当します。絵の完成形と運動の細部は制作側の裁量です。</p>
+<p>企画側は、主張・文言・声の原稿・構成・開始と終了の絵コンテ・採用イラスト3点・使用区間・切り取り方・音の条件を渡します。制作側は、図形と文字の仕上げ、Bロールへ全面を切り替える編集と寄り引き、合成、再生確認、書き出しを担当します。絵の完成形と運動の細部は制作側の裁量です。</p>
 <p>図の意味（同じ一つの箱）、得たものが消えないこと、余白を全回復させないこと、言葉の対比、医療表現を使わないことは維持してください。不足する写真・動画・イラストの調達は企画側へ返してください。音声ファイルの事前同梱は不要。音声のAPI生成は明示依頼の範囲だけで行います。</p>
 
 <h2 id="design">デザインシステム（映像）</h2>
-<ul><li>1920×1080・30fps。明るい紙色 <code>#F6F3EC</code>、墨 <code>#1C1915</code>。本編にライムは使わない。</li><li>文字は Noto Sans JP相当、400・700、詰め組（palt）。行や語の塊で動かし、文字の形を崩さない。</li><li>共通の箱の中に意味を集めるが、画面のレイアウトは、対になる二行、箱内の内訳、上下の大小、外に残る札、イラスト窓、結びの階段と変える。</li><li>安全域は目安として左右80px・上下64px。本編では全カットを0.25秒間隔で検査し、左右40px・上下30pxを割る文字と、意図しない重なりを修正する。</li><li>文字と図・イラストは別の層。図のカメラ運動で文字を切らない。イラストの上に読みにくい文字を重ねない。</li><li>イラストは07〜09で同じ暖かいガッシュ・鉛筆の質感に揃える。共通の箱の材質を一部だけ変えない。</li></ul>
+<ul><li>1920×1080・30fps。明るい紙色 <code>#F6F3EC</code>、墨 <code>#1C1915</code>。本編にライムは使わない。</li><li>文字は Noto Sans JP相当、400・700、詰め組（palt）。行や語の塊で動かし、文字の形を崩さない。</li><li>共通の箱の中に意味を集めるが、画面のレイアウトは、対になる二行、箱内の内訳、上下の大小、外に残る札、全面イラストへの切り替え、結びの階段と変える。</li><li>安全域は目安として左右80px・上下64px。本編では全カットを0.25秒間隔で検査し、左右40px・上下30pxを割る文字と、意図しない重なりを修正する。</li><li>文字と図・イラストは別の層。図のカメラ運動で文字を切らない。イラストの上に読みにくい文字を重ねない。</li><li>イラストは07〜09で同じ暖かいガッシュ・鉛筆の質感に揃える。共通の箱の材質を一部だけ変えない。</li></ul>
 
 <h2 id="motion">動きの言語</h2>
 <p>three.jsを図の層に推奨します。文字はDOM／CSS等の独立した層。フレーム時刻から寄り・横移動・回転・境界の位置を決め、シークしても同じ状態にします。入りと抜けだけでなく、読む間も行の塊・構図・画面を大きく動かします。常時の文字揺れ、脈動、意味のない粒子は使いません。</p>
 <p>Dolly inは図へ寄る動き、Truckは横移動、Whip panは短く勢いのある横の受け渡し、Zoom outは図を引いて文言の面積を作る動きです。各カットの動きは狙いであり、秒数・軌道・イージングの固定手順ではありません。</p>
-<p>07〜09は静止画自体に人の動きを捏造せず、切り取り窓とカメラの動きで挿入します。画像の品質を確認するため、07の文字・窓・小さな箱を組み合わせた代表区間を等速で試してから全編へ展開してください。<a href="effects-direction.md">演出参考と適合確認</a>は別資料です。</p>
+<p>07〜09のインサート中は、イラストが画面全面を担い、文字・箱は画面から退きます。静止画自体に人の動きを捏造せず、素材内の寄り引き・横移動で見せます。07の「文字と箱→全面イラスト→文字と箱」までを代表区間として等速で試し、声が途切れず、視線が素材へ切り替わり、元の文脈へ戻れることを確認してから全編へ展開してください。<a href="effects-direction.md">演出参考と適合確認</a>は別資料です。</p>
 
 <h2 id="symbols">記号と色</h2>
 <div class="tablewrap"><table><thead><tr><th>要素</th><th>意味</th></tr>
@@ -483,14 +484,15 @@ nav a.nav-need:hover{text-decoration:underline}
 <p>イラスト3点を採用。実写写真・外部の生成動画は使いません。地名・会社名を出さず、人物は架空の後ろ姿で、本人や家族の記録と誤認させない画風です。「子供」「家族」「奥さん」「娘」の呼称を画面・声には出しません。</p>
 <div class="tablewrap"><table><thead><tr><th>ファイル</th><th>役割・採用区間</th><th>切り取りと配置</th></tr>
 </thead><tbody>
-<tr><td><a href="assets/broll/family-time.webp">family-time.webp</a></td><td>07／0:52–0:55（参考）。一緒に本を見る二人。自分以外とも使う時間。</td><td>右側の人物と本を含める。顔を見せず、左の文言と別の窓へ。二人を灰色の負荷に置かない。</td></tr>
+<tr><td><a href="assets/broll/family-time.webp">family-time.webp</a></td><td>07／0:52–0:55（参考）。一緒に本を見る二人。自分以外とも使う時間。</td><td>全面表示。人物と本を残して寄る。挿入中は文字・図なし。二人を灰色の負荷に置かない。</td></tr>
 
-<tr><td><a href="assets/broll/rest-before-exhaustion.webp">rest-before-exhaustion.webp</a></td><td>08／1:03–1:06（参考）。パソコンを閉じ、休む準備。</td><td>パソコン・水・椅子を残す。医療行為として見せない。文言は左の紙色の面。</td></tr>
+<tr><td><a href="assets/broll/rest-before-exhaustion.webp">rest-before-exhaustion.webp</a></td><td>08／1:03–1:06（参考）。パソコンを閉じ、休む準備。</td><td>全面表示。パソコン・水・椅子を残して横へ移動。挿入中は文字・図なし。医療行為として見せない。</td></tr>
 
-<tr><td><a href="assets/broll/drink-in-moderation.webp">drink-in-moderation.webp</a></td><td>09／1:10–1:13（参考）。酒器と水。飲みすぎない。</td><td>二つのグラスを残し、酒器から水へ移動。銘柄・店名・ラベルなし。</td></tr>
+<tr><td><a href="assets/broll/drink-in-moderation.webp">drink-in-moderation.webp</a></td><td>09／1:11–1:14（参考）。酒器と水。飲みすぎない。</td><td>全面表示。二つのグラスを残し、酒器から水へ移動。挿入中は文字・図なし。銘柄・店名・ラベルなし。</td></tr>
 
-<tr><td><code>assets/storyboard/cut-01-start.webp</code>〜<code>cut-11-end.webp</code></td><td>各カットの開始・終了の構図</td><td>1280×720。完成動画ではない。</td></tr>
+<tr><td><code>assets/storyboard/cut-01-start.webp</code>〜<code>cut-11-end.webp</code></td><td>各カットの開始・終了の22枚と、07〜09のインサート中3枚（計25枚）</td><td>1280×720。完成動画ではない。</td></tr>
 
+<tr><td><code>assets/storyboard/cut-07-insert.webp</code>〜<code>cut-09-insert.webp</code></td><td>07〜09の全面インサート中</td><td>1280×720。前後の絵と合わせて時間の流れを示す。</td></tr>
 <tr><td><code>assets/broll/*.png</code></td><td>採用3点の生成原本</td><td>編集用WebPと区別して保存。</td></tr>
 
 <tr><td><code>../okady-work-logo.svg</code></td><td>11の規定ロゴ／1:31–1:36</td><td>リポジトリ共通素材。別環境へ渡す際は原本を含める。</td></tr>
@@ -505,11 +507,11 @@ nav a.nav-need:hover{text-decoration:underline}
 
 <h2 id="evidence">根拠</h2>
 <p>原稿との対応は <a href="references.md">references.md</a>。地名・会社名・訪問先・空港名、時刻・件数・料理や道具の固有名は出しません。ユーザー指定により、生活の具体像はイラストで補い、家族の呼称は使いません。予防接種・注射器・医療機関の絵は採用しません。</p>
-<p>04は出張に得るものがあるという留保、09は予防が分かっていても無理するという留保、07は今の生活という条件を残します。結びの表現だけは要判断3です。</p>
+<p>04は出張に得るものがあるという留保、09は予防が分かっていても無理するという留保、07は今の生活という条件を残します。結びは「許してみてもいいのではないでしょうか。」で確定しています。</p>
 
 <h2 id="done">完成条件・確認状態</h2>
-<ul><li>冒頭が「刺激は、得られる。余白は、失われる。」になっている。</li><li>一つの箱の中に得られたものと回復の余白があり、余白が失われても学び・出会い・縁が残る。</li><li>失う側に、やれたはずの作業や使えた時間が残る。家族の存在を負荷の原因として押しつぶさない。</li><li>07〜09は採用イラストの実ファイルから合成し、予防に医療表現を入れない。</li><li>地名・会社名と家族の呼称を出さない。</li><li>08以降の白い領域は細いまま。全回復や万能な予防を保証しない。</li><li>文字のはみ出し・意図しない重なりを検査し、代表区間の等速再生を確認した後、全編を仕上げる。</li><li>最後は規定ロゴ。アニメーションと保持・音の終わりを実際に再生して確認する。</li></ul>
-<p>今回の確認対象は、企画書・全22枚の絵コンテ・採用イラスト3点です。本編の運動・ナレーション・BGM・ロゴの等速再生は未制作／未確認です。静止画の構図確認を、動画の躍動感の合格とはしません。</p>
+<ul><li>冒頭が「刺激は、得られる。余白は、失われる。」になっている。</li><li>一つの箱の中に得られたものと回復の余白があり、余白が失われても学び・出会い・縁が残る。</li><li>失う側に、やれたはずの作業や使えた時間が残る。家族の存在を負荷の原因として押しつぶさない。</li><li>07〜09は声を継続し、文字と箱→全面イラスト→文字と箱と切り替える。常設の小窓で置き換えない。予防に医療表現を入れない。</li><li>全カットの画像内に章番号・カット番号・「はじめ／おわり」などの制作管理情報がない。</li><li>地名・会社名と家族の呼称を出さない。</li><li>08以降の白い領域は細いまま。全回復や万能な予防を保証しない。</li><li>文字のはみ出し・意図しない重なりを検査し、代表区間の等速再生を確認した後、全編を仕上げる。</li><li>最後は規定ロゴ。アニメーションと保持・音の終わりを実際に再生して確認する。</li></ul>
+<p>今回の確認対象は、企画書・全25枚の絵コンテ・採用イラスト3点です。本編の運動・ナレーション・BGM・ロゴの等速再生は未制作／未確認です。静止画の構図確認を、動画の躍動感の合格とはしません。</p>
 </main>
 <footer><div class="inner"><p>絵コンテ：<code>assets/storyboard/</code>。イラスト：<code>assets/broll/</code>。根拠：<a href="references.md">references.md</a>。</p>
 </div>
