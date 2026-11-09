@@ -1,0 +1,24 @@
+{
+  "date": "2026-11-09",
+  "mode": "built-in image_gen",
+  "assets": [
+    {
+      "file": "../images/rpg-map.png",
+      "prompt": "Use case: stylized-concept. Asset type: final background image for a Japanese kinetic-typography video, reusable top-down 2D RPG map. Generate one square, high-resolution image, 1536x1536 if possible. Original charming 16-bit pixel art, strict overhead orthographic view, crisp square pixel clusters, no isometric perspective. A small bright countryside village with muted sage green grass, tiny clusters of trees, a few blue-gray roof cottages away from the center, a narrow blue river along the right outer edge. Most important: a wide unobstructed beige dirt path forms an exact straight vertical and horizontal cross through the exact image center, continuing toward all four edges, no trees or buildings on these paths. This allows a separately composited orange pawn to move from center upward, then right. Upper horizontal cross path may join at y=35 percent, keep center vertical path clear. All landmarks stay within outer landscape, with center open and visually calm. Light cream, sage, dusty blue and warm stone palette; recognizable game-map pixel art at thumbnail size. Fine restrained paper-print texture, clean pixels not blurry. Flat evenly lit daytime, no gradients or dramatic lighting. No people, no player sprites, no cursor, no arrows, no text, no compass, no labels, no UI, no title, no border, no logo. Do not reproduce any existing game map or character. The whole square is map artwork, no surrounding desk or object.",
+      "generations": 1
+    },
+    {
+      "file": "../images/map-paper.png",
+      "prompt": "Use case: stylized-concept. Asset type: subtle blank paper texture for all map diagrams in a light-background motion graphics video. One landscape 16:9 image, preferably 1920x1080. Full bleed pale warm ivory map paper close to #f4f1ea, very fine natural cellulose fibers, faint shallow fold traces at one-third intervals, extremely low contrast, even neutral lighting. Crisp high-resolution material surface, flat overhead scanned texture, modern clean folded map paper, no stains, no torn or darkened edges, no objects, no text, no grid, no printed map, no vignette, no shadow gradient. Entire image has same light tone. Texture must be quiet enough behind small dark Japanese lettering.",
+      "generations": 1
+    },
+    {
+      "file": "../images/map-paper-curl.png",
+      "source": "../images/map-paper.png",
+      "generations": 1,
+      "prompt": "Edit this existing pale paper texture asset for a Japanese motion-graphics video. Keep its warm ivory tone, fine fibers, faint folds, full-frame 16:9 landscape composition and clean low contrast surface. Add one clearly visible small lifted curled paper corner at the extreme BOTTOM RIGHT: a gently rolling triangular curl with a warm-white underside and a soft short natural cast shadow on the paper immediately beside it. The curl should occupy approximately the rightmost 9 percent of image width and lowest 13 percent of image height. Give it enough dimensional shading to be recognizable at video storyboard size, but no dark harsh shadow. Keep the rest of the sheet perfectly unchanged, calm and flat. No other curled corners, no text, no map printed on paper, no objects, no desk, no distressed or torn edges, no vignette. This is a reusable full-bleed paper background, not a photographed sheet lying on a table."
+    }
+  ],
+  "cost": "ツールから金額・消費クレジットの通知なし。追加の外部APIは使用していない。",
+  "usage": "新規生成の架空の地図と紙面。既存ゲーム画面・ロゴ・キャラクターは使用していない。サービスの利用条件の個別確認は未実施。"
+}
