@@ -1,0 +1,817 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>AIに数えさせるな。答えが一つに決まる仕事はプログラムの仕事｜動画企画書</title><style>
+/* デジタル庁デザインシステム（DADS）のデザイントークン（@digital-go-jp/design-tokens）に沿ったスタイル。
+   20261102 の plan.html の style を複製。動画本編の配色とは別。 */
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Noto+Sans+Mono:wght@400;700&display=swap");
+:root{
+  --white:#ffffff;--black:#000000;
+  --gray-50:#f2f2f2;--gray-100:#e6e6e6;--gray-200:#cccccc;--gray-420:#949494;--gray-536:#767676;--gray-600:#666666;--gray-700:#4d4d4d;--gray-800:#333333;--gray-900:#1a1a1a;
+  --key-50:#e8f1fe;--key-100:#d9e6ff;--key-200:#c5d7fb;--key-900:#0017c1;--key-1000:#00118f;--key-1100:#000071;
+  --success-bg:#e6f5ec;--success-1:#259d63;--success-2:#197a4b;
+  --warning-bg:#fbf5e0;--warning-yellow-1:#b78f00;--warning-text:#806300;
+  --warning-orange-bg:#ffeee2;--warning-orange-1:#fb5b01;--warning-orange-2:#c74700;
+  --error-1:#ec0000;--focus-yellow:#ffd43d;--visited:#8b008b;
+  --font-sans:"Noto Sans JP",-apple-system,BlinkMacSystemFont,"Hiragino Sans",sans-serif;
+  --font-mono:"Noto Sans Mono","Noto Sans JP",monospace;
+  --r-4:.25rem;--r-8:.5rem;--r-12:.75rem;--r-16:1rem;--r-full:624.9375rem;
+  --elevation-1:0 2px 8px 1px rgba(0,0,0,.1),0 1px 5px 0 rgba(0,0,0,.3);
+  --ink:var(--gray-900);--line:var(--gray-200);--mut:var(--gray-700);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--white);color:var(--gray-800);font-family:var(--font-sans);font-size:1rem;font-weight:400;line-height:1.7;letter-spacing:.02em;-webkit-font-smoothing:antialiased}
+header .inner,main,nav .in,footer .inner{max-width:1120px;margin:0 auto;padding:0 24px}
+header{background:var(--white);border-bottom:1px solid var(--gray-420)}
+header .inner{padding-top:40px;padding-bottom:24px}
+.strata{height:4px;background:var(--key-900)}
+.eyebrow{display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px;font-size:.875rem;line-height:1.5;color:var(--gray-700);letter-spacing:.04em}
+h1{font-size:2.25rem;line-height:1.4;font-weight:700;color:var(--gray-900);letter-spacing:.01em;margin:16px 0 8px}
+h2{font-size:1.75rem;line-height:1.5;font-weight:700;color:var(--gray-900);margin:64px 0 24px;padding:0 0 8px;border-bottom:1px solid var(--gray-420);scroll-margin-top:72px}
+h3{font-size:1.25rem;line-height:1.5;font-weight:700;color:var(--gray-900);margin:32px 0 12px}
+.cuthead h3{margin:0}
+p{margin:0 0 16px}
+.lead{font-size:1.125rem;line-height:1.6;font-weight:700;color:var(--gray-900)}
+.small{font-size:.875rem;line-height:1.7;color:var(--gray-700)}
+b,strong{font-weight:700;color:var(--gray-900)}
+a{color:var(--key-1000);text-decoration:underline;text-underline-offset:.2em;text-decoration-thickness:1px}
+a:visited{color:var(--visited)}
+a:hover{color:var(--key-1100);text-decoration-thickness:3px}
+a:active{color:var(--warning-orange-2)}
+a:focus-visible{outline:4px solid var(--black);outline-offset:2px;background:var(--focus-yellow);color:var(--black);border-radius:var(--r-4)}
+.chip{display:inline-block;background:var(--key-50);color:var(--key-1000);border:1px solid var(--key-900);border-radius:var(--r-4);padding:2px 8px;font-size:.875rem;line-height:1.5;font-weight:700;letter-spacing:.02em}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin:24px 0 0;padding:0;list-style:none}
+.meta span{background:var(--gray-50);border:1px solid var(--gray-200);border-radius:var(--r-4);padding:4px 12px;font-size:.875rem;line-height:1.5;color:var(--gray-800)}
+nav{position:sticky;top:0;background:var(--white);border-bottom:1px solid var(--gray-420);z-index:5;box-shadow:0 1px 4px rgba(0,0,0,.08)}
+nav .in{display:flex;flex-wrap:wrap;gap:4px 20px;padding-top:12px;padding-bottom:12px;font-size:.875rem;line-height:1.5}
+nav a,nav a:visited{color:var(--key-1000);font-weight:700}
+.box{background:var(--white);border:1px solid var(--gray-420);border-radius:var(--r-8);padding:24px;margin:16px 0}
+.box > :last-child{margin-bottom:0}
+.box.accent{background:var(--key-50);border:1px solid var(--key-900);border-left:8px solid var(--key-900)}
+.box.accent .lead{margin:0}
+.tablewrap{overflow-x:auto;margin:16px 0}
+table{border-collapse:collapse;width:100%;background:var(--white);font-size:1rem;line-height:1.7;margin:16px 0;border-top:1px solid var(--gray-420)}
+.tablewrap table{margin:0}
+th,td{border-bottom:1px solid var(--gray-420);padding:12px 16px;text-align:left;vertical-align:top}
+th{background:var(--gray-50);color:var(--gray-900);font-weight:700;font-size:.875rem;line-height:1.5;border-bottom:2px solid var(--gray-800);white-space:nowrap}
+tr:hover td{background:var(--key-50)}
+.cut{background:var(--white);border:1px solid var(--gray-420);border-radius:var(--r-16);padding:32px;margin:32px 0;scroll-margin-top:72px}
+.cuthead{display:flex;gap:16px;align-items:center;margin-bottom:24px;padding-bottom:16px;border-bottom:1px solid var(--gray-200)}
+.cuthead p{margin:4px 0 0}
+.num{font-size:1.5rem;line-height:1;font-weight:700;color:var(--white);background:var(--key-900);border-radius:var(--r-8);min-width:56px;height:56px;display:flex;align-items:center;justify-content:center;flex:none;font-feature-settings:"tnum"}
+.frames.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+.frames{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+figure{margin:0}
+figure img{width:100%;height:auto;display:block;border:1px solid var(--gray-200);border-radius:var(--r-8);background:var(--white)}
+figure a:focus-visible{display:block;background:none}
+figcaption{font-size:.875rem;line-height:1.7;margin-top:8px;color:var(--gray-800)}
+.details{display:grid;grid-template-columns:1fr 1.15fr;gap:8px 40px;margin-top:32px}
+.details p{margin:4px 0}
+.label{font-size:.875rem;line-height:1.3;font-weight:700;color:var(--key-1000);margin-top:20px;padding-left:8px;border-left:4px solid var(--key-900)}
+.details > div > .label:first-child{margin-top:0}
+.words{font-size:1.125rem;line-height:1.6;font-weight:700;color:var(--gray-900);margin:8px 0}
+.voice{background:var(--gray-50);border-left:4px solid var(--gray-600);border-radius:0 var(--r-4) var(--r-4) 0;padding:12px 16px;margin:8px 0;font-size:1rem;line-height:1.7;color:var(--gray-800)}
+ul{margin:8px 0 16px;padding-left:1.5em}
+li{margin:4px 0}
+li::marker{color:var(--gray-600)}
+code{font-family:var(--font-mono);background:var(--gray-50);border:1px solid var(--gray-200);padding:0 4px;border-radius:var(--r-4);font-size:.875em;color:var(--gray-900);word-break:break-all}
+.sw{display:inline-block;width:16px;height:16px;border-radius:var(--r-4);vertical-align:-3px;margin-right:8px;border:1px solid var(--gray-420)}
+.tag{display:inline-block;border-radius:var(--r-4);padding:0 8px;font-size:.8125rem;line-height:1.7;font-weight:700;margin-right:8px;border:1px solid}
+.t-un{background:var(--warning-bg);color:var(--warning-text);border-color:var(--warning-yellow-1)}
+footer{border-top:1px solid var(--gray-420);background:var(--gray-50);margin-top:80px;padding:24px 0;font-size:.875rem;color:var(--gray-700)}
+h2.part{margin-top:96px;padding:16px 24px;border:none;border-radius:var(--r-8);background:var(--gray-50);border-left:8px solid var(--gray-800);font-size:1.5rem}
+h2.part + .small{margin-top:-8px}
+.navsep{color:var(--gray-700);font-weight:700;padding-left:12px;border-left:1px solid var(--gray-420)}
+.decide{margin:48px 0 16px;padding:24px 32px 24px;background:var(--warning-orange-bg);border:1px solid var(--warning-orange-1);border-left:8px solid var(--warning-orange-1);border-radius:var(--r-8)}
+.decide h2{margin:0 0 8px;border-bottom:none;padding:0;color:var(--gray-900)}
+.decide > .small{color:var(--gray-800)}
+.decide-list{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:12px}
+.decide-list li{display:flex;gap:12px;align-items:flex-start;background:var(--white);border:1px solid var(--gray-420);border-radius:var(--r-8);padding:12px 16px;margin:0}
+.decide-list .need{min-width:28px;justify-content:center;margin:2px 0 0}
+.where{display:block;font-size:.875rem;color:var(--gray-700);margin-top:4px}
+.need{display:inline-flex;align-items:center;background:var(--warning-orange-2);color:var(--white);border-radius:var(--r-4);padding:0 8px;font-size:.8125rem;line-height:1.7;font-weight:700;letter-spacing:.02em;margin:0 8px;vertical-align:.15em;white-space:nowrap}
+h2 .need{font-size:.875rem}
+nav a.nav-need,nav a.nav-need:visited{background:var(--warning-orange-2);color:var(--white);padding:0 8px;border-radius:var(--r-4);text-decoration:none}
+nav a.nav-need:hover{text-decoration:underline}
+.swap{margin-top:8px}
+@media(max-width:760px){
+  header .inner,main,nav .in,footer .inner{padding:0 16px}
+  header .inner{padding-top:24px;padding-bottom:16px}
+  .frames,.frames.three,.details{grid-template-columns:1fr}
+  h1{font-size:1.75rem;line-height:1.5}
+  h2{font-size:1.5rem;margin-top:48px}
+  .cut{padding:20px;border-radius:var(--r-12)}
+  .box,.decide{padding:16px}
+  table{font-size:.875rem}
+  th,td{padding:8px 12px}
+  th{white-space:normal}
+}
+@media print{nav{position:static;box-shadow:none}.cut{break-inside:avoid}}
+</style>
+</head>
+<body>
+<header>
+<div class="inner">
+<div class="eyebrow">VIDEO PLAN / 2026.11.10 <span class="chip">企画・絵コンテ</span></div>
+<h1>AIに数えさせるな。答えが一つに決まる仕事はプログラムの仕事</h1>
+<p class="lead">見落としの原因は手抜きではなく、渡し方と、任せた仕事の種類。</p>
+<p>元にした note 記事：「AIに数えさせるな。答えが一つに決まる仕事はプログラムの仕事」<a href="https://note.com/dhythm/n/nc1727278b8fb">https://note.com/dhythm/n/nc1727278b8fb</a>（公開済み）<br>
+原稿：<code>dhythm/private-note</code> の <code>Zettelkasten/PermanentNote/20261017_AIに数えさせるな。答えが一つに決まる仕事はプログラムの仕事.md</code>（本文は同梱しない）</p>
+<div class="meta">
+<span>16:9・1920×1080・30fps</span>
+<span>本編 1:59＋ロゴ 5 秒＝2:04</span>
+<span>本編 13 カット＋ロゴ</span>
+<span>声 609 字／画面 256 字</span>
+<span>採用する画像・動画ファイルはなし（MG）</span>
+<span>実速再生は未確認</span>
+<span>BGM・効果音は後回し</span>
+</div>
+</div>
+<div class="strata"></div>
+</header>
+
+<nav><div class="in">
+<a class="nav-need" href="#decide">判断してほしい点（3）</a>
+<a href="#claim">主張</a>
+<a href="#viewer">視聴者</a>
+<a href="#structure">構成と尺</a>
+<a href="#cuts">カット表</a>
+<span class="navsep">詳細：</span>
+<a href="#roles">声・文字・素材</a>
+<a href="#claim-map">主張・根拠・留保</a>
+<a href="#handoff">企画側／制作側</a>
+<a href="#design">デザインシステム</a>
+<a href="#motion">動き</a>
+<a href="#symbols">記号と色</a>
+<a href="#character">キャラ設定</a>
+<a href="#swaps">差し替え候補</a>
+<a href="#assets">素材</a>
+<a href="#sound">音</a>
+<a href="#evidence">根拠</a>
+<a href="#done">完成条件・確認状態</a>
+</div></nav>
+
+<main>
+<div class="decide" id="decide">
+<h2>未確定事項と判断してほしい点</h2>
+<p class="small">ここだけが判断の依頼です。ほかの節は決定済みの情報です。AI で映像を生成する選択は、承認が必要です。この企画では生成していません。</p>
+<ol class="decide-list">
+<li><span class="need">1</span><div>ファイルカードを、フラットなモーショングラフィックスのままにするか、紙のカードの生成動画にするか。<span class="where">選択肢：A 全カットを明るい MG にする（基本。絵コンテのとおり）／ B カードが出る 01・02・04・05・06・07・12 を、同じ紙カードの生成動画で揃える（<a href="#swaps">差し替え候補</a>）。B は未承認で、生成していません。一部のカットだけ質感を変えません。</span></div></li>
+<li><span class="need">2</span><div>結びの声を、本人の言い方で閉じるか、原稿末尾の呼びかけを足すか。<span class="where">選択肢：A 「私は、能力より先に渡し方を見ます」（基本。<a href="#cut-13">カット 13</a>）／ B そのあとに、声だけで「渡し方を疑ってみてください」を足す。画面は A の三行のまま、問いで閉じません。</span></div></li>
+<li><span class="need">3</span><div>「人でも、書類の山なら同じかもしれない」を、どこに残すか。<span class="where">選択肢：A 声だけ（基本。<a href="#cut-05">カット 05</a>。人の絵は出しません）／ B 画面に灰の一行「人でも、同じかもしれない。」を足す。絵は足しません。</span></div></li>
+</ol>
+</div>
+
+<h2 id="claim">この動画で伝える一文</h2>
+<div class="box accent"><p class="lead">「問題ありません」の裏に見落としが残ったのは、AIが手を抜いたからではない。注意が薄まる渡し方と、答えが一つに決まる仕事まで任せたことが原因だ。差分・件数・文字数はプログラムに、意味と影響の判断だけをAIに渡す。筆者は、その分け方を先に選ぶ。</p></div>
+<p>「AIが問題ありませんと言ったのに見落としがあったのは、手抜きだからだ」という思い込みに対して、渡し方と仕事の分け方を伝えます。残る気持ちは、同じAIでも聞き方で結果が変わる、という本人の確信です。全員のAI利用がこれで成功する、という話にはしません。</p>
+
+<h2 id="viewer">視聴者</h2>
+<p>たくさんのファイルをまとめて渡し、「問題ありません」を受け取った人。見落としを、AIの手抜きや信用の問題として受け取っている人。プログラムとAIのどちらに何を渡すかを、自分の頼み方として持って帰れる人。</p>
+
+<h2 id="structure">構成と尺</h2>
+<p>声は経緯・留保・結論、文字は決め語、図は「注意が薄まる」「一つずつ照らす」「歯車と吹き出しに分かれる」を運びます。説明の全文は画面に載せません。ナレーションありで尺を計算しています。この企画書は、API で音声を生成する許可ではありません。</p>
+<div class="tablewrap"><table>
+<thead><tr><th>カット</th><th>参考区間</th><th>この区間で伝えること</th><th>声／画面</th></tr></thead>
+<tbody>
+<tr><td><a href="#cut-01">01 問題ありません</a></td><td>0:00–0:07（7秒）</td><td>まとめて渡すと、問題ありませんと返る</td><td>36字／7字</td></tr>
+<tr><td><a href="#cut-02">02 変更が残っていた</a></td><td>0:07–0:14（7秒）</td><td>見ていないファイルに、大事な変更が残っていた</td><td>35字／19字</td></tr>
+<tr><td><a href="#cut-03">03 手抜き？　渡し方？</a></td><td>0:14–0:21（7秒）</td><td>手抜きだと受け取られがちだが、本人は渡し方だと考える</td><td>37字／8字</td></tr>
+<tr><td><a href="#cut-04">04 注意力の予算</a></td><td>0:21–0:29（8秒）</td><td>まとめて渡すほど注意は薄く、書いてあっても読み飛ばす</td><td>42字／33字</td></tr>
+<tr><td><a href="#cut-05">05 真ん中が、抜ける</a></td><td>0:29–0:39（10秒）</td><td>長い入力の真ん中ほど見落とす。人でも同じかもしれない</td><td>52字／26字</td></tr>
+<tr><td><a href="#cut-06">06 一つずつ、くっきり</a></td><td>0:39–0:51（12秒）</td><td>念押しより、一つずつ渡すと全部に一度は目が通る</td><td>48字／13字</td></tr>
+<tr><td><a href="#cut-07">07 問題なしは、渡さない</a></td><td>0:51–1:05（14秒）</td><td>気になるものだけを渡し、見落としようがない形を先に選ぶ</td><td>87字／20字</td></tr>
+<tr><td><a href="#cut-08">08 答えは、揺れる</a></td><td>1:05–1:12（7秒）</td><td>AIの答えは揺れ、一つに決まる仕事とは別</td><td>28字／19字</td></tr>
+<tr><td><a href="#cut-09">09 歯車と、吹き出し</a></td><td>1:12–1:22（10秒）</td><td>差分・件数・文字数はプログラム、意味と影響はAI</td><td>42字／24字</td></tr>
+<tr><td><a href="#cut-10">10 道具を、持たせる</a></td><td>1:22–1:30（8秒）</td><td>別のAIの確認は関門。道具は苦手なところにだけ足す</td><td>41字／20字</td></tr>
+<tr><td><a href="#cut-11">11 事情が、要る</a></td><td>1:30–1:38（8秒）</td><td>急ぐのか網羅するのか、返信すべきかは、伝えないと分からない</td><td>47字／19字</td></tr>
+<tr><td><a href="#cut-12">12 任せたいのは、判断</a></td><td>1:38–1:51（13秒）</td><td>任せたいのは判断。漏れなく拾う仕事は負け戦になりやすい</td><td>77字／23字</td></tr>
+<tr><td><a href="#cut-13">13 渡し方を、先に</a></td><td>1:51–1:59（8秒）</td><td>本人は渡し方を先に見る。同じAIでも聞き方で変わる</td><td>37字／25字</td></tr>
+<tr><td><a href="#cut-14">14 エンドロゴ</a></td><td>1:59–2:04（5秒）</td><td>制作表示</td><td>0字／0字</td></tr>
+</tbody></table></div>
+<p class="small">尺の計算：声 609 字（句読点を含む。空白と改行は除く）÷ 約 7 字/秒に、文末ごとに約 0.4 秒を足して切り上げています。05 の光が抜ける時間、06 の 20 枚×約 0.4 秒と寄りの約 2 秒、09 の仕分けを見る時間は、声より長いので下限にしています（05 は 10 秒、06 は 12 秒、09 は 10 秒）。本編 119 秒、ロゴ 5 秒で 2 分 04 秒です。7 字/秒は読了の目安であり、原稿の測定値ではありません。等速で読む時間と、カードを見る時間が足りるかは、制作側の試作で判断します。試作で伸びる場合は、11 の「返信すべきか」と 07 のコストの一文から削ります。09 と 13 の分け方は残します。</p>
+
+<h2 id="cuts">カット表・絵コンテ</h2>
+<p>1280×720、明るい背景の構図ラフです。番号と「はじめ／おわり」は、このページの見出しとキャプションにだけあります。画像の中には入れていません。絵コンテの文字は Noto Sans CJK JP です。秒数・位置は、06 の送りと寄り、14 のロゴのタイミング以外は参考値です。実装の手順は制作側が決めます。画面全体を大きく動かすこと、文字が読めること、留保を残すことは緩めません。</p>
+<p>動きの軸は三つです。20 枚のカードに広げた光が薄まり、真ん中が抜ける。同じカードを 1 枚ずつ中央へ送ると、毎回くっきり照らされる。最後に「差分・件数・文字数」は歯車へ、「意味・影響」は吹き出しへ分かれる。20 枚は絵の密度であり、原稿にある件数ではありません。画面に「20」とは書きません。</p>
+
+<section class="cut" id="cut-01">
+<div class="cuthead"><div class="num">01</div><div>
+<h3>問題ありません</h3>
+<p class="small">0:00–0:07 / 約 7 秒 ・ 導入</p>
+</div></div>
+<div class="frames">
+<figure><a href="assets/storyboard/cut-01-start.webp"><img src="assets/storyboard/cut-01-start.webp" width="1280" height="720" alt="明るい紙の上に、白いファイルカードが二十枚、格子に並ぶ。"></a>
+<figcaption><b>はじめ</b> 白いカードが 5×4 で並ぶ。吹き出しはまだない。</figcaption></figure>
+<figure><a href="assets/storyboard/cut-01-end.webp"><img src="assets/storyboard/cut-01-end.webp" width="1280" height="720" alt="格子の中央に灰色の吹き出し。周りのカードの一部は灰色。"></a>
+<figcaption><b>おわり</b> 中央の穴に「問題ありません」。触れているカードは灰色で、橙の変更が二枚に残る。</figcaption></figure>
+</div>
+<div class="details"><div>
+<div class="label">画面の文字</div>
+<p class="words">問題ありません</p>
+<div class="label">ナレーション</div>
+<p class="voice">たくさんのファイルをまとめて渡すと、「問題ありません」と返ってきました。</p>
+<div class="label">字数</div>
+<p class="small">声 36 字／画面 7 字</p>
+<div class="label">主役の語</div>
+<p>「問題ありません」。結論ではなく、続きを見る理由です。灰の吹き出しなので、正しい判定には見えません。</p>
+</div><div>
+<div class="label">字組みと構図</div>
+<p>はじめはカードだけの格子で、余白が均等です。おわりは中央の吹き出しが最大で、文字はその中の一行です。重心は格子から、吹き出しへ移ります。</p>
+<div class="label">動きの狙い</div>
+<p>カードの層へ <a href="#dolly">寄り</a>、吹き出しがしっぽから <a href="#land">着地</a> します。読む間もカードの列を少し <a href="#drift">流し</a>、字の形は崩しません。</p>
+<div class="label">次へ</div>
+<p>吹き出しが上へ抜け、灰色のカードが手前へ <a href="#push">押し出す</a>。</p>
+<div class="label">使う素材</div>
+<p>カードと吹き出しはモーショングラフィックス。画像・動画ファイルは使いません。</p>
+</div></div>
+</section>
+
+<section class="cut" id="cut-02">
+<div class="cuthead"><div class="num">02</div><div>
+<h3>変更が残っていた</h3>
+<p class="small">0:07–0:14 / 約 7 秒 ・ 見落とし</p>
+</div></div>
+<div class="frames">
+<figure><a href="assets/storyboard/cut-02-start.webp"><img src="assets/storyboard/cut-02-start.webp" width="1280" height="720" alt="上に小さな吹き出し。下の格子は真ん中のカードが灰色。"></a>
+<figcaption><b>はじめ</b> 吹き出しは上へ退き、格子の真ん中はすでに灰色。</figcaption></figure>
+<figure><a href="assets/storyboard/cut-02-end.webp"><img src="assets/storyboard/cut-02-end.webp" width="1280" height="720" alt="左に二行の文字。右に灰色の大きなカードが二枚、橙の帯がある。"></a>
+<figcaption><b>おわり</b> 左の二行と、右の灰色カード。橙の帯は、残っていた変更。</figcaption></figure>
+</div>
+<div class="details"><div>
+<div class="label">画面の文字</div>
+<p class="words">見ていないところに、<br>変更が残っていた。</p>
+<div class="label">ナレーション</div>
+<p class="voice">人の目で確かめると、見ていないファイルに、大事な変更が残っていました。</p>
+<div class="label">字数</div>
+<p class="small">声 35 字／画面 19 字</p>
+<div class="label">主役の語</div>
+<p>「変更が残っていた。」二行目を大きくし、灰のカードの橙の帯と呼応させます。</p>
+</div><div>
+<div class="label">字組みと構図</div>
+<p>はじめは上に小さな吹き出し、下に格子です。おわりは左の横組みと、右の大きなカード二枚です。01 の中央集中から、左右に分かれます。</p>
+<div class="label">動きの狙い</div>
+<p>吹き出しが抜けたあと、灰色のカードが手前へ来ます。二行は行のマスクから入り、下の白いカードは小さく残して「全部が同じではなかった」を見せます。</p>
+<div class="label">次へ</div>
+<p>カードが左右へ分かれ、問いの二語が <a href="#land">着地</a> する場所を空ける。</p>
+<div class="label">使う素材</div>
+<p>カードはモーショングラフィックス。差分ツールの画面は描きません。</p>
+</div></div>
+</section>
+
+<section class="cut" id="cut-03">
+<div class="cuthead"><div class="num">03</div><div>
+<h3>手抜き？　渡し方？</h3>
+<p class="small">0:14–0:21 / 約 7 秒 ・ 問い</p>
+</div></div>
+<div class="frames">
+<figure><a href="assets/storyboard/cut-03-start.webp"><img src="assets/storyboard/cut-03-start.webp" width="1280" height="720" alt="左に大きな灰色の文字、手抜き？"></a>
+<figcaption><b>はじめ</b> 「手抜き？」だけが大きく出る。</figcaption></figure>
+<figure><a href="assets/storyboard/cut-03-end.webp"><img src="assets/storyboard/cut-03-end.webp" width="1280" height="720" alt="左に小さい手抜き、右に大きい藍の渡し方？"></a>
+<figcaption><b>おわり</b> 「手抜き？」は小さく残り、「渡し方？」が藍で大きい。</figcaption></figure>
+</div>
+<div class="details"><div>
+<div class="label">画面の文字</div>
+<p class="words">手抜き？<br>渡し方？</p>
+<div class="label">ナレーション</div>
+<p class="voice">手を抜いた、と受け取られがちです。私は、苦手な渡し方だったと考えています。</p>
+<div class="label">字数</div>
+<p class="small">声 37 字／画面 8 字</p>
+<div class="label">主役の語</div>
+<p>「渡し方？」。問いはここまでで、答えは声が先に言います。画面はまだ疑問符のまま、両論を同じ大きさでは置きません。</p>
+</div><div>
+<div class="label">字組みと構図</div>
+<p>カードが消え、語だけになります。はじめは左の一語。おわりは左が小さく、右が大きい。このカットだけ、図がありません。</p>
+<div class="label">動きの狙い</div>
+<p>カードが割れて抜け、<a href="#land">着地</a> するのは語の塊です。着地のあと、紙面を少し <a href="#drift">流し</a> て止めません。字は回しません。</p>
+<div class="label">次へ</div>
+<p>「渡し方？」が縮み、04 の「予算。」が同じ藍で入る。</p>
+<div class="label">使う素材</div>
+<p>文字だけです。</p>
+</div></div>
+</section>
+
+<section class="cut" id="cut-04">
+<div class="cuthead"><div class="num">04</div><div>
+<h3>注意力の予算</h3>
+<p class="small">0:21–0:29 / 約 8 秒 ・ 性質</p>
+</div></div>
+<div class="frames">
+<figure><a href="assets/storyboard/cut-04-start.webp"><img src="assets/storyboard/cut-04-start.webp" width="1280" height="720" alt="左上に小さい注意力の、その下に大きな予算。"></a>
+<figcaption><b>はじめ</b> 「予算。」が一語で大きい。</figcaption></figure>
+<figure><a href="assets/storyboard/cut-04-end.webp"><img src="assets/storyboard/cut-04-end.webp" width="1280" height="720" alt="上に短い文。下に小さなカードが二列、暖色の光が輪になっている。"></a>
+<figcaption><b>おわり</b> 二十枚の小カードに、薄い輪の光。出典は Anthropic Engineering。</figcaption></figure>
+</div>
+<div class="details"><div>
+<div class="label">画面の文字</div>
+<p class="words">注意力の、予算。<br>薄くなる。<br>Anthropic Engineering</p>
+<div class="label">ナレーション</div>
+<p class="voice">AIには、注意力の予算があります。読めても目は配れず、書いてあっても読み飛ばします。</p>
+<div class="label">字数</div>
+<p class="small">声 42 字／画面 33 字（出典の空白は数えない）</p>
+<div class="label">主役の語</div>
+<p>「予算。」。注意を、量として一度大きく見せてから、カードの上で薄くします。</p>
+</div><div>
+<div class="label">字組みと構図</div>
+<p>はじめは左の二段で、「予算。」だけ特大です。おわりは上に三行、下に 10×2 の小カードです。03 の語だけの画面から、再びカードの面へ戻ります。</p>
+<div class="label">動きの狙い</div>
+<p>「予算。」が <a href="#land">着地</a> したあと、カードの列が下から入り、光が <a href="#spread">広がり</a> 始めます。出典は灰の小さな一行で、ロゴにはしません。</p>
+<div class="label">次へ</div>
+<p>小カードの列が、05 の 5×4 へ組み替わりながら寄る。</p>
+<div class="label">使う素材</div>
+<p>カードと光はモーショングラフィックス。Anthropic の記事本文と図は使いません。</p>
+</div></div>
+</section>
+
+<section class="cut" id="cut-05">
+<div class="cuthead"><div class="num">05</div><div>
+<h3>真ん中が、抜ける <span class="need">要判断 1</span> <span class="need">要判断 3</span></h3>
+<p class="small">0:29–0:39 / 約 10 秒 ・ 見せ場</p>
+</div></div>
+<div class="frames">
+<figure><a href="assets/storyboard/cut-05-start.webp"><img src="assets/storyboard/cut-05-start.webp" width="1280" height="720" alt="二十枚の白いカード。中央の六枚だけに、小さな暖色の光。"></a>
+<figcaption><b>はじめ</b> 光は中央の六枚にまだ集まっている。</figcaption></figure>
+<figure><a href="assets/storyboard/cut-05-end.webp"><img src="assets/storyboard/cut-05-end.webp" width="1280" height="720" alt="外側のカードに薄い輪の光。中央の六枚は灰色。"></a>
+<figcaption><b>おわり</b> 光は輪になって薄まり、真ん中の六枚が灰色の穴になる。</figcaption></figure>
+</div>
+<div class="details"><div>
+<div class="label">画面の文字</div>
+<p class="words">真ん中ほど、見落とす。<br>arXiv 2307.03172</p>
+<div class="label">ナレーション</div>
+<p class="voice">最初と最後は答えられても、真ん中ほど見落とされ、精度が落ちます。人でも、書類の山なら同じかもしれません。</p>
+<div class="label">字数</div>
+<p class="small">声 52 字／画面 26 字</p>
+<div class="label">主役の語</div>
+<p>「見落とす。」。語は上に固定し、意味の変化は光とカードの色が受け持ちます。</p>
+</div><div>
+<div class="label">字組みと構図</div>
+<p>上下は同じ位置の見出しと出典です。変わるのは格子の光です。はじめは中央が明るく、おわりは外側が暖色、中央が灰色です。暗い画面にはしません。灰色は、光が抜けたカードです。</p>
+<div class="label">動きの狙い</div>
+<p>一つの光が <a href="#spread">広がり</a>、半径とともに不透明度が下がり、中央が穴になります。外側のカードに薄い光が残り、最初と最後はまだ見える、という研究の言い方と揃えます。読む間、格子全体をゆっくり <a href="#dolly">寄せ</a> ます。約 10 秒は、この抜けを見る下限です。</p>
+<div class="label">次へ</div>
+<p>灰色の穴の位置から、06 でカードが 1 枚ずつ中央へ飛び始める。</p>
+<div class="label">使う素材</div>
+<p>基本は円形グラデーションの MG です。<span class="need">要判断 1</span></p>
+<div class="label">人のたとえ <span class="need">要判断 3</span></div>
+<p class="swap">A（基本）：「人でも、書類の山なら同じかもしれません」は声だけ。人の絵は出しません。B：灰の一行を、出典の上に足す。絵は足しません。</p>
+</div></div>
+</section>
+
+<section class="cut" id="cut-06">
+<div class="cuthead"><div class="num">06</div><div>
+<h3>一つずつ、くっきり</h3>
+<p class="small">0:39–0:51 / 約 12 秒 ・ 見せ場</p>
+</div></div>
+<div class="frames">
+<figure><a href="assets/storyboard/cut-06-start.webp"><img src="assets/storyboard/cut-06-start.webp" width="1280" height="720" alt="上に一つずつ。下は中央が灰色の二十枚。"></a>
+<figcaption><b>はじめ</b> 05 の穴が残った格子。上に「一つずつ。」</figcaption></figure>
+<figure><a href="assets/storyboard/cut-06-end.webp"><img src="assets/storyboard/cut-06-end.webp" width="1280" height="720" alt="中央の大きなカードに暖色の光。左右に小さなカードの列。"></a>
+<figcaption><b>おわり</b> 一枚が中央で大きく、くっきり照らされる。左右は待ちと、送り終えた列。</figcaption></figure>
+</div>
+<div class="details"><div>
+<div class="label">画面の文字</div>
+<p class="words">一つずつ。<br>毎回、くっきり。</p>
+<div class="label">ナレーション</div>
+<p class="voice">「全部見ましたか」と念を押すより、一つずつ渡します。数だけ繰り返せば、全部に一度は目が通ります。</p>
+<div class="label">字数</div>
+<p class="small">声 48 字／画面 13 字</p>
+<div class="label">主役の語</div>
+<p>「一つずつ。」。語より、一枚が光を独占する絵の方が長い時間を使います。</p>
+</div><div>
+<div class="label">字組みと構図</div>
+<p>はじめは見出しと格子です。おわりは上の二行、中央の大カード、左右の縦の列です。05 の等間隔から、中央が極端に大きい構図へ変わります。</p>
+<div class="label">動きの狙い</div>
+<p>20 枚を、1 枚あたり約 0.4 秒で中央へ <a href="#send">送り</a> ます。送ったカードは暖色の光を一度受け、脇の列へ退きます。最後の約 2 秒で中央の一枚へ <a href="#dolly">寄ります</a>。この 12 秒は、声の 7.7 秒より長く、送りと寄りを見る下限です。間隔と寄りの長さは守ります。加減速は制作側が決めます。</p>
+<div class="label">次へ</div>
+<p>照らされ終えたカードが、07 で「問題なし」の札と、残すカードに分かれる。</p>
+<div class="label">使う素材</div>
+<p>カードと光は 05 と同じ MG です。ここだけ動画にはしません。</p>
+</div></div>
+</section>
+
+<section class="cut" id="cut-07">
+<div class="cuthead"><div class="num">07</div><div>
+<h3>問題なしは、渡さない</h3>
+<p class="small">0:51–1:05 / 約 14 秒 ・ 絞る</p>
+</div></div>
+<div class="frames">
+<figure><a href="assets/storyboard/cut-07-start.webp"><img src="assets/storyboard/cut-07-start.webp" width="1280" height="720" alt="大きさの違うカードが、画面にばらけて並ぶ。"></a>
+<figcaption><b>はじめ</b> 大きさの違うカードが、まだ混ざっている。</figcaption></figure>
+<figure><a href="assets/storyboard/cut-07-end.webp"><img src="assets/storyboard/cut-07-end.webp" width="1280" height="720" alt="左に問題なしの札が三枚。右に白いカードが三枚。"></a>
+<figcaption><b>おわり</b> 左の札は渡さないもの。右に残った三枚だけが次の材料。</figcaption></figure>
+</div>
+<div class="details"><div>
+<div class="label">画面の文字</div>
+<p class="words">気になるものだけ。<br>問題なしは、渡さない。</p>
+<div class="label">ナレーション</div>
+<p class="voice">気になるものだけを次に渡し、問題なしはもう渡しません。昔は手間で現実的ではなく、今は一つずつでも、コストはそれほどかかりません。見落としようがない渡し方を、最初から選びます。</p>
+<div class="label">字数</div>
+<p class="small">声 87 字／画面 20 字</p>
+<div class="label">主役の語</div>
+<p>「気になるものだけ。」。札の「問題なし」は、もう渡さない印で、灰色の見落としカードとは別の形です。</p>
+</div><div>
+<div class="label">字組みと構図</div>
+<p>はじめは大小のカードが散ります。おわりは左に見出しと三枚の札、右に三枚のカードです。06 の中央一点から、左右の役割分担へ変わります。</p>
+<div class="label">動きの狙い</div>
+<p>札が左へ抜け、残るカードだけが手前で大きくなります。材料が減るたびに、カメラは残ったカードへ寄ります。読む間も札の列はゆっくり流れます。</p>
+<div class="label">次へ</div>
+<p>残った一枚が、08 の揺れる吹き出しの台になります。</p>
+<div class="label">使う素材</div>
+<p>カードと札は MG。金額の数字は原稿にないので出しません。</p>
+</div></div>
+</section>
+
+<section class="cut" id="cut-08">
+<div class="cuthead"><div class="num">08</div><div>
+<h3>答えは、揺れる</h3>
+<p class="small">1:05–1:12 / 約 7 秒 ・ 留保</p>
+</div></div>
+<div class="frames">
+<figure><a href="assets/storyboard/cut-08-start.webp"><img src="assets/storyboard/cut-08-start.webp" width="1280" height="720" alt="上に答えは、揺れる。中央に問題ありませんの吹き出し。"></a>
+<figcaption><b>はじめ</b> 吹き出しは一つ。</figcaption></figure>
+<figure><a href="assets/storyboard/cut-08-end.webp"><img src="assets/storyboard/cut-08-end.webp" width="1280" height="720" alt="左に小さい問題ありません、右に大きい別の答え。"></a>
+<figcaption><b>おわり</b> 同じ問いへの二つの吹き出し。大きさも中の語も揃わない。</figcaption></figure>
+</div>
+<div class="details"><div>
+<div class="label">画面の文字</div>
+<p class="words">答えは、揺れる。<br>問題ありません<br>別の答え</p>
+<div class="label">ナレーション</div>
+<p class="voice">答えは毎回、少し揺れます。一つに決まる仕事とは、別です。</p>
+<div class="label">字数</div>
+<p class="small">声 28 字／画面 19 字</p>
+<div class="label">主役の語</div>
+<p>「揺れる。」。「別の答え」は、実際に返った第二の文の引用ではありません。同じ問いに別の答えが返りうる、という印です。</p>
+</div><div>
+<div class="label">字組みと構図</div>
+<p>はじめは中央の一つの吹き出しです。おわりは左が小さく灰、右が大きく藍の縁です。高さも幅も揃えないことで、揺れを字組みで見せます。</p>
+<div class="label">動きの狙い</div>
+<p>一つの吹き出しが二つに割れ、右が大きい位置で止まります。止めたあとも、二つの吹き出しを逆方向へ少し <a href="#drift">流します</a>。字そのものは震わせません。</p>
+<div class="label">次へ</div>
+<p>二つの吹き出しが中央で混ざり、09 の五つの語になります。</p>
+<div class="label">使う素材</div>
+<p>吹き出しだけです。</p>
+</div></div>
+</section>
+
+<section class="cut" id="cut-09">
+<div class="cuthead"><div class="num">09</div><div>
+<h3>歯車と、吹き出し</h3>
+<p class="small">1:12–1:22 / 約 10 秒 ・ 主張</p>
+</div></div>
+<div class="frames">
+<figure><a href="assets/storyboard/cut-09-start.webp"><img src="assets/storyboard/cut-09-start.webp" width="1280" height="720" alt="差分、件数、文字数、意味、影響が、ばらばらの位置にある。"></a>
+<figcaption><b>はじめ</b> 五つの語が、まだ混ざっている。</figcaption></figure>
+<figure><a href="assets/storyboard/cut-09-end.webp"><img src="assets/storyboard/cut-09-end.webp" width="1280" height="720" alt="左に歯車と三語。右に吹き出しと意味、影響。"></a>
+<figcaption><b>おわり</b> 左はプログラム、右は判断。歯車と吹き出しが分かれる。</figcaption></figure>
+</div>
+<div class="details"><div>
+<div class="label">画面の文字</div>
+<p class="words">プログラム。<br>判断は、AI。<br>差分　件数　文字数<br>意味　影響</p>
+<div class="label">ナレーション</div>
+<p class="voice">差分、件数、文字数は、プログラムに任せます。意味と影響の判断だけを、AIに渡します。</p>
+<div class="label">字数</div>
+<p class="small">声 42 字／画面 24 字</p>
+<div class="label">主役の語</div>
+<p>「プログラム。」と「判断は、AI。」。五つの語は、どちらの側に付くかで意味が決まります。</p>
+</div><div>
+<div class="label">字組みと構図</div>
+<p>はじめは語が散った一面です。おわりは左の縦三つと、右の吹き出し二つです。上の見出しも左右で分かれます。08 の吹き出しだけの画面から、記号が二種類になります。</p>
+<div class="label">動きの狙い</div>
+<p>「差分・件数・文字数」が左の歯車へ、「意味・影響」が右の吹き出しへ <a href="#sort">仕分け</a> られます。着地したあとも、左右の列を逆方向へ少し流します。約 10 秒は、この分裂を見る下限です。</p>
+<div class="label">次へ</div>
+<p>右の「意味」の吹き出しが残り、10 で道具のプラグが横から付きます。</p>
+<div class="label">使う素材</div>
+<p>歯車と吹き出しは MG。実在の差分ツールの画面は描きません。</p>
+</div></div>
+</section>
+
+<section class="cut" id="cut-10">
+<div class="cuthead"><div class="num">10</div><div>
+<h3>道具を、持たせる</h3>
+<p class="small">1:22–1:30 / 約 8 秒 ・ 留保</p>
+</div></div>
+<div class="frames">
+<figure><a href="assets/storyboard/cut-10-start.webp"><img src="assets/storyboard/cut-10-start.webp" width="1280" height="720" alt="左に苦手なところに、右に意味の吹き出し。"></a>
+<figcaption><b>はじめ</b> 吹き出しだけがある。</figcaption></figure>
+<figure><a href="assets/storyboard/cut-10-end.webp"><img src="assets/storyboard/cut-10-end.webp" width="1280" height="720" alt="左に道具を。中央にプラグ。右に意味の吹き出し。"></a>
+<figcaption><b>おわり</b> プラグが吹き出しの横に付く。下に「関門は、別。」</figcaption></figure>
+</div>
+<div class="details"><div>
+<div class="label">画面の文字</div>
+<p class="words">苦手なところに、<br>道具を。<br>関門は、別。<br>意味</p>
+<div class="label">ナレーション</div>
+<p class="voice">別のAIでの確認は、関門としては役に立ちます。道具は、苦手なところにだけ足します。</p>
+<div class="label">字数</div>
+<p class="small">声 41 字／画面 20 字（吹き出しの「意味」を含む）</p>
+<div class="label">主役の語</div>
+<p>「道具を。」。プラグは道具で、歯車ではありません。関門の一行は灰で、否定の見出しにはしません。</p>
+</div><div>
+<div class="label">字組みと構図</div>
+<p>左に三行、中央にプラグ、右に吹き出しです。09 の左右二等分から、三つの塊になります。「道具を。」だけが大きく、留保は下の小さな灰です。</p>
+<div class="label">動きの狙い</div>
+<p>プラグが左から滑り、吹き出しの縁に付いて止まります。付いたあとも吹き出しを少し寄せ、止めません。</p>
+<div class="label">次へ</div>
+<p>プラグと吹き出しが縮み、11 の二列の語が左右から入る。</p>
+<div class="label">使う素材</div>
+<p>プラグと吹き出しは MG。検索画面や製品のアイコンは描きません。検索で新しいことを補う、という原稿の例は、このカットの声には載せず、道具の一般形だけにしています。</p>
+</div></div>
+</section>
+
+<section class="cut" id="cut-11">
+<div class="cuthead"><div class="num">11</div><div>
+<h3>事情が、要る</h3>
+<p class="small">1:30–1:38 / 約 8 秒 ・ 留保</p>
+</div></div>
+<div class="frames">
+<figure><a href="assets/storyboard/cut-11-start.webp"><img src="assets/storyboard/cut-11-start.webp" width="1280" height="720" alt="中央に灰色の、どちらつかず。"></a>
+<figcaption><b>はじめ</b> 「どちらつかず。」が中央にある。</figcaption></figure>
+<figure><a href="assets/storyboard/cut-11-end.webp"><img src="assets/storyboard/cut-11-end.webp" width="1280" height="720" alt="左に大きな急ぐのか。右に網羅するのかと、長さの違う三本の帯。"></a>
+<figcaption><b>おわり</b> 左は短い一語、右は語の下に長い帯。深さが違う。</figcaption></figure>
+</div>
+<div class="details"><div>
+<div class="label">画面の文字</div>
+<p class="words">どちらつかず。<br>急ぐのか。<br>網羅するのか。</p>
+<div class="label">ナレーション</div>
+<p class="voice">急ぐのか、網羅するのか、伝えないとAIには分かりません。返信すべきかは、自分の事情が要ります。</p>
+<div class="label">字数</div>
+<p class="small">声 47 字／画面 19 字</p>
+<div class="label">主役の語</div>
+<p>「急ぐのか。」。右の帯は文章の長さの差で、メールの画面ではありません。</p>
+</div><div>
+<div class="label">字組みと構図</div>
+<p>はじめは中央の一語です。おわりは左の特大と、右の二行プラス帯です。帯の長さが三段で減り、網羅側だけ情報量があるように見えます。</p>
+<div class="label">動きの狙い</div>
+<p>中央の語が割れ、左は短く着地し、右は行が上から順に伸びます。読む間、右の帯だけがゆっくり伸び続けます。</p>
+<div class="label">次へ</div>
+<p>左の「急ぐのか。」が縮み、12 の「判断。」がその場所で大きくなる。</p>
+<div class="label">使う素材</div>
+<p>語と帯だけです。メールアプリの画面は描きません。</p>
+</div></div>
+</section>
+
+<section class="cut" id="cut-12">
+<div class="cuthead"><div class="num">12</div><div>
+<h3>任せたいのは、判断</h3>
+<p class="small">1:38–1:51 / 約 13 秒 ・ 期待と留保</p>
+</div></div>
+<div class="frames">
+<figure><a href="assets/storyboard/cut-12-start.webp"><img src="assets/storyboard/cut-12-start.webp" width="1280" height="720" alt="左に任せたいのは、とその下に大きな判断。"></a>
+<figcaption><b>はじめ</b> 「判断。」だけが大きい。</figcaption></figure>
+<figure><a href="assets/storyboard/cut-12-end.webp"><img src="assets/storyboard/cut-12-end.webp" width="1280" height="720" alt="左上に判断。左下に負け戦。右に灰色のカードが五枚。"></a>
+<figcaption><b>おわり</b> 期待の語は大きく、負け戦は下の灰。右の灰色カードは、漏れなく拾う側。</figcaption></figure>
+</div>
+<div class="details"><div>
+<div class="label">画面の文字</div>
+<p class="words">任せたいのは、<br>判断。<br>漏れなく拾うなら、<br>負け戦。</p>
+<div class="label">ナレーション</div>
+<p class="voice">任せたいのは、直感にしか頼めなかった判断です。間違えても、前には進みます。漏れなく拾う仕事は、AIだけだと負け戦になりやすい。冒頭の確認は、こちらでした。</p>
+<div class="label">字数</div>
+<p class="small">声 77 字／画面 23 字</p>
+<div class="label">主役の語</div>
+<p>「判断。」。留保の「負け戦。」は同じカットに残しますが、大きさで期待の下に置きます。</p>
+</div><div>
+<div class="label">字組みと構図</div>
+<p>はじめは左の二段だけです。おわりは左の上と下に文が分かれ、右に灰色カードが散ります。13 の結びより、まだ余白が割れています。</p>
+<div class="label">動きの狙い</div>
+<p>「判断。」が <a href="#land">着地</a> し、そのあと右から灰色カードが落ちて積もります。積もる間も「判断。」は揺らさず、カードの側だけが動きます。</p>
+<div class="label">次へ</div>
+<p>灰色カードが退き、13 で歯車と吹き出しが左右の定位置に戻る。</p>
+<div class="label">使う素材</div>
+<p>語とカードです。メールの中身は描きません。</p>
+</div></div>
+</section>
+
+<section class="cut" id="cut-13">
+<div class="cuthead"><div class="num">13</div><div>
+<h3>渡し方を、先に <span class="need">要判断 2</span></h3>
+<p class="small">1:51–1:59 / 約 8 秒 ・ 本人の結論</p>
+</div></div>
+<div class="frames">
+<figure><a href="assets/storyboard/cut-13-start.webp"><img src="assets/storyboard/cut-13-start.webp" width="1280" height="720" alt="左に歯車、右に空の吹き出し。中央は空いている。"></a>
+<figcaption><b>はじめ</b> 歯車と吹き出しだけが離れ、文はまだない。</figcaption></figure>
+<figure><a href="assets/storyboard/cut-13-end.webp"><img src="assets/storyboard/cut-13-end.webp" width="1280" height="720" alt="左に三行。右上に歯車、右下に空の吹き出し。"></a>
+<figcaption><b>おわり</b> 「渡し方を、先に。」「差分は、プログラム。」「判断は、AI。」</figcaption></figure>
+</div>
+<div class="details"><div>
+<div class="label">画面の文字</div>
+<p class="words">渡し方を、先に。<br>差分は、プログラム。<br>判断は、AI。</p>
+<div class="label">ナレーション</div>
+<p class="voice">私は、能力より先に渡し方を見ます。同じAIでも、聞き方で結果は変わります。</p>
+<div class="label">字数</div>
+<p class="small">声 37 字／画面 25 字</p>
+<div class="label">主役の語</div>
+<p>「判断は、AI。」が最大です。01 の「問題ありません」と、この三行を続けて読むと、見落としのあとで仕事を分けた、という主張に着きます。</p>
+</div><div>
+<div class="label">字組みと構図</div>
+<p>はじめは左右の記号だけです。おわりは左に三行が段々大きくなり、右に小さな歯車と吹き出しが残ります。09 の仕分けの再演ではなく、仕分けが終わったあとの文です。</p>
+<div class="label">動きの狙い</div>
+<p>三行が下から順に <a href="#land">着地</a> し、着地のあと紙面を少し寄せたまま、ロゴの全面へ <a href="#push">押し出します</a>。疑問符では閉じません。</p>
+<div class="label">次へ</div>
+<p>三行が左へ流れ、画面がライム一色に変わる。</p>
+<div class="label">結び <span class="need">要判断 2</span></div>
+<p class="swap">A（基本）：上のナレーションで閉じる。B：声の最後に「渡し方を疑ってみてください」を足す。画面の三行は変えません。</p>
+</div></div>
+</section>
+
+<section class="cut" id="cut-14">
+<div class="cuthead"><div class="num">14</div><div>
+<h3>エンドロゴ</h3>
+<p class="small">1:59–2:04 / 5 秒 ・ 制作表示</p>
+</div></div>
+<div class="frames">
+<figure><a href="assets/storyboard/cut-14-start.webp"><img src="assets/storyboard/cut-14-start.webp" width="1280" height="720" alt="ライムの画面。右上に黒い円環。"></a>
+<figcaption><b>はじめ</b> ライムの全面。o が右上から落ち始める。</figcaption></figure>
+<figure><a href="assets/storyboard/cut-14-end.webp"><img src="assets/storyboard/cut-14-end.webp" width="1280" height="720" alt="ライムの画面の中央に okady.work のロゴ。"></a>
+<figcaption><b>おわり</b> ロゴが中央で定位置。ほかの文字はない。</figcaption></figure>
+</div>
+<div class="details"><div>
+<div class="label">画面の文字</div>
+<p class="words">なし（ロゴのみ）</p>
+<div class="label">ナレーション</div>
+<p class="voice">なし</p>
+<div class="label">字数</div>
+<p class="small">声 0 字／画面 0 字</p>
+<div class="label">主役</div>
+<p>リポジトリ直下の <code>okady-work-logo.svg</code> だけです。形・書体・色・比率は変えません。</p>
+</div><div>
+<div class="label">字組みと構図</div>
+<p>背景は <span class="sw" style="background:#d2ff1a"></span>#d2ff1a の全面です。ロゴは引き伸ばさず中央に置き、安全域に収めます。本編の要素は重ねません。</p>
+<div class="label">動きの狙い</div>
+<p>SVG のタイミングを、フレーム時刻から再現します。0–2.6 秒で o が落ちてバウンドし定位置へ、2.6–3.2 秒で全体が左へ滑り、3.0–4.0 秒で「.work」が一文字ずつ出ます。4.0–5.0 秒は完成形を保持します。ロゴの動きはこのタイミングのまま、本編からの切り替えだけ勢いをつけてよいです。</p>
+<div class="label">次へ</div>
+<p>ここで終わります。エンドクレジットは足しません。</p>
+<div class="label">使う素材</div>
+<p><code>../okady-work-logo.svg</code> だけです。</p>
+</div></div>
+</section>
+
+<h2 class="part" id="details">詳細（ここから下は補足）</h2>
+<p class="small">ここまでで、どんな動画で、どう組み、どう見えるかを示しました。以下は分担、デザイン、動きの名前、素材、音、根拠、完成条件です。</p>
+
+<h2 id="roles">声・文字・素材の分担</h2>
+<div class="tablewrap"><table>
+<thead><tr><th>担当</th><th>受け持つこと</th><th>受け持たないこと</th></tr></thead>
+<tbody>
+<tr><td>声</td><td>経緯、研究の言い方、人でも同じかもしれないという留保、昔は手間だったこと、答えが揺れること、関門と道具の違い、事情を渡すこと、判断を任せたいこと、負け戦、結び。</td><td>画面の語の読み上げそのもの。全文字幕。URL の読み上げ。</td></tr>
+<tr><td>文字</td><td>決め語、留保の短い句、出典の短い名、吹き出しの中の語。</td><td>ナレーションの全文。原稿にない数字。「20」という件数。</td></tr>
+<tr><td>図（カード・光・歯車・吹き出し・プラグ・帯）</td><td>注意が薄まること、一つずつ照らすこと、プログラムとAIの仕分け、道具を足すこと。</td><td>説明の文。製品の画面。人の姿。</td></tr>
+<tr><td>画像・動画ファイル</td><td>基本は使わない。紙カードの生成動画は要判断 1 で、未承認。</td><td>暗い机。実在のUI。人物。</td></tr>
+</tbody></table></div>
+<p>声ありで文量と尺を組んでいます。画面に声の全文は足しません。ナレーションの有無を変えると、画面の文量と尺を組み直す必要があります。</p>
+
+<h2 id="claim-map">主張・根拠・留保の対応</h2>
+<div class="tablewrap"><table>
+<thead><tr><th>役割</th><th>内容</th><th>カット</th></tr></thead>
+<tbody>
+<tr><td>主張</td><td>見落としは手抜きではなく渡し方である。答えが一つに決まる仕事はプログラムに、意味と影響の判断だけをAIに渡す。</td><td>03、09、13</td></tr>
+<tr><td>根拠</td><td>注意力の予算は、まとめて渡すと薄くなる。長い入力の真ん中ほど見落とす、という研究がある。一つずつ渡し、問題なしはもう渡さないと、見落としようがない形になる。</td><td>04、05、06、07</td></tr>
+<tr><td>留保</td><td>人でも書類の山なら同じかもしれない。昔は手間で現実的ではなかった。AIの答えは揺れる。別のAIでの確認は関門としては役に立つが、質を上げる仕組みとは別で、道具は苦手なところにだけ足す。急ぐのか網羅するのか、返信すべきかは、事情を渡さないと分からない。漏れなく拾う仕事をAIだけに任せると負け戦になりやすく、冒頭はそちらだった。</td><td>05、07、08、10、11、12。声に残し、短い句は画面にも残す</td></tr>
+<tr><td>最後に残す本人の結論</td><td>筆者は能力より先に渡し方を見る。同じAIでも、聞き方で結果は変わる。差分はプログラム、判断はAI。</td><td>13</td></tr>
+</tbody></table></div>
+<p class="small">冒頭は 01「問題ありません」、主張の核は 09「プログラム。／判断は、AI。」、結びは 13 の三行です。01 と 13 を続けて読むと、同じ主張に着きます。原稿との文言の対応は <a href="references.md">references.md</a> にあります。</p>
+
+<h2 id="handoff">企画側／制作側</h2>
+<div class="tablewrap"><table>
+<thead><tr><th>企画側が渡すもの</th><th>制作側が判断・制作するもの</th></tr></thead>
+<tbody>
+<tr><td>主張の一文、構成と尺、画面の文言、ナレーション案、絵コンテ 28 枚、字組みと色、動きの狙い、効果の採否（<a href="effects-direction.md">effects-direction.md</a>）、ロゴへの参照、根拠の対応、制作依頼（<a href="fable-brief.md">fable-brief.md</a>）</td><td>three.js と DOM の文字層による実装、動きの細かな値、BGM と効果音、書き出し</td></tr>
+<tr><td>画像・動画の採用ファイルはなし。紙カードの生成動画は未承認で、生成していない</td><td>不足する画像・動画が出たら、作らずに企画側へ返す</td></tr>
+<tr><td>絵コンテ上の文字について、安全域と、文字どうし・文字と図の間隔を検査済み（下記の完成条件）</td><td>本編の機械検査。全カットを約 0.25 秒ごとに、文字の外接矩形が安全域の外へ出ていないか、図と重なっていないかを見る</td></tr>
+<tr><td>ナレーションの原稿と、声は経緯・文字は決め語という分担</td><td>声の選定と生成。明示の依頼と、使える API キーがあるときだけ。この企画書は生成の許可ではない</td></tr>
+</tbody></table></div>
+<p>音源ファイルがまだないことは、制作を始めない理由にしません。会話を知らない制作者が、この plan.html と絵コンテと <code>../okady-work-logo.svg</code> だけで着手できる状態にしています。</p>
+<h3>Fable 5.2への依頼文</h3>
+<p>実装を一気に進める依頼は <a href="fable-brief.md">fable-brief.md</a> です。読む順、作業範囲、未確定の三点は A を仮に組んで B へ切り替えられるようにすること、検査、報告に残すことを書いてあります。この動画の画面と声に、制作に使うモデルの名前や性能は出しません。主張・カット順・画面の文言は、この plan.html が仕様です。</p>
+
+<h2 id="design">デザインシステム（映像の文字・色・グリッド）</h2>
+<p>これは本編の見た目です。この企画書のページの色（青と橙の注意色）とは別です。本編でライムは、エンドロゴの背景だけに使います。</p>
+<div class="tablewrap"><table>
+<thead><tr><th>名前</th><th>値</th><th>使い道</th></tr></thead>
+<tbody>
+<tr><td>紙</td><td><span class="sw" style="background:#f4f1ea"></span>#f4f1ea</td><td>画面の地。暗い全面にはしない</td></tr>
+<tr><td>墨</td><td><span class="sw" style="background:#1a1a1a"></span>#1a1a1a</td><td>事実の語。変更が残っていた、差分、件数、文字数</td></tr>
+<tr><td>藍</td><td><span class="sw" style="background:#14315c"></span>#14315c</td><td>筆者の決め語。渡し方、予算、一つずつ、プログラム、判断</td></tr>
+<tr><td>灰</td><td><span class="sw" style="background:#5c5854"></span>#5c5854</td><td>留保と、信頼しきれない「問題ありません」</td></tr>
+<tr><td>カード</td><td><span class="sw" style="background:#fffcf7"></span>#fffcf7</td><td>見ているファイル</td></tr>
+<tr><td>見落とし</td><td><span class="sw" style="background:#c4beb2"></span>#c4beb2</td><td>注意が届いていないカードの面</td></tr>
+<tr><td>暖光</td><td><span class="sw" style="background:#e8a830"></span>#e8a830</td><td>注意力。円のグラデーション。文字色にはしない</td></tr>
+<tr><td>変更</td><td><span class="sw" style="background:#b45309"></span>#b45309</td><td>カードの中の橙の帯。残っていた変更</td></tr>
+<tr><td>歯車</td><td><span class="sw" style="background:#243044"></span>#243044</td><td>答えが一つに決まる仕事</td></tr>
+<tr><td>札</td><td><span class="sw" style="background:#e8eef2"></span>#e8eef2</td><td>問題なし。もう渡さない</td></tr>
+<tr><td>ライム</td><td><span class="sw" style="background:#d2ff1a"></span>#d2ff1a</td><td>エンドロゴの背景だけ</td></tr>
+</tbody></table></div>
+<p>文字は DOM（または同等の層）で、詰め組と行のマスクが効く組み方にします。カード・光・歯車・カメラは three.js の層です。カメラの寄りと移動は図の層に掛け、文字が図に埋もれたり、画面の端で欠けたりしないようにします。本編の安全域の目安は、1920×1080 で左右 80px、上下 64px です。</p>
+<p>字組みはカットごとに変えます。</p>
+<ul>
+<li>01 は中央の吹き出しと、周りの格子。</li>
+<li>02 は左の二行と、右の大きな灰色カード。</li>
+<li>03 は語だけ。左が小さく、右が大きい。</li>
+<li>04 は特大の一語から、下の二列へ。</li>
+<li>05 は見出しを固定した 5×4。変わるのは光。</li>
+<li>06 は中央の一枚が極端に大きい。</li>
+<li>07 は左の札と、右の三枚。</li>
+<li>08 は大きさの違う二つの吹き出し。</li>
+<li>09 は左の歯車と、右の吹き出し。</li>
+<li>10 は語、プラグ、吹き出しの三つ。</li>
+<li>11 は左の短さと、右の長さ。</li>
+<li>12 は上の期待と、下の留保。右に灰色の山。</li>
+<li>13 は左の三行が下ほど大きい。</li>
+<li>14 はライムの中央にロゴだけ。</li>
+</ul>
+
+<h2 id="motion">動きの言語</h2>
+<p>名前は狙いの共有です。06 の送りと寄り、14 のロゴ以外、秒数とイージングの式は固定しません。読む間は、行、語の塊、カードの列、画面（カメラ）を動かします。文字の形そのものは崩しません。1 字ずつの揺れ、拍ごとの脈動、意味のない粒子では「動いている」にしません。</p>
+<div class="tablewrap"><table>
+<thead><tr><th>名前</th><th>狙い</th></tr></thead>
+<tbody>
+<tr><td id="spread">広げる</td><td>一つの光の半径が伸び、不透明度が下がり、中央が穴になる。この作品の、注意が薄まる動き。</td></tr>
+<tr><td id="send">送る</td><td>カードを 1 枚ずつ中央へ運ぶ。1 枚あたり約 0.4 秒。届いたカードは光を独占する。</td></tr>
+<tr><td id="dolly">寄る</td><td>カメラが図の層へ近づく。06 の最後は約 2 秒。読む間のゆっくりした寄りも含む。</td></tr>
+<tr><td id="sort">仕分ける</td><td>語が左の歯車と右の吹き出しへ分かれる。</td></tr>
+<tr><td id="land">着地</td><td>決め語の塊が大きく出て、水平に収まる。収まったあとも、列かカメラは動かし続ける。</td></tr>
+<tr><td id="drift">流す</td><td>読む間に、行やカードの列を、向きを変えて動かす。止めないための動き。</td></tr>
+<tr><td id="push">押し出す</td><td>次のカットへ、カードか語を勢いのまま渡す。場面の境で止めない。</td></tr>
+</tbody></table></div>
+<p>three.js を使います。20 枚のカード、薄まる光、寄るカメラを、同じ空間で動かすためです。文字はテクスチャにせず、DOM の層に置きます。Remotion で組むときは、位置・回転・スケールをフレーム時刻から決めて、同じ状態を再現します。カメラの名前は <a href="../docs/techniques/camera-cheatsheet.md">カメラワークと切り替えの名前</a> に合わせ、05–06 の寄りはドリーイン、カードを追う区間はトラッキングです。</p>
+<p>効果の採否は <a href="effects-direction.md">effects-direction.md</a> にあります。採用するのは、語の塊の着地、層の速度差、吹き出しがしっぽから出ること、の三つです。見本の暗い背景、章題、1 字の揺れ、白フラッシュは使いません。</p>
+
+<h2 id="symbols">記号と色</h2>
+<p>一つの記号に一つの意味があるかを、全カットで点検しています。</p>
+<div class="tablewrap"><table>
+<thead><tr><th>記号</th><th>意味</th><th>出るカット</th><th>混ぜないこと</th></tr></thead>
+<tbody>
+<tr><td>白いファイルカード</td><td>一つのファイル。注意が届いている</td><td>01、02、04、05、06、07</td><td>歯車、札、人</td></tr>
+<tr><td>灰色のファイルカード</td><td>注意が届いていないファイル</td><td>01 のおわり、02、05 のおわり、06 のはじめ、12 の右</td><td>問題なしの札。暗い背景</td></tr>
+<tr><td>橙の帯</td><td>そのファイルに残っていた変更</td><td>01、02、05</td><td>強調の下線、ロゴ</td></tr>
+<tr><td>暖色の円</td><td>注意力の予算が、そこにある</td><td>04、05、06</td><td>文字の色、ライム</td></tr>
+<tr><td>灰の縁の吹き出し</td><td>AIの発話のうち、安定しないもの、または「問題ありません」</td><td>01、02、08</td><td>判断を任せる側の吹き出し</td></tr>
+<tr><td>藍の縁の吹き出し</td><td>意味や影響を言う、AIに渡す側</td><td>08 の右、09、10、13</td><td>歯車、問題ありません</td></tr>
+<tr><td>歯車</td><td>答えが一つに決まる仕事</td><td>09、13</td><td>道具のプラグ、設定、時間</td></tr>
+<tr><td>プラグ</td><td>苦手なところに足す道具</td><td>10 だけ</td><td>歯車、電源、特定の製品</td></tr>
+<tr><td>青い札「問題なし」</td><td>確認が終わり、もう渡さないもの</td><td>07 だけ</td><td>灰色の見落としカード</td></tr>
+<tr><td>長さの違う帯</td><td>答えの深さの差</td><td>11 だけ</td><td>メールの画面、グラフの数値</td></tr>
+<tr><td>藍の文字</td><td>筆者の決め語</td><td>03 の右、04、05、06、07、09、10、12、13</td><td>留保、出典</td></tr>
+<tr><td>灰の文字</td><td>留保、または信頼しきれない発話</td><td>01、03 の左、04 の「薄くなる」、08、10 の関門、12 の負け戦</td><td>決め語</td></tr>
+<tr><td>ライムの全面</td><td>制作表示</td><td>14 だけ</td><td>本編の強調色</td></tr>
+</tbody></table></div>
+
+<h2 id="character">キャラ設定</h2>
+<p>人物は出しません。ファイルはカード、AIの発話は吹き出し、プログラムは歯車です。顔、体、手は置きません。原稿の「人でも同じかもしれない」は、基本では声だけです。<span class="need">要判断 3</span></p>
+
+<h2 id="swaps">差し替え候補</h2>
+<p>基本は、各カットのモーショングラフィックスです。下の候補を採るかは <a href="#decide">冒頭の判断</a> です。AI の映像は未承認で、生成していません。</p>
+<div class="tablewrap"><table>
+<thead><tr><th>候補</th><th>内容</th><th>採らないときの形</th></tr></thead>
+<tbody>
+<tr><td><span class="need">要判断 1</span> 紙のカード</td><td>カードが出る 01・02・04・05・06・07・12 を、同じ質感の生成動画で揃える。プロンプト案：「Twenty plain paper cards on a bright desk, one warm light that spreads into a thin ring until the center cards lose the light, no people, no text, no logos, no product UI. Slow dolly in.」承認が必要。暗い机にはしない。</td><td>いまのフラットなカード。一部のカットだけ動画にしない</td></tr>
+<tr><td><span class="need">要判断 2</span> 結びの声</td><td>13 の声の最後に、原稿の「渡し方を疑ってみてください」を足す。</td><td>「私は、能力より先に渡し方を見ます」で閉じる</td></tr>
+<tr><td><span class="need">要判断 3</span> 人のたとえ</td><td>05 の画面に「人でも、同じかもしれない。」を足す。</td><td>声だけ。人の絵は出さない</td></tr>
+</tbody></table></div>
+<p>光が薄まるモチーフは 04 から 06 まで続きます。05 だけを生成動画にする候補は挙げていません。</p>
+
+<h2 id="assets">素材</h2>
+<div class="tablewrap"><table>
+<thead><tr><th>ファイル</th><th>用途</th><th>区間</th></tr></thead>
+<tbody>
+<tr><td><code>assets/storyboard/cut-01-start.webp</code> から <code>cut-14-end.webp</code> までの 28 枚</td><td>構図のラフ。完成映像ではない</td><td>各カットのはじめ／おわり</td></tr>
+<tr><td><code>../okady-work-logo.svg</code></td><td>エンドロゴ。形・色・比率は変えない</td><td>14（1:59–2:04）</td></tr>
+</tbody></table></div>
+<p>採用する写真・動画ファイルはありません。生成動画は未承認、未生成です。フォントファイルは同梱していません。絵コンテは Noto Sans CJK JP で描きました。</p>
+
+<h2 id="sound">音</h2>
+<p>BGM と効果音は後回しです。音源は同梱していません。制作側が、次の条件で作ります。過去の企画の曲は使いません。20261007 の音源も使いません。</p>
+<ul>
+<li>トーンは、注意が一点に戻るときの明快さです。暗い環境音や、失敗を責める音にはしません。</li>
+<li>拍が立ちます。06 のカードは約 0.4 秒に一枚なので、150 BPM、または 75 BPM で八分の刻み、のどちらかに載せます。遅い曲に合わせて送りを遅くしません。</li>
+<li>01 で入り、05 で光が抜けるとき半拍だけ薄くし、06 で刻みを戻します。09 で左右に分かれ、13 で一度揃え、ロゴの終わり（2:04）で収めます。映像より短い音源を、余裕があるとは書きません。</li>
+<li>無音は、05 で中央が抜けた瞬間の半拍までです。それ以外は無音にしません。</li>
+<li>効果音を足すなら、カードが中央に着く短いクリックです。製品の通知音は使いません。効果音も後回しです。</li>
+<li>ナレーションは、各カットの原稿を使います。画面の全文を字幕にしません。声の生成は、明示の依頼と、使える API キーがあるときだけです。有料の音楽生成を比べる場合は、品質・時間・費用の理由を一行残して選びます。料金が未確認の有料生成はしません。</li>
+</ul>
+
+<h2 id="evidence">根拠</h2>
+<p>原稿の抜粋、画面文言、出典、画面にしない情報は <a href="references.md">references.md</a> にまとめています。研究の数字は足していません。画面に出す出典は「Anthropic Engineering」と「arXiv 2307.03172」だけです。論文と記事の図は転載していません。</p>
+
+<h2 id="done">完成条件・確認状態</h2>
+<ul>
+<li>実速再生は未確認です。本編は未制作です。静止画の絵コンテは、躍動感の合格ではありません。</li>
+<li>BGM・効果音は後回しです。ナレーションも未制作です。</li>
+<li>絵コンテ 28 枚について、文字の外接矩形が安全域（1280×720 で左右 64px、上下 48px）の中にあること、文字どうしの間隔が 6px より狭いペアがないこと、文字とカード・歯車・プラグ・帯の間隔が 6px より狭いペアがないことを検査しました。不合格は 0 でした。吹き出しの中の文字は、吹き出しを図の衝突対象にせず、中の余白で読めることを目で見ています。光のグラデーションは検査の対象外です。</li>
+<li>章表示、テロップ帯、エンドクレジットは入れません。最後はライムの上のロゴだけです。</li>
+<li>制作側は、代表の一区間（05 の光が抜けるところ、または 06 の送り）を等速で確かめてから全編へ広げます。本編では、約 0.25 秒ごとの文字の外接矩形で、はみ出しと、カード・歯車・吹き出し・プラグとの重なりを検査します。</li>
+<li>要判断 1〜3 が未回答でも、基本案（MG、結びは本人の言い方、人のたとえは声だけ）で実装を始められます。生成動画を選ぶ場合は、その時点で承認が必要です。</li>
+</ul>
+<h3>凄さを体感できたかを確かめる観点</h3>
+<p>制作を別の依頼で進めたあと、結果を見るための項目です。いまは未制作なので、件数も時間も空です。観察できるものだけを並べます。</p>
+<ul>
+<li>依頼 1 回で、実装がどこまで届いたか。カットの実装、プレビュー、文字の検査、プルリクエストの有無。</li>
+<li>人の手戻しが何回あったか。仕様の聞き直しと、検査で戻した回数を分ける。</li>
+<li>AGENTS.md と、依頼文が指定した過去の feedback の指摘を、指摘される前に守れたか。映像の中の管理番号、字の揺れ、暗い画面、白フラッシュ、章表示、長い静止。</li>
+<li>自己検査で見つけて直した件数と、直したあとに同じ検査を通したか。</li>
+<li>進捗ログの開始と完了。暦の日数の見積もりは使いません。</li>
+<li>等速の通しと BGM の試聴を、見ていないのに見たことにしていないか。</li>
+<li>報告に、使ったモデル名と Claude Code のバージョンがあるか。</li>
+<li>残作業の一覧で止まらず、完成条件まで進んだか。</li>
+</ul>
+</main>
+<footer><div class="inner">
+<p>企画書。絵コンテは構図のラフです。実速再生は未確認。BGM・効果音は後回し。</p>
+</div></footer>
+</body></html>
