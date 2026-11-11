@@ -110,26 +110,25 @@ nav a.nav-need:hover{text-decoration:underline}
 <body>
 <header>
 <div class="inner">
-<div class="eyebrow">VIDEO PLAN / 2026.11.11 <span class="chip">企画・絵コンテ（ライト）・本編は未制作</span></div>
+<div class="eyebrow">VIDEO PLAN / 2026.11.11 <span class="chip">本編を制作済み（映像・ナレーション・BGM・効果音）</span></div>
 <h1>AI画像で失敗する人は、ゼロから生成させる人</h1>
 <p class="lead">AIは、手元の70を80〜90へ引き上げる相棒。最後の判断と責任は、人が持つ。</p>
 <p>元にした note 記事：「AI画像で失敗する人は、ゼロから生成させる人」<a href="https://note.com/dhythm/n/n018864f250f1">https://note.com/dhythm/n/n018864f250f1</a>（公開済み）<br>
 原稿：<code>dhythm/private-note</code> の <code>Zettelkasten/PermanentNote/20261110_AI画像で失敗する人は、ゼロから生成させる人.md</code>（本文は同梱しない）</p>
 <div class="meta">
 <span>16:9・1920×1080・30fps</span>
-<span>本編 1:56.0＋エンドロゴ 5.5秒＝2:01.5</span>
+<span>本編 2:22.0＋エンドロゴ 5.3秒＝2:27.3</span>
 <span>本編 12カット＋ロゴ</span>
-<span>ナレーション案 589字／画面の文字 244字</span>
-<span>写真・動画ファイルはなし（線画のMG）</span>
-<span>BGM・効果音・ナレーション音声は未制作</span>
-<span>実速再生は未確認</span>
+<span>ナレーション 12 区切り（ElevenLabs）</span>
+<span>写真・動画ファイルはなし（立体の図と文字のMG）</span>
+<span>BGM・効果音はこの作品用に合成</span>
+<span>等速の再生と試聴は未確認（制作報告を参照）</span>
 </div>
 </div>
 <div class="strata"></div>
 </header>
 
 <nav><div class="in">
-<a class="nav-need" href="#decide">判断してほしい点（3）</a>
 <a href="#claim">主張</a>
 <a href="#viewer">視聴者</a>
 <a href="#structure">構成と尺</a>
@@ -142,7 +141,7 @@ nav a.nav-need:hover{text-decoration:underline}
 <a href="#motion">動き</a>
 <a href="#symbols">記号と色</a>
 <a href="#character">キャラ設定</a>
-<a href="#swaps">差し替え候補</a>
+<a href="#swaps">素材の採用方針</a>
 <a href="#assets">素材</a>
 <a href="#sound">音</a>
 <a href="#evidence">根拠</a>
@@ -150,16 +149,6 @@ nav a.nav-need:hover{text-decoration:underline}
 </div></nav>
 
 <main>
-<section class="decide" id="decide">
-<h2>未確定事項と判断してほしい点</h2>
-<p class="small">ここに挙げた3点だけが判断の要る点です。ほかの節は決定済みの情報です。各項目から本文の該当箇所へ移れます。本文には同じ番号の「要判断 n」の印があります。</p>
-<ol class="decide-list">
-<li><span class="need">1</span><div><b>原稿内のフロートのイラストを使うか</b>　A：使わない。線画のグラスで、崩れと整いを見せる（この企画書の前提）。B：使う。他者の実物写真が元なので要確認。許可が降りるまでAで進める。制作側は画像を生成しない。<span class="where">→ <a href="#swaps">差し替え候補</a>／<a href="#cut-09">カット09</a></span></div></li>
-<li><span class="need">2</span><div><b>冒頭の違和感を、生成動画にするか</b>　A：使わない。同じ線画をモーショングラフィックスで崩す、または整える（この企画書の前提）。B：グラスが歪む生成動画を使う。未承認・未生成。承認後に企画側が用意する。グラスが出るカットの一部だけ質感を変えない。<span class="where">→ <a href="#swaps">差し替え候補</a>／<a href="#cut-02">カット02</a></span></div></li>
-<li><span class="need">3</span><div><b>ナレーション音声を、今回生成するか</b>　A：原稿と、声を置く設計まで。音声ファイルは作らない（この企画書はAPI生成の許可ではない）。B：明示の依頼として、Gemini または ElevenLabs でこの原稿を生成する。使えるキーがあるときだけ。モデルIDと料金は実行時に確認する。<span class="where">→ <a href="#roles">声・文字・素材の分担</a>／<a href="#sound">音</a></span></div></li>
-</ol>
-</section>
-
 <h2 id="claim">この動画で伝える一文</h2>
 <div class="box accent"><p class="lead">「AIで作った絵が気持ち悪いのはAIのせいだ」と思っている人に、不自然さはゼロからすべてを生成させていることから来ると伝え、手元の70を80〜90へ引き上げる相棒として向き合い、最後の判断と責任は人が持つ、という本人の結論を残す。</p></div>
 <p>残る気持ちは、丁寧に使えばAIは高く返す、という本人の確信です。全員の制作がこれで成功する、という話にはしません。0、70、80、90、100は、どこまで委ねるかの言い方で、品質の測定値ではありません。</p>
@@ -168,627 +157,440 @@ nav a.nav-need:hover{text-decoration:underline}
 <p>メニューやポスターをAIに任せ、仕上がりを「なんか気持ち悪い」と言われた人。原因をAIの性能だと思っている人。手元の実物をどこまで渡し、どこから自分で見るかを、自分の頼み方として持って帰れる人。</p>
 
 <h2 id="structure">構成と尺</h2>
-<div class="box accent" id="discretion">
-<p class="lead">Fable 5.2には、企画の意図を汲み、表現を改善して仕上げる裁量を渡します。</p>
-<p>以下のカット表、絵コンテ、文言、配色は、制作に着手できる具体的な構成案です。記事の主張をより明快に、映像をより魅力的に伝えられるなら、構成案を超えて改善してください。企画書との見た目の一致は合格条件にしません。</p>
-<ul>
-<li><strong>守ること：</strong>手元の70を80〜90へ引き上げる相棒であり、最後の判断と責任は人が持つ、という主張。原稿の根拠と留保。本人の結論。文字中心の表現。読む間も続く大きな画面運動。可読性。最後のロゴ仕様。</li>
-<li><strong>今回の決定：</strong>写真も生成動画も使わず、線画のモーショングラフィックスで作る。グラスが出るカットは同じ線画。他者の画像は出さず、09は要旨と出典の一行。製品のUIとロゴ、実在の人物は描かない。「短縮自体は、悪くない。」は画面に残す。結びは「相棒として。」と「責任は、人が持つ。」</li>
-<li><strong>変更してよいこと：</strong>本編のカット数、順序、尺、上記以外の文言の要約と改行、図形の形と配置、字組み、配色、カメラ、動きの種類と速度とつなぎ、実装技術。2分01.5秒、7字/秒、寄り2秒は参考値です。留保を消したり、個人の経験を全員への保証に広げたりしません。</li>
-<li><strong>進め方：</strong>この範囲の改善は逐一の承認を待たず、理由を短く記録して実装と検証まで進めます。変更したカット表と文言は、この企画書と<a href="references.md">references.md</a>の対応へ反映します。絵コンテは参考案として扱い、配置や動きの判断が変わる場面だけ更新します。外部素材の追加、音声生成、公開の承認条件は別に守ります。</li>
-</ul>
-</div>
-<p>声は経緯、留保、結論を運びます。文字は決め語です。図は「0から100は折れる」「70から90は伸びる」「90から100は人の手」を運びます。説明の全文は画面に載せません。ナレーションありで尺を設計しています。この企画書は、APIで音声を生成する許可ではありません。</p>
+<p>声は経緯、留保、結論を運びます。文字は決め語と、短い留保です。図は「0から100は折れる」「70から90は伸びる」「90から100は人の手」を運びます。説明の全文は画面に載せません。尺は、生成したナレーションの実測に合わせて決めました（声 741 字、画面の文字 423 字。空白と改行を除く）。</p>
+<p>企画時の案からの主な変更：報じられたフロートの例（氷まで、同じ緑）を冒頭の直後へ移し、「なんか気持ち悪い」の中身を先に見せてから原因（ゼロからすべて）へ進みます。画面の出典の一行は出しません。図は、0〜100 の目盛りを床の定規にした一続きの立体の空間で、カメラがその上を飛びます。</p>
 <div class="tablewrap"><table>
-<thead><tr><th>カット</th><th>区間</th><th>この区間で伝えること</th><th>声／画面</th></tr></thead>
+<thead><tr><th>カット</th><th>区間</th><th>役割</th><th>声／画面</th></tr></thead>
 <tbody>
-<tr><td><a href="#cut-01">01 なんか、気持ち悪い。</a></td><td>0:00.0–0:06.0（6秒）</td><td>気持ち悪さの正体は、まだ分からない。任せる幅を問う</td><td>34字／19字</td></tr>
-<tr><td><a href="#cut-02">02 0から100は、崩れる。</a></td><td>0:06.0–0:14.0（8秒）</td><td>ゼロからすべてを生成させると、線が折れる</td><td>39字／12字</td></tr>
-<tr><td><a href="#cut-03">03 70から、90へ。</a></td><td>0:14.0–0:21.5（7.5秒）</td><td>実物を土台にすると、形は崩れず、光が足される</td><td>37字／9字</td></tr>
-<tr><td><a href="#cut-04">04 濃淡。</a></td><td>0:21.5–0:33.0（11.5秒）</td><td>70を90へ上げるか、残りを自分で直すか。どちらも濃淡</td><td>51字／16字</td></tr>
-<tr><td><a href="#cut-05">05 嘘が、混ざる。</a></td><td>0:33.0–0:45.0（12秒）</td><td>元がなければ生成する。ゼロからだと、頼んでいないことが混ざる</td><td>62字／13字</td></tr>
-<tr><td><a href="#cut-06">06 楽か、質か。</a></td><td>0:45.0–0:50.5（5.5秒）</td><td>楽をするためと、質を突き詰めるためは、違う</td><td>29字／17字</td></tr>
-<tr><td><a href="#cut-07">07 隅は、残る。</a></td><td>0:50.5–1:00.0（9.5秒）</td><td>任せきりでは届かない。仕上げに手をかける</td><td>45字／13字</td></tr>
-<tr><td><a href="#cut-08">08 AIのせい、ではない。</a></td><td>1:00.0–1:10.5（10.5秒）</td><td>出した判断は人のもの。短縮自体は悪くない</td><td>50字／31字</td></tr>
-<tr><td><a href="#cut-09">09 氷まで、同じ緑。</a></td><td>1:10.5–1:20.0（9.5秒）</td><td>報じられたフロートの要旨。画像は出さない</td><td>59字／32字</td></tr>
-<tr><td><a href="#cut-10">10 離れていく。</a></td><td>1:20.0–1:34.0（14秒）</td><td>厳しすぎる反応もある。それでも手抜きと受け取られれば離れる</td><td>70字／46字</td></tr>
-<tr><td><a href="#cut-11">11 そこに、行った価値。</a></td><td>1:34.0–1:41.0（7秒）</td><td>現地で切った思い出は、置き換えても意味がない</td><td>39字／10字</td></tr>
-<tr><td><a href="#cut-12">12 相棒として。</a></td><td>1:41.0–1:56.0（15秒）</td><td>人の手が空きにはまる。相棒として向き合い、責任は人が持つ</td><td>74字／26字</td></tr>
-<tr><td><a href="#cut-13">13 エンドロゴ</a></td><td>1:56.0–2:01.5（5.5秒）</td><td>制作表示</td><td>0字／0字</td></tr>
+<tr><td><a href="#cut-01">01 なんか、気持ち悪い。</a></td><td>0:00.0–0:06.8（6.8秒）</td><td>問い</td><td>36字／10字</td></tr>
+<tr><td><a href="#cut-02">02 氷まで、同じ緑。</a></td><td>0:06.8–0:18.8（12秒）</td><td>報じられた例</td><td>65字／49字</td></tr>
+<tr><td><a href="#cut-03">03 0から100は、崩れる。</a></td><td>0:18.8–0:28.6（9.8秒）</td><td>原因</td><td>53字／34字</td></tr>
+<tr><td><a href="#cut-04">04 70から、90へ。</a></td><td>0:28.6–0:38.0（9.4秒）</td><td>根拠</td><td>45字／30字</td></tr>
+<tr><td><a href="#cut-05">05 濃淡。</a></td><td>0:38.0–0:54.8（16.8秒）</td><td>対処</td><td>81字／43字</td></tr>
+<tr><td><a href="#cut-06">06 嘘が混ざる。</a></td><td>0:54.8–1:08.0（13.2秒）</td><td>留保と根拠</td><td>71字／38字</td></tr>
+<tr><td><a href="#cut-07">07 楽か、質か。</a></td><td>1:08.0–1:16.4（8.4秒）</td><td>対比</td><td>44字／17字</td></tr>
+<tr><td><a href="#cut-08">08 隅は、残る。</a></td><td>1:16.4–1:26.0（9.6秒）</td><td>根拠</td><td>55字／20字</td></tr>
+<tr><td><a href="#cut-09">09 AIのせい、ではない。</a></td><td>1:26.0–1:39.4（13.4秒）</td><td>主張</td><td>73字／48字</td></tr>
+<tr><td><a href="#cut-10">10 離れていく。</a></td><td>1:39.4–1:56.4（17秒）</td><td>留保</td><td>95字／63字</td></tr>
+<tr><td><a href="#cut-11">11 そこに、行った価値。</a></td><td>1:56.4–2:04.0（7.6秒）</td><td>留保</td><td>43字／26字</td></tr>
+<tr><td><a href="#cut-12">12 相棒として。</a></td><td>2:04.0–2:22.0（18秒）</td><td>本人の結論</td><td>80字／45字</td></tr>
+<tr><td><a href="#cut-13">13 エンドロゴ</a></td><td>2:22.0–2:27.3（5.3秒）</td><td>制作表示</td><td>0字／0字</td></tr>
 </tbody></table></div>
-<p class="small">尺の算出：各カットのナレーション案の字数（空白と改行を除く。句読点は含む）÷ 7字/秒 ＋ 文の数 × 1秒。0.5秒単位に切り上げ。絵を見せる下限は、02の折れ7秒、03の伸び7秒、12の寄り8秒。ロゴは動作4秒＋完成形の保持1.5秒。7字/秒は、この企画のネタ案と、画面の読了の目安です。過去の実測では読み上げが約5.5字/秒だったので、声が遅ければ速度を上げず、家電のたとえや「ダサい」の周辺から削ります。留保は残します。3分には伸ばしません。等速での読了と観察は、制作側の試作で確かめます。実速再生は未確認です。</p>
 
-<h2 id="cuts">カット表・絵コンテ</h2>
-<p>各カットに「はじめ」と「おわり」の2コマがあります。コマ画は構図のラフ（1280×720、明るい紙色）で、完成画ではありません。番号と「はじめ／おわり」は、このページの見出しとキャプションにだけあり、画像の中にはありません。秒数、位置、大きさは参考値です。実装の手順とパラメータは制作側の裁量です。画面全体を大きく動かすこと、可読性、留保は緩めません。カメラの名前は<a href="../docs/techniques/camera-cheatsheet.md">カメラワークと切り替えの名前</a>、動きの用語は<a href="#motion">動きの言語</a>、記号の意味は<a href="#symbols">記号と色</a>を参照します。章表示、テロップ帯、エンドクレジットは入れません。</p>
-<p>動きの軸は、画面を横切る一本の目盛りです。0から100へ走る矢印は途中で折れ、グラスの線も波打ちます。70から90へ伸びる矢印は滑らかに光り、グラスは形を保ったまま色と光が足されます。最後に、90から100の空きへ「人の手」がはまります。</p>
+<h2 id="cuts">カット表（完成した本編のコマ）</h2>
+<p>各カットのコマは、完成した本編（<code>video/out/final.mp4</code>）から切り出したものです。番号はこのページの見出しにだけあり、映像の中にはありません。企画時の絵コンテ（構図のラフ）は <code>assets/storyboard/</code> に残しています。動きの用語は<a href="#motion">動きの言語</a>、記号の意味は<a href="#symbols">記号と色</a>を参照します。</p>
+<p>動きの軸は、床に置いた 0〜100 の目盛りです。0 から 100 へ走る矢印は進むほど折れ、100 の先のグラスが崩れます。70 に置いた実物のグラスは、滑らかな青い矢印で形を保ったまま 90 へ運ばれます。最後に、90 から 100 の空きへ「人の手」の帯が落ちてはまり、グラスにさくらんぼが乗ります。</p>
 
 <section class="cut" id="cut-01">
 <div class="cuthead"><div class="num">01</div><div>
 <h3>なんか、気持ち悪い。</h3>
-<p class="small">0:00.0–0:06.0 / 6秒　・　問い　・　声 34字／画面 19字</p>
+<p class="small">0:00.0–0:06.8 / 6.8秒　・　問い　・　声 36字／画面 10字</p>
 </div></div>
 <div class="frames">
-<figure><a href="assets/storyboard/cut-01-start.webp"><img src="assets/storyboard/cut-01-start.webp" width="1280" height="720" alt="カット01 はじめ"></a><figcaption><b>はじめ</b>　明るい紙色。中央に線画のグラス。下に空の目盛り。0と100の端、70と90の刻み。</figcaption></figure>
-<figure><a href="assets/storyboard/cut-01-end.webp"><img src="assets/storyboard/cut-01-end.webp" width="1280" height="720" alt="カット01 おわり"></a><figcaption><b>おわり</b>　左上に「なんか、／気持ち悪い。」。グラスは右で輪郭が波打ち始める。目盛りの上に「どこまで、任せる？」</figcaption></figure>
+<figure><a href="assets/frames/cut-01-start.webp"><img src="assets/frames/cut-01-start.webp" width="1280" height="720" alt="カット01 前半のコマ"></a><figcaption><b>前半</b>　メニュー写真のようにグラスへ寄ったところから始まる。</figcaption></figure>
+<figure><a href="assets/frames/cut-01-end.webp"><img src="assets/frames/cut-01-end.webp" width="1280" height="720" alt="カット01 後半のコマ"></a><figcaption><b>後半</b>　「なんか、」（明朝・灰）のあと「気持ち悪い。」が大きく着地し、グラスの輪郭がわずかに波打ち始める。</figcaption></figure>
 </div>
 <div class="details"><div>
 <div class="label">画面の文字</div>
-<p class="words">なんか、<br>気持ち悪い。<br>どこまで、任せる？</p>
-<div class="label">ナレーション案</div>
-<p class="voice">メニューの写真を見て、なんか気持ち悪い、と思ったことはありませんか。</p>
-<div class="label">主役の語と、その文字がすること</div>
-<p>「気持ち悪い。」を墨の特大で、グラスより上に置きます。「どこまで、任せる？」は目盛りのそばの小さい藍です。続きを見る理由は、気持ち悪さの正体がまだ出ていないことです。</p>
-<div class="label">字組みと構図の変化</div>
-<p>はじめはグラスが中央で、余白が均等です。おわりは左上の横組み2行、グラスは右へ寄ります。重心は中央から左上へ移ります。</p>
+<p class="words">なんか、<br>気持ち悪い。</p>
+<div class="label">ナレーション</div>
+<p class="voice">メニューの写真を見て、「なんか気持ち悪い」と思ったことは、ありませんか。</p>
 </div><div>
-<div class="label">動き（秒は参考値）</div>
-<ul>
-<li>0〜2秒：グラスが奥から手前へ滑り込み、<a href="#dolly">寄る</a>。</li>
-<li>2〜4秒：「なんか、／気持ち悪い。」が行マスクで入り、<a href="#land">着地</a>する。読む間、グラスの輪郭だけがゆっくり波打つ。文字の形は動かさない。</li>
-<li>4〜6秒：目盛りが下からせり上がり、「どこまで、任せる？」が刻みの上に着地する。カメラは止めず、目盛りの左端へ視線を渡す。</li>
-</ul>
-<div class="label">カメラ</div>
-<p>Dolly in。寄りは図の層だけに掛ける。</p>
+<div class="label">主役の語と、字組み・動き</div>
+<p>「気持ち悪い。」を墨の特大で左に置く。グラスはカメラの振りで右へ逃げ、語に場所を空ける。正体はまだ言わない。</p>
 <div class="label">次へのつながり</div>
-<p>目盛りの左端（0）を、02の矢印の出発点にする。</p>
+<p>グラスの正面へ振って、02 の「メニューの画像」に入る。</p>
 </div></div>
 </section>
 
 <section class="cut" id="cut-02">
 <div class="cuthead"><div class="num">02</div><div>
-<h3>0から100は、崩れる。 <span class="need">要判断 2</span></h3>
-<p class="small">0:06.0–0:14.0 / 8秒　・　原因　・　声 39字／画面 12字</p>
+<h3>氷まで、同じ緑。</h3>
+<p class="small">0:06.8–0:18.8 / 12秒　・　報じられた例　・　声 65字／画面 49字</p>
 </div></div>
 <div class="frames">
-<figure><a href="assets/storyboard/cut-02-start.webp"><img src="assets/storyboard/cut-02-start.webp" width="1280" height="720" alt="カット02 はじめ"></a><figcaption><b>はじめ</b>　目盛りが横に長い。矢印が0を出たところ。右上に小さな線画のグラス。</figcaption></figure>
-<figure><a href="assets/storyboard/cut-02-end.webp"><img src="assets/storyboard/cut-02-end.webp" width="1280" height="720" alt="カット02 おわり"></a><figcaption><b>おわり</b>　左に特大「崩れる。」。目盛りの矢印はギザギザ。右のグラスは緑に染まり、輪郭が波打つ。</figcaption></figure>
+<figure><a href="assets/frames/cut-02-start.webp"><img src="assets/frames/cut-02-start.webp" width="1280" height="720" alt="カット02 前半のコマ"></a><figcaption><b>前半</b>　グラスの正面。写真の四隅の印がはまり、これが「画像」だと分かる。</figcaption></figure>
+<figure><a href="assets/frames/cut-02-end.webp"><img src="assets/frames/cut-02-end.webp" width="1280" height="720" alt="カット02 後半のコマ"></a><figcaption><b>後半</b>　氷へ寄ると、氷が一つずつソーダと同じ緑になり、画面の地まで同じ緑で満ちる。白い「同じ緑。」。つやの帯が画面を横切る。</figcaption></figure>
 </div>
 <div class="details"><div>
 <div class="label">画面の文字</div>
-<p class="words">0から100は、<br>崩れる。</p>
-<div class="label">ナレーション案</div>
-<p class="voice">不自然さは、AIのせいではありません。ゼロからすべてを生成させているからです。</p>
-<div class="label">主役の語と、その文字がすること</div>
-<p>「崩れる。」を画面左の特大にします。0と100は目盛りの端の小さなラベルです。測定値ではなく、丸投げの幅です。</p>
-<div class="label">字組みと構図の変化</div>
-<p>はじめは目盛りが中央の一本です。おわりは左に特大の語、右に崩れたグラス。重心は左の語です。01の「グラスが右、語が左上」から、語がさらに大きくなります。</p>
+<p class="words">一部店舗の、フロート。<br>メニューの画像。<br>生成AIで、作られた。<br>氷まで、<br>同じ緑。<br>ゼリーのような、つや。</p>
+<div class="label">ナレーション</div>
+<p class="voice">ケンタッキーが一部の店舗で出した、フロートのメニュー画像。生成AIで作られ、氷までソーダと同じ緑に染まっていた、と報じられました。</p>
 </div><div>
-<div class="label">動き（秒は参考値）</div>
-<ul>
-<li>0〜2秒：一本の矢印が0から加速して100へ<a href="#run">走る</a>（Speed ramp）。</li>
-<li>2〜5秒：矢印の線が途中で<a href="#snap">折れる</a>。グラスの輪郭が同じタイミングで波打ち、中の四角へ緑が満ちる。</li>
-<li>5〜8秒：「崩れる。」が着地する。読む間も折れた線は動き続ける。行はカメラに乗って少し寄る。文字の形は崩さない。</li>
-</ul>
-<div class="label">カメラ</div>
-<p>Speed ramp のあと、図の層へ Dolly in。次のカットへは Whip pan。</p>
+<div class="label">主役の語と、字組み・動き</div>
+<p>主役は「同じ緑。」。氷・液・画面の地が同じ色になることで、語の意味をそのまま見せる。他者の画像・ロゴ・出典の表示は出さない（ブランド名は声だけ）。</p>
 <div class="label">次へのつながり</div>
-<p>折れた線の右端を、03の70の位置へ Whip pan で渡す。</p>
+<p>緑が上へ抜け、カメラが引いて目盛りの全景になる。</p>
 </div></div>
 </section>
 
 <section class="cut" id="cut-03">
 <div class="cuthead"><div class="num">03</div><div>
-<h3>70から、90へ。</h3>
-<p class="small">0:14.0–0:21.5 / 7.5秒　・　根拠　・　声 37字／画面 9字</p>
+<h3>0から100は、崩れる。</h3>
+<p class="small">0:18.8–0:28.6 / 9.8秒　・　原因　・　声 53字／画面 34字</p>
 </div></div>
 <div class="frames">
-<figure><a href="assets/storyboard/cut-03-start.webp"><img src="assets/storyboard/cut-03-start.webp" width="1280" height="720" alt="カット03 はじめ"></a><figcaption><b>はじめ</b>　左に形の整った線画のグラス。目盛りは70の位置に短い矢印。</figcaption></figure>
-<figure><a href="assets/storyboard/cut-03-end.webp"><img src="assets/storyboard/cut-03-end.webp" width="1280" height="720" alt="カット03 おわり"></a><figcaption><b>おわり</b>　グラスは形を保ったまま淡い色。右に特大「90へ。」。70から90の区間だけ光り、矢印は滑らか。</figcaption></figure>
+<figure><a href="assets/frames/cut-03-start.webp"><img src="assets/frames/cut-03-start.webp" width="1280" height="720" alt="カット03 前半のコマ"></a><figcaption><b>前半</b>　0〜100 の目盛りの全景。床に「どこまで、任せる？」。グラスは 100 の先に立っている。</figcaption></figure>
+<figure><a href="assets/frames/cut-03-end.webp"><img src="assets/frames/cut-03-end.webp" width="1280" height="720" alt="カット03 後半のコマ"></a><figcaption><b>後半</b>　0 の端から矢印が走り、進むほど線が折れる。100 に着いた瞬間グラスが大きく崩れ、「崩れる。」が着地する。</figcaption></figure>
 </div>
 <div class="details"><div>
 <div class="label">画面の文字</div>
-<p class="words">70から、<br>90へ。</p>
-<div class="label">ナレーション案</div>
-<p class="voice">プロは実物を撮って、光や形を足します。写真を渡せば、形は大きく崩れません。</p>
-<div class="label">主役の語と、その文字がすること</div>
-<p>「90へ。」を藍の特大にします。「70から、」は一段小さく、同じ藍です。数字は目盛りのラベルで、品質スコアではありません。</p>
-<div class="label">字組みと構図の変化</div>
-<p>02と左右を入れ替えます。グラスは左で整い、文字は右の2行です。重心は右へ移ります。</p>
+<p class="words">品質は、上がった。<br>ゼロから、<br>すべてを、<br>生成。<br>0から100は、<br>崩れる。</p>
+<div class="label">ナレーション</div>
+<p class="voice">AI画像の品質は、一気に上がりました。それでも不自然になるのは、ゼロからすべてを、生成させているからです。</p>
 </div><div>
-<div class="label">動き（秒は参考値）</div>
-<ul>
-<li>0〜1.5秒：Whip pan で70の位置へ着く。</li>
-<li>1.5〜5秒：短い矢印が90まで<a href="#grow">伸びる</a>。区間が光る。グラスの線の内側に色と光が乗る。輪郭は波打たない。</li>
-<li>5〜7.5秒：2行が行マスクで入る。読む間、光が70から90を往復する。図の層を小さく<a href="#orbit">回る</a>。</li>
-</ul>
-<div class="label">カメラ</div>
-<p>Whip pan から、小さな Orbit。文字の層は回さない。</p>
+<div class="label">主役の語と、字組み・動き</div>
+<p>「崩れる。」を最大級の墨で。留保「品質は、上がった。」は明朝の灰で先に置く。矢印とカメラが並走し、語は走りに合わせて一つずつ入る。</p>
 <div class="label">次へのつながり</div>
-<p>光っている区間を、04で上下二本の矢印に分ける。</p>
+<p>折れた線が倒れ、70 の位置へカメラを振る。</p>
 </div></div>
 </section>
 
 <section class="cut" id="cut-04">
 <div class="cuthead"><div class="num">04</div><div>
-<h3>濃淡。</h3>
-<p class="small">0:21.5–0:33.0 / 11.5秒　・　対処　・　声 51字／画面 16字</p>
+<h3>70から、90へ。</h3>
+<p class="small">0:28.6–0:38.0 / 9.4秒　・　根拠　・　声 45字／画面 30字</p>
 </div></div>
 <div class="frames">
-<figure><a href="assets/storyboard/cut-04-start.webp"><img src="assets/storyboard/cut-04-start.webp" width="1280" height="720" alt="カット04 はじめ"></a><figcaption><b>はじめ</b>　目盛りが上下に二本。上は70から、下は0から。どちらも矢印はまだ短い。</figcaption></figure>
-<figure><a href="assets/storyboard/cut-04-end.webp"><img src="assets/storyboard/cut-04-end.webp" width="1280" height="720" alt="カット04 おわり"></a><figcaption><b>おわり</b>　上は70から90で光って止まる。下は70で止まり、右側の空きの上に「残りは、自分で。」</figcaption></figure>
+<figure><a href="assets/frames/cut-04-start.webp"><img src="assets/frames/cut-04-start.webp" width="1280" height="720" alt="カット04 前半のコマ"></a><figcaption><b>前半</b>　崩れていないグラス（実物）が 70 に置かれ、四隅の印で「撮る」。光の帯が通り、星が灯る。</figcaption></figure>
+<figure><a href="assets/frames/cut-04-end.webp"><img src="assets/frames/cut-04-end.webp" width="1280" height="720" alt="カット04 後半のコマ"></a><figcaption><b>後半</b>　青い矢印が 70 から 90 へ滑らかに伸び、グラスは形を保ったまま 90 へ運ばれる。右にグラス、左に藍の「90へ。」。</figcaption></figure>
 </div>
 <div class="details"><div>
 <div class="label">画面の文字</div>
-<p class="words">70を、90へ。<br>残りは、自分で。</p>
-<div class="label">ナレーション案</div>
-<p class="voice">0から100は丸投げしない。70を、80や90へ引き上げる。あるいは残りは、自分で直す。この濃淡です。</p>
-<div class="label">主役の語と、その文字がすること</div>
-<p>「残りは、自分で。」を下の空きの上に置きます。上の「70を、90へ。」は光の区間と同じ藍です。二通りは同じ濃淡で、どちらか一方だけを正解にしません。</p>
-<div class="label">字組みと構図の変化</div>
-<p>一本だった目盛りが、縦に二本になります。03の「右に特大」から、上下の対に組みが変わります。語は各矢印の結果のそばに付きます。</p>
+<p class="words">実物を、撮る。<br>光を、足す。<br>70から、<br>90へ。<br>形は、崩れない。</p>
+<div class="label">ナレーション</div>
+<p class="voice">広告のプロは、実物を撮って、そこに光を足します。実物の写真を渡せば、形は大きく崩れません。</p>
 </div><div>
-<div class="label">動き（秒は参考値）</div>
-<ul>
-<li>0〜3秒：一本の目盛りが上下に分かれる。</li>
-<li>3〜8秒：上は90まで滑らかに伸び、下は70で止まる。止まった先の空きが残る。</li>
-<li>8〜11.5秒：二つの句が着地する。読む間、上の光は流れ、下の空きは開いたままです。空きを欠陥の点滅にはしません。</li>
-</ul>
-<div class="label">カメラ</div>
-<p>二本が分かれるあいだ、図の層を Tilt で少し起こす。</p>
+<div class="label">主役の語と、字組み・動き</div>
+<p>「90へ。」を藍の特大で。03 の折れた朱の線に対して、太く滑らかな青い矢印と金の光で対比する。</p>
 <div class="label">次へのつながり</div>
-<p>下の0の端から、05の四角の列が生える。</p>
+<p>引いて、目盛りの上の帯の話へ。</p>
 </div></div>
 </section>
 
 <section class="cut" id="cut-05">
 <div class="cuthead"><div class="num">05</div><div>
-<h3>嘘が、混ざる。</h3>
-<p class="small">0:33.0–0:45.0 / 12秒　・　留保と根拠　・　声 62字／画面 13字</p>
+<h3>濃淡。</h3>
+<p class="small">0:38.0–0:54.8 / 16.8秒　・　対処　・　声 81字／画面 43字</p>
 </div></div>
 <div class="frames">
-<figure><a href="assets/storyboard/cut-05-start.webp"><img src="assets/storyboard/cut-05-start.webp" width="1280" height="720" alt="カット05 はじめ"></a><figcaption><b>はじめ</b>　上部に、高さの違う四角が一列。左下に「ゼロからだと、」</figcaption></figure>
-<figure><a href="assets/storyboard/cut-05-end.webp"><img src="assets/storyboard/cut-05-end.webp" width="1280" height="720" alt="カット05 おわり"></a><figcaption><b>おわり</b>　四角の高さと位置が入れ替わり、重なる。下に特大「嘘が混ざる。」</figcaption></figure>
+<figure><a href="assets/frames/cut-05-start.webp"><img src="assets/frames/cut-05-start.webp" width="1280" height="720" alt="カット05 前半のコマ"></a><figcaption><b>前半</b>　折れた線がもう一度走り、平らに潰れて消える（丸投げしない）。一本目の帯: 0〜70 が墨（実物）、70〜90 が青（AI）。</figcaption></figure>
+<figure><a href="assets/frames/cut-05-end.webp"><img src="assets/frames/cut-05-end.webp" width="1280" height="720" alt="カット05 後半のコマ"></a><figcaption><b>後半</b>　二本目の帯: 0〜70 が青（AI）、70〜100 が墨（自分で）。二本を見下ろす構図に「濃淡。」。</figcaption></figure>
 </div>
 <div class="details"><div>
 <div class="label">画面の文字</div>
-<p class="words">ゼロからだと、<br>嘘が混ざる。</p>
-<div class="label">ナレーション案</div>
-<p class="voice">元がなければ、生成するしかありません。頼んだことと、AIが足したことが混ざります。香港の並びも、すぐデタラメだと分かります。</p>
-<div class="label">主役の語と、その文字がすること</div>
-<p>「嘘が混ざる。」を墨の特大にします。四角は、並びが崩れる印です。実在の街の写真ではなく、画面に「香港」とも書きません。地名は声だけです。</p>
-<div class="label">字組みと構図の変化</div>
-<p>はじめは四角が上部の水平、文字は左下の小さめです。おわりは四角が不規則に並び、文字は下段の特大です。重心は上から下へ移ります。04の横長の目盛りとは組みが違います。</p>
+<p class="words">丸投げ、<br>しない。<br>70を渡して、90へ。<br>残りは、自分で。<br>この<br>濃淡。<br>仕上がりを、左右する。</p>
+<div class="label">ナレーション</div>
+<p class="voice">0から100まで、丸投げしない。70の実物を渡して、80や90へ引き上げてもらう。あるいは、70まで出させて、残りは自分で直す。この濃淡が、仕上がりを左右します。</p>
 </div><div>
-<div class="label">動き（秒は参考値）</div>
-<ul>
-<li>0〜2秒：四角の輪郭が一本ずつ描かれる。</li>
-<li>2〜8秒：四角が列の中で入れ替わり、隙間と重なりが出る。カメラは列に沿って Tracking shot（右へ）。</li>
-<li>8〜12秒：特大の句が着地する。読む間、四角の列は<a href="#drift">流れる</a>。文字の行は逆向きに、形を保ったまま左へ少し流す。</li>
-</ul>
-<div class="label">カメラ</div>
-<p>Tracking shot（右へ）。</p>
+<div class="label">主役の語と、字組み・動き</div>
+<p>墨＝人の側（実物・自分の手）、青＝AI に任せる区間。二通りを同じ大きさの帯で並べ、片方だけを正解にしない。</p>
 <div class="label">次へのつながり</div>
-<p>流れた四角が画面の外へ出て、06は語だけになる。</p>
+<p>0 の端（何もない床）へ振る。</p>
 </div></div>
 </section>
 
 <section class="cut" id="cut-06">
 <div class="cuthead"><div class="num">06</div><div>
-<h3>楽か、質か。</h3>
-<p class="small">0:45.0–0:50.5 / 5.5秒　・　対比　・　声 29字／画面 17字</p>
+<h3>嘘が混ざる。</h3>
+<p class="small">0:54.8–1:08.0 / 13.2秒　・　留保と根拠　・　声 71字／画面 38字</p>
 </div></div>
 <div class="frames">
-<figure><a href="assets/storyboard/cut-06-start.webp"><img src="assets/storyboard/cut-06-start.webp" width="1280" height="720" alt="カット06 はじめ"></a><figcaption><b>はじめ</b>　左に灰の「楽を、／するため。」だけ。右は空。</figcaption></figure>
-<figure><a href="assets/storyboard/cut-06-end.webp"><img src="assets/storyboard/cut-06-end.webp" width="1280" height="720" alt="カット06 おわり"></a><figcaption><b>おわり</b>　左下に小さい灰。右に縦組みの特大「質を、／突き詰める。」</figcaption></figure>
+<figure><a href="assets/frames/cut-06-start.webp"><img src="assets/frames/cut-06-start.webp" width="1280" height="720" alt="カット06 前半のコマ"></a><figcaption><b>前半</b>　0 の端の何もない床。留保を明朝の灰で二行。</figcaption></figure>
+<figure><a href="assets/frames/cut-06-end.webp"><img src="assets/frames/cut-06-end.webp" width="1280" height="720" alt="カット06 後半のコマ"></a><figcaption><b>後半</b>　床から建物が次々に生え、そのうちいくつかが緑になって浮く・逆さになる・傾く。後半は建物の並びが入れ替わり続ける。</figcaption></figure>
 </div>
 <div class="details"><div>
 <div class="label">画面の文字</div>
-<p class="words">楽を、<br>するため。<br>質を、<br>突き詰める。</p>
-<div class="label">ナレーション案</div>
-<p class="voice">楽をするための使い方と、質を突き詰める使い方は、違います。</p>
-<div class="label">主役の語と、その文字がすること</div>
-<p>「突き詰める。」を縦組みの特大にします。楽の横組みと向きを変えて、質の側を大きくします。楽を悪の全部にはしません。短縮自体は悪くない、は08で残します。</p>
-<div class="label">字組みと構図の変化</div>
-<p>はじめは左の横組みです。おわりは左下に小さな灰、右に縦組みです。05の下段の特大から、縦の柱へ重心が移ります。</p>
+<p class="words">元がなければ、<br>生成するしかない。<br>ゼロからだと、<br>嘘が混ざる。<br>並びが、デタラメ。</p>
+<div class="label">ナレーション</div>
+<p class="voice">元の画像がなければ、生成するしかありません。ただ、ゼロからだと、現実にない嘘が混ざります。住んでいた香港の風景も、ビルの並びがデタラメでした。</p>
 </div><div>
-<div class="label">動き（秒は参考値）</div>
-<ul>
-<li>0〜1.5秒：灰の2行が左から行マスクで入る。</li>
-<li>1.5〜3.5秒：縦組みが上から降りて着地する。画面全体が右へ<a href="#push">押し出される</a>。</li>
-<li>3.5〜5.5秒：縦の行は上へ、灰の行は下へ、向きを変えて流れる。止めない。</li>
-</ul>
-<div class="label">カメラ</div>
-<p>押し出しと同時に、図はまだ無く、文字の行と画面の面が動く。</p>
+<div class="label">主役の語と、字組み・動き</div>
+<p>「嘘が混ざる。」を墨の特大で空に置く。緑は 02 と同じ「嘘の色」。実在の街の写真も地名も出さない（香港は声だけ）。</p>
 <div class="label">次へのつながり</div>
-<p>縦の「質」の下端から、07の矩形が開く。</p>
+<p>街が沈み、文字だけの場面へ。</p>
 </div></div>
 </section>
 
 <section class="cut" id="cut-07">
 <div class="cuthead"><div class="num">07</div><div>
-<h3>隅は、残る。</h3>
-<p class="small">0:50.5–1:00.0 / 9.5秒　・　根拠　・　声 45字／画面 13字</p>
+<h3>楽か、質か。</h3>
+<p class="small">1:08.0–1:16.4 / 8.4秒　・　対比　・　声 44字／画面 17字</p>
 </div></div>
 <div class="frames">
-<figure><a href="assets/storyboard/cut-07-start.webp"><img src="assets/storyboard/cut-07-start.webp" width="1280" height="720" alt="カット07 はじめ"></a><figcaption><b>はじめ</b>　左に大きな矩形。中央を円が通り、四隅に点が残っている。</figcaption></figure>
-<figure><a href="assets/storyboard/cut-07-end.webp"><img src="assets/storyboard/cut-07-end.webp" width="1280" height="720" alt="カット07 おわり"></a><figcaption><b>おわり</b>　右に「隅は、残る。」と、藍の「仕上げは、人。」円は隅に届いていない。</figcaption></figure>
+<figure><a href="assets/frames/cut-07-start.webp"><img src="assets/frames/cut-07-start.webp" width="1280" height="720" alt="カット07 前半のコマ"></a><figcaption><b>前半</b>　紙の地に、明朝の灰で「楽を、／するため。」</figcaption></figure>
+<figure><a href="assets/frames/cut-07-end.webp"><img src="assets/frames/cut-07-end.webp" width="1280" height="720" alt="カット07 後半のコマ"></a><figcaption><b>後半</b>　右から藍の面が押し込み、灰の二行は左下へ縮む。面の上に白の縦組「質を、／突き詰める。」</figcaption></figure>
 </div>
 <div class="details"><div>
 <div class="label">画面の文字</div>
-<p class="words">隅は、残る。<br>仕上げは、人。</p>
-<div class="label">ナレーション案</div>
-<p class="voice">任せきりでは、隅が残ります。仕上げに手をかけるから、おいしくなる。丸投げは、即席の味です。</p>
-<div class="label">主役の語と、その文字がすること</div>
-<p>「仕上げは、人。」を藍の大きくします。「隅は、残る。」は墨です。円は家電の製品絵ではありません。人の姿は描きません。</p>
-<div class="label">字組みと構図の変化</div>
-<p>左に矩形、右に2行の柱です。02の「右にグラス」、03の「左にグラス」とも違います。</p>
+<p class="words">楽を、<br>するため。<br>質を、<br>突き詰める。</p>
+<div class="label">ナレーション</div>
+<p class="voice">下手な人は、楽をするためにAIを使います。使いこなす人は、質を突き詰めるために使います。</p>
 </div><div>
-<div class="label">動き（秒は参考値）</div>
-<ul>
-<li>0〜3秒：矩形が開き、円が中を横切る。隅の点は消えない。</li>
-<li>3〜6秒：「隅は、残る。」が着地する。円は周回を続けるが、隅には届かない。</li>
-<li>6〜9.5秒：「仕上げは、人。」が下から行マスクで入る。読む間、カメラは Crane up で少し上がり、隅の点を見せ続ける。</li>
-</ul>
-<div class="label">カメラ</div>
-<p>Crane up（小さく）。</p>
+<div class="label">主役の語と、字組み・動き</div>
+<p>図を出さない唯一の場面。横組の明朝（楽）と縦組のゴシック（質）で、向き・書体・大きさ・色をすべて変える。</p>
 <div class="label">次へのつながり</div>
-<p>隅の点が、08の小さな札「もうこれでいいや」になる。</p>
+<p>面が抜けて、部屋へ振る。</p>
 </div></div>
 </section>
 
 <section class="cut" id="cut-08">
 <div class="cuthead"><div class="num">08</div><div>
-<h3>AIのせい、ではない。</h3>
-<p class="small">1:00.0–1:10.5 / 10.5秒　・　主張　・　声 50字／画面 31字</p>
+<h3>隅は、残る。</h3>
+<p class="small">1:16.4–1:26.0 / 9.6秒　・　根拠　・　声 55字／画面 20字</p>
 </div></div>
 <div class="frames">
-<figure><a href="assets/storyboard/cut-08-start.webp"><img src="assets/storyboard/cut-08-start.webp" width="1280" height="720" alt="カット08 はじめ"></a><figcaption><b>はじめ</b>　左上に小さな崩れたグラス。中央に灰の札「もうこれでいいや」。</figcaption></figure>
-<figure><a href="assets/storyboard/cut-08-end.webp"><img src="assets/storyboard/cut-08-end.webp" width="1280" height="720" alt="カット08 おわり"></a><figcaption><b>おわり</b>　特大「ではない。」その下に「出した人の、問題。」灰の一行「短縮自体は、悪くない。」</figcaption></figure>
+<figure><a href="assets/frames/cut-08-start.webp"><img src="assets/frames/cut-08-start.webp" width="1280" height="720" alt="カット08 前半のコマ"></a><figcaption><b>前半</b>　部屋を青い円（任せた道具）が往復して埃を消していく。隅と家具のまわりだけ朱で残る。隅へ寄って「隅は、残る。」</figcaption></figure>
+<figure><a href="assets/frames/cut-08-end.webp"><img src="assets/frames/cut-08-end.webp" width="1280" height="720" alt="カット08 後半のコマ"></a><figcaption><b>後半</b>　上からの構図。墨の四角（人の手）が四隅を順に拭き、朱が消える。藍の「仕上げは、人。」</figcaption></figure>
 </div>
 <div class="details"><div>
 <div class="label">画面の文字</div>
-<p class="words">AIのせい、<br>ではない。<br>出した人の、問題。<br>短縮自体は、悪くない。</p>
-<div class="label">ナレーション案</div>
-<p class="voice">品質が低いのは、出してよいと判断した人の問題です。短縮自体は、悪くありません。言い訳は、一番ダサい。</p>
-<div class="label">主役の語と、その文字がすること</div>
-<p>「ではない。」を画面幅に近い特大にします。「ダサい」は声に残し、画面の主役にはしません。留保「悪くない。」は灰の一行で読めます。</p>
-<div class="label">字組みと構図の変化</div>
-<p>はじめは中央の小さな札です。おわりは上段の特大、中段の藍、下段の灰です。07の左図・右文から、文字だけの三段へ変わります。</p>
+<p class="words">任せきりでは、<br>隅は、残る。<br>仕上げは、人。</p>
+<div class="label">ナレーション</div>
+<p class="voice">お掃除ロボットに任せきりでは、部屋の隅にゴミが残ります。浮いた時間で、仕上げに手をかけるから、良くなるのです。</p>
 </div><div>
-<div class="label">動き（秒は参考値）</div>
-<ul>
-<li>0〜2秒：札が中央に落ちて着地する。</li>
-<li>2〜6秒：札が左右に割れて退き、「AIのせい、／ではない。」が行マスクで入る。割れるのは札で、文字の形は割らない。</li>
-<li>6〜10.5秒：「出した人の、問題。」と灰の留保が入る。読む間、割れた札の破片は画面の端へ流れ続ける。</li>
-</ul>
-<div class="label">カメラ</div>
-<p>札が割れたあと、文字の三段が上から下へ順に着地する。カメラは図の破片を追って少し引く。</p>
+<div class="label">主役の語と、字組み・動き</div>
+<p>青＝任せた側、墨＝人の手という 05 の色分けをそのまま使う。製品の形・名前・人の姿は出さない。</p>
 <div class="label">次へのつながり</div>
-<p>奥に残った小さなグラスが手前へ戻り、09で主画面になる。</p>
+<p>100 の先の、崩れたグラスへ振る。</p>
 </div></div>
 </section>
 
 <section class="cut" id="cut-09">
 <div class="cuthead"><div class="num">09</div><div>
-<h3>氷まで、同じ緑。 <span class="need">要判断 1</span></h3>
-<p class="small">1:10.5–1:20.0 / 9.5秒　・　要旨と出典　・　声 59字／画面 32字</p>
+<h3>AIのせい、ではない。</h3>
+<p class="small">1:26.0–1:39.4 / 13.4秒　・　主張　・　声 73字／画面 48字</p>
 </div></div>
 <div class="frames">
-<figure><a href="assets/storyboard/cut-09-start.webp"><img src="assets/storyboard/cut-09-start.webp" width="1280" height="720" alt="カット09 はじめ"></a><figcaption><b>はじめ</b>　線画のグラスが画面の中央で主画面。氷の四角は線のまま。</figcaption></figure>
-<figure><a href="assets/storyboard/cut-09-end.webp"><img src="assets/storyboard/cut-09-end.webp" width="1280" height="720" alt="カット09 おわり"></a><figcaption><b>おわり</b>　氷の四角が液と同じ緑になり、輪郭が波打つ。下に要旨と、小さい出典の一行。</figcaption></figure>
+<figure><a href="assets/frames/cut-09-start.webp"><img src="assets/frames/cut-09-start.webp" width="1280" height="720" alt="カット09 前半のコマ"></a><figcaption><b>前半</b>　崩れたグラスに「もうこれでいいや」の札が押され、そのまま右へ出ていく。</figcaption></figure>
+<figure><a href="assets/frames/cut-09-end.webp"><img src="assets/frames/cut-09-end.webp" width="1280" height="720" alt="カット09 後半のコマ"></a><figcaption><b>後半</b>　三段。上に小さく「AIのせい、ではない。」、中央に藍の特大「出した人の、問題。」、右下に明朝の灰で留保「時間の短縮は、悪くない。」</figcaption></figure>
 </div>
 <div class="details"><div>
 <div class="label">画面の文字</div>
-<p class="words">氷まで、同じ緑。<br>ゼリーのような、つや。<br>出典：ITmedia、投稿</p>
-<div class="label">ナレーション案</div>
-<p class="voice">日本ケンタッキー・フライド・チキンの一部店舗のフロートは、氷まで同じ緑で、ゼリーのようなつやだったと報じられています。</p>
-<div class="label">主役の語と、その文字がすること</div>
-<p>主役はグラスの変化です。文字は下段に譲ります。出典は読める最小の一行で、記事の本文も投稿の画像も出しません。ブランド名は声だけです。テロップ帯の地色は敷きません。</p>
-<div class="label">字組みと構図の変化</div>
-<p>グラスが画面の上半分を占めます。文字は下の紙色に直接置きます。08の文字だけの三段から、図が主画面に戻ります。右上の小窓にはしません。</p>
+<p class="words">もうこれでいいや<br>時間の短縮は、<br>悪くない。<br>品質が低いのは、<br>AIのせい、<br>ではない。<br>出した人の、<br>問題。</p>
+<div class="label">ナレーション</div>
+<p class="voice">一発で出して、「もうこれでいいや」。時間の短縮は、悪くありません。けれど、品質が低いのは、AIのせいではなく、出してよいと判断した、人の問題です。</p>
 </div><div>
-<div class="label">動き（秒は参考値）</div>
-<ul>
-<li>0〜2秒：08の奥のグラスが Dolly in で主画面になる。文字は一度退く。</li>
-<li>2〜6秒：氷の四角へ緑が満ち、輪郭が波打つ。ハイライトが表面を滑る。</li>
-<li>6〜9.5秒：下段の2行と出典の一行が入る。読む間、ハイライトは動き続ける。グラスの周りを小さく Orbit する。</li>
-</ul>
-<div class="label">カメラ</div>
-<p>Dolly in から、小さな Orbit。</p>
+<div class="label">主役の語と、字組み・動き</div>
+<p>留保を先に大きく読ませてから右下へ縮め、最後まで画面に残す。「ではない。」は一度画面いっぱいに着地してから上段へ縮む。「ダサい」は使わない。</p>
 <div class="label">次へのつながり</div>
-<p>緑が引いて、10で画面が引く。</p>
+<p>客の点が集まる場面へ振る。</p>
 </div></div>
 </section>
 
 <section class="cut" id="cut-10">
 <div class="cuthead"><div class="num">10</div><div>
 <h3>離れていく。</h3>
-<p class="small">1:20.0–1:34.0 / 14秒　・　留保　・　声 70字／画面 46字</p>
+<p class="small">1:39.4–1:56.4 / 17秒　・　留保　・　声 95字／画面 63字</p>
 </div></div>
 <div class="frames">
-<figure><a href="assets/storyboard/cut-10-start.webp"><img src="assets/storyboard/cut-10-start.webp" width="1280" height="720" alt="カット10 はじめ"></a><figcaption><b>はじめ</b>　上に灰の「少しAIくさいだけで、／注文をやめるか。」中央下に小さな崩れたグラス。</figcaption></figure>
-<figure><a href="assets/storyboard/cut-10-end.webp"><img src="assets/storyboard/cut-10-end.webp" width="1280" height="720" alt="カット10 おわり"></a><figcaption><b>おわり</b>　「離れていく。」が大きい。点の一部は右へ流れ、一部はグラスのそばに残る。下に「見極めは、作り手。」</figcaption></figure>
+<figure><a href="assets/frames/cut-10-start.webp"><img src="assets/frames/cut-10-start.webp" width="1280" height="720" alt="カット10 前半のコマ"></a><figcaption><b>前半</b>　台の上のグラスへ、点（客）が列になって進み、注文して抜けていく。留保は明朝の灰。</figcaption></figure>
+<figure><a href="assets/frames/cut-10-end.webp"><img src="assets/frames/cut-10-end.webp" width="1280" height="720" alt="カット10 後半のコマ"></a><figcaption><b>後半</b>　グラスの崩れが大きくなると、点が次々に右へ転がり去る。上から見下ろすと、グラスの横に墨の四角（作り手）だけが残る。</figcaption></figure>
 </div>
 <div class="details"><div>
 <div class="label">画面の文字</div>
-<p class="words">少しAIくさいだけで、<br>注文をやめるか。<br>手抜きと受け取られれば、<br>離れていく。<br>見極めは、作り手。</p>
-<div class="label">ナレーション案</div>
-<p class="voice">厳しすぎる反応もあります。少しAIくさくても、注文をやめるとは限りません。それでも手抜きなら、お客さんは離れます。見極めるのは、作り手です。</p>
-<div class="label">主役の語と、その文字がすること</div>
-<p>留保の問い「注文をやめるか。」は灰です。「離れていく。」は墨で一段大きくします。両論を同じ大きさにしません。点は客の姿ではありません。</p>
-<div class="label">字組みと構図の変化</div>
-<p>09のグラス全面から、引いた構図です。上段が灰の問い、中央に小さなグラスと点、下段が藍の「見極めは、作り手。」です。</p>
+<p class="words">厳しすぎる面も、ある。<br>少しAIくさくても、<br>気にせず注文する人も、多い。<br>手抜きと、受け取られれば、<br>離れていく。<br>見極めは、作り手。</p>
+<div class="label">ナレーション</div>
+<p class="voice">もっとも、ネットの反応は、厳しすぎる面もあります。少しAIくさくても、気にせず注文する人は多いはずです。それでも、手抜きと受け取られれば、お客さんは離れていきます。見極めるのは、作り手です。</p>
 </div><div>
-<div class="label">動き（秒は参考値）</div>
-<ul>
-<li>0〜3秒：Dolly out。グラスが小さくなり、灰の2行が入る。</li>
-<li>3〜8秒：点が中央に集まり、一部が外へ流れる。読む間も点は止まらない。</li>
-<li>8〜14秒：「離れていく。」と「見極めは、作り手。」が着地する。カメラは Pan（左へ）を小さく続ける。</li>
-</ul>
-<div class="label">カメラ</div>
-<p>Dolly out から、小さな Pan。</p>
+<div class="label">主役の語と、字組み・動き</div>
+<p>留保（灰・明朝・中くらい）と「離れていく。」（墨・ゴシック・大）で大きさに差をつける。点は顔も人の形も持たない。</p>
 <div class="label">次へのつながり</div>
-<p>外へ流れた点の方向から、11の空の枠が入る。</p>
+<p>二枚の額へ振る。</p>
 </div></div>
 </section>
 
 <section class="cut" id="cut-11">
 <div class="cuthead"><div class="num">11</div><div>
 <h3>そこに、行った価値。</h3>
-<p class="small">1:34.0–1:41.0 / 7秒　・　留保　・　声 39字／画面 10字</p>
+<p class="small">1:56.4–2:04.0 / 7.6秒　・　留保　・　声 43字／画面 26字</p>
 </div></div>
 <div class="frames">
-<figure><a href="assets/storyboard/cut-11-start.webp"><img src="assets/storyboard/cut-11-start.webp" width="1280" height="720" alt="カット11 はじめ"></a><figcaption><b>はじめ</b>　左に空の太い枠。右に同じ枠が薄くある。中は紙色のまま。</figcaption></figure>
-<figure><a href="assets/storyboard/cut-11-end.webp"><img src="assets/storyboard/cut-11-end.webp" width="1280" height="720" alt="カット11 おわり"></a><figcaption><b>おわり</b>　左の枠だけが残る。右に縦組み「そこに、／行った価値。」</figcaption></figure>
+<figure><a href="assets/frames/cut-11-start.webp"><img src="assets/frames/cut-11-start.webp" width="1280" height="720" alt="カット11 前半のコマ"></a><figcaption><b>前半</b>　二枚の額。左は線画の水平線と太陽（四隅の印でシャッター）、右は緑でつやつやの一枚。</figcaption></figure>
+<figure><a href="assets/frames/cut-11-end.webp"><img src="assets/frames/cut-11-end.webp" width="1280" height="720" alt="カット11 後半のコマ"></a><figcaption><b>後半</b>　右の額が後ろへ倒れて消え、左だけが残る。右に縦組「そこに、／行った価値。」</figcaption></figure>
 </div>
 <div class="details"><div>
 <div class="label">画面の文字</div>
-<p class="words">そこに、<br>行った価値。</p>
-<div class="label">ナレーション案</div>
-<p class="voice">現地で切った思い出は、他人の写真やAIの画像に置き換えても、意味がありません。</p>
-<div class="label">主役の語と、その文字がすること</div>
-<p>「行った価値。」を縦組みの特大にします。枠の中に写真は入れません。価値は、中身の画像ではなく、枠が残ることです。</p>
-<div class="label">字組みと構図の変化</div>
-<p>左に枠、右に縦組みです。10の上段と下段の横組みから、06と同じ縦へ戻ります。06は質の縦、ここは思い出の縦で、語が違います。</p>
+<p class="words">シャッターを切った。<br>置き換えた。<br>そこに、<br>行った価値。</p>
+<div class="label">ナレーション</div>
+<p class="voice">旅先でシャッターを切った、思い出の写真は、AIの画像に置き換えても、意味がありません。</p>
 </div><div>
-<div class="label">動き（秒は参考値）</div>
-<ul>
-<li>0〜2秒：二つの枠が左右から合う。</li>
-<li>2〜4.5秒：右の枠の線がほどけて散る。左は残る。</li>
-<li>4.5〜7秒：縦組みが上から入る。散った線は画面の外へ流れ、左の枠は図の層だけ Dolly in で手前へ寄る。</li>
-</ul>
-<div class="label">カメラ</div>
-<p>残った枠へ Dolly in。</p>
+<div class="label">主役の語と、字組み・動き</div>
+<p>写真そのものは見せず、残る額と倒れる額で「置き換えても意味がない」を示す。</p>
 <div class="label">次へのつながり</div>
-<p>残った枠が横に倒れて、12の目盛りになる（Match cut）。</p>
+<p>目盛りの 90〜100 の空きへ振る。</p>
 </div></div>
 </section>
 
 <section class="cut" id="cut-12">
 <div class="cuthead"><div class="num">12</div><div>
 <h3>相棒として。</h3>
-<p class="small">1:41.0–1:56.0 / 15秒　・　本人の結論　・　声 74字／画面 26字</p>
+<p class="small">2:04.0–2:22.0 / 18秒　・　本人の結論　・　声 80字／画面 45字</p>
 </div></div>
 <div class="frames">
-<figure><a href="assets/storyboard/cut-12-start.webp"><img src="assets/storyboard/cut-12-start.webp" width="1280" height="720" alt="カット12 はじめ"></a><figcaption><b>はじめ</b>　70から90が光っている。90から100の空きの上に「人の手」が落ちてくる。</figcaption></figure>
-<figure><a href="assets/storyboard/cut-12-end.webp"><img src="assets/storyboard/cut-12-end.webp" width="1280" height="720" alt="カット12 おわり"></a><figcaption><b>おわり</b>　特大「相棒として。」その下に「責任は、人が持つ。」「人の手」は90と100のあいだの上にある。</figcaption></figure>
+<figure><a href="assets/frames/cut-12-start.webp"><img src="assets/frames/cut-12-start.webp" width="1280" height="720" alt="カット12 前半のコマ"></a><figcaption><b>前半</b>　0〜70 が墨（実物）、70〜90 が青（AI）。空いていた 90〜100 へ、墨の帯（人の手）が上から落ちてはまる。グラスは 100 へ進み、さくらんぼが乗る。</figcaption></figure>
+<figure><a href="assets/frames/cut-12-end.webp"><img src="assets/frames/cut-12-end.webp" width="1280" height="720" alt="カット12 後半のコマ"></a><figcaption><b>後半</b>　0 から 100 を走り抜けて結びの構図へ。藍の「相棒として。」と墨の「責任は、人が持つ。」。帯は 実物／AI／人の手 で 100 までつながっている。</figcaption></figure>
 </div>
 <div class="details"><div>
 <div class="label">画面の文字</div>
-<p class="words">70を、90へ。<br>人の手<br>相棒として。<br>責任は、人が持つ。</p>
-<div class="label">ナレーション案</div>
-<p class="voice">私は実物とAIを分け、最後に人の手を入れます。丁寧に使えば、AIは高く返します。手元の70を、90へ引き上げる相棒です。最後の責任は、人が持ちます。</p>
-<div class="label">主役の語と、その文字がすること</div>
-<p>「相棒として。」を最も大きくします。01の「気持ち悪い。」、02の「崩れる。」と対になる言い切りです。「人の手」は90から100の空きにはまる語で、人の絵ではありません。責任の行は同じ画面に残し、視聴者への問いにはしません。</p>
-<div class="label">字組みと構図の変化</div>
-<p>目盛りは下部の一本です。特大は左上です。03の「90へ。」よりさらに大きく、余白は右に残します。空きの上の「人の手」だけが、目盛りの右端に付きます。</p>
+<p class="words">最後は、必ず<br>人の手。<br>丁寧に使えば、<br>高く返す。<br>70を、<br>90へ。<br>相棒として。<br>責任は、人が持つ。</p>
+<div class="label">ナレーション</div>
+<p class="voice">私も、最後は必ず、人の手で編集を入れます。丁寧に使えば、今のAIは、驚くほど高く返してくれます。手元の70を、90へ引き上げる相棒。最後の責任は、人が持ちます。</p>
 </div><div>
-<div class="label">動き（秒は参考値）</div>
-<ul>
-<li>0〜3秒：Match cut で枠が目盛りになる。70から90の光が戻る。</li>
-<li>3〜8秒：「人の手」が空きへ落ちて<a href="#fit">はまる</a>。はまったあと、図の層へ Dolly in 約2秒。</li>
-<li>8〜15秒：「相棒として。」と「責任は、人が持つ。」が行マスクで入る。読む間も寄りが続き、光は70から90を流れる。文字は端で欠けない大きさで止める。</li>
-</ul>
-<div class="label">カメラ</div>
-<p>Dolly in。文字の層は、寄りで画面の外へ出さない。</p>
+<div class="label">主役の語と、字組み・動き</div>
+<p>「相棒として。」は筆者の決め語の藍、「責任は、人が持つ。」は人の側の墨。問いかけにせず、言い切りで閉じる。</p>
 <div class="label">次へのつながり</div>
-<p>寄った画面を左へ押し出して、ライムのロゴへ入る。</p>
+<p>画面ごと左へ押し出して、ライムのロゴへ。</p>
 </div></div>
 </section>
 
 <section class="cut" id="cut-13">
 <div class="cuthead"><div class="num">13</div><div>
 <h3>エンドロゴ</h3>
-<p class="small">1:56.0–2:01.5 / 5.5秒　・　制作表示　・　声 0字／画面 0字</p>
+<p class="small">2:22.0–2:27.3 / 5.3秒　・　制作表示</p>
 </div></div>
 <div class="frames">
-<figure><a href="assets/storyboard/cut-13-start.webp"><img src="assets/storyboard/cut-13-start.webp" width="1280" height="720" alt="カット13 はじめ"></a><figcaption><b>はじめ</b>　ライムの全面。印と、まだ宙にある o。はじめの印は位置のラフで、ロゴの形の見本ではない。</figcaption></figure>
-<figure><a href="assets/storyboard/cut-13-end.webp"><img src="assets/storyboard/cut-13-end.webp" width="1280" height="720" alt="カット13 おわり"></a><figcaption><b>おわり</b>　完成したロゴが中央。ほかの文字も、本編の要素も重ねない。</figcaption></figure>
+<figure><a href="assets/frames/cut-13-start.webp"><img src="assets/frames/cut-13-start.webp" width="1280" height="720" alt="エンドロゴ 途中"></a><figcaption><b>前半</b>　ライムの全面。o が落ちて弾む。</figcaption></figure>
+<figure><a href="assets/frames/cut-13-end.webp"><img src="assets/frames/cut-13-end.webp" width="1280" height="720" alt="エンドロゴ 完成"></a><figcaption><b>後半</b>　完成したロゴが中央。ほかの文字も本編の要素も重ねない。</figcaption></figure>
 </div>
 <div class="details"><div>
-<div class="label">画面の文字</div>
-<p class="words">なし（ロゴのみ）</p>
-<div class="label">ナレーション案</div>
-<p class="voice">なし</p>
-<div class="label">主役</div>
-<p>リポジトリ直下の <code>okady-work-logo.svg</code> だけです。形、書体、色、比率は変えません。はじめのコマの印に、ロゴの形を合わせません。</p>
-<div class="label">字組みと構図の変化</div>
-<p>背景は <code>#d2ff1a</code> の全面です。ロゴは引き伸ばさず中央に置き、本編の要素は重ねません。</p>
-</div><div>
 <div class="label">動き</div>
-<p>SVGのタイミングを、フレーム時刻から再現します。0〜2.6秒で o が落ちてバウンドし定位置へ、2.6〜3.2秒で全体が左へ滑り、3.0〜4.0秒で「.work」が一文字ずつ出ます。そのあと完成形を1.5秒保持して終わります。本編からは、画面ごと左へ押し出して入ります。</p>
-<div class="label">次へ</div>
-<p>ここで終わります。エンドクレジットは足しません。</p>
-</div></div>
+<p>リポジトリ直下の okady-work-logo.svg の動き（0〜2.6秒で o が落ちて弾み定位置へ、2.6〜3.2秒で全体が左へ滑り、3.0〜4.0秒で「.work」が一文字ずつ）をフレーム時刻から再現し、完成形を 1.3 秒保持して終わる。背景は #d2ff1a。</p>
+</div><div></div></div>
 </section>
 
 <h2 class="part" id="details">詳細（ここから下は補足）</h2>
-<p class="small">ここまでで、どんな動画で、どう組み、どう見えるかを示しました。以下は分担、デザインと動きの参考、素材、音、根拠、完成条件です。</p>
+<p>ここまでで、どんな動画で、どう組み、どう見えるかを示しました。以下は、完成した本編の分担、デザインと動き、記号、素材、音、根拠です。</p>
 
-<h2 id="roles">声・文字・素材の分担 <span class="need">要判断 3</span></h2>
+<h2 id="roles">声・文字・素材の分担</h2>
 <div class="tablewrap"><table>
 <thead><tr><th>担当</th><th>受け持つこと</th><th>受け持たないこと</th></tr></thead>
 <tbody>
-<tr><td>声</td><td>経緯、プロは実物を土台にするという方法、元がなければ生成するしかないという留保、香港の並び、楽と質、家電のたとえ、ダサいという判断、ブランド名、厳しすぎる反応と、それでも離れること、思い出、本人の結び。</td><td>画面の語の読み上げそのもの。全文字幕。URLの読み上げ。製品の画面の説明。</td></tr>
-<tr><td>文字</td><td>決め語。留保の短い句（「短縮自体は、悪くない。」「注文をやめるか。」「見極めは、作り手。」）。出典の一行。</td><td>ナレーションの全文。原稿にない数字。「ダサい」を画面の主役にすること。</td></tr>
-<tr><td>図（目盛り、グラス、四角、矩形、枠）</td><td>0から100は折れること、70から90は伸びること、空きは人の手であること、並びが崩れること、隅が残ること。</td><td>説明の文。製品の画面。人の姿。他者の写真。</td></tr>
-<tr><td>画像・動画ファイル</td><td>使わない。要判断1と2がAの前提。</td><td>メニュー写真、投稿、記事の紙面、生成動画。</td></tr>
+<tr><td>声</td><td>経緯、報じられた例とブランド名、プロは実物を土台にするという方法、元がなければ生成するしかないという留保、香港の並び、楽と質、家電のたとえ、短縮は悪くないという留保、厳しすぎる反応と、それでも離れること、思い出、本人の結び。</td><td>画面の語の読み上げそのもの。全文字幕。URLの読み上げ。製品の画面の説明。</td></tr>
+<tr><td>文字</td><td>決め語（ゴシック 900）。留保の短い句（明朝・灰：「品質は、上がった。」「元がなければ、生成するしかない。」「時間の短縮は、悪くない。」「厳しすぎる面も、ある。」「気にせず注文する人も、多い。」）。床の数字と帯の札。</td><td>ナレーションの全文。原稿にない数字。出典の行。</td></tr>
+<tr><td>図（目盛り、グラス、折れた線、帯、街、部屋、点、額）</td><td>0から100は折れること、70から90は伸びること、空きは人の手であること、並びが崩れること、隅が残ること、客が離れること。</td><td>説明の文。製品の画面。人の姿。他者の写真。</td></tr>
+<tr><td>画像・動画ファイル</td><td>使わない。原稿内のイラストと生成動画も使っていない。</td><td>メニュー写真、投稿、記事の紙面、生成動画。</td></tr>
 </tbody></table></div>
-<p>声ありで文量と尺を組んでいます。画面に声の全文は足しません。ナレーションの有無を変えると、画面の文量と尺を組み直す必要があります。音声ファイルの生成は要判断3です。Aのままなら、原稿と同期の設計までで、ファイルは作りません。</p>
+<p>声は生成したナレーション（12 区切り）で、各カットの尺は声の実測に合わせています。画面に声の全文は足していません。</p>
 
 <h2 id="claim-map">主張・根拠・留保の対応</h2>
 <div class="tablewrap"><table>
 <thead><tr><th>役割</th><th>内容</th><th>カット</th></tr></thead>
 <tbody>
-<tr><td>主張</td><td>不自然さはAIのせいではない。ゼロからすべてを生成させていることが原因で、最後の判断と責任は人が持つ。</td><td>02、08、12</td></tr>
-<tr><td>根拠</td><td>実物を土台にすれば形は大きく崩れない。70を90へ上げるか、残りを自分で直す。任せきりでは隅が残る。報じられたフロートは、氷まで同じ緑だった。</td><td>03、04、07、09</td></tr>
-<tr><td>留保</td><td>元がなければ生成するしかない。頼んだことと足したことが混ざる。楽のための使い方と質のための使い方は違う。短縮自体は悪くない。反応が厳しすぎることもある。少しAIくさくても注文をやめるとは限らない。それでも手抜きと受け取られれば客は離れる。見極めは作り手。思い出は置き換えられない。</td><td>05、06、08の灰の一行、10、11。声にも残す</td></tr>
+<tr><td>主張</td><td>不自然さはAIのせいではない。ゼロからすべてを生成させていることが原因で、最後の判断と責任は人が持つ。</td><td>03、09、12</td></tr>
+<tr><td>根拠</td><td>報じられたフロートは、氷まで同じ緑だった。実物を土台にすれば形は大きく崩れない。70を90へ上げるか、残りを自分で直す。任せきりでは隅が残る。</td><td>02、04、05、08</td></tr>
+<tr><td>留保</td><td>品質は上がっている。元がなければ生成するしかない。楽のための使い方と質のための使い方は違う。短縮自体は悪くない。反応が厳しすぎることもある。少しAIくさくても気にせず注文する人も多い。それでも手抜きと受け取られれば客は離れる。見極めは作り手。思い出は置き換えられない。</td><td>03、06、07、09、10、11。声にも残す</td></tr>
 <tr><td>最後に残す本人の結論</td><td>丁寧に使えばAIは高く返す。手元の70を90へ引き上げる相棒として向き合う。最後の責任は人が持つ。</td><td>12</td></tr>
 </tbody></table></div>
-<p class="small">冒頭は01「なんか、気持ち悪い。」、主張の核は02「崩れる。」と03「90へ。」、結びは12の「相棒として。／責任は、人が持つ。」です。01と12を続けて読むと、任せる幅の問いが、70から90と人の責任へ着きます。原稿との文言の対応は<a href="references.md">references.md</a>にあります。</p>
+<p>冒頭は 01「なんか、気持ち悪い。」、主張の核は 03「崩れる。」と 04「90へ。」、結びは 12 の「相棒として。／責任は、人が持つ。」です。原稿との文言の対応は<a href="references.md">references.md</a>にあります。</p>
 
 <h2 id="handoff">企画側／制作側</h2>
 <div class="tablewrap"><table>
-<thead><tr><th>企画側が渡すもの</th><th>制作側が判断・制作するもの</th></tr></thead>
+<thead><tr><th>企画側が渡したもの</th><th>制作側が判断・制作したもの</th></tr></thead>
 <tbody>
-<tr><td>主張と留保、構成・尺・文言の参考案、ナレーション案、絵コンテ26枚、字組みと色の参考案、動きの狙い、効果の参考（<a href="effects-direction.md">effects-direction.md</a>）、ロゴへの参照、根拠の対応（<a href="references.md">references.md</a>）</td><td>本編の再構成、文言の整理、字組み・配色・動きの改善、技術選定、実装、検査、プレビュー。BGMと効果音は後工程</td></tr>
-<tr><td>画像・動画の採用ファイルはなし。生成動画とフロートのイラストは不採用で、生成していない</td><td>不足する画像・動画が出たら、作らずに企画側へ返す</td></tr>
-<tr><td>絵コンテ上の文字について、安全域（左右48px・上下40px）と、文字どうし・文字と図の重なりを検査済み（下記）</td><td>本編の機械検査。全カットを約0.25秒ごとに、文字の外接矩形が安全域の外へ出ていないか、図と重なっていないかを見る</td></tr>
-<tr><td>ナレーションの原稿と、声は経緯・文字は決め語という分担</td><td>声の選定と生成。要判断3がBになり、使えるAPIキーがあるときだけ。この企画書は生成の許可ではない</td></tr>
+<tr><td>主張と留保、構成・尺・文言の参考案、ナレーション案、絵コンテ 26 枚（<code>assets/storyboard/</code>）、字組みと色の参考案、動きの狙い、効果の参考（effects-direction.md）、ロゴ、根拠の対応</td><td>構成の組み直し、文言とナレーションの確定、図の立体化、字組み・配色・動き、実装、文字の検査、ナレーションの生成、BGM・効果音、ミックス、書き出し（production-report.md）</td></tr>
+<tr><td>画像・動画の採用ファイルはなし</td><td>新しい画像・動画は作っていない（図はすべてコードで描いた）</td></tr>
 </tbody></table></div>
-<p>企画と絵コンテの準備はここまでです。音声ファイルと本編の実装は制作側です。音源が無いことは、引き渡しを止める理由にしません。</p>
-<h3>Fable 5.2への依頼文</h3>
-<p>実装から検証までを1回で任せる依頼文は<a href="fable-brief.md">fable-brief.md</a>です。制作側の裁量は<a href="#discretion">構成と尺</a>にまとめています。この動画の画面と声に、制作に使うモデルの名前や性能は出しません。</p>
-<p>図（目盛り、グラスの線、四角、矩形、枠）は three.js、文字は DOM を推奨します。画面全体の寄りと回り込みを図の層に掛け、文字をテクスチャにしないためです。使わない場合は、画面全体の動きと、文字と図の重なりを機械で見られることを、制作報告に短く書きます。</p>
 
 <h2 id="design">デザインシステム（映像の文字・色・グリッド）</h2>
-<p>これは本編の見た目の参考案です。色の値や組み合わせは調整できます。意味の区別と十分なコントラストを維持します。この企画書のページの色（青と橙の注意色）とは別です。本編でライムは、エンドロゴの背景だけに使います。</p>
+<p>本編の見た目です。この企画書のページの色（青と橙の注意色）とは別です。本編でライムは、エンドロゴの背景だけに使っています。</p>
 <div class="tablewrap"><table>
 <thead><tr><th>名前</th><th>値</th><th>使い道</th></tr></thead>
 <tbody>
-<tr><td>紙</td><td><span class="sw" style="background:#f7f4ee"></span>#f7f4ee</td><td>画面の地。暗い全面にはしない</td></tr>
-<tr><td>墨</td><td><span class="sw" style="background:#1c1917"></span>#1c1917</td><td>事実の語。崩れる、嘘、離れていく</td></tr>
-<tr><td>藍</td><td><span class="sw" style="background:#1e3a5f"></span>#1e3a5f</td><td>筆者の決め語。90へ、質、仕上げ、相棒、責任</td></tr>
-<tr><td>灰</td><td><span class="sw" style="background:#6b6560"></span>#6b6560</td><td>留保と、まだ決めていない問い</td></tr>
-<tr><td>折れ</td><td><span class="sw" style="background:#c2410c"></span>#c2410c</td><td>0から100のギザギザ。文字色にはしない</td></tr>
-<tr><td>伸び</td><td><span class="sw" style="background:#1d4e89"></span>#1d4e89</td><td>70から90の滑らかな矢印</td></tr>
-<tr><td>光</td><td><span class="sw" style="background:#e7b15a"></span>#e7b15a</td><td>70から90の区間の光。文字色にはしない。ライムではない</td></tr>
-<tr><td>嘘の緑</td><td><span class="sw" style="background:#3d9a4a"></span>#3d9a4a</td><td>グラスの中だけ。氷まで同じ色、という印</td></tr>
-<tr><td>ライム</td><td><span class="sw" style="background:#d2ff1a"></span>#d2ff1a</td><td>エンドロゴの背景だけ</td></tr>
+<tr><td>紙</td><td>#f3efe6</td><td>画面の地（薄い紙の粒を重ねている）。暗い全面にはしない</td></tr>
+<tr><td>墨</td><td>#16161a</td><td>事実の語。人の側の図（実物の帯、自分で直す帯、人の手の帯、拭く四角、作り手）</td></tr>
+<tr><td>藍</td><td>#1c3f94</td><td>筆者の決め語（90へ、濃淡、質、仕上げは人、出した人の問題、見極め、相棒）。07 の面</td></tr>
+<tr><td>青</td><td>#2a5fe0</td><td>AI に任せる区間（70→90 の矢印、帯、任せた道具）。文字色は床の札「AI」だけ</td></tr>
+<tr><td>灰</td><td>#6f6861</td><td>留保（明朝）</td></tr>
+<tr><td>朱</td><td>#e2471a</td><td>0から100の折れた線、残った埃。文字色にはしない</td></tr>
+<tr><td>金</td><td>#f4b532</td><td>足された光（70〜90 の床、グラスの下、星）。文字色にはしない</td></tr>
+<tr><td>嘘の緑</td><td>#17914a</td><td>氷まで同じ色。02 の画面の地、06 の嘘の建物、11 の置き換えた一枚</td></tr>
+<tr><td>ソーダの緑</td><td>#35b868</td><td>実物のソーダ（氷は白のまま）</td></tr>
+<tr><td>ライム</td><td>#d2ff1a</td><td>エンドロゴの背景だけ</td></tr>
 </tbody></table></div>
-<p>文字は DOM（または同等の層）で、詰め組と行のマスクが効く組み方にします。目盛り、グラス、四角、カメラは three.js を推奨します。カメラの寄りと移動は図の層に掛け、文字が図に埋もれたり、画面の端で欠けたりしないようにします。本編の安全域の目安は、1920×1080で左右80px、上下64pxです。</p>
-<p>字組みはカットごとに変えています。</p>
-<ul>
-<li>01は中央のグラスから、左上の横組みと右のグラスへ。</li>
-<li>02は左の特大と、下の折れた目盛り、右の崩れたグラス。</li>
-<li>03は左の整ったグラスと、右の特大。02と左右が逆です。</li>
-<li>04は上下二本の目盛り。語は各結果のそば。</li>
-<li>05は上の四角の列と、下段の特大。</li>
-<li>06は左の横組みから、右の縦組みへ。</li>
-<li>07は左の矩形と、右の2行。</li>
-<li>08は中央の小さな札から、上中下の三段へ。</li>
-<li>09はグラスが上半分、文字は下。帯は敷きません。</li>
-<li>10は上の灰の問い、中央の点、下の藍。</li>
-<li>11は左の空の枠と、右の縦組み。</li>
-<li>12は左上の特大と、下の目盛り、右端の空きの「人の手」。</li>
-<li>13はライムの中央にロゴだけ。</li>
-</ul>
+<p>書体は二つです。Noto Sans JP 900（事実と決め語）、BIZ UDP明朝（留保）。文字は DOM の層で、詰め組と行のマスクを使っています。図は three.js の層で、面はトゥーンの段階色、輪郭は墨です。安全域は、1920×1080 で左右 80px、上下 64px。</p>
+<p>字組みはカットごとに変えています。01 は左の特大と右のグラス。02 は左下の小さい二行から、緑の全面に白の特大。03 は中央上の明朝、左に積む三語、左の最大の語。04 は左の二行から、左の藍の特大と右のグラス。05 は左上の行と、下の帯。最後は斜めの「濃淡。」。06 は左上の明朝二行から、空に置いた特大と下の街。07 は左の明朝の横組と、右の藍の面に白の縦組。08 は左上の語と、右下の部屋。09 は中央の札から、上・中・右下の三段。10 は左上の明朝と、下の点の列、右のグラス。11 は左の額と、右の縦組二行。12 は左上の特大二段と、下の帯、右のグラス。</p>
 
 <h2 id="motion">動きの言語</h2>
-<p>名前は狙いの共有です。本編の秒数、軌道、イージングの式は固定しません。ロゴだけは指定の動作とタイミングを再現します。読む間は、行、語の塊、目盛り、グラス、画面（カメラ）を動かします。文字の形そのものは崩しません。1字ずつの揺れ、拍ごとの脈動、意味のない粒子では「動いている」にしません。</p>
 <div class="tablewrap"><table>
-<thead><tr><th>名前</th><th>狙い</th></tr></thead>
+<thead><tr><th>名前</th><th>本編での使い方</th></tr></thead>
 <tbody>
-<tr><td id="run">走る</td><td>0から100へ、一本の矢印が加速して横切る。丸投げの幅。</td></tr>
-<tr><td id="snap">折れる</td><td>走った線が途中でギザギザになる。グラスの輪郭も、同じ意味で波打つ。文字は折らない。</td></tr>
-<tr><td id="grow">伸びる</td><td>70から90へ、短い矢印が滑らかに進み、その区間が光る。</td></tr>
-<tr><td id="fit">はまる</td><td>「人の手」の語が、90から100の空きへ落ちて収まる。</td></tr>
-<tr><td id="dolly">寄る</td><td>カメラが図の層へ近づく。01の入り、09の主画面、12の結び。文字の層は画面の外へ出さない。</td></tr>
-<tr><td id="orbit">回る</td><td>図の層を小さく回り、グラスや目盛りの厚みを見せる。文字は回さない。</td></tr>
-<tr><td id="drift">流す</td><td>読む間に、行や四角の列を、向きを変えて動かす。</td></tr>
-<tr><td id="push">押し出す</td><td>次のカットへ、語か画面を勢いのまま渡す。場面の境で止めない。</td></tr>
-<tr><td id="land">着地</td><td>決め語の塊が大きく出て、水平か縦に収まる。収まったあとも、列かカメラは動かし続ける。</td></tr>
+<tr><td>走る</td><td>0 から 100 へ、矢印とカメラが並んで加速する（03）。完成した 0〜100 を走り抜ける（12）。</td></tr>
+<tr><td>折れる</td><td>走った線が進むほど折れ、折れ続ける。着いた瞬間にグラスの輪郭が大きく波打つ。文字は折らない。</td></tr>
+<tr><td>伸びる</td><td>70 から 90 へ、太い青の矢印が滑らかに進み、グラスを運ぶ。区間の床が金に光る。</td></tr>
+<tr><td>はまる</td><td>墨の帯（人の手）が 90〜100 の空きへ落ちて収まる。</td></tr>
+<tr><td>寄る・回る・振る</td><td>カメラは図の層だけ。場面の切り替えは速い振り（一方向のぶれ）で、読む間も止めずに流す。</td></tr>
+<tr><td>満ちる</td><td>氷から画面の地まで、同じ緑が下から満ちる（02）。</td></tr>
+<tr><td>流す</td><td>読む間に、行を向きを変えて流す。語の塊は着地のあとも緩く育つ。</td></tr>
+<tr><td>着地</td><td>決め語の塊が大きく入り、収まる。</td></tr>
+<tr><td>押し出す</td><td>藍の面が右から押し込む（07）。最後は画面ごと左へ押し出してロゴへ。</td></tr>
 </tbody></table></div>
-<p>実装は、Remotion上でフレーム時刻から同じ状態を再現できる形にします。文字はテクスチャにせず、DOMの層に置きます。カメラの名前は<a href="../docs/techniques/camera-cheatsheet.md">カメラワークと切り替えの名前</a>に合わせ、寄るはドリーイン、02の加速はスピードランプ、03への渡りはホイップパン、11から12はマッチカットです。</p>
-<p>効果の採否は<a href="effects-direction.md">effects-direction.md</a>にあります。参考にするのは、語の塊の着地、層の速度差、線が順に描かれること、グラスの線だけを波打たせることです。採用数の上限ではありません。見本の暗い背景、章題、1字の揺れ、白フラッシュ、測定値に見えるグラフは使いません。</p>
+<p>すべての動きは、Remotion 上でフレーム時刻から同じ状態を再現できます。効果の採否は<a href="effects-direction.md">effects-direction.md</a>にあります。</p>
 
 <h2 id="symbols">記号と色</h2>
-<p>同じ記号の意味と質感を、全カットで揃えます。図形の意匠は変えてかまいません。一つの記号に、別の意味を足しません。</p>
+<p>同じ記号の意味と質感を、全カットで揃えています。</p>
 <div class="tablewrap"><table>
-<thead><tr><th>記号</th><th>意味</th><th>出るカット</th><th>混ぜないこと</th></tr></thead>
+<thead><tr><th>記号</th><th>意味</th><th>出るカット</th></tr></thead>
 <tbody>
-<tr><td>横長の目盛り</td><td>どこまでAIに委ねるか。0、70、80、90、100は原稿の言い方で、測定値ではない</td><td>01、02、03、04、12</td><td>実績のグラフ、スコア、店の数</td></tr>
-<tr><td>ギザギザの長矢印</td><td>0から100の丸投げ。途中で折れる</td><td>02、04のはじめの下</td><td>70から90の滑らかな矢印</td></tr>
-<tr><td>滑らかな短矢印と光</td><td>70から90。手元の実物を土台に引き上げる</td><td>03、04の上、12</td><td>ギザギザ、ライム</td></tr>
-<tr><td>90から100の空き</td><td>人の判断と責任が残る幅</td><td>04の下、12</td><td>欠陥の点滅、未完成のバツ</td></tr>
-<tr><td>「人の手」の語</td><td>その空きを、人が持つ</td><td>12</td><td>人の絵、手の写真</td></tr>
-<tr><td>線画のグラス</td><td>メニュー写真のたとえ。全カット同じ線画。崩れる状態はゼロからの嘘、色と光が足されて形が残る状態は実物を土台にした引き上げ</td><td>01、02、03、08、09、10</td><td>実物の写真、他者のイラスト、製品パッケージ</td></tr>
-<tr><td>緑に染まった四角</td><td>氷まで同じ色、という嘘。グラスの中だけ</td><td>02、09、10</td><td>整った状態の色、ロゴのライム</td></tr>
-<tr><td>四角の列</td><td>ゼロから作ると並びがデタラメになる</td><td>05</td><td>実在の街の写真、地名のラベル</td></tr>
-<tr><td>矩形と中央の円、隅の点</td><td>任せきりでは届かないところ</td><td>07</td><td>家電の製品、人の姿</td></tr>
-<tr><td>灰の札</td><td>一発で出して、もうこれでいいや、とした印</td><td>08</td><td>ロゴ、出典</td></tr>
-<tr><td>点</td><td>離れゆく客のたとえ。姿ではない</td><td>10</td><td>顔、ピクトの人</td></tr>
-<tr><td>空の枠</td><td>現地で切った思い出。中に写真は入れない</td><td>11</td><td>他人の写真、生成画像</td></tr>
-<tr><td>出典の一行</td><td>他者の作品は、要旨と出典だけ</td><td>09</td><td>画像、URL、記事の見出し</td></tr>
-<tr><td>藍の文字</td><td>筆者の決め語</td><td>01の問い、03、04、06、07、08の中段、10の見極め、12</td><td>留保</td></tr>
-<tr><td>灰の文字</td><td>留保、またはまだ開いている問い</td><td>01の「なんか、」、05の前置き、06の楽、08の悪くない、10の上段</td><td>決め語</td></tr>
-<tr><td>ライムの全面</td><td>制作表示</td><td>13だけ</td><td>本編の強調色</td></tr>
+<tr><td>床の目盛り（0〜100）</td><td>どこまでAIに委ねるか。0、70、80、90、100 は原稿の言い方で、測定値ではない</td><td>03、04、05、06、09、10、12</td></tr>
+<tr><td>折れた朱の線</td><td>0 から 100 の丸投げ。進むほど折れる</td><td>03、05 の頭</td></tr>
+<tr><td>青い矢印・帯と金の光</td><td>70 から 90。手元の実物を土台に引き上げる</td><td>04、05、12</td></tr>
+<tr><td>墨の帯</td><td>人の側（実物、自分で直す、人の手）</td><td>05、12</td></tr>
+<tr><td>フロートのグラス</td><td>メニュー写真のたとえ。全カット同じ立体。波打ちと緑はゼロからの嘘、形を保った光は実物からの引き上げ</td><td>01、02、03、04、09、10、12</td></tr>
+<tr><td>写真の四隅の印</td><td>これは写真（画像）である、撮る</td><td>02、04、11</td></tr>
+<tr><td>嘘の緑</td><td>氷まで同じ色。現実にない嘘</td><td>02、06、10、11</td></tr>
+<tr><td>箱の建物</td><td>ゼロから作ると並びがデタラメになる</td><td>06</td></tr>
+<tr><td>部屋・青い円・朱の埃・墨の四角</td><td>任せきりでは届かないところと、仕上げの手</td><td>08</td></tr>
+<tr><td>札「もうこれでいいや」</td><td>一発で出して世に出した印</td><td>09</td></tr>
+<tr><td>点</td><td>客のたとえ。姿ではない</td><td>10</td></tr>
+<tr><td>額</td><td>現地で切った思い出と、置き換えた一枚</td><td>11</td></tr>
+<tr><td>さくらんぼ</td><td>最後の人のひと手間</td><td>12</td></tr>
+<tr><td>ライムの全面</td><td>制作表示</td><td>ロゴだけ</td></tr>
 </tbody></table></div>
 
 <h2 id="character">キャラ設定</h2>
-<p>人物は出しません。メニューのたとえは線画のグラス、任せきりのたとえは矩形と円、客のたとえは点、人の判断は「人の手」という語です。原稿の「作り手」「お客」は、声と画面の語で残します。</p>
+<p>人物は出しません。メニューのたとえはグラス、任せきりのたとえは部屋と青い円、客のたとえは点、人の判断は墨の帯と「人の手」という語です。</p>
 
-<h2 id="swaps">差し替え候補 <span class="need">要判断 1</span> <span class="need">要判断 2</span></h2>
-<p>この企画書の前提はAです。グラスは01、02、03、08、09、10のすべてで同じ線画です。一部のカットだけ実写や生成動画にしません。</p>
-<div class="box">
-<p><b>要判断1　原稿内のフロートのイラスト</b></p>
-<ul>
-<li>A：使わない。09は線画のグラスが緑に染まる変化で、要旨を見せる。</li>
-<li>B：使う。原稿の <code>2026-11-10_17-55-39.webp</code> と <code>2026-11-10_23-44-36.webp</code> は、他者の実物写真が元です。許可が要ります。許可まではAで進めます。制作側は新たに画像を生成しません。</li>
-</ul>
-<p><b>要判断2　グラスが歪む生成動画</b></p>
-<ul>
-<li>A：使わない。線の波打ちと、色が満ちる変化をモーショングラフィックスで描く。</li>
-<li>B：使う。未承認、未生成です。この企画書は、クレジット消費の承認ではありません。承認後に企画側が用意します。使うなら、グラスが出る全カットを同じ質感にします。</li>
-</ul>
-</div>
-<p>追加の写真や動画が必要だと判断した場合は、対象場面と役割を企画側に返し、依存しない部分の実装を進めます。制作側に新規の画像・動画生成を任せる条件にはしません。</p>
+<h2 id="swaps">素材の採用方針</h2>
+<p>原稿内のフロートのイラストと生成動画は使っていません。グラスは出るカットのすべてで同じ立体の部品で、輪郭の崩れや色が満ちる変化をコードで描いています。</p>
 
 <h2 id="assets">素材</h2>
 <div class="tablewrap"><table>
-<thead><tr><th>ファイル</th><th>用途</th><th>区間</th></tr></thead>
+<thead><tr><th>ファイル</th><th>用途</th></tr></thead>
 <tbody>
-<tr><td><code>assets/storyboard/cut-01-start.webp</code> から <code>cut-13-end.webp</code> までの26枚</td><td>構図のラフ（1280×720、明るい背景）。完成画ではない</td><td>各カットのはじめ／おわり</td></tr>
-<tr><td>リポジトリ直下の <code>okady-work-logo.svg</code></td><td>エンドロゴ。形、色、比率は変えない。絵コンテのはじめの印は、ロゴの形の見本ではない</td><td>本編終了後（動作4秒＋保持1.5秒）</td></tr>
+<tr><td><code>assets/frames/</code> の 26 枚</td><td>完成した本編から切り出したコマ（このページのカット表）</td></tr>
+<tr><td><code>assets/storyboard/</code> の 26 枚</td><td>企画時の構図のラフ（記録）</td></tr>
+<tr><td><code>assets/fonts/</code></td><td>Noto Sans JP、BIZ UDP明朝（SIL OFL 1.1、許諾文を同梱）</td></tr>
+<tr><td><code>assets/logo/okady-work-logo.svg</code></td><td>エンドロゴ。リポジトリ直下の原本の写し。形、色、比率は変えていない</td></tr>
+<tr><td><code>video/</code></td><td>実装、ナレーション音声、BGM・効果音の合成スクリプト、再現手順</td></tr>
 </tbody></table></div>
-<p>採用する写真・動画ファイルはありません。フロートのイラストも、生成動画も、未使用・未生成です。本編の図は、コードで描くモーショングラフィックスです。ロゴのファイルは、受け手の環境から相対パス <code>../okady-work-logo.svg</code> で開きます。</p>
+<p>採用した写真・動画ファイルはありません。</p>
 
-<h2 id="sound">音 <span class="need">要判断 3</span></h2>
-<p>BGMと効果音のファイルは、まだ作りません。条件は次のとおりで、制作側がこの作品用に作ります。過去の企画の曲は使いません。20261007の音源も使いません。</p>
+<h2 id="sound">音</h2>
 <ul>
-<li>トーンは、線が折れるときの緊張と、70から90が伸びるときの明快さです。失敗を責める暗い環境音にはしません。</li>
-<li>拍が立ち、矢印の走り、折れ、伸び、語の着地を支えるリズムにします。テンポの数値は固定しません。遅い曲に合わせて映像の勢いを弱めません。</li>
-<li>02の折れ、03の伸び、08の言い切り、12の「人の手」がはまるところでアクセントを置き、本人の結論でまとまり、ロゴの終わりで収めます。映像より短い音源を、余裕があるとは書きません。</li>
-<li>短い無音や音を薄くする間は、01で気持ち悪さに気づく瞬間など、意味の転換に使えます。運動感を失う長い停止にはしません。</li>
-<li>効果音は、折れ、伸び、着地、はまりを支える短い音を候補にします。種類をクリックだけに固定しません。製品の通知音は使いません。</li>
-<li>ナレーションは、各カットの原稿案を基に、意味と留保を保って整理できます。結びの「最後の責任は、人が持ちます。」は守ります。画面の全文を字幕にしません。声の生成は要判断3がBのときだけです。有料の音楽生成を比べる場合は、品質、時間、費用の理由を一行残して選びます。料金が未確認の有料生成はしません。</li>
+<li>ナレーション：ElevenLabs（<code>eleven_v4</code>、声 Kouichi）。12 区切りを切らずにそのまま置いています。確定原稿は <code>video/audio/narration.json</code>。結びは「最後の責任は、人が持ちます。」</li>
+<li>BGM：この作品用にローカルで合成（120BPM。留保の場面は短調寄りの並び、70→90 と結びは明るい並び）。過去の企画の曲は使っていません。</li>
+<li>アクセント：緑が満ちる、矢印が走って折れる（音程も折れる）、着いた瞬間、70→90 が伸びる（滑らかに上がる音）、「ではない。」「問題。」、人の手がはまる、結び。09 の札のあとに短い間を置いています。</li>
+<li>ロゴ：最後の和音を保持の終わりまで伸ばし、o の着地と「.work」に小さな音を置いています。</li>
+<li>ミックス：BGM は −8 dB、声のある間はさらに −9 dB。全体は約 −14 LUFS。試聴は未確認です。</li>
 </ul>
 
 <h2 id="evidence">根拠</h2>
-<p>原稿の抜粋、画面文言、出典、画面にしない情報、数字が何の指標かは<a href="references.md">references.md</a>にまとめています。0、70、80、90、100、残りの30は、どこまで委ねるかの言い方です。品質スコアや件数は足していません。他者の画像、投稿の文面、記事本文は転載していません。</p>
+<p>原稿の抜粋、画面文言、出典、画面にしない情報、数字が何の指標かは<a href="references.md">references.md</a>にまとめています。0、70、80、90、100 は、どこまで委ねるかの言い方です。品質スコアや件数は足していません。他者の画像、投稿の文面、記事本文は転載していません。</p>
 
 <h2 id="done">完成条件・確認状態</h2>
+<p>本編の映像、ナレーション、BGM、効果音は制作済みです。完成版は <code>video/out/final.mp4</code>（1920×1080・30fps・2:27.3、Git 管理外。<code>video/README.md</code> の手順で再出力できます）。何を変えたか、検査の結果、確認した範囲は <a href="production-report.md">production-report.md</a> にあります。</p>
 <ul>
-<li><strong>本編の動画、ナレーション音声、BGM、効果音は未制作です。</strong>このファイルは企画書です。</li>
-<li><strong>絵コンテ：</strong>26枚（1280×720、WebP）。各ファイルは1MiB未満です。文字の外接矩形が安全域（左右48px、上下40px）の外に出たもの、文字どうしの重なり、文字と図の重なりは0件でした。図として登録していない点は、10のおわりを目で見て、語に乗っていないことを確認しました。</li>
-<li><strong>実速再生は未確認です。</strong>静止画の検査は、躍動感、可読性の時間、ロゴのタイミング、音の合格ではありません。</li>
-<li>章表示、テロップ帯、制作管理番号、エンドクレジット、白フラッシュ、粒子は、企画に入れていません。最後はライムの上のロゴだけです。</li>
-<li>完成の条件は、主張が原稿を知らない視聴者に伝わること、留保が声か画面に残ること、結びが本人の肯定であること、文字が安全域に残ること、0から100の折れと70から90の伸びが等速で区別できることです。</li>
+<li>文字の検査：全編を 0.25 秒ごと＋各カット境の前後（639 コマ）。安全域は左右 80px・上下 64px。止まっている文字のはみ出し・重なりは、直したあとの再検査で 0 件です。着地・退場の途中の出入りは別に数えています。</li>
+<li>映像：全編を 1 秒間隔の連続コマで通して見て、構図と重なりを直しました。動きの速い区間は 0.2 秒間隔で見ています。</li>
+<li>未確認：等速での再生と、音の試聴（制作環境ではできない）。動きの速さの体感、読む時間、曲と声の聴こえ方は、見て・聴いて判断してください。</li>
+<li>章表示、テロップ帯、制作管理番号、エンドクレジット、出典の行、白フラッシュ、意味のない粒子は入れていません。最後はライムの上のロゴだけです。</li>
 </ul>
-<h3>凄さを体感できたかを確かめる観点</h3>
-<p>制作したあと、等速で見るための項目です。絵コンテの枚数や、検査が0件だったことは、この観点の合格にしません。</p>
-<ul>
-<li>0から100の線が途中で折れ、70から90が滑らかに伸びる対比を、説明なしで区別できるか。「人の手」が90から100の空きにはまるのが、責任の絵として分かるか。</li>
-<li>読む間も、目盛り、グラス、行、カメラが動き続けているか。文字の形は崩れていないか。1字の揺れや粒子で、動きを稼いでいないか。</li>
-<li>冒頭の「なんか、気持ち悪い。」「どこまで、任せる？」と、結びの「相棒として。」「責任は、人が持つ。」だけで、同じ主張に着くか。</li>
-<li>留保が残っているか。元がなければ生成するしかない。短縮自体は悪くない。反応が厳しすぎることもある。少しAIくさくても注文をやめるとは限らない。手抜きと受け取られれば離れる。思い出は置き換えられない。</li>
-<li>他者の画像、製品のUI、ロゴ、実在の人物、章表示、テロップ帯、白フラッシュが無いこと。グラスの質感が、出るカットの途中で変わっていないこと。</li>
-<li>企画書を改善した判断が、主張の明快さ、字組み、画面全体の動き、場面のつなぎにどう表れたか。代表区間を見てから全編へ広げたか。</li>
-<li>自己検査で見つけて直した件数と、直したあとに同じ検査を通したか。実速の通しと試聴を、見ていないのに見たことにしていないか。</li>
-<li>進捗の開始と完了。報告に、実行環境、使ったモデルの名前、Claude Codeのバージョンがあるか。残作業の一覧で止まらず、完成条件まで進んだか。</li>
-</ul>
+<p>完成の条件は、主張が原稿を知らない視聴者に伝わること、留保が声か画面に残ること、結びが本人の肯定であること、文字が安全域に残ること、0から100の折れと70から90の伸びが等速で区別できることです。</p>
+
 </main>
 <footer><div class="inner">
-<p>企画書。画像は構図のラフです。実速再生は未確認。レンダリング、書き出し、投稿はしていません。</p>
+<p>企画書（本編の制作後に現行の内容へ更新）。カット表の画像は完成した本編のコマです。等速の再生と試聴は未確認。投稿はしていません。</p>
 </div></footer>
 </body></html>

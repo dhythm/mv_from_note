@@ -1,0 +1,18 @@
+YouTubeサムネイル
+生成日: 2026-11-11
+生成手段: 内蔵画像生成ツール
+出力: youtube-thumbnail.png
+原稿内イラストは使用せず、新規生成。生成回数: 1回。
+プロンプト:
+Use case: ads-marketing
+Asset type: finished Japanese YouTube thumbnail, landscape 16:9, 1536x864 or equivalent exact 16:9.
+Primary request: Create a striking editorial thumbnail for a video titled 「AI画像で失敗する人は、ゼロから生成させる人」. The argument is that asking AI to generate everything from zero often produces implausible details, whereas providing a real starting image and improving it works better. Communicate the hook instantly, without suggesting guaranteed success.
+Design: Typography is the main event. Warm almost-white paper background, deep ink navy, vivid cobalt blue, small coral-red failure accents. Premium Japanese graphic design, extremely bold condensed Japanese gothic lettering, tight intentional typesetting, crisp high contrast, elegant but punchy. Not a screenshot or a document.
+Exact headline, huge, on two lines spanning the upper 55 percent:
+「AI画像の失敗」
+「原因は“ゼロから”」
+Render the Japanese exactly and legibly, the second line's ゼロから in coral red with strong emphasis. No quotation marks around whole lines.
+Lower 40 percent: an energetic side-by-side conceptual illustration, two versions of a green soda float in a simple glass, consistent original crisp line illustration. Left glass visibly warped with impossible fused green ice, a broken directional stroke and small red x. Right glass has a coherent clean shape, clear ice with green liquid and restrained luminous accent, with a smooth cobalt arrow. These are conceptual illustrations, not actual evidence or photos of a brand.
+Only two short secondary labels: 「丸投げ」 beneath the left and 「実物を土台に」 beneath the right. Keep labels large and bold enough to read at small size.
+Composition: dramatic asymmetric typographic hierarchy, controlled angled panels and cropping for energy, ample breathing space around all text, no busy decorations. Keep all letters inside a 5% safe margin. Keep the bottom-right corner uncluttered for a video duration badge.
+Avoid: people, faces, actual menu illustrations, logos, brands, timestamps, UI, production notes, small print, excessive words, photorealism, charts, numerical quality scores, watermarks. Solid opaque background. Produce one polished finished thumbnail.
