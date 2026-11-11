@@ -1,0 +1,650 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>プロが使えば8割、素人が使えば崩れる。AIの仕組みを外に出さない理由｜動画企画書</title><style>
+/* デジタル庁デザインシステム（DADS）のデザイントークン（@digital-go-jp/design-tokens）に沿ったスタイル。
+   20261102 の plan.html の style を複製。動画本編の配色とは別。 */
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Noto+Sans+Mono:wght@400;700&display=swap");
+:root{
+  --white:#ffffff;--black:#000000;
+  --gray-50:#f2f2f2;--gray-100:#e6e6e6;--gray-200:#cccccc;--gray-420:#949494;--gray-536:#767676;--gray-600:#666666;--gray-700:#4d4d4d;--gray-800:#333333;--gray-900:#1a1a1a;
+  --key-50:#e8f1fe;--key-100:#d9e6ff;--key-200:#c5d7fb;--key-900:#0017c1;--key-1000:#00118f;--key-1100:#000071;
+  --success-bg:#e6f5ec;--success-1:#259d63;--success-2:#197a4b;
+  --warning-bg:#fbf5e0;--warning-yellow-1:#b78f00;--warning-text:#806300;
+  --warning-orange-bg:#ffeee2;--warning-orange-1:#fb5b01;--warning-orange-2:#c74700;
+  --error-1:#ec0000;--focus-yellow:#ffd43d;--visited:#8b008b;
+  --font-sans:"Noto Sans JP",-apple-system,BlinkMacSystemFont,"Hiragino Sans",sans-serif;
+  --font-mono:"Noto Sans Mono","Noto Sans JP",monospace;
+  --r-4:.25rem;--r-8:.5rem;--r-12:.75rem;--r-16:1rem;--r-full:624.9375rem;
+  --elevation-1:0 2px 8px 1px rgba(0,0,0,.1),0 1px 5px 0 rgba(0,0,0,.3);
+  --ink:var(--gray-900);--line:var(--gray-200);--mut:var(--gray-700);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--white);color:var(--gray-800);font-family:var(--font-sans);font-size:1rem;font-weight:400;line-height:1.7;letter-spacing:.02em;-webkit-font-smoothing:antialiased}
+header .inner,main,nav .in,footer .inner{max-width:1120px;margin:0 auto;padding:0 24px}
+header{background:var(--white);border-bottom:1px solid var(--gray-420)}
+header .inner{padding-top:40px;padding-bottom:24px}
+.strata{height:4px;background:var(--key-900)}
+.eyebrow{display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px;font-size:.875rem;line-height:1.5;color:var(--gray-700);letter-spacing:.04em}
+h1{font-size:2.25rem;line-height:1.4;font-weight:700;color:var(--gray-900);letter-spacing:.01em;margin:16px 0 8px}
+h2{font-size:1.75rem;line-height:1.5;font-weight:700;color:var(--gray-900);margin:64px 0 24px;padding:0 0 8px;border-bottom:1px solid var(--gray-420);scroll-margin-top:72px}
+h3{font-size:1.25rem;line-height:1.5;font-weight:700;color:var(--gray-900);margin:32px 0 12px}
+.cuthead h3{margin:0}
+p{margin:0 0 16px}
+.lead{font-size:1.125rem;line-height:1.6;font-weight:700;color:var(--gray-900)}
+.small{font-size:.875rem;line-height:1.7;color:var(--gray-700)}
+b,strong{font-weight:700;color:var(--gray-900)}
+a{color:var(--key-1000);text-decoration:underline;text-underline-offset:.2em;text-decoration-thickness:1px}
+a:visited{color:var(--visited)}
+a:hover{color:var(--key-1100);text-decoration-thickness:3px}
+a:active{color:var(--warning-orange-2)}
+a:focus-visible{outline:4px solid var(--black);outline-offset:2px;background:var(--focus-yellow);color:var(--black);border-radius:var(--r-4)}
+.chip{display:inline-block;background:var(--key-50);color:var(--key-1000);border:1px solid var(--key-900);border-radius:var(--r-4);padding:2px 8px;font-size:.875rem;line-height:1.5;font-weight:700;letter-spacing:.02em}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin:24px 0 0;padding:0;list-style:none}
+.meta span{background:var(--gray-50);border:1px solid var(--gray-200);border-radius:var(--r-4);padding:4px 12px;font-size:.875rem;line-height:1.5;color:var(--gray-800)}
+nav{position:sticky;top:0;background:var(--white);border-bottom:1px solid var(--gray-420);z-index:5;box-shadow:0 1px 4px rgba(0,0,0,.08)}
+nav .in{display:flex;flex-wrap:wrap;gap:4px 20px;padding-top:12px;padding-bottom:12px;font-size:.875rem;line-height:1.5}
+nav a,nav a:visited{color:var(--key-1000);font-weight:700}
+.box{background:var(--white);border:1px solid var(--gray-420);border-radius:var(--r-8);padding:24px;margin:16px 0}
+.box > :last-child{margin-bottom:0}
+.box.accent{background:var(--key-50);border:1px solid var(--key-900);border-left:8px solid var(--key-900)}
+.box.accent .lead{margin:0}
+.tablewrap{overflow-x:auto;margin:16px 0}
+table{border-collapse:collapse;width:100%;background:var(--white);font-size:1rem;line-height:1.7;margin:16px 0;border-top:1px solid var(--gray-420)}
+.tablewrap table{margin:0}
+th,td{border-bottom:1px solid var(--gray-420);padding:12px 16px;text-align:left;vertical-align:top}
+th{background:var(--gray-50);color:var(--gray-900);font-weight:700;font-size:.875rem;line-height:1.5;border-bottom:2px solid var(--gray-800);white-space:nowrap}
+tr:hover td{background:var(--key-50)}
+.cut{background:var(--white);border:1px solid var(--gray-420);border-radius:var(--r-16);padding:32px;margin:32px 0;scroll-margin-top:72px}
+.cuthead{display:flex;gap:16px;align-items:center;margin-bottom:24px;padding-bottom:16px;border-bottom:1px solid var(--gray-200)}
+.cuthead p{margin:4px 0 0}
+.num{font-size:1.5rem;line-height:1;font-weight:700;color:var(--white);background:var(--key-900);border-radius:var(--r-8);min-width:56px;height:56px;display:flex;align-items:center;justify-content:center;flex:none;font-feature-settings:"tnum"}
+.frames.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+.frames{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+figure{margin:0}
+figure img{width:100%;height:auto;display:block;border:1px solid var(--gray-200);border-radius:var(--r-8);background:var(--white)}
+figure a:focus-visible{display:block;background:none}
+figcaption{font-size:.875rem;line-height:1.7;margin-top:8px;color:var(--gray-800)}
+.details{display:grid;grid-template-columns:1fr 1.15fr;gap:8px 40px;margin-top:32px}
+.details p{margin:4px 0}
+.label{font-size:.875rem;line-height:1.3;font-weight:700;color:var(--key-1000);margin-top:20px;padding-left:8px;border-left:4px solid var(--key-900)}
+.details > div > .label:first-child{margin-top:0}
+.words{font-size:1.125rem;line-height:1.6;font-weight:700;color:var(--gray-900);margin:8px 0}
+.voice{background:var(--gray-50);border-left:4px solid var(--gray-600);border-radius:0 var(--r-4) var(--r-4) 0;padding:12px 16px;margin:8px 0;font-size:1rem;line-height:1.7;color:var(--gray-800)}
+ul{margin:8px 0 16px;padding-left:1.5em}
+li{margin:4px 0}
+li::marker{color:var(--gray-600)}
+code{font-family:var(--font-mono);background:var(--gray-50);border:1px solid var(--gray-200);padding:0 4px;border-radius:var(--r-4);font-size:.875em;color:var(--gray-900);word-break:break-all}
+.sw{display:inline-block;width:16px;height:16px;border-radius:var(--r-4);vertical-align:-3px;margin-right:8px;border:1px solid var(--gray-420)}
+.tag{display:inline-block;border-radius:var(--r-4);padding:0 8px;font-size:.8125rem;line-height:1.7;font-weight:700;margin-right:8px;border:1px solid}
+.t-un{background:var(--warning-bg);color:var(--warning-text);border-color:var(--warning-yellow-1)}
+footer{border-top:1px solid var(--gray-420);background:var(--gray-50);margin-top:80px;padding:24px 0;font-size:.875rem;color:var(--gray-700)}
+h2.part{margin-top:96px;padding:16px 24px;border:none;border-radius:var(--r-8);background:var(--gray-50);border-left:8px solid var(--gray-800);font-size:1.5rem}
+h2.part + .small{margin-top:-8px}
+.navsep{color:var(--gray-700);font-weight:700;padding-left:12px;border-left:1px solid var(--gray-420)}
+.decide{margin:48px 0 16px;padding:24px 32px 24px;background:var(--warning-orange-bg);border:1px solid var(--warning-orange-1);border-left:8px solid var(--warning-orange-1);border-radius:var(--r-8)}
+.decide h2{margin:0 0 8px;border-bottom:none;padding:0;color:var(--gray-900)}
+.decide > .small{color:var(--gray-800)}
+.decide-list{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:12px}
+.decide-list li{display:flex;gap:12px;align-items:flex-start;background:var(--white);border:1px solid var(--gray-420);border-radius:var(--r-8);padding:12px 16px;margin:0}
+.decide-list .need{min-width:28px;justify-content:center;margin:2px 0 0}
+.where{display:block;font-size:.875rem;color:var(--gray-700);margin-top:4px}
+.need{display:inline-flex;align-items:center;background:var(--warning-orange-2);color:var(--white);border-radius:var(--r-4);padding:0 8px;font-size:.8125rem;line-height:1.7;font-weight:700;letter-spacing:.02em;margin:0 8px;vertical-align:.15em;white-space:nowrap}
+h2 .need{font-size:.875rem}
+nav a.nav-need,nav a.nav-need:visited{background:var(--warning-orange-2);color:var(--white);padding:0 8px;border-radius:var(--r-4);text-decoration:none}
+nav a.nav-need:hover{text-decoration:underline}
+.swap{margin-top:8px}
+@media(max-width:760px){
+  header .inner,main,nav .in,footer .inner{padding:0 16px}
+  header .inner{padding-top:24px;padding-bottom:16px}
+  .frames,.frames.three,.details{grid-template-columns:1fr}
+  h1{font-size:1.75rem;line-height:1.5}
+  h2{font-size:1.5rem;margin-top:48px}
+  .cut{padding:20px;border-radius:var(--r-12)}
+  .box,.decide{padding:16px}
+  table{font-size:.875rem}
+  th,td{padding:8px 12px}
+  th{white-space:normal}
+}
+@media print{nav{position:static;box-shadow:none}.cut{break-inside:avoid}}
+</style></head>
+<body>
+<header>
+<div class="inner">
+<div class="eyebrow">VIDEO PLAN / 2026.11.12 <span class="chip">企画・絵コンテ（ライト）・写真も動画もなし</span></div>
+<h1>プロが使えば8割、素人が使えば崩れる。AIの仕組みを外に出さない理由</h1>
+<p class="lead">仕組みより、使う人の判断が成果を決める。判断は手放さず、成果物で渡す。</p>
+<p>元にした note 記事：「プロが使えば8割、素人が使えば崩れる。AIの仕組みを外に出さない理由」<a href="https://note.com/dhythm/n/n1da8fbc24805">https://note.com/dhythm/n/n1da8fbc24805</a>（公開済み）<br>
+原稿：<code>dhythm/private-note</code> の <code>Zettelkasten/PermanentNote/20261107_プロが使えば8割、素人が使えば崩れる。AIの仕組みを外に出さない理由.md</code>（本文は同梱しない）</p>
+<div class="meta">
+<span>16:9・1920×1080・30fps</span>
+<span>本編 2:10＋エンドロゴ 5.5秒＝2:15.5</span>
+<span>本編 10カット＋ロゴ</span>
+<span>ナレーション案 590字／画面の文字 222字</span>
+<span>写真・動画ファイルはなし（図と文字のMG）</span>
+<span>BGM・効果音・ナレーション音声は未制作</span>
+<span>実速再生は未確認</span>
+</div>
+</div>
+<div class="strata"></div>
+</header>
+
+<nav><div class="in">
+<a class="nav-need" href="#decide">判断してほしい点（4）</a>
+<a href="#claim">主張</a>
+<a href="#viewer">視聴者</a>
+<a href="#structure">構成と尺</a>
+<a href="#cuts">カット表</a>
+<span class="navsep">詳細：</span>
+<a href="#roles">声・文字・素材</a>
+<a href="#claim-map">主張・根拠・留保</a>
+<a href="#handoff">企画側／制作側</a>
+<a href="#design">デザインシステム</a>
+<a href="#motion">動き</a>
+<a href="#symbols">記号と色</a>
+<a href="#character">キャラ設定</a>
+<a href="#swaps">差し替え候補</a>
+<a href="#assets">素材</a>
+<a href="#sound">音</a>
+<a href="#evidence">根拠</a>
+<a href="#done">完成条件・確認状態</a>
+</div></nav>
+
+<main>
+<section class="decide" id="decide">
+<h2>未確定事項と判断してほしい点</h2>
+<p class="small">ここだけが判断です。ほかの節は、決定済みの情報です。原稿とネタ案が食い違うところは原稿を画面に置き、選択肢を A／B で残しています。</p>
+<ol class="decide-list">
+<li><span class="need">1</span><div>時間の見せ方。<b>A（現行）</b>：画面は「6時間」「20分ほど」。帯が縮み、灰色の線はなくなった長さの比喩。タイムコードにはしない。<b>B</b>：ネタ案の「6:00:00」から「0:20:00」。原稿は「ほど」なので、測った時刻に見える。<span class="where">該当：<a href="#cut-03">カット03</a></span></div></li>
+<li><span class="need">2</span><div>完成の表記。<b>A（現行）</b>：「完成の、100」。原稿の「完成形の100」。測定した達成率ではない。<b>B</b>：ネタ案の「100%」。測定値に見える。<span class="where">該当：<a href="#cut-05">カット05</a></span></div></li>
+<li><span class="need">3</span><div>8割の見出し。<b>A（現行）</b>：同じ8割でも、使う人で結果が変わる。原稿は、出力の質は指示する人の目と経験で決まると書いている。<b>B</b>：ネタ案の「AIの8割は誰でも出せる。残り2割が仕事」。原稿の「同じ道具を渡しても同じものは出ない」と食い違う。<span class="where">該当：<a href="#cut-06">カット06</a></span></div></li>
+<li><span class="need">4</span><div>03の生成動画。<b>A（現行）</b>：タイムラインのモーショングラフィックス。生成しない。<b>B</b>：フィルムが流れ込み、数本だけ並ぶ4秒の映像を、03の全面インサートにする。未承認。クレジットは未確認。承認後に企画側が用意する。<span class="where">該当：<a href="#swaps">差し替え候補</a></span></div></li>
+</ol>
+</section>
+
+<h2 id="claim">この動画で伝える一文</h2>
+<div class="box accent"><p class="lead">「AIの仕組みを渡せば、誰が使っても同じ成果が出る」と思っている人に、成果を決めるのは仕組みそのものより、使う人の判断だと伝え、同じ8割でも判断を手放さない人が仕上げれば届き、経験のない人が触ると崩れる、だから仕組みは外に出さず成果物で渡す、という本人の結論を残す。</p></div>
+<p>残る気持ちは、判断と責任は手元に残り、成果物で渡した方が作った人の価値を守れる、という本人の確信です。全員の仕事がこれで成功する、という話にはしません。6時間、20分ほど、8割、2割、100は、原稿の言い方です。品質の測定値ではありません。</p>
+
+<h2 id="viewer">視聴者</h2>
+<p>AIで仕事の仕組みを作り、渡せば相手も同じ成果が出ると思っている人。仕組みだけ納品すれば足りると思っている人。見終わったあと、誰が使うかを先に決め、判断は手放さず、成果物で渡す、という本人のやり方を持って帰れる人。</p>
+
+<h2 id="structure">構成と尺</h2>
+<p>声は経緯、留保、結論を運びます。文字は決め語と、短い留保です。図は「6時間が20分ほどへ縮む」「8本にプロが2本足して100で止まる」「同じ8本が崩れる」を運びます。説明の全文は画面に載せません。</p>
+<p>尺はナレーション案の字数から決めました。声 590字、画面の文字 222字（空白と改行を除く。句読点は数える）。声の見積もりは 590字 ÷ 5.6字/秒 ≒ 105秒です。5.6字/秒は、直前の作品でナレーションの実測がおよそその速さだったことによる目安です。図を見る間を足して本編 130秒、エンドロゴ 5.5秒で 2分15.5秒。7字/秒は画面を読む目安で、声の尺には使っていません。等速で読む時間と見る時間が足りるかは、制作側の再生で判断します。実速再生は未確認です。</p>
+<p>01の思い込みと、02の「使う人の判断」、10の「判断は、手放さない。」だけで、同じ主張が伝わることを確かめました。尺が足りなければ、04の順番の説明から削ります。05の留保、06の崩れ、07の条件、08の納品、10の結論は残します。</p>
+<div class="tablewrap"><table>
+<thead><tr><th>カット</th><th>区間</th><th>役割</th><th>声／画面</th></tr></thead>
+<tbody>
+<tr><td><a href="#cut-01">01 渡せば、同じ成果。</a></td><td>0:00–0:10（10秒）</td><td>思い込み</td><td>44字／9字</td></tr>
+<tr><td><a href="#cut-02">02 使う人の、判断。</a></td><td>0:10–0:21（11秒）</td><td>主張</td><td>52字／22字</td></tr>
+<tr><td><a href="#cut-03">03 6時間が、20分ほどに。</a> <span class="need">要判断 1</span></td><td>0:21–0:37（16秒）</td><td>根拠の見せ場</td><td>66字／10字</td></tr>
+<tr><td><a href="#cut-04">04 先に、集める。</a></td><td>0:37–0:47（10秒）</td><td>根拠</td><td>45字／34字</td></tr>
+<tr><td><a href="#cut-05">05 8割に、2割。</a> <span class="need">要判断 2</span></td><td>0:47–1:00（13秒）</td><td>根拠</td><td>54字／34字</td></tr>
+<tr><td><a href="#cut-06">06 同じ8割が、崩れる。</a> <span class="need">要判断 3</span></td><td>1:00–1:15（15秒）</td><td>主張の見せ場</td><td>62字／11字</td></tr>
+<tr><td><a href="#cut-07">07 誰が、使うか。</a></td><td>1:15–1:27（12秒）</td><td>留保</td><td>53字／31字</td></tr>
+<tr><td><a href="#cut-08">08 仕組みは、出さない。</a></td><td>1:27–1:41（14秒）</td><td>主張</td><td>68字／24字</td></tr>
+<tr><td><a href="#cut-09">09 プロにしか、見えない。</a></td><td>1:41–1:54（13秒）</td><td>留保</td><td>65字／21字</td></tr>
+<tr><td><a href="#cut-10">10 一心同体で、組む。</a></td><td>1:54–2:10（16秒）</td><td>本人の結論</td><td>81字／26字</td></tr>
+<tr><td><a href="#cut-11">11 エンドロゴ</a></td><td>2:10–2:15.5（5.5秒）</td><td>制作表示</td><td>0字／0字</td></tr>
+</tbody></table></div>
+
+<h2 id="cuts">カット表・絵コンテ</h2>
+<p>各カットに「はじめ」「おわり」の2コマがあります。コマ画は構図のラフ（1280×720、明るい紙色）で、完成映像の躍動感を確かめたものではありません。番号と「はじめ／おわり」は、このページの見出しとキャプションにだけあります。秒数・位置・角度は参考値です。実装の手順とパラメータは制作側の裁量です。画面全体を大きく動かすこと、可読性、留保は緩めません。動きの名前は<a href="#motion">動きの言語</a>、記号は<a href="#symbols">記号と色</a>です。</p>
+<p>図の背骨は一本です。青い帯が縮み、その青が8本のバーになる。プロの2本が足されて100で止まり、同じ8本だけが、次のカットで倒れる。</p>
+
+<section class="cut" id="cut-01">
+<div class="cuthead"><div class="num">01</div><div>
+<h3>渡せば、同じ成果。</h3>
+<p class="small">0:00–0:10 / 10秒　・　思い込み　・　声 44字／画面 9字</p>
+</div></div>
+<div class="frames">
+<figure><a href="assets/storyboard/cut-01-start.webp"><img src="assets/storyboard/cut-01-start.webp" width="1280" height="720" alt="カット01 はじめ。大きな「渡せば、」と、同じ青い面が二つ。"></a><figcaption><b>はじめ</b>　「渡せば、」が大きく入る。下に、同じ青い面が二つ。</figcaption></figure>
+<figure><a href="assets/storyboard/cut-01-end.webp"><img src="assets/storyboard/cut-01-end.webp" width="1280" height="720" alt="カット01 おわり。同じ成果。と同じ形の面が二つ。"></a><figcaption><b>おわり</b>　「同じ成果。」。二つの面は同じ形のまま、中央へ寄る。</figcaption></figure>
+</div>
+<div class="details"><div>
+<div class="label">画面の文字</div>
+<p class="words">渡せば、<br>同じ成果。</p>
+<div class="label">ナレーション案</div>
+<p class="voice">作った仕組みを別の人に渡しても、同じ成果が出るとは限りません。2年間、そう見てきました。</p>
+<div class="label">字組みと構図</div>
+<p>はじめは左の巨大な1行と、下の対になった面。おわりは上の1行と、同じ大きさの面が二つ。灰は、まだ筆者の結論ではない印です。</p>
+</div><div>
+<div class="label">主役の語と、動き・カメラ</div>
+<p>主役は「同じ成果。」。二つの面が同じであることが、思い込みの絵です。秒は参考値。</p>
+<ul>
+<li>0.0–1.6秒：「渡せば、」の塊が左から着地する（<a href="#motion">E_SLAM</a>）。二つの面が下からせり上がる。</li>
+<li>1.6–8.0秒：読む間、文字の塊ごとが左へ流れ、面は逆向きに流れる（<a href="#motion">E_DRIFT</a>）。</li>
+<li>8.0–10秒：二つの面が寄って隙間を作り、02の「判断」へ押し出す（<a href="#motion">E_PUSH</a>）。</li>
+</ul>
+</div></div>
+</section>
+
+<section class="cut" id="cut-02">
+<div class="cuthead"><div class="num">02</div><div>
+<h3>使う人の、判断。</h3>
+<p class="small">0:10–0:21 / 11秒　・　主張　・　声 52字／画面 22字</p>
+</div></div>
+<div class="frames">
+<figure><a href="assets/storyboard/cut-02-start.webp"><img src="assets/storyboard/cut-02-start.webp" width="1280" height="720" alt="カット02 はじめ。巨大な判断と、小さい仕組み。"></a><figcaption><b>はじめ</b>　左に巨大な「判断」。右上に小さい「仕組み」。</figcaption></figure>
+<figure><a href="assets/storyboard/cut-02-end.webp"><img src="assets/storyboard/cut-02-end.webp" width="1280" height="720" alt="カット02 おわり。使う人の判断。が大きく、仕組みより、は小さい。"></a><figcaption><b>おわり</b>　「使う人の判断。」が画面の左を占める。「仕組みより、」は右で小さい。</figcaption></figure>
+</div>
+<div class="details"><div>
+<div class="label">画面の文字</div>
+<p class="words">成果を決めるのは、<br>仕組みより、<br>使う人の判断。</p>
+<div class="label">ナレーション案</div>
+<p class="voice">成果を決めるのは、仕組みそのものより、使う人の判断です。出力の質は、指示を出す人の目と経験で決まります。</p>
+<div class="label">字組みと構図</div>
+<p>はじめは左の1語が画面の半分。おわりは左に3段、右に小さな語と薄い面。大きさが、主張の比重です。</p>
+</div><div>
+<div class="label">主役の語と、動き・カメラ</div>
+<p>主役は「判断。」。仕組みの面は残し、小さくする。仕組みを消して悪役にはしません。</p>
+<ul>
+<li>0.0–1.2秒：01の隙間へ「判断」が scale 1.5→1.0 で着地する（E_SLAM）。</li>
+<li>1.2–2.0秒：「成果を決めるのは、」が行のマスクから入る。</li>
+<li>2.0–9.0秒：読む間、左の塊がゆっくり寄る（E_DRIFT）。右の面は奥へ下がり、文字の層とは速さが違う。</li>
+<li>9.0–11秒：左の塊が上へ押し出され、03の帯になる（E_PUSH）。</li>
+</ul>
+</div></div>
+</section>
+
+<section class="cut" id="cut-03">
+<div class="cuthead"><div class="num">03</div><div>
+<h3>6時間が、20分ほどに。 <span class="need">要判断 1</span></h3>
+<p class="small">0:21–0:37 / 16秒　・　根拠の見せ場　・　声 66字／画面 10字</p>
+</div></div>
+<div class="frames">
+<figure><a href="assets/storyboard/cut-03-start.webp"><img src="assets/storyboard/cut-03-start.webp" width="1280" height="720" alt="カット03 はじめ。6時間と、画面幅の青い帯。"></a><figcaption><b>はじめ</b>　「素材」「6時間」。画面幅の青い帯に、刻みがある。</figcaption></figure>
+<figure><a href="assets/storyboard/cut-03-end.webp"><img src="assets/storyboard/cut-03-end.webp" width="1280" height="720" alt="カット03 おわり。20分ほど。帯は短く残り、灰色の線が続く。"></a><figcaption><b>おわり</b>　「20分ほど」。帯は短く残り、灰色の線が、なくなった長さ。</figcaption></figure>
+</div>
+<div class="details"><div>
+<div class="label">画面の文字</div>
+<p class="words">素材<br>6時間<br>20分ほど</p>
+<div class="label">ナレーション案</div>
+<p class="voice">映像のプロは、素材をAIに見せ、使えるところだけ選ばせていました。6時間から、20分ほどの映像が並びます。削るより、拾って、並べる。</p>
+<div class="label">字組みと構図</div>
+<p>はじめは上に巨大な「6時間」、下に画面幅の帯。おわりは上の語が「20分ほど」へ変わり、帯は左の短い塊になる。横長の重心が、点の重心へ縮む。</p>
+</div><div>
+<div class="label">主役の語と、動き・カメラ</div>
+<p>主役は「20分ほど」。6時間と20分ほどは、撮影素材の長さと、並べた映像の長さです。編集にかかった時間でも、20分00秒の計測でもありません。編集ソフトの画面は描きません。</p>
+<ul>
+<li>0.0–2.0秒：図の層だけ Dolly in。ゆっくり2秒。帯が画面幅に着く。</li>
+<li>2.0–10秒：帯の長さが縮む（<a href="#motion">E_SINK</a>）。刻みの間隔が詰まる。「6時間」は上へ抜け、「20分ほど」が行マスクで入る。文字の形は崩さない。</li>
+<li>10–16秒：残った帯を保ち、消えた長さは灰色の細い線になる。カメラは残った帯へ寄る。04で、帯がカードに割れる。</li>
+</ul>
+</div></div>
+</section>
+
+<section class="cut" id="cut-04">
+<div class="cuthead"><div class="num">04</div><div>
+<h3>先に、集める。</h3>
+<p class="small">0:37–0:47 / 10秒　・　根拠　・　声 45字／画面 34字</p>
+</div></div>
+<div class="frames">
+<figure><a href="assets/storyboard/cut-04-start.webp"><img src="assets/storyboard/cut-04-start.webp" width="1280" height="720" alt="カット04 はじめ。構成、収集、執筆の順。"></a><figcaption><b>はじめ</b>　「以前は、構成から。」。構成、収集、執筆の順。</figcaption></figure>
+<figure><a href="assets/storyboard/cut-04-end.webp"><img src="assets/storyboard/cut-04-end.webp" width="1280" height="720" alt="カット04 おわり。先に、集める。収集と執筆。"></a><figcaption><b>おわり</b>　「先に、集める。」。カードは収集と執筆の二つ。</figcaption></figure>
+</div>
+<div class="details"><div>
+<div class="label">画面の文字</div>
+<p class="words">以前は、構成から。<br>構成<br>収集<br>執筆<br>先に、集める。<br>書ける記事を、書かせる。</p>
+<div class="label">ナレーション案</div>
+<p class="voice">以前は、構成を固めてから集めていました。いまは、先に集めて、書ける記事をAIに書かせます。</p>
+<div class="label">字組みと構図</div>
+<p>はじめは横一列の3枚。おわりは上の巨大な1行と、下の2枚。3枚から2枚へ、列の長さが変わる。</p>
+</div><div>
+<div class="label">主役の語と、動き・カメラ</div>
+<p>主役は「先に、集める。」。記事の紙面も、お客さんの名前も出しません。</p>
+<ul>
+<li>0.0–1.0秒：03の短い帯が、横のカード3枚に割れる。</li>
+<li>1.0–4.0秒：「以前は、構成から。」が行マスクで入る。カードの間を矢印が順に描かれる。</li>
+<li>4.0–8.0秒：「構成」のカードが上へ抜け、収集と執筆が左へ寄る。「先に、集める。」が着地する（E_SLAM）。</li>
+<li>8.0–10秒：2枚のカードが縦に倒れ、05のバーの太さへ変わる。</li>
+</ul>
+</div></div>
+</section>
+
+<section class="cut" id="cut-05">
+<div class="cuthead"><div class="num">05</div><div>
+<h3>8割に、2割。 <span class="need">要判断 2</span></h3>
+<p class="small">0:47–1:00 / 13秒　・　根拠　・　声 54字／画面 34字</p>
+</div></div>
+<div class="frames">
+<figure><a href="assets/storyboard/cut-05-start.webp"><img src="assets/storyboard/cut-05-start.webp" width="1280" height="720" alt="カット05 はじめ。AIが、8割。青いバーが8本。"></a><figcaption><b>はじめ</b>　「AIが、8割」。同じ太さの青いバーが8本。</figcaption></figure>
+<figure><a href="assets/storyboard/cut-05-end.webp"><img src="assets/storyboard/cut-05-end.webp" width="1280" height="720" alt="カット05 おわり。琥珀の2本が足され、完成の100。"></a><figcaption><b>おわり</b>　琥珀の2本が足される。「完成の 100」。灰で「要件によっては、チェックなし。」</figcaption></figure>
+</div>
+<div class="details"><div>
+<div class="label">画面の文字</div>
+<p class="words">AIが、8割<br>プロが、2割。<br>完成の<br>100<br>要件によっては、チェックなし。</p>
+<div class="label">ナレーション案</div>
+<p class="voice">AIに8割を作らせ、最後の2割はプロが仕上げます。手放さないのは、何を残すかの判断と、仕上がりへの責任です。</p>
+<div class="label">字組みと構図</div>
+<p>はじめは左上の語と、中央の8本。おわりは左に2行、右上に巨大な「100」、下に10本。留保は灰の1行で、バーの上に残る。</p>
+</div><div>
+<div class="label">主役の語と、動き・カメラ</div>
+<p>主役は「100」。8本はAIが作る側、琥珀の2本はプロが手放さない側です。100は完成形の言い方で、達成率の測定値ではありません。パーセント記号は置きません。</p>
+<ul>
+<li>0.0–2.0秒：04のカードが、同じ太さの縦のバー8本に立ち上がる（E_SLAM）。</li>
+<li>2.0–7.0秒：「AIが、8割」が行マスク。読む間、バーの列ごとがゆっくり寄る（E_DRIFT）。文字は別の層。</li>
+<li>7.0–10秒：琥珀の2本が上から落ち、列の右に収まって止まる。着地で「100」が着く（E_SLAM）。</li>
+<li>10–13秒：灰の留保が行マスクで入る。列は完成したまま、06へ渡す。カメラは列の全長が見える高さへ引く。</li>
+</ul>
+</div></div>
+</section>
+
+<section class="cut" id="cut-06">
+<div class="cuthead"><div class="num">06</div><div>
+<h3>同じ8割が、崩れる。 <span class="need">要判断 3</span></h3>
+<p class="small">1:00–1:15 / 15秒　・　主張の見せ場　・　声 62字／画面 11字</p>
+</div></div>
+<div class="frames">
+<figure><a href="assets/storyboard/cut-06-start.webp"><img src="assets/storyboard/cut-06-start.webp" width="1280" height="720" alt="カット06 はじめ。同じ8本の青いバーと、素人。"></a><figcaption><b>はじめ</b>　05と同じ8本。「同じ8割。」と、右上の「素人」。</figcaption></figure>
+<figure><a href="assets/storyboard/cut-06-end.webp"><img src="assets/storyboard/cut-06-end.webp" width="1280" height="720" alt="カット06 おわり。バーが右へ倒れ、崩れる。"></a><figcaption><b>おわり</b>　8本が右へ倒れる。左に「崩れる。」</figcaption></figure>
+</div>
+<div class="details"><div>
+<div class="label">画面の文字</div>
+<p class="words">同じ8割。<br>素人<br>崩れる。</p>
+<div class="label">ナレーション案</div>
+<p class="voice">同じ道具を、経験のない人に渡しても、同じものは出てきません。熟練者が使って成果の出る仕組みは、経験のない人が使うと崩れます。</p>
+<div class="label">字組みと構図</div>
+<p>はじめは05と同じ横並びの8本。おわりは左の赤い巨大語と、右へ倒れた斜めの列。縦の並びが、斜めの流れに変わる。</p>
+</div><div>
+<div class="label">主役の語と、動き・カメラ</div>
+<p>主役は「崩れる。」。同じ8本の2回目で、結果だけが変わります。琥珀の2本は、このカットにはありません。人の姿は描きません。「素人」は、経験のない使い手の役割です。</p>
+<ul>
+<li>0.0–3.0秒：琥珀の2本が上へ抜け、青い8本だけが残る。「同じ8割。」が行マスク。</li>
+<li>3.0–8.0秒：「素人」の語が右上から寄る。バーはまだ立っている。読む間、列ごとが右へ流れる（E_DRIFT）。</li>
+<li>8.0–8.5秒：倒れる瞬間だけ Whip pan 0.5秒（E_PUSH）。白は入れない。</li>
+<li>8.5–15秒：8本が、左から順に右へ倒れる。角度はフレーム時刻から決める。「崩れる。」が左に着地する（E_SLAM）。倒れた列は戻さない。</li>
+</ul>
+</div></div>
+</section>
+
+<section class="cut" id="cut-07">
+<div class="cuthead"><div class="num">07</div><div>
+<h3>誰が、使うか。</h3>
+<p class="small">1:15–1:27 / 12秒　・　留保　・　声 53字／画面 31字</p>
+</div></div>
+<div class="frames">
+<figure><a href="assets/storyboard/cut-07-start.webp"><img src="assets/storyboard/cut-07-start.webp" width="1280" height="720" alt="カット07 はじめ。枠の中に誰が、使うか。左に小さい8本。"></a><figcaption><b>はじめ</b>　枠の中に「誰が、使うか。」。左に、小さくなった8本。</figcaption></figure>
+<figure><a href="assets/storyboard/cut-07-end.webp"><img src="assets/storyboard/cut-07-end.webp" width="1280" height="720" alt="カット07 おわり。判断まで、入れないと。8割と100の差は、ここ。"></a><figcaption><b>おわり</b>　枠の中が琥珀。「判断まで、入れないと。」下に「8割と100の差は、ここ。」</figcaption></figure>
+</div>
+<div class="details"><div>
+<div class="label">画面の文字</div>
+<p class="words">誰が、<br>使うか。<br>判断まで、<br>入れないと。<br>8割と100の差は、ここ。</p>
+<div class="label">ナレーション案</div>
+<p class="voice">誰が使うかを、先に決めます。中学生や高校生でも同じなら、本当にすごい。それには、判断まで全部入れ込みます。</p>
+<div class="label">字組みと構図</div>
+<p>はじめは右の大きな枠と、左の小さい列。おわりは枠が画面の上半分を占め、留保の1行が下に残る。中央の枠は、このカットだけです。</p>
+</div><div>
+<div class="label">主役の語と、動き・カメラ</div>
+<p>主役は「入れないと。」。中学生や高校生は声だけです。人物としては描きません。すごい、と言える条件を、弱い一般論にはしません。</p>
+<ul>
+<li>0.0–2.0秒：倒れた8本が左へ集まり、枠の外に小さく立つ。枠が右から入る（E_SLAM）。</li>
+<li>2.0–6.0秒：「誰が、使うか。」が枠の中へ行マスク。カメラは枠へ Dolly in。留保の区間も、枠ごとがゆっくり寄る（E_DRIFT）。</li>
+<li>6.0–10秒：枠の内側が琥珀に変わり、「判断まで、入れないと。」が着地する。</li>
+<li>10–12秒：下の1行が入る。枠の右辺が、08の境界線になる。</li>
+</ul>
+</div></div>
+</section>
+
+<section class="cut" id="cut-08">
+<div class="cuthead"><div class="num">08</div><div>
+<h3>仕組みは、出さない。</h3>
+<p class="small">1:27–1:41 / 14秒　・　主張　・　声 68字／画面 24字</p>
+</div></div>
+<div class="frames">
+<figure><a href="assets/storyboard/cut-08-start.webp"><img src="assets/storyboard/cut-08-start.webp" width="1280" height="720" alt="カット08 はじめ。左に仕組みの積み、右は空。出さない。"></a><figcaption><b>はじめ</b>　左に青い積み。「出さない。」。縦の境界の右は空。</figcaption></figure>
+<figure><a href="assets/storyboard/cut-08-end.webp"><img src="assets/storyboard/cut-08-end.webp" width="1280" height="720" alt="カット08 おわり。左は仕組み、右に渡す。と短い列。"></a><figcaption><b>おわり</b>　左は仕組みのまま。右に「渡す。」と、短い列。「差は、歴然。」</figcaption></figure>
+</div>
+<div class="details"><div>
+<div class="label">画面の文字</div>
+<p class="words">仕組みは、出さない。<br>成果物を、<br>渡す。<br>差は、歴然。</p>
+<div class="label">ナレーション案</div>
+<p class="voice">だから、仕組みは外に出さず、成果物だけを渡します。自分たちのための道具なら、止まっても我慢できます。外に出していないから、割り切れます。</p>
+<div class="label">字組みと構図</div>
+<p>はじめは左に語と積み、右は空。おわりは縦の線で左右が分かれ、右に巨大な「渡す。」と短い列。空だった側に、成果物だけが渡る。</p>
+</div><div>
+<div class="label">主役の語と、動き・カメラ</div>
+<p>主役は「渡す。」。左の積みは仕組みで、境界を越えません。右の短い列は、並べた成果物です。編集ソフトの画面は描きません。</p>
+<ul>
+<li>0.0–2.0秒：07の枠の右辺が、画面の縦の境界になる。左に青い積みが出る。</li>
+<li>2.0–6.0秒：「仕組みは、出さない。」が行マスク。読む間、積みの3枚が互い違いに上下へ流れる（E_DRIFT）。</li>
+<li>6.0–11秒：短い列が境界を越えて右へ並ぶ。「渡す。」が着地する（E_SLAM）。</li>
+<li>11–14秒：「差は、歴然。」が行マスク。列の先頭が、09の語の位置へ跳ぶ。</li>
+</ul>
+</div></div>
+</section>
+
+<section class="cut" id="cut-09">
+<div class="cuthead"><div class="num">09</div><div>
+<h3>プロにしか、見えない。</h3>
+<p class="small">1:41–1:54 / 13秒　・　留保　・　声 65字／画面 21字</p>
+</div></div>
+<div class="frames">
+<figure><a href="assets/storyboard/cut-09-start.webp"><img src="assets/storyboard/cut-09-start.webp" width="1280" height="720" alt="カット09 はじめ。大きな「そして」。"></a><figcaption><b>はじめ</b>　「プロにしか、」と、大きな「そして」。</figcaption></figure>
+<figure><a href="assets/storyboard/cut-09-end.webp"><img src="assets/storyboard/cut-09-end.webp" width="1280" height="720" alt="カット09 おわり。そしての右に、長さの違う線が20本。"></a><figcaption><b>おわり</b>　右に、長さの違う線が20本。「20通り。」</figcaption></figure>
+</div>
+<div class="details"><div>
+<div class="label">画面の文字</div>
+<p class="words">プロにしか、見えない。<br>「そして」<br>20通り。</p>
+<div class="label">ナレーション案</div>
+<p class="voice">私は、言葉のプロではありません。文章は読めても、読みにくさは言葉のプロの指摘で分かります。「そして」に、20通りある、と言います。</p>
+<div class="label">字組みと構図</div>
+<p>はじめは左の巨大な引用。おわりは左に引用、右に20本の線。引用の塊と、線の束で左右が分かれる。</p>
+</div><div>
+<div class="label">主役の語と、動き・カメラ</div>
+<p>主役は「そして」。20本は、読みの違いの比喩です。計測のグラフではありません。ナレーターの名前、金額、所属は出ません。</p>
+<ul>
+<li>0.0–2.0秒：「そして」の塊が着地する（E_SLAM）。</li>
+<li>2.0–8.0秒：20本の線が、上から1本ずつ描かれる。読む間、線の束が右へ流れ、語の塊は逆へ流れる（E_DRIFT）。</li>
+<li>8.0–13秒：「20通り。」と「プロにしか、見えない。」が行マスク。線は描き終わった長さを保つ。10へ、線の束が二つの塊へ分かれる。</li>
+</ul>
+</div></div>
+</section>
+
+<section class="cut" id="cut-10">
+<div class="cuthead"><div class="num">10</div><div>
+<h3>一心同体で、組む。</h3>
+<p class="small">1:54–2:10 / 16秒　・　本人の結論　・　声 81字／画面 26字</p>
+</div></div>
+<div class="frames">
+<figure><a href="assets/storyboard/cut-10-start.webp"><img src="assets/storyboard/cut-10-start.webp" width="1280" height="720" alt="カット10 はじめ。プロとエンジニアが離れている。"></a><figcaption><b>はじめ</b>　「プロ」と「エンジニア」が、離れた二つの面。</figcaption></figure>
+<figure><a href="assets/storyboard/cut-10-end.webp"><img src="assets/storyboard/cut-10-end.webp" width="1280" height="720" alt="カット10 おわり。一つの塊。一心同体で、組む。判断は、手放さない。"></a><figcaption><b>おわり</b>　二つの面が一つの塊。「一心同体で、組む。」「判断は、手放さない。」</figcaption></figure>
+</div>
+<div class="details"><div>
+<div class="label">画面の文字</div>
+<p class="words">プロ<br>エンジニア<br>一心同体で、組む。<br>判断は、手放さない。</p>
+<div class="label">ナレーション案</div>
+<p class="voice">プロだけでは組めず、エンジニアだけでは良し悪しが分かりません。発注と受注では、たいていうまくいきません。一緒に考え、一緒に回す。判断は手放さず、成果物で渡します。</p>
+<div class="label">字組みと構図</div>
+<p>はじめは左右に離れた二つの面。おわりは上の2行と、下の一つの横長の塊。分かれていた重心が、一つに揃う。</p>
+</div><div>
+<div class="label">主役の語と、動き・カメラ</div>
+<p>主役は「手放さない。」。02の「判断」が、ここへ戻ります。問いかけでは終えません。人の姿は描きません。</p>
+<ul>
+<li>0.0–3.0秒：二つの面が左右から入る（E_SLAM）。間に隙間が残る。</li>
+<li>3.0–8.0秒：声の「発注と受注」の間、二つの面は近づいて、もう一度離れる。読む間も面は動く（E_DRIFT）。</li>
+<li>8.0–12秒：二つの面が噛み合って一つの塊になる。「一心同体で、組む。」が行マスク。</li>
+<li>12–16秒：「判断は、手放さない。」が着地する（E_SLAM）。塊ごとが上へ抜け、ライムの11へ Whip pan。</li>
+</ul>
+</div></div>
+</section>
+
+<section class="cut" id="cut-11">
+<div class="cuthead"><div class="num">11</div><div>
+<h3>エンドロゴ</h3>
+<p class="small">2:10–2:15.5 / 5.5秒　・　制作表示　・　声 0字／画面 0字</p>
+</div></div>
+<div class="frames">
+<figure><a href="assets/storyboard/cut-11-start.webp"><img src="assets/storyboard/cut-11-start.webp" width="1280" height="720" alt="カット11 はじめ。ライムの画面。o が右上。"></a><figcaption><b>はじめ</b>　ライム #d2ff1a の全面。o が右上から落ちてくる。</figcaption></figure>
+<figure><a href="assets/storyboard/cut-11-end.webp"><img src="assets/storyboard/cut-11-end.webp" width="1280" height="720" alt="カット11 おわり。中央に okady.work。"></a><figcaption><b>おわり</b>　中央に okady.work の完成形。ロゴ以外は置かない。</figcaption></figure>
+</div>
+<div class="details"><div>
+<div class="label">画面の文字</div>
+<p class="small">なし（ロゴのみ）</p>
+<div class="label">ナレーション案</div>
+<p class="voice">なし</p>
+<div class="label">字組みと構図</div>
+<p>ロゴ以外の要素を置かない。形、書体、色、比率は変えない。</p>
+</div><div>
+<div class="label">主役の語と、動き・カメラ</div>
+<p>ロゴは <a href="assets/logo/okady-work-logo.svg"><code>assets/logo/okady-work-logo.svg</code></a>。本編からの切り替えだけ、勢いにしてよい。ロゴ自身の動きは、SVG のタイミングのままです。</p>
+<ul>
+<li>10からの Whip pan で、ライムの面へ切り替える。</li>
+<li>0.0–2.6秒：o が落ちてバウンドし、定位置へ。2.6–3.2秒：全体が左へスライド。3.0–4.0秒：「.work」が一文字ずつ出る。</li>
+<li>4.0–5.5秒：完成形を1.5秒保持して終える。タイミングはフレーム時刻から再現する。</li>
+</ul>
+</div></div>
+</section>
+
+<h2 id="details" class="part">詳細（ここから下は補足）</h2>
+<p class="small">ここまでで、どんな動画で、どう組み、どう見えるかを示しました。以下は、制作に必要な分担、デザイン、動き、素材、音、根拠、完成条件です。</p>
+
+<h2 id="roles">声・文字・素材の分担</h2>
+<div class="tablewrap"><table>
+<thead><tr><th>担当</th><th>受け持つこと</th><th>受け持たないこと</th></tr></thead>
+<tbody>
+<tr><td>声</td><td>経緯、条件、留保、結論の文。なぜ同じものが出ないか、なぜ外に出さないか。</td><td>画面の語の読み上げ。全文字幕。</td></tr>
+<tr><td>文字</td><td>思い込み、決め語、留保の短い語。語の大きさの差で、判断と仕組みの比重を見せる。</td><td>ナレーションの全文。原稿にない数字。</td></tr>
+<tr><td>図（帯とバー）</td><td>長さが縮むこと、8割に2割が足されて止まること、同じ8本が倒れること。</td><td>説明の文。測定のグラフ。</td></tr>
+<tr><td>写真・動画</td><td>使わない。帯とバーは、03から06まで同じモーショングラフィックスで描く。</td><td>生成映像。編集ソフトの画面。人物。</td></tr>
+</tbody></table></div>
+<p>ナレーション案は、この企画の読み上げ原稿です。音声ファイルは作っていません。この企画書は、APIで音声を生成する許可ではありません。本編を作るとき、明示の範囲でこの案を原稿にします。画面の文字は、今の文量のままです。全文字幕は足しません。</p>
+
+<h2 id="claim-map">主張・根拠・留保の対応</h2>
+<div class="tablewrap"><table>
+<thead><tr><th>役割</th><th>内容</th><th>カット</th></tr></thead>
+<tbody>
+<tr><td>主張</td><td>成果を決めるのは、仕組みより、使う人の判断。同じ仕組みでも、経験のない人が使うと崩れる。だから仕組みは外に出さず、成果物で渡す。</td><td>02・06・08・10</td></tr>
+<tr><td>根拠</td><td>映像のプロは、6時間の素材から20分ほどの映像を並べる。記事も、先に集めて書けるものを書かせる。AIが8割を作り、プロが判断と責任の2割を仕上げる。言葉のプロには、「そして」に20通りが見える。</td><td>03・04・05・09</td></tr>
+<tr><td>留保</td><td>同じ成果が出るとは限らない、という見た範囲。要件によってはチェックなしで出せる。同じ力の人、判断まで入れ込んだ仕組みなら別。中学生や高校生でも同じなら、本当にすごい。外に出していないから、止まっても割り切れる。発注と受注では、たいていうまくいかない。筆者は言葉のプロではない。</td><td>01・05・07・08・09・10（声または文字で残す）</td></tr>
+<tr><td>最後に残す本人の結論</td><td>一緒に考え、一緒に回す。判断は手放さず、成果物で渡す。</td><td>10</td></tr>
+</tbody></table></div>
+<p>対応の全文は <a href="references.md">references.md</a> です。</p>
+
+<h2 id="handoff">企画側／制作側</h2>
+<div class="tablewrap"><table>
+<thead><tr><th>企画側（この一式）</th><th>制作側</th></tr></thead>
+<tbody>
+<tr><td>主張の一文、構成と尺、画面の文言、ナレーション案、絵コンテ22枚、字組みと色、動きの狙い、ロゴ、根拠の対応</td><td>three.js と DOM の文字層による実装、動きの細かな値、BGM と効果音、明示の範囲でのナレーション、書き出し</td></tr>
+<tr><td>絵コンテの文字が、安全域の外に出ていないこと、図と重なっていないこと（確認済み。下の完成条件）</td><td>本編の文字のはみ出しと重なり。全カット、0.25秒ごと。1920基準で左右64px、上下48px</td></tr>
+</tbody></table></div>
+<p>完了の分け方は、企画と絵コンテとロゴは準備済み、音声と本編は制作側、です。画像と動画の実ファイルは使わない、という判断をこの指示書に書いてあります。その不足を理由に着手を戻さなくてよいです。音源ファイルがまだ無いことも、着手を止める理由にしません。</p>
+<div class="box"><b>実装の推奨：</b>Remotion（フレーム時刻から状態が決まる書き出し）と、<code>@remotion/three</code> の three.js。帯、バー、カメラは three.js の層。文字は DOM／CSS の層（行のマスク、詰め組）です。カメラの寄りと Whip pan は図の層だけに掛け、文字が切れたりバーに埋もれたりしないようにします。<code>requestAnimationFrame</code> の実時間計算と、シークで結果が変わる物理シミュレーションは使いません。3Dを使う理由は、縮む帯と倒れるバーを、カメラの寄りと振りと一緒に奥行きで見せるためです。</div>
+<ul>
+<li>章の表示、テロップの帯、エンドクレジットは入れない。映像の中にカット番号を入れない。</li>
+<li>名前、所属、他社のロゴ、製品の UI、実在の人物は出さない。</li>
+<li>書体は Noto Sans JP。ファイルは同梱しない。制作側が OFL のものを用意する。</li>
+</ul>
+
+<h2 id="design">デザインシステム（映像の文字・色・グリッド）</h2>
+<p>本編の配色です。企画書の見た目とは別です。ライムはエンドロゴの画面だけに使います。</p>
+<h3>タイプスケール（1920×1080・参考値）</h3>
+<div class="tablewrap"><table>
+<thead><tr><th>段</th><th>大きさ</th><th>太さ</th><th>用途</th></tr></thead>
+<tbody>
+<tr><td>Display</td><td>200–280px</td><td>900</td><td>判断。100。崩れる。6時間。20分ほど</td></tr>
+<tr><td>H1</td><td>120–160px</td><td>700</td><td>各カットの決め語</td></tr>
+<tr><td>Body</td><td>48–64px</td><td>400</td><td>留保、思い込み、補足の1行</td></tr>
+</tbody></table></div>
+<p>1画面に使う段は3つまでです。カットごとに、主役の段を変えます。</p>
+<h3>グリッドと、カットごとの組み</h3>
+<p>12列。1920基準の左右余白は96px。安全域は左右64px、上下48px。左揃えを基本にし、中央の枠は07だけです。</p>
+<ul>
+<li>01は、下に対になった面。02は、左の巨大な語と右の小さい語。</li>
+<li>03は、画面幅の横帯。04は、横に並ぶカード。</li>
+<li>05は、等間隔の縦棒。06は、同じ棒が斜めに倒れる。</li>
+<li>07は、中央の枠。08は、縦の境界で左右に割る。</li>
+<li>09は、左の引用と右の線。10は、二つの面が一つの横長になる。</li>
+</ul>
+<h3>色</h3>
+<p><span class="sw" style="background:#F4F1EA"></span>紙 #F4F1EA　背景。<span class="sw" style="background:#1A1A1A"></span>墨 #1A1A1A　本文と結論。<span class="sw" style="background:#4A453F"></span>灰 #4A453F　思い込みと留保。<span class="sw" style="background:#1F4B99"></span>青 #1F4B99　仕組みが扱うもの。<span class="sw" style="background:#A86A10"></span>琥珀 #A86A10　人が手放さないもの。<span class="sw" style="background:#B0382C"></span>赤 #B0382C　崩れた状態と「崩れる。」だけ。<span class="sw" style="background:#d2ff1a"></span>ライム #d2ff1a　エンドロゴの背景だけ。</p>
+<p>薄い青と薄い琥珀は、同じ意味の地です。新しい記号にはしません。</p>
+
+<h2 id="motion">動きの言語</h2>
+<div class="tablewrap"><table>
+<thead><tr><th>名前</th><th>イージング（参考値）</th><th>使う所</th></tr></thead>
+<tbody>
+<tr><td id="e-slam">E_SLAM「叩く」</td><td>cubic-bezier(.16,1,.3,1)、0.4–0.6秒</td><td>決め語の着地、バーが立つ、2本が収まる</td></tr>
+<tr><td id="e-sink">E_SINK「縮む」</td><td>cubic-bezier(.65,0,.35,1)</td><td>03の帯が短くなる。重さのある加減速</td></tr>
+<tr><td id="e-push">E_PUSH「押し出す」</td><td>cubic-bezier(.55,0,1,.45)、0.3–0.5秒</td><td>次のカットへ渡す動き。06の Whip pan は0.5秒</td></tr>
+<tr><td id="e-drift">E_DRIFT「読む間の流れ」</td><td>linear（そのカットの読む間）</td><td>行の塊、バーの列、カメラ。字形は崩さない</td></tr>
+</tbody></table></div>
+<ul>
+<li>リズムの目安は118–124 BPM。決め語の着地は拍の頭。曲が決まったら、秒を拍へ寄せてよいです。秒は参考値です。</li>
+<li>大きな動きは、03の縮み、05の2本、06の倒れ、10の噛み合いです。読む間も、塊と列とカメラを動かします。1文字ずつの揺れ、拍ごとの脈動、散る登場は使いません。</li>
+<li>03の最初は Dolly in を2秒、ゆっくり。06の倒れる瞬間だけ Whip pan を0.5秒。白の閃光は入れません。</li>
+<li>フェードだけの切り替えはしません。つなぎは、マッチ、押し出し、Whip pan のいずれかです。</li>
+<li>倒れる角度と、落ちる2本の位置は、フレーム時刻から直接計算します。</li>
+</ul>
+
+<h2 id="symbols">記号と色</h2>
+<div class="tablewrap"><table>
+<thead><tr><th>記号</th><th>意味（これ以外に使わない）</th><th>出るカット</th></tr></thead>
+<tbody>
+<tr><td>同じ形の青い面が二つ</td><td>渡せば同じ成果が出る、という思い込み</td><td>01</td></tr>
+<tr><td>青い横帯</td><td>素材の長さ。縮むと、AIが並べた区間</td><td>03・04（カードへ）</td></tr>
+<tr><td>青い縦バー ×8</td><td>AIが作る8割</td><td>05・06・07（小さく）</td></tr>
+<tr><td>琥珀の縦バー ×2</td><td>プロが仕上げる2割。判断と責任</td><td>05</td></tr>
+<tr><td>墨の「100」</td><td>完成形の言い方。測定値ではない</td><td>05</td></tr>
+<tr><td>赤と、右へ倒れたバー</td><td>経験のない人が使うと、成果が崩れる</td><td>06</td></tr>
+<tr><td>灰の文字</td><td>思い込み、留保、「ほど」</td><td>01・02・03・04・05・06・08・09</td></tr>
+<tr><td>枠</td><td>誰が使うかを、先に決める口</td><td>07</td></tr>
+<tr><td>縦の境界線</td><td>手元に残す仕組みと、外に渡す成果物の境</td><td>08</td></tr>
+<tr><td>短い青い列</td><td>渡す成果物。仕組みそのものではない</td><td>08</td></tr>
+<tr><td>長さの違う線 ×20</td><td>「そして」の読みの違い。その人の話。計測ではない</td><td>09</td></tr>
+<tr><td>二つの面が一つの塊</td><td>プロとエンジニアが、一心同体で組む</td><td>10</td></tr>
+</tbody></table></div>
+<p>青は、仕組みが扱うものだけです。琥珀は、人が手放さないものだけです。赤は、崩れた状態と「崩れる。」だけです。灰は、思い込みと留保だけです。</p>
+
+<h2 id="character">キャラ設定</h2>
+<div class="box">
+<p>人物・顔・手は出ません。役は、語と色で通します。</p>
+<ul>
+<li><b>プロ：</b>琥珀。2本を足し、判断を手放さない。姿は描かない。映像のプロと言葉のプロは、声の中の役割です。名前も所属も出しません。</li>
+<li><b>素人：</b>灰の語。06で、8本を倒す側。姿は描かない。筆者が自分を素人と呼ぶ結びは、この語と意味が割れるので使いません。</li>
+<li><b>エンジニア：</b>青の語。10で、プロと一つの塊になる。姿は描かない。</li>
+</ul>
+</div>
+
+<h2 id="swaps">差し替え候補 <span class="need">要判断 4</span></h2>
+<div class="box swap">
+<p><span class="tag t-un">未承認</span>現行は、タイムラインのモーショングラフィックスです。生成はしていません。</p>
+<p>候補は、明るいスタジオで、机の上にフィルムの帯が流れ込み、数本だけが抜き出されて一列に並ぶ、4秒の映像です。置くなら03の「6時間が20分ほどに」の直後、全面のインサートです。声は続け、インサートの間は文字を退け、短い帯の画面へ戻ります。小さな窓にはしません。</p>
+<p>帯とバーは03から06まで続きます。03の帯だけを別の質感にして、そのまま常設することはしません。クレジットの見積もりは未確認です。承認のあと、企画側が実ファイルと区間を用意します。承認の前に、制作側はこの映像を作りません。</p>
+</div>
+
+<h2 id="assets">素材</h2>
+<div class="tablewrap"><table>
+<thead><tr><th>ファイル</th><th>役割</th><th>使う所</th></tr></thead>
+<tbody>
+<tr><td><code>assets/storyboard/cut-XX-start.webp</code>／<code>cut-XX-end.webp</code>（22枚、1280×720）</td><td>構図と動きの絵コンテ</td><td>各カット</td></tr>
+<tr><td><code>assets/logo/okady-work-logo.svg</code></td><td>エンドロゴ。形と色は変えない</td><td>11</td></tr>
+</tbody></table></div>
+<p>写真も、生成した動画も、フォントファイルも同梱していません。新しい画像と動画は、この指示では使いません。</p>
+
+<h2 id="sound">音</h2>
+<div class="box">
+<p><span class="tag t-un">未制作</span>BGMは、この作品のために作ります。過去の作品の曲を、検討なしに使いません。</p>
+<p>方向は、乾いたキック、短いベース、輪郭のあるプラックです。目安は118–124 BPM。03の帯が着地する所、05の100が止まる所、06の倒れる所にアクセントを置きます。06の Whip pan の前に、0.3秒だけ音を抜いてよいです。長い無音では埋めません。遅い曲に合わせて、映像の動きを弱めません。</p>
+<p>BGMはエンドロゴの終わり（2:15.5）まで覆い、保持の1.5秒で収めます。効果音は、2本が収まる音と、バーが倒れる音を任意で足してよいです。ファイルはまだありません。</p>
+<p>ナレーションは、各カットの案を原稿にします。声の選定は制作側です。読みが割れやすい語は、かなで渡してよいです。8割（はちわり）、2割（にわり）、20分（にじっぷん）、20通り（にじゅっとおり）。「そして」はそのまま読みます。この企画書は、音声生成の許可ではありません。</p>
+<p>有料の音楽生成を比較するときは、品質、時間、費用の理由を一行残して選びます。料金が未確認の生成はしません。候補の名は、Lyria 3.5（<code>GEMINI_API_KEY</code>）です。実行時に、モデルIDと提供状況と料金を確認します。キーの値は、コードにもこの指示にも書きません。</p>
+</div>
+
+<h2 id="evidence">根拠</h2>
+<p>主張、根拠、留保、画面の文言の対応は <a href="references.md">references.md</a> です。数字が何の指標かも、そこに書いてあります。効果の採否は <a href="effects-direction.md">effects-direction.md</a> です。このページには、採用する動きの狙いだけを残しています。</p>
+
+<h2 id="done">完成条件・確認状態</h2>
+<ul>
+<li>01と02、そして10だけで、主張と結論が伝わる。10は本人の言葉で閉じる。</li>
+<li>05の「チェックなし」、07の「誰が使うか」、08の「止まっても割り切れる」、09の「言葉のプロではない」、10の「発注と受注ではたいていうまくいかない」が、声または文字で残る。</li>
+<li>03で帯が縮み、05で同じ系統の8本に2本が足されて止まり、06で同じ8本が倒れる。</li>
+<li>全編で画面全体が動き、フェードだけの切り替えや、同じ登場の連続に戻らない。文字の形は崩さない。</li>
+<li>章の表示、テロップの帯、エンドクレジット、カット番号は、映像に入らない。</li>
+<li>エンドロゴは、ライムの全面、中央、SVGのタイミング、1.5秒の保持。</li>
+<li>絵コンテ22枚を機械で見た。1280×720。安全域は左右48px、上下36px。範囲の外に出た文字は0。文字どうしの交差は0。文字と図形の交差は0。枠は線の外接だけを図形とし、枠の内側の文字とは交差していない。エンドロゴの字形は、画面の文字レイヤーではないので、この検査の対象外。ロゴの画面に、ロゴ以外の文字はない。</li>
+<li>本編の文字検査は制作側。0.25秒ごと。1920基準で左右64px、上下48px。バーと境界線の外接も取る。</li>
+<li><b>実速再生は未確認。</b>本編は未制作。冒頭（01–03）、中盤（05–06）、後半（10–11）を等速で見てから、全編と音を確認する。絵コンテの検査は、動きの合格ではない。</li>
+</ul>
+</main>
+<footer><div class="inner">企画：2026-11-12　根拠：<a href="references.md">references.md</a>　効果：<a href="effects-direction.md">effects-direction.md</a></div></footer>
+</body>
+</html>
