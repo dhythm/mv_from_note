@@ -79,18 +79,6 @@ footer{border-top:1px solid var(--gray-420);background:var(--gray-50);margin-top
 h2.part{margin-top:96px;padding:16px 24px;border:none;border-radius:var(--r-8);background:var(--gray-50);border-left:8px solid var(--gray-800);font-size:1.5rem}
 h2.part + .small{margin-top:-8px}
 .navsep{color:var(--gray-700);font-weight:700;padding-left:12px;border-left:1px solid var(--gray-420)}
-.decide{margin:48px 0 16px;padding:24px 32px 24px;background:var(--warning-orange-bg);border:1px solid var(--warning-orange-1);border-left:8px solid var(--warning-orange-1);border-radius:var(--r-8)}
-.decide h2{margin:0 0 8px;border-bottom:none;padding:0;color:var(--gray-900)}
-.decide > .small{color:var(--gray-800)}
-.decide-list{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:12px}
-.decide-list li{display:flex;gap:12px;align-items:flex-start;background:var(--white);border:1px solid var(--gray-420);border-radius:var(--r-8);padding:12px 16px;margin:0}
-.decide-list .need{min-width:28px;justify-content:center;margin:2px 0 0}
-.where{display:block;font-size:.875rem;color:var(--gray-700);margin-top:4px}
-.need{display:inline-flex;align-items:center;background:var(--warning-orange-2);color:var(--white);border-radius:var(--r-4);padding:0 8px;font-size:.8125rem;line-height:1.7;font-weight:700;letter-spacing:.02em;margin:0 8px;vertical-align:.15em;white-space:nowrap}
-h2 .need{font-size:.875rem}
-nav a.nav-need,nav a.nav-need:visited{background:var(--warning-orange-2);color:var(--white);padding:0 8px;border-radius:var(--r-4);text-decoration:none}
-nav a.nav-need:hover{text-decoration:underline}
-.swap{margin-top:8px}
 @media(max-width:760px){
   header .inner,main,nav .in,footer .inner{padding:0 16px}
   header .inner{padding-top:24px;padding-bottom:16px}
@@ -98,7 +86,7 @@ nav a.nav-need:hover{text-decoration:underline}
   h1{font-size:1.75rem;line-height:1.5}
   h2{font-size:1.5rem;margin-top:48px}
   .cut{padding:20px;border-radius:var(--r-12)}
-  .box,.decide{padding:16px}
+  .box{padding:16px}
   table{font-size:.875rem}
   th,td{padding:8px 12px}
   th{white-space:normal}
@@ -127,7 +115,6 @@ nav a.nav-need:hover{text-decoration:underline}
 </header>
 
 <nav><div class="in">
-<a href="#decide">判断の記録（4）</a>
 <a href="#claim">主張</a>
 <a href="#viewer">視聴者</a>
 <a href="#structure">構成と尺</a>
@@ -140,7 +127,6 @@ nav a.nav-need:hover{text-decoration:underline}
 <a href="#motion">動き</a>
 <a href="#symbols">記号と色</a>
 <a href="#character">キャラ設定</a>
-<a href="#swaps">差し替え候補</a>
 <a href="#assets">素材</a>
 <a href="#sound">音</a>
 <a href="#evidence">根拠</a>
@@ -148,20 +134,9 @@ nav a.nav-need:hover{text-decoration:underline}
 </div></nav>
 
 <main>
-<section class="decide" id="decide">
-<h2>未確定事項と判断してほしい点</h2>
-<p class="small">4点とも、11/12 のユーザー判断で決まっています。ほかの節は、決定済みの情報です。</p>
-<ol class="decide-list">
-<li><span class="need">1</span><div>時間の見せ方。<b>A（現行）に決定（11/12 ユーザー判断）</b>。画面は「6時間」「20分ほど」。帯が縮み、灰色の線はなくなった長さの比喩。タイムコードにはしない。<b>B</b>：ネタ案の「6:00:00」から「0:20:00」。原稿は「ほど」なので、測った時刻に見える。<span class="where">該当：<a href="#cut-03">カット03</a></span></div></li>
-<li><span class="need">2</span><div>完成の表記。<b>B「100%」に決定（11/12 ユーザー判断）</b>。画面は「100%」。完成形の言い方で、達成率の測定値ではない。カット07の「8割と100%の差は、ここ。」も揃える（11/12 ユーザー判断）。<span class="where">該当：<a href="#cut-05">カット05</a></span></div></li>
-<li><span class="need">3</span><div>8割の見出し。<b>A（現行）に決定（11/12 ユーザー判断）</b>。同じ8割でも、使う人で結果が変わる。原稿は、出力の質は指示する人の目と経験で決まると書いている。<b>B</b>：ネタ案の「AIの8割は誰でも出せる。残り2割が仕事」。原稿の「同じ道具を渡しても同じものは出ない」と食い違う。<span class="where">該当：<a href="#cut-06">カット06</a></span></div></li>
-<li><span class="need">4</span><div>03の生成動画。<b>A（現行）に決定（11/12 ユーザー判断）</b>。タイムラインのモーショングラフィックス。生成しない。<b>B</b>：フィルムが流れ込み、数本だけ並ぶ4秒の映像を、03の全面インサートにする。未承認。クレジットは未確認。承認後に企画側が用意する。<span class="where">該当：<a href="#swaps">差し替え候補</a></span></div></li>
-</ol>
-</section>
-
 <h2 id="claim">この動画で伝える一文</h2>
 <div class="box accent"><p class="lead">「AIの仕組みを渡せば、誰が使っても同じ成果が出る」と思っている人に、成果を決めるのは仕組みそのものより、使う人の判断だと伝え、同じ8割でも判断を手放さない人が仕上げれば届き、経験のない人が触ると崩れる、だから仕組みは外に出さず成果物で渡す、という本人の結論を残す。</p></div>
-<p>残る気持ちは、判断と責任は手元に残り、成果物で渡した方が作った人の価値を守れる、という本人の確信です。全員の仕事がこれで成功する、という話にはしません。6時間、20分ほど、8割、2割は、原稿の言い方です。100%は、原稿の「完成形の100」を、11/12 の判断で画面の表記にしたものです。どれも品質の測定値ではありません。</p>
+<p>残る気持ちは、判断と責任は手元に残り、成果物で渡した方が作った人の価値を守れる、という本人の確信です。全員の仕事がこれで成功する、という話にはしません。6時間、20分ほど、8割、2割は、原稿の言い方です。100%は、原稿の「完成形の100」を画面の表記にしたものです。どれも品質の測定値ではありません。</p>
 
 <h2 id="viewer">視聴者</h2>
 <p>AIで仕事の仕組みを作り、渡せば相手も同じ成果が出ると思っている人。仕組みだけ納品すれば足りると思っている人。見終わったあと、誰が使うかを先に決め、判断は手放さず、成果物で渡す、という本人のやり方を持って帰れる人。</p>
@@ -604,13 +579,6 @@ nav a.nav-need:hover{text-decoration:underline}
 </ul>
 </div>
 
-<h2 id="swaps">差し替え候補 <span class="chip">Aに決定</span></h2>
-<div class="box swap">
-<p><span class="tag t-un">未承認</span>現行は、タイムラインのモーショングラフィックスです。生成はしていません。</p>
-<p>候補は、明るいスタジオで、机の上にフィルムの帯が流れ込み、数本だけが抜き出されて一列に並ぶ、4秒の映像です。置くなら03の「6時間が20分ほどに」の直後、全面のインサートです。声は続け、インサートの間は文字を退け、短い帯の画面へ戻ります。小さな窓にはしません。</p>
-<p>帯とバーは03から06まで続きます。03の帯だけを別の質感にして、そのまま常設することはしません。クレジットの見積もりは未確認です。承認のあと、企画側が実ファイルと区間を用意します。承認の前に、制作側はこの映像を作りません。</p>
-</div>
-
 <h2 id="assets">素材</h2>
 <div class="tablewrap"><table>
 <thead><tr><th>ファイル</th><th>役割</th><th>使う所</th></tr></thead>
@@ -618,7 +586,7 @@ nav a.nav-need:hover{text-decoration:underline}
 <tr><td><code>assets/storyboard/cut-XX-start.webp</code>／<code>cut-XX-end.webp</code>（22枚、1280×720）</td><td>構図と動きの絵コンテ</td><td>各カット</td></tr>
 <tr><td><code>assets/logo/okady-work-logo.svg</code></td><td>エンドロゴ。形と色は変えない</td><td>11</td></tr>
 </tbody></table></div>
-<p>写真も、生成した動画も、フォントファイルも同梱していません。新しい画像と動画は、この指示では使いません。</p>
+<p>写真も、生成した動画も、フォントファイルも同梱していません。03の時間の短縮は、タイムラインのモーショングラフィックスで表現します。03から06までの帯とバーを同じ質感でつなぎ、新しい画像・動画の生成やインサートは行いません。</p>
 
 <h2 id="sound">音</h2>
 <div class="box">
