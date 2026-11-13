@@ -1,0 +1,45 @@
+{
+  "date": "2026-11-13",
+  "stage": "静止絵コンテ",
+  "viewport": [
+    1280,
+    720
+  ],
+  "safeArea": {
+    "left": 48,
+    "right": 48,
+    "top": 36,
+    "bottom": 36
+  },
+  "exclusions": [
+    "原本画像内の文字",
+    "原本SVGのロゴ字形"
+  ],
+  "actualPlayback": "本編は未制作、実速再生は未確認",
+  "summary": {
+    "checkedFrameCount": 23,
+    "outsideSafeArea": 0,
+    "textOverlap": 0,
+    "textShapeCollision": 0,
+    "method": "ブラウザ上で文字ごとの矩形と文字群・図形の矩形を計測。原本画像内の文字とロゴ字形は対象外。"
+  },
+  "visualReview": {
+    "frames": [
+      "06-end",
+      "07-end",
+      "09-end"
+    ],
+    "result": "SVG経路の外接矩形との交差候補を画像で確認。経路の空白部分による候補で、線と文字の実際の重なりは見られない。",
+    "plan": "見出し・配色・画像の読み込み・比較場面をブラウザで確認。"
+  },
+  "fileValidation": {
+    "cuts": 11,
+    "storyboardImages": 23,
+    "imageSize": [
+      1280,
+      720
+    ],
+    "brokenLocalLinks": 0,
+    "totalSeconds": 135.5
+  }
+}

@@ -1,0 +1,40 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><title>絵コンテの描画用</title><style>
+@font-face{font-family:Noto;src:url('../fonts/NotoSansJP-wght.ttf');font-weight:100 900;font-display:block}
+*{box-sizing:border-box}html,body{margin:0;width:1280px;height:720px;overflow:hidden;background:#F6F3EC;font-family:Noto,sans-serif}#stage{position:relative;width:1280px;height:720px;overflow:hidden;color:#1A1A1A}.word{position:absolute;font-weight:800;letter-spacing:-.035em;line-height:1.2;white-space:pre;z-index:3;font-feature-settings:'palt' 1}.shape{position:absolute;z-index:1}.paper{position:absolute;background:#fffdfa;border:2px solid #d2cec4;z-index:1}.photo{position:absolute;overflow:hidden;z-index:1;background:#121212}.photo img{display:block}.route{position:absolute;z-index:2;pointer-events:none}.thin{font-weight:500}.muted{color:#5C564E}.blue{color:#1E4D8C}
+</style></head><body><div id="stage"></div><script>
+const S=document.querySelector('#stage'), ink='#1A1A1A', gray='#716C64', blue='#1E4D8C', pale='#E5E0D6';
+const W=(t,x,y,size=70,color=ink,weight=800,vertical=false)=>`<div class="word" data-text="${t}" style="left:${x}px;top:${y}px;font-size:${size}px;color:${color};font-weight:${weight};${vertical?'writing-mode:vertical-rl;letter-spacing:.01em;':''}">${[...t].map(c=>`<span class="char">${c}</span>`).join('')}</div>`;
+const R=(x,y,w,h,c=gray)=>`<div class="shape" data-shape style="left:${x}px;top:${y}px;width:${w}px;height:${h}px;background:${c}"></div>`;
+const Lines=(x,y,w,count=7,gap=30)=>Array.from({length:count},(_,i)=>R(x+(i%3)*14,y+i*gap,w-((i*47)%120),7,gray)).join('');
+const Paper=(x,y,w,h,dense=true)=>`<div class="paper" data-surface style="left:${x}px;top:${y}px;width:${w}px;height:${h}px"></div>`+R(x+24,y+26,w*.6,12,ink)+Lines(x+24,y+64,w-62,dense?Math.floor((h-88)/26):2,26);
+const Path=(d,x=0,y=0,w=1280,h=720,width=10)=>`<svg class="route" data-route style="left:${x}px;top:${y}px;width:${w}px;height:${h}px" viewBox="0 0 ${w} ${h}"><path d="${d}" fill="none" stroke="${blue}" stroke-width="${width}" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+const Photo=(f,x,y,w,h,crop)=>{let style=crop?`width:${1920*w/321}px;height:auto;position:absolute;left:${-800*w/321}px;top:${-40*w/321}px;`:`width:100%;height:100%;object-fit:contain;`;return `<div class="photo" data-shape style="left:${x}px;top:${y}px;width:${w}px;height:${h}px"><img src="../source/${f}.webp" style="${style}"></div>`};
+const f=['2026-11-07_14-53-52','2026-11-07_14-54-08','2026-11-07_14-53-59','2026-11-07_14-52-40'];
+const screens={
+'01-start':()=>Lines(64,70,1070,8,34)+W('頭に、',64,430,62,gray)+W('入らない。',64,510,116),
+'01-end':()=>Lines(64,50,1100,10,32)+W('頭に、',64,429,60,gray)+W('入らない。',64,501,128),
+'02-start':()=>Paper(-70,20,520,680)+Paper(834,20,520,680)+W('語りを、',470,285,78),
+'02-end':()=>R(0,0,52,720,pale)+R(1228,0,52,720,pale)+W('語りを、',215,180,88,blue)+W('設計する。',215,300,136),
+'03-start':()=>W('足して、ばかり。',64,72,83)+Paper(350,270,800,390)+Paper(260,240,800,390)+Paper(170,210,800,390),
+'03-end':()=>W('この言葉は、要る？',64,70,93)+Paper(64,265,595,330)+Paper(780,350,590,320)+R(88,280,280,8,ink),
+'04-start':()=>Paper(90,320,520,490)+W('手元で読むなら、',490,135,72,gray),
+'04-end':()=>Paper(64,300,570,475)+W('手元で読むなら、',420,80,65,gray)+W('必要な情報を。',420,175,87),
+'05-start':()=>Photo(f[0],64,40,552,245)+Photo(f[1],664,40,552,245)+Photo(f[2],64,380,552,245)+Photo(f[3],664,380,552,245)+W('Claude・発表',72,295,32)+W('GPT・発表',672,295,32)+W('Claude・調査',72,635,32)+W('GPT・調査',672,635,32),
+'05-mid':()=>W('発表用',64,85,55,blue)+W('読む資料',664,85,55,gray)+Photo(f[1],64,200,552,311.25,true)+Photo(f[3],664,200,552,311.25,true)+R(64,533,552,5,blue)+R(664,533,552,5,gray),
+'05-end':()=>W('発表用',64,80,50,blue)+W('読む資料',664,80,50,gray)+Photo(f[1],64,170,552,311.25,true)+Photo(f[3],664,170,552,311.25,true)+W('要点を見せる',64,550,60,blue)+W('説明まで残す',664,550,60),
+'06-start':()=>W('読む',92,80,126)+W('聞く',908,80,126,blue)+Lines(80,300,615,10,30)+Path('M1180 320 C900 260 1040 550 680 430 C520 355 560 620 340 590'),
+'06-end':()=>W('要点を、',64,70,88)+W('残す。',64,180,126)+R(670,105,240,8)+R(665,159,104,85,pale)+R(806,159,104,85,pale)+R(665,283,104,85,pale)+R(806,283,104,85,pale)+Path('M1010 110 C1160 200 1160 480 950 550 L150 550'),
+'07-start':()=>W('なぞる、だけ。',64,72,94)+Lines(64,275,1080,9,33)+Path('M70 270 H1160 M84 303 H1090 M98 336 H1050',0,0,1280,720,5),
+'07-end':()=>W('画面に要点。',64,72,74)+Paper(64,265,410,290,false)+W('語りに、',650,220,83,blue)+W('文脈。',650,325,136,blue)+Path('M190 615 H700 Q1160 615 1160 470',0,0,1280,720,10),
+'08-start':()=>Lines(64,90,720,12,38)+W('削る。',940,145,83,ink,800,true),
+'08-end':()=>Paper(64,110,450,270,false)+Path('M110 480 H550 Q780 480 780 620 H1160')+W('削る。',980,80,125,ink,800,true),
+'09-start':()=>W('何を、',64,72,73,gray)+W('伝えるか。',64,165,113)+Paper(64,380,320,240,false)+Paper(480,380,320,240,false)+Paper(896,380,320,240,false),
+'09-end':()=>W('声に出して、',64,72,83,blue)+W('確かめる。',64,180,111)+Paper(64,410,320,230,false)+Paper(480,350,320,230,false)+Paper(896,410,320,230,false)+Path('M90 660 H400 Q432 660 432 605 V410 Q432 320 520 320 H740 Q846 320 846 410 V605 Q846 660 910 660 H1190',0,0,1280,720,7),
+'10-start':()=>W('読む資料',80,80,67)+W('聞くスライド',704,80,67,blue)+Paper(80,230,440,420)+Paper(704,230,440,245,false)+Path('M730 540 H1160 Q1220 540 1200 615 H750',0,0,1280,720,7),
+'10-end':()=>W('聞き手に、',64,56,86)+W('届ける。',64,160,137,blue)+Paper(64,400,480,270)+Paper(720,400,420,170,false)+Path('M736 620 H1150 Q1210 620 1190 660 H765',0,0,1280,720,7),
+'11-start':()=>`<div style="position:absolute;inset:0;background:#d2ff1a"></div><object aria-label="エンドロゴ" id="logo" data="../../../okady-work-logo.svg" type="image/svg+xml" style="position:absolute;left:15px;top:160px;width:1250px;height:400px"></object>`,
+'11-end':()=>`<div style="position:absolute;inset:0;background:#d2ff1a"></div><object aria-label="エンドロゴ" id="logo" data="../../../okady-work-logo.svg" type="image/svg+xml" style="position:absolute;left:15px;top:160px;width:1250px;height:400px"></object>`
+};
+async function draw(){let key=location.hash.slice(1)||'01-start';delete document.body.dataset.ready;S.innerHTML=screens[key]();await document.fonts.ready;await Promise.all([...S.querySelectorAll('img')].map(i=>i.decode().catch(()=>{})));let obj=S.querySelector('#logo');if(obj){await new Promise(r=>{if(obj.contentDocument?.querySelector('svg'))r();else obj.onload=r});let t=key.endsWith('end')?5500:600; obj.contentDocument.getAnimations().forEach(a=>{a.pause();a.currentTime=t})}document.title='絵コンテ '+key;await new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)));document.body.dataset.ready=key;}
+window.addEventListener('hashchange',draw);draw();
+</script></body></html>

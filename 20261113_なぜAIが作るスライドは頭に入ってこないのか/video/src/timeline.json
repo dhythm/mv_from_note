@@ -1,0 +1,17 @@
+{
+ "note": "カットの尺（拍）と、声を置く位置（カットの頭からの秒）。108BPM（1 拍 = 5/9 秒）。声の実測（audio/voice/log.json）に合わせた。id は制作上の識別子で、映像には出ない。",
+ "bpm": 108,
+ "cuts": [
+  {"id": "01", "beats": 14, "voice": 0.8},
+  {"id": "02", "beats": 19, "voice": 0.5},
+  {"id": "03", "beats": 16, "voice": 0.5},
+  {"id": "04", "beats": 16, "voice": 0.5},
+  {"id": "05", "beats": 36, "voice": 0.5},
+  {"id": "06", "beats": 30, "voice": 0.5},
+  {"id": "07", "beats": 20, "voice": 0.5},
+  {"id": "08", "beats": 18, "voice": 0.5},
+  {"id": "09", "beats": 32, "voice": 0.5},
+  {"id": "10", "beats": 30, "voice": 0.5}
+ ],
+ "logoDur": 5.5
+}
