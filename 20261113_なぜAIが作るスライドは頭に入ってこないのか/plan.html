@@ -1,0 +1,655 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>なぜAIが作るスライドは頭に入ってこないのか｜動画企画書</title><style>
+/* デジタル庁デザインシステム（DADS）のデザイントークン（@digital-go-jp/design-tokens）に沿ったスタイル。
+   20261102 の plan.html の style を複製。動画本編の配色とは別。 */
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Noto+Sans+Mono:wght@400;700&display=swap");
+:root{
+  --white:#ffffff;--black:#000000;
+  --gray-50:#f2f2f2;--gray-100:#e6e6e6;--gray-200:#cccccc;--gray-420:#949494;--gray-536:#767676;--gray-600:#666666;--gray-700:#4d4d4d;--gray-800:#333333;--gray-900:#1a1a1a;
+  --key-50:#e8f1fe;--key-100:#d9e6ff;--key-200:#c5d7fb;--key-900:#0017c1;--key-1000:#00118f;--key-1100:#000071;
+  --success-bg:#e6f5ec;--success-1:#259d63;--success-2:#197a4b;
+  --warning-bg:#fbf5e0;--warning-yellow-1:#b78f00;--warning-text:#806300;
+  --warning-orange-bg:#ffeee2;--warning-orange-1:#fb5b01;--warning-orange-2:#c74700;
+  --error-1:#ec0000;--focus-yellow:#ffd43d;--visited:#8b008b;
+  --font-sans:"Noto Sans JP",-apple-system,BlinkMacSystemFont,"Hiragino Sans",sans-serif;
+  --font-mono:"Noto Sans Mono","Noto Sans JP",monospace;
+  --r-4:.25rem;--r-8:.5rem;--r-12:.75rem;--r-16:1rem;--r-full:624.9375rem;
+  --elevation-1:0 2px 8px 1px rgba(0,0,0,.1),0 1px 5px 0 rgba(0,0,0,.3);
+  --ink:var(--gray-900);--line:var(--gray-200);--mut:var(--gray-700);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--white);color:var(--gray-800);font-family:var(--font-sans);font-size:1rem;font-weight:400;line-height:1.7;letter-spacing:.02em;-webkit-font-smoothing:antialiased}
+header .inner,main,nav .in,footer .inner{max-width:1120px;margin:0 auto;padding:0 24px}
+header{background:var(--white);border-bottom:1px solid var(--gray-420)}
+header .inner{padding-top:40px;padding-bottom:24px}
+.strata{height:4px;background:var(--key-900)}
+.eyebrow{display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px;font-size:.875rem;line-height:1.5;color:var(--gray-700);letter-spacing:.04em}
+h1{font-size:2.25rem;line-height:1.4;font-weight:700;color:var(--gray-900);letter-spacing:.01em;margin:16px 0 8px}
+h2{font-size:1.75rem;line-height:1.5;font-weight:700;color:var(--gray-900);margin:64px 0 24px;padding:0 0 8px;border-bottom:1px solid var(--gray-420);scroll-margin-top:72px}
+h3{font-size:1.25rem;line-height:1.5;font-weight:700;color:var(--gray-900);margin:32px 0 12px}
+.cuthead h3{margin:0}
+p{margin:0 0 16px}
+.lead{font-size:1.125rem;line-height:1.6;font-weight:700;color:var(--gray-900)}
+.small{font-size:.875rem;line-height:1.7;color:var(--gray-700)}
+b,strong{font-weight:700;color:var(--gray-900)}
+a{color:var(--key-1000);text-decoration:underline;text-underline-offset:.2em;text-decoration-thickness:1px}
+a:visited{color:var(--visited)}
+a:hover{color:var(--key-1100);text-decoration-thickness:3px}
+a:active{color:var(--warning-orange-2)}
+a:focus-visible{outline:4px solid var(--black);outline-offset:2px;background:var(--focus-yellow);color:var(--black);border-radius:var(--r-4)}
+.chip{display:inline-block;background:var(--key-50);color:var(--key-1000);border:1px solid var(--key-900);border-radius:var(--r-4);padding:2px 8px;font-size:.875rem;line-height:1.5;font-weight:700;letter-spacing:.02em}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin:24px 0 0;padding:0;list-style:none}
+.meta span{background:var(--gray-50);border:1px solid var(--gray-200);border-radius:var(--r-4);padding:4px 12px;font-size:.875rem;line-height:1.5;color:var(--gray-800)}
+nav{position:sticky;top:0;background:var(--white);border-bottom:1px solid var(--gray-420);z-index:5;box-shadow:0 1px 4px rgba(0,0,0,.08)}
+nav .in{display:flex;flex-wrap:wrap;gap:4px 20px;padding-top:12px;padding-bottom:12px;font-size:.875rem;line-height:1.5}
+nav a,nav a:visited{color:var(--key-1000);font-weight:700}
+.box{background:var(--white);border:1px solid var(--gray-420);border-radius:var(--r-8);padding:24px;margin:16px 0}
+.box > :last-child{margin-bottom:0}
+.box.accent{background:var(--key-50);border:1px solid var(--key-900);border-left:8px solid var(--key-900)}
+.box.accent .lead{margin:0}
+.tablewrap{overflow-x:auto;margin:16px 0}
+table{border-collapse:collapse;width:100%;background:var(--white);font-size:1rem;line-height:1.7;margin:16px 0;border-top:1px solid var(--gray-420)}
+.tablewrap table{margin:0}
+th,td{border-bottom:1px solid var(--gray-420);padding:12px 16px;text-align:left;vertical-align:top}
+th{background:var(--gray-50);color:var(--gray-900);font-weight:700;font-size:.875rem;line-height:1.5;border-bottom:2px solid var(--gray-800);white-space:nowrap}
+tr:hover td{background:var(--key-50)}
+.cut{background:var(--white);border:1px solid var(--gray-420);border-radius:var(--r-16);padding:32px;margin:32px 0;scroll-margin-top:72px}
+.cuthead{display:flex;gap:16px;align-items:center;margin-bottom:24px;padding-bottom:16px;border-bottom:1px solid var(--gray-200)}
+.cuthead p{margin:4px 0 0}
+.num{font-size:1.5rem;line-height:1;font-weight:700;color:var(--white);background:var(--key-900);border-radius:var(--r-8);min-width:56px;height:56px;display:flex;align-items:center;justify-content:center;flex:none;font-feature-settings:"tnum"}
+.frames.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+.frames{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+figure{margin:0}
+figure img{width:100%;height:auto;display:block;border:1px solid var(--gray-200);border-radius:var(--r-8);background:var(--white)}
+figure a:focus-visible{display:block;background:none}
+figcaption{font-size:.875rem;line-height:1.7;margin-top:8px;color:var(--gray-800)}
+.details{display:grid;grid-template-columns:1fr 1.15fr;gap:8px 40px;margin-top:32px}
+.details p{margin:4px 0}
+.label{font-size:.875rem;line-height:1.3;font-weight:700;color:var(--key-1000);margin-top:20px;padding-left:8px;border-left:4px solid var(--key-900)}
+.details > div > .label:first-child{margin-top:0}
+.words{font-size:1.125rem;line-height:1.6;font-weight:700;color:var(--gray-900);margin:8px 0}
+.voice{background:var(--gray-50);border-left:4px solid var(--gray-600);border-radius:0 var(--r-4) var(--r-4) 0;padding:12px 16px;margin:8px 0;font-size:1rem;line-height:1.7;color:var(--gray-800)}
+ul{margin:8px 0 16px;padding-left:1.5em}
+li{margin:4px 0}
+li::marker{color:var(--gray-600)}
+code{font-family:var(--font-mono);background:var(--gray-50);border:1px solid var(--gray-200);padding:0 4px;border-radius:var(--r-4);font-size:.875em;color:var(--gray-900);word-break:break-all}
+.sw{display:inline-block;width:16px;height:16px;border-radius:var(--r-4);vertical-align:-3px;margin-right:8px;border:1px solid var(--gray-420)}
+.tag{display:inline-block;border-radius:var(--r-4);padding:0 8px;font-size:.8125rem;line-height:1.7;font-weight:700;margin-right:8px;border:1px solid}
+.t-un{background:var(--warning-bg);color:var(--warning-text);border-color:var(--warning-yellow-1)}
+footer{border-top:1px solid var(--gray-420);background:var(--gray-50);margin-top:80px;padding:24px 0;font-size:.875rem;color:var(--gray-700)}
+h2.part{margin-top:96px;padding:16px 24px;border:none;border-radius:var(--r-8);background:var(--gray-50);border-left:8px solid var(--gray-800);font-size:1.5rem}
+h2.part + .small{margin-top:-8px}
+.navsep{color:var(--gray-700);font-weight:700;padding-left:12px;border-left:1px solid var(--gray-420)}
+
+.decide{margin:24px 0 16px;padding:24px 32px;background:var(--warning-orange-bg);border:1px solid var(--warning-orange-1);border-left:8px solid var(--warning-orange-1);border-radius:var(--r-8)}
+.decide h2{margin:0 0 8px;border-bottom:none;padding:0;color:var(--gray-900)}
+.decide > .small{color:var(--gray-800)}
+.decide-list{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:12px}
+.decide-list li{display:flex;gap:12px;align-items:flex-start;background:var(--white);border:1px solid var(--gray-420);border-radius:var(--r-8);padding:12px 16px;margin:0}
+.where{display:block;font-size:.875rem;color:var(--gray-700);margin-top:4px}
+.need{display:inline-flex;align-items:center;background:var(--warning-orange-2);color:var(--white);border-radius:var(--r-4);padding:0 8px;font-size:.8125rem;line-height:1.7;font-weight:700;letter-spacing:.02em;margin:0 8px;vertical-align:.15em;white-space:nowrap}
+h2 .need,h3 .need{font-size:.875rem}
+nav a.nav-need,nav a.nav-need:visited{background:var(--warning-orange-2);color:var(--white);padding:0 8px;border-radius:var(--r-4);text-decoration:none}
+nav a.nav-need:hover{color:var(--white);text-decoration:underline}
+@media(max-width:760px){
+  header .inner,main,nav .in,footer .inner{padding:0 16px}
+  header .inner{padding-top:24px;padding-bottom:16px}
+  .frames,.frames.three,.details{grid-template-columns:1fr}
+  h1{font-size:1.75rem;line-height:1.5}
+  h2{font-size:1.5rem;margin-top:48px}
+  .cut{padding:20px;border-radius:var(--r-12)}
+   .box,.decide{padding:16px}
+  table{font-size:.875rem}
+  th,td{padding:8px 12px}
+  th{white-space:normal}
+}
+@media print{nav{position:static;box-shadow:none}.cut{break-inside:avoid}}
+
+</style>
+</head>
+<body>
+<header>
+<div class="inner">
+<div class="eyebrow">VIDEO PLAN / 2026.11.13 <span class="chip">企画・絵コンテ（ライト）・本人スライド4枚</span></div>
+<h1>なぜAIが作るスライドは頭に入ってこないのか</h1>
+<p class="lead">プレゼンスライドは語りの補助。文字は、引き算する。</p>
+<p>元にした note 記事：「なぜAIが作るスライドは頭に入ってこないのか」<a href="https://note.com/dhythm/n/n211cfd1c4eb9">https://note.com/dhythm/n/n211cfd1c4eb9</a>（2026-11-12 公開）<br>
+原稿：<code>dhythm/private-note</code> の <code>Zettelkasten/PermanentNote/20261108_なぜAIが作るスライドは頭に入ってこないのか.md</code>（本文は同梱しない）</p>
+<div class="meta">
+<span>16:9・1920×1080・30fps</span>
+<span>本編 2:06＋エンドロゴ 5.5秒＝2:11.5</span>
+<span>本編 10カット＋ロゴ</span>
+<span>ナレーション案 570字／画面の文字 148字</span>
+<span>本人スライド4枚（カット05）</span>
+<span>BGM・効果音・ナレーション音声は未制作</span>
+<span>実速再生は未確認</span>
+</div>
+</div>
+<div class="strata"></div>
+</header>
+
+<nav><div class="in">
+<a class="nav-need" href="#decide">判断してほしい点（3）</a>
+<a href="#claim">主張</a>
+<a href="#viewer">視聴者</a>
+<a href="#structure">構成と尺</a>
+<a href="#cuts">カット表</a>
+<span class="navsep">詳細：</span>
+<a href="#roles">声・文字・素材</a>
+<a href="#claim-map">主張・根拠・留保</a>
+<a href="#handoff">企画側／制作側</a>
+<a href="#design">デザインシステム</a>
+<a href="#motion">動き</a>
+<a href="#symbols">記号と色</a>
+<a href="#character">キャラ設定</a>
+<a href="#swap">差し替え候補</a>
+<a href="#assets">素材</a>
+<a href="#sound">音</a>
+<a href="#evidence">根拠</a>
+<a href="#done">完成条件・確認状態</a>
+</div></nav>
+
+<main>
+<section class="decide" id="decide">
+<h2>未確定事項と判断してほしい点</h2>
+<p class="small">ここに挙げた3点だけが判断の要る点です。ほかの節は決定済みの情報です。各項目から本文の該当箇所へ移れます。本文には同じ番号の「要判断 n」の印があります。現行案はすべて A で、絵コンテも A です。B の絵はこの一式に入れていません。</p>
+<ol class="decide-list">
+<li><span class="need">1</span><div><b>人名を出すか</b>　A（現行）：カット08の画面にもナレーションにも、人名を出さない。右の縦書きは「削る。」だけ。B：同じ位置の「削る。」の下に、人名を横書きの1行で足し、ナレーションに「スティーブ・ジョブズのプレゼンのように」を足す。似顔、写真、映像は A でも B でも使わない。<span class="where">絵の違い：A にはその1行がない。B には縦の「削る。」の下に人名がある。→ <a href="#cut-08">カット08</a></span></div></li>
+<li><span class="need">2</span><div><b>本人スライド4枚を本編に出すか</b>　A（現行）：カット05で、本人が同じテーマで作り分けさせた4枚を、本人素材として全面に見せる。おわりは調査の2枚が残り、右に「語り。」。B：4枚は出さない。はじめは灰の線の束が4つ、おわりは密な束が2つと「語り。」。<span class="where">絵の違い：A のカット05には実画像がある。B のカット05は線だけ。→ <a href="#cut-05">カット05</a></span></div></li>
+<li><span class="need">3</span><div><b>文字の壁を生成映像にするか</b>　A（現行）：生成しない。壁はモーショングラフィックスの線の面。実画像はカット05の4枚だけ。B：未承認・未生成。壁が出る区間（01、02、03、05の発表側が退場する間、10）をまとめて生成映像に置き換える案。一部のカットだけ質感を変えない。このPRでは生成しない。<span class="where">絵の違い：A の壁は灰の線。B はその区間が生成映像の質感。→ <a href="#swap">差し替え候補</a></span></div></li>
+</ol>
+</section>
+
+<h2 id="claim">この動画で伝える一文</h2>
+<div class="box accent"><p class="lead">「AIが作るスライドは頭に入ってこない」と思っている人に、プレゼンスライドは語りの補助なので文字は引き算すると伝え、頭に入らない原因は、聞き手の頭に入ろうとする設計をしているかにある、という本人の結論を残す。</p></div>
+<p>01の「頭に、入らない。」と、02の「設計。」と、10の「入ろうと、する。」だけで、同じ主張が伝わるようにしてあります。尺が足りなければ、03の足し算の説明と、09の動機から削ります。04の留保、06の衝突、08の留保、10の結論は残します。</p>
+<p>留保は、手元で読む調査レポートは文字が多くてよい、という点です。1枚に全部を書く形式も、手元のレポートとしては働きます。最後は本人の実践で閉じます。視聴者への問いには戻しません。個人のやり方を、全員の成功の保証にはしません。</p>
+
+<h2 id="viewer">視聴者</h2>
+<p>AIにスライドを作らせて、見ているだけで疲れた人。発表の場なのに、画面の文章を目で追ってしまい、話が入ってこなかった人。見終わったあと、発表用は文字を引き算し、手元で読む資料とは作り方を分ける、という本人のやり方を持って帰れる人。</p>
+
+<h2 id="structure">構成と尺</h2>
+<p>声は経緯、留保、研究の指摘、結論の文を運びます。文字は決め語と、短い留保です。図は、文字の壁が1行ずつ消えて一語だけ残ること、調査レポートの密度が残ること、読むことと聞くことがぶつかること、を運びます。説明の全文は画面に載せません。この動画自体を、文字の多いスライドにはしません。</p>
+<p>尺はナレーション案の字数から決めました。声 570字、画面の文字 148字（空白と改行を除く。句読点は数える）。声の見積もりは 570字 ÷ 5.6字/秒 ≒ 102秒です。5.6字/秒は、直前の作品でナレーションの実測がおよそその速さだったことによる目安です。壁が剥がれる間と、4枚を見る間を足して本編 126秒、エンドロゴ 5.5秒で 2分11.5秒。7字/秒は画面を読む目安で、声の尺には使っていません。等速で読む時間と見る時間が足りるかは、制作側の再生で判断します。実速再生は未確認です。3分には伸ばしません。</p>
+<div class="tablewrap"><table>
+<thead><tr><th>カット</th><th>区間</th><th>役割</th><th>声／画面</th></tr></thead>
+<tbody>
+<tr><td><a href="#cut-01">01 頭に、入らない。</a></td><td>0:00–0:09（9秒）</td><td>思い込み</td><td>37字／8字</td></tr>
+<tr><td><a href="#cut-02">02 原因は、設計。</a></td><td>0:09–0:21（12秒）</td><td>主張</td><td>47字／7字</td></tr>
+<tr><td><a href="#cut-03">03 足して、ばかり。</a></td><td>0:21–0:30（9秒）</td><td>根拠</td><td>43字／8字</td></tr>
+<tr><td><a href="#cut-04">04 文字が多くて、よい。</a></td><td>0:30–0:41（11秒）</td><td>留保</td><td>49字／17字</td></tr>
+<tr><td><a href="#cut-05">05 役割が、違う。</a></td><td>0:41–0:56（15秒）</td><td>根拠の見せ場</td><td>65字／39字</td></tr>
+<tr><td><a href="#cut-06">06 読むと、聞くが、ぶつかる。</a></td><td>0:56–1:15（19秒）</td><td>主張の見せ場</td><td>94字／9字</td></tr>
+<tr><td><a href="#cut-07">07 なぞる、だけ。</a></td><td>1:15–1:25（10秒）</td><td>根拠</td><td>43字／14字</td></tr>
+<tr><td><a href="#cut-08">08 極限まで、削る。</a></td><td>1:25–1:39（14秒）</td><td>留保</td><td>70字／10字</td></tr>
+<tr><td><a href="#cut-09">09 サボるため、ではない。</a></td><td>1:39–1:49（10秒）</td><td>本人の動機</td><td>48字／19字</td></tr>
+<tr><td><a href="#cut-10">10 聞き手の頭に、入ろうとする。</a></td><td>1:49–2:06（17秒）</td><td>本人の結論</td><td>74字／17字</td></tr>
+<tr><td><a href="#cut-11">11 エンドロゴ</a></td><td>2:06–2:11.5（5.5秒）</td><td>制作表示</td><td>0字／0字</td></tr>
+</tbody></table></div>
+<p>声の合計は 37+47+43+49+65+94+43+70+48+74＝570字です。10は17秒です（1:49から17秒で2:06）。</p>
+
+<h2 id="cuts">カット表・絵コンテ</h2>
+<p>各カットに「はじめ」「おわり」の2コマがあります。コマ画は構図のラフ（1280×720、明るい紙色）で、完成映像の躍動感を確かめたものではありません。番号と「はじめ／おわり」は、このページの見出しとキャプションにだけあります。秒数・位置・角度は参考値です。実装の手順とパラメータは制作側の裁量です。画面全体を大きく動かすこと、可読性、留保は緩めません。動きの名前は<a href="#motion">動きの言語</a>、記号は<a href="#symbols">記号と色</a>、カメラの名前は<a href="../docs/techniques/camera-cheatsheet.md">カメラワークと切り替えの名前</a>です。</p>
+<p>図の背骨は一本です。灰の横線が文字の壁になり、1行ずつ剥がれて、一語だけが残る。調査レポートの側は、その壁を畳んだまま残します。</p>
+
+<section class="cut" id="cut-01">
+<div class="cuthead"><div class="num">01</div><div>
+<h3>頭に、入らない。</h3>
+<p class="small">0:00–0:09 / 9秒　・　思い込み　・　声 37字／画面 8字</p>
+</div></div>
+<div class="frames">
+<figure><a href="assets/storyboard/cut-01-start.webp"><img src="assets/storyboard/cut-01-start.webp" width="1280" height="720" alt="上半分を灰の横線が埋め、下に頭に、入らない。"></a><figcaption><b>はじめ</b>　上を灰の横線が埋める。下に「頭に、」「入らない。」。</figcaption></figure>
+<figure><a href="assets/storyboard/cut-01-end.webp"><img src="assets/storyboard/cut-01-end.webp" width="1280" height="720" alt="横線がさらに詰まり、入らない。が大きくなる。"></a><figcaption><b>おわり</b>　線はさらに詰まる。「入らない。」が下段で大きくなる。</figcaption></figure>
+</div>
+<div class="details"><div>
+<div class="label">画面の文字</div>
+<p class="words">頭に、<br>入らない。</p>
+<div class="label">ナレーション案</div>
+<p class="voice">AIが作ったスライドを見て、頭に入ってこない、と疲れたことはありませんか。</p>
+<div class="label">字組みと構図</div>
+<p>はじめは上4割が線の壁、下に左揃えの2行。おわりは壁が厚くなり、下の「入らない。」が1段大きくなる。重心は上の面から、下の語へ落ちます。</p>
+</div><div>
+<div class="label">主役の語と、動き・カメラ</div>
+<p>主役は「入らない。」。声の「入ってこない」に着地します。線は読める文ではなく、足された文字の束です。思い込みの語なので、前置きの「頭に、」は灰です。</p>
+<ul>
+<li>0.0–1.4秒：線の面が奥から手前へ揃い、「入らない。」が着地する（<a href="#motion">E_SLAM</a>）。図の層だけドリーイン（Dolly in）。</li>
+<li>1.4–7.4秒：読む間、奇数行と偶数行が逆向きに流れる（<a href="#motion">E_DRIFT</a>）。字形は崩しません。</li>
+<li>7.4–9秒：壁のまま02へ押し出す（<a href="#motion">E_PUSH</a>）。フェードではつなぎません。</li>
+</ul>
+</div></div>
+</section>
+
+<section class="cut" id="cut-02">
+<div class="cuthead"><div class="num">02</div><div>
+<h3>原因は、設計。</h3>
+<p class="small">0:09–0:21 / 12秒　・　主張　・　声 47字／画面 7字</p>
+</div></div>
+<div class="frames">
+<figure><a href="assets/storyboard/cut-02-start.webp"><img src="assets/storyboard/cut-02-start.webp" width="1280" height="720" alt="上に原因は、下のほとんどを横線が埋める。"></a><figcaption><b>はじめ</b>　上に灰の「原因は、」。下は線の壁。</figcaption></figure>
+<figure><a href="assets/storyboard/cut-02-end.webp"><img src="assets/storyboard/cut-02-end.webp" width="1280" height="720" alt="線は端に少し残り、中央に大きな設計。"></a><figcaption><b>おわり</b>　線は端に少し残るだけ。中央に「設計。」。</figcaption></figure>
+</div>
+<div class="details"><div>
+<div class="label">画面の文字</div>
+<p class="words">原因は、<br>設計。</p>
+<div class="label">ナレーション案</div>
+<p class="voice">本当の理由は、AIの側にはありません。聞き手の頭に入ろうとする設計を、作り手がしているかです。</p>
+<div class="label">字組みと構図</div>
+<p>はじめは上の短い語と、画面を埋める壁。おわりは余白が主役で、中央に一語。全編でいちばん文字が少ない画面です。重心は面から、一点へ移ります。</p>
+</div><div>
+<div class="label">主役の語と、動き・カメラ</div>
+<p>主役は「設計。」。声の「設計」に着地します。壁が1行ずつ消えて一語だけ残る、この動画の核です。AIを悪役の色にはしません。</p>
+<ul>
+<li>0.0–1.0秒：01の壁を受け、「原因は、」が行のマスクから入る。</li>
+<li>1.0–8.5秒：線の面が奥行きの手前から1行ずつめくれて抜ける（<a href="#motion">E_PEEL</a>）。近い面ほど大きく動きます。図の層のカメラは、抜ける面のあいだをドリーイン。</li>
+<li>8.5–10.2秒：「設計。」が着地する（E_SLAM）。文字の層は DOM のまま、面には貼りません。</li>
+<li>10.2–12秒：余白を保ったまま、上から次の線が落ちてくる予告を渡し、03へ押す（E_PUSH）。</li>
+</ul>
+</div></div>
+</section>
+
+<section class="cut" id="cut-03">
+<div class="cuthead"><div class="num">03</div><div>
+<h3>足して、ばかり。</h3>
+<p class="small">0:21–0:30 / 9秒　・　根拠　・　声 43字／画面 8字</p>
+</div></div>
+<div class="frames">
+<figure><a href="assets/storyboard/cut-03-start.webp"><img src="assets/storyboard/cut-03-start.webp" width="1280" height="720" alt="左上に大きな足して、右下に線が数本。"></a><figcaption><b>はじめ</b>　左上に「足して、」。線はまだ数本。</figcaption></figure>
+<figure><a href="assets/storyboard/cut-03-end.webp"><img src="assets/storyboard/cut-03-end.webp" width="1280" height="720" alt="上を線が埋め、下にばかり。"></a><figcaption><b>おわり</b>　線が上から積もる。下に「ばかり。」。</figcaption></figure>
+</div>
+<div class="details"><div>
+<div class="label">画面の文字</div>
+<p class="words">足して、<br>ばかり。</p>
+<div class="label">ナレーション案</div>
+<p class="voice">AIは文字を足してばかりで、削ることを知りません。人は、この言葉が要るかを吟味します。</p>
+<div class="label">字組みと構図</div>
+<p>はじめは左上の大きな語と、右下の薄い線。おわりは上半分が壁、下に短い語。02が空いた画面の直後なので、積もる方向が逆です。重心は上へ戻ります。</p>
+</div><div>
+<div class="label">主役の語と、動き・カメラ</div>
+<p>主役は「ばかり。」。声の「足してばかり」に着地します。足すことと、人が要否を吟味することは、声が分けます。画面は足される側だけを見せます。</p>
+<ul>
+<li>0.0–1.2秒：「足して、」が上から着地する（E_SLAM）。</li>
+<li>1.2–7.0秒：線が上から1本ずつ積もる。剥がす動きの逆で、同じ面です。カメラはティルト（Tilt）で積もる先を追います。</li>
+<li>7.0–9秒：「ばかり。」が下に入り、積もった壁が04の資料の位置へ沈む（E_PUSH）。</li>
+</ul>
+</div></div>
+</section>
+
+<section class="cut" id="cut-04">
+<div class="cuthead"><div class="num">04</div><div>
+<h3>文字が多くて、よい。</h3>
+<p class="small">0:30–0:41 / 11秒　・　留保　・　声 49字／画面 17字</p>
+</div></div>
+<div class="frames">
+<figure><a href="assets/storyboard/cut-04-start.webp"><img src="assets/storyboard/cut-04-start.webp" width="1280" height="720" alt="上に調査レポートは、下半分に横線の束。"></a><figcaption><b>はじめ</b>　上に「調査レポートは、」。下半分に線の束。</figcaption></figure>
+<figure><a href="assets/storyboard/cut-04-end.webp"><img src="assets/storyboard/cut-04-end.webp" width="1280" height="720" alt="上に文字が多くてよい。下に資料の束が残る。"></a><figcaption><b>おわり</b>　「文字が多くてよい。」が読める大きさで残る。束は下に残る。</figcaption></figure>
+</div>
+<div class="details"><div>
+<div class="label">画面の文字</div>
+<p class="words">調査レポートは、<br>文字が多くてよい。</p>
+<div class="label">ナレーション案</div>
+<p class="voice">手元で読む調査レポートなら、文字が多いのは当たり前です。枠があって、読みやすくなることもあります。</p>
+<div class="label">字組みと構図</div>
+<p>はじめは上の余白が広く、下に資料。おわりは留保の2行が上半分を占め、資料は下に畳んだまま。02の全面の壁とも、05の実画像とも組みが違います。留保は灰の小さな注ではなく、読める段で置きます。</p>
+</div><div>
+<div class="label">主役の語と、動き・カメラ</div>
+<p>主役は「文字が多くてよい。」。声の「当たり前」に着地します。「よい。」は、文字量そのものを悪にしない留保です。</p>
+<ul>
+<li>0.0–2.0秒：03の壁が下半分へ沈み、資料の束になる。カメラは引く（ドリーインの逆）。</li>
+<li>2.0–9.0秒：留保の2行が行マスクで入る。読む間、束はゆっくり左へ流れ、文字の層は逆へ流れる（E_DRIFT）。</li>
+<li>9.0–11秒：束の横線が、05の4枚の実画像の並びへマッチカット。</li>
+</ul>
+</div></div>
+</section>
+
+<section class="cut" id="cut-05">
+<div class="cuthead"><div class="num">05</div><div>
+<h3>役割が、違う。<span class="need">要判断 2</span></h3>
+<p class="small">0:41–0:56 / 15秒　・　根拠の見せ場　・　声 65字／画面 39字</p>
+</div></div>
+<div class="frames">
+<figure><a href="assets/storyboard/cut-05-start.webp"><img src="assets/storyboard/cut-05-start.webp" width="1280" height="720" alt="本人のスライド4枚が画面を占め、それぞれの下に短い見出し。"></a><figcaption><b>はじめ</b>　本人の4枚が画面を占める。見出しは各画像の下。</figcaption></figure>
+<figure><a href="assets/storyboard/cut-05-end.webp"><img src="assets/storyboard/cut-05-end.webp" width="1280" height="720" alt="左に調査の2枚が残り、右に大きな語り。"></a><figcaption><b>おわり</b>　調査の2枚が左に残る。右に「語り。」。</figcaption></figure>
+</div>
+<div class="details"><div>
+<div class="label">画面の文字</div>
+<p class="words">Claude・発表<br>GPT・発表<br>Claude・調査<br>GPT・調査<br>調査レポート<br>語り。</p>
+<div class="label">ナレーション案</div>
+<p class="voice">同じスライドでも、役割は違います。同じテーマの4種類も、発表の場まで文字だらけになりがちです。プレゼンスライドは、語りの補助です。</p>
+<div class="label">字組みと構図</div>
+<p>はじめは2×2の実画像が画面のほとんどで、見出しは各画像の外。おわりは左に調査の2枚、右に画面の半分を使う「語り。」。同じカットの中で、全面の資料から、左右の非対称へ組みが変わります。右上の小窓にはしません。4枚を見ている間が主画面です。</p>
+</div><div>
+<div class="label">主役の語と、動き・カメラ</div>
+<p>主役は「語り。」。声の「語りの補助」に着地します。4枚は、本人が「生成AIはどんな仕事で生産性を上げるのか」という同じテーマで、Claude と GPT に作り分けさせたスライドです。発表用も、そのままでは文字の壁に見えます。そこから発表側だけを引き算します。スライドの中の数字は、この動画の根拠にしません。見出し以外のロゴやUIは描き足しません。</p>
+<ul>
+<li>0.0–4.0秒：4枚が手前へ出て画面を占める。カメラは小さくオービット（Orbit）。</li>
+<li>4.0–11秒：発表の2枚が、灰の線へほどけて1行ずつ抜ける（E_PEEL）。調査の2枚は密度のまま残る。近い線ほど速く動きます。</li>
+<li>11–13.5秒：「語り。」が右に着地する（E_SLAM）。</li>
+<li>13.5–15秒：残った調査の横線が、06の「読む」の線へマッチカット。</li>
+</ul>
+</div></div>
+</section>
+
+<section class="cut" id="cut-06">
+<div class="cuthead"><div class="num">06</div><div>
+<h3>読むと、聞くが、ぶつかる。</h3>
+<p class="small">0:56–1:15 / 19秒　・　主張の見せ場　・　声 94字／画面 9字</p>
+</div></div>
+<div class="frames">
+<figure><a href="assets/storyboard/cut-06-start.webp"><img src="assets/storyboard/cut-06-start.webp" width="1280" height="720" alt="左に読む、右に青い聞く、下に線と青い弧。"></a><figcaption><b>はじめ</b>　左に「読む」、右に青の「聞く」。下に線と、青い弧。</figcaption></figure>
+<figure><a href="assets/storyboard/cut-06-end.webp"><img src="assets/storyboard/cut-06-end.webp" width="1280" height="720" alt="中央に残らない。線と弧は両端へ分かれている。"></a><figcaption><b>おわり</b>　中央に「残らない。」。線と弧は両端へ分かれる。</figcaption></figure>
+</div>
+<div class="details"><div>
+<div class="label">画面の文字</div>
+<p class="words">読む<br>聞く<br>残らない。</p>
+<div class="label">ナレーション案</div>
+<p class="voice">人は、画面の文字を目で追いながら、同時に話を聞くことはできません。黙読と聞くことは競合し、図解と口頭だけの方が理解が深まる、と指摘する研究があります。読み上げると、どちらも頭に残りません。</p>
+<div class="label">字組みと構図</div>
+<p>はじめは左右に大きな2語。おわりは中央の1語だけ。対角の構図から、一点へ落ちます。論文の図、数値、出典の文字列は画面に置きません。</p>
+</div><div>
+<div class="label">主役の語と、動き・カメラ</div>
+<p>主役は「残らない。」。声の「残りません」に着地します。「聞く」だけが青です。研究の指摘は、原稿の言い方の範囲で声が運びます。効果の大きさや、どちらの出典がどちらの指摘かは、原稿が対応づけていないので足しません。</p>
+<ul>
+<li>0.0–2.0秒：「読む」と「聞く」が左右から着地する（E_SLAM）。青い弧が、線の側から描かれ始める。</li>
+<li>2.0–12秒：弧と線の束が中央で交差する。読む間も、二つの塊は逆向きに流れます（E_DRIFT）。1字ずつは散らしません。</li>
+<li>12–16秒：交差のあと、線は左へ、弧は右へ抜け、中央に「残らない。」が着地する。</li>
+<li>16–19秒：抜けた線が07の横線へつながり、パン（Pan）で右へ渡します。</li>
+</ul>
+</div></div>
+</section>
+
+<section class="cut" id="cut-07">
+<div class="cuthead"><div class="num">07</div><div>
+<h3>なぞる、だけ。</h3>
+<p class="small">1:15–1:25 / 10秒　・　根拠　・　声 43字／画面 14字</p>
+</div></div>
+<div class="frames">
+<figure><a href="assets/storyboard/cut-07-start.webp"><img src="assets/storyboard/cut-07-start.webp" width="1280" height="720" alt="上になぞる、だけ。下の横線に青い弧が沿う。"></a><figcaption><b>はじめ</b>　上に「なぞる、だけ。」。青い弧が横線に沿う。</figcaption></figure>
+<figure><a href="assets/storyboard/cut-07-end.webp"><img src="assets/storyboard/cut-07-end.webp" width="1280" height="720" alt="左に線が残り、右に自分の、言葉で。"></a><figcaption><b>おわり</b>　線は左に残る。右に「自分の」「言葉で。」。</figcaption></figure>
+</div>
+<div class="details"><div>
+<div class="label">画面の文字</div>
+<p class="words">なぞる、だけ。<br>自分の<br>言葉で。</p>
+<div class="label">ナレーション案</div>
+<p class="voice">文字が多いと、書いてあることをなぞるだけになります。うまい人は、自分の言葉で語ります。</p>
+<div class="label">字組みと構図</div>
+<p>はじめは上の1行と、画面幅の横線。おわりは左に線、右に2段の語。横長の構図から、左右分割へ変わります。人の姿は描きません。話は青い弧です。</p>
+</div><div>
+<div class="label">主役の語と、動き・カメラ</div>
+<p>主役は「言葉で。」。声の「自分の言葉」に着地します。弧が線に沿っている間が「なぞる」、弧が線を離れることが「自分の言葉」です。</p>
+<ul>
+<li>0.0–2.0秒：横線が左から揃い、青い弧が線に沿って描かれる。</li>
+<li>2.0–7.0秒：弧が線の上をなぞる。カメラはトラッキング（Tracking shot）で弧と並びます。</li>
+<li>7.0–10秒：弧が線から離れて右へ抜け、「言葉で。」が着地する（E_SLAM）。線は左に残し、08の左半分へ渡します。</li>
+</ul>
+</div></div>
+</section>
+
+<section class="cut" id="cut-08">
+<div class="cuthead"><div class="num">08</div><div>
+<h3>極限まで、削る。<span class="need">要判断 1</span></h3>
+<p class="small">1:25–1:39 / 14秒　・　留保　・　声 70字／画面 10字</p>
+</div></div>
+<div class="frames">
+<figure><a href="assets/storyboard/cut-08-start.webp"><img src="assets/storyboard/cut-08-start.webp" width="1280" height="720" alt="左上に線の壁、下に1枚に、全部。"></a><figcaption><b>はじめ</b>　左上に線の壁。下に「1枚に、全部。」。右は空いている。</figcaption></figure>
+<figure><a href="assets/storyboard/cut-08-end.webp"><img src="assets/storyboard/cut-08-end.webp" width="1280" height="720" alt="左に短い横線、右に縦の削る。"></a><figcaption><b>おわり</b>　左の線は短く残る。右に縦の「削る。」。人名はない。</figcaption></figure>
+</div>
+<div class="details"><div>
+<div class="label">画面の文字</div>
+<p class="words">1枚に、全部。<br>削る。</p>
+<div class="label">ナレーション案</div>
+<p class="voice">霞が関文学や学会発表のように、1枚に全部を書く形式は、手元のレポートとして働きます。その場で聞くスライドは、文字を極限まで削って成立します。</p>
+<div class="label">字組みと構図</div>
+<p>はじめは左の横長の壁と、下の横書き。おわりは左の線と、右の縦書き。このカットだけ縦書きです。A の絵に人名はありません。B にする場合は、縦の「削る。」の下に人名の1行を足します。顔は描きません。</p>
+</div><div>
+<div class="label">主役の語と、動き・カメラ</div>
+<p>主役は「削る。」。声の「削って」に着地します。左に残る線は、手元のレポートとして働く密度です。削ることと、全部書くことの両方を、画面に残します。</p>
+<ul>
+<li>0.0–2.0秒：07の線が左へ集まり、「1枚に、全部。」が入る。</li>
+<li>2.0–9.0秒：右の余白が広がり、線が左の短い束へ縮む（E_PEEL）。</li>
+<li>9.0–12秒：「削る。」が縦に着地する（E_SLAM）。カメラは右へドリーイン。</li>
+<li>12–14秒：空いた右を、09の語の位置へ押し出す（E_PUSH）。</li>
+</ul>
+</div></div>
+</section>
+
+<section class="cut" id="cut-09">
+<div class="cuthead"><div class="num">09</div><div>
+<h3>サボるため、ではない。</h3>
+<p class="small">1:39–1:49 / 10秒　・　本人の動機　・　声 48字／画面 19字</p>
+</div></div>
+<div class="frames">
+<figure><a href="assets/storyboard/cut-09-start.webp"><img src="assets/storyboard/cut-09-start.webp" width="1280" height="720" alt="左に線の束、右にサボるため、ではない。"></a><figcaption><b>はじめ</b>　左に線。右に「サボるため、」「ではない。」。</figcaption></figure>
+<figure><a href="assets/storyboard/cut-09-end.webp"><img src="assets/storyboard/cut-09-end.webp" width="1280" height="720" alt="上端に短い線、中央に何を、伝えるか。"></a><figcaption><b>おわり</b>　線は上端に少し。中央に「何を、」「伝えるか。」。</figcaption></figure>
+</div>
+<div class="details"><div>
+<div class="label">画面の文字</div>
+<p class="words">サボるため、<br>ではない。<br>何を、<br>伝えるか。</p>
+<div class="label">ナレーション案</div>
+<p class="voice">私は、サボりたいわけではありません。体裁の時間を、何を伝えるかに回し、出力は自分で組み直します。</p>
+<div class="label">字組みと構図</div>
+<p>はじめは左の線と、右の2行。おわりは線が抜け、左揃えの大きな2行が中央に残る。否定の1行で終わらせず、「伝えるか。」を大きくします。</p>
+</div><div>
+<div class="label">主役の語と、動き・カメラ</div>
+<p>主役は「伝えるか。」。声の「何を伝えるか」に着地します。体裁の線が抜けることが、時間の使い先が変わる絵です。</p>
+<ul>
+<li>0.0–2.0秒：「ではない。」が着地する（E_SLAM）。</li>
+<li>2.0–7.0秒：左の線が画面の外へ抜ける（E_PEEL）。読む間、残る語の塊がゆっくり寄る（E_DRIFT）。</li>
+<li>7.0–10秒：「伝えるか。」が大きくなり、10の二つの面へ割れる予告を渡す（E_PUSH）。</li>
+</ul>
+</div></div>
+</section>
+
+<section class="cut" id="cut-10">
+<div class="cuthead"><div class="num">10</div><div>
+<h3>聞き手の頭に、入ろうとする。</h3>
+<p class="small">1:49–2:06 / 17秒　・　本人の結論　・　声 74字／画面 17字</p>
+</div></div>
+<div class="frames">
+<figure><a href="assets/storyboard/cut-10-start.webp"><img src="assets/storyboard/cut-10-start.webp" width="1280" height="720" alt="上に作り方を、分ける。下に左右の線の束と、右下の青い棒。"></a><figcaption><b>はじめ</b>　上に「作り方を、分ける。」。左も右も線の束。右下に青い棒。</figcaption></figure>
+<figure><a href="assets/storyboard/cut-10-end.webp"><img src="assets/storyboard/cut-10-end.webp" width="1280" height="720" alt="上に入ろうと、する。左下に線の束、右下に青い棒だけ。"></a><figcaption><b>おわり</b>　「入ろうと、」「する。」。左下に調査の束。右は青い棒だけ。</figcaption></figure>
+</div>
+<div class="details"><div>
+<div class="label">画面の文字</div>
+<p class="words">作り方を、分ける。<br>入ろうと、<br>する。</p>
+<div class="label">ナレーション案</div>
+<p class="voice">AIは作業の相棒です。心を動かす責任は、代わってくれません。だから私は、調査レポートとプレゼンスライドで作り方を分けて、聞き手の頭に入ろうとします。</p>
+<div class="label">字組みと構図</div>
+<p>はじめは上の1行と、左右に同じ線の束。おわりは上に全編の結びの2行、左下に束、右下に青い棒だけ。左右が同じ画面から、左は残り右は空く画面へ変わります。問いの形では閉じません。</p>
+</div><div>
+<div class="label">主役の語と、動き・カメラ</div>
+<p>主役は「する。」。声の「入ろうとします」に着地します。左の束は手元で読む資料、右の空いた側は語りの補助です。01の「入らない」と、10の「入ろうと、する」で、同じ主張が通ります。</p>
+<ul>
+<li>0.0–3.0秒：二つの束が左右に割れ、「分ける。」が着地する（E_SLAM）。</li>
+<li>3.0–12秒：右の束だけが1行ずつ抜ける（E_PEEL）。左の束は残る。カメラは右の空いた側へ寄る。</li>
+<li>12–15.5秒：「入ろうと、」「する。」が上に着地する。読む間、左の束は流れ続ける（E_DRIFT）。</li>
+<li>15.5–17秒：画面全体を右へホイップパン（Whip pan）し、ライムの全面へ渡す。白の閃光は入れません。</li>
+</ul>
+</div></div>
+</section>
+
+<section class="cut" id="cut-11">
+<div class="cuthead"><div class="num">11</div><div>
+<h3>エンドロゴ</h3>
+<p class="small">2:06–2:11.5 / 5.5秒　・　制作表示　・　声 0字／画面 0字</p>
+</div></div>
+<div class="frames">
+<figure><a href="assets/storyboard/cut-11-start.webp"><img src="assets/storyboard/cut-11-start.webp" width="1280" height="720" alt="ライムの画面に、黒い円が上から落ちてくる。"></a><figcaption><b>はじめ</b>　ライムの全面。o が上から落ちてくる。</figcaption></figure>
+<figure><a href="assets/storyboard/cut-11-end.webp"><img src="assets/storyboard/cut-11-end.webp" width="1280" height="720" alt="ライムの中央に okady.work のロゴ。"></a><figcaption><b>おわり</b>　中央に完成したロゴ。ほかの文字はない。</figcaption></figure>
+</div>
+<div class="details"><div>
+<div class="label">画面の文字</div>
+<p class="words">なし（ロゴのみ）</p>
+<div class="label">ナレーション案</div>
+<p class="voice">なし</p>
+<div class="label">字組みと構図</div>
+<p>ライム #d2ff1a の全面に、ロゴだけを中央へ置きます。引き伸ばしません。本編の要素は重ねません。</p>
+</div><div>
+<div class="label">主役の語と、動き・カメラ</div>
+<p>ロゴの形、書体、色、比率は変えません。カメラは固定です。</p>
+<ul>
+<li>0–2.6秒：o が落ちてバウンドし、定位置へ入る。</li>
+<li>2.6–3.2秒：全体が左へスライドする。</li>
+<li>3.0–4.0秒：「.work」が一文字ずつ出る。</li>
+<li>4.0–5.5秒：完成した状態を1.5秒保持して終わる。</li>
+</ul>
+</div></div>
+</section>
+
+<h2 id="details" class="part">詳細（ここから下は補足）</h2>
+<p class="small">ここまでで、どんな動画で、どう組み、どう見えるかを示しました。以下は、制作に必要な分担、デザイン、動き、素材、音、根拠、完成条件です。</p>
+
+<h2 id="roles">声・文字・素材の分担</h2>
+<div class="tablewrap"><table>
+<thead><tr><th>担当</th><th>受け持つこと</th><th>受け持たないこと</th></tr></thead>
+<tbody>
+<tr><td>声</td><td>経緯、留保、研究の指摘、本人の動機と結論。なぜ文字を引き算するか。</td><td>画面の語の読み上げ。全文字幕。論文の数値。</td></tr>
+<tr><td>文字</td><td>思い込み、決め語、留保の短い語。一語の大きさが、引き算の結果。</td><td>ナレーションの全文。スライドの中の数字。出典の文字列。</td></tr>
+<tr><td>線の面</td><td>足された文字。剥がれること。調査レポートとして残ること。</td><td>読ませる本文。測定のグラフ。</td></tr>
+<tr><td>青い弧と棒</td><td>話を聞くこと。語りの補助である側。</td><td>人物。製品のUI。</td></tr>
+<tr><td>本人スライド</td><td>カット05だけ。同じテーマで作り分けた4枚を、本人の資料として見せる。</td><td>他のカットへの使い回し。中の数字を根拠にすること。</td></tr>
+</tbody></table></div>
+<p>ナレーションは、この企画の前提です。声なしには組み直していません。音声ファイルは、この一式に入れていません。本編を作るとき、制作側がこの案を読み上げ原稿にします。画面の文字は、今の文量のままです。全文字幕は足しません。</p>
+
+<h2 id="claim-map">主張・根拠・留保の対応</h2>
+<div class="tablewrap"><table>
+<thead><tr><th>役割</th><th>内容</th><th>カット</th></tr></thead>
+<tbody>
+<tr><td>主張</td><td>プレゼンスライドは語りの補助なので、文字は引き算する。頭に入らない原因は、聞き手の頭に入ろうとする設計をしているかにある。</td><td>02・05・06・10</td></tr>
+<tr><td>根拠</td><td>AIは文字を足し、削ることを知らない。同じテーマの4種類も、発表の場まで文字だらけになりがちだ。文字を追いながら話は聞けない。文字が多いと、発表はなぞるだけになる。体裁の時間を、何を伝えるかに回している。</td><td>03・05・06・07・09</td></tr>
+<tr><td>留保</td><td>手元で読む調査レポートは、文字が多くてよい。枠で読みやすくなることもある。1枚に全部を書く形式は、手元のレポートとして働く。</td><td>04・08（声と文字の両方）</td></tr>
+<tr><td>最後に残す本人の結論</td><td>AIは作業の相棒で、心を動かす責任は代わらない。調査レポートとプレゼンスライドで作り方を分け、聞き手の頭に入ろうとする。</td><td>10</td></tr>
+</tbody></table></div>
+<p>対応の全文は <a href="references.md">references.md</a> です。</p>
+
+<h2 id="handoff">企画側／制作側</h2>
+<div class="tablewrap"><table>
+<thead><tr><th>企画側（この一式）</th><th>制作側</th></tr></thead>
+<tbody>
+<tr><td>主張の一文、構成と尺、画面の文言、ナレーション案、絵コンテ22枚、字組みと色、動きの狙い、本人スライド4枚、根拠の対応</td><td>three.js と DOM の文字層による実装、動きの細かな値、BGM と効果音、ナレーション、書き出し</td></tr>
+<tr><td>絵コンテの文字が、安全域の外に出ていないこと、文字どうしと、文字と図が重なっていないこと（確認済み。下の完成条件）</td><td>本編の文字のはみ出しと重なり。全カット、0.25秒ごと。1920基準で左右64px、上下48px。線の面と青い弧の外接も取る</td></tr>
+</tbody></table></div>
+<p>完了の分け方は、企画と絵コンテと本人スライドは準備済み、音声と本編は制作側、です。音源ファイルがまだ無いことは、着手を止める理由にしません。</p>
+<div class="box"><b>実装の推奨：</b>Remotion（フレーム時刻から状態が決まる書き出し）と、<code>@remotion/three</code> の three.js。文字の壁は、奥行きに並べた薄い面です。剥がれる回転と、カメラの寄りは、この面の層でやります。文字は DOM／CSS の層（行のマスク、詰め組）です。カメラは図の層だけに掛け、文字が切れたり面に埋もれたりしないようにします。<code>requestAnimationFrame</code> の実時間計算と、シークで結果が変わる物理シミュレーションは使いません。3Dを使う理由は、壁が1行ずつ抜けるとき、近い面と遠い面の動きの差を、カメラの寄りと一緒に見せるためです。</div>
+<ul>
+<li>章の表示、テロップの帯、エンドクレジットは入れない。映像の中にカット番号を入れない。</li>
+<li>製品ロゴや他社のUIは描き足さない。実在の人物は描かない。</li>
+<li>書体は Noto Sans JP。ファイルは同梱しない。制作側が OFL のものを用意する。絵コンテの書体は、構図用の代替です。</li>
+</ul>
+
+<h2 id="design">デザインシステム（映像の文字・色・グリッド）</h2>
+<p>本編の配色です。企画書の見た目とは別です。ライムはエンドロゴの画面だけに使います。</p>
+<h3>タイプスケール（1920×1080・参考値）</h3>
+<div class="tablewrap"><table>
+<thead><tr><th>段</th><th>大きさ</th><th>太さ</th><th>用途</th></tr></thead>
+<tbody>
+<tr><td>Display</td><td>200–280px</td><td>900</td><td>設計。語り。削る。する。</td></tr>
+<tr><td>H1</td><td>120–160px</td><td>700</td><td>入らない。ばかり。残らない。言葉で。伝えるか。</td></tr>
+<tr><td>Body</td><td>48–64px</td><td>400</td><td>留保、見出し、前置きの1行</td></tr>
+</tbody></table></div>
+<p>1画面に使う段は3つまでです。カットごとに、主役の段を変えます。</p>
+<h3>グリッドと、カットごとの組み</h3>
+<p>12列。1920基準の左右余白は96px。安全域は左右64px、上下48px。左揃えを基本にし、中央の一語は02だけ、縦書きは08だけです。</p>
+<ul>
+<li>01は、上の壁と下の2行。02は、壁が抜けたあとの中央の一語。</li>
+<li>03は、上から積む壁。04は、下半分の資料と、上の留保。</li>
+<li>05は、2×2の実画像から、左の調査と右の一語。</li>
+<li>06は、左右の2語が中央の1語になる。07は、横線から右の2段。</li>
+<li>08は、左の横線と右の縦書き。09は、線が抜けたあとの左揃え。</li>
+<li>10は、左右同じ束から、左だけ残る画面。</li>
+</ul>
+<h3>色</h3>
+<p><span class="sw" style="background:#F6F3EC"></span>紙 #F6F3EC　背景。引き算で開く余白。<span class="sw" style="background:#1A1A1A"></span>墨 #1A1A1A　残す語と結論。<span class="sw" style="background:#5C564E"></span>灰 #5C564E　思い込みと留保の文字。<span class="sw" style="background:#6B655C"></span>線 #6B655C　足された文字の壁。<span class="sw" style="background:#1E4D8C"></span>青 #1E4D8C　語り。聞くことと、語りの補助。<span class="sw" style="background:#d2ff1a"></span>ライム #d2ff1a　エンドロゴの背景だけ。</p>
+<p>紙の上の線は、地より暗くします。白い面を紙の上に置いて沈ませません。赤は使いません。AIを悪役の色にしないためです。</p>
+
+<h2 id="motion">動きの言語</h2>
+<div class="tablewrap"><table>
+<thead><tr><th>名前</th><th>イージング（参考値）</th><th>使う所</th></tr></thead>
+<tbody>
+<tr><td id="e-slam">E_SLAM「叩く」</td><td>cubic-bezier(.16,1,.3,1)、0.4–0.6秒</td><td>決め語の着地</td></tr>
+<tr><td id="e-peel">E_PEEL「剥がす」</td><td>cubic-bezier(.65,0,.35,1)、1行あたり0.35–0.5秒</td><td>壁が1行ずつ抜ける。03の積もる動きは、この逆</td></tr>
+<tr><td id="e-drift">E_DRIFT「読む間の流れ」</td><td>linear（そのカットの読む間）</td><td>行の塊が逆向きに流れる。カメラ。字形は崩さない</td></tr>
+<tr><td id="e-push">E_PUSH「押し出す」</td><td>cubic-bezier(.55,0,1,.45)、0.3–0.5秒</td><td>次のカットへ渡す動き。10のホイップパンは0.5秒</td></tr>
+</tbody></table></div>
+<ul>
+<li>リズムの目安は104–112 BPM。線が1行抜けるたびに拍があり、決め語の着地は拍の頭です。曲が決まったら、秒を拍へ寄せてよいです。秒は参考値です。</li>
+<li>大きな動きは、02の剥がれ、05の発表側の剥がれ、06の交差、10の右だけが抜けること、です。読む間も、塊と壁とカメラを動かします。1文字ずつの揺れ、拍ごとの脈動、散る登場は使いません。</li>
+<li>02のドリーインは、抜ける面のあいだを進みます。10のホイップパンは0.5秒。白の閃光は入れません。</li>
+<li>フェードだけの切り替えはしません。つなぎは、マッチ、押し出し、ホイップパンのいずれかです。</li>
+<li>面の角度と位置は、フレーム時刻から直接計算します。</li>
+</ul>
+
+<h2 id="symbols">記号と色</h2>
+<div class="tablewrap"><table>
+<thead><tr><th>記号</th><th>意味（これ以外に使わない）</th><th>出るカット</th></tr></thead>
+<tbody>
+<tr><td>灰の横線</td><td>足された文字。読む負担</td><td>01・02・03・04・06・07・08・09・10</td></tr>
+<tr><td>横線を畳んだ束</td><td>手元で読む調査レポート。文字が多くてよい</td><td>04・08・10</td></tr>
+<tr><td>墨の一語</td><td>引き算のあと残る語</td><td>02・05・08・10</td></tr>
+<tr><td>青の弧</td><td>話を聞くこと</td><td>06・07</td></tr>
+<tr><td>青の棒</td><td>語りの補助である側の輪郭</td><td>10</td></tr>
+<tr><td>青の「聞く」</td><td>耳で聞く側。弧と同じ意味</td><td>06</td></tr>
+<tr><td>本人の4枚</td><td>同じテーマで作り分けた実物。発表側は剥がれ、調査側は残る</td><td>05</td></tr>
+<tr><td>灰の文字</td><td>思い込みと留保</td><td>01・02・04・07・09</td></tr>
+<tr><td>紙の余白</td><td>引き算で開いた、話に集中する空間</td><td>02・08・10</td></tr>
+</tbody></table></div>
+<p>青は、語りだけです。弧も棒も「聞く」も、同じ意味の形の違いです。灰の線は、足された文字だけです。束のまま残るのが調査レポートで、別の意味には使いません。墨は、残す語だけです。</p>
+
+<h2 id="character">キャラ設定</h2>
+<div class="box">
+<p>こちらで人物、顔、手は描きません。役は、語と色で通します。</p>
+<ul>
+<li><b>発表者：</b>青の弧。姿は描かない。書いてあることをなぞる側も、自分の言葉で話す側も、弧の動きで分けます。</li>
+<li><b>聞き手：</b>姿は描かない。ぶつかるのは「読む」の線と「聞く」の弧です。</li>
+<li><b>AI：</b>姿もロボットも描かない。足すことは、線が積まれることです。</li>
+</ul>
+<p>カット05の GPT のスライドには、元から人物のイラストが入っています。シート全体を本人の資料として見せ、人物だけを切り出して役にはしません。実在の人物の映像、写真、似顔は使いません。</p>
+</div>
+
+<h2 id="swap">差し替え候補 <span class="need">要判断 3</span></h2>
+<div class="box">
+<p><span class="tag t-un">未承認</span>生成映像も、生成画像も、このPRでは作っていません。現行は A です。</p>
+<p>文字の壁は、01、02、03、04、06、07、08、09、10に続きます。05の本人スライドは、その壁の実例として一度だけ全面に出て、発表側は線へほどけて戻ります。同じ壁の一部だけを、別の質感にしないでください。</p>
+<p>B は、壁が出る区間をまとめて生成映像に置き換える案です。対象は、01の壁、02の剥がれ、03の積もり、05で発表側が退場する間、10で右が抜ける間、です。紙の上の線が1行ずつめくれて一語が残る、という内容です。モーショングラフィックスで成立するので、企画側の推しは A（使わない）です。使う場合は、尺と本数が固まってからレビューが要ります。10〜100クレジットの範囲を超える規模になり得ます。費用は未確認です。B の絵は入れていません。</p>
+</div>
+
+<h2 id="assets">素材</h2>
+<div class="tablewrap"><table>
+<thead><tr><th>ファイル</th><th>役割</th><th>使う所</th></tr></thead>
+<tbody>
+<tr><td><code>assets/storyboard/cut-XX-start.webp</code>／<code>cut-XX-end.webp</code>（22枚、1280×720）</td><td>構図と動きの絵コンテ</td><td>各カット</td></tr>
+<tr><td><code>assets/source/2026-11-07_14-53-52.webp</code></td><td>本人素材。Claude によるプレゼンスライド</td><td>05はじめ・左上</td></tr>
+<tr><td><code>assets/source/2026-11-07_14-54-08.webp</code></td><td>本人素材。GPT によるプレゼンスライド</td><td>05はじめ・右上</td></tr>
+<tr><td><code>assets/source/2026-11-07_14-53-59.webp</code></td><td>本人素材。Claude による調査レポート</td><td>05はじめ・左下、05おわり・上</td></tr>
+<tr><td><code>assets/source/2026-11-07_14-52-40.webp</code></td><td>本人素材。GPT による調査レポート</td><td>05はじめ・右下、05おわり・下</td></tr>
+<tr><td>リポジトリ直下の <code>okady-work-logo.svg</code></td><td>エンドロゴ。形と色は変えない。このフォルダには複製していない</td><td>11</td></tr>
+</tbody></table></div>
+<p>4枚は、記事に入っている比較スライドで、本人が作らせた資料です。一般のイメージ素材ではありません。絵コンテでは、書き出しの黒い余白だけを紙色に置き、スライドの中身は元画像のままです。元ファイルは <code>assets/source/</code> に、手を加えずに置いてあります。05以外では使いません。</p>
+<p>新しい画像も、新しい動画も、フォントも、同梱していません。エンドロゴ以外の写真素材はありません。</p>
+
+<h2 id="sound">音</h2>
+<div class="box">
+<p><span class="tag t-un">未制作</span>BGMは、この作品のために作ります。過去の作品の曲を、検討なしに使いません。</p>
+<p>方向は、乾いたリム、短いウッド、輪郭のあるプラックです。目安は104–112 BPM。線が1行抜ける拍と、02の「設計。」、05の「語り。」、06の交差、10の「する。」にアクセントを置きます。10のホイップパンの前に、0.3秒だけ音を抜いてよいです。長い無音では埋めません。遅い曲に合わせて、映像の動きを弱めません。</p>
+<p>BGMはエンドロゴの終わり（2:11.5）まで覆い、保持の1.5秒で収めます。効果音は、線が抜ける音と、一語が着地する音を任意で足してよいです。ファイルはまだありません。</p>
+<p>ナレーションは、各カットの案を原稿にします。声の選定は制作側です。読みが割れやすい語は、かなで渡してよいです。霞が関（かすみがせき）、体裁（ていさい）、吟味（ぎんみ）、競合（きょうごう）、補助（ほじょ）、4種類（よんしゅるい）、削って（けずって）。</p>
+<p>有料の音楽生成を比較するときは、品質、時間、費用の理由を一行残して選びます。料金が未確認の生成はしません。候補の名は、Lyria 3.5（<code>GEMINI_API_KEY</code>）です。実行時に、モデルIDと提供状況と料金を確認します。キーの値は、コードにもこの指示にも書きません。</p>
+</div>
+
+<h2 id="evidence">根拠</h2>
+<p>主張、根拠、留保、画面の文言の対応は <a href="references.md">references.md</a> です。研究2件の扱いと、本人スライドの対応も、そこに書いてあります。効果の採否は <a href="effects-direction.md">effects-direction.md</a> です。このページには、採用する動きの狙いだけを残しています。</p>
+
+<h2 id="done">完成条件・確認状態</h2>
+<ul>
+<li>01と02、そして10だけで、主張と結論が伝わる。10は本人の言葉で閉じる。</li>
+<li>04の「文字が多くてよい。」と、08の「手元のレポートとして働きます」が、声と文字の両方で残る。</li>
+<li>02で壁が1行ずつ消えて「設計。」が残り、05で発表側だけが剥がれて「語り。」が残り、06で読むと聞くがぶつかって「残らない。」が残る。</li>
+<li>全編で画面全体が動き、フェードだけの切り替えや、同じ登場の連続に戻らない。文字の形は崩さない。</li>
+<li>章の表示、テロップの帯、エンドクレジット、カット番号は、映像に入らない。</li>
+<li>エンドロゴは、ライムの全面、中央、SVGのタイミング、1.5秒の保持。</li>
+<li>絵コンテ22枚を機械で見た。1280×720。安全域は左右48px、上下36px。範囲の外に出た文字は0。文字どうしの交差は0。文字と図形の交差は0。本人スライドは画像の外接を図形とし、見出しはその外に置いた。スライドの中の文字は、画像なので、この検査の文字レイヤーではない。エンドロゴの字形も、文字レイヤーには入れていない。ロゴの画面に、ロゴ以外の文字はない。</li>
+<li>本編の文字検査は制作側。0.25秒ごと。1920基準で左右64px、上下48px。線の面と青い弧の外接も取る。</li>
+<li><b>実速再生は未確認。</b>本編は未制作。冒頭（01–02）、中盤（05–06）、後半（10–11）を等速で見てから、全編と音を確認する。絵コンテの検査は、動きの合格ではない。</li>
+</ul>
+</main>
+<footer><div class="inner">企画：2026-11-13　根拠：<a href="references.md">references.md</a>　効果：<a href="effects-direction.md">effects-direction.md</a></div></footer>
+</body>
+</html>
