@@ -114,7 +114,7 @@ nav a.nav-need:hover{color:var(--white);text-decoration:underline}
 原稿：<code>dhythm/private-note</code> の <code>Zettelkasten/PermanentNote/20261023_「誰でもできる」ではなく、「基礎がある人は誰でもできる」を目指す。.md</code>（本文は同梱しない）</p>
 <div class="meta"><span>16:9・1920×1080・30fps</span><span>本編 2:10＋ロゴ 5.5秒＝2:15.5</span><span>本編9カット＋ロゴ</span><span>声 675字／画面 217字</span><span>絵コンテ20枚</span><span>音声・本編は制作工程</span><span>実速再生は未確認</span></div>
 </div><div class="strata"></div></header>
-<nav><div class="in"><a href="#claim">主張</a><a href="#viewer">視聴者</a><a href="#structure">構成と尺</a><a href="#cuts">カット表</a><span class="navsep">詳細：</span><a href="#roles">声・文字・素材</a><a href="#claim-map">主張・根拠・留保</a><a href="#handoff">企画側／制作側</a><a href="#design">デザイン</a><a href="#motion">動き</a><a href="#symbols">記号と色</a><a href="#character">キャラ設定</a><a href="#swap">素材の方針</a><a href="#assets">素材</a><a href="#sound">音</a><a href="#evidence">根拠</a><a href="#done">完成条件</a></div></nav>
+<nav><div class="in"><a href="#claim">この動画で伝える一文</a><a href="#viewer">視聴者</a><a href="#structure">構成と尺</a><a href="#cuts">カット表・絵コンテ</a><span class="navsep">詳細：</span><a href="#details">詳細（ここから下は補足）</a><a href="#roles">声・文字・素材の分担</a><a href="#claim-map">主張・根拠・留保の対応</a><a href="#handoff">企画側／制作側</a><a href="#design">デザインシステム（映像の文字・色・グリッド）</a><a href="#motion">動きの言語</a><a href="#symbols">記号と色</a><a href="#character">キャラ設定</a><a href="#swap">差し替え候補</a><a href="#assets">素材</a><a href="#sound">音</a><a href="#evidence">根拠</a><a href="#done">完成条件・確認状態</a></div></nav>
 <main>
 <h2 id="claim">この動画で伝える一文</h2>
 <div class="box accent"><p class="lead">「誰でもできる」を前提なしの万能だと捉えている人に、その仕事に必要な基礎を言葉にしてそろえる前提とセットで作ることを伝え、属人化をなくすことと、積み重ねた努力を軽く扱わないことは両立するという手応えを残す。</p></div>
@@ -402,7 +402,7 @@ nav a.nav-need:hover{color:var(--white);text-decoration:underline}
 <p>企画と絵コンテはこの一式です。音声と本編は制作側が担当します。画像や動画が追加で必要になったら、必要な内容を企画側へ返します。制作側は動画AIで新規の素材を作りません。</p>
 <div class="box"><b>実装の推奨：</b>Remotion＋three.js。02で輪を奥行きに置き、広がる輪が基礎の輪に当たって止まるために使います。05の層の厚み、09の左右の語の前後にも使えます。文字は DOM／CSS の行マスクと詰め組で組み、輪や面のカメラは図の層だけに掛けます。文字の塊も移動と拡大をします。状態はフレーム時刻から決め、実時間の物理や <code>requestAnimationFrame</code> のループを本編の動きにしません。</div>
 
-<h2 id="design">デザインシステム（動画本編）</h2>
+<h2 id="design">デザインシステム（映像の文字・色・グリッド）</h2>
 <p>紙色 #F4F0E6、墨 #1A1814、灰 #5C574E、まだ決まっていない範囲の灰 #7A7468、基礎と基準の藍 #163A4A、手順の緑灰 #2E6B4E、経験の時間の粘土色 #8A5A3C。ライム #d2ff1a はロゴだけに使います。文字は Noto Sans JP、見出し700–900、補足400–500。制作側が OFL に沿って用意します。このフォルダには同梱しません。企画書の配色とは別です。</p>
 <div class="tablewrap"><table><thead><tr><th>段</th><th>1920×1080の参考値</th><th>用途</th></tr></thead><tbody>
 <tr><td>大きな語</td><td>160–220px</td><td>01の「誰でもできる。」、05の縦の「時間」、09の「誰でもできる。」</td></tr>
@@ -435,11 +435,11 @@ nav a.nav-need:hover{color:var(--white);text-decoration:underline}
 <h2 id="character">キャラ設定</h2>
 <p>人物、顔、手、吹き出しの尾は描きません。04の依頼は言葉だけです。02の声にある「中学生まで」は、原稿の「極端に言えば」の範囲を言うだけで、その姿は描きません。上司も、採用する人も、育てる人も、点や人型にしません。</p>
 
-<h2 id="swap">素材の方針</h2>
+<h2 id="swap">差し替え候補</h2>
 <p>画像も動画も使いません。範囲が止まること、経験の時間が厚くなること、基準の線は、制作側の図形で描きます。</p>
 <p>積み木の5秒（土台に次の段が載る）は、基礎の上に次が載る役割として検討し、使いません。撮影は手元が入りやすく、円と線が続く作品の一部だけ質感が変わります。素材サイトの映像は利用条件が未確認で、同じ分かれ方が起きます。作画の図形で、02の止まる円と05の層がその役割を受け持ちます。AI生成の映像と画像は未承認で、この企画では生成しません。円の広がりと文字の落下はモーショングラフィックスで表現できるため、動画AIの対象にしません。</p>
 
-<h2 id="assets">採用素材と使う区間</h2>
+<h2 id="assets">素材</h2>
 <div class="tablewrap"><table><thead><tr><th>ファイル</th><th>役割</th><th>使用区間</th></tr></thead><tbody>
 <tr><td><code>assets/storyboard/cut-XX-start.webp</code> と <code>cut-XX-end.webp</code></td><td>絵コンテ20枚。1280×720、明るい紙色</td><td>本編に貼る完成素材ではない</td></tr>
 <tr><td><a href="../okady-work-logo.svg">okady-work-logo.svg</a></td><td>エンドロゴ</td><td>10の全区間。リポジトリ直下の原本。一式を移すときもこの相対位置を保つ</td></tr>
