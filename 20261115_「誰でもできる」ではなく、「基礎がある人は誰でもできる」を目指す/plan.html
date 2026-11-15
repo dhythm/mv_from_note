@@ -1,0 +1,472 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>「誰でもできる」ではなく、「基礎がある人は誰でもできる」を目指す。｜動画企画書</title><style>
+/* デジタル庁デザインシステム（DADS）のデザイントークン（@digital-go-jp/design-tokens）に沿ったスタイル。
+   20261102 の plan.html の style を複製。動画本編の配色とは別。 */
+:root{
+  --white:#ffffff;--black:#000000;
+  --gray-50:#f2f2f2;--gray-100:#e6e6e6;--gray-200:#cccccc;--gray-420:#949494;--gray-536:#767676;--gray-600:#666666;--gray-700:#4d4d4d;--gray-800:#333333;--gray-900:#1a1a1a;
+  --key-50:#e8f1fe;--key-100:#d9e6ff;--key-200:#c5d7fb;--key-900:#0017c1;--key-1000:#00118f;--key-1100:#000071;
+  --success-bg:#e6f5ec;--success-1:#259d63;--success-2:#197a4b;
+  --warning-bg:#fbf5e0;--warning-yellow-1:#b78f00;--warning-text:#806300;
+  --warning-orange-bg:#ffeee2;--warning-orange-1:#fb5b01;--warning-orange-2:#c74700;
+  --error-1:#ec0000;--focus-yellow:#ffd43d;--visited:#8b008b;
+  --font-sans:"Noto Sans JP",-apple-system,BlinkMacSystemFont,"Hiragino Sans",sans-serif;
+  --font-mono:"Noto Sans Mono","Noto Sans JP",monospace;
+  --r-4:.25rem;--r-8:.5rem;--r-12:.75rem;--r-16:1rem;--r-full:624.9375rem;
+  --elevation-1:0 2px 8px 1px rgba(0,0,0,.1),0 1px 5px 0 rgba(0,0,0,.3);
+  --ink:var(--gray-900);--line:var(--gray-200);--mut:var(--gray-700);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--white);color:var(--gray-800);font-family:var(--font-sans);font-size:1rem;font-weight:400;line-height:1.7;letter-spacing:.02em;-webkit-font-smoothing:antialiased}
+header .inner,main,nav .in,footer .inner{max-width:1120px;margin:0 auto;padding:0 24px}
+header{background:var(--white);border-bottom:1px solid var(--gray-420)}
+header .inner{padding-top:40px;padding-bottom:24px}
+.strata{height:4px;background:var(--key-900)}
+.eyebrow{display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px;font-size:.875rem;line-height:1.5;color:var(--gray-700);letter-spacing:.04em}
+h1{font-size:2.25rem;line-height:1.4;font-weight:700;color:var(--gray-900);letter-spacing:.01em;margin:16px 0 8px}
+h2{font-size:1.75rem;line-height:1.5;font-weight:700;color:var(--gray-900);margin:64px 0 24px;padding:0 0 8px;border-bottom:1px solid var(--gray-420);scroll-margin-top:72px}
+h3{font-size:1.25rem;line-height:1.5;font-weight:700;color:var(--gray-900);margin:32px 0 12px}
+.cuthead h3{margin:0}
+p{margin:0 0 16px}
+.lead{font-size:1.125rem;line-height:1.6;font-weight:700;color:var(--gray-900)}
+.small{font-size:.875rem;line-height:1.7;color:var(--gray-700)}
+b,strong{font-weight:700;color:var(--gray-900)}
+a{color:var(--key-1000);text-decoration:underline;text-underline-offset:.2em;text-decoration-thickness:1px}
+a:visited{color:var(--visited)}
+a:hover{color:var(--key-1100);text-decoration-thickness:3px}
+a:active{color:var(--warning-orange-2)}
+a:focus-visible{outline:4px solid var(--black);outline-offset:2px;background:var(--focus-yellow);color:var(--black);border-radius:var(--r-4)}
+.chip{display:inline-block;background:var(--key-50);color:var(--key-1000);border:1px solid var(--key-900);border-radius:var(--r-4);padding:2px 8px;font-size:.875rem;line-height:1.5;font-weight:700;letter-spacing:.02em}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin:24px 0 0;padding:0;list-style:none}
+.meta span{background:var(--gray-50);border:1px solid var(--gray-200);border-radius:var(--r-4);padding:4px 12px;font-size:.875rem;line-height:1.5;color:var(--gray-800)}
+nav{position:sticky;top:0;background:var(--white);border-bottom:1px solid var(--gray-420);z-index:5;box-shadow:0 1px 4px rgba(0,0,0,.08)}
+nav .in{display:flex;flex-wrap:wrap;gap:4px 20px;padding-top:12px;padding-bottom:12px;font-size:.875rem;line-height:1.5}
+nav a,nav a:visited{color:var(--key-1000);font-weight:700}
+.box{background:var(--white);border:1px solid var(--gray-420);border-radius:var(--r-8);padding:24px;margin:16px 0}
+.box > :last-child{margin-bottom:0}
+.box.accent{background:var(--key-50);border:1px solid var(--key-900);border-left:8px solid var(--key-900)}
+.box.accent .lead{margin:0}
+.tablewrap{overflow-x:auto;margin:16px 0}
+table{border-collapse:collapse;width:100%;background:var(--white);font-size:1rem;line-height:1.7;margin:16px 0;border-top:1px solid var(--gray-420)}
+.tablewrap table{margin:0}
+th,td{border-bottom:1px solid var(--gray-420);padding:12px 16px;text-align:left;vertical-align:top}
+th{background:var(--gray-50);color:var(--gray-900);font-weight:700;font-size:.875rem;line-height:1.5;border-bottom:2px solid var(--gray-800);white-space:nowrap}
+tr:hover td{background:var(--key-50)}
+.cut{background:var(--white);border:1px solid var(--gray-420);border-radius:var(--r-16);padding:32px;margin:32px 0;scroll-margin-top:72px}
+.cuthead{display:flex;gap:16px;align-items:center;margin-bottom:24px;padding-bottom:16px;border-bottom:1px solid var(--gray-200)}
+.cuthead p{margin:4px 0 0}
+.num{font-size:1.5rem;line-height:1;font-weight:700;color:var(--white);background:var(--key-900);border-radius:var(--r-8);min-width:56px;height:56px;display:flex;align-items:center;justify-content:center;flex:none;font-feature-settings:"tnum"}
+.frames.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+.frames{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+figure{margin:0}
+figure img{width:100%;height:auto;display:block;border:1px solid var(--gray-200);border-radius:var(--r-8);background:var(--white)}
+figure a:focus-visible{display:block;background:none}
+figcaption{font-size:.875rem;line-height:1.7;margin-top:8px;color:var(--gray-800)}
+.details{display:grid;grid-template-columns:1fr 1.15fr;gap:8px 40px;margin-top:32px}
+.details p{margin:4px 0}
+.label{font-size:.875rem;line-height:1.3;font-weight:700;color:var(--key-1000);margin-top:20px;padding-left:8px;border-left:4px solid var(--key-900)}
+.details > div > .label:first-child{margin-top:0}
+.words{font-size:1.125rem;line-height:1.6;font-weight:700;color:var(--gray-900);margin:8px 0}
+.voice{background:var(--gray-50);border-left:4px solid var(--gray-600);border-radius:0 var(--r-4) var(--r-4) 0;padding:12px 16px;margin:8px 0;font-size:1rem;line-height:1.7;color:var(--gray-800)}
+ul{margin:8px 0 16px;padding-left:1.5em}
+li{margin:4px 0}
+li::marker{color:var(--gray-600)}
+code{font-family:var(--font-mono);background:var(--gray-50);border:1px solid var(--gray-200);padding:0 4px;border-radius:var(--r-4);font-size:.875em;color:var(--gray-900);word-break:break-all}
+.sw{display:inline-block;width:16px;height:16px;border-radius:var(--r-4);vertical-align:-3px;margin-right:8px;border:1px solid var(--gray-420)}
+.tag{display:inline-block;border-radius:var(--r-4);padding:0 8px;font-size:.8125rem;line-height:1.7;font-weight:700;margin-right:8px;border:1px solid}
+.t-un{background:var(--warning-bg);color:var(--warning-text);border-color:var(--warning-yellow-1)}
+footer{border-top:1px solid var(--gray-420);background:var(--gray-50);margin-top:80px;padding:24px 0;font-size:.875rem;color:var(--gray-700)}
+h2.part{margin-top:96px;padding:16px 24px;border:none;border-radius:var(--r-8);background:var(--gray-50);border-left:8px solid var(--gray-800);font-size:1.5rem}
+h2.part + .small{margin-top:-8px}
+.navsep{color:var(--gray-700);font-weight:700;padding-left:12px;border-left:1px solid var(--gray-420)}
+
+.decide{margin:24px 0 16px;padding:24px 32px;background:var(--warning-orange-bg);border:1px solid var(--warning-orange-1);border-left:8px solid var(--warning-orange-1);border-radius:var(--r-8)}
+.decide h2{margin:0 0 8px;border-bottom:none;padding:0;color:var(--gray-900)}
+.decide > .small{color:var(--gray-800)}
+.decide-list{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:12px}
+.decide-list li{display:flex;gap:12px;align-items:flex-start;background:var(--white);border:1px solid var(--gray-420);border-radius:var(--r-8);padding:12px 16px;margin:0}
+.where{display:block;font-size:.875rem;color:var(--gray-700);margin-top:4px}
+.need{display:inline-flex;align-items:center;background:var(--warning-orange-2);color:var(--white);border-radius:var(--r-4);padding:0 8px;font-size:.8125rem;line-height:1.7;font-weight:700;letter-spacing:.02em;margin:0 8px;vertical-align:.15em;white-space:nowrap}
+h2 .need,h3 .need{font-size:.875rem}
+nav a.nav-need,nav a.nav-need:visited{background:var(--warning-orange-2);color:var(--white);padding:0 8px;border-radius:var(--r-4);text-decoration:none}
+nav a.nav-need:hover{color:var(--white);text-decoration:underline}
+@media(max-width:760px){
+  header .inner,main,nav .in,footer .inner{padding:0 16px}
+  header .inner{padding-top:24px;padding-bottom:16px}
+  .frames,.frames.three,.details{grid-template-columns:1fr}
+  h1{font-size:1.75rem;line-height:1.5}
+  h2{font-size:1.5rem;margin-top:48px}
+  .cut{padding:20px;border-radius:var(--r-12)}
+   .box,.decide{padding:16px}
+  table{font-size:.875rem}
+  th,td{padding:8px 12px}
+  th{white-space:normal}
+}
+@media print{nav{position:static;box-shadow:none}.cut{break-inside:avoid}}
+
+</style>
+
+</head>
+<body>
+<header><div class="inner"><div class="eyebrow">VIDEO PLAN / 2026.11.15 <span class="chip">企画・絵コンテ</span></div>
+<h1>「誰でもできる」ではなく、「基礎がある人は誰でもできる」を目指す。</h1>
+<p class="lead">基礎を言葉にして、誰でもできる状態をつくる。</p>
+<p>元記事：<a href="https://note.com/dhythm/n/n15346471c850">「誰でもできる」ではなく、「基礎がある人は誰でもできる」を目指す。</a><br>
+原稿：<code>dhythm/private-note</code> の <code>Zettelkasten/PermanentNote/20261023_「誰でもできる」ではなく、「基礎がある人は誰でもできる」を目指す。.md</code>（本文は同梱しない）</p>
+<div class="meta"><span>16:9・1920×1080・30fps</span><span>本編 2:10＋ロゴ 5.5秒＝2:15.5</span><span>本編9カット＋ロゴ</span><span>声 675字／画面 217字</span><span>絵コンテ20枚</span><span>音声・本編は制作工程</span><span>実速再生は未確認</span></div>
+</div><div class="strata"></div></header>
+<nav><div class="in"><a href="#claim">この動画で伝える一文</a><a href="#viewer">視聴者</a><a href="#structure">構成と尺</a><a href="#cuts">カット表・絵コンテ</a><span class="navsep">詳細：</span><a href="#details">詳細（ここから下は補足）</a><a href="#roles">声・文字・素材の分担</a><a href="#claim-map">主張・根拠・留保の対応</a><a href="#handoff">企画側／制作側</a><a href="#design">デザインシステム（映像の文字・色・グリッド）</a><a href="#motion">動きの言語</a><a href="#symbols">記号と色</a><a href="#character">キャラ設定</a><a href="#swap">差し替え候補</a><a href="#assets">素材</a><a href="#sound">音</a><a href="#evidence">根拠</a><a href="#done">完成条件・確認状態</a></div></nav>
+<main>
+<h2 id="claim">この動画で伝える一文</h2>
+<div class="box accent"><p class="lead">「誰でもできる」を前提なしの万能だと捉えている人に、その仕事に必要な基礎を言葉にしてそろえる前提とセットで作ることを伝え、属人化をなくすことと、積み重ねた努力を軽く扱わないことは両立するという手応えを残す。</p></div>
+<p>01の「基礎がある人は、誰でもできる。」と、09の「基礎がある人なら、誰でもできる。」「機会を、用意する。」だけで、同じ主張が通るようにします。切り口「『誰でも』に足りない、たった7文字」は、01の画面で使います。動画の題は記事の題のままです。「基礎がある人は」は7文字で、原稿が目指す言い方そのものです。原稿は「7文字」とは書いていません。</p>
+<p>留保は03と05に置きます。手順を整理し、簡単にするのはよいこと。前提を決める。簡単に解ける方法がまだない問題もある。やり方は隠さない。育てる責務は引き受ける。届く時間は人によって違い、積み重ねた努力は安く扱わない。最後は本人の結論で閉じ、視聴者への問いかけや、両論を同じ比重にしたまとめにはしません。</p>
+
+<h2 id="viewer">視聴者</h2>
+<p>手順書や引き継ぎで「誰がやってもできるようにしてほしい」と言う人、属人化を減らしたい人。見終わったあと、その仕事に必要な基礎を言葉にし、基準を満たした人へ渡すことと、その基礎を身につける機会を用意することを、セットで考えられるようにします。</p>
+
+<h2 id="structure">構成と尺</h2>
+<p>声は理由・留保・本人の経験の範囲を、文字は主張と決め語を、図形は範囲・基準・時間の厚みを受け持ちます。全文字幕は足しません。</p>
+<p>本編130秒、全体135.5秒です。声は675字。5.6字/秒を仮の読み速度とすると約120.5秒です。残りの約10秒は、01で7文字がはまる間、02で円が止まる間、09で結論を受け取る間に寄せます。5.6字/秒は、過去の日本語ナレーションの実測（約5.5〜5.7字/秒）に合わせた目安で、語の読みと間で実測は変わります。制作側が声と画を合わせて調整します。3分には伸ばしません。尺が足りなければ、02の例示と08の分野の説明から詰め、01の主張、03と05の留保、09の結論は残します。</p>
+<div class="tablewrap"><table><thead><tr><th>カット</th><th>区間</th><th>この区間で分かってほしいこと</th><th>声／画面</th></tr></thead><tbody>
+<tr><td><a href="#cut-01">01 たった7文字。</a></td><td>0:00–0:13（13秒）</td><td>誰でもできる方向には賛成。足りない条件がはまる</td><td>61字／33字</td></tr>
+<tr><td><a href="#cut-02">02 基礎は、要る。</a></td><td>0:13–0:28（15秒）</td><td>誰でもの範囲は、基礎を言葉にしたところで区切る</td><td>71字／10字</td></tr>
+<tr><td><a href="#cut-03">03 前提を、決める。</a></td><td>0:28–0:41（13秒）</td><td>簡単にするのはよい。前提の前に細かくしない</td><td>72字／15字</td></tr>
+<tr><td><a href="#cut-04">04 同じ力は、すぐ渡らない。</a></td><td>0:41–0:53（12秒）</td><td>人のコピーを頼まれても、同じ力はすぐ渡らない</td><td>63字／25字</td></tr>
+<tr><td><a href="#cut-05">05 時間を、含めて。</a></td><td>0:53–1:08（15秒）</td><td>隠さない。責務は引き受ける。時間と努力は残す</td><td>79字／20字</td></tr>
+<tr><td><a href="#cut-06">06 この領域なら。</a></td><td>1:08–1:22（14秒）</td><td>人の全体か、仕事の一部かを決める</td><td>73字／21字</td></tr>
+<tr><td><a href="#cut-07">07 採用する。育てる。</a></td><td>1:22–1:37（15秒）</td><td>同じ基準の上で採用し、育てる。力は課題で変わる</td><td>82字／26字</td></tr>
+<tr><td><a href="#cut-08">08 基礎の共有も、属人化をなくす。</a></td><td>1:37–1:53（16秒）</td><td>業務の知識も含めて基礎を共有する</td><td>90字／28字</td></tr>
+<tr><td><a href="#cut-09">09 機会を、用意する。</a></td><td>1:53–2:10（17秒）</td><td>努力の尊重と引き継ぎは両立する</td><td>84字／39字</td></tr>
+<tr><td><a href="#cut-10">10 エンドロゴ</a></td><td>2:10–2:15.5（5.5秒）</td><td>制作表示</td><td>0字／0字</td></tr>
+</tbody></table></div>
+<p class="small">字数は空白・改行を除き、句読点を含みます。画面は各カットの「画面の文字」に掲げた文言の合計です。同一文言の再登場はカットごとに数えます。</p>
+
+<h2 id="cuts">カット表・絵コンテ</h2>
+<p>各カットの開始と終了を画像で示します。コマ画は構図の設計資料です。番号、はじめ、おわりは画像の外だけに書きます。章表示、テロップ帯、エンドクレジットは入れません。秒数・位置・角度は参考値です。制作側は<a href="#motion">動きの狙い</a>と可読性を満たす方法を選べます。大きな画面運動を、入口と出口だけに限定しません。</p>
+
+<section class="cut" id="cut-01"><div class="cuthead"><div class="num">01</div><div><h3>たった7文字。</h3><p class="small">0:00–0:13 / 13秒 ・ 主張 ・ 声61字／画面33字</p></div></div>
+<div class="frames"><figure><a href="assets/storyboard/cut-01-start.webp"><img src="assets/storyboard/cut-01-start.webp" width="1280" height="720" alt="上に「誰でも」に足りない、たった7文字。空中の「基礎がある人は」と、下の「誰でもできる」。"></a><figcaption><b>はじめ</b>　「誰でもできる」の上に、7文字の塊が空中にある。</figcaption></figure><figure><a href="assets/storyboard/cut-01-end.webp"><img src="assets/storyboard/cut-01-end.webp" width="1280" height="720" alt="「基礎がある人は、」が上に、「誰でもできる。」が下にはまっている。"></a><figcaption><b>おわり</b>　7文字がはまって、「基礎がある人は、誰でもできる。」になる。</figcaption></figure></div>
+<div class="details"><div>
+<div class="label">画面の文字（表示順）</div>
+<p class="words">「誰でも」に足りない、<br>たった7文字。<br>基礎がある人は、<br>誰でもできる。</p>
+<div class="label">ナレーション</div>
+<p class="voice">「誰がやってもできるようにしてほしい」。その方向には、賛成です。足りないのは、たった7文字。基礎がある人は、誰でもできる。</p>
+<div class="label">字組みと構図</div>
+<p>はじめは左上の切り口と、中央で分かれた二段。おわりは切り口が退き、藍の条件と墨の結論が画面の中央を二段で占める。7文字は一つの塊で、1字には分けません。</p>
+</div><div>
+<div class="label">文字・画面全体の動きと次への接続</div>
+<ul>
+<li>「誰でもできる」が行のマスクから大きく入る。その上で「たった7文字。」が着地し、声の「たった7文字」に合う。</li>
+<li>「基礎がある人は」が塊のまま上から落ち、行が右へ開いた隙間にはまる。着地は声の「基礎がある人は」。字形は崩さない。</li>
+<li>読む間も二段を一つの塊として、わずかに寄せて拡大する。1字ずつの揺れはしない。</li>
+<li>はまってできた二段を、02の円の中心へ押し出す。</li>
+</ul>
+<div class="label">カメラ</div>
+<p>図はまだ置かない。文字の塊の落下と押し出しが画面全体の運動です。寄りのカメラは02の輪から掛けます。</p>
+<div class="label">素材と扱い</div>
+<p>文字だけ。引用符の中の依頼は、原稿の「誰がやってもできるようにしてほしい」です。</p>
+</div></div></section>
+
+<section class="cut" id="cut-02"><div class="cuthead"><div class="num">02</div><div><h3>基礎は、要る。</h3><p class="small">0:13–0:28 / 15秒 ・ 範囲 ・ 声71字／画面10字</p></div></div>
+<div class="frames"><figure><a href="assets/storyboard/cut-02-start.webp"><img src="assets/storyboard/cut-02-start.webp" width="1280" height="720" alt="画面の外まではみ出す同心円の中心に「誰でも」。"></a><figcaption><b>はじめ</b>　「誰でも」の円が、画面の外まで広がり続けている。</figcaption></figure><figure><a href="assets/storyboard/cut-02-end.webp"><img src="assets/storyboard/cut-02-end.webp" width="1280" height="720" alt="画面内で止まった藍の円の中に「基礎は、要る。」。"></a><figcaption><b>おわり</b>　円は藍の輪で止まり、中に「基礎は、要る。」。</figcaption></figure></div>
+<div class="details"><div>
+<div class="label">画面の文字（表示順）</div>
+<p class="words">誰でも<br>基礎は、要る。</p>
+<div class="label">ナレーション</div>
+<p class="voice">経験者なのか、来たばかりの人なのか。極端に言えば、中学生まで含むのか。前提が変われば、説明も変わります。基礎まで不要にすることとは、分けます。</p>
+<div class="label">字組みと構図</div>
+<p>01の横二段から、円の中心の一語へ。おわりは円が画面の中に収まり、語は輪の内側だけに置きます。円は「誰でも」の範囲で、人の姿ではありません。</p>
+</div><div>
+<div class="label">文字・画面全体の動きと次への接続</div>
+<ul>
+<li>灰の輪が手前へ広がり続ける。近い輪ほど大きく動く。いちばん外の輪は画面の外へ出たまま止まらない。</li>
+<li>声の「中学生まで」で範囲の広がりを見せ、声の「分けます」で藍の輪が描き終わって止まる。「基礎は、要る。」がその内側に着地する。</li>
+<li>止まったあとも、輪と語の塊を一緒にゆっくり寄せ、静止画の切り替えにしない。</li>
+<li>止まった輪の縁が、03の基準線の垂直へ折れ曲がる。</li>
+</ul>
+<div class="label">カメラ</div>
+<p>輪の層だけを、広がりの方向へ進めて、当たった位置で止める。文字は正面の層のまま、輪に切れない。</p>
+<div class="label">素材と扱い</div>
+<p>図形と文字。原稿に円という語はない。範囲が基礎で区切られることの絵です。対応は <a href="references.md">references.md</a>。</p>
+</div></div></section>
+
+<section class="cut" id="cut-03"><div class="cuthead"><div class="num">03</div><div><h3>前提を、決める。</h3><p class="small">0:28–0:41 / 13秒 ・ 留保 ・ 声72字／画面15字</p></div></div>
+<div class="frames"><figure><a href="assets/storyboard/cut-03-start.webp"><img src="assets/storyboard/cut-03-start.webp" width="1280" height="720" alt="左に短くなっていく緑の線、右に「簡単に、する。」。"></a><figcaption><b>はじめ</b>　手順の線が短くなり、右に「簡単に、する。」。</figcaption></figure><figure><a href="assets/storyboard/cut-03-end.webp"><img src="assets/storyboard/cut-03-end.webp" width="1280" height="720" alt="緑の線が藍の縦線で止まり、右に「前提を、決める。」。"></a><figcaption><b>おわり</b>　手順は藍の線で止まり、「前提を、決める。」。</figcaption></figure></div>
+<div class="details"><div>
+<div class="label">画面の文字（表示順）</div>
+<p class="words">簡単に、する。<br>前提を、決める。</p>
+<div class="label">ナレーション</div>
+<p class="voice">手順を整理し、簡単にするのはよいことです。前提を決めないまま細かくすると、説明に終わりが見えません。簡単に解ける方法が、まだない問題もあります。</p>
+<div class="label">字組みと構図</div>
+<p>左の手順、右の語。おわりは左に止まった手順、中央に縦の基準、右に決め語。円はここには出しません。簡単にすることを、否定の色にはしません。</p>
+</div><div>
+<div class="label">文字・画面全体の動きと次への接続</div>
+<ul>
+<li>緑灰の線が左から段になって短くなる。「簡単に、する。」は声の「よいことです」に合わせて入る。</li>
+<li>線が増え続けるのを、縦の藍の線が横切って止める。「前提を、決める。」は声の「前提を決めないまま」の着地に合わせる。</li>
+<li>読む間、止まった線の列と基準線を逆方向へゆっくり流す。</li>
+<li>縦の基準線が横へ倒れて、07で同じ線として戻る予告を残し、04の余白へ抜ける。</li>
+</ul>
+<div class="label">カメラ</div>
+<p>増える線を横へ追い、基準線が入ったところで線の切れ目へ寄る。</p>
+<div class="label">素材と扱い</div>
+<p>図形と文字。留保は、簡単にすること自体を悪にしないことと、まだ簡単に解けない問題があることです。</p>
+</div></div></section>
+
+<section class="cut" id="cut-04"><div class="cuthead"><div class="num">04</div><div><h3>同じ力は、すぐ渡らない。</h3><p class="small">0:41–0:53 / 12秒 ・ 言葉だけの依頼 ・ 声63字／画面25字</p></div></div>
+<div class="frames"><figure><a href="assets/storyboard/cut-04-start.webp"><img src="assets/storyboard/cut-04-start.webp" width="1280" height="720" alt="広い余白に、灰の「お前のコピーを」。人の姿はない。"></a><figcaption><b>はじめ</b>　灰の「お前のコピーを」。人の姿はない。</figcaption></figure><figure><a href="assets/storyboard/cut-04-end.webp"><img src="assets/storyboard/cut-04-end.webp" width="1280" height="720" alt="上に小さな引用、下に大きな「同じ力は、すぐ渡らない。」。"></a><figcaption><b>おわり</b>　引用は小さく残り、答えの二行が大きくなる。</figcaption></figure></div>
+<div class="details"><div>
+<div class="label">画面の文字（表示順）</div>
+<p class="words">お前のコピーを<br>作れないか。<br>同じ力は、<br>すぐ渡らない。</p>
+<div class="label">ナレーション</div>
+<p class="voice">上司から、「お前のコピーを作れないか」と頼まれました。評価はありがたかった。教えるだけで、同じ力がすぐ渡る注文ではありません。</p>
+<div class="label">字組みと構図</div>
+<p>はじめは左の一句と、右の大きな余白。余白は、人を描かないための空きです。おわりは上に灰の引用、下に墨の答え。吹き出しの尾は付けません。</p>
+</div><div>
+<div class="label">文字・画面全体の動きと次への接続</div>
+<ul>
+<li>引用の一行が左から入り、声の「お前のコピーを作れないか」と一緒に「作れないか。」が下へ続く。</li>
+<li>答えの二行が右から大きく入り、声の「同じ力がすぐ渡る」に着地する。引用は小さく上へ退く。</li>
+<li>読む間、答えの塊を左へ、引用を逆へ流し、余白が閉じないようにする。</li>
+<li>答えの塊が右へ押し出され、05の縦の「時間」になる。</li>
+</ul>
+<div class="label">カメラ</div>
+<p>引用の行を横に追い、答えが入るとき画面の重心を下へ移す。人物のいない余白を、人の立ち位置として使わない。</p>
+<div class="label">素材と扱い</div>
+<p>文字だけ。会社名は出さない。「同じ力は、すぐ渡らない。」は引用ではなく、原稿の要約です。</p>
+</div></div></section>
+
+<section class="cut" id="cut-05"><div class="cuthead"><div class="num">05</div><div><h3>時間を、含めて。</h3><p class="small">0:53–1:08 / 15秒 ・ 留保 ・ 声79字／画面20字</p></div></div>
+<div class="frames"><figure><a href="assets/storyboard/cut-05-start.webp"><img src="assets/storyboard/cut-05-start.webp" width="1280" height="720" alt="横組みの「隠すわけでは、ない。」。"></a><figcaption><b>はじめ</b>　横組みの「隠すわけでは、ない。」。</figcaption></figure><figure><a href="assets/storyboard/cut-05-end.webp"><img src="assets/storyboard/cut-05-end.webp" width="1280" height="720" alt="右に縦の「時間」、左に「含めて、考える。」、下に厚みの層。"></a><figcaption><b>おわり</b>　縦の「時間」と「含めて、考える。」。下の層は経験の厚み。</figcaption></figure></div>
+<div class="details"><div>
+<div class="label">画面の文字（表示順）</div>
+<p class="words">隠すわけでは、ない。<br>時間<br>含めて、考える。</p>
+<div class="label">ナレーション</div>
+<p class="voice">やり方を隠したいわけではありません。伝えられることは、伝えていきます。育てる責務は、引き受けます。届く時間は人によって違い、積み重ねた努力を安くは扱いません。</p>
+<div class="label">字組みと構図</div>
+<p>はじめは横の一文。おわりは右の縦二文字が主役で、左に横の続き、下に層。縦は右から読むので、「時間を含めて、考える。」になります。層は円でも、基準線でもありません。</p>
+</div><div>
+<div class="label">文字・画面全体の動きと次への接続</div>
+<ul>
+<li>「隠すわけでは、ない。」が行のマスクで入り、声の「隠したいわけではありません」に合う。</li>
+<li>その行が左へ退き、縦の「時間」が右から立つ。着地は声の「届く時間」。下の層が一段ずつ厚くなる。</li>
+<li>「含めて、考える。」が左から入る。読む間、層は厚みを増し続け、文字は正面のまま。</li>
+<li>層の端が、06の広い範囲の線へ伸びる。</li>
+</ul>
+<div class="label">カメラ</div>
+<p>層の厚みが見えるよう、図の層だけを少し回り込む。読ませる語は床に寝かせない。</p>
+<div class="label">素材と扱い</div>
+<p>図形と文字。学歴の話は出しません。層は経験の時間で、積み木の映像ではありません。</p>
+</div></div></section>
+
+<section class="cut" id="cut-06"><div class="cuthead"><div class="num">06</div><div><h3>この領域なら。</h3><p class="small">1:08–1:22 / 14秒 ・ 範囲を決める ・ 声73字／画面21字</p></div></div>
+<div class="frames"><figure><a href="assets/storyboard/cut-06-start.webp"><img src="assets/storyboard/cut-06-start.webp" width="1280" height="720" alt="上に「人を、丸ごと？」、下に画面幅の長い線。"></a><figcaption><b>はじめ</b>　「人を、丸ごと？」と、端まで続く線。</figcaption></figure><figure><a href="assets/storyboard/cut-06-end.webp"><img src="assets/storyboard/cut-06-end.webp" width="1280" height="720" alt="線の一部が括られ、「この領域なら、」「一部で、よい。」。"></a><figcaption><b>おわり</b>　線の一部が括られ、「この領域なら、」「一部で、よい。」。</figcaption></figure></div>
+<div class="details"><div>
+<div class="label">画面の文字（表示順）</div>
+<p class="words">人を、丸ごと？<br>この領域なら、<br>一部で、よい。</p>
+<div class="label">ナレーション</div>
+<p class="voice">育てるなら、どの領域で何ができるようになるかを決めます。人を丸ごと再現するのか、一部を引き継ぐのか。範囲が決まれば、中身も時間も具体的になります。</p>
+<div class="label">字組みと構図</div>
+<p>上の問いと、下の端まで続く線。おわりは問いが退き、線は中央の一区間だけになる。上に藍の「この領域なら、」、下に「一部で、よい。」。05の層とは別の形です。</p>
+</div><div>
+<div class="label">文字・画面全体の動きと次への接続</div>
+<ul>
+<li>「人を、丸ごと？」と長い線が入り、声の「人を丸ごと再現するのか」に合う。</li>
+<li>線の両端が中央へ縮み、括りの縦線が描かれて止まる。止まりは声の「範囲が決まれば」。</li>
+<li>読む間、括られた区間の中を視線が横へ移動し、区間の外は空いたまま。</li>
+<li>括りの横線が水平のまま07の基準線へ渡る。</li>
+</ul>
+<div class="label">カメラ</div>
+<p>長い線の上を横へ進み、括りができた位置で止まる。</p>
+<div class="label">素材と扱い</div>
+<p>図形と文字。一部を引き継げば常に足りる、という結論にはしません。</p>
+</div></div></section>
+
+<section class="cut" id="cut-07"><div class="cuthead"><div class="num">07</div><div><h3>採用する。育てる。</h3><p class="small">1:22–1:37 / 15秒 ・ 基準 ・ 声82字／画面26字</p></div></div>
+<div class="frames"><figure><a href="assets/storyboard/cut-07-start.webp"><img src="assets/storyboard/cut-07-start.webp" width="1280" height="720" alt="上に「基準を満たした人なら」、下に一本の基準線。"></a><figcaption><b>はじめ</b>　「基準を満たした人なら」と、下の一本線。</figcaption></figure><figure><a href="assets/storyboard/cut-07-end.webp"><img src="assets/storyboard/cut-07-end.webp" width="1280" height="720" alt="左に「採用する。」、右に「育てる。」、小さく「力も、変わる。」、下に同じ線。"></a><figcaption><b>おわり</b>　同じ線の上に「採用する。」と「育てる。」。「力も、変わる。」。</figcaption></figure></div>
+<div class="details"><div>
+<div class="label">画面の文字（表示順）</div>
+<p class="words">基準を満たした人なら<br>採用する。<br>育てる。<br>力も、変わる。</p>
+<div class="label">ナレーション</div>
+<p class="voice">基準を満たした人なら誰でもできる、を目指していました。採用も、最低限の知識や技能が基準です。難しい課題では、必要な力も変わります。手順だけでなく、採用し、育てます。</p>
+<div class="label">字組みと構図</div>
+<p>はじめは上の一文と、下の一本線。おわりは左の墨「採用する。」と右の藍「育てる。」が同じ高さで並び、その下に灰の留保。人の点や顔は置きません。</p>
+</div><div>
+<div class="label">文字・画面全体の動きと次への接続</div>
+<ul>
+<li>「基準を満たした人なら」が線の上に入る。線は03で倒した基準線の続きです。</li>
+<li>一文が左右へ分かれ、「採用する。」と「育てる。」になる。着地は声の「採用し、育てます」。</li>
+<li>「力も、変わる。」は声の「必要な力も変わります」に合わせ、決め語より小さく残す。基準が一つに固定された絵で終わらせない。</li>
+<li>線が08の面の下辺へ太くなる。</li>
+</ul>
+<div class="label">カメラ</div>
+<p>線に沿って引き、二つの語が同じ線の上に並ぶところまで見せる。</p>
+<div class="label">素材と扱い</div>
+<p>図形と文字。基準の中身を、この動画で新しい数値や資格として定めません。</p>
+</div></div></section>
+
+<section class="cut" id="cut-08"><div class="cuthead"><div class="num">08</div><div><h3>基礎の共有も、属人化をなくす。</h3><p class="small">1:37–1:53 / 16秒 ・ 基礎の共有 ・ 声90字／画面28字</p></div></div>
+<div class="frames"><figure><a href="assets/storyboard/cut-08-start.webp"><img src="assets/storyboard/cut-08-start.webp" width="1280" height="720" alt="左に灰の面と藍の面。右に「技術だけでは、」「業務の知識。」。"></a><figcaption><b>はじめ</b>　灰の面の横に「技術だけでは、」。藍の面の横に「業務の知識。」。</figcaption></figure><figure><a href="assets/storyboard/cut-08-end.webp"><img src="assets/storyboard/cut-08-end.webp" width="1280" height="720" alt="左の藍の面から線が伸び、右に「基礎の共有も、属人化をなくす。」。"></a><figcaption><b>おわり</b>　面から線が伸び、「基礎の共有も、属人化をなくす。」。</figcaption></figure></div>
+<div class="details"><div>
+<div class="label">画面の文字（表示順）</div>
+<p class="words">技術だけでは、<br>業務の知識。<br>基礎の共有も、<br>属人化をなくす。</p>
+<div class="label">ナレーション</div>
+<p class="voice">私の関わった金融や行政では、業務の知識も要りました。なければ、学んでもらう。すぐできるようにするだけが、方法ではありません。基礎を共有して引き継ぐ。それも、属人化をなくす仕事です。</p>
+<div class="label">字組みと構図</div>
+<p>はじめは左の二面と、右の二段。面の中に字は入れません。おわりは左の一つの藍の面から短い線が右へ伸び、その先に二段の結論。線は字の手前で止まります。</p>
+</div><div>
+<div class="label">文字・画面全体の動きと次への接続</div>
+<ul>
+<li>灰の面と「技術だけでは、」が先に入る。藍の面と「業務の知識。」が下から迫り、声の「業務の知識」に合う。</li>
+<li>二面が一つの面に重なり、線が右へ描かれる。「属人化をなくす。」は声の「属人化をなくす仕事」に着地する。</li>
+<li>読む間、面は左へ、文字の塊は逆へ流れ、線が字に届かない間隔を保つ。</li>
+<li>面が左右に割れ、09の「努力」と「引き継ぐ」になる。</li>
+</ul>
+<div class="label">カメラ</div>
+<p>業務の面へ寄り、線が伸びる方向へ進む。文字の層は面のカメラに乗せない。</p>
+<div class="label">素材と扱い</div>
+<p>図形と文字。金融と行政は、声で「私の関わった」範囲に限る。組織名とロゴは出さない。</p>
+</div></div></section>
+
+<section class="cut" id="cut-09"><div class="cuthead"><div class="num">09</div><div><h3>機会を、用意する。</h3><p class="small">1:53–2:10 / 17秒 ・ 本人の結論 ・ 声84字／画面39字</p></div></div>
+<div class="frames"><figure><a href="assets/storyboard/cut-09-start.webp"><img src="assets/storyboard/cut-09-start.webp" width="1280" height="720" alt="左に「努力を、尊重する。」、右に「引き継ぐ。」。離れている。"></a><figcaption><b>はじめ</b>　左に「努力を、尊重する。」、右に「引き継ぐ。」。</figcaption></figure><figure><a href="assets/storyboard/cut-09-end.webp"><img src="assets/storyboard/cut-09-end.webp" width="1280" height="720" alt="上に「基礎がある人なら、誰でもできる。」。下に努力の尊重と、機会を用意する。小さな輪。"></a><figcaption><b>おわり</b>　上に結論。下に尊重と機会。小さな輪は、02で止まった範囲。</figcaption></figure></div>
+<div class="details"><div>
+<div class="label">画面の文字（表示順）</div>
+<p class="words">努力を、尊重する。<br>引き継ぐ。<br>基礎がある人なら、<br>誰でもできる。<br>機会を、用意する。</p>
+<div class="label">ナレーション</div>
+<p class="voice">道を開いた人の努力を尊重することと、仕事を引き継ぐことは、両立します。目指すのは、基礎がある人なら誰でもできる状態。その基礎を身につける機会を、組織が用意することです。</p>
+<div class="label">字組みと構図</div>
+<p>はじめは左右に離れた二つの語。おわりは上の二段が主役で、下に灰の「努力を、尊重する。」と墨の「機会を、用意する。」。下中央の小さな輪は、02の止まった範囲の再登場です。新しい意味は持たせません。</p>
+</div><div>
+<div class="label">文字・画面全体の動きと次への接続</div>
+<ul>
+<li>左右の語が異なる深さから中央の方向へ進む。ぶつかって消えるのではなく、上の行の下に残る。</li>
+<li>「基礎がある人なら、」が上から落ち、「誰でもできる。」にはまる。01と同じ割り込みで、声の「誰でもできる状態」に着地する。</li>
+<li>「機会を、用意する。」は声の「用意すること」に合わせ、右下に残す。読む間、上の二段と下の二つの語を逆方向へ流す。</li>
+<li>声の結びを受け取る間のあと、画面全体を横へ振ってライムの全面へ渡す。白フラッシュは使わない。</li>
+</ul>
+<div class="label">カメラ</div>
+<p>左右の語へ寄ってから引き、上の結論が画面幅を使うところまで戻す。最後の振りはロゴの動きの前に終える。</p>
+<div class="label">素材と扱い</div>
+<p>図形と文字。01の結論を、本人の「機会を用意する」まで含めて閉じます。</p>
+</div></div></section>
+
+<section class="cut" id="cut-10"><div class="cuthead"><div class="num">10</div><div><h3>エンドロゴ</h3><p class="small">2:10–2:15.5 / 5.5秒 ・ 制作表示 ・ 声0字／画面0字</p></div></div>
+<div class="frames"><figure><a href="assets/storyboard/cut-10-start.webp"><img src="assets/storyboard/cut-10-start.webp" width="1280" height="720" alt="ライムの全面。o が上から落ちてくる途中。"></a><figcaption><b>はじめ</b>　ライムの全面。o が落ちてくる途中。</figcaption></figure><figure><a href="assets/storyboard/cut-10-end.webp"><img src="assets/storyboard/cut-10-end.webp" width="1280" height="720" alt="ライムの中央に、完成した原本のロゴ。"></a><figcaption><b>おわり</b>　中央に完成した原本のロゴ。ほかの文言はない。</figcaption></figure></div>
+<div class="details"><div>
+<div class="label">画面の文字（表示順）</div>
+<p class="words">なし（ロゴのみ）</p>
+<div class="label">ナレーション</div>
+<p class="voice">なし</p>
+<div class="label">字組みと構図</div>
+<p>背景は #d2ff1a。ロゴは中央。形、書体、色、比率は変えない。本編の要素は重ねません。</p>
+</div><div>
+<div class="label">文字・画面全体の動きと次への接続</div>
+<ul>
+<li>0–2.6秒：原本 SVG の o の落下、バウンド、定位置への移動。</li>
+<li>2.6–3.2秒：全体が左へスライド。3.0–4.0秒：「.work」が一文字ずつ出現。</li>
+<li>4.0–5.5秒：完成状態を1.5秒保持する。BGMもここで収める。</li>
+</ul>
+<div class="label">カメラ</div>
+<p>ロゴの区間は固定。本編からの振りは、この動きが始まる前に終えます。</p>
+<div class="label">素材と扱い</div>
+<p>リポジトリ直下の <a href="../okady-work-logo.svg">okady-work-logo.svg</a>。フレーム時刻から再現します。</p>
+</div></div></section>
+
+<h2 id="details" class="part">詳細（ここから下は補足）</h2>
+
+<h2 id="roles">声・文字・素材の分担</h2>
+<div class="tablewrap"><table><thead><tr><th>担当</th><th>受け持つこと</th><th>扱い</th></tr></thead><tbody>
+<tr><td>声</td><td>賛成であること、範囲の具体、留保、引用、本人の経験の範囲、結論</td><td>画面の短い語と意味を合わせる。画面の全文の朗読にはしない。カット単位のまとまった文で渡す。</td></tr>
+<tr><td>文字</td><td>7文字の条件、基礎は要ること、前提、コピーへの答え、時間、範囲、採用と育成、結論</td><td>説明の全文は載せない。主語が要る場面は二段まで使う。</td></tr>
+<tr><td>図形</td><td>広がって止まる範囲、手順、基準線、経験の厚み、育てる範囲、技術と業務</td><td>一つの形に複数の意味を持たせない。対応は<a href="#symbols">記号と色</a>。</td></tr>
+</tbody></table></div>
+<p>ナレーションありの構成です。音声の制作は制作側の担当で、音源がまだ無いことは引き渡しを止める理由にしません。</p>
+
+<h2 id="claim-map">主張・根拠・留保の対応</h2>
+<div class="tablewrap"><table><thead><tr><th>役割</th><th>内容</th><th>カット</th></tr></thead><tbody>
+<tr><td>主張</td><td>誰でもできる状態は、必要な基礎を言葉にしてそろえることとセットで作る。</td><td>01・02・09</td></tr>
+<tr><td>留保</td><td>簡単にする工夫と手順の整理はよい。前提を決める。まだ簡単に解けない問題もある。</td><td>03</td></tr>
+<tr><td>留保</td><td>やり方は隠さない。育てる責務は引き受ける。届く時間は人による。努力を安く扱わない。</td><td>05</td></tr>
+<tr><td>根拠</td><td>人のコピーを頼まれても、同じ力は教えるだけではすぐ渡らない。範囲を決め、基準の上で採用し育てる。</td><td>04・06・07</td></tr>
+<tr><td>根拠</td><td>業務の知識も含めて基礎を共有することが、属人化をなくすことでもある。</td><td>08</td></tr>
+<tr><td>結論</td><td>努力の尊重と引き継ぎは両立する。基礎がある人なら誰でもできる状態と、その機会を組織が用意する。</td><td>09</td></tr>
+</tbody></table></div>
+<p>原稿の文との対応、引用と要約の区別は <a href="references.md">references.md</a>。</p>
+
+<h2 id="handoff">企画側／制作側</h2>
+<div class="tablewrap"><table><thead><tr><th>企画側で用意するもの</th><th>制作側で仕上げるもの</th></tr></thead><tbody>
+<tr><td>現行の文言、声の原稿、配分、絵コンテ20枚、原稿との対応、演出の採否</td><td>three.js と文字層の実装、細かな動きと同期、声、BGM、効果音、代表区間の試作と全編の書き出し</td></tr>
+<tr><td>静止コマの文字配置の点検</td><td>動いている全カットの安全域と重なりの検査、実速再生、音の終わり方の確認</td></tr>
+</tbody></table></div>
+<p>企画と絵コンテはこの一式です。音声と本編は制作側が担当します。画像や動画が追加で必要になったら、必要な内容を企画側へ返します。制作側は動画AIで新規の素材を作りません。</p>
+<div class="box"><b>実装の推奨：</b>Remotion＋three.js。02で輪を奥行きに置き、広がる輪が基礎の輪に当たって止まるために使います。05の層の厚み、09の左右の語の前後にも使えます。文字は DOM／CSS の行マスクと詰め組で組み、輪や面のカメラは図の層だけに掛けます。文字の塊も移動と拡大をします。状態はフレーム時刻から決め、実時間の物理や <code>requestAnimationFrame</code> のループを本編の動きにしません。</div>
+
+<h2 id="design">デザインシステム（映像の文字・色・グリッド）</h2>
+<p>紙色 #F4F0E6、墨 #1A1814、灰 #5C574E、まだ決まっていない範囲の灰 #7A7468、基礎と基準の藍 #163A4A、手順の緑灰 #2E6B4E、経験の時間の粘土色 #8A5A3C。ライム #d2ff1a はロゴだけに使います。文字は Noto Sans JP、見出し700–900、補足400–500。制作側が OFL に沿って用意します。このフォルダには同梱しません。企画書の配色とは別です。</p>
+<div class="tablewrap"><table><thead><tr><th>段</th><th>1920×1080の参考値</th><th>用途</th></tr></thead><tbody>
+<tr><td>大きな語</td><td>160–220px</td><td>01の「誰でもできる。」、05の縦の「時間」、09の「誰でもできる。」</td></tr>
+<tr><td>主文</td><td>90–140px</td><td>02の「基礎は、要る。」、03の留保、04の答え、07の二つの動詞</td></tr>
+<tr><td>短い語</td><td>48–72px</td><td>04の引用、07の「力も、変わる。」、09の下段</td></tr>
+</tbody></table></div>
+<p>外側余白は96pxを目安にします。文字の安全域は左右64px、上下48px。1280×720の絵コンテでは左右48px、上下36pxです。01は二段の割り込み、02は円の中心、03は左の手順と右の語、04は余白の大きい引用、05だけ縦書き、06は線の長さの変化、07は同じ高さの二つの動詞、08は面と右の二段、09は上の結論と下の二つの語です。</p>
+
+<h2 id="motion">動きの言語</h2>
+<div class="tablewrap"><table><thead><tr><th>動作</th><th>意味と使う場所</th><th>読む間・次へのつながり</th></tr></thead><tbody>
+<tr><td>落ちてはまる</td><td>01と09。「基礎がある人は」が、「誰でもできる」の上からはまって条件になる。</td><td>塊のまま落とす。着地のあと二段を寄せ続け、次の円か横の振りへ渡す。</td></tr>
+<tr><td>広がって止まる</td><td>02。「誰でも」の範囲が、言葉にした基礎の輪で止まる。</td><td>止まったあとも輪と語を動かし、輪の縁を03の基準線へ渡す。</td></tr>
+<tr><td>線で止める・括る</td><td>03で手順を基準が止める。06で人の全体を、領域の区間へ括る。07で同じ線の上に採用と育成を置く。</td><td>線は描き終わって止まる。読む間は線と語を逆方向へ流す。</td></tr>
+<tr><td>厚み</td><td>05。経験を重ねる時間が、層として厚くなる。</td><td>層は図の層で回り、読ませる語は正面に残す。層の端を06の線へ渡す。</td></tr>
+</tbody></table></div>
+<p>拍の目安は108–116 BPM。01の着地、02の停止、06の括り、09の再着地をアクセントに合わせます。比較や留保の区間にも流れを残します。1字ずつの常時の揺れ、拍ごとの脈動、文字の崩壊は使いません。文字を読ませるために画面全体を静止させず、文量、動かす層、構図で調整します。イージングの値と秒の同期は制作側の裁量です。決め語を声のどの語に合わせるかは、各カットに書いてあります。</p>
+
+<h2 id="symbols">記号と色</h2>
+<div class="tablewrap"><table><thead><tr><th>記号</th><th>意味</th></tr></thead><tbody>
+<tr><td>墨の大きな語</td><td>本人の決め語。01と09の「誰でもできる。」、04の答え、07の「採用する。」</td></tr>
+<tr><td>藍の語・藍の輪・藍の線</td><td>言葉にして決めた基礎と基準。範囲を止める場所であり、前提の線であり、採用と育成が共有する線。人の数ではない</td></tr>
+<tr><td>灰の輪</td><td>まだ言葉になっていない「誰でも」の広がり。02で広がり、藍の輪で止まる</td></tr>
+<tr><td>緑灰の短い線</td><td>手順を整理し、簡単にすること。よいこととして置き、03の基準線で増殖を止める</td></tr>
+<tr><td>粘土色の層</td><td>本人が経験を重ねる時間の厚み。05だけ。基礎の円や積み木ではない</td></tr>
+<tr><td>括られた区間</td><td>育てる範囲を領域で決めたこと。06だけ</td></tr>
+<tr><td>灰の面と藍の面</td><td>技術と、業務の知識。08だけ。面の中に字は入れない</td></tr>
+<tr><td>灰の小さな引用</td><td>04の「お前のコピーを作れないか」。本人の結論ではない</td></tr>
+</tbody></table></div>
+
+<h2 id="character">キャラ設定</h2>
+<p>人物、顔、手、吹き出しの尾は描きません。04の依頼は言葉だけです。02の声にある「中学生まで」は、原稿の「極端に言えば」の範囲を言うだけで、その姿は描きません。上司も、採用する人も、育てる人も、点や人型にしません。</p>
+
+<h2 id="swap">差し替え候補</h2>
+<p>画像も動画も使いません。範囲が止まること、経験の時間が厚くなること、基準の線は、制作側の図形で描きます。</p>
+<p>積み木の5秒（土台に次の段が載る）は、基礎の上に次が載る役割として検討し、使いません。撮影は手元が入りやすく、円と線が続く作品の一部だけ質感が変わります。素材サイトの映像は利用条件が未確認で、同じ分かれ方が起きます。作画の図形で、02の止まる円と05の層がその役割を受け持ちます。AI生成の映像と画像は未承認で、この企画では生成しません。円の広がりと文字の落下はモーショングラフィックスで表現できるため、動画AIの対象にしません。</p>
+
+<h2 id="assets">素材</h2>
+<div class="tablewrap"><table><thead><tr><th>ファイル</th><th>役割</th><th>使用区間</th></tr></thead><tbody>
+<tr><td><code>assets/storyboard/cut-XX-start.webp</code> と <code>cut-XX-end.webp</code></td><td>絵コンテ20枚。1280×720、明るい紙色</td><td>本編に貼る完成素材ではない</td></tr>
+<tr><td><a href="../okady-work-logo.svg">okady-work-logo.svg</a></td><td>エンドロゴ</td><td>10の全区間。リポジトリ直下の原本。一式を移すときもこの相対位置を保つ</td></tr>
+</tbody></table></div>
+<p>新たに取得する写真、動画、フォントファイルはありません。Noto Sans JP は制作側が用意します。</p>
+
+<h2 id="sound">音</h2>
+<div class="box">
+<p>BGMはこの作品のために作ります。乾いた木、短い撥弦、輪郭のあるプラック。108–116 BPMを目安に、01の着地、02の停止、06の括り、09の結びを支えるアクセントを付けます。曲を遅くして、画の動きを弱めません。過去作品の音源は使わず、特に20261007の企画で雰囲気が合わないとされた音源は使いません。</p>
+<p>ナレーションは落ち着いた会話調で、カット単位の文として渡します。短い句へ細かく割って、抑揚を壊さないようにします。読みは「7文字＝ななもじ」「基礎＝きそ」「前提＝ぜんてい」「属人化＝ぞくじんか」「責務＝せきむ」「金融＝きんゆう」「行政＝ぎょうせい」。04の引用は、声でも画面でもその言葉のままです。</p>
+<p>音源はロゴの終わり2:15.5まで覆い、最後の1.5秒で収めます。効果音は、7文字の着地と円が止まる瞬間に必要な分だけ付けます。冒頭、02、05、09–10で画と合わせて試し、声を隠さないことと運動感を確認します。</p>
+<p>声、BGM、効果音のファイルは制作側が用意します。有料の音楽生成の候補は Lyria 3.5（ユーザー指定の候補名。実行時にモデルID、提供状況、料金を確認）。ローカル制作と、品質・時間・費用で比べた理由を一行残して選びます。ナレーションの候補は Gemini 3.8 Flash TTS、または Eleven v4。名称はユーザー指定の候補で、実行時に識別子を確認します。キーは環境変数から読み、値は書きません。</p>
+</div>
+
+<h2 id="evidence">根拠</h2>
+<p>原稿との対応は <a href="references.md">references.md</a>。演出候補の確認と採否は <a href="effects-direction.md">effects-direction.md</a>。採否の履歴を、本編の作業手順には混ぜません。</p>
+
+<h2 id="done">完成条件・確認状態</h2>
+<ul>
+<li>01と09で「基礎がある人は、誰でもできる」が通り、09は「機会を、用意する。」まで本人の結論で閉じる。</li>
+<li>03の留保は、簡単にすることをよいこととして残し、前提と、まだ簡単に解けない問題を声で残す。05は、隠さないこと、責務、時間の違い、努力を安く扱わないことを残す。</li>
+<li>04は言葉だけで、人物、会社名、吹き出しの尾を出さない。学歴は画面にも声にも出さない。</li>
+<li>02の円は基礎の輪で止まる。積み木の映像は使わない。一つの形に、範囲と時間と基準を兼任させない。</li>
+<li>章表示、テロップ帯、エンドクレジット、白フラッシュは入れない。エンドロゴはライムの単独画面で、原本の動き、中央、1.5秒の保持、音の終了を再生して確認する。</li>
+<li>絵コンテ20枚（1280×720）を、左右48px・上下36pxの安全域、文字同士、文字と図形（塗り、線、輪）の交差で検査した。はみ出し0、文字同士の重なり0、文字と図形の交差0。ロゴの字形はこの検査の対象外で、インクの外接は安全域の内側（開始は左392px・上139px、終了は左243px・上303px）。この検査は静止コマの配置で、本編の合格ではない。</li>
+<li>本編は未制作。実速再生は未確認。制作側は全カットを0.25秒ごとに取り、左右64px・上下48pxの安全域、文字同士、文字と図の交差を検査する。最初の試作は01→02。そのあと05、09–10、最後に全編と音を確認する。</li>
+</ul>
+</main>
+<footer><div class="inner">企画：2026-11-15　根拠：<a href="references.md">references.md</a>　演出：<a href="effects-direction.md">effects-direction.md</a></div></footer>
+</body></html>
