@@ -1,0 +1,16 @@
+Built-in image generation. Style reference: source-frame.jpg, extracted from the supplied final.mp4 at 5 seconds.
+Use case: ads-marketing.
+Create a final, exceptionally polished Japanese YouTube thumbnail, horizontal 16:9, 1920x1080 ideally.
+Reference image: the attached video frame is a STYLE REFERENCE ONLY. Follow its warm cream paper background, dense black Japanese gothic typography, restrained serious editorial feel. Do not merely reproduce the frame.
+Video subject: organizational knowledge transfer and reducing dependency on individuals requires a shared foundation. The missing seven characters are exactly 基礎がある人は. The video's opening hook is 「誰でも」に足りない、たった7文字.
+Composition: beautifully balanced, striking typographic poster. Full warm ivory background #F4F0E6; crisp dense near-black #1A1814; deep dark blue #163A4A highlight. No photography, illustrations, people, staircases, blocks, circles, icons, logos, frames, comic bursts or UI.
+EXACT TEXT, nothing else:
+Top line in bold black Japanese gothic, medium-large across top: 「誰でもできる」に
+Main center, enormous black Japanese gothic, arranged as an editorial headline: 足りない
+Next to / beneath it, a truly gigantic dark-blue numeral 7 with bold black 文字。
+The complete central phrase must read exactly 足りない7文字。
+Bottom, one broad dark blue horizontal rectangle with ivory bold Japanese gothic text inside: 基礎がある人は
+The answer line 基礎がある人は is exactly SEVEN Japanese characters. Render every character correctly. It should be very readable and look like the missing phrase being inserted into a sentence. Strong emphasis on 7, but 足りない and 文字。 must remain prominent, not small footnotes.
+Layout suggestion: top header at x~100 y~90. In middle, 足りない large on left, giant 7 on center-right, 文字。 to its right. Let 足りない sit on two lines only if necessary, but prefer one line and a huge 7. Bottom answer band at y~810, centered with generous padding, all content within 90px safe margin. Dense but not crowded. Main text fills the canvas, instantly readable at phone thumbnail size.
+Use extra-bold Noto Sans JP-like Japanese type, precise glyphs and sophisticated tight optical spacing. Flat two-dimensional print graphic; no letter extrusion, no drop shadows, no gradients. Subtle warm paper texture acceptable but almost invisible. The 7 may tilt very slightly for visual energy while Japanese stays horizontal.
+The output should look like a finished editorial thumbnail for a thoughtful Japanese business video. Accurate typography is essential.
