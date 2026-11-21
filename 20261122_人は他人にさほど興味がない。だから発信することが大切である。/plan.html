@@ -1,0 +1,453 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>人は他人にさほど興味がない。だから発信することが大切である。｜動画企画書</title><style>
+/* デジタル庁デザインシステム（DADS）のデザイントークン（@digital-go-jp/design-tokens）に沿ったスタイル。
+   20261102 の plan.html の style を複製。動画本編の配色とは別。 */
+:root{
+  --white:#ffffff;--black:#000000;
+  --gray-50:#f2f2f2;--gray-100:#e6e6e6;--gray-200:#cccccc;--gray-420:#949494;--gray-536:#767676;--gray-600:#666666;--gray-700:#4d4d4d;--gray-800:#333333;--gray-900:#1a1a1a;
+  --key-50:#e8f1fe;--key-100:#d9e6ff;--key-200:#c5d7fb;--key-900:#0017c1;--key-1000:#00118f;--key-1100:#000071;
+  --success-bg:#e6f5ec;--success-1:#259d63;--success-2:#197a4b;
+  --warning-bg:#fbf5e0;--warning-yellow-1:#b78f00;--warning-text:#806300;
+  --warning-orange-bg:#ffeee2;--warning-orange-1:#fb5b01;--warning-orange-2:#c74700;
+  --error-1:#ec0000;--focus-yellow:#ffd43d;--visited:#8b008b;
+  --font-sans:"Noto Sans JP",-apple-system,BlinkMacSystemFont,"Hiragino Sans",sans-serif;
+  --font-mono:"Noto Sans Mono","Noto Sans JP",monospace;
+  --r-4:.25rem;--r-8:.5rem;--r-12:.75rem;--r-16:1rem;--r-full:624.9375rem;
+  --elevation-1:0 2px 8px 1px rgba(0,0,0,.1),0 1px 5px 0 rgba(0,0,0,.3);
+  --ink:var(--gray-900);--line:var(--gray-200);--mut:var(--gray-700);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--white);color:var(--gray-800);font-family:var(--font-sans);font-size:1rem;font-weight:400;line-height:1.7;letter-spacing:.02em;-webkit-font-smoothing:antialiased}
+header .inner,main,nav .in,footer .inner{max-width:1120px;margin:0 auto;padding:0 24px}
+header{background:var(--white);border-bottom:1px solid var(--gray-420)}
+header .inner{padding-top:40px;padding-bottom:24px}
+.strata{height:4px;background:var(--key-900)}
+.eyebrow{display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px;font-size:.875rem;line-height:1.5;color:var(--gray-700);letter-spacing:.04em}
+h1{font-size:2.25rem;line-height:1.4;font-weight:700;color:var(--gray-900);letter-spacing:.01em;margin:16px 0 8px}
+h2{font-size:1.75rem;line-height:1.5;font-weight:700;color:var(--gray-900);margin:64px 0 24px;padding:0 0 8px;border-bottom:1px solid var(--gray-420);scroll-margin-top:72px}
+h3{font-size:1.25rem;line-height:1.5;font-weight:700;color:var(--gray-900);margin:32px 0 12px}
+.cuthead h3{margin:0}
+p{margin:0 0 16px}
+.lead{font-size:1.125rem;line-height:1.6;font-weight:700;color:var(--gray-900)}
+.small{font-size:.875rem;line-height:1.7;color:var(--gray-700)}
+b,strong{font-weight:700;color:var(--gray-900)}
+a{color:var(--key-1000);text-decoration:underline;text-underline-offset:.2em;text-decoration-thickness:1px}
+a:visited{color:var(--visited)}
+a:hover{color:var(--key-1100);text-decoration-thickness:3px}
+a:active{color:var(--warning-orange-2)}
+a:focus-visible{outline:4px solid var(--black);outline-offset:2px;background:var(--focus-yellow);color:var(--black);border-radius:var(--r-4)}
+.chip{display:inline-block;background:var(--key-50);color:var(--key-1000);border:1px solid var(--key-900);border-radius:var(--r-4);padding:2px 8px;font-size:.875rem;line-height:1.5;font-weight:700;letter-spacing:.02em}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin:24px 0 0;padding:0;list-style:none}
+.meta span{background:var(--gray-50);border:1px solid var(--gray-200);border-radius:var(--r-4);padding:4px 12px;font-size:.875rem;line-height:1.5;color:var(--gray-800)}
+nav{position:sticky;top:0;background:var(--white);border-bottom:1px solid var(--gray-420);z-index:5;box-shadow:0 1px 4px rgba(0,0,0,.08)}
+nav .in{display:flex;flex-wrap:wrap;gap:4px 20px;padding-top:12px;padding-bottom:12px;font-size:.875rem;line-height:1.5}
+nav a,nav a:visited{color:var(--key-1000);font-weight:700}
+.box{background:var(--white);border:1px solid var(--gray-420);border-radius:var(--r-8);padding:24px;margin:16px 0}
+.box > :last-child{margin-bottom:0}
+.box.accent{background:var(--key-50);border:1px solid var(--key-900);border-left:8px solid var(--key-900)}
+.box.accent .lead{margin:0}
+.tablewrap{overflow-x:auto;margin:16px 0}
+table{border-collapse:collapse;width:100%;background:var(--white);font-size:1rem;line-height:1.7;margin:16px 0;border-top:1px solid var(--gray-420)}
+.tablewrap table{margin:0}
+th,td{border-bottom:1px solid var(--gray-420);padding:12px 16px;text-align:left;vertical-align:top}
+th{background:var(--gray-50);color:var(--gray-900);font-weight:700;font-size:.875rem;line-height:1.5;border-bottom:2px solid var(--gray-800);white-space:nowrap}
+tr:hover td{background:var(--key-50)}
+.cut{background:var(--white);border:1px solid var(--gray-420);border-radius:var(--r-16);padding:32px;margin:32px 0;scroll-margin-top:72px}
+.cuthead{display:flex;gap:16px;align-items:center;margin-bottom:24px;padding-bottom:16px;border-bottom:1px solid var(--gray-200)}
+.cuthead p{margin:4px 0 0}
+.num{font-size:1.5rem;line-height:1;font-weight:700;color:var(--white);background:var(--key-900);border-radius:var(--r-8);min-width:56px;height:56px;display:flex;align-items:center;justify-content:center;flex:none;font-feature-settings:"tnum"}
+.frames.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+.frames{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+figure{margin:0}
+figure img{width:100%;height:auto;display:block;border:1px solid var(--gray-200);border-radius:var(--r-8);background:var(--white)}
+figure a:focus-visible{display:block;background:none}
+figcaption{font-size:.875rem;line-height:1.7;margin-top:8px;color:var(--gray-800)}
+.details{display:grid;grid-template-columns:1fr 1.15fr;gap:8px 40px;margin-top:32px}
+.details p{margin:4px 0}
+.label{font-size:.875rem;line-height:1.3;font-weight:700;color:var(--key-1000);margin-top:20px;padding-left:8px;border-left:4px solid var(--key-900)}
+.details > div > .label:first-child{margin-top:0}
+.words{font-size:1.125rem;line-height:1.6;font-weight:700;color:var(--gray-900);margin:8px 0}
+.voice{background:var(--gray-50);border-left:4px solid var(--gray-600);border-radius:0 var(--r-4) var(--r-4) 0;padding:12px 16px;margin:8px 0;font-size:1rem;line-height:1.7;color:var(--gray-800)}
+ul{margin:8px 0 16px;padding-left:1.5em}
+li{margin:4px 0}
+li::marker{color:var(--gray-600)}
+code{font-family:var(--font-mono);background:var(--gray-50);border:1px solid var(--gray-200);padding:0 4px;border-radius:var(--r-4);font-size:.875em;color:var(--gray-900);word-break:break-all}
+.sw{display:inline-block;width:16px;height:16px;border-radius:var(--r-4);vertical-align:-3px;margin-right:8px;border:1px solid var(--gray-420)}
+.tag{display:inline-block;border-radius:var(--r-4);padding:0 8px;font-size:.8125rem;line-height:1.7;font-weight:700;margin-right:8px;border:1px solid}
+.t-un{background:var(--warning-bg);color:var(--warning-text);border-color:var(--warning-yellow-1)}
+footer{border-top:1px solid var(--gray-420);background:var(--gray-50);margin-top:80px;padding:24px 0;font-size:.875rem;color:var(--gray-700)}
+h2.part{margin-top:96px;padding:16px 24px;border:none;border-radius:var(--r-8);background:var(--gray-50);border-left:8px solid var(--gray-800);font-size:1.5rem}
+h2.part + .small{margin-top:-8px}
+.navsep{color:var(--gray-700);font-weight:700;padding-left:12px;border-left:1px solid var(--gray-420)}
+
+.decide{margin:24px 0 16px;padding:24px 32px;background:var(--warning-orange-bg);border:1px solid var(--warning-orange-1);border-left:8px solid var(--warning-orange-1);border-radius:var(--r-8)}
+.decide h2{margin:0 0 8px;border-bottom:none;padding:0;color:var(--gray-900)}
+.decide > .small{color:var(--gray-800)}
+.decide-list{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:12px}
+.decide-list li{display:flex;gap:12px;align-items:flex-start;background:var(--white);border:1px solid var(--gray-420);border-radius:var(--r-8);padding:12px 16px;margin:0}
+.where{display:block;font-size:.875rem;color:var(--gray-700);margin-top:4px}
+.need{display:inline-flex;align-items:center;background:var(--warning-orange-2);color:var(--white);border-radius:var(--r-4);padding:0 8px;font-size:.8125rem;line-height:1.7;font-weight:700;letter-spacing:.02em;margin:0 8px;vertical-align:.15em;white-space:nowrap}
+h2 .need,h3 .need{font-size:.875rem}
+nav a.nav-need,nav a.nav-need:visited{background:var(--warning-orange-2);color:var(--white);padding:0 8px;border-radius:var(--r-4);text-decoration:none}
+nav a.nav-need:hover{color:var(--white);text-decoration:underline}
+@media(max-width:760px){
+  header .inner,main,nav .in,footer .inner{padding:0 16px}
+  header .inner{padding-top:24px;padding-bottom:16px}
+  .frames,.frames.three,.details{grid-template-columns:1fr}
+  h1{font-size:1.75rem;line-height:1.5}
+  h2{font-size:1.5rem;margin-top:48px}
+  .cut{padding:20px;border-radius:var(--r-12)}
+   .box,.decide{padding:16px}
+  table{font-size:.875rem}
+  th,td{padding:8px 12px}
+  th{white-space:normal}
+}
+@media print{nav{position:static;box-shadow:none}.cut{break-inside:avoid}}
+
+</style>
+
+</head>
+<body>
+<header><div class="inner"><div class="eyebrow">VIDEO PLAN / 2026.11.22 <span class="chip">企画・絵コンテ</span></div>
+<h1>人は他人にさほど興味がない。だから発信することが大切である。</h1>
+<p class="lead">誰も見ていないから、出していい。</p>
+<p>元記事：<a href="https://note.com/dhythm/n/nf9587c74a428">人は他人にさほど興味がない。だから発信することが大切である。</a><br>
+原稿：<code>dhythm/private-note</code> の <code>Zettelkasten/PermanentNote/20260925_人は他人にさほど興味がない。だから発信することが大切である。.md</code>（本文は同梱しない）</p>
+<div class="meta"><span>16:9・1920×1080・30fps</span><span>本編 1:48.5＋ロゴ 5.5秒＝1:54.0</span><span>本編7カット＋ロゴ</span><span>声 503字／画面 138字</span><span>絵コンテ16枚</span><span>音声・本編は制作工程</span><span>実速再生は未確認</span></div>
+</div><div class="strata"></div></header>
+<nav><div class="in"><a class="nav-need" href="#decide">未確定事項と判断してほしい点</a><a href="#claim">この動画で伝える一文</a><a href="#viewer">視聴者</a><a href="#structure">構成と尺</a><a href="#cuts">カット表・絵コンテ</a><span class="navsep">詳細：</span><a href="#details">詳細（ここから下は補足）</a><a href="#roles">声・文字・素材の分担</a><a href="#claim-map">主張・根拠・留保の対応</a><a href="#handoff">企画側／制作側</a><a href="#design">デザインシステム（映像の文字・色・グリッド）</a><a href="#motion">動きの言語</a><a href="#symbols">記号と色</a><a href="#character">キャラ設定</a><a href="#swap">差し替え候補</a><a href="#assets">素材</a><a href="#sound">音</a><a href="#evidence">根拠</a><a href="#done">完成条件・確認状態</a></div></nav>
+<main>
+<div class="decide" id="decide">
+<h2>未確定事項と判断してほしい点</h2>
+<p class="small">ほかの節は決定済みの情報です。ここだけ選んでください。現行の絵コンテは A です。</p>
+<ul class="decide-list">
+<li><span class="need">1</span><div>
+<p>導入の最初の約5秒を、点の列のモーショングラフィックス（A・現行）にするか、紙のカードが横へ流れる生成動画（B）にするか。</p>
+<p>A は絵コンテのとおりで、生成しません。B は<a href="#swap">差し替え候補</a>のプロンプトで約5秒です。AI生成は未承認・未生成で、使うなら動画生成の承認が要ります。B の絵はこの企画書にありません。</p>
+<p>違いが出るのは<a href="#cut-01">カット01</a>のはじめの約5秒だけです。A は紙色の上を、灰の点が右から左へ流れます。B はその5秒が、文字も人もいない淡い紙のカードの流れになり、一枚が減速して光り始めます。5秒のあと点の列へ戻り、02で一つが中央へ寄って「相談したい」になる動きは、A でも B でも図形で行います。点は02から07まで続くので、戻ったあとの点をカードにはしません。</p>
+<p class="where">該当：<a href="#cut-01">カット01</a>、<a href="#swap">差し替え候補</a>、<a href="#assets">素材</a></p>
+</div></li>
+</ul>
+</div>
+
+<h2 id="claim">この動画で伝える一文</h2>
+<div class="box accent"><p class="lead">「拙い発信は失望される」と思っている人に、人は他人にさほど興味がなく、10人中8人が素通りしても1人に「相談したい」と届けば発信した価値があり、知らせなければ存在しないのと同じだと伝え、恥ずかしがらず自分の言葉で発信を続けるという手応えを残す。</p></div>
+<p>01の「人は、興味がない。」「だから、発信していい。」と、07の「自分の言葉で。」だけで、同じ主張の背骨が通るようにします。02が、一人に届けば価値があることを、04が、知らせなければ存在しないことを足します。動画の題は「誰もあなたを見ていない。だから発信していい」です。この企画書の題とフォルダ名は、元記事の題のままです。</p>
+<p>留保は03と06に置きます。無関心は悪意ではなく、余裕がないだけです。打算と受け取る人もいます。心ない批判もあります。最後は本人の結論で閉じ、視聴者への問いかけや、両論を同じ比重にしたまとめにはしません。「10人中8人」は原稿のたとえで、調査の数字ではありません。声で言い、画面には割合も軸も出しません。</p>
+
+<h2 id="viewer">視聴者</h2>
+<p>拙い内容を出したら失望される、あるいは誰も見ないなら意味がない、と思っている人。見終わったあと、上手くなってから出そうと止める前に、自分の言葉で一つ出せるようにします。</p>
+
+<h2 id="structure">構成と尺</h2>
+<p>声は理由・留保・本人の結論の範囲を、文字は主張と決め語を、点と線は素通り・届くこと・通り道・雑音を受け持ちます。全文字幕は足しません。写真と動画は使いません。A の絵コンテは、点と線と文字だけで成立します。</p>
+<p>本編108.5秒、全体114.0秒です。声は503字。5.5字/秒を仮の読み速度とすると約91.5秒です。残りは、7カット×約2秒（声の前0.5秒、後ろ約1.5秒）と、07で結びを受け取る約3秒です。5.5字/秒は、過去の日本語ナレーションの実測（約5.5〜5.7字/秒）に合わせた目安で、語の読みと間で実測は変わります。制作側が声と画を合わせて調整します。3分には伸ばしません。表の秒は0.1秒単位で、合計が108.5秒になるように置いています。尺が足りなければ、05の業者との対比と06の真摯な意見の一文から詰め、01の主張、02の一人、03の留保、04の存在しないこと、07の結論は残します。</p>
+<div class="tablewrap"><table><thead><tr><th>カット</th><th>区間</th><th>この区間で分かってほしいこと</th><th>声／画面</th></tr></thead><tbody>
+<tr><td><a href="#cut-01">01 失望は、来ない。</a></td><td>0:00.0–0:13.8（13.8秒）</td><td>興味がないから、失望を恐れず発信していい</td><td>65字／26字</td></tr>
+<tr><td><a href="#cut-02">02 一人に、届く。</a></td><td>0:13.8–0:28.0（14.2秒）</td><td>大半は素通りでも、一人が相談したいと思えば価値がある</td><td>67字／9字</td></tr>
+<tr><td><a href="#cut-03">03 悪意では、ない。</a></td><td>0:28.0–0:41.3（13.3秒）</td><td>無関心は悪意ではなく、余裕がない</td><td>62字／13字</td></tr>
+<tr><td><a href="#cut-04">04 知らせなければ、無い。</a></td><td>0:41.3–0:54.9（13.6秒）</td><td>知らせなければ、存在していないのと同じ</td><td>64字／22字</td></tr>
+<tr><td><a href="#cut-05">05 まず、知る人へ。</a></td><td>0:54.9–1:12.5（17.6秒）</td><td>困った人は、信頼できる人にまず聞く</td><td>86字／15字</td></tr>
+<tr><td><a href="#cut-06">06 打算でも、ない。</a></td><td>1:12.5–1:30.0（17.5秒）</td><td>打算と取られることもある。雑音は流し、真摯な意見は受け取る</td><td>85字／31字</td></tr>
+<tr><td><a href="#cut-07">07 自分の言葉で、続ける。</a></td><td>1:30.0–1:48.5（18.5秒）</td><td>恥ずかしがらず、自分の言葉で発信を続ける</td><td>74字／22字</td></tr>
+<tr><td><a href="#cut-08">08 エンドロゴ</a></td><td>1:48.5–1:54.0（5.5秒）</td><td>制作表示</td><td>0字／0字</td></tr>
+</tbody></table></div>
+<p class="small">字数は空白・改行を除き、句読点を含みます。画面は各カットの「画面の文字」に掲げた文言の合計です。同一文言の再登場はカットごとに数えます。07の18.5秒には、結びを受け取る約3秒を含みます。</p>
+
+<h2 id="cuts">カット表・絵コンテ</h2>
+<p>各カットの開始と終了を画像で示します。コマ画は構図の設計資料です。番号、はじめ、おわりは画像の外だけに書きます。章表示、テロップ帯、エンドクレジットは入れません。秒数・位置・角度は参考値です。制作側は<a href="#motion">動きの狙い</a>と可読性を満たす方法を選べます。大きな画面運動を、入口と出口だけに限定しません。カメラの名前は<a href="../docs/techniques/camera-cheatsheet.md">カメラワークと切り替えの名前</a>に合わせ、図の層だけに掛けます。</p>
+
+<section class="cut" id="cut-01"><div class="cuthead"><div class="num">01</div><div><h3>失望は、来ない。<span class="need">要判断 1</span></h3><p class="small">0:00.0–0:13.8 / 13.8秒 ・ 主張 ・ 声65字／画面26字</p></div></div>
+<div class="frames"><figure><a href="assets/storyboard/cut-01-start.webp"><img src="assets/storyboard/cut-01-start.webp" width="1280" height="720" alt="右から点が流れ込み、下に失望される？"></a><figcaption><b>はじめ</b>　点が右から入る。下に「失望される？」。</figcaption></figure><figure><a href="assets/storyboard/cut-01-end.webp"><img src="assets/storyboard/cut-01-end.webp" width="1280" height="720" alt="上に点の列。下に人は、興味がない。とだから、発信していい。"></a><figcaption><b>おわり</b>　「人は、興味がない。」と「だから、発信していい。」。</figcaption></figure></div>
+<div class="details"><div>
+<div class="label">画面の文字（表示順）</div>
+<p class="words">失望される？<br>人は、興味がない。<br>だから、発信していい。</p>
+<div class="label">ナレーション</div>
+<p class="voice">拙い内容を出したら、失望されるのではないか。その心配はいりません。人は、他人にさほど興味がありません。だから、発信していいのです。</p>
+<div class="label">字組みと構図</div>
+<p>はじめは下段の左に大きな一行、上段に右から入る点の列です。おわりは上の点が画面の左まで抜け、下段が二行になります。二行目だけ琥珀です。点に番号は付けません。</p>
+</div><div>
+<div class="label">文字・画面全体の動きと次への接続</div>
+<ul>
+<li>点が右から左へ、近いものほど速く流れる。「失望される？」は行のマスクから入り、声の「失望されるのではないか」に着地する。</li>
+<li>声の「興味がありません」で「人は、興味がない。」が塊で着地し、声の「発信していい」で琥珀の行が入る。</li>
+<li>読む間、点は流れ続け、二行の塊は点と逆へゆっくり流す。字形は崩さない。</li>
+<li>同じ点の列のまま、02へ渡す。ここで止めない。</li>
+</ul>
+<div class="label">カメラ</div>
+<p>点の層を、右から左へトラッキングする。文字は正面の層のままです。寄るのは02です。</p>
+<div class="label">素材と扱い</div>
+<p>図形と文字。<a href="#decide">要判断 1</a>の A です。はじめの約5秒も点の列です。媒体の画面、ロゴ、顔は描きません。</p>
+</div></div></section>
+
+<section class="cut" id="cut-02"><div class="cuthead"><div class="num">02</div><div><h3>一人に、届く。</h3><p class="small">0:13.8–0:28.0 / 14.2秒 ・ 見せ場 ・ 声67字／画面9字</p></div></div>
+<div class="frames"><figure><a href="assets/storyboard/cut-02-start.webp"><img src="assets/storyboard/cut-02-start.webp" width="1280" height="720" alt="素通り。灰の点が抜け、藍の点が二つ残る。"></a><figcaption><b>はじめ</b>　「素通り。」。灰の点が抜け、藍の点が二つ減速している。</figcaption></figure><figure><a href="assets/storyboard/cut-02-end.webp"><img src="assets/storyboard/cut-02-end.webp" width="1280" height="720" alt="大きな藍の点と、相談したいの吹き出し。"></a><figcaption><b>おわり</b>　一つの点が前へ出て、「相談したい」。</figcaption></figure></div>
+<div class="details"><div>
+<div class="label">画面の文字（表示順）</div>
+<p class="words">素通り。<br>相談したい</p>
+<div class="label">ナレーション</div>
+<p class="voice">10人中8人は見向きもしないのが当たり前です。残りの2人に届き、そのうちの1人が、相談したいと思ってくれれば、発信した価値はあります。</p>
+<div class="label">字組みと構図</div>
+<p>はじめは左上の特大「素通り。」と、下段の水平な点の列です。灰が左へ抜け、藍が二つ、右に残ります。おわりは、一つの藍の点が中央近くまで大きくなり、右に吹き出しです。もう一つの藍は小さく、左の線の上で抜けていきます。点は十個に揃えません。吹き出しの中の語は、尾や点と重なりません。</p>
+</div><div>
+<div class="label">文字・画面全体の動きと次への接続</div>
+<ul>
+<li>「素通り。」は声の「見向きもしない」に着地する。灰の点はそのまま抜け、藍の二つだけ速度を落とす。</li>
+<li>声の「1人が」から、一つの点が手前へ出る。もう一つは線の上を左へ残す。</li>
+<li>声の「相談したい」で、吹き出しが尾の側から一塊で出る。その3秒、図のカメラは点へゆっくり寄る（ドリーイン）。文字は正面のまま読む。</li>
+<li>吹き出しと大きな点が左へ縮み、03の広い余白になる。</li>
+</ul>
+<div class="label">カメラ</div>
+<p>ドリーイン、3秒、ゆっくり。掛けるのは点と吹き出しの層です。寄っているあいだも、残りの点は流れます。文字を点のテクスチャにしません。</p>
+<div class="label">素材と扱い</div>
+<p>図形と文字。10人中8人は声のたとえです。画面の点を、割合の図にはしません。</p>
+</div></div></section>
+
+<section class="cut" id="cut-03"><div class="cuthead"><div class="num">03</div><div><h3>悪意では、ない。</h3><p class="small">0:28.0–0:41.3 / 13.3秒 ・ 留保 ・ 声62字／画面13字</p></div></div>
+<div class="frames"><figure><a href="assets/storyboard/cut-03-start.webp"><img src="assets/storyboard/cut-03-start.webp" width="1280" height="720" alt="左に点が二つ。右に悪意ではない。"></a><figcaption><b>はじめ</b>　左は空く。右に「悪意ではない。」。</figcaption></figure><figure><a href="assets/storyboard/cut-03-end.webp"><img src="assets/storyboard/cut-03-end.webp" width="1280" height="720" alt="大きな余裕がない。右上に点が二つ。"></a><figcaption><b>おわり</b>　「余裕がない。」が大きく、右に余白。</figcaption></figure></div>
+<div class="details"><div>
+<div class="label">画面の文字（表示順）</div>
+<p class="words">悪意ではない。<br>余裕がない。</p>
+<div class="label">ナレーション</div>
+<p class="voice">冷たく聞こえるかもしれません。悪気があって無関心なのではなく、自分の生活と仕事で精一杯で、他人を気にかける余裕がないのです。</p>
+<div class="label">字組みと構図</div>
+<p>はじめは右寄りの灰の一行と、左上に小さな点です。広い左が、余裕の無さです。おわりは左の特大「余裕がない。」と、右上の端に残る点です。重心が右から左へ移ります。</p>
+</div><div>
+<div class="label">文字・画面全体の動きと次への接続</div>
+<ul>
+<li>02の吹き出しが退いたあと、点の間隔が開く。「悪意ではない。」は声の「無関心なのではなく」に、灰のまま着地する。</li>
+<li>「余裕がない。」は声の「余裕がない」に、塊のまま大きく着地する。</li>
+<li>読む間、残った点は端で流れ、余白は少しずつ広がる。語は端で切らない。</li>
+<li>余白の下辺が、04の水平の線になる。</li>
+</ul>
+<div class="label">カメラ</div>
+<p>点の層を少し引き、余白が画面の半分を超えるところまで見せて止める。寄るのは語の塊ではなく、空きの広がりです。</p>
+<div class="label">素材と扱い</div>
+<p>図形と文字。無関心を、誰かの悪意には描きません。</p>
+</div></div></section>
+
+<section class="cut" id="cut-04"><div class="cuthead"><div class="num">04</div><div><h3>知らせなければ、無い。</h3><p class="small">0:41.3–0:54.9 / 13.6秒 ・ 根拠 ・ 声64字／画面22字</p></div></div>
+<div class="frames"><figure><a href="assets/storyboard/cut-04-start.webp"><img src="assets/storyboard/cut-04-start.webp" width="1280" height="720" alt="線の下に輪郭だけの丸。存在しない。"></a><figcaption><b>はじめ</b>　線の下に、輪郭だけの丸。「存在しない。」。</figcaption></figure><figure><a href="assets/storyboard/cut-04-end.webp"><img src="assets/storyboard/cut-04-end.webp" width="1280" height="720" alt="線の上の琥珀の点。右に縦書きの通り道に、出す。"></a><figcaption><b>おわり</b>　点が線に乗る。右は縦の「通り道に、出す。」。</figcaption></figure></div>
+<div class="details"><div>
+<div class="label">画面の文字（表示順）</div>
+<p class="words">知らせなければ、<br>存在しない。<br>通り道に、出す。</p>
+<div class="label">ナレーション</div>
+<p class="voice">どれほど良い仕事でも、自ら知らせなければ、存在していないのと同じです。掘り出し物は、掘り出されやすい場所にいてこそ見つかります。</p>
+<div class="label">字組みと構図</div>
+<p>はじめは上の灰の一行、その下の水平な線、左下の特大「存在しない。」、線より下の輪郭だけの丸です。丸は線に乗っていません。おわりは、琥珀に塗られた点が線の上にあり、右は縦書きの一行です。01の横二行とも、02の吹き出しとも組が違います。</p>
+</div><div>
+<div class="label">文字・画面全体の動きと次への接続</div>
+<ul>
+<li>線が左から描かれ、「存在しない。」は声の「存在していないのと同じ」に着地する。輪郭の丸は線の下に残る。</li>
+<li>声の「掘り出されやすい場所」で、丸が線の上へ上がり、琥珀に塗られる。「通り道に、出す。」が縦に入る。</li>
+<li>読む間、乗った点は線の上を左から右へ進む。縦の列は正面のままです。</li>
+<li>進んだ点が、05の弧の起点になる。</li>
+</ul>
+<div class="label">カメラ</div>
+<p>線の下の丸から、線の上へクレーンアップする。縦の文字が読める位置で止める。文字を床には寝かせません。</p>
+<div class="label">素材と扱い</div>
+<p>図形と文字。テーブルは描きません。通り道は、原稿の「掘り出されやすい場所」の動画の形です。</p>
+</div></div></section>
+
+<section class="cut" id="cut-05"><div class="cuthead"><div class="num">05</div><div><h3>まず、知る人へ。</h3><p class="small">0:54.9–1:12.5 / 17.6秒 ・ 根拠 ・ 声86字／画面15字</p></div></div>
+<div class="frames"><figure><a href="assets/storyboard/cut-05-start.webp"><img src="assets/storyboard/cut-05-start.webp" width="1280" height="720" alt="左上に話を聞かせて。右下に藍の点。"></a><figcaption><b>はじめ</b>　「話を聞かせて。」。点はまだ離れている。</figcaption></figure><figure><a href="assets/storyboard/cut-05-end.webp"><img src="assets/storyboard/cut-05-end.webp" width="1280" height="720" alt="左に縦書き。点から弧が寄る。"></a><figcaption><b>おわり</b>　縦の「まず、知る人へ。」。弧は語の手前で止まる。</figcaption></figure></div>
+<div class="details"><div>
+<div class="label">画面の文字（表示順）</div>
+<p class="words">話を聞かせて。<br>まず、知る人へ。</p>
+<div class="label">ナレーション</div>
+<p class="voice">自分の仕事を書いたら、ちょうど困っていた人から、話を聞かせてほしいと連絡が来ました。困ったとき、人は、どこの誰ともわからない業者より、信頼できる人にまず相談したいものです。</p>
+<div class="label">字組みと構図</div>
+<p>はじめは左上の横一行と、右下の小さな藍の点です。吹き出しは出しません。おわりは左の縦書きと、点から左へ寄って語の手前で止まる弧です。04の縦書きは右、ここは左です。</p>
+</div><div>
+<div class="label">文字・画面全体の動きと次への接続</div>
+<ul>
+<li>「話を聞かせて。」は声の「話を聞かせてほしい」に着地する。</li>
+<li>声の「相談したいものです」で、弧が点から描かれ、縦の「まず、知る人へ。」が入る。弧は文字に触れません。</li>
+<li>読む間、点は弧の上を少し進み、縦の列は正面のまま逆へゆっくり流す。</li>
+<li>弧が上へ跳ね、06の斜線になる。</li>
+</ul>
+<div class="label">カメラ</div>
+<p>右下の点から、弧に沿ってパンする。縦の列が安全域に入ったところで止める。</p>
+<div class="label">素材と扱い</div>
+<p>図形と文字。連絡は一回の話です。いつもそうなる図にはしません。相談の中身、製品名、相手の名は出しません。</p>
+</div></div></section>
+
+<section class="cut" id="cut-06"><div class="cuthead"><div class="num">06</div><div><h3>打算でも、ない。</h3><p class="small">1:12.5–1:30.0 / 17.5秒 ・ 留保 ・ 声85字／画面31字</p></div></div>
+<div class="frames"><figure><a href="assets/storyboard/cut-06-start.webp"><img src="assets/storyboard/cut-06-start.webp" width="1280" height="720" alt="上に珊瑚の斜線。下に打算的だ、"></a><figcaption><b>はじめ</b>　斜線は語の上で止まる。「打算的だ、」。</figcaption></figure><figure><a href="assets/storyboard/cut-06-end.webp"><img src="assets/storyboard/cut-06-end.webp" width="1280" height="720" alt="打算ではない。雑音は、流す。真摯な意見は、受け取る。"></a><figcaption><b>おわり</b>　斜線は端へ退き、三つの行が残る。</figcaption></figure></div>
+<div class="details"><div>
+<div class="label">画面の文字（表示順）</div>
+<p class="words">打算的だ、<br>打算ではない。<br>雑音は、流す。<br>真摯な意見は、受け取る。</p>
+<div class="label">ナレーション</div>
+<p class="voice">打算的だと受け取る人もいるかもしれません。それでも、困っている人に届ける発信は、打算ではありません。心ない批判もあります。真摯な意見だけを受け取り、大半の雑音は流します。</p>
+<div class="label">字組みと構図</div>
+<p>はじめは下段の灰の一行と、その上を横切る珊瑚の斜線です。斜線は語に届きません。おわりは左揃えの三段です。一段目が大きく、二段目と三段目は灰で、段ごとに小さくなります。点の列はここには置きません。</p>
+</div><div>
+<div class="label">文字・画面全体の動きと次への接続</div>
+<ul>
+<li>「打算的だ、」は声の「受け取る人もいる」まで残る。斜線は語の手前で切れる。</li>
+<li>声の「打算ではありません」で斜線が右上へ抜け、「打算ではない。」が塊で着地する。</li>
+<li>「雑音は、流す。」は声の「雑音は流します」に、「真摯な意見は、受け取る。」は声の「真摯な意見」に合わせ、決め語より小さく残す。読む間も、端の斜線は流れ続ける。</li>
+<li>斜線が落ち、07の止まった点の列が上に残る。</li>
+</ul>
+<div class="label">カメラ</div>
+<p>斜線の方向へ少しパンしてから、三段が読める幅まで戻す。斜線は図の層で、文字に重ねません。</p>
+<div class="label">素材と扱い</div>
+<p>図形と文字。打算と受け取る人がいること、心ない批判があることは、声でも画面でも残します。</p>
+</div></div></section>
+
+<section class="cut" id="cut-07"><div class="cuthead"><div class="num">07</div><div><h3>自分の言葉で、続ける。</h3><p class="small">1:30.0–1:48.5 / 18.5秒 ・ 本人の結論 ・ 声74字／画面22字</p></div></div>
+<div class="frames"><figure><a href="assets/storyboard/cut-07-start.webp"><img src="assets/storyboard/cut-07-start.webp" width="1280" height="720" alt="点が左に固まり、恐れて、やめる。"></a><figcaption><b>はじめ</b>　点が固まって止まる。「恐れて、やめる」。</figcaption></figure><figure><a href="assets/storyboard/cut-07-end.webp"><img src="assets/storyboard/cut-07-end.webp" width="1280" height="720" alt="琥珀の点が流れる。恥ずかしがらず、自分の言葉で。"></a><figcaption><b>おわり</b>　「自分の言葉で。」。点が再び流れている。</figcaption></figure></div>
+<div class="details"><div>
+<div class="label">画面の文字（表示順）</div>
+<p class="words">恐れて、やめる<br>恥ずかしがらず、<br>自分の言葉で。</p>
+<div class="label">ナレーション</div>
+<p class="voice">失望されるのを恐れて、発信をやめてしまうことこそ、一番の損失です。他人は、自分のことで忙しい。だから、恥ずかしがらずに、自分の言葉で発信を続けます。</p>
+<div class="label">字組みと構図</div>
+<p>はじめは上の短い線に点が固まり、下に灰の大きな一行です。おわりは上の線を琥珀の点が横切り、その下に琥珀の「恥ずかしがらず、」、さらに下に墨の特大「自分の言葉で。」です。01の二行より、下の一行が画面の幅を使います。</p>
+</div><div>
+<div class="label">文字・画面全体の動きと次への接続</div>
+<ul>
+<li>「恐れて、やめる」は声の「やめてしまうことこそ」まで残る。点は固まったまま、線の上で止まっている。</li>
+<li>声の「自分のことで忙しい」から点がほどけ、声の「自分の言葉で」に「自分の言葉で。」が着地する。「恥ずかしがらず、」はその上に残す。</li>
+<li>声の結びを受け取る約3秒、語と点を一つの塊として寄せて拡大する。点は流れ続ける。</li>
+<li>そのあと画面を横へ振ってライムの全面へ渡す。白く光らせて切り替えません。</li>
+</ul>
+<div class="label">カメラ</div>
+<p>固まった点から特大の行へ引き、最後の3秒は図の層を少し寄る。最後の振りは、ロゴの動きが始まる前に終えます。読ませる語は床に寝かせません。</p>
+<div class="label">素材と扱い</div>
+<p>図形と文字。01の「発信していい。」が、自分の言葉を流し続ける状態で閉じます。</p>
+</div></div></section>
+
+<section class="cut" id="cut-08"><div class="cuthead"><div class="num">08</div><div><h3>エンドロゴ</h3><p class="small">1:48.5–1:54.0 / 5.5秒 ・ 制作表示 ・ 声0字／画面0字</p></div></div>
+<div class="frames"><figure><a href="assets/storyboard/cut-08-start.webp"><img src="assets/storyboard/cut-08-start.webp" width="1280" height="720" alt="ライムの全面。o が上の方にある。"></a><figcaption><b>はじめ</b>　ライムの全面。o が落ちてくる途中。</figcaption></figure><figure><a href="assets/storyboard/cut-08-end.webp"><img src="assets/storyboard/cut-08-end.webp" width="1280" height="720" alt="ライムの中央に、完成した原本のロゴ。"></a><figcaption><b>おわり</b>　中央に完成した原本のロゴ。ほかの文言はない。</figcaption></figure></div>
+<div class="details"><div>
+<div class="label">画面の文字（表示順）</div>
+<p class="words">なし（ロゴのみ）</p>
+<div class="label">ナレーション</div>
+<p class="voice">なし</p>
+<div class="label">字組みと構図</div>
+<p>背景は #d2ff1a。ロゴは中央。形、書体、色、比率は変えない。本編の要素は重ねません。</p>
+</div><div>
+<div class="label">文字・画面全体の動きと次への接続</div>
+<ul>
+<li>0–2.6秒：原本 SVG の o の落下、バウンド、定位置への移動。</li>
+<li>2.6–3.2秒：全体が左へスライド。3.0–4.0秒：「.work」が一文字ずつ出現。</li>
+<li>4.0–5.5秒：完成状態を1.5秒保持する。BGMもここで収める。</li>
+</ul>
+<div class="label">カメラ</div>
+<p>ロゴの区間は固定。本編からの振りは、この動きが始まる前に終えます。</p>
+<div class="label">素材と扱い</div>
+<p>リポジトリ直下の <a href="../okady-work-logo.svg">okady-work-logo.svg</a>。フレーム時刻から再現します。</p>
+</div></div></section>
+
+<h2 id="details" class="part">詳細（ここから下は補足）</h2>
+
+<h2 id="roles">声・文字・素材の分担</h2>
+<div class="tablewrap"><table><thead><tr><th>担当</th><th>受け持つこと</th><th>扱い</th></tr></thead><tbody>
+<tr><td>声</td><td>失望の心配がいらないこと、10人中8人のたとえ、悪意ではないこと、存在しないこと、一回の連絡、業者より信頼できる人、打算と雑音、本人の結論</td><td>画面の短い語と意味を合わせる。画面の全文の朗読にはしない。カット単位のまとまった文で渡す。</td></tr>
+<tr><td>文字</td><td>興味がない、発信していい、素通り、相談したい、余裕がない、存在しない、通り道、打算ではない、自分の言葉</td><td>説明の全文は載せない。主語が要る場面は二行まで、縦書きは04と05だけ使う。</td></tr>
+<tr><td>図形</td><td>流れる点、減速する二つの点、吹き出し、広い余白、線の下の丸、通り道の線、弧、斜線</td><td>一つの形に複数の意味を持たせない。対応は<a href="#symbols">記号と色</a>。</td></tr>
+</tbody></table></div>
+<p>ナレーションありの構成です。音声の制作は制作側の担当で、音源がまだ無いことは引き渡しを止める理由にしません。</p>
+
+<h2 id="claim-map">主張・根拠・留保の対応</h2>
+<div class="tablewrap"><table><thead><tr><th>役割</th><th>内容</th><th>カット</th></tr></thead><tbody>
+<tr><td>主張</td><td>人は他人にさほど興味がない。だから、失望を恐れず発信していい。</td><td>01・07</td></tr>
+<tr><td>主張</td><td>10人中8人が素通りしても、1人が相談したいと思えば、発信した価値がある。</td><td>02</td></tr>
+<tr><td>留保</td><td>無関心は悪意ではなく、自分の生活と仕事で精一杯で、余裕がない。</td><td>03</td></tr>
+<tr><td>根拠</td><td>知らせなければ、存在していないのと同じ。掘り出されやすい場所にいてこそ見つかる。</td><td>04</td></tr>
+<tr><td>根拠</td><td>仕事を知らせたら、困っていた人から話を聞かせてほしいと連絡が来た。困った人は、見知らぬ業者より信頼できる人にまず相談する。</td><td>05</td></tr>
+<tr><td>留保</td><td>打算と受け取る人もいる。心ない批判もある。真摯な意見だけを受け取り、大半の雑音は流す。</td><td>06</td></tr>
+<tr><td>結論</td><td>やめてしまうことが一番の損失。恥ずかしがらず、自分の言葉で発信を続ける。</td><td>07</td></tr>
+</tbody></table></div>
+<p>原稿の文との対応、画面の文言と要約の区別、この動画に載せなかった論点は <a href="references.md">references.md</a>。</p>
+
+<h2 id="handoff">企画側／制作側</h2>
+<div class="tablewrap"><table><thead><tr><th>企画側で用意するもの</th><th>制作側で仕上げるもの</th></tr></thead><tbody>
+<tr><td>現行の文言、声の原稿、配分、絵コンテ16枚、原稿との対応、演出の採否</td><td>three.js と文字層の実装、細かな動きと同期、声、BGM、効果音、代表区間の試作と全編の書き出し</td></tr>
+<tr><td>静止コマの文字配置の点検</td><td>動いている全カットの安全域と重なりの検査、実速再生、音の終わり方の確認</td></tr>
+</tbody></table></div>
+<p>企画と絵コンテはこの一式です。音声と本編は制作側が担当します。画像や動画が追加で必要になったら、必要な内容を企画側へ返します。制作側は動画AIで新規の素材を作りません。</p>
+<div class="box"><b>実装の推奨：</b>Remotion＋three.js。点の列に奥行きを付け、近い点ほど速く流し、02で一つの点へカメラを寄せるために使います。文字は DOM／CSS の行マスクと詰め組で組み、点・線・吹き出しのカメラは図の層だけに掛けます。文字の塊も移動と拡大をします。状態はフレーム時刻から決め、実時間の物理や <code>requestAnimationFrame</code> のループを本編の動きにしません。</div>
+
+<h2 id="design">デザインシステム（映像の文字・色・グリッド）</h2>
+<p>紙色 #F4F0E6、墨 #1A1916、灰 #7A746C、点の藍 #1F4E79、自分の言葉の琥珀 #8C5A2B、雑音の珊瑚 #B04834、通り道の線 #5A544C。吹き出しの面は白に、藍の輪郭です。ライム #d2ff1a はロゴだけに使います。文字は Noto Sans JP、見出し700–900、補足400–500。制作側が OFL に沿って用意します。このフォルダには同梱しません。企画書の配色とは別です。紙色の上の図は、輪郭か、紙より暗い面にします。</p>
+<div class="tablewrap"><table><thead><tr><th>段</th><th>1920×1080の参考値</th><th>用途</th></tr></thead><tbody>
+<tr><td>大きな語</td><td>140–200px</td><td>01の「興味がない。」、02の「素通り。」、03の「余裕がない。」、04の「存在しない。」、07の「自分の言葉で。」</td></tr>
+<tr><td>主文</td><td>80–120px</td><td>01の「発信していい。」、02の吹き出し、06の「打算ではない。」</td></tr>
+<tr><td>短い語</td><td>40–64px</td><td>04の「知らせなければ、」、06の灰の二行、07の「恥ずかしがらず、」、縦書き</td></tr>
+</tbody></table></div>
+<p>外側余白は96pxを目安にします。文字の安全域は左右64px、上下48px。1280×720の絵コンテでは左右48px、上下36pxです。01は上の点と下の二行、02は左上の特大から中央の吹き出し、03は右の一行から左の特大、04は横の特大から右の縦書き、05は左上の横一行から左の縦書き、06は下の一行から左の三段、07は固まった点から幅いっぱいの特大です。</p>
+
+<h2 id="motion">動きの言語</h2>
+<div class="tablewrap"><table><thead><tr><th>動作</th><th>意味と使う場所</th><th>読む間・次へのつながり</th></tr></thead><tbody>
+<tr><td>点が流れる</td><td>01。タイムラインを、近い点ほど速く右から左へ流す。</td><td>語の塊は逆へ流し、列を止めずに02へ渡す。</td></tr>
+<tr><td>点が減速し、一つが前へ出る</td><td>02。灰は抜け、藍が二つ残り、一つが吹き出しになる。</td><td>3秒のドリーインのあいだも、残りの点は流す。吹き出しは一塊で出す。</td></tr>
+<tr><td>余白が広がる</td><td>03。点の間隔が開き、余裕の無さが見える。</td><td>空きの下辺を、04の線にする。</td></tr>
+<tr><td>丸が線に乗る</td><td>04。知らせていない仕事が、通り道へ出る。</td><td>乗った点を線の上で進め、05の弧の起点にする。</td></tr>
+<tr><td>弧が寄る</td><td>05。離れていた点が、言葉の手前まで弧を描く。</td><td>弧は文字に触れず、06の斜線へ跳ねる。</td></tr>
+<tr><td>斜線が手前で切れる</td><td>06。雑音が、決め語に届かない。</td><td>抜けたあと三段を残し、斜線を07の上へ落とす。</td></tr>
+<tr><td>点が再び出る</td><td>07。固まっていた点が、自分の言葉として流れ出す。</td><td>結びの約3秒も塊を寄せて拡大し、横振りでロゴへ渡す。</td></tr>
+</tbody></table></div>
+<p>拍の目安は112–120 BPM。01の着地、02で点が前へ出る瞬間、04で丸が線に乗る瞬間、07の着地をアクセントに合わせます。留保の区間にも流れを残します。1字ずつの常時の揺れ、拍ごとの脈動、文字の崩壊は使いません。文字を読ませるために画面全体を静止させず、文量、動かす層、構図で調整します。イージングの値と秒の同期は制作側の裁量です。決め語を声のどの語に合わせるかは、各カットに書いてあります。</p>
+
+<h2 id="symbols">記号と色</h2>
+<div class="tablewrap"><table><thead><tr><th>記号</th><th>意味</th></tr></thead><tbody>
+<tr><td>墨の大きな語</td><td>本人の決め語。01の「興味がない。」、04の「存在しない。」、07の「自分の言葉で。」</td></tr>
+<tr><td>灰の塗った点</td><td>タイムラインを素通りしていくもの。人の顔ではない。数の標本でもない</td></tr>
+<tr><td>藍の塗った点</td><td>速度を落として目に留まったもの。02で二つ。一つはまた流れ、一つが前へ出る。05では、弧の起点</td></tr>
+<tr><td>白地に藍の輪郭の吹き出し</td><td>「相談したい」。02だけ。尾は点から出る。人の口からは出さない</td></tr>
+<tr><td>広い余白</td><td>気にかける余裕がないこと。03。点を置かない空き</td></tr>
+<tr><td>線の下の、輪郭だけの丸</td><td>知らせていない仕事。04のはじめだけ。塗った点とは別の形</td></tr>
+<tr><td>細い水平の線</td><td>関心が通る通り道。統計の軸ではない。目盛りも数字も付けない</td></tr>
+<tr><td>線に乗った琥珀の点</td><td>通り道に出した、自分の言葉。04のおわりと、07で再び流れる点</td></tr>
+<tr><td>珊瑚の斜線</td><td>心ない批判、雑音。06だけ。語の手前で切れ、点にはしない</td></tr>
+<tr><td>琥珀の語</td><td>自分から出す言葉。01の「発信していい。」、07の「恥ずかしがらず、」</td></tr>
+<tr><td>灰の小さな語</td><td>留保。03の「悪意ではない。」、04の「知らせなければ、」、06の下二行、07のはじめの「恐れて、やめる」</td></tr>
+</tbody></table></div>
+
+<h2 id="character">キャラ設定</h2>
+<p>人物、顔、手は描きません。点は人の姿ではありません。吹き出しは02の「相談したい」だけに使い、尾は点から出します。口元や会話の画面にはしません。「マネージャー」のような役割の人物も出しません。</p>
+
+<h2 id="swap">差し替え候補</h2>
+<p><span class="need">要判断 1</span>現行は A です。点の流れ、減速、吹き出し、線に乗る丸、弧、斜線は、制作側の図形で描きます。生成映像も生成画像も使いません。</p>
+<p>点は01から07まで続きます。02の吹き出し、04の輪郭の丸、06の斜線は、そのカットだけの形です。同じ点の一部だけを、実写や生成映像にはしません。</p>
+<p>B は、導入の約5秒だけを次の映像に替える候補です。AI生成は未承認・未生成です。使うなら、対象はカット01の最初の約5秒、尺は約5秒、生成は1本、内容は下のプロンプトです。クレジットは未確認です。承認の前に生成しません。</p>
+<p>プロンプト（そのまま）：</p>
+<p><code>Light pastel background, endless stream of small paper cards drifting sideways, one card slowly stops and glows, Dolly in 3s slow, no people, no text</code></p>
+<p>B を採る場合、その5秒は元の画面から全面のカードへ切り替え、カードを主画面として見せ、そのあと点の列へ戻します。小窓にはしません。カードには文字も人も入れません。5秒のあとの減速、中央の点、「相談したい」、3秒のドリーインは、A と同じ図形で続けます。02以降の点をカードの映像にはしません。B の絵はこの企画書にありません。</p>
+
+<h2 id="assets">素材</h2>
+<p><span class="need">要判断 1</span></p>
+<div class="tablewrap"><table><thead><tr><th>ファイル</th><th>役割</th><th>使用区間</th></tr></thead><tbody>
+<tr><td><code>assets/storyboard/cut-XX-start.webp</code> と <code>cut-XX-end.webp</code></td><td>絵コンテ16枚。1280×720、明るい紙色。08はライム。A の構図</td><td>本編に貼る完成素材ではない</td></tr>
+<tr><td><a href="../okady-work-logo.svg">okady-work-logo.svg</a></td><td>エンドロゴ</td><td>08の全区間。リポジトリ直下の原本。一式を移すときもこの相対位置を保つ</td></tr>
+<tr><td>なし（未承認・未生成）</td><td>B の導入。紙のカードが横へ流れ、一枚が減速して光る。人なし、文字なし</td><td>採る場合だけ、01の最初の約5秒。プロンプトは<a href="#swap">差し替え候補</a>と同じ</td></tr>
+</tbody></table></div>
+<p>プロンプト（そのまま）：</p>
+<p><code>Light pastel background, endless stream of small paper cards drifting sideways, one card slowly stops and glows, Dolly in 3s slow, no people, no text</code></p>
+<p>新たに取得する写真、動画、フォントファイルはありません。Noto Sans JP は制作側が用意します。B の映像ファイルは、この一式にありません。</p>
+
+<h2 id="sound">音</h2>
+<div class="box">
+<p>BGMはこの作品のために作ります。乾いた打楽器、短いピアノ、輪郭のある低音。112–120 BPMを目安に、01の着地、02で点が前へ出る瞬間、04で丸が線に乗る瞬間、07の着地を支えるアクセントを付けます。曲を遅くして、画の動きを弱めません。静かな持続音だけで通しません。過去作品の音源は使わず、特に20261007の企画で雰囲気が合わないとされた音源は使いません。</p>
+<p>ナレーションは落ち着いた会話調で、カット単位の文として渡します。短い句へ細かく割って、抑揚を壊さないようにします。読みは「失望＝しつぼう」「興味＝きょうみ」「素通り＝すどおり」「10人中8人＝じゅうにんちゅうはちにん」「2人＝ふたり」「1人＝ひとり」「悪意＝あくい」「無関心＝むかんしん」「余裕＝よゆう」「精一杯＝せいいっぱい」「掘り出し物＝ほりだしもの」「業者＝ぎょうしゃ」「打算＝ださん」「真摯＝しんし」「雑音＝ざつおん」。「10人中8人」は画面に書かず、声だけで読みます。</p>
+<p>音源はロゴの終わり1:54.0まで覆い、最後の1.5秒で収めます。効果音は、02で点が速度を落とす瞬間、吹き出しが出る瞬間、04で丸が線に乗る瞬間に必要な分だけ付けます。冒頭、02、04、07–08で画と合わせて試し、声を隠さないことと運動感を確認します。</p>
+<p>声、BGM、効果音のファイルは制作側が用意します。有料の音楽生成の候補は Lyria 3.5（ユーザー指定の候補名。実行時にモデルID、提供状況、料金を確認）。ローカル制作と、品質・時間・費用で比べた理由を一行残して選びます。ナレーションの候補は Gemini 3.8 Flash TTS、または Eleven v4。名称はユーザー指定の候補で、実行時に識別子を確認します。キーは環境変数から読み、値は書きません。</p>
+</div>
+
+<h2 id="evidence">根拠</h2>
+<p>原稿との対応は <a href="references.md">references.md</a>。演出候補の確認と採否は <a href="effects-direction.md">effects-direction.md</a>。採否の履歴を、本編の作業手順には混ぜません。</p>
+
+<h2 id="done">完成条件・確認状態</h2>
+<ul>
+<li>01と07で、興味がないから発信していいこと、結びは自分の言葉で続けることまで本人の結論で閉じる。</li>
+<li>02は、大半が素通りしても一人に届けば価値があることを、声のたとえと、点の動きで伝える。画面に割合や軸を出さない。</li>
+<li>03は、悪意ではないことと、余裕がないことを残す。06は、打算と取られること、心ない批判、真摯な意見だけを受け取ること、雑音は流すことを残す。</li>
+<li>04は、知らせなければ存在しないことで閉じ、経歴の固有名詞を出さない。05は一回の連絡であり、相談の中身と製品名を出さない。</li>
+<li>点は顔にしない。吹き出しは02だけ。媒体のロゴと画面、企業名、顧客を特定できる経過は出さない。</li>
+<li>章表示、テロップ帯、エンドクレジット、白フラッシュは入れない。エンドロゴはライムの単独画面で、原本の動き、中央、1.5秒の保持、音の終了を再生して確認する。</li>
+<li>絵コンテ16枚（1280×720）を、左右48px・上下36pxの安全域、文字同士、文字と図形（点、線、斜線、弧）の交差で検査した。はみ出し0、文字同士の重なり0、文字と図形の交差0。吹き出しの白い面とその中の「相談したい」は、吹き出しの文言なので面との交差には数えていない。尾と点は文字に重なっていない。ロゴの字形と、08はじめの環はこの検査の文字対象外。終了ロゴのインクは安全域の内側（左269px・上308px・右1010px・下429px）。この検査は静止コマの配置で、本編の合格ではない。</li>
+<li>本編は未制作。実速再生は未確認。制作側は全カットを0.25秒ごとに取り、左右64px・上下48pxの安全域、文字同士、文字と図の交差を検査する。声の語の時刻と画面の変化を並べ、3秒以上変化のない区間を名指しする。最初の試作は01→02。そのあと04、07–08、最後に全編と音を確認する。</li>
+</ul>
+</main>
+<footer><div class="inner">企画：2026-11-22　根拠：<a href="references.md">references.md</a>　演出：<a href="effects-direction.md">effects-direction.md</a></div></footer>
+</body></html>
