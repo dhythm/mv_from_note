@@ -79,16 +79,6 @@ h2.part{margin-top:96px;padding:16px 24px;border:none;border-radius:var(--r-8);b
 h2.part + .small{margin-top:-8px}
 .navsep{color:var(--gray-700);font-weight:700;padding-left:12px;border-left:1px solid var(--gray-420)}
 
-.decide{margin:24px 0 16px;padding:24px 32px;background:var(--warning-orange-bg);border:1px solid var(--warning-orange-1);border-left:8px solid var(--warning-orange-1);border-radius:var(--r-8)}
-.decide h2{margin:0 0 8px;border-bottom:none;padding:0;color:var(--gray-900)}
-.decide > .small{color:var(--gray-800)}
-.decide-list{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:12px}
-.decide-list li{display:flex;gap:12px;align-items:flex-start;background:var(--white);border:1px solid var(--gray-420);border-radius:var(--r-8);padding:12px 16px;margin:0}
-.where{display:block;font-size:.875rem;color:var(--gray-700);margin-top:4px}
-.need{display:inline-flex;align-items:center;background:var(--warning-orange-2);color:var(--white);border-radius:var(--r-4);padding:0 8px;font-size:.8125rem;line-height:1.7;font-weight:700;letter-spacing:.02em;margin:0 8px;vertical-align:.15em;white-space:nowrap}
-h2 .need,h3 .need{font-size:.875rem}
-nav a.nav-need,nav a.nav-need:visited{background:var(--warning-orange-2);color:var(--white);padding:0 8px;border-radius:var(--r-4);text-decoration:none}
-nav a.nav-need:hover{color:var(--white);text-decoration:underline}
 @media(max-width:760px){
   header .inner,main,nav .in,footer .inner{padding:0 16px}
   header .inner{padding-top:24px;padding-bottom:16px}
@@ -96,7 +86,7 @@ nav a.nav-need:hover{color:var(--white);text-decoration:underline}
   h1{font-size:1.75rem;line-height:1.5}
   h2{font-size:1.5rem;margin-top:48px}
   .cut{padding:20px;border-radius:var(--r-12)}
-   .box,.decide{padding:16px}
+  .box{padding:16px}
   table{font-size:.875rem}
   th,td{padding:8px 12px}
   th{white-space:normal}
@@ -114,21 +104,8 @@ nav a.nav-need:hover{color:var(--white);text-decoration:underline}
 原稿：<code>dhythm/private-note</code> の <code>Zettelkasten/PermanentNote/20260925_人は他人にさほど興味がない。だから発信することが大切である。.md</code>（本文は同梱しない）</p>
 <div class="meta"><span>16:9・1920×1080・30fps</span><span>本編 1:48.5＋ロゴ 5.5秒＝1:54.0</span><span>本編7カット＋ロゴ</span><span>声 503字／画面 138字</span><span>絵コンテ16枚</span><span>音声・本編は制作工程</span><span>実速再生は未確認</span></div>
 </div><div class="strata"></div></header>
-<nav><div class="in"><a class="nav-need" href="#decide">未確定事項と判断してほしい点</a><a href="#claim">この動画で伝える一文</a><a href="#viewer">視聴者</a><a href="#structure">構成と尺</a><a href="#cuts">カット表・絵コンテ</a><span class="navsep">詳細：</span><a href="#details">詳細（ここから下は補足）</a><a href="#roles">声・文字・素材の分担</a><a href="#claim-map">主張・根拠・留保の対応</a><a href="#handoff">企画側／制作側</a><a href="#design">デザインシステム（映像の文字・色・グリッド）</a><a href="#motion">動きの言語</a><a href="#symbols">記号と色</a><a href="#character">キャラ設定</a><a href="#swap">差し替え候補</a><a href="#assets">素材</a><a href="#sound">音</a><a href="#evidence">根拠</a><a href="#done">完成条件・確認状態</a></div></nav>
+<nav><div class="in"><a href="#claim">この動画で伝える一文</a><a href="#viewer">視聴者</a><a href="#structure">構成と尺</a><a href="#cuts">カット表・絵コンテ</a><span class="navsep">詳細：</span><a href="#details">詳細（ここから下は補足）</a><a href="#roles">声・文字・素材の分担</a><a href="#claim-map">主張・根拠・留保の対応</a><a href="#handoff">企画側／制作側</a><a href="#design">デザインシステム（映像の文字・色・グリッド）</a><a href="#motion">動きの言語</a><a href="#symbols">記号と色</a><a href="#character">キャラ設定</a><a href="#swap">差し替え候補</a><a href="#assets">素材</a><a href="#sound">音</a><a href="#evidence">根拠</a><a href="#done">完成条件・確認状態</a></div></nav>
 <main>
-<div class="decide" id="decide">
-<h2>未確定事項と判断してほしい点</h2>
-<p class="small">ほかの節は決定済みの情報です。ここだけ選んでください。現行の絵コンテは A です。</p>
-<ul class="decide-list">
-<li><span class="need">1</span><div>
-<p>導入の最初の約5秒を、点の列のモーショングラフィックス（A・現行）にするか、紙のカードが横へ流れる生成動画（B）にするか。</p>
-<p>A は絵コンテのとおりで、生成しません。B は<a href="#swap">差し替え候補</a>のプロンプトで約5秒です。AI生成は未承認・未生成で、使うなら動画生成の承認が要ります。B の絵はこの企画書にありません。</p>
-<p>違いが出るのは<a href="#cut-01">カット01</a>のはじめの約5秒だけです。A は紙色の上を、灰の点が右から左へ流れます。B はその5秒が、文字も人もいない淡い紙のカードの流れになり、一枚が減速して光り始めます。5秒のあと点の列へ戻り、02で一つが中央へ寄って「相談したい」になる動きは、A でも B でも図形で行います。点は02から07まで続くので、戻ったあとの点をカードにはしません。</p>
-<p class="where">該当：<a href="#cut-01">カット01</a>、<a href="#swap">差し替え候補</a>、<a href="#assets">素材</a></p>
-</div></li>
-</ul>
-</div>
-
 <h2 id="claim">この動画で伝える一文</h2>
 <div class="box accent"><p class="lead">「拙い発信は失望される」と思っている人に、人は他人にさほど興味がなく、10人中8人が素通りしても1人に「相談したい」と届けば発信した価値があり、知らせなければ存在しないのと同じだと伝え、恥ずかしがらず自分の言葉で発信を続けるという手応えを残す。</p></div>
 <p>01の「人は、興味がない。」「だから、発信していい。」と、07の「自分の言葉で。」だけで、同じ主張の背骨が通るようにします。02が、一人に届けば価値があることを、04が、知らせなければ存在しないことを足します。動画の題は「誰もあなたを見ていない。だから発信していい」です。この企画書の題とフォルダ名は、元記事の題のままです。</p>
@@ -138,7 +115,7 @@ nav a.nav-need:hover{color:var(--white);text-decoration:underline}
 <p>拙い内容を出したら失望される、あるいは誰も見ないなら意味がない、と思っている人。見終わったあと、上手くなってから出そうと止める前に、自分の言葉で一つ出せるようにします。</p>
 
 <h2 id="structure">構成と尺</h2>
-<p>声は理由・留保・本人の結論の範囲を、文字は主張と決め語を、点と線は素通り・届くこと・通り道・雑音を受け持ちます。全文字幕は足しません。写真と動画は使いません。A の絵コンテは、点と線と文字だけで成立します。</p>
+<p>声は理由・留保・本人の結論の範囲を、文字は主張と決め語を、点と線は素通り・届くこと・通り道・雑音を受け持ちます。全文字幕は足しません。写真は使いません。動画は、カット01の最初の約5秒だけ、紙カードの生成映像を全面で使います。そのあと点の列へ戻り、02以降は点と線と文字です。</p>
 <p>本編108.5秒、全体114.0秒です。声は503字。5.5字/秒を仮の読み速度とすると約91.5秒です。残りは、7カット×約2秒（声の前0.5秒、後ろ約1.5秒）と、07で結びを受け取る約3秒です。5.5字/秒は、過去の日本語ナレーションの実測（約5.5〜5.7字/秒）に合わせた目安で、語の読みと間で実測は変わります。制作側が声と画を合わせて調整します。3分には伸ばしません。表の秒は0.1秒単位で、合計が108.5秒になるように置いています。尺が足りなければ、05の業者との対比と06の真摯な意見の一文から詰め、01の主張、02の一人、03の留保、04の存在しないこと、07の結論は残します。</p>
 <div class="tablewrap"><table><thead><tr><th>カット</th><th>区間</th><th>この区間で分かってほしいこと</th><th>声／画面</th></tr></thead><tbody>
 <tr><td><a href="#cut-01">01 失望は、来ない。</a></td><td>0:00.0–0:13.8（13.8秒）</td><td>興味がないから、失望を恐れず発信していい</td><td>65字／26字</td></tr>
@@ -155,27 +132,29 @@ nav a.nav-need:hover{color:var(--white);text-decoration:underline}
 <h2 id="cuts">カット表・絵コンテ</h2>
 <p>各カットの開始と終了を画像で示します。コマ画は構図の設計資料です。番号、はじめ、おわりは画像の外だけに書きます。章表示、テロップ帯、エンドクレジットは入れません。秒数・位置・角度は参考値です。制作側は<a href="#motion">動きの狙い</a>と可読性を満たす方法を選べます。大きな画面運動を、入口と出口だけに限定しません。カメラの名前は<a href="../docs/techniques/camera-cheatsheet.md">カメラワークと切り替えの名前</a>に合わせ、図の層だけに掛けます。</p>
 
-<section class="cut" id="cut-01"><div class="cuthead"><div class="num">01</div><div><h3>失望は、来ない。<span class="need">要判断 1</span></h3><p class="small">0:00.0–0:13.8 / 13.8秒 ・ 主張 ・ 声65字／画面26字</p></div></div>
-<div class="frames"><figure><a href="assets/storyboard/cut-01-start.webp"><img src="assets/storyboard/cut-01-start.webp" width="1280" height="720" alt="右から点が流れ込み、下に失望される？"></a><figcaption><b>はじめ</b>　点が右から入る。下に「失望される？」。</figcaption></figure><figure><a href="assets/storyboard/cut-01-end.webp"><img src="assets/storyboard/cut-01-end.webp" width="1280" height="720" alt="上に点の列。下に人は、興味がない。とだから、発信していい。"></a><figcaption><b>おわり</b>　「人は、興味がない。」と「だから、発信していい。」。</figcaption></figure></div>
+<section class="cut" id="cut-01"><div class="cuthead"><div class="num">01</div><div><h3>失望は、来ない。</h3><p class="small">0:00.0–0:13.8 / 13.8秒 ・ 主張 ・ 声65字／画面26字</p></div></div>
+<div class="frames"><figure><a href="assets/storyboard/cut-01-start.webp"><img src="assets/storyboard/cut-01-start.webp" width="1280" height="720" alt="淡い紙のカードが横へ流れ、下に失望される？"></a><figcaption><b>はじめ</b>　紙のカードが横へ流れる。下に「失望される？」。</figcaption></figure><figure><a href="assets/storyboard/cut-01-end.webp"><img src="assets/storyboard/cut-01-end.webp" width="1280" height="720" alt="上に点の列。下に人は、興味がない。とだから、発信していい。"></a><figcaption><b>おわり</b>　点の列に戻ったあと。「人は、興味がない。」と「だから、発信していい。」。</figcaption></figure></div>
 <div class="details"><div>
 <div class="label">画面の文字（表示順）</div>
 <p class="words">失望される？<br>人は、興味がない。<br>だから、発信していい。</p>
 <div class="label">ナレーション</div>
 <p class="voice">拙い内容を出したら、失望されるのではないか。その心配はいりません。人は、他人にさほど興味がありません。だから、発信していいのです。</p>
 <div class="label">字組みと構図</div>
-<p>はじめは下段の左に大きな一行、上段に右から入る点の列です。おわりは上の点が画面の左まで抜け、下段が二行になります。二行目だけ琥珀です。点に番号は付けません。</p>
+<p>はじめの約5秒は、紙のカードの映像が画面いっぱいです。下段の左に、大きな一行「失望される？」を映像の上へ組みます。映像の中に文字はありません。約5秒で点の列へ戻したあと、上段に点が右から入り、おわりは上の点が画面の左まで抜け、下段が二行になります。二行目だけ琥珀です。点に番号は付けません。</p>
 </div><div>
 <div class="label">文字・画面全体の動きと次への接続</div>
 <ul>
-<li>点が右から左へ、近いものほど速く流れる。「失望される？」は行のマスクから入り、声の「失望されるのではないか」に着地する。</li>
-<li>声の「興味がありません」で「人は、興味がない。」が塊で着地し、声の「発信していい」で琥珀の行が入る。</li>
+<li>0秒から、生成映像を全面で一度だけ再生する。カードは横へ流れ、中央の一枚が減速して光りながら寄る。この寄りのあいだ、文字は正面の層のまま読む。</li>
+<li>声は約0.5秒置いて入る。「失望される？」は行のマスクから入り、声の「失望されるのではないか」に着地する。着地の目安は開始から約3秒で、映像の5秒の中にある。</li>
+<li>映像が終わる約5秒で、光っているカードの面から紙色の全面へ横に振る。上段に点の列が右から入る。「失望される？」はこの振りで退く。小窓にはせず、白く光らせて切り替えず、カードの映像を点の下に残さない。</li>
+<li>声の「興味がありません」で「人は、興味がない。」が塊で着地し、声の「発信していい」で琥珀の行が入る。この二行は、点の列に戻ったあとの画面に置く。</li>
 <li>読む間、点は流れ続け、二行の塊は点と逆へゆっくり流す。字形は崩さない。</li>
 <li>同じ点の列のまま、02へ渡す。ここで止めない。</li>
 </ul>
 <div class="label">カメラ</div>
-<p>点の層を、右から左へトラッキングする。文字は正面の層のままです。寄るのは02です。</p>
+<p>最初の約5秒の寄りは、生成映像のドリーインです。文字層には掛けません。点の列に戻ったあとは、点の層を右から左へトラッキングします。02の、点へ3秒かけて寄るドリーインは、図形の層のままです。</p>
 <div class="label">素材と扱い</div>
-<p>図形と文字。<a href="#decide">要判断 1</a>の A です。はじめの約5秒も点の列です。媒体の画面、ロゴ、顔は描きません。</p>
+<p><a href="assets/videos/cut-01-intro-paper-cards.mp4"><code>assets/videos/cut-01-intro-paper-cards.mp4</code></a> を、最初の5.04秒、全面で使います。1280×720を、比率を保って1920×1080へ拡大します。画面の文字は制作側が映像の上に組みます。媒体の画面、ロゴ、顔は描きません。詳細は<a href="#assets">素材</a>。</p>
 </div></div></section>
 
 <section class="cut" id="cut-02"><div class="cuthead"><div class="num">02</div><div><h3>一人に、届く。</h3><p class="small">0:13.8–0:28.0 / 14.2秒 ・ 見せ場 ・ 声67字／画面9字</p></div></div>
@@ -344,7 +323,8 @@ nav a.nav-need:hover{color:var(--white);text-decoration:underline}
 <div class="tablewrap"><table><thead><tr><th>担当</th><th>受け持つこと</th><th>扱い</th></tr></thead><tbody>
 <tr><td>声</td><td>失望の心配がいらないこと、10人中8人のたとえ、悪意ではないこと、存在しないこと、一回の連絡、業者より信頼できる人、打算と雑音、本人の結論</td><td>画面の短い語と意味を合わせる。画面の全文の朗読にはしない。カット単位のまとまった文で渡す。</td></tr>
 <tr><td>文字</td><td>興味がない、発信していい、素通り、相談したい、余裕がない、存在しない、通り道、打算ではない、自分の言葉</td><td>説明の全文は載せない。主語が要る場面は二行まで、縦書きは04と05だけ使う。</td></tr>
-<tr><td>図形</td><td>流れる点、減速する二つの点、吹き出し、広い余白、線の下の丸、通り道の線、弧、斜線</td><td>一つの形に複数の意味を持たせない。対応は<a href="#symbols">記号と色</a>。</td></tr>
+<tr><td>図形</td><td>点の列に戻ったあとの流れる点、減速する二つの点、吹き出し、広い余白、線の下の丸、通り道の線、弧、斜線</td><td>一つの形に複数の意味を持たせない。対応は<a href="#symbols">記号と色</a>。</td></tr>
+<tr><td>動画</td><td>カット01の最初の約5秒。紙のカードが横へ流れ、一枚が光りながら寄る</td><td>全面で一度だけ見せ、文字は上に組む。終わったら点の列へ戻す。02以降には使わない</td></tr>
 </tbody></table></div>
 <p>ナレーションありの構成です。音声の制作は制作側の担当で、音源がまだ無いことは引き渡しを止める理由にしません。</p>
 
@@ -362,11 +342,11 @@ nav a.nav-need:hover{color:var(--white);text-decoration:underline}
 
 <h2 id="handoff">企画側／制作側</h2>
 <div class="tablewrap"><table><thead><tr><th>企画側で用意するもの</th><th>制作側で仕上げるもの</th></tr></thead><tbody>
-<tr><td>現行の文言、声の原稿、配分、絵コンテ16枚、原稿との対応、演出の採否</td><td>three.js と文字層の実装、細かな動きと同期、声、BGM、効果音、代表区間の試作と全編の書き出し</td></tr>
+<tr><td>現行の文言、声の原稿、配分、絵コンテ16枚、原稿との対応、演出の採否、カット01冒頭の生成映像1本</td><td>three.js と文字層の実装、映像の拡大と点の列へのつなぎ、細かな動きと同期、声、BGM、効果音、代表区間の試作と全編の書き出し</td></tr>
 <tr><td>静止コマの文字配置の点検</td><td>動いている全カットの安全域と重なりの検査、実速再生、音の終わり方の確認</td></tr>
 </tbody></table></div>
-<p>企画と絵コンテはこの一式です。音声と本編は制作側が担当します。画像や動画が追加で必要になったら、必要な内容を企画側へ返します。制作側は動画AIで新規の素材を作りません。</p>
-<div class="box"><b>実装の推奨：</b>Remotion＋three.js。点の列に奥行きを付け、近い点ほど速く流し、02で一つの点へカメラを寄せるために使います。文字は DOM／CSS の行マスクと詰め組で組み、点・線・吹き出しのカメラは図の層だけに掛けます。文字の塊も移動と拡大をします。状態はフレーム時刻から決め、実時間の物理や <code>requestAnimationFrame</code> のループを本編の動きにしません。</div>
+<p>企画と絵コンテ、カット01冒頭の映像はこの一式です。音声と本編は制作側が担当します。これ以外の画像や動画が必要になったら、必要な内容を企画側へ返します。制作側は動画AIで新規の素材を作りません。</p>
+<div class="box"><b>実装の推奨：</b>Remotion＋three.js。カット01の最初の5.04秒は、採用済みの映像を全面で再生し、文字は DOM／CSS でその上に組みます。点の列に戻ったあと、点に奥行きを付け、近い点ほど速く流し、02で一つの点へカメラを寄せるために three.js を使います。文字は行マスクと詰め組で組み、点・線・吹き出しのカメラは図の層だけに掛けます。文字の塊も移動と拡大をします。状態はフレーム時刻から決め、実時間の物理や <code>requestAnimationFrame</code> のループを本編の動きにしません。</div>
 
 <h2 id="design">デザインシステム（映像の文字・色・グリッド）</h2>
 <p>紙色 #F4F0E6、墨 #1A1916、灰 #7A746C、点の藍 #1F4E79、自分の言葉の琥珀 #8C5A2B、雑音の珊瑚 #B04834、通り道の線 #5A544C。吹き出しの面は白に、藍の輪郭です。ライム #d2ff1a はロゴだけに使います。文字は Noto Sans JP、見出し700–900、補足400–500。制作側が OFL に沿って用意します。このフォルダには同梱しません。企画書の配色とは別です。紙色の上の図は、輪郭か、紙より暗い面にします。</p>
@@ -375,11 +355,12 @@ nav a.nav-need:hover{color:var(--white);text-decoration:underline}
 <tr><td>主文</td><td>80–120px</td><td>01の「発信していい。」、02の吹き出し、06の「打算ではない。」</td></tr>
 <tr><td>短い語</td><td>40–64px</td><td>04の「知らせなければ、」、06の灰の二行、07の「恥ずかしがらず、」、縦書き</td></tr>
 </tbody></table></div>
-<p>外側余白は96pxを目安にします。文字の安全域は左右64px、上下48px。1280×720の絵コンテでは左右48px、上下36pxです。01は上の点と下の二行、02は左上の特大から中央の吹き出し、03は右の一行から左の特大、04は横の特大から右の縦書き、05は左上の横一行から左の縦書き、06は下の一行から左の三段、07は固まった点から幅いっぱいの特大です。</p>
+<p>外側余白は96pxを目安にします。文字の安全域は左右64px、上下48px。1280×720の絵コンテでは左右48px、上下36pxです。01のはじめの約5秒は映像の全面と下段の一行、戻ったあとは上の点と下の二行、02は左上の特大から中央の吹き出し、03は右の一行から左の特大、04は横の特大から右の縦書き、05は左上の横一行から左の縦書き、06は下の一行から左の三段、07は固まった点から幅いっぱいの特大です。</p>
 
 <h2 id="motion">動きの言語</h2>
 <div class="tablewrap"><table><thead><tr><th>動作</th><th>意味と使う場所</th><th>読む間・次へのつながり</th></tr></thead><tbody>
-<tr><td>点が流れる</td><td>01。タイムラインを、近い点ほど速く右から左へ流す。</td><td>語の塊は逆へ流し、列を止めずに02へ渡す。</td></tr>
+<tr><td>カードが流れ、一枚が寄る</td><td>01の最初の約5秒。紙のカードが横へ流れ、一枚が減速して光りながら寄る。</td><td>全面で見せ、文字は上に組む。約5秒で紙色へ横に振り、点の列へ渡す。</td></tr>
+<tr><td>点が流れる</td><td>01で点の列に戻ったあと。タイムラインを、近い点ほど速く右から左へ流す。</td><td>語の塊は逆へ流し、列を止めずに02へ渡す。</td></tr>
 <tr><td>点が減速し、一つが前へ出る</td><td>02。灰は抜け、藍が二つ残り、一つが吹き出しになる。</td><td>3秒のドリーインのあいだも、残りの点は流す。吹き出しは一塊で出す。</td></tr>
 <tr><td>余白が広がる</td><td>03。点の間隔が開き、余裕の無さが見える。</td><td>空きの下辺を、04の線にする。</td></tr>
 <tr><td>丸が線に乗る</td><td>04。知らせていない仕事が、通り道へ出る。</td><td>乗った点を線の上で進め、05の弧の起点にする。</td></tr>
@@ -408,23 +389,25 @@ nav a.nav-need:hover{color:var(--white);text-decoration:underline}
 <p>人物、顔、手は描きません。点は人の姿ではありません。吹き出しは02の「相談したい」だけに使い、尾は点から出します。口元や会話の画面にはしません。「マネージャー」のような役割の人物も出しません。</p>
 
 <h2 id="swap">差し替え候補</h2>
-<p><span class="need">要判断 1</span>現行は A です。点の流れ、減速、吹き出し、線に乗る丸、弧、斜線は、制作側の図形で描きます。生成映像も生成画像も使いません。</p>
-<p>点は01から07まで続きます。02の吹き出し、04の輪郭の丸、06の斜線は、そのカットだけの形です。同じ点の一部だけを、実写や生成映像にはしません。</p>
-<p>B は、導入の約5秒だけを次の映像に替える候補です。AI生成は未承認・未生成です。使うなら、対象はカット01の最初の約5秒、尺は約5秒、生成は1本、内容は下のプロンプトです。クレジットは未確認です。承認の前に生成しません。</p>
-<p>プロンプト（そのまま）：</p>
+<p>カット01の最初の約5秒は、B（紙カードの生成映像）です。生成は済んでいます。点の流れ、減速、吹き出し、線に乗る丸、弧、斜線は、点の列に戻ったあと、制作側の図形で描きます。02の吹き出し、04の輪郭の丸、06の斜線は、そのカットだけの形です。戻ったあとの点の一部だけを、別の生成映像にはしません。</p>
+<p>承認は 2026-11-22 9:34 JST、本人です。承認の範囲は、カット01冒頭の素材1本だけです。ほかのカットの生成は未承認です。</p>
+<p>生成元は Grok Imagine。プロンプト（そのまま）：</p>
 <p><code>Light pastel background, endless stream of small paper cards drifting sideways, one card slowly stops and glows, Dolly in 3s slow, no people, no text</code></p>
-<p>B を採る場合、その5秒は元の画面から全面のカードへ切り替え、カードを主画面として見せ、そのあと点の列へ戻します。小窓にはしません。カードには文字も人も入れません。5秒のあとの減速、中央の点、「相談したい」、3秒のドリーインは、A と同じ図形で続けます。02以降の点をカードの映像にはしません。B の絵はこの企画書にありません。</p>
+<p>ファイルは <code>assets/videos/cut-01-intro-paper-cards.mp4</code>。1280×720、24fps、5.04秒、音声トラックなし、1.27MBです。淡いピンクから藤色の明るい背景で、人物なし、文字なし、ロゴなし。カードが流れ、中央の一枚が光りながら寄ります。仕様は<a href="#assets">素材</a>。</p>
+<p>02以降の点、吹き出し、3秒のドリーインは図形のままです。この映像が使えないときは、01のはじめの約5秒を、紙色の上を灰の点が右から左へ流れる図形に戻します。</p>
 
 <h2 id="assets">素材</h2>
-<p><span class="need">要判断 1</span></p>
 <div class="tablewrap"><table><thead><tr><th>ファイル</th><th>役割</th><th>使用区間</th></tr></thead><tbody>
-<tr><td><code>assets/storyboard/cut-XX-start.webp</code> と <code>cut-XX-end.webp</code></td><td>絵コンテ16枚。1280×720、明るい紙色。08はライム。A の構図</td><td>本編に貼る完成素材ではない</td></tr>
+<tr><td><code>assets/storyboard/cut-XX-start.webp</code> と <code>cut-XX-end.webp</code></td><td>絵コンテ16枚。1280×720。cut-01-start は紙カードの映像に「失望される？」を上に組んだ画。cut-01-end は点の列に戻ったあと。08はライム。ほかは明るい紙色の図形</td><td>本編に貼る完成素材ではない</td></tr>
 <tr><td><a href="../okady-work-logo.svg">okady-work-logo.svg</a></td><td>エンドロゴ</td><td>08の全区間。リポジトリ直下の原本。一式を移すときもこの相対位置を保つ</td></tr>
-<tr><td>なし（未承認・未生成）</td><td>B の導入。紙のカードが横へ流れ、一枚が減速して光る。人なし、文字なし</td><td>採る場合だけ、01の最初の約5秒。プロンプトは<a href="#swap">差し替え候補</a>と同じ</td></tr>
+<tr><td><a href="assets/videos/cut-01-intro-paper-cards.mp4"><code>assets/videos/cut-01-intro-paper-cards.mp4</code></a></td><td>採用済みの導入。紙のカードが横へ流れ、一枚が減速して光る。人物なし、文字なし、ロゴなし。画面の文字は制作側が上に組む</td><td>01の最初の5.04秒。全面。一度だけ再生し、終わったら点の列へ戻す。02以降には使わない</td></tr>
 </tbody></table></div>
-<p>プロンプト（そのまま）：</p>
+<p>生成元は Grok Imagine。プロンプト（そのまま）：</p>
 <p><code>Light pastel background, endless stream of small paper cards drifting sideways, one card slowly stops and glows, Dolly in 3s slow, no people, no text</code></p>
-<p>新たに取得する写真、動画、フォントファイルはありません。Noto Sans JP は制作側が用意します。B の映像ファイルは、この一式にありません。</p>
+<p>承認は 2026-11-22 9:34 JST、本人です。承認の範囲は、カット01冒頭のこの1本だけです。ほかのカットの生成は未承認です。</p>
+<p>仕様は 1280×720、24fps、5.04秒（121フレーム）、音声トラックなし（生成時の音声は削除済み）、1.27MBです。再エンコードしていません。本編の 1920×1080・30fps へは、比率を保って全面に拡大し、フレーム時刻に合わせて一度再生します。</p>
+<p>確認した結果は、淡いピンクから藤色の明るい背景（画素の R・G・B の平均は、標本で約225〜227）、人物なし、文字なし、ロゴなし、です。カードが流れ、中央の一枚が光りながら寄ります。</p>
+<p>新たに取得する写真とフォントファイルはありません。Noto Sans JP は制作側が用意します。このフォルダには同梱しません。</p>
 
 <h2 id="sound">音</h2>
 <div class="box">
@@ -439,13 +422,14 @@ nav a.nav-need:hover{color:var(--white);text-decoration:underline}
 
 <h2 id="done">完成条件・確認状態</h2>
 <ul>
+<li>01の最初は <code>assets/videos/cut-01-intro-paper-cards.mp4</code>（5.04秒）を一度だけ全面で使い、文字は映像の上に組む。終わったら点の列へ戻り、02以降の点、吹き出し、3秒のドリーインは図形で行う。</li>
 <li>01と07で、興味がないから発信していいこと、結びは自分の言葉で続けることまで本人の結論で閉じる。</li>
 <li>02は、大半が素通りしても一人に届けば価値があることを、声のたとえと、点の動きで伝える。画面に割合や軸を出さない。</li>
 <li>03は、悪意ではないことと、余裕がないことを残す。06は、打算と取られること、心ない批判、真摯な意見だけを受け取ること、雑音は流すことを残す。</li>
 <li>04は、知らせなければ存在しないことで閉じ、経歴の固有名詞を出さない。05は一回の連絡であり、相談の中身と製品名を出さない。</li>
 <li>点は顔にしない。吹き出しは02だけ。媒体のロゴと画面、企業名、顧客を特定できる経過は出さない。</li>
 <li>章表示、テロップ帯、エンドクレジット、白フラッシュは入れない。エンドロゴはライムの単独画面で、原本の動き、中央、1.5秒の保持、音の終了を再生して確認する。</li>
-<li>絵コンテ16枚（1280×720）を、左右48px・上下36pxの安全域、文字同士、文字と図形（点、線、斜線、弧）の交差で検査した。はみ出し0、文字同士の重なり0、文字と図形の交差0。吹き出しの白い面とその中の「相談したい」は、吹き出しの文言なので面との交差には数えていない。尾と点は文字に重なっていない。ロゴの字形と、08はじめの環はこの検査の文字対象外。終了ロゴのインクは安全域の内側（左269px・上308px・右1010px・下429px）。この検査は静止コマの配置で、本編の合格ではない。</li>
+<li>絵コンテ16枚（1280×720）を、左右48px・上下36pxの安全域、文字同士、文字と図形（点、線、斜線、弧）の交差で検査した。差し替えた cut-01-start の文字6字の外接矩形は左75px・上470px・右601px・下555pxで、はみ出し0、文字同士の重なり0、図形との交差0（このコマに点・線・斜線・弧はない）。紙カードは背景の映像で、文字を上に組む層なので、カードの面との重なりは図形の交差に数えていない。字形の下のコントラスト比は最小約10.8:1。ほかの15枚も、はみ出し0、文字同士の重なり0、文字と図形の交差0。吹き出しの白い面とその中の「相談したい」は、吹き出しの文言なので面との交差には数えていない。尾と点は文字に重なっていない。ロゴの字形と、08はじめの環はこの検査の文字対象外。終了ロゴのインクは安全域の内側（左269px・上308px・右1010px・下429px）。この検査は静止コマの配置で、本編の合格ではない。</li>
 <li>本編は未制作。実速再生は未確認。制作側は全カットを0.25秒ごとに取り、左右64px・上下48pxの安全域、文字同士、文字と図の交差を検査する。声の語の時刻と画面の変化を並べ、3秒以上変化のない区間を名指しする。最初の試作は01→02。そのあと04、07–08、最後に全編と音を確認する。</li>
 </ul>
 </main>
