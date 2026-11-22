@@ -1,0 +1,430 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>『AIは100%じゃないと使えない』と言う人は、何%なら使うのかを答えられない｜動画企画書</title><style>
+/* デジタル庁デザインシステム（DADS）のデザイントークン（@digital-go-jp/design-tokens）に沿ったスタイル。
+   20261102 の plan.html の style を複製。動画本編の配色とは別。 */
+:root{
+  --white:#ffffff;--black:#000000;
+  --gray-50:#f2f2f2;--gray-100:#e6e6e6;--gray-200:#cccccc;--gray-420:#949494;--gray-536:#767676;--gray-600:#666666;--gray-700:#4d4d4d;--gray-800:#333333;--gray-900:#1a1a1a;
+  --key-50:#e8f1fe;--key-100:#d9e6ff;--key-200:#c5d7fb;--key-900:#0017c1;--key-1000:#00118f;--key-1100:#000071;
+  --success-bg:#e6f5ec;--success-1:#259d63;--success-2:#197a4b;
+  --warning-bg:#fbf5e0;--warning-yellow-1:#b78f00;--warning-text:#806300;
+  --warning-orange-bg:#ffeee2;--warning-orange-1:#fb5b01;--warning-orange-2:#c74700;
+  --error-1:#ec0000;--focus-yellow:#ffd43d;--visited:#8b008b;
+  --font-sans:"Noto Sans JP",-apple-system,BlinkMacSystemFont,"Hiragino Sans",sans-serif;
+  --font-mono:"Noto Sans Mono","Noto Sans JP",monospace;
+  --r-4:.25rem;--r-8:.5rem;--r-12:.75rem;--r-16:1rem;--r-full:624.9375rem;
+  --elevation-1:0 2px 8px 1px rgba(0,0,0,.1),0 1px 5px 0 rgba(0,0,0,.3);
+  --ink:var(--gray-900);--line:var(--gray-200);--mut:var(--gray-700);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--white);color:var(--gray-800);font-family:var(--font-sans);font-size:1rem;font-weight:400;line-height:1.7;letter-spacing:.02em;-webkit-font-smoothing:antialiased}
+header .inner,main,nav .in,footer .inner{max-width:1120px;margin:0 auto;padding:0 24px}
+header{background:var(--white);border-bottom:1px solid var(--gray-420)}
+header .inner{padding-top:40px;padding-bottom:24px}
+.strata{height:4px;background:var(--key-900)}
+.eyebrow{display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px;font-size:.875rem;line-height:1.5;color:var(--gray-700);letter-spacing:.04em}
+h1{font-size:2.25rem;line-height:1.4;font-weight:700;color:var(--gray-900);letter-spacing:.01em;margin:16px 0 8px}
+h2{font-size:1.75rem;line-height:1.5;font-weight:700;color:var(--gray-900);margin:64px 0 24px;padding:0 0 8px;border-bottom:1px solid var(--gray-420);scroll-margin-top:72px}
+h3{font-size:1.25rem;line-height:1.5;font-weight:700;color:var(--gray-900);margin:32px 0 12px}
+.cuthead h3{margin:0}
+p{margin:0 0 16px}
+.lead{font-size:1.125rem;line-height:1.6;font-weight:700;color:var(--gray-900)}
+.small{font-size:.875rem;line-height:1.7;color:var(--gray-700)}
+b,strong{font-weight:700;color:var(--gray-900)}
+a{color:var(--key-1000);text-decoration:underline;text-underline-offset:.2em;text-decoration-thickness:1px}
+a:visited{color:var(--visited)}
+a:hover{color:var(--key-1100);text-decoration-thickness:3px}
+a:active{color:var(--warning-orange-2)}
+a:focus-visible{outline:4px solid var(--black);outline-offset:2px;background:var(--focus-yellow);color:var(--black);border-radius:var(--r-4)}
+.chip{display:inline-block;background:var(--key-50);color:var(--key-1000);border:1px solid var(--key-900);border-radius:var(--r-4);padding:2px 8px;font-size:.875rem;line-height:1.5;font-weight:700;letter-spacing:.02em}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin:24px 0 0;padding:0;list-style:none}
+.meta span{background:var(--gray-50);border:1px solid var(--gray-200);border-radius:var(--r-4);padding:4px 12px;font-size:.875rem;line-height:1.5;color:var(--gray-800)}
+nav{position:sticky;top:0;background:var(--white);border-bottom:1px solid var(--gray-420);z-index:5;box-shadow:0 1px 4px rgba(0,0,0,.08)}
+nav .in{display:flex;flex-wrap:wrap;gap:4px 20px;padding-top:12px;padding-bottom:12px;font-size:.875rem;line-height:1.5}
+nav a,nav a:visited{color:var(--key-1000);font-weight:700}
+.box{background:var(--white);border:1px solid var(--gray-420);border-radius:var(--r-8);padding:24px;margin:16px 0}
+.box > :last-child{margin-bottom:0}
+.box.accent{background:var(--key-50);border:1px solid var(--key-900);border-left:8px solid var(--key-900)}
+.box.accent .lead{margin:0}
+.tablewrap{overflow-x:auto;margin:16px 0}
+table{border-collapse:collapse;width:100%;background:var(--white);font-size:1rem;line-height:1.7;margin:16px 0;border-top:1px solid var(--gray-420)}
+.tablewrap table{margin:0}
+th,td{border-bottom:1px solid var(--gray-420);padding:12px 16px;text-align:left;vertical-align:top}
+th{background:var(--gray-50);color:var(--gray-900);font-weight:700;font-size:.875rem;line-height:1.5;border-bottom:2px solid var(--gray-800);white-space:nowrap}
+tr:hover td{background:var(--key-50)}
+.cut{background:var(--white);border:1px solid var(--gray-420);border-radius:var(--r-16);padding:32px;margin:32px 0;scroll-margin-top:72px}
+.cuthead{display:flex;gap:16px;align-items:center;margin-bottom:24px;padding-bottom:16px;border-bottom:1px solid var(--gray-200)}
+.cuthead p{margin:4px 0 0}
+.num{font-size:1.5rem;line-height:1;font-weight:700;color:var(--white);background:var(--key-900);border-radius:var(--r-8);min-width:56px;height:56px;display:flex;align-items:center;justify-content:center;flex:none;font-feature-settings:"tnum"}
+.frames.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+.frames{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+figure{margin:0}
+figure img{width:100%;height:auto;display:block;border:1px solid var(--gray-200);border-radius:var(--r-8);background:var(--white)}
+figure a:focus-visible{display:block;background:none}
+figcaption{font-size:.875rem;line-height:1.7;margin-top:8px;color:var(--gray-800)}
+.details{display:grid;grid-template-columns:1fr 1.15fr;gap:8px 40px;margin-top:32px}
+.details p{margin:4px 0}
+.label{font-size:.875rem;line-height:1.3;font-weight:700;color:var(--key-1000);margin-top:20px;padding-left:8px;border-left:4px solid var(--key-900)}
+.details > div > .label:first-child{margin-top:0}
+.words{font-size:1.125rem;line-height:1.6;font-weight:700;color:var(--gray-900);margin:8px 0}
+.voice{background:var(--gray-50);border-left:4px solid var(--gray-600);border-radius:0 var(--r-4) var(--r-4) 0;padding:12px 16px;margin:8px 0;font-size:1rem;line-height:1.7;color:var(--gray-800)}
+ul{margin:8px 0 16px;padding-left:1.5em}
+li{margin:4px 0}
+li::marker{color:var(--gray-600)}
+code{font-family:var(--font-mono);background:var(--gray-50);border:1px solid var(--gray-200);padding:0 4px;border-radius:var(--r-4);font-size:.875em;color:var(--gray-900);word-break:break-all}
+.sw{display:inline-block;width:16px;height:16px;border-radius:var(--r-4);vertical-align:-3px;margin-right:8px;border:1px solid var(--gray-420)}
+.tag{display:inline-block;border-radius:var(--r-4);padding:0 8px;font-size:.8125rem;line-height:1.7;font-weight:700;margin-right:8px;border:1px solid}
+.t-un{background:var(--warning-bg);color:var(--warning-text);border-color:var(--warning-yellow-1)}
+footer{border-top:1px solid var(--gray-420);background:var(--gray-50);margin-top:80px;padding:24px 0;font-size:.875rem;color:var(--gray-700)}
+h2.part{margin-top:96px;padding:16px 24px;border:none;border-radius:var(--r-8);background:var(--gray-50);border-left:8px solid var(--gray-800);font-size:1.5rem}
+h2.part + .small{margin-top:-8px}
+.navsep{color:var(--gray-700);font-weight:700;padding-left:12px;border-left:1px solid var(--gray-420)}
+
+@media(max-width:760px){
+  header .inner,main,nav .in,footer .inner{padding:0 16px}
+  header .inner{padding-top:24px;padding-bottom:16px}
+  .frames,.frames.three,.details{grid-template-columns:1fr}
+  h1{font-size:1.75rem;line-height:1.5}
+  h2{font-size:1.5rem;margin-top:48px}
+  .cut{padding:20px;border-radius:var(--r-12)}
+  .box{padding:16px}
+  table{font-size:.875rem}
+  th,td{padding:8px 12px}
+  th{white-space:normal}
+}
+@media print{nav{position:static;box-shadow:none}.cut{break-inside:avoid}}
+
+</style>
+
+</head>
+<body>
+<header><div class="inner"><div class="eyebrow">VIDEO PLAN / 2026.11.23 <span class="chip">企画・絵コンテ</span></div>
+<h1>『AIは100%じゃないと使えない』と言う人は、何%なら使うのかを答えられない</h1>
+<p class="lead">何%なら、使うのか。その線は、合意で置く。</p>
+<p>元記事：<a href="https://note.com/dhythm/n/nc20b2a0a2c4f">『AIは100%じゃないと使えない』と言う人は、何%なら使うのかを答えられない</a><br>
+原稿：<code>dhythm/private-note</code> の <code>Zettelkasten/PermanentNote/20261026_「AIは100%じゃないと使えない」と言う人は、何%なら使うのかを答えられない.md</code>（本文は同梱しない）</p>
+<div class="meta"><span>16:9・1920×1080・30fps</span><span>本編 1:47.0＋ロゴ 5.5秒＝1:52.5</span><span>本編7カット＋ロゴ</span><span>声 495字／画面 269字</span><span>絵コンテ16枚</span><span>ナレーションは制作工程</span><span>BGM・効果音は作らない</span><span>実速再生は未確認</span></div>
+</div><div class="strata"></div></header>
+<nav><div class="in"><a href="#claim">この動画で伝える一文</a><a href="#viewer">視聴者</a><a href="#structure">構成と尺</a><a href="#cuts">カット表・絵コンテ</a><span class="navsep">詳細：</span><a href="#details">詳細（ここから下は補足）</a><a href="#roles">声・文字・素材の分担</a><a href="#claim-map">主張・根拠・留保の対応</a><a href="#handoff">企画側／制作側</a><a href="#design">デザインシステム（映像の文字・色・グリッド）</a><a href="#motion">動きの言語</a><a href="#symbols">記号と色</a><a href="#character">キャラ設定</a><a href="#swap">差し替え候補</a><a href="#assets">素材</a><a href="#sound">音</a><a href="#evidence">根拠</a><a href="#done">完成条件・確認状態</a></div></nav>
+<main>
+<h2 id="claim">この動画で伝える一文</h2>
+<div class="box accent"><p class="lead">「システムは100%でないと使えない」と思っている人に、AIの答えは多数決に近く回数を増やしても100%に届かず、100%が必要なら完全一致だが表記の揺れは拾えず、95%と言うなら理由を聞き、95と98のずれは結論を覆すと伝え、精度は技術ではなく合意だ、という本人の結論を残す。</p></div>
+<p>01の「何%なら、使うのか。」と、07の「精度は、合意だ。」「一緒に、決める。」だけで、同じ主張の背骨が通るようにします。02が、回数を増やしても100%にならないことを、03が、完全一致は表記の揺れを拾えないことを、05が、95と98のずれで結論が覆ることを足します。</p>
+<p>留保は、02の「雑だから、ではない。」、03の門の外に残る語、04の「なんとなくは、危険。」、05の「嘘ではない。」、06の届かない線と途中の印、07の三つの言い方に置きます。最後は本人の結論で閉じ、視聴者への問いかけや、両論を同じ比重にしたまとめにはしません。画面と声の百分率は原稿にあるものだけです。10回のうち8回、99%、99.9%、95%、98%、90%、99%です。</p>
+
+<h2 id="viewer">視聴者</h2>
+<p>AIの結果を「100%じゃないなら使えない」と受け取る人。見終わったあと、何%なら判断に使うのかを、理由とともに相手と決められるようにします。</p>
+
+<h2 id="structure">構成と尺</h2>
+<p>声は理由・留保・本人の結論の範囲を、文字は主張と決め語を、点と目盛りは個数・届かなさ・ずれを受け持ちます。全文字幕は足しません。写真も動画も使いません。図形と文字です。</p>
+<p>本編107.0秒、全体112.5秒です。声は495字。5.5字/秒を仮の読み速度とすると90.0秒です。残りは、7カット×約2秒（声の前0.5秒、後ろ約1.5秒）と、07で結びを受け取る約3秒です。5.5字/秒は、過去の日本語ナレーションの実測（約5.5〜5.7字/秒）に合わせた目安で、語の読みと間で実測は変わります。制作側が声と画を合わせて調整します。2分には伸ばしません。表の秒は0.1秒単位で、合計が107.0秒になるように置いています。目標の約1:45に対し、留保を残した文量で本編は1:47.0です。尺が足りなければ、04の90%の道と、05の「書き方では、戻せない。」から詰めます。01の問い、02の届かなさ、03の表記の揺れ、05の95と98、07の合意は残します。</p>
+<div class="tablewrap"><table><thead><tr><th>カット</th><th>区間</th><th>この区間で分かってほしいこと</th><th>声／画面</th></tr></thead><tbody>
+<tr><td><a href="#cut-01">01 何%なら、使うのか。</a></td><td>0:00.0–0:12.9（12.9秒）</td><td>100%だけを求めると、話は着地しない</td><td>60字／25字</td></tr>
+<tr><td><a href="#cut-02">02 100%には、ならない。</a></td><td>0:12.9–0:33.8（20.9秒）</td><td>回数を増やしても、一つの空きが残り、100%にならない</td><td>104字／40字</td></tr>
+<tr><td><a href="#cut-03">03 表記の揺れは、拾えない。</a></td><td>0:33.8–0:52.2（18.4秒）</td><td>完全一致は毎回同じ。表記の揺れと想定外は拾えない</td><td>90字／50字</td></tr>
+<tr><td><a href="#cut-04">04 なぜ、95%なのか。</a></td><td>0:52.2–1:07.7（15.5秒）</td><td>95%と言うなら理由を聞く。なんとなくなら危険</td><td>74字／27字</td></tr>
+<tr><td><a href="#cut-05">05 95と98で、覆る。</a></td><td>1:07.7–1:22.1（14.4秒）</td><td>95と98のずれで、報告の結論が覆る。嘘ではない</td><td>68字／41字</td></tr>
+<tr><td><a href="#cut-06">06 100%は、約束しない。</a></td><td>1:22.1–1:33.0（10.9秒）</td><td>100%は約束しない。途中で、納得を確かめる</td><td>49字／35字</td></tr>
+<tr><td><a href="#cut-07">07 精度は、合意だ。</a></td><td>1:33.0–1:47.0（14.0秒）</td><td>精度は技術ではなく合意。何%かを一緒に決める</td><td>50字／51字</td></tr>
+<tr><td><a href="#cut-08">08 エンドロゴ</a></td><td>1:47.0–1:52.5（5.5秒）</td><td>制作表示</td><td>0字／0字</td></tr>
+</tbody></table></div>
+<p class="small">字数は空白・改行を除き、句読点を含みます。画面は各カットの「画面の文字」に掲げた文言の合計です。同一文言の再登場はカットごとに数えます。07の14.0秒には、結びを受け取る約3秒を含みます。声の合計495字、画面の合計269字です。</p>
+
+<h2 id="cuts">カット表・絵コンテ</h2>
+<p>各カットの開始と終了を画像で示します。コマ画は構図の設計資料です。番号、はじめ、おわりは画像の外だけに書きます。章表示、テロップ帯、エンドクレジットは入れません。秒数・位置・角度は参考値です。制作側は<a href="#motion">動きの狙い</a>と可読性を満たす方法を選べます。大きな画面運動を、入口と出口だけに限定しません。カメラの名前は<a href="../docs/techniques/camera-cheatsheet.md">カメラワークと切り替えの名前</a>に合わせ、図の層だけに掛けます。</p>
+
+<section class="cut" id="cut-01"><div class="cuthead"><div class="num">01</div><div><h3>何%なら、使うのか。</h3><p class="small">0:00.0–0:12.9 / 12.9秒 ・ 主張 ・ 声60字／画面25字</p></div></div>
+<div class="frames"><figure><a href="assets/storyboard/cut-01-start.webp"><img src="assets/storyboard/cut-01-start.webp" width="1280" height="720" alt="灰の前置きと、特大の使えない。"></a><figcaption><b>はじめ</b>　「100%じゃないと、」は灰。「使えない。」が大きい。</figcaption></figure><figure><a href="assets/storyboard/cut-01-end.webp"><img src="assets/storyboard/cut-01-end.webp" width="1280" height="720" alt="何%なら、使うのか。右下に空の円。"></a><figcaption><b>おわり</b>　「何%なら、使うのか。」。右下に空の円。</figcaption></figure></div>
+<div class="details"><div>
+<div class="label">画面の文字（表示順）</div>
+<p class="words">100%じゃないと、<br>使えない。<br>何%なら、使うのか。</p>
+<div class="label">ナレーション</div>
+<p class="voice">100%じゃないなら、使えない、と言われることがあります。何%なら、使うのか。理由を説明できないままでは、着地しません。</p>
+<div class="label">字組みと構図</div>
+<p>はじめは左上の灰の一行と、その下の特大「使えない。」です。おわりは、問いの一行が画面の幅を使い、右下に空の円が一つあります。円は語に触れません。01は横の二段、07の結びは別の大きさです。</p>
+</div><div>
+<div class="label">文字・画面全体の動きと次への接続</div>
+<ul>
+<li>声は約0.5秒置いて入る。「使えない。」は行のマスクから左へ入り、声の「使えない」に着地する。</li>
+<li>声の「何%なら、使うのか」で、問いの塊が右から大きく着地する。「使えない。」はこのとき上へ退き、灰の一行に残る。</li>
+<li>空の円は、声の「着地しません」までに描き終わる。読む間、問いの塊は円と逆へゆっくり流す。字形は崩さない。</li>
+<li>円が左へ動き、02の点の列の先頭になる。ここで止めない。</li>
+</ul>
+<div class="label">カメラ</div>
+<p>問いの塊へ、図の層を少し寄る（<a href="../docs/techniques/camera-cheatsheet.md">ドリーイン</a>、ゆっくり）。文字は正面のまま読む。</p>
+<div class="label">素材と扱い</div>
+<p>図形と文字。空の円は、まだ置いていない線です。百分率の答えにはしません。</p>
+</div></div></section>
+
+<section class="cut" id="cut-02"><div class="cuthead"><div class="num">02</div><div><h3>100%には、ならない。</h3><p class="small">0:12.9–0:33.8 / 20.9秒 ・ 見せ場 ・ 声104字／画面40字</p></div></div>
+<div class="frames"><figure><a href="assets/storyboard/cut-02-start.webp"><img src="assets/storyboard/cut-02-start.webp" width="1280" height="720" alt="10個の点。8個が塗り、2個が輪郭。"></a><figcaption><b>はじめ</b>　「10回のうち、8回。」。点は10個。塗り8、輪郭2。</figcaption></figure><figure><a href="assets/storyboard/cut-02-end.webp"><img src="assets/storyboard/cut-02-end.webp" width="1280" height="720" alt="密な点の場に一つの輪郭。99.9%。"></a><figcaption><b>おわり</b>　1000個の点。一つが輪郭。「99.9%」「100%には、ならない。」</figcaption></figure></div>
+<div class="details"><div>
+<div class="label">画面の文字（表示順）</div>
+<p class="words">10回のうち、8回。<br>99%<br>99.9%<br>100%には、ならない。<br>雑だから、ではない。</p>
+<div class="label">ナレーション</div>
+<p class="voice">10回中8回同じなら、もっともらしいものとして選びます。多数決に近いです。100回で99回なら99%、1000回で999回なら99.9%です。増やしても、100%にはなりません。作りが雑だからではありません。</p>
+<div class="label">字組みと構図</div>
+<p>はじめは上の一行と、下の水平な点10個です。輪郭は3番目と8番目で、端に寄せません。おわりは上半分が点の場、下に三段です。「99.9%」が大きく、「100%には、ならない。」がその下、「雑だから、ではない。」は灰でさらに小さい。点は文字の段に入れません。「99%」は途中の画面で、おわりのコマには残しません。9を1桁足したあとの「99.9%」だけを残します。</p>
+</div><div>
+<div class="label">文字・画面全体の動きと次への接続</div>
+<ul>
+<li>「10回のうち、8回。」は声の「8回同じ」に着地する。塗った点はもっともらしいもの、輪郭は選ばれなかったものです。</li>
+<li>声の「99%」で、点が100個になり、99個が塗られ、1個が輪郭のまま残る。ラベル「99%」が着地する。</li>
+<li>声の「99.9%」で、点が1000個になる。輪郭は一つ残る。ラベルの9が1桁だけ増えて「99.9%」になる。このあいだ、図のカメラは空の点へ寄る（ドリーイン）。空の点は埋まらない。</li>
+<li>「100%には、ならない。」は声の「100%にはなりません」に、「雑だから、ではない。」は声の「作りが雑」に着地する。寄っているあいだも、近い点ほど速く流れ、文字は正面のまま読む。</li>
+<li>空の点が横へ広がり、03の門の口になる。</li>
+</ul>
+<div class="label">カメラ</div>
+<p>ドリーイン。掛けるのは点の層です。空の点にピントを合わせ、周囲の点はわずかに緩くする。文字の層には掛けません。寄り切っても、輪郭は輪郭のままです。</p>
+<div class="label">素材と扱い</div>
+<p>図形と文字。点の数は、10、100、1000です。原稿の99.9%までで、99.99%は出しません。点は人の顔でも、ビー玉でもありません。</p>
+</div></div></section>
+
+<section class="cut" id="cut-03"><div class="cuthead"><div class="num">03</div><div><h3>表記の揺れは、拾えない。</h3><p class="small">0:33.8–0:52.2 / 18.4秒 ・ 根拠と留保 ・ 声90字／画面50字</p></div></div>
+<div class="frames"><figure><a href="assets/storyboard/cut-03-start.webp"><img src="assets/storyboard/cut-03-start.webp" width="1280" height="720" alt="開いた門の外に、同じ正方形が三つ。"></a><figcaption><b>はじめ</b>　門は開いている。同じ正方形が三つ、まだ外。</figcaption></figure><figure><a href="assets/storyboard/cut-03-end.webp"><img src="assets/storyboard/cut-03-end.webp" width="1280" height="720" alt="正方形は門の中。表記の揺れは外。拾えない。"></a><figcaption><b>おわり</b>　正方形は門の中。「表記の揺れ」と「想定外の書き方」は外。</figcaption></figure></div>
+<div class="details"><div>
+<div class="label">画面の文字（表示順）</div>
+<p class="words">完全に、一致。<br>毎回、同じ。<br>表記の揺れ<br>想定外の書き方<br>拾えない。<br>プログラムの仕事。<br>同時には、満たせない。</p>
+<div class="label">ナレーション</div>
+<p class="voice">100%が必要なら、完全に一致するものだけを拾います。表記の揺れも、想定外の書き方も、拾えません。一つに決まる仕事は、プログラムに任せます。AIと100%は、同時には満たせません。</p>
+<div class="label">字組みと構図</div>
+<p>はじめは左の開いた門と、その右に並ぶ同じ正方形です。上に「完全に、一致。」、下に「毎回、同じ。」。おわりは、正方形が門の内側に入り、右に語が縦に積まれます。「拾えない。」がいちばん大きい。「プログラムの仕事。」は灰で、「同時には、満たせない。」はその下です。門の外に置く語は、原稿の「表記の揺れ」と「想定外の書き方」だけです。原稿に無い文字列の対は作りません。</p>
+</div><div>
+<div class="label">文字・画面全体の動きと次への接続</div>
+<ul>
+<li>門の線が左から描かれる。三つの正方形は声の「完全に一致」で門の中へ入り、「毎回、同じ。」が着地する。</li>
+<li>「表記の揺れ」と「想定外の書き方」は右から来て、門の手前で止まる。声の「拾えません」で「拾えない。」が大きく着地する。</li>
+<li>「プログラムの仕事。」は声の「プログラムに任せます」に、「同時には、満たせない。」は声の「同時には満たせません」に着地する。</li>
+<li>読む間、門の中の正方形は左へ、外の語は右へ、逆向きにゆっくり流す。</li>
+<li>門の右の辺が横へ振れ、04の目盛りになる。</li>
+</ul>
+<div class="label">カメラ</div>
+<p>門の中から、外に残った語へパンする。語が安全域に入ったところで止める。文字は床に寝かせません。</p>
+<div class="label">素材と扱い</div>
+<p>図形と文字。正方形は、同じ形であることの印です。会社名、略称、人の名前の対にはしません。</p>
+</div></div></section>
+
+<section class="cut" id="cut-04"><div class="cuthead"><div class="num">04</div><div><h3>なぜ、95%なのか。</h3><p class="small">0:52.2–1:07.7 / 15.5秒 ・ 根拠と留保 ・ 声74字／画面27字</p></div></div>
+<div class="frames"><figure><a href="assets/storyboard/cut-04-start.webp"><img src="assets/storyboard/cut-04-start.webp" width="1280" height="720" alt="なぜ、95%なのか。針は目盛りのあいだ。"></a><figcaption><b>はじめ</b>　「なぜ、95%なのか。」。針は目盛りに乗っていない。</figcaption></figure><figure><a href="assets/storyboard/cut-04-end.webp"><img src="assets/storyboard/cut-04-end.webp" width="1280" height="720" alt="根拠が、要る。針はまだ目盛りのあいだ。"></a><figcaption><b>おわり</b>　「根拠が、要る。」。針は、まだ目盛りに乗っていない。</figcaption></figure></div>
+<div class="details"><div>
+<div class="label">画面の文字（表示順）</div>
+<p class="words">なぜ、95%なのか。<br>根拠が、要る。<br>なんとなくは、危険。</p>
+<div class="label">ナレーション</div>
+<p class="voice">95%以上ならいい、と言われたら、なぜ95%ですか、と聞きます。なんとなくなら危険です。90%で実用になる理由を示せば、納得してもらう道もあります。</p>
+<div class="label">字組みと構図</div>
+<p>はじめは問いの特大と、下の水平な目盛りです。針は目盛りのあいだに浮いています。おわりは、問いが灰で小さく残り、「根拠が、要る。」が大きく、「なんとなくは、危険。」が灰でその下です。目盛りに95の数字は書きません。90%の道は声だけです。画面の針を、90にも95にもロックしません。</p>
+</div><div>
+<div class="label">文字・画面全体の動きと次への接続</div>
+<ul>
+<li>「なぜ、95%なのか。」は声の「なぜ95%ですか」に着地する。針は目盛りのあいだを動き、どの目盛りにも止まらない。</li>
+<li>「根拠が、要る。」は同じ語に続けて大きく着地する。「なんとなくは、危険。」は声の「なんとなく」に、灰のまま残す。</li>
+<li>読む間も針は浮いたまま、目盛りは少しずつ横へ流れる。90%を、決まった答えの目盛りにはしません。</li>
+<li>目盛りが速く振り出され、05のホイップパンになる。</li>
+</ul>
+<div class="label">カメラ</div>
+<p>目盛りに沿って、小さくパンする。針が安全域の中に残る範囲で止める。</p>
+<div class="label">素材と扱い</div>
+<p>図形と文字。研究の最前線、予算、期間は、このカットの声にも画面にも入れません。対応は <a href="references.md">references.md</a>。</p>
+</div></div></section>
+
+<section class="cut" id="cut-05"><div class="cuthead"><div class="num">05</div><div><h3>95と98で、覆る。</h3><p class="small">1:07.7–1:22.1 / 14.4秒 ・ 見せ場 ・ 声68字／画面41字</p></div></div>
+<div class="frames"><figure><a href="assets/storyboard/cut-05-start.webp"><img src="assets/storyboard/cut-05-start.webp" width="1280" height="720" alt="95%で、成功。針はその目盛りにある。"></a><figcaption><b>はじめ</b>　「95%で、成功。」。針は、一つの目盛りに乗っている。</figcaption></figure><figure><a href="assets/storyboard/cut-05-end.webp"><img src="assets/storyboard/cut-05-end.webp" width="1280" height="720" alt="95と98のあいだが赤い。結論が、覆る。"></a><figcaption><b>おわり</b>　二つの目盛り。あいだが赤い。「結論が、覆る。」</figcaption></figure></div>
+<div class="details"><div>
+<div class="label">画面の文字（表示順）</div>
+<p class="words">95%で、成功。<br>98%の、つもり。<br>嘘ではない。<br>結論が、覆る。<br>書き方では、戻せない。</p>
+<div class="label">ナレーション</div>
+<p class="voice">95%で成功だと考えていました。相手は98%のつもりでした。嘘をついているのではありません。目標がずれていただけです。結論が、覆ります。</p>
+<div class="label">字組みと構図</div>
+<p>はじめは左の特大「95%で、成功。」と、針が乗った一つの目盛りです。赤はありません。おわりは、上に「結論が、覆る。」、その下の左に灰の「95%で、成功。」、右に「98%の、つもり。」です。目盛りの二つの印のあいだだけが赤です。「嘘ではない。」と「書き方では、戻せない。」は、目盛りの下に灰で置きます。赤は語に重ねません。</p>
+</div><div>
+<div class="label">文字・画面全体の動きと次への接続</div>
+<ul>
+<li>「95%で、成功。」は声の「成功だと考えていました」まで、針が乗ったまま残る。</li>
+<li>声の「98%のつもり」で、図のカメラが目盛りを速く振る（<a href="../docs/techniques/camera-cheatsheet.md">ホイップパン</a>）。振っているあいだだけ、振った方向へ短くぼかす。白く光らせて切り替えない。</li>
+<li>振り終わると、95と98の二つの印が並び、あいだの帯が赤く光る。「98%の、つもり。」と「結論が、覆る。」が着地する。</li>
+<li>「嘘ではない。」は声の「嘘をついているのではありません」のあいだ、灰のまま読める。「書き方では、戻せない。」は、声の「結論が、覆ります」と同時に残す。声はこの文で終わる。</li>
+<li>読む間、赤い帯は光をにじませたまま、目盛りは少し流れる。帯は語へ広がらない。</li>
+<li>赤い帯が縮み、06の、円に届かない線になる。</li>
+</ul>
+<div class="label">カメラ</div>
+<p>ホイップパン。掛けるのは目盛りの層です。文字は正面のまま、振りのあとで読みます。赤の光は帯だけに掛けます。</p>
+<div class="label">素材と扱い</div>
+<p>図形と文字。95と98は、原稿の「こちらは95%で成功」「相手は98%のつもり」です。赤は、大きい方が勝ち、という意味にはしません。</p>
+</div></div></section>
+
+<section class="cut" id="cut-06"><div class="cuthead"><div class="num">06</div><div><h3>100%は、約束しない。</h3><p class="small">1:22.1–1:33.0 / 10.9秒 ・ 留保 ・ 声49字／画面35字</p></div></div>
+<div class="frames"><figure><a href="assets/storyboard/cut-06-start.webp"><img src="assets/storyboard/cut-06-start.webp" width="1280" height="720" alt="線が、開いた円の手前で止まる。"></a><figcaption><b>はじめ</b>　「100%は、約束しない。」。線は円に届いていない。</figcaption></figure><figure><a href="assets/storyboard/cut-06-end.webp"><img src="assets/storyboard/cut-06-end.webp" width="1280" height="720" alt="線の途中に印。円はまだ先。"></a><figcaption><b>おわり</b>　途中に印。「人がやるより、ミスを減らす。」</figcaption></figure></div>
+<div class="details"><div>
+<div class="label">画面の文字（表示順）</div>
+<p class="words">100%は、約束しない。<br>人がやるより、ミスを減らす。<br>途中で、確かめる。</p>
+<div class="label">ナレーション</div>
+<p class="voice">100%は約束しません。人がやるよりミスを減らす目標を、一緒に考えます。途中で、納得を確かめます。</p>
+<div class="label">字組みと構図</div>
+<p>はじめは上の一行と、下の線です。線の先に開いた円があり、線は円の手前で切れています。おわりは三段です。上は灰の「100%は、約束しない。」、中が大きく「人がやるより、ミスを減らす。」、下が「途中で、確かめる。」です。線の途中に塗った印があり、開いた円はまだ右に残ります。05の赤い帯は、ここには残しません。</p>
+</div><div>
+<div class="label">文字・画面全体の動きと次への接続</div>
+<ul>
+<li>線は声の「約束しません」までに伸び、開いた円の手前で止まる。「100%は、約束しない。」が着地する。</li>
+<li>「人がやるより、ミスを減らす。」は声の「ミスを減らす」に、「途中で、確かめる。」は声の「途中で」に着地する。印は線の途中に出る。</li>
+<li>読む間、線は少し伸びる。円には触れない。</li>
+<li>線が下へ落ち、07の結びの下の線になる。</li>
+</ul>
+<div class="label">カメラ</div>
+<p>線の切れた端から、開いた円の方へ少しパンして戻す。円と線の空きが見える位置で止める。</p>
+<div class="label">素材と扱い</div>
+<p>図形と文字。近づける努力をしても100%にはならない、という原稿の文は、02の声と、この届かない線で残します。このカットの声では繰り返しません。</p>
+</div></div></section>
+
+<section class="cut" id="cut-07"><div class="cuthead"><div class="num">07</div><div><h3>精度は、合意だ。</h3><p class="small">1:33.0–1:47.0 / 14.0秒 ・ 本人の結論 ・ 声50字／画面51字</p></div></div>
+<div class="frames"><figure><a href="assets/storyboard/cut-07-start.webp"><img src="assets/storyboard/cut-07-start.webp" width="1280" height="720" alt="三つの言い方が、位置も大きさも違う。"></a><figcaption><b>はじめ</b>　三つの言い方。位置も、大きさも違う。</figcaption></figure><figure><a href="assets/storyboard/cut-07-end.webp"><img src="assets/storyboard/cut-07-end.webp" width="1280" height="720" alt="精度は、合意だ。一緒に、決める。"></a><figcaption><b>おわり</b>　「精度は、合意だ。」「一緒に、決める。」</figcaption></figure></div>
+<div class="details"><div>
+<div class="label">画面の文字（表示順）</div>
+<p class="words">人がやるより、高ければ。<br>99%にしたい。<br>試したのか。<br>先には、潰せない。<br>精度は、合意だ。<br>一緒に、決める。</p>
+<div class="label">ナレーション</div>
+<p class="voice">納得は、人によって違います。精度は、技術ではなく、合意の話です。何%かを、なぜかを、一緒に決めます。</p>
+<div class="label">字組みと構図</div>
+<p>はじめは、三つの言い方が別の位置、別の大きさです。左上「人がやるより、高ければ。」、右「99%にしたい。」、左下「試したのか。」。灰の「先には、潰せない。」は右下で、三つと列を組みません。おわりは、左の特大「精度は、合意だ。」と、その下の「一緒に、決める。」、さらに下の短い青の線です。01の問いより、下の一行が画面の幅を使います。三つの言い方は、おわりのコマには残しません。</p>
+</div><div>
+<div class="label">文字・画面全体の動きと次への接続</div>
+<ul>
+<li>三つの言い方は、声の「人によって違います」のあいだ、別々の位置で読める。「先には、潰せない。」も、そのあいだ画面に残す。声では繰り返さない。</li>
+<li>三つの塊は外側へ退き、「精度は、合意だ。」が声の「合意の話」に大きく着地する。「一緒に、決める。」は声の「一緒に決めます」に着地する。</li>
+<li>声の結びを受け取る約3秒、語と短い線を一つの塊として寄せて拡大する。線は語に触れない。</li>
+<li>そのあと画面を横へ振ってライムの全面へ渡す。白く光らせて切り替えません。</li>
+</ul>
+<div class="label">カメラ</div>
+<p>三つの言い方から特大の行へ引き、最後の約3秒は図の層を少し寄る。最後の振りは、ロゴの動きが始まる前に終えます。</p>
+<div class="label">素材と扱い</div>
+<p>図形と文字。結びは、一緒に決める、という本人の言い切りです。視聴者への問いにはしません。</p>
+</div></div></section>
+
+<section class="cut" id="cut-08"><div class="cuthead"><div class="num">08</div><div><h3>エンドロゴ</h3><p class="small">1:47.0–1:52.5 / 5.5秒 ・ 制作表示 ・ 声0字／画面0字</p></div></div>
+<div class="frames"><figure><a href="assets/storyboard/cut-08-start.webp"><img src="assets/storyboard/cut-08-start.webp" width="1280" height="720" alt="ライムの全面。o が上の方にある。"></a><figcaption><b>はじめ</b>　ライムの全面。o が上にある。</figcaption></figure><figure><a href="assets/storyboard/cut-08-end.webp"><img src="assets/storyboard/cut-08-end.webp" width="1280" height="720" alt="ライムの中央に、完成した原本のロゴ。"></a><figcaption><b>おわり</b>　中央に完成した原本のロゴ。ほかの文言はない。</figcaption></figure></div>
+<div class="details"><div>
+<div class="label">画面の文字（表示順）</div>
+<p class="words">なし（ロゴのみ）</p>
+<div class="label">ナレーション</div>
+<p class="voice">なし</p>
+<div class="label">字組みと構図</div>
+<p>背景は #d2ff1a。ロゴは中央。形、書体、色、比率は変えない。本編の要素は重ねません。</p>
+</div><div>
+<div class="label">文字・画面全体の動きと次への接続</div>
+<ul>
+<li>0–2.6秒：原本 SVG の o の落下、バウンド、定位置への移動。</li>
+<li>2.6–3.2秒：全体が左へスライド。3.0–4.0秒：「.work」が一文字ずつ出現。</li>
+<li>4.0–5.5秒：完成状態を1.5秒保持して終える。</li>
+</ul>
+<div class="label">カメラ</div>
+<p>ロゴの区間は固定。本編からの振りは、この動きが始まる前に終えます。</p>
+<div class="label">素材と扱い</div>
+<p>リポジトリ直下の <a href="../okady-work-logo.svg">okady-work-logo.svg</a>。フレーム時刻から再現します。</p>
+</div></div></section>
+
+<h2 id="details" class="part">詳細（ここから下は補足）</h2>
+
+<h2 id="roles">声・文字・素材の分担</h2>
+<div class="tablewrap"><table><thead><tr><th>担当</th><th>受け持つこと</th><th>扱い</th></tr></thead><tbody>
+<tr><td>声</td><td>着地しないこと、8回・99%・99.9%、作りが雑だからではないこと、表記の揺れと想定外、プログラム、同時には満たせないこと、なぜ95%か、なんとなくの危険、90%は理由を示せば、95と98、嘘ではないこと、100%は約束しないこと、途中で確かめること、人によって違うこと、合意</td><td>画面の短い語と意味を合わせる。画面の全文の朗読にはしない。カット単位のまとまった文で渡す。</td></tr>
+<tr><td>文字</td><td>何%なら使うのか、100%にはならない、拾えない、なぜ95%か、結論が覆る、約束しない、精度は合意</td><td>説明の全文は載せない。三つの言い方は07のはじめだけ、縦の門と横の目盛りで組を変える。</td></tr>
+<tr><td>図形</td><td>空の円、個数の点、門と正方形、目盛りと針、赤い帯、届かない線、途中の印、結びの短い線</td><td>一つの形に複数の意味を持たせない。対応は<a href="#symbols">記号と色</a>。</td></tr>
+<tr><td>動画</td><td>なし</td><td>写真も、生成映像も、この企画の本線には使わない</td></tr>
+</tbody></table></div>
+<p>ナレーションありの構成です。音声の制作は制作側の担当で、音源がまだ無いことは引き渡しを止める理由にしません。読みは「8回＝はっかい」「10回＝じゅっかい」「99回＝きゅうじゅうきゅうかい」「100回＝ひゃっかい」「999回＝きゅうひゃくきゅうじゅうきゅうかい」「1000回＝せんかい」「99%＝きゅうじゅうきゅうパーセント」「99.9%＝きゅうじゅうきゅうてんきゅうパーセント」「95%＝きゅうじゅうごパーセント」「98%＝きゅうじゅうはちパーセント」「90%＝きゅうじゅうパーセント」です。</p>
+
+<h2 id="claim-map">主張・根拠・留保の対応</h2>
+<div class="tablewrap"><table><thead><tr><th>役割</th><th>内容</th><th>カット</th></tr></thead><tbody>
+<tr><td>主張</td><td>100%だけを求めると、何%なら使うのかが決まらず、話は着地しない。</td><td>01</td></tr>
+<tr><td>根拠</td><td>答えは多数決に近い。10回中8回、100回で99%、1000回で99.9%。回数を増やしても100%にはならない。</td><td>02</td></tr>
+<tr><td>留保</td><td>間違えるのは、作りが雑だからではない。</td><td>02</td></tr>
+<tr><td>根拠</td><td>100%が必要なら、完全に一致するものだけを拾う。答えは毎回同じになる。一つに決まる仕事はプログラムに任せる。</td><td>03</td></tr>
+<tr><td>留保</td><td>表記の揺れと想定外の書き方は拾えない。AIと100%は、同時には満たせない。</td><td>03</td></tr>
+<tr><td>根拠</td><td>95%以上ならいい、と言われたら、なぜその数字かを聞く。</td><td>04</td></tr>
+<tr><td>留保</td><td>なんとなくなら危険である。90%で実用になる理由を示せば、納得してもらう道もある。</td><td>04</td></tr>
+<tr><td>根拠</td><td>95%で成功だと思っていた側と、98%のつもりだった側がいると、報告の結論が覆る。</td><td>05</td></tr>
+<tr><td>留保</td><td>どちらかが嘘をついているのではない。目標がずれていた。書き方では戻せない。</td><td>05</td></tr>
+<tr><td>留保</td><td>100%は約束しない。人がやるよりミスを減らす目標を一緒に考える。納得は途中で確かめる。</td><td>06</td></tr>
+<tr><td>留保</td><td>納得の物差しは人によって違う。先に全部は潰せない。</td><td>07</td></tr>
+<tr><td>結論</td><td>精度は、技術ではなく、合意の話である。何%かを、なぜかを、一緒に決める。</td><td>07</td></tr>
+</tbody></table></div>
+<p>原稿の文との対応、画面の文言と要約の区別、この動画に載せなかった論点は <a href="references.md">references.md</a>。</p>
+
+<h2 id="handoff">企画側／制作側</h2>
+<div class="tablewrap"><table><thead><tr><th>企画側で用意するもの</th><th>制作側で仕上げるもの</th></tr></thead><tbody>
+<tr><td>現行の文言、声の原稿、配分、絵コンテ16枚、原稿との対応、演出の採否</td><td>three.js と文字層の実装、細かな動きと同期、ナレーション、代表区間の試作と全編の書き出し</td></tr>
+<tr><td>静止コマの文字配置の点検</td><td>動いている全カットの安全域と重なりの検査、実速再生</td></tr>
+</tbody></table></div>
+<p>企画と絵コンテはこの一式です。ナレーションと本編は制作側が担当します。BGMと効果音は、この企画では作りません。これ以外の画像や動画が必要になったら、必要な内容を企画側へ返します。制作側は動画AIで新規の素材を作りません。</p>
+<div class="box"><b>実装の推奨：</b>Remotion＋three.js。点に奥行きを付け、近い点ほど速く流し、空の点へカメラを寄せ、その点にピントを合わせるために three.js を使います。赤い帯の光も、図の層の後処理です。文字は DOM／CSS で、行マスクと詰め組で組み、点・門・目盛りのカメラは図の層だけに掛けます。文字の塊も移動と拡大をします。状態はフレーム時刻から決め、実時間の物理や <code>requestAnimationFrame</code> のループを本編の動きにしません。ナレーションの候補は Gemini 3.8 Flash TTS、または Eleven v4。名称はユーザー指定の候補で、実行時に識別子を確認します。キーは環境変数から読み、値は書きません。</div>
+
+<h2 id="design">デザインシステム（映像の文字・色・グリッド）</h2>
+<p>紙色 #F7F4EE、墨 #1A1916、灰 #7A746C、目盛りと門の青 #1F4B7A、ずれの赤 #C5362B、赤の暈 #FCD6D0。ライム #d2ff1a はロゴだけに使います。文字は Noto Sans JP、見出し700–900、補足400–500。制作側が OFL に沿って用意します。このフォルダには同梱しません。企画書の配色とは別です。</p>
+<div class="tablewrap"><table><thead><tr><th>段</th><th>1920×1080の参考値</th><th>用途</th></tr></thead><tbody>
+<tr><td>大きな語</td><td>140–200px</td><td>01の「使うのか。」、02の「99.9%」、03の「拾えない。」、04の「根拠が、要る。」、05の「結論が、覆る。」、07の「精度は、合意だ。」</td></tr>
+<tr><td>主文</td><td>80–120px</td><td>01の「使えない。」、02の「100%には、ならない。」、03の「同時には、満たせない。」、06の「ミスを減らす。」</td></tr>
+<tr><td>短い語</td><td>40–64px</td><td>灰の留保、07のはじめの三つの言い方、目盛りの周りの短い行</td></tr>
+</tbody></table></div>
+<p>外側余白は96pxを目安にします。文字の安全域は左右64px、上下48px。1280×720の絵コンテでは左右48px、上下36pxです。01は左の特大から幅の広い問い、02は上の点と下の三段、03は左の門と右の積み、04は問いから「根拠が、要る。」、05は一つの目盛りから二つの目盛りと赤、06は届かない線、07はばらけた三つの言い方から左の特大です。</p>
+
+<h2 id="motion">動きの言語</h2>
+<div class="tablewrap"><table><thead><tr><th>動作</th><th>意味と使う場所</th><th>読む間・次へのつながり</th></tr></thead><tbody>
+<tr><td>問いが着地し、円が残る</td><td>01。100%だけでは着地せず、線はまだ空である。</td><td>塊を逆へ流し、円を02の点の先頭にする。</td></tr>
+<tr><td>点が増え、空が残る</td><td>02。10個、100個、1000個。近い点ほど速い。9が1桁増える。</td><td>ドリーインのあいだも空の点は埋まらず、門の口へ渡す。</td></tr>
+<tr><td>門が、同じ形だけを入れる</td><td>03。完全一致は中へ入り、表記の揺れと想定外は外に残る。</td><td>中と外を逆へ流し、門の辺を04の目盛りにする。</td></tr>
+<tr><td>針が、目盛りに乗らない</td><td>04。95%の理由が、まだ無い。</td><td>針を止めずに、目盛りを05のホイップパンへ渡す。</td></tr>
+<tr><td>二つの目盛り、あいだが赤い</td><td>05。95と98が並び、ずれが光る。</td><td>帯を語に広げず、06の届かない線へ縮める。</td></tr>
+<tr><td>線が、円の手前で止まる</td><td>06。100%は約束しない。印は途中にある。</td><td>線を少し伸ばしても円に触れず、07の下の線にする。</td></tr>
+<tr><td>三つの言い方が退き、合意が着地する</td><td>07。物差しは人によって違い、結びは一緒に決める。</td><td>結びの約3秒も塊を寄せ、横振りでロゴへ渡す。</td></tr>
+</tbody></table></div>
+<p>1字ずつの常時の揺れ、拍ごとの脈動、文字の崩壊は使いません。文字を読ませるために画面全体を静止させず、文量、動かす層、構図で調整します。イージングの値と秒の同期は制作側の裁量です。決め語を声のどの語に合わせるかは、各カットに書いてあります。</p>
+
+<h2 id="symbols">記号と色</h2>
+<div class="tablewrap"><table><thead><tr><th>記号</th><th>意味</th></tr></thead><tbody>
+<tr><td>墨の大きな語</td><td>本人の決め語。01の「使うのか。」、03の「拾えない。」、05の「結論が、覆る。」、07の「精度は、合意だ。」</td></tr>
+<tr><td>灰の語</td><td>留保か、前の状態。02の「雑だから、ではない。」、04の「なんとなくは、危険。」、05の「嘘ではない。」と「書き方では、戻せない。」、07の「先には、潰せない。」</td></tr>
+<tr><td>塗った点</td><td>もっともらしいものとして選ばれた答え。人の顔ではない</td></tr>
+<tr><td>輪郭の点、空の円</td><td>選ばれなかった一つ。100%に届かない先。01と02と06</td></tr>
+<tr><td>青の門と、同じ正方形</td><td>完全に一致するものだけを拾う。03だけ</td></tr>
+<tr><td>門の外の語</td><td>表記の揺れと、想定外の書き方。原稿の呼び方のまま。文字列の対は作らない</td></tr>
+<tr><td>青の目盛りと、乗らない針</td><td>まだ理由の無い95%。04。針は目盛りにロックしない</td></tr>
+<tr><td>赤い帯</td><td>95と98のずれ。05だけ。大きい方が勝ち、という意味にはしない</td></tr>
+<tr><td>線の途中の印</td><td>途中で、納得を確かめる位置。06</td></tr>
+<tr><td>結びの短い青の線</td><td>一緒に置いた線。07。100の円にはしない</td></tr>
+</tbody></table></div>
+
+<h2 id="character">キャラ設定</h2>
+<p>人物、顔、手は描きません。点は人の姿ではありません。吹き出しは出しません。会社名、製品名、SNSの画面は出しません。</p>
+
+<h2 id="swap">差し替え候補</h2>
+<p>ビー玉が漏斗に落ち、数個こぼれる映像は、AI生成・未承認・未生成です。今回は生成しません。本線は、制作側が描くドットです。10個のうち8個、100個のうち99個、1000個のうち999個、と増えても、空の点が一つ残ります。</p>
+<p>点は02のあいだ、同じ描き方で続きます。一部の点だけを、別の生成映像や実写にはしません。ビー玉を後から使う場合は、点が出る区間の質感を揃え、クレジット消費の承認が要ります。この企画では、その承認をしていません。</p>
+
+<h2 id="assets">素材</h2>
+<div class="tablewrap"><table><thead><tr><th>ファイル</th><th>役割</th><th>使用区間</th></tr></thead><tbody>
+<tr><td><code>assets/storyboard/cut-XX-start.webp</code> と <code>cut-XX-end.webp</code></td><td>絵コンテ16枚。1280×720。08はライム。ほかは明るい紙色の図形と文字</td><td>本編に貼る完成素材ではない</td></tr>
+<tr><td><a href="../okady-work-logo.svg">okady-work-logo.svg</a></td><td>エンドロゴ</td><td>08の全区間。リポジトリ直下の原本。一式を移すときもこの相対位置を保つ</td></tr>
+</tbody></table></div>
+<p>新たに取得する写真、動画、フォントファイルはありません。Noto Sans JP は制作側が用意します。このフォルダには同梱しません。</p>
+
+<h2 id="sound">音</h2>
+<div class="box">
+<p>BGMと効果音は、この企画では作らない。検討もしない。</p>
+</div>
+
+<h2 id="evidence">根拠</h2>
+<p>原稿との対応は <a href="references.md">references.md</a>。演出候補の確認と採否は <a href="effects-direction.md">effects-direction.md</a>。採否の履歴を、本編の作業手順には混ぜません。</p>
+
+<h2 id="done">完成条件・確認状態</h2>
+<ul>
+<li>01と07で、何%なら使うのかという問いと、精度は合意だという本人の結論まで閉じる。</li>
+<li>02は、10個のうち8個、100個のうち99個、1000個のうち999個を、同じ描き方の点で見せる。9は1桁だけ増え、寄っても空の点は埋まらない。99.99%は出さない。</li>
+<li>03は、完全一致が門の中に入り、原稿の「表記の揺れ」と「想定外の書き方」が外に残る。原稿に無い文字列の対は作らない。AIと100%は同時には満たせない、を声と画面に残す。</li>
+<li>04は、なぜ95%かを聞き、なんとなくなら危険であることを残す。針は目盛りにロックしない。90%は、理由を示せば納得の道がある、という声の条件つきのままにする。</li>
+<li>05は、95と98のあいだを赤くし、嘘ではないことと、書き方では戻せないことを残す。赤は語に重ねない。</li>
+<li>06は、100%を約束しない線と、途中で確かめる印を残す。</li>
+<li>点は顔にしない。人物、企業名、企業ロゴ、SNSの画面は出さない。</li>
+<li>章表示、テロップ帯、エンドクレジット、白フラッシュは入れない。エンドロゴはライムの単独画面で、原本の動き、中央、1.5秒の保持を再生して確認する。</li>
+<li>絵コンテ16枚（1280×720）を、左右48px・上下36pxの安全域、文字同士、文字と図形（点、門、目盛り、赤い帯、円、線）の交差で検査した。はみ出し0、文字同士の重なり0、文字と図形の交差0。相対輝度（0.2126R＋0.7152G＋0.0722B）の平均は、書き出した16枚で235.7、最小は08おわりの221.2（背景 #d2ff1a）。紙色のコマは02おわりの226.2が最小。ロゴの字形と、08はじめの o はこの検査の文字対象外。終了ロゴのインクは安全域の内側（左235px・上292px・右1043px・下426px）。この検査は静止コマの配置で、本編の合格ではない。</li>
+<li>本編は未制作。実速再生は未確認。制作側は全カットを0.25秒ごとに取り、左右64px・上下48pxの安全域、文字同士、文字と図の交差を検査する。声の語の時刻と画面の変化を並べ、3秒以上変化のない区間を名指しする。最初の試作は02と05。そのあと07–08、最後に全編を確認する。</li>
+</ul>
+</main>
+<footer><div class="inner">企画：2026-11-23　根拠：<a href="references.md">references.md</a>　演出：<a href="effects-direction.md">effects-direction.md</a></div></footer>
+</body></html>
