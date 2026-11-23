@@ -249,6 +249,7 @@
 | Google Colab（ローカル実行の動画生成モデル） | H100 など VRAM 40GB・80GB級の GPU で MiniMax H3 を動かし、動画を生成する | CLI `colab`（`colab readme` で同梱の説明を読む。セッション作成、コード実行、ファイルの取得） | 対象場面は「外部サービスによる動画生成」。コンピューティングユニットの消費は同節のクレジットと同じ承認条件で扱い、実行前に GPU の種類と消費の見込みを確認する。`colab pay`（購入ページ）はユーザーが行う。モデルの入手元・利用条件・必要なVRAMは実行時に確認する。認証情報をセッションへ置かない |
 | Blender | Previs、3Dシーン素材 | MCP（`mcp__blender__*`。起動中の Blender を操作する） | [手順](docs/techniques/blender-mcp-scene.md)。`generate_3d` はクレジットを消費することがあるので、有料生成の承認条件に従う |
 | 丸頭キャラの Previs | 承認済みの人物で、動作・構図・位置関係を試す短い Previs | スキル `.agents/skills/rounded-character-previs/SKILL.md`（Blender を使う） | 「担当範囲」。Previs は伝達に必要な場合に用意する |
+| Previs 動作ライブラリ | 丸頭キャラの短い動作53本（4秒・854×480・音なし。基本の動作、感情、身ぶり、仕事、2人、比喩）。人物の動きを仮置きして構図や流れを試す | このリポジトリの外の `~/local/previs-motion-library`（GitHub は `dhythm/previs-motion-library`、private）。`catalog.json` で探し、`index.html` で見る。使う動画は企画フォルダへコピーして、引き渡し一式に含める | 人物の動きが要るときは、新しく生成する前にここを見る。480p なので完成映像の主画面には粗い。動作を足す生成は「外部サービスによる動画生成」の承認条件に従う。生成物を公開で配布してよいかの利用条件は未確認 |
 | GIMP・Inkscape | 画像の加工、ベクター素材 | コマンド `gimp`・`inkscape`。Inkscape は MCP（`mcp__inkscape__*`）もある | 「素材の企画・依頼・採用」 |
 | PhotoCraft・VectorCraft | 画像の編集、ベクターの作図 | MCP（`mcp__photocraft__*`・`mcp__vectorcraft__*`） | 同上 |
 
