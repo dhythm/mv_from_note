@@ -1,0 +1,43 @@
+{
+ "projectId": "aaa28b19-a560-47ec-a422-113deb4ea3fe",
+ "nodes": {
+  "cut01_slide": "node_bpc1s5bph4",
+  "cut05_reasons": "node_2s7mer06f4",
+  "cut07_half": "node_f0yc2cn9z2",
+  "cut08_blank": "node_9v5tzp7kj8"
+ },
+ "items": {
+  "cut01_slide": {
+   "nodeId": "node_bpc1s5bph4",
+   "submitId": "a4fbf0cc-c96d-4168-9a15-b90ebca81563",
+   "resources": [
+    "76244d75-e093-4f3f-9962-fcb737ecfe6c",
+    "f7bb5cbf-6223-4b0d-8310-9a69caf74432"
+   ]
+  },
+  "cut05_reasons": {
+   "nodeId": "node_2s7mer06f4",
+   "submitId": "ab5fe39f-9812-4191-bafb-3b132eb01f9a",
+   "resources": [
+    "e82a4424-e354-44ae-a33f-6a2d23a35cbc",
+    "247ad0d4-1a32-437a-90b1-8978defac5d6"
+   ]
+  },
+  "cut07_half": {
+   "nodeId": "node_f0yc2cn9z2",
+   "submitId": "14684a91-ebb3-4062-839c-8dc7b9cc3c67",
+   "resources": [
+    "4809e6c5-0a6f-40ca-85f9-fe35d34493cb",
+    "f5f09414-327b-4f9d-98d1-eae096b80264"
+   ]
+  },
+  "cut08_blank": {
+   "nodeId": "node_9v5tzp7kj8",
+   "submitId": "d601856a-d279-4622-ab3a-681470555df3",
+   "resources": [
+    "8c21b252-20fe-4558-87e1-328881d8485c",
+    "aa91cc22-7bf5-488f-9d09-3e0b94789d3d"
+   ]
+  }
+ }
+}
