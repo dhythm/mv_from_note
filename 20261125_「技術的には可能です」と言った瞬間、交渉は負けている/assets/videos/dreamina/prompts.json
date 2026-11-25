@@ -1,0 +1,26 @@
+{
+ "model": "seedance_2.5_flash",
+ "mode": "t2v",
+ "ratio": "16:9",
+ "resolution": "480p",
+ "count": 2,
+ "style": "Photorealistic top-down overhead shot looking straight down at a clean warm off-white paper desk surface, soft diffuse daylight from the upper left, gentle soft shadows, minimal composition with generous empty space, restrained palette of warm cream, ink black and deep navy blue. Plain blank cream index cards with rounded corners. Only hands and forearms in a charcoal grey sleeve appear; no faces, no bodies. No text, no letters, no numbers, no logos, no screens. Calm, precise, quiet. Locked-off camera, single continuous shot, natural real-time motion.",
+ "shots": {
+  "cut01_slide": {
+   "duration": 6,
+   "prompt": "The left half of the frame stays empty paper for the whole shot. A hand enters from the bottom edge near the center holding one blank cream card, sets it flat on the desk, then slides it smoothly across the desk to the right side of the frame, toward someone sitting off-screen on the right. The hand lets go and withdraws back out the bottom edge. The card stays resting at the right side."
+  },
+  "cut05_reasons": {
+   "duration": 5,
+   "prompt": "The left half of the frame stays empty paper for the whole shot. On the right half, a hand lays down one blank cream card, then a second blank cream card just below it, one after another, neatly, slightly overlapping. The hand withdraws out the bottom edge. Two cards rest on the right side."
+  },
+  "cut07_half": {
+   "duration": 7,
+   "prompt": "The upper left half of the frame stays empty paper for the whole shot. Three blank cream cards lie in a neat horizontal row in the lower right area of the desk. A hand enters from the bottom edge, places a fingertip on the middle card and pushes it slowly forward, away from the row toward the top right, stopping halfway. The hand hesitates on the card, then lifts and withdraws. The middle card stays pushed halfway out; the other two have not moved."
+  },
+  "cut08_blank": {
+   "duration": 7,
+   "prompt": "The left half of the frame stays empty paper for the whole shot. On the right side lies one cream card. A hand enters from the bottom edge, pulls that card back toward the bottom edge and out of frame. Then the same hand places a new blank cream card at the right center of the desk and lays a slim matte black pen beside it. The hand withdraws. The blank card and pen rest still."
+  }
+ }
+}

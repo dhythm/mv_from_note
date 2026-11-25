@@ -1,0 +1,36 @@
+{
+ "model": "eleven_v4",
+ "text": "「技術的には可能です」と言った瞬間、交渉は負けています。断るためのえんきょくが、選ぶ権利を渡してしまいます。いっかげつ後なら、さんばいでも間に合わないことがあります。",
+ "voices": {
+  "otani": {
+   "voice_id": "3JDquces8E8bkmvbh6Bc",
+   "duration": 14.0,
+   "chars_per_sec": 5.93
+  },
+  "hatake_kohei": {
+   "voice_id": "sRYzP8TwEiiqAWebdYPJ",
+   "duration": 13.76,
+   "chars_per_sec": 6.03
+  },
+  "koichi_deep_calm": {
+   "voice_id": "H8ZPDxbrPcks5hEsi2fq",
+   "duration": 13.28,
+   "chars_per_sec": 6.25
+  },
+  "toshi": {
+   "voice_id": "TzUI53GPXnGDRdeLAWZ4",
+   "duration": 14.0,
+   "chars_per_sec": 5.93
+  },
+  "kozy": {
+   "voice_id": "GxxMAMfQkDlnqjpzjLHH",
+   "duration": 12.4,
+   "chars_per_sec": 6.69
+  },
+  "yuma_uchida": {
+   "voice_id": "EHMH9cyd1z3rXm4z0Jja",
+   "duration": 12.0,
+   "chars_per_sec": 6.92
+  }
+ }
+}

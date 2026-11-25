@@ -102,7 +102,7 @@ h2.part + .small{margin-top:-8px}
 <p class="lead">その一言で、カードを渡す。</p>
 <p>元記事：<a href="https://note.com/dhythm/n/n68eeb13f373d">「技術的には可能です」と言った瞬間、交渉は負けている</a><br>
 原稿：<code>dhythm/private-note</code> の <code>Zettelkasten/PermanentNote/20261026_「技術的には可能です」と言った瞬間、交渉は負けている.md</code>（本文は同梱しない）</p>
-<div class="meta"><span>16:9・1920×1080・30fps</span><span>本編 2:19.4＋ロゴ 5.5秒＝2:24.9</span><span>本編8カット＋ロゴ</span><span>声 662字／画面 412字</span><span>絵コンテ18枚</span><span>ナレーションは制作工程</span><span>BGM・効果音は作らない</span><span>実速再生は未確認</span></div>
+<div class="meta"><span>16:9・1920×1080・30fps</span><span>本編 2:19.4＋ロゴ 5.5秒＝2:24.9</span><span>本編8カット＋ロゴ</span><span>声 662字／画面 412字</span><span>絵コンテ18枚</span><span>ナレーションは制作工程</span><span>BGM・効果音は制作工程</span><span>実速再生は未確認</span></div>
 </div><div class="strata"></div></header>
 <nav><div class="in"><a href="#claim">この動画で伝える一文</a><a href="#viewer">視聴者</a><a href="#structure">構成と尺</a><a href="#cuts">カット表・絵コンテ</a><span class="navsep">詳細：</span><a href="#details">詳細（ここから下は補足）</a><a href="#roles">声・文字・素材の分担</a><a href="#claim-map">主張・根拠・留保の対応</a><a href="#handoff">企画側／制作側</a><a href="#design">デザインシステム（映像の文字・色・グリッド）</a><a href="#motion">動きの言語</a><a href="#symbols">記号と色</a><a href="#character">キャラ設定</a><a href="#swap">差し替え候補</a><a href="#assets">素材</a><a href="#sound">音</a><a href="#evidence">根拠</a><a href="#done">完成条件・確認状態</a></div></nav>
 <main>
@@ -377,10 +377,10 @@ h2.part + .small{margin-top:-8px}
 
 <h2 id="handoff">企画側／制作側</h2>
 <div class="tablewrap"><table><thead><tr><th>企画側で用意するもの</th><th>制作側で仕上げるもの</th></tr></thead><tbody>
-<tr><td>現行の文言、声の原稿、配分、絵コンテ18枚、原稿との対応、演出の採否</td><td>three.js と文字層の実装、細かな動きと同期、ナレーション、代表区間の試作と全編の書き出し</td></tr>
+<tr><td>現行の文言、声の原稿、配分、絵コンテ18枚、原稿との対応、演出の採否、曲の条件</td><td>three.js と文字層の実装、細かな動きと同期、ナレーション、BGMと効果音、代表区間の試作と全編の書き出し</td></tr>
 <tr><td>静止コマの文字配置の点検</td><td>動いている全カットの安全域と重なりの検査、実速再生</td></tr>
 </tbody></table></div>
-<p>企画と絵コンテはこの一式です。ナレーションと本編は制作側が担当します。BGMと効果音は、この企画では作りません。これ以外の画像や動画が必要になったら、必要な内容を企画側へ返します。制作側は動画AIで新規の素材を作りません。</p>
+<p>企画と絵コンテはこの一式です。ナレーション、BGM、効果音、本編は制作側が担当します。企画側は音源を作りません。これ以外の画像や動画が必要になったら、必要な内容を企画側へ返します。制作側は動画AIで新規の素材を作りません。</p>
 <div class="box"><b>実装の推奨：</b>Remotion＋three.js。札の裏返しを図の層の回転で行い、棚の手前と奥に速度差を付けるために three.js を使います。ホイップパンの短いぼかしも図の層の後処理です。文字は DOM／CSS で、行のマスクと詰め組で組み、札・棚・柱のカメラは図の層だけに掛けます。文字の塊も移動と拡大をします。状態はフレーム時刻から決め、実時間の物理や <code>requestAnimationFrame</code> のループを本編の動きにしません。ナレーションの候補は Gemini 3.8 Flash TTS、または Eleven v4。名称はユーザー指定の候補で、実行時に識別子を確認します。キーは環境変数から読み、値は書きません。</div>
 
 <h2 id="design">デザインシステム（映像の文字・色・グリッド）</h2>
@@ -433,8 +433,15 @@ h2.part + .small{margin-top:-8px}
 
 <h2 id="sound">音</h2>
 <div class="box">
-<p>BGMと効果音は、この企画では作らない。検討もしない。</p>
+<p>BGMと効果音は制作側が作ります。企画側は音源を作らず、条件だけを書きます。音源がまだ無いことは、引き渡しを止める理由にしません。</p>
 </div>
+<ul>
+<li>トーン：交渉の机の上の、乾いた緊張と前へ進む足取り。重くしない。声の邪魔をしない音色にする。</li>
+<li>リズム：札が滑る・裏返る・着地する動きを支える、拍のはっきりした刻み。ゆっくりした曲に合わせて映像を遅くしない。</li>
+<li>展開：03の寄りで溜め、ホイップパンと「やる前提」で一段上げる。07の「無理です。」では音楽を止め、引き受けられるカードで戻す。08は結びへ向けて開く。</li>
+<li>尺と終わり方：エンドロゴの終わりまで覆い、ロゴの終了に合わせて収める。</li>
+<li>効果音：札の滑りと裏返し、束の崩れ、決め語の着地。意味のない飾りの音は入れない。</li>
+</ul>
 
 <h2 id="evidence">根拠</h2>
 <p>原稿との対応は <a href="references.md">references.md</a>。演出候補の確認と採否は <a href="effects-direction.md">effects-direction.md</a>。採否の履歴を本編の作業手順には混ぜません。</p>
