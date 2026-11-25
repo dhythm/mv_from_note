@@ -1,0 +1,458 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>「技術的には可能です」と言った瞬間、交渉は負けている｜動画企画書</title>
+<style>
+/* デジタル庁デザインシステム（DADS）のデザイントークン（@digital-go-jp/design-tokens）に沿ったスタイル。
+   20261102 の plan.html の style を複製。動画本編の配色とは別。 */
+:root{
+  --white:#ffffff;--black:#000000;
+  --gray-50:#f2f2f2;--gray-100:#e6e6e6;--gray-200:#cccccc;--gray-420:#949494;--gray-536:#767676;--gray-600:#666666;--gray-700:#4d4d4d;--gray-800:#333333;--gray-900:#1a1a1a;
+  --key-50:#e8f1fe;--key-100:#d9e6ff;--key-200:#c5d7fb;--key-900:#0017c1;--key-1000:#00118f;--key-1100:#000071;
+  --success-bg:#e6f5ec;--success-1:#259d63;--success-2:#197a4b;
+  --warning-bg:#fbf5e0;--warning-yellow-1:#b78f00;--warning-text:#806300;
+  --warning-orange-bg:#ffeee2;--warning-orange-1:#fb5b01;--warning-orange-2:#c74700;
+  --error-1:#ec0000;--focus-yellow:#ffd43d;--visited:#8b008b;
+  --font-sans:"Noto Sans JP",-apple-system,BlinkMacSystemFont,"Hiragino Sans",sans-serif;
+  --font-mono:"Noto Sans Mono","Noto Sans JP",monospace;
+  --r-4:.25rem;--r-8:.5rem;--r-12:.75rem;--r-16:1rem;--r-full:624.9375rem;
+  --elevation-1:0 2px 8px 1px rgba(0,0,0,.1),0 1px 5px 0 rgba(0,0,0,.3);
+  --ink:var(--gray-900);--line:var(--gray-200);--mut:var(--gray-700);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--white);color:var(--gray-800);font-family:var(--font-sans);font-size:1rem;font-weight:400;line-height:1.7;letter-spacing:.02em;-webkit-font-smoothing:antialiased}
+header .inner,main,nav .in,footer .inner{max-width:1120px;margin:0 auto;padding:0 24px}
+header{background:var(--white);border-bottom:1px solid var(--gray-420)}
+header .inner{padding-top:40px;padding-bottom:24px}
+.strata{height:4px;background:var(--key-900)}
+.eyebrow{display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px;font-size:.875rem;line-height:1.5;color:var(--gray-700);letter-spacing:.04em}
+h1{font-size:2.25rem;line-height:1.4;font-weight:700;color:var(--gray-900);letter-spacing:.01em;margin:16px 0 8px}
+h2{font-size:1.75rem;line-height:1.5;font-weight:700;color:var(--gray-900);margin:64px 0 24px;padding:0 0 8px;border-bottom:1px solid var(--gray-420);scroll-margin-top:72px}
+h3{font-size:1.25rem;line-height:1.5;font-weight:700;color:var(--gray-900);margin:32px 0 12px}
+.cuthead h3{margin:0}
+p{margin:0 0 16px}
+.lead{font-size:1.125rem;line-height:1.6;font-weight:700;color:var(--gray-900)}
+.small{font-size:.875rem;line-height:1.7;color:var(--gray-700)}
+b,strong{font-weight:700;color:var(--gray-900)}
+a{color:var(--key-1000);text-decoration:underline;text-underline-offset:.2em;text-decoration-thickness:1px}
+a:visited{color:var(--visited)}
+a:hover{color:var(--key-1100);text-decoration-thickness:3px}
+a:active{color:var(--warning-orange-2)}
+a:focus-visible{outline:4px solid var(--black);outline-offset:2px;background:var(--focus-yellow);color:var(--black);border-radius:var(--r-4)}
+.chip{display:inline-block;background:var(--key-50);color:var(--key-1000);border:1px solid var(--key-900);border-radius:var(--r-4);padding:2px 8px;font-size:.875rem;line-height:1.5;font-weight:700;letter-spacing:.02em}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin:24px 0 0;padding:0;list-style:none}
+.meta span{background:var(--gray-50);border:1px solid var(--gray-200);border-radius:var(--r-4);padding:4px 12px;font-size:.875rem;line-height:1.5;color:var(--gray-800)}
+nav{position:sticky;top:0;background:var(--white);border-bottom:1px solid var(--gray-420);z-index:5;box-shadow:0 1px 4px rgba(0,0,0,.08)}
+nav .in{display:flex;flex-wrap:wrap;gap:4px 20px;padding-top:12px;padding-bottom:12px;font-size:.875rem;line-height:1.5}
+nav a,nav a:visited{color:var(--key-1000);font-weight:700}
+.box{background:var(--white);border:1px solid var(--gray-420);border-radius:var(--r-8);padding:24px;margin:16px 0}
+.box > :last-child{margin-bottom:0}
+.box.accent{background:var(--key-50);border:1px solid var(--key-900);border-left:8px solid var(--key-900)}
+.box.accent .lead{margin:0}
+.tablewrap{overflow-x:auto;margin:16px 0}
+table{border-collapse:collapse;width:100%;background:var(--white);font-size:1rem;line-height:1.7;margin:16px 0;border-top:1px solid var(--gray-420)}
+.tablewrap table{margin:0}
+th,td{border-bottom:1px solid var(--gray-420);padding:12px 16px;text-align:left;vertical-align:top}
+th{background:var(--gray-50);color:var(--gray-900);font-weight:700;font-size:.875rem;line-height:1.5;border-bottom:2px solid var(--gray-800);white-space:nowrap}
+tr:hover td{background:var(--key-50)}
+.cut{background:var(--white);border:1px solid var(--gray-420);border-radius:var(--r-16);padding:32px;margin:32px 0;scroll-margin-top:72px}
+.cuthead{display:flex;gap:16px;align-items:center;margin-bottom:24px;padding-bottom:16px;border-bottom:1px solid var(--gray-200)}
+.cuthead p{margin:4px 0 0}
+.num{font-size:1.5rem;line-height:1;font-weight:700;color:var(--white);background:var(--key-900);border-radius:var(--r-8);min-width:56px;height:56px;display:flex;align-items:center;justify-content:center;flex:none;font-feature-settings:"tnum"}
+.frames.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+.frames{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+figure{margin:0}
+figure img{width:100%;height:auto;display:block;border:1px solid var(--gray-200);border-radius:var(--r-8);background:var(--white)}
+figure a:focus-visible{display:block;background:none}
+figcaption{font-size:.875rem;line-height:1.7;margin-top:8px;color:var(--gray-800)}
+.details{display:grid;grid-template-columns:1fr 1.15fr;gap:8px 40px;margin-top:32px}
+.details p{margin:4px 0}
+.label{font-size:.875rem;line-height:1.3;font-weight:700;color:var(--key-1000);margin-top:20px;padding-left:8px;border-left:4px solid var(--key-900)}
+.details > div > .label:first-child{margin-top:0}
+.words{font-size:1.125rem;line-height:1.6;font-weight:700;color:var(--gray-900);margin:8px 0}
+.voice{background:var(--gray-50);border-left:4px solid var(--gray-600);border-radius:0 var(--r-4) var(--r-4) 0;padding:12px 16px;margin:8px 0;font-size:1rem;line-height:1.7;color:var(--gray-800)}
+ul{margin:8px 0 16px;padding-left:1.5em}
+li{margin:4px 0}
+li::marker{color:var(--gray-600)}
+code{font-family:var(--font-mono);background:var(--gray-50);border:1px solid var(--gray-200);padding:0 4px;border-radius:var(--r-4);font-size:.875em;color:var(--gray-900);word-break:break-all}
+.sw{display:inline-block;width:16px;height:16px;border-radius:var(--r-4);vertical-align:-3px;margin-right:8px;border:1px solid var(--gray-420)}
+.tag{display:inline-block;border-radius:var(--r-4);padding:0 8px;font-size:.8125rem;line-height:1.7;font-weight:700;margin-right:8px;border:1px solid}
+.t-un{background:var(--warning-bg);color:var(--warning-text);border-color:var(--warning-yellow-1)}
+footer{border-top:1px solid var(--gray-420);background:var(--gray-50);margin-top:80px;padding:24px 0;font-size:.875rem;color:var(--gray-700)}
+h2.part{margin-top:96px;padding:16px 24px;border:none;border-radius:var(--r-8);background:var(--gray-50);border-left:8px solid var(--gray-800);font-size:1.5rem}
+h2.part + .small{margin-top:-8px}
+.navsep{color:var(--gray-700);font-weight:700;padding-left:12px;border-left:1px solid var(--gray-420)}
+
+@media(max-width:760px){
+  header .inner,main,nav .in,footer .inner{padding:0 16px}
+  header .inner{padding-top:24px;padding-bottom:16px}
+  .frames,.frames.three,.details{grid-template-columns:1fr}
+  h1{font-size:1.75rem;line-height:1.5}
+  h2{font-size:1.5rem;margin-top:48px}
+  .cut{padding:20px;border-radius:var(--r-12)}
+  .box{padding:16px}
+  table{font-size:.875rem}
+  th,td{padding:8px 12px}
+  th{white-space:normal}
+}
+@media print{nav{position:static;box-shadow:none}.cut{break-inside:avoid}}
+
+</style>
+</head>
+<body>
+<header><div class="inner"><div class="eyebrow">VIDEO PLAN / 2026.11.25 <span class="chip">企画・絵コンテ</span></div>
+<h1>「技術的には可能です」と言った瞬間、交渉は負けている</h1>
+<p class="lead">その一言で、カードを渡す。</p>
+<p>元記事：<a href="https://note.com/dhythm/n/n68eeb13f373d">「技術的には可能です」と言った瞬間、交渉は負けている</a><br>
+原稿：<code>dhythm/private-note</code> の <code>Zettelkasten/PermanentNote/20261026_「技術的には可能です」と言った瞬間、交渉は負けている.md</code>（本文は同梱しない）</p>
+<div class="meta"><span>16:9・1920×1080・30fps</span><span>本編 2:19.4＋ロゴ 5.5秒＝2:24.9</span><span>本編8カット＋ロゴ</span><span>声 662字／画面 412字</span><span>絵コンテ18枚</span><span>ナレーションは制作工程</span><span>BGM・効果音は作らない</span><span>実速再生は未確認</span></div>
+</div><div class="strata"></div></header>
+<nav><div class="in"><a href="#claim">この動画で伝える一文</a><a href="#viewer">視聴者</a><a href="#structure">構成と尺</a><a href="#cuts">カット表・絵コンテ</a><span class="navsep">詳細：</span><a href="#details">詳細（ここから下は補足）</a><a href="#roles">声・文字・素材の分担</a><a href="#claim-map">主張・根拠・留保の対応</a><a href="#handoff">企画側／制作側</a><a href="#design">デザインシステム（映像の文字・色・グリッド）</a><a href="#motion">動きの言語</a><a href="#symbols">記号と色</a><a href="#character">キャラ設定</a><a href="#swap">差し替え候補</a><a href="#assets">素材</a><a href="#sound">音</a><a href="#evidence">根拠</a><a href="#done">完成条件・確認状態</a></div></nav>
+<main>
+<h2 id="claim">この動画で伝える一文</h2>
+<div class="box accent"><p class="lead">「技術的には可能です」「お金がかかります」と言えば、やめた方がいいことが伝わると思っている人に、その言葉は相手に選ぶ権利を渡し、見せたものは欲しいものに変わり、お金では時間を買えず、断るなら引き受けられるカードだけを並べると伝え、できると言ってできなかった方がよほど多くの人に迷惑がかかるので、できないことはできないと納得してもらい、本当に伝えたいのはたぶん別の言葉だ、という本人の結論を残す。</p></div>
+<p>01の「その一言で、カードを渡す。」と、08の「できないことは、できないと、納得してもらう。」で、同じ主張の背骨が通るようにします。02が見せたものは欲しいものに変わることとおとり効果を、03が「やる前提」に載ることを、04が婉曲は選ぶ権利を渡すことを、05が費用の話も選択肢になることを、06がお金で時間は買えないことを、07が引き受けられるカードだけを並べることを足します。</p>
+<p>留保は02の「ある程度」「だまそう、ではない。」「かなり減る。」、03の「相手は、そう受け取らない。」、04の法外な金額は出せないこと、05の個人の嫌いは載せないこと、06の「一つの手。」と経験則、07の出した札は選ばれうること、08の「たぶん、別の言葉。」に置きます。最後は本人の結論で閉じ、視聴者への問いかけや、両論を同じ比重にしたまとめにはしません。</p>
+
+<h2 id="viewer">視聴者</h2>
+<p>見積もりや要件の場で、「技術的には可能です」「お金がかかります」と答えてしまう人。見終わったあと、やるべきではないことは引き受けられる条件だけを並べ、できないと納得してもらえるようにします。</p>
+
+<h2 id="structure">構成と尺</h2>
+<p>声は理由・留保・本人の結論の範囲を、文字は主張と決め語を、札と棚と矢印は選択の移動を受け持ちます。全文字幕は足しません。写真も動画も使いません。図形と文字です。</p>
+<p>本編139.4秒、全体144.9秒です。声は662字。5.5字/秒を仮の読み速度とすると120.4秒です。残りは8カット×約2秒（声の前0.5秒、後ろ約1.5秒）と、08で結びを受け取る約3秒です。5.5字/秒は過去の日本語ナレーションの実測（約5.5〜5.7字/秒）に合わせた目安で、語の読みと間で実測は変わります。制作側が声と画を合わせて調整します。読む速さを上げて詰めません。表の秒は0.1秒単位で、合計が139.4秒になるように置いています。車の銘柄、購読プランの金額、引き受けカードの個別の条件はこの尺では入れていません。入れなかった論点は <a href="references.md">references.md</a> にあります。</p>
+<div class="tablewrap"><table><thead><tr><th>カット</th><th>区間</th><th>この区間で分かってほしいこと</th><th>声／画面</th></tr></thead><tbody>
+<tr><td><a href="#cut-01">01 その一言で、カードを渡す。</a></td><td>0:00.0–0:12.2（12.2秒）</td><td>「技術的には可能です」は、やめた方がいい、という意味であることが多い。その一言で札を渡している</td><td>56字／31字</td></tr>
+<tr><td><a href="#cut-02">02 見せたものは、欲しくなる。</a></td><td>0:12.2–0:32.4（20.2秒）</td><td>並べたものは欲しいものに変わる。選ばれない札でも判断は動き、実現できないものは出さない</td><td>100字／64字</td></tr>
+<tr><td><a href="#cut-03">03 やる前提に、載る。</a></td><td>0:32.4–0:40.8（8.4秒）</td><td>お金と時間を出すからやって、と返った瞬間、その案はやる前提に載る</td><td>35字／26字</td></tr>
+<tr><td><a href="#cut-04">04 選ぶ権利を、渡す。</a></td><td>0:40.8–0:58.8（18.0秒）</td><td>法外な金額では隠れない。数百万円ならその金額で引き受ける。婉曲が選ぶ権利を渡す</td><td>88字／60字</td></tr>
+<tr><td><a href="#cut-05">05 費用がかかると、決まる。</a></td><td>0:58.8–1:15.7（16.9秒）</td><td>費用がかかります、も選択肢になる。理由を先に出し、個人の嫌いは載せない</td><td>82字／62字</td></tr>
+<tr><td><a href="#cut-06">06 お金で、時間は買えない。</a></td><td>1:15.7–1:43.0（27.3秒）</td><td>品質も納期も動きにくいとお金に寄る。1か月後は3倍でも間に合わないことがある。解決できる段階なら一つの手</td><td>139字／68字</td></tr>
+<tr><td><a href="#cut-07">07 引き受けられるカードだけ。</a></td><td>1:43.0–1:58.4（15.4秒）</td><td>無理です、だけでは交渉が止まる。出すのは引き受けられる札だけ。出した札は選ばれうる</td><td>74字／48字</td></tr>
+<tr><td><a href="#cut-08">08 できないと、納得してもらう。</a></td><td>1:58.4–2:19.4（21.0秒）</td><td>できると言ってできなかった方が迷惑がかかる。できないと納得してもらう。本当に伝えたいのはたぶん別の言葉</td><td>88字／53字</td></tr>
+<tr><td><a href="#cut-09">09 エンドロゴ</a></td><td>2:19.4–2:24.9（5.5秒）</td><td>制作表示</td><td>0字／0字</td></tr>
+</tbody></table></div>
+<p class="small">字数は空白・改行を除き、句読点を含みます。画面は各カットの「画面の文字」に掲げた文言の合計です。同じカットの中で、札の面と大書きが同じ語のときは一度だけ数えます。別のカットに同じ語が出るときは、カットごとに数えます。08の21.0秒には結びを受け取る約3秒を含みます。声の合計662字、画面の合計412字です。</p>
+
+<h2 id="cuts">カット表・絵コンテ</h2>
+<p>各カットの開始と終了を画像で示します。コマ画は構図の設計資料です。番号、はじめ、おわりは画像の外だけに書きます。章表示、テロップ帯、エンドクレジットは入れません。03のドリーイン2秒と、その直後のホイップパン0.4秒は、札が裏返る見せ場の時間として守ります。ほかの秒数・位置・角度は参考値です。制作側は<a href="#motion">動きの狙い</a>と可読性を満たす方法を選べます。大きな画面運動を入口と出口だけに限定しません。カメラの名前は<a href="../docs/techniques/camera-cheatsheet.md">カメラワークと切り替えの名前</a>に合わせ、図の層だけに掛けます。</p>
+
+<section class="cut" id="cut-01"><div class="cuthead"><div class="num">01</div><div><h3>その一言で、カードを渡す。</h3><p class="small">0:00.0–0:12.2 / 12.2秒 ・ 主張 ・ 声56字／画面31字</p></div></div>
+<div class="frames"><figure><a href="assets/storyboard/cut-01-start.webp"><img src="assets/storyboard/cut-01-start.webp" width="1280" height="720" alt="左に大きなカードを渡す。右のテーブルに空の札。"></a><figcaption><b>はじめ</b>　「その一言で、カードを渡す。」テーブルの右に、まだ空の札。</figcaption></figure><figure><a href="assets/storyboard/cut-01-end.webp"><img src="assets/storyboard/cut-01-end.webp" width="1280" height="720" alt="やめた方が、いい。札の面に技術的には可能です。"></a><figcaption><b>おわり</b>　「やめた方が、いい。」札が右へ動き、面に「技術的には可能です」。</figcaption></figure></div>
+<div class="details"><div>
+<div class="label">画面の文字（表示順）</div>
+<p class="words">その一言で、カードを渡す。<br>やめた方が、いい。<br>技術的には可能です</p>
+<div class="label">ナレーション</div>
+<p class="voice">「技術的には可能です」と言った瞬間、交渉は負けています。たいていの場合、本当の意味は、やめた方がいいです、です。</p>
+<div class="label">字組みと構図</div>
+<p>はじめは左の大きな二段と、右の空の札です。おわりは左に「やめた方が、いい。」、右の札の面に「技術的には可能です」。札は語に触れません。01は横の二段、08の結びは縦に積みます。</p>
+</div><div>
+<div class="label">文字・画面全体の動きと次への接続</div>
+<ul>
+<li>声は約0.5秒置いて入る。「カードを渡す。」は行のマスクから左へ入り、声の「交渉は負けています」に着地する。</li>
+<li>声の「やめた方がいいです」で、「やめた方が、いい。」が大きく着地する。このとき空の札が言葉を受けて、面に「技術的には可能です」が載る。</li>
+<li>読むあいだ、テーブルの層は右へゆっくり流し、札は流れより少し速い。字形は崩さない。</li>
+<li>札の流れを、02の棚の横移動へ渡す。ここで止めない。</li>
+</ul>
+<div class="label">カメラ</div>
+<p>テーブルの層を札の進行に合わせて少し右へ振る（<a href="../docs/techniques/camera-cheatsheet.md">パン</a>）。文字は正面のまま読む。</p>
+<div class="label">素材と扱い</div>
+<p>図形と文字。札は選択を運ぶ面です。車も、人物も描きません。</p>
+</div></div></section>
+
+<section class="cut" id="cut-02"><div class="cuthead"><div class="num">02</div><div><h3>見せたものは、欲しくなる。</h3><p class="small">0:12.2–0:32.4 / 20.2秒 ・ 根拠と留保 ・ 声100字／画面64字</p></div></div>
+<div class="frames"><figure><a href="assets/storyboard/cut-02-start.webp"><img src="assets/storyboard/cut-02-start.webp" width="1280" height="720" alt="下の棚に箱が三つ。上の棚は空。"></a><figcaption><b>はじめ</b>　下の棚に箱が三つ。上の棚は空。「ある程度、決まる。」</figcaption></figure><figure><a href="assets/storyboard/cut-02-end.webp"><img src="assets/storyboard/cut-02-end.webp" width="1280" height="720" alt="上の棚の箱へ矢印。選ばれない札でも、動く。"></a><figcaption><b>おわり</b>　上の箱へ矢印。「おとり効果」「だまそう、ではない。」</figcaption></figure></div>
+<div class="details"><div>
+<div class="label">画面の文字（表示順）</div>
+<p class="words">見せたものは、欲しくなる。<br>ある程度、決まる。<br>選ばれない札でも、動く。<br>おとり効果<br>だまそう、ではない。<br>後から揉める種は、かなり減る。</p>
+<div class="label">ナレーション</div>
+<p class="voice">手が届かないものを並べると、欲しいものに変わります。選ばれない選択肢でさえ、判断を動かします。おとり効果と呼ばれる現象です。選ばれうるなら、なおさらです。今の予算と期間で実現できないものは出しません。</p>
+<div class="label">字組みと構図</div>
+<p>はじめは上の二行と、画面の下半分を占める棚です。箱は棚の上に乗り、文字には触れません。おわりは左に四段の文字、右に上下の棚です。矢印は左の文字の手前で止まります。上の箱は、手が届かない側に置いたものです。銘柄も値段も書きません。</p>
+</div><div>
+<div class="label">文字・画面全体の動きと次への接続</div>
+<ul>
+<li>棚が奥と手前の二段で入る。手前の棚ほど速い。「見せたものは、欲しくなる。」は声の「欲しいものに変わります」に着地する。</li>
+<li>声の「判断を動かします」で、選ばれない札が棚に残ったまま、矢印が隣の箱から上の箱へ曲がる。「おとり効果」が青で着地する。</li>
+<li>「ある程度、決まる。」は灰のまま残す。範囲が全部決まる、とは見せません。</li>
+<li>声の「実現できないものは出しません」で、上の箱が棚から退く。「だまそう、ではない。」と「かなり減る。」が灰で着地する。</li>
+<li>読むあいだ棚は止めない。空いた上の棚を、03の札の入口にする。</li>
+</ul>
+<div class="label">カメラ</div>
+<p>棚の層だけを横へ流す。近い棚ほど速い。文字の層には掛けません。</p>
+<div class="label">素材と扱い</div>
+<p>図形と文字。棚と矢印が本線です。暗いショールームの車列は使いません。扱いは<a href="#swap">差し替え候補</a>。</p>
+</div></div></section>
+
+<section class="cut" id="cut-03"><div class="cuthead"><div class="num">03</div><div><h3>やる前提に、載る。</h3><p class="small">0:32.4–0:40.8 / 8.4秒 ・ 見せ場 ・ 声35字／画面26字</p></div></div>
+<div class="frames"><figure><a href="assets/storyboard/cut-03-start.webp"><img src="assets/storyboard/cut-03-start.webp" width="1280" height="720" alt="寄った札の面に、技術的には可能です。"></a><figcaption><b>はじめ</b>　札へ寄る。「相手は、そう受け取らない。」</figcaption></figure><figure><a href="assets/storyboard/cut-03-end.webp"><img src="assets/storyboard/cut-03-end.webp" width="1280" height="720" alt="相手側の札が、やる前提に裏返っている。"></a><figcaption><b>おわり</b>　ホイップパンの先。札の面が「やる前提」。</figcaption></figure></div>
+<div class="details"><div>
+<div class="label">画面の文字（表示順）</div>
+<p class="words">相手は、そう受け取らない。<br>技術的には可能です<br>やる前提</p>
+<div class="label">ナレーション</div>
+<p class="voice">お金と時間は出すからやって、と返した瞬間、その案はやる前提に載ります。</p>
+<div class="label">字組みと構図</div>
+<p>はじめは札が画面の中央を占め、上に灰の「相手は、そう受け取らない。」。おわりは左に赤い特大の「やる前提」、右の相手側に裏返った札です。同じ語を札の面と大書きの両方に置きます。字数には一度だけ数えます。テーブルの面は下に残し、札が宙に浮いた説明図にはしません。</p>
+</div><div>
+<div class="label">文字・画面全体の動きと次への接続</div>
+<ul>
+<li>札がこちらの側から相手の側へ滑る。面は「技術的には可能です」のまま。</li>
+<li>裏返る直前の2秒、図の層だけを札へ寄せる（<a href="../docs/techniques/camera-cheatsheet.md">ドリーイン</a>）。文字は正面のまま読む。</li>
+<li>声の「やる前提」で、0.4秒の<a href="../docs/techniques/camera-cheatsheet.md">ホイップパン</a>。札は相手側で裏返り、面が「やる前提」になる。この2秒と0.4秒の連続は、この見せ場の時間として守る。</li>
+<li>ホイップパンのあいだだけ、振った方向へ短くぼかす。白い加算は入れない。</li>
+<li>着地のあとテーブルは止めず、04の紙の束へ流す。</li>
+</ul>
+<div class="label">カメラ</div>
+<p>ドリーイン2秒の直後に、ホイップパン0.4秒。掛けるのは札とテーブルの層です。文字の層はぼかしません。</p>
+<div class="label">素材と扱い</div>
+<p>図形と文字。裏返しは札の回転です。場面全体を箱にして回す切り替えにはしません。</p>
+</div></div></section>
+
+<section class="cut" id="cut-04"><div class="cuthead"><div class="num">04</div><div><h3>選ぶ権利を、渡す。</h3><p class="small">0:40.8–0:58.8 / 18.0秒 ・ 根拠と留保 ・ 声88字／画面60字</p></div></div>
+<div class="frames"><figure><a href="assets/storyboard/cut-04-start.webp"><img src="assets/storyboard/cut-04-start.webp" width="1280" height="720" alt="法外な金額は、出せない。右に高い紙の束。"></a><figcaption><b>はじめ</b>　「法外な金額は、出せない。」右の束は高すぎる。</figcaption></figure><figure><a href="assets/storyboard/cut-04-end.webp"><img src="assets/storyboard/cut-04-end.webp" width="1280" height="720" alt="数百万円で引き受ける。選ぶ権利を、渡す。"></a><figcaption><b>おわり</b>　「選ぶ権利を、渡す。」灰で「なぜなら。」</figcaption></figure></div>
+<div class="details"><div>
+<div class="label">画面の文字（表示順）</div>
+<p class="words">法外な金額は、出せない。<br>数百万円で、引き受ける。<br>無能だと思われずに、断る。<br>選ぶ権利を、渡す。<br>やるべきではない、なぜなら。</p>
+<div class="label">ナレーション</div>
+<p class="voice">根拠のない法外な金額は出せません。数百万円なら、やるべきではないことをその金額で引き受けます。断る婉曲が選ぶ権利を渡してしまいます。今はやるべきではない、なぜなら、と言います。</p>
+<div class="label">字組みと構図</div>
+<p>はじめは左の二段と、右に積み上がった紙の束です。束は文字に重ねません。おわりは左に四段です。「選ぶ権利を、渡す。」がいちばん大きい。「無能だと思われずに、断る。」と「やるべきではない、なぜなら。」は灰で、その下に置きます。金額は原稿にある「法外な金額」と「数百万円」だけです。</p>
+</div><div>
+<div class="label">文字・画面全体の動きと次への接続</div>
+<ul>
+<li>声の「法外な金額は出せません」で、紙の束が高くなりすぎて崩れる。「出せない。」が着地する。</li>
+<li>声の「数百万円」で、束が手元の厚さに収まり、「引き受ける。」が着地する。</li>
+<li>「選ぶ権利を、渡す。」は、相手側へ滑る一枚の札になる。声の「渡してしまいます」に着地する。</li>
+<li>「やるべきではない、なぜなら。」は灰の行で、声の「なぜなら」に着地する。読むあいだ、滑った札は止めない。</li>
+<li>その札を05の費用の札へ渡す。</li>
+</ul>
+<div class="label">カメラ</div>
+<p>崩れる束から、滑る札へパンする。文字は正面のまま。</p>
+<div class="label">素材と扱い</div>
+<p>図形と文字。1億円と内訳を求めるやりとりは、このカットには入れません。</p>
+</div></div></section>
+
+<section class="cut" id="cut-05"><div class="cuthead"><div class="num">05</div><div><h3>費用がかかると、決まる。</h3><p class="small">0:58.8–1:15.7 / 16.9秒 ・ 根拠と留保 ・ 声82字／画面62字</p></div></div>
+<div class="frames"><figure><a href="assets/storyboard/cut-05-start.webp"><img src="assets/storyboard/cut-05-start.webp" width="1280" height="720" alt="お金がかかります。払うから、で決まる。"></a><figcaption><b>はじめ</b>　費用の札が相手側へ。「払うから、で決まる。」</figcaption></figure><figure><a href="assets/storyboard/cut-05-end.webp"><img src="assets/storyboard/cut-05-end.webp" width="1280" height="720" alt="理由の二枚が手前。それでも、やりますか。"></a><figcaption><b>おわり</b>　理由が手前。「個人の嫌いは、載せない。」</figcaption></figure></div>
+<div class="details"><div>
+<div class="label">画面の文字（表示順）</div>
+<p class="words">お金がかかります<br>払うから、で決まる。<br>理由を、先に。<br>可能性を潰す<br>負担が大きすぎる<br>個人の嫌いは、載せない。<br>それでも、やりますか。</p>
+<div class="label">ナレーション</div>
+<p class="voice">「費用がかかります」も選択肢です。払うから、で決まります。やるべきではないなら、費用は出しません。個人的な嫌いは載せません。それでもやりますか、と選んでもらいます。</p>
+<div class="label">字組みと構図</div>
+<p>はじめは左の二段と、右に一枚の費用の札です。おわりは左に「理由を、先に。」が大きく、「それでも、やりますか。」がその下、右に理由の札が二枚、費用の札はその奥です。理由の面は「可能性を潰す」と「負担が大きすぎる」です。「個人の嫌いは、載せない。」は灰で、理由の札には入れません。</p>
+</div><div>
+<div class="label">文字・画面全体の動きと次への接続</div>
+<ul>
+<li>「お金がかかります」の札が相手の前まで滑り、声の「払うから」で止まる。</li>
+<li>声のあと、画面の「理由を、先に。」が上から着地し、理由の二枚が費用の札より手前に出る。</li>
+<li>「個人の嫌いは、載せない。」は灰のまま、理由の列に入らない。</li>
+<li>「それでも、やりますか。」は理由のあとから着地する。選んでもらう行を、理由より前には出しません。</li>
+<li>札の束が三本に分かれ、06の品質、納期、費用になる。</li>
+</ul>
+<div class="label">カメラ</div>
+<p>手前に出た理由の札へ、図の層を少し寄る。文字は正面のまま。</p>
+<div class="label">素材と扱い</div>
+<p>図形と文字。理由の語は原稿にある二つの例だけです。別の理由は足しません。</p>
+</div></div></section>
+
+<section class="cut" id="cut-06"><div class="cuthead"><div class="num">06</div><div><h3>お金で、時間は買えない。</h3><p class="small">1:15.7–1:43.0 / 27.3秒 ・ 根拠と留保 ・ 声139字／画面68字</p></div></div>
+<div class="frames"><figure><a href="assets/storyboard/cut-06-start.webp"><img src="assets/storyboard/cut-06-start.webp" width="1280" height="720" alt="品質、納期、費用。費用の柱だけが前に出ている。"></a><figcaption><b>はじめ</b>　三本の柱。費用だけが前に出る。</figcaption></figure><figure><a href="assets/storyboard/cut-06-end.webp"><img src="assets/storyboard/cut-06-end.webp" width="1280" height="720" alt="お金で、時間は買えない。1か月後に届かない。"></a><figcaption><b>おわり</b>　「3倍でも、間に合わない。」右の柱は印に届かない。</figcaption></figure></div>
+<div class="details"><div>
+<div class="label">画面の文字（表示順）</div>
+<p class="words">品質<br>納期<br>費用<br>お金で、時間は買えない。<br>1か月後<br>3倍でも、間に合わない。<br>人を足すと、さらに遅れる経験則。<br>一つの手。<br>何が足りないかを、伝える。</p>
+<div class="label">ナレーション</div>
+<p class="voice">品質、納期、費用です。品質はほとんど通らず、納期にも抵抗が強いと、お金で何とかして、になります。1か月後なら、3倍でも間に合わないことがあります。人を足すとさらに遅れる、という経験則があります。お金で解決できる段階なら、それも一つの手です。できない段階なら、一緒に選び直します。</p>
+<div class="label">字組みと構図</div>
+<p>はじめは三本の柱が横に並び、見出しは柱の上です。費用の柱だけが前に出て、品質と納期は奥に残ります。おわりは左に文章、右に期間の印へ届かない柱です。「一つの手。」は灰で、「お金で、時間は買えない。」より小さい。人の形は描きません。柱の本数が増えることで、人を足すことを示します。</p>
+</div><div>
+<div class="label">文字・画面全体の動きと次への接続</div>
+<ul>
+<li>三本が立つ。品質と納期はほとんど動かず、費用だけが前に出る。声の「お金で何とかして」に合う。</li>
+<li>声の「1か月後」「3倍」で、費用の柱が伸びても期間の印には届かない。「間に合わないことがあります」の留保は、印に触れる直前で止めて残す。</li>
+<li>声の「経験則」で、柱の本数が増える。増えるほど印は遠ざかる。「さらに遅れる経験則。」が着地する。</li>
+<li>「一つの手。」は灰で、声の「それも一つの手です」に着地する。解決できる段階を消して見せません。</li>
+<li>声の「一緒に選び直します」で、三本が同じテーブルに戻り、動かせる一本が前に出る。戻った列を07の札にする。</li>
+</ul>
+<div class="label">カメラ</div>
+<p>届かない印へ寄ってから、戻りで引く。寄っても印には触れません。</p>
+<div class="label">素材と扱い</div>
+<p>図形と文字。経験則の人名と書名は出しません。新しい人が戦力になるまでの説明と、窓口の権限の話は、このカットには入れません。</p>
+</div></div></section>
+
+<section class="cut" id="cut-07"><div class="cuthead"><div class="num">07</div><div><h3>引き受けられるカードだけ。</h3><p class="small">1:43.0–1:58.4 / 15.4秒 ・ 根拠と留保 ・ 声74字／画面48字</p></div></div>
+<div class="frames"><figure><a href="assets/storyboard/cut-07-start.webp"><img src="assets/storyboard/cut-07-start.webp" width="1280" height="720" alt="何も出さない、とは違う。札がテーブルの外へ。"></a><figcaption><b>はじめ</b>　札が多い。「何も出さない、とは違う。」</figcaption></figure><figure><a href="assets/storyboard/cut-07-end.webp"><img src="assets/storyboard/cut-07-end.webp" width="1280" height="720" alt="残った三枚。出した札は、選ばれうる。"></a><figcaption><b>おわり</b>　手元に三枚。一枚は相手側へ半分出ている。</figcaption></figure></div>
+<div class="details"><div>
+<div class="label">画面の文字（表示順）</div>
+<p class="words">何も出さない、とは違う。<br>引き受けられるカードだけ。<br>出した札は、選ばれうる。<br>言えるときだけ、切る。</p>
+<div class="label">ナレーション</div>
+<p class="voice">無理です、だけでは交渉が止まります。引き受けられるカードだけを並べます。出したカードは必ず選ばれうる、ということです。本当に言えるときだけ切ります。</p>
+<div class="label">字組みと構図</div>
+<p>はじめは左の二段と、右に枚数の多い札です。おわりは左に三段、下に残った三枚です。相手側へ半分出た一枚は選ばれうることを示し、必ず選ばれる印にはしません。「言えるときだけ、切る。」は灰です。</p>
+</div><div>
+<div class="label">文字・画面全体の動きと次への接続</div>
+<ul>
+<li>札が一度多く並ぶ。声の「無理です、だけでは」で、引き受けられない札がテーブルの外へ滑る。「何も出さない、とは違う。」は残す。無くすことと、出さないことを同じ絵にしません。</li>
+<li>「引き受けられるカードだけ。」は、残った札が手元に揃うのと同時に着地する。</li>
+<li>声の「必ず選ばれうる」で、残った一枚が相手側へ半分滑る。戻れる余白を残す。</li>
+<li>声の「本当に言えるときだけ」で、その札は滑りの途中にいる。切るのは、戻さないと決めたときだけです。</li>
+<li>手元の札を08でテーブルの下へ引く。</li>
+</ul>
+<div class="label">カメラ</div>
+<p>半分出た札へパンし、手元の残りへ戻す。文字は正面のまま。</p>
+<div class="label">素材と扱い</div>
+<p>図形と文字。費用の追加、期間を2か月ずらす、精度を下げる、という個別の条件は入れません。</p>
+</div></div></section>
+
+<section class="cut" id="cut-08"><div class="cuthead"><div class="num">08</div><div><h3>できないと、納得してもらう。</h3><p class="small">1:58.4–2:19.4 / 21.0秒 ・ 本人の結論 ・ 声88字／画面53字</p></div></div>
+<div class="frames"><figure><a href="assets/storyboard/cut-08-start.webp"><img src="assets/storyboard/cut-08-start.webp" width="1280" height="720" alt="できる、と言って、できなかった方が、迷惑だ。札が下がる。"></a><figcaption><b>はじめ</b>　「迷惑だ。」札はテーブルの下へ引かれる途中。</figcaption></figure><figure><a href="assets/storyboard/cut-08-end.webp"><img src="assets/storyboard/cut-08-end.webp" width="1280" height="720" alt="納得してもらう。たぶん、別の言葉。"></a><figcaption><b>おわり</b>　「納得してもらう。」が大きく、「たぶん、別の言葉。」は灰。</figcaption></figure></div>
+<div class="details"><div>
+<div class="label">画面の文字（表示順）</div>
+<p class="words">できる、と言って、できなかった方が、迷惑だ。<br>できないことは、できないと、納得してもらう。<br>たぶん、別の言葉。</p>
+<div class="label">ナレーション</div>
+<p class="voice">できると言ってできなかった方が、よほど多くの人に迷惑がかかります。できないと伝え、納得してもらいます。一度飲み込んでみてください。本当に伝えたいのは、たぶん別の言葉のはずです。</p>
+<div class="label">字組みと構図</div>
+<p>はじめは左の三段と、下へ沈む札です。おわりは左に縦の三段です。「納得してもらう。」がいちばん大きい。「たぶん、別の言葉。」は灰で、その下に置きます。断定の行より小さくして、原稿の「たぶん」「はず」を残します。01の横の二段とは組みを変えます。</p>
+</div><div>
+<div class="label">文字・画面全体の動きと次への接続</div>
+<ul>
+<li>声の「できなかった方が」で、「技術的には可能です」の札がテーブルの下へ引かれる。</li>
+<li>「できないことは、できないと、納得してもらう。」が上から三段で着地する。声の「納得してもらいます」に、いちばん大きい行を合わせる。</li>
+<li>「たぶん、別の言葉。」は灰で、声の「たぶん別の言葉のはずです」に着地する。大きい行へ書き換えません。</li>
+<li>結びの約3秒も行の塊をゆっくり寄せる。字形は崩さない。</li>
+<li>最後に図の層を右へホイップパンし、ライムの全面へ渡す。ロゴの動きは、この振りが終わってから始める。</li>
+</ul>
+<div class="label">カメラ</div>
+<p>結びのあいだは文字の塊へ寄せてから、図の層だけをホイップパンする。ロゴの区間は固定です。</p>
+<div class="label">素材と扱い</div>
+<p>図形と文字。視聴者への問いには閉じません。</p>
+</div></div></section>
+
+<section class="cut" id="cut-09"><div class="cuthead"><div class="num">09</div><div><h3>エンドロゴ</h3><p class="small">2:19.4–2:24.9 / 5.5秒 ・ 制作表示 ・ 声0字／画面0字</p></div></div>
+<div class="frames"><figure><a href="assets/storyboard/cut-09-start.webp"><img src="assets/storyboard/cut-09-start.webp" width="1280" height="720" alt="ライムの全面。o が上の方にある。"></a><figcaption><b>はじめ</b>　ライムの全面。o が上にある。</figcaption></figure><figure><a href="assets/storyboard/cut-09-end.webp"><img src="assets/storyboard/cut-09-end.webp" width="1280" height="720" alt="ライムの中央に、完成した原本のロゴ。"></a><figcaption><b>おわり</b>　中央に完成した原本のロゴ。ほかの文言はない。</figcaption></figure></div>
+<div class="details"><div>
+<div class="label">画面の文字（表示順）</div>
+<p class="words">なし（ロゴのみ）</p>
+<div class="label">ナレーション</div>
+<p class="voice">なし</p>
+<div class="label">字組みと構図</div>
+<p>背景は #d2ff1a。ロゴは中央。形、書体、色、比率は変えない。本編の要素は重ねません。</p>
+</div><div>
+<div class="label">文字・画面全体の動きと次への接続</div>
+<ul>
+<li>0–2.6秒：原本 SVG の o の落下、バウンド、定位置への移動。</li>
+<li>2.6–3.2秒：全体が左へスライド。3.0–4.0秒：「.work」が一文字ずつ出現。</li>
+<li>4.0–5.5秒：完成状態を1.5秒保持して終える。</li>
+</ul>
+<div class="label">カメラ</div>
+<p>ロゴの区間は固定。本編からの振りは、この動きが始まる前に終えます。</p>
+<div class="label">素材と扱い</div>
+<p>リポジトリ直下の <a href="../okady-work-logo.svg">okady-work-logo.svg</a>。フレーム時刻から再現します。</p>
+</div></div></section>
+
+<h2 id="details" class="part">詳細（ここから下は補足）</h2>
+
+<h2 id="roles">声・文字・素材の分担</h2>
+<div class="tablewrap"><table><thead><tr><th>担当</th><th>受け持つこと</th><th>扱い</th></tr></thead><tbody>
+<tr><td>声</td><td>交渉は負けていること、たいていの本当の意味、欲しいものに変わること、おとり効果、選ばれうるならなおさら、予算と期間で出せないこと、やる前提に載ること、法外な金額と数百万円、婉曲、なぜなら、費用も選択肢、個人の嫌い、品質・納期・費用、1か月と3倍、経験則、一つの手、引き受けられるカード、必ず選ばれうること、迷惑、納得、たぶん別の言葉</td><td>画面の短い語と意味を合わせる。画面の全文の朗読にはしない。カット単位のまとまった文で渡す。</td></tr>
+<tr><td>文字</td><td>カードを渡す、やめた方がいい、ある程度、選ばれない札でも動く、やる前提、選ぶ権利、理由を先に、お金で時間は買えない、引き受けられるカードだけ、納得してもらう、たぶん別の言葉</td><td>説明の全文は載せない。01は横の二段、08は縦の三段で組を変える。</td></tr>
+<tr><td>図形</td><td>札、棚、矢印、紙の束、三本の柱、期間の印</td><td>一つの形に複数の意味を持たせない。対応は<a href="#symbols">記号と色</a>。</td></tr>
+<tr><td>動画</td><td>なし</td><td>写真も、生成映像も、この企画の本線には使わない</td></tr>
+</tbody></table></div>
+<p>ナレーションありの構成です。音声の制作は制作側の担当で、音源がまだ無いことは引き渡しを止める理由にしません。読みは「婉曲＝えんきょく」「おとり＝おとり」「数百万円＝すうひゃくまんえん」「1か月＝いっかげつ」「3倍＝さんばい」「品質＝ひんしつ」「納期＝のうき」「費用＝ひよう」です。</p>
+
+<h2 id="claim-map">主張・根拠・留保の対応</h2>
+<div class="tablewrap"><table><thead><tr><th>役割</th><th>内容</th><th>カット</th></tr></thead><tbody>
+<tr><td>主張</td><td>「技術的には可能です」と言った瞬間、交渉は負けている。たいていの本当の意味は、やめた方がいい。</td><td>01</td></tr>
+<tr><td>根拠</td><td>手が届かないものを並べると、欲しいものに変わる。選ばれない選択肢でさえ判断を動かす。これを原稿はおとり効果と呼ぶ。</td><td>02</td></tr>
+<tr><td>留保</td><td>範囲はある程度決まる。だまそうという話ではない。今の予算と期間で実現できないものは出さない。揉める種はかなり減る。</td><td>02</td></tr>
+<tr><td>根拠</td><td>相手はそう受け取らない。お金と時間を出すからやって、と返ると、やる前提に載る。</td><td>03</td></tr>
+<tr><td>留保</td><td>根拠のない法外な金額は出せない。数百万円なら、やるべきではないことをその金額で引き受ける。</td><td>04</td></tr>
+<tr><td>主張</td><td>断るための婉曲が選ぶ権利を渡す。今はやるべきではない、なぜなら、と自分の意見として言う。</td><td>04</td></tr>
+<tr><td>根拠</td><td>費用がかかります、も選択肢になる。払うから、で話は決まる。やるべきではないなら費用の話は出さない。</td><td>05</td></tr>
+<tr><td>留保</td><td>理由は先に示す。載せる理由は可能性を潰すことと、負担が大きすぎること。個人的な嫌いは載せない。そのうえで、それでもやりますか、と選んでもらう。</td><td>05</td></tr>
+<tr><td>根拠</td><td>材料は品質、納期、費用。品質はほとんど通らず、納期にも抵抗が強いと、お金で何とかして、になる。1か月後は3倍でも間に合わないことがある。人を足すとさらに遅れる、という経験則がある。</td><td>06</td></tr>
+<tr><td>留保</td><td>お金で解決できる段階なら、それも一つの手。できない段階なら、何が足りないかを伝えて、動かせるものを一緒に選び直す。</td><td>06</td></tr>
+<tr><td>主張</td><td>無理です、だけでは交渉が止まる。何も出さないこととは違う。断るなら、引き受けられるカードだけを並べる。</td><td>07</td></tr>
+<tr><td>留保</td><td>出したカードは必ず選ばれうる。本当に言えるときだけ切る。</td><td>07</td></tr>
+<tr><td>結論</td><td>できると言ってできなかった方が、よほど多くの人に迷惑がかかる。できないと伝え、納得してもらう。本当に伝えたいのは、たぶん別の言葉のはずだ。</td><td>08</td></tr>
+</tbody></table></div>
+<p>原稿の文との対応、画面の文言と要約の区別、この動画に載せなかった論点は <a href="references.md">references.md</a>。</p>
+
+<h2 id="handoff">企画側／制作側</h2>
+<div class="tablewrap"><table><thead><tr><th>企画側で用意するもの</th><th>制作側で仕上げるもの</th></tr></thead><tbody>
+<tr><td>現行の文言、声の原稿、配分、絵コンテ18枚、原稿との対応、演出の採否</td><td>three.js と文字層の実装、細かな動きと同期、ナレーション、代表区間の試作と全編の書き出し</td></tr>
+<tr><td>静止コマの文字配置の点検</td><td>動いている全カットの安全域と重なりの検査、実速再生</td></tr>
+</tbody></table></div>
+<p>企画と絵コンテはこの一式です。ナレーションと本編は制作側が担当します。BGMと効果音は、この企画では作りません。これ以外の画像や動画が必要になったら、必要な内容を企画側へ返します。制作側は動画AIで新規の素材を作りません。</p>
+<div class="box"><b>実装の推奨：</b>Remotion＋three.js。札の裏返しを図の層の回転で行い、棚の手前と奥に速度差を付けるために three.js を使います。ホイップパンの短いぼかしも図の層の後処理です。文字は DOM／CSS で、行のマスクと詰め組で組み、札・棚・柱のカメラは図の層だけに掛けます。文字の塊も移動と拡大をします。状態はフレーム時刻から決め、実時間の物理や <code>requestAnimationFrame</code> のループを本編の動きにしません。ナレーションの候補は Gemini 3.8 Flash TTS、または Eleven v4。名称はユーザー指定の候補で、実行時に識別子を確認します。キーは環境変数から読み、値は書きません。</div>
+
+<h2 id="design">デザインシステム（映像の文字・色・グリッド）</h2>
+<p>紙色 #F7F4EE、墨 #1A1916、灰 #7A746C、棚と矢印と印の青 #1F4B7A、裏返った札の赤 #C5362B。ライム #d2ff1a はロゴだけに使います。文字は Noto Sans JP、見出し700–900、補足400–500。制作側が OFL に沿って用意します。このフォルダには同梱しません。企画書の配色とは別です。</p>
+<div class="tablewrap"><table><thead><tr><th>段</th><th>1920×1080の参考値</th><th>用途</th></tr></thead><tbody>
+<tr><td>大きな語</td><td>140–200px</td><td>01の「カードを渡す。」、03の「やる前提」、04の「選ぶ権利を、渡す。」、06の「時間は買えない。」、08の「納得してもらう。」</td></tr>
+<tr><td>主文</td><td>80–120px</td><td>02の「欲しくなる。」、05の「理由を、先に。」、07の「カードだけ。」</td></tr>
+<tr><td>短い語</td><td>40–64px</td><td>灰の留保、棚の上の短い行、札の面の語</td></tr>
+</tbody></table></div>
+<p>外側余白は96pxを目安にします。文字の安全域は左右64px、上下48px。1280×720の絵コンテでは左右48px、上下36pxです。01は左の二段と右の札、02は左の文字と右の棚、03は中央の札から左右に分かれた「やる前提」、04は束から左の四段、05は一枚から手前の二枚、06は三本の柱から左の文章、07は多い札から手元の三枚、08は沈む札から縦の三段です。</p>
+
+<h2 id="motion">動きの言語</h2>
+<div class="tablewrap"><table><thead><tr><th>動作</th><th>意味と使う場所</th><th>読む間・次へのつながり</th></tr></thead><tbody>
+<tr><td>言葉が札になって滑る</td><td>01。その一言が相手へ渡る選択になる。</td><td>テーブルを流し、札を02の棚の動きへ渡す。</td></tr>
+<tr><td>棚と、曲がる矢印</td><td>02。並べた先が欲しいものになる。選ばれない札でも矢印は動く。</td><td>手前の棚ほど速く流し、空いた上段を03の入口にする。</td></tr>
+<tr><td>寄ってから、裏返る</td><td>03。2秒のドリーインの直後、0.4秒のホイップパン。面が「やる前提」になる。</td><td>着地のあともテーブルを流し、04の束へ渡す。</td></tr>
+<tr><td>高すぎる束が手元の厚さに戻る</td><td>04。法外な金額は出せない。数百万円なら引き受ける。</td><td>選ぶ権利の札を滑らせ、05の費用の札にする。</td></tr>
+<tr><td>理由が費用より手前に出る</td><td>05。理由を先に示す。個人の嫌いは理由の札に入らない。</td><td>束が三本に分かれ、06の柱になる。</td></tr>
+<tr><td>柱が伸びても、印に届かない</td><td>06。1か月後は3倍でも間に合わないことがある。人を足すとさらに遠ざかる。</td><td>印には触れず、三本を07の札へ戻す。</td></tr>
+<tr><td>多い札が落ち、一枚が半分出る</td><td>07。引き受けられる札だけが残る。出した札は選ばれうる。</td><td>半分出た札を滑りの途中に置き、08で下へ引く。</td></tr>
+<tr><td>札が沈み、結びが着地する</td><td>08。できると言ってできなかった方が迷惑だ。たぶん、は灰のまま。</td><td>結びの約3秒も塊を寄せ、ホイップパンでロゴへ渡す。</td></tr>
+</tbody></table></div>
+<p>1字ずつの常時の揺れ、拍ごとの脈動、文字の崩壊は使いません。文字を読ませるために画面全体を静止させず、文量、動かす層、構図で調整します。イージングの値は制作側の裁量です。03の2秒と0.4秒、ロゴの秒、決め語を声のどの語に合わせるかは、各カットに書いてあります。</p>
+
+<h2 id="symbols">記号と色</h2>
+<div class="tablewrap"><table><thead><tr><th>記号</th><th>意味</th></tr></thead><tbody>
+<tr><td>墨の大きな語</td><td>本人の決め語。01の「カードを渡す。」、03の「やる前提」、04の「選ぶ権利を、渡す。」、08の「納得してもらう。」</td></tr>
+<tr><td>灰の語</td><td>留保。02の「ある程度」「だまそう、ではない。」「かなり減る。」、05の「個人の嫌いは、載せない。」、06の「一つの手。」、07の「言えるときだけ、切る。」、08の「たぶん、別の言葉。」</td></tr>
+<tr><td>青の棚と矢印</td><td>何を並べるか。矢印の先が相手の欲しいものになる。02だけ</td></tr>
+<tr><td>札</td><td>相手に渡る選択。面の語がその選択の中身</td></tr>
+<tr><td>赤い札と赤い「やる前提」</td><td>相手が、やる前提として受け取った状態。03だけ。勝ち負けの印にはしない</td></tr>
+<tr><td>紙の束</td><td>積み上げた金額。高すぎる束は法外な金額、手元の厚さは数百万円。04</td></tr>
+<tr><td>三本の柱</td><td>品質、納期、費用。費用だけが前に出ても、期間の印には届かない。06</td></tr>
+<tr><td>半分出た札</td><td>出した札は選ばれうる。必ず選ばれる状態にはしない。07</td></tr>
+</tbody></table></div>
+
+<h2 id="character">キャラ設定</h2>
+<p>人物、顔、手は描きません。柱の本数は人の姿ではありません。吹き出しは出しません。会社名、メーカー名、車種、誌名、書名、人名、SNSの画面は出しません。</p>
+
+<h2 id="swap">差し替え候補</h2>
+<p>暗いショールームの車列はAI生成・未承認・未生成です。今回は生成しません。本線は制作側が描く棚と矢印です。手が届かないものを上の棚に置くと、矢印がそこへ曲がります。実現できないものはその棚から退きます。</p>
+<p>棚と矢印は02のあいだ、同じ描き方で続きます。一部の箱だけを別の生成映像や実写にはしません。車列を後から使う場合は、棚が出る区間の質感を揃え、クレジット消費の承認が要ります。この企画ではその承認をしていません。車の銘柄は生成する場合も書きません。</p>
+
+<h2 id="assets">素材</h2>
+<div class="tablewrap"><table><thead><tr><th>ファイル</th><th>役割</th><th>使用区間</th></tr></thead><tbody>
+<tr><td><code>assets/storyboard/cut-XX-start.webp</code> と <code>cut-XX-end.webp</code></td><td>絵コンテ18枚。1280×720。09はライム。ほかは明るい紙色の図形と文字</td><td>本編に貼る完成素材ではない</td></tr>
+<tr><td><a href="../okady-work-logo.svg">okady-work-logo.svg</a></td><td>エンドロゴ</td><td>09の全区間。リポジトリ直下の原本。一式を移すときもこの相対位置を保つ</td></tr>
+</tbody></table></div>
+<p>新たに取得する写真、動画、フォントファイルはありません。Noto Sans JP は制作側が用意します。このフォルダには同梱しません。</p>
+
+<h2 id="sound">音</h2>
+<div class="box">
+<p>BGMと効果音は、この企画では作らない。検討もしない。</p>
+</div>
+
+<h2 id="evidence">根拠</h2>
+<p>原稿との対応は <a href="references.md">references.md</a>。演出候補の確認と採否は <a href="effects-direction.md">effects-direction.md</a>。採否の履歴を本編の作業手順には混ぜません。</p>
+
+<h2 id="done">完成条件・確認状態</h2>
+<ul>
+<li>01と08で、その一言はカードを渡していることと、できないことはできないと納得してもらうという本人の結論まで閉じる。08の「たぶん」は灰の小さい行のまま残す。</li>
+<li>02は棚と矢印で並べたものが欲しいものに変わることを見せる。おとり効果、選ばれうるならなおさら、だまそうではない、今の予算と期間で出せない、かなり減る、を声か画面に残す。車の銘柄は出さない。</li>
+<li>03は、札が相手側で「やる前提」に裏返る。直前のドリーインは2秒、続くホイップパンは0.4秒。白い加算は入れない。</li>
+<li>04は、根拠のない法外な金額は出せないこと、数百万円ならやるべきではないことをその金額で引き受けること、婉曲が選ぶ権利を渡すこと、今はなぜならと言うことを残す。</li>
+<li>05は費用の話も選択肢になること、理由を先に出すこと、個人の嫌いは載せないこと、それでもやりますかと選んでもらうことを残す。理由の面は可能性を潰すことと、負担が大きすぎることだけにする。</li>
+<li>06は品質・納期・費用、1か月後は3倍でも間に合わないことがあること、人を足すとさらに遅れる経験則、解決できる段階なら一つの手、できない段階は一緒に選び直すことを残す。期間の印には触れない。人の形は描かない。</li>
+<li>07は、無理ですだけでは交渉が止まること、何も出さないこととは違うこと、引き受けられるカードだけ、必ず選ばれうること、本当に言えるときだけ切ることを残す。半分出た札を、必ず選ばれた状態にしない。</li>
+<li>札は顔にしない。人物、企業名、メーカー名、車種、SNSの画面は出さない。</li>
+<li>章表示、テロップ帯、エンドクレジット、白フラッシュは入れない。エンドロゴはライムの単独画面で、原本の動き、中央、1.5秒の保持を再生して確認する。</li>
+<li>絵コンテ18枚（1280×720）を、左右48px・上下36pxの安全域、文字同士、文字と図形（札、棚、矢印、箱、束、柱）の交差で検査した。はみ出し0、文字同士の重なり0、文字と図形の交差0。札の面に置いた語はその札との交差を意図した重なりとして検査から外した（01おわり、03はじめ、03おわり、05おわりの二枚）。相対輝度（0.2126R＋0.7152G＋0.0722B）の平均は18枚で235.0、最小は09おわりの220.6（背景 #d2ff1a）、最大は07はじめの239.2。紙色のコマは02はじめの229.4が最小。ロゴの字形と、09はじめの円はこの検査の文字対象外。終了ロゴの画像は左140px・上200px・右1140px・下520pxで、安全域の内側。この検査は静止コマの配置で、本編の合格ではない。</li>
+<li>本編は未制作。実速再生は未確認。制作側は全カットを0.25秒ごとに取り、左右64px・上下48pxの安全域、文字同士、文字と図の交差を検査する。声の語の時刻と画面の変化を並べ、3秒以上変化のない区間を名指しする。最初の試作は02と03。そのあと06、08–09、最後に全編を確認する。</li>
+</ul>
+</main>
+<footer><div class="inner">企画：2026-11-25　根拠：<a href="references.md">references.md</a>　演出：<a href="effects-direction.md">effects-direction.md</a></div></footer>
+</body></html>
