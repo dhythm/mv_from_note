@@ -1,0 +1,463 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>「教えてもらう」を卒業できない人は、プロになれない｜動画企画書</title>
+<style>
+/* デジタル庁デザインシステム（DADS）のデザイントークン（@digital-go-jp/design-tokens）に沿ったスタイル。
+   20261102 の plan.html の style を複製。動画本編の配色とは別。 */
+:root{
+  --white:#ffffff;--black:#000000;
+  --gray-50:#f2f2f2;--gray-100:#e6e6e6;--gray-200:#cccccc;--gray-420:#949494;--gray-536:#767676;--gray-600:#666666;--gray-700:#4d4d4d;--gray-800:#333333;--gray-900:#1a1a1a;
+  --key-50:#e8f1fe;--key-100:#d9e6ff;--key-200:#c5d7fb;--key-900:#0017c1;--key-1000:#00118f;--key-1100:#000071;
+  --success-bg:#e6f5ec;--success-1:#259d63;--success-2:#197a4b;
+  --warning-bg:#fbf5e0;--warning-yellow-1:#b78f00;--warning-text:#806300;
+  --warning-orange-bg:#ffeee2;--warning-orange-1:#fb5b01;--warning-orange-2:#c74700;
+  --error-1:#ec0000;--focus-yellow:#ffd43d;--visited:#8b008b;
+  --font-sans:"Noto Sans JP",-apple-system,BlinkMacSystemFont,"Hiragino Sans",sans-serif;
+  --font-mono:"Noto Sans Mono","Noto Sans JP",monospace;
+  --r-4:.25rem;--r-8:.5rem;--r-12:.75rem;--r-16:1rem;--r-full:624.9375rem;
+  --elevation-1:0 2px 8px 1px rgba(0,0,0,.1),0 1px 5px 0 rgba(0,0,0,.3);
+  --ink:var(--gray-900);--line:var(--gray-200);--mut:var(--gray-700);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--white);color:var(--gray-800);font-family:var(--font-sans);font-size:1rem;font-weight:400;line-height:1.7;letter-spacing:.02em;-webkit-font-smoothing:antialiased}
+header .inner,main,nav .in,footer .inner{max-width:1120px;margin:0 auto;padding:0 24px}
+header{background:var(--white);border-bottom:1px solid var(--gray-420)}
+header .inner{padding-top:40px;padding-bottom:24px}
+.strata{height:4px;background:var(--key-900)}
+.eyebrow{display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px;font-size:.875rem;line-height:1.5;color:var(--gray-700);letter-spacing:.04em}
+h1{font-size:2.25rem;line-height:1.4;font-weight:700;color:var(--gray-900);letter-spacing:.01em;margin:16px 0 8px}
+h2{font-size:1.75rem;line-height:1.5;font-weight:700;color:var(--gray-900);margin:64px 0 24px;padding:0 0 8px;border-bottom:1px solid var(--gray-420);scroll-margin-top:72px}
+h3{font-size:1.25rem;line-height:1.5;font-weight:700;color:var(--gray-900);margin:32px 0 12px}
+.cuthead h3{margin:0}
+p{margin:0 0 16px}
+.lead{font-size:1.125rem;line-height:1.6;font-weight:700;color:var(--gray-900)}
+.small{font-size:.875rem;line-height:1.7;color:var(--gray-700)}
+b,strong{font-weight:700;color:var(--gray-900)}
+a{color:var(--key-1000);text-decoration:underline;text-underline-offset:.2em;text-decoration-thickness:1px}
+a:visited{color:var(--visited)}
+a:hover{color:var(--key-1100);text-decoration-thickness:3px}
+a:active{color:var(--warning-orange-2)}
+a:focus-visible{outline:4px solid var(--black);outline-offset:2px;background:var(--focus-yellow);color:var(--black);border-radius:var(--r-4)}
+.chip{display:inline-block;background:var(--key-50);color:var(--key-1000);border:1px solid var(--key-900);border-radius:var(--r-4);padding:2px 8px;font-size:.875rem;line-height:1.5;font-weight:700;letter-spacing:.02em}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin:24px 0 0;padding:0;list-style:none}
+.meta span{background:var(--gray-50);border:1px solid var(--gray-200);border-radius:var(--r-4);padding:4px 12px;font-size:.875rem;line-height:1.5;color:var(--gray-800)}
+nav{position:sticky;top:0;background:var(--white);border-bottom:1px solid var(--gray-420);z-index:5;box-shadow:0 1px 4px rgba(0,0,0,.08)}
+nav .in{display:flex;flex-wrap:wrap;gap:4px 20px;padding-top:12px;padding-bottom:12px;font-size:.875rem;line-height:1.5}
+nav a,nav a:visited{color:var(--key-1000);font-weight:700}
+.box{background:var(--white);border:1px solid var(--gray-420);border-radius:var(--r-8);padding:24px;margin:16px 0}
+.box > :last-child{margin-bottom:0}
+.box.accent{background:var(--key-50);border:1px solid var(--key-900);border-left:8px solid var(--key-900)}
+.box.accent .lead{margin:0}
+.tablewrap{overflow-x:auto;margin:16px 0}
+table{border-collapse:collapse;width:100%;background:var(--white);font-size:1rem;line-height:1.7;margin:16px 0;border-top:1px solid var(--gray-420)}
+.tablewrap table{margin:0}
+th,td{border-bottom:1px solid var(--gray-420);padding:12px 16px;text-align:left;vertical-align:top}
+th{background:var(--gray-50);color:var(--gray-900);font-weight:700;font-size:.875rem;line-height:1.5;border-bottom:2px solid var(--gray-800);white-space:nowrap}
+tr:hover td{background:var(--key-50)}
+.cut{background:var(--white);border:1px solid var(--gray-420);border-radius:var(--r-16);padding:32px;margin:32px 0;scroll-margin-top:72px}
+.cuthead{display:flex;gap:16px;align-items:center;margin-bottom:24px;padding-bottom:16px;border-bottom:1px solid var(--gray-200)}
+.cuthead p{margin:4px 0 0}
+.num{font-size:1.5rem;line-height:1;font-weight:700;color:var(--white);background:var(--key-900);border-radius:var(--r-8);min-width:56px;height:56px;display:flex;align-items:center;justify-content:center;flex:none;font-feature-settings:"tnum"}
+.frames{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+figure{margin:0}
+figure img{width:100%;height:auto;display:block;border:1px solid var(--gray-200);border-radius:var(--r-8);background:var(--white)}
+figure a:focus-visible{display:block;background:none}
+figcaption{font-size:.875rem;line-height:1.7;margin-top:8px;color:var(--gray-800)}
+.details{display:grid;grid-template-columns:1fr 1.15fr;gap:8px 40px;margin-top:32px}
+.details p{margin:4px 0}
+.label{font-size:.875rem;line-height:1.3;font-weight:700;color:var(--key-1000);margin-top:20px;padding-left:8px;border-left:4px solid var(--key-900)}
+.details > div > .label:first-child{margin-top:0}
+.words{font-size:1.125rem;line-height:1.6;font-weight:700;color:var(--gray-900);margin:8px 0}
+.voice{background:var(--gray-50);border-left:4px solid var(--gray-600);border-radius:0 var(--r-4) var(--r-4) 0;padding:12px 16px;margin:8px 0;font-size:1rem;line-height:1.7;color:var(--gray-800)}
+ul{margin:8px 0 16px;padding-left:1.5em}
+li{margin:4px 0}
+li::marker{color:var(--gray-600)}
+code{font-family:var(--font-mono);background:var(--gray-50);border:1px solid var(--gray-200);padding:0 4px;border-radius:var(--r-4);font-size:.875em;color:var(--gray-900);word-break:break-all}
+.sw{display:inline-block;width:16px;height:16px;border-radius:var(--r-4);vertical-align:-3px;margin-right:8px;border:1px solid var(--gray-420)}
+footer{border-top:1px solid var(--gray-420);background:var(--gray-50);margin-top:80px;padding:24px 0;font-size:.875rem;color:var(--gray-700)}
+h2.part{margin-top:96px;padding:16px 24px;border:none;border-radius:var(--r-8);background:var(--gray-50);border-left:8px solid var(--gray-800);font-size:1.5rem}
+h2.part + .small{margin-top:-8px}
+.navsep{color:var(--gray-700);font-weight:700;padding-left:12px;border-left:1px solid var(--gray-420)}
+
+@media(max-width:760px){
+  header .inner,main,nav .in,footer .inner{padding:0 16px}
+  header .inner{padding-top:24px;padding-bottom:16px}
+  .frames,.details{grid-template-columns:1fr}
+  h1{font-size:1.75rem;line-height:1.5}
+  h2{font-size:1.5rem;margin-top:48px}
+  .cut{padding:20px;border-radius:var(--r-12)}
+  .box{padding:16px}
+  table{font-size:.875rem}
+  th,td{padding:8px 12px}
+  th{white-space:normal}
+}
+@media print{nav{position:static;box-shadow:none}.cut{break-inside:avoid}}
+
+</style>
+</head>
+<body>
+<header><div class="inner"><div class="eyebrow">VIDEO PLAN / 2026.11.26 <span class="chip">企画・絵コンテ</span></div>
+<h1>「教えてもらう」を卒業できない人は、プロになれない</h1>
+<p class="lead">主語を、自分にする。</p>
+<p>元記事：<a href="https://note.com/dhythm/n/n0c6d314fa977">「教えてもらう」を卒業できない人は、プロになれない</a><br>
+原稿：<code>dhythm/private-note</code> の <code>Zettelkasten/PermanentNote/20260819_「教えてもらう」を卒業できない人は、プロになれない.md</code>（本文は同梱しない）</p>
+<div class="meta"><span>16:9・1920×1080・30fps</span><span>本編 2:19.7＋ロゴ 5.5秒＝2:25.2</span><span>本編8カット＋ロゴ</span><span>声 664字／画面 327字</span><span>絵コンテ18枚</span><span>ナレーションは制作工程</span><span>BGM・効果音は制作工程</span><span>実速再生は未確認</span></div>
+</div><div class="strata"></div></header>
+<nav><div class="in"><a href="#claim">この動画で伝える一文</a><a href="#viewer">視聴者</a><a href="#structure">構成と尺</a><a href="#cuts">カット表・絵コンテ</a><span class="navsep">詳細：</span><a href="#details">詳細（ここから下は補足）</a><a href="#roles">声・文字・素材の分担</a><a href="#claim-map">主張・根拠・留保の対応</a><a href="#handoff">企画側／制作側</a><a href="#design">デザインシステム（映像の文字・色・グリッド）</a><a href="#motion">動きの言語</a><a href="#symbols">記号と色</a><a href="#character">キャラ設定</a><a href="#swap">差し替え候補</a><a href="#assets">素材</a><a href="#sound">音</a><a href="#evidence">根拠</a><a href="#done">完成条件・確認状態</a></div></nav>
+<main>
+<h2 id="claim">この動画で伝える一文</h2>
+<div class="box accent"><p class="lead">同じように教わっているのに伸びる人と止まる人がいるのは能力の差だと思っている人に、差は主体的に動くか受動的に待つかであり、教えてもらうこと自体は悪くなく、教えてくれる人がいるからできている感謝は残したうえで、自分にどう活かすか、学ぶ、身につける、に寄せること、触れた情報は全部が使えるわけではなく自分で調理して使うかを自分で判断すること、初心者がまず教えてもらうのはよく、教えてもらえるレベルは低く基礎にしかならず、脱出できない限り何かの道のプロにはなれず、詰まったところを聞くのは一部分だけ手伝ってもらうことでその違いはかなり大きいこと、お金をもらう立場になれば誰も教えてくれず、学ぶだけではだめでアウトプットを出していかなければならず、教えられていないからではお金は取れず絶対に無理であること、完成している人はおらず学び続けていれば飯が食えて仕事ができること、主語を自分にすると絶対に伸び、歩みを止めたら終わりであり、学ぶ側に回って教えてもらうを卒業した人から景色は変わる、という本人の結論を残す。</p></div>
+<p>01の「主体的か、受動的か。」と、08の「景色は、変わる。」で、同じ主張の背骨が通るようにします。02が言葉を学ぶと身につけるへ寄せることと、悪くないことと感謝を残すことを、03が主語の入れ替えを、04が自分で調理して判断することを、05が基礎までと一部分だけの手伝いを、06がお金をもらう側では誰も教えてくれないことを、07が完成していなくても飯が食えることを足します。</p>
+<p>留保は02の「悪いわけでは、ない。」「感謝は、忘れない。」、04の「全部は、使えない。」、05の「まず教えてもらうのは、いい。」、06の「学ぶだけでは、だめ。」に置きます。03の「かなり、変わる。」と05の「違いは、かなり大きい。」は、程度を残した本人の言い方です。最後は本人の結論で閉じ、視聴者への問いかけや、両論を同じ比重にしたまとめにはしません。</p>
+
+<h2 id="viewer">視聴者</h2>
+<p>教わっているあいだは伸びているつもりで、プロとしては止まったままの人。見終わったあと、差は能力ではなく主体的に動くか受動的に待つかだと分かり、主語を自分にして学ぶ側に回る見方にします。</p>
+
+<h2 id="structure">構成と尺</h2>
+<p>声は理由、留保、本人の結論の範囲を、文字は主張と決め語を、色の違う札は主語と目的語と述語の入れ替えを受け持ちます。全文字幕は足しません。写真も動画も使いません。図形と文字です。</p>
+<p>本編139.7秒、全体145.2秒です。声は664字。5.5字/秒を仮の読み速度とすると120.7秒です。残りは8カット×約2秒（声の前0.5秒、後ろ約1.5秒）と、08で結びを受け取る約3秒です。5.5字/秒は過去の日本語ナレーションの実測（約5.5〜5.7字/秒）に合わせた目安で、語の読みと間で実測は変わります。制作側が声と画を合わせて調整します。読む速さを上げて詰めません。表の秒は0.1秒単位で、合計が139.7秒になるように置いています。コミュニティへの共有、試験勉強、漫画の場面、机の上の計画、学校名と人数はこの尺では入れていません。入れなかった論点は <a href="references.md">references.md</a> にあります。</p>
+<div class="tablewrap"><table><thead><tr><th>カット</th><th>区間</th><th>この区間で分かってほしいこと</th><th>声／画面</th></tr></thead><tbody>
+<tr><td><a href="#cut-01">01 主体的か、受動的か。</a></td><td>0:00.0–0:14.0（14.0秒）</td><td>伸びる人と止まる人の差は、能力ではなく、動くか待つか</td><td>66字／20字</td></tr>
+<tr><td><a href="#cut-02">02 学ぶ、に寄せる。</a></td><td>0:14.0–0:36.4（22.4秒）</td><td>教えてもらうだけでは身につかない。悪くはない。言葉は学ぶ、身につける</td><td>112字／51字</td></tr>
+<tr><td><a href="#cut-03">03 私が、学ぶ。</a></td><td>0:36.4–0:47.0（10.6秒）</td><td>私を文頭へ移し、教えるを学ぶに組み替える。主語は自分</td><td>47字／31字</td></tr>
+<tr><td><a href="#cut-04">04 自分で、判断する。</a></td><td>0:47.0–0:58.4（11.4秒）</td><td>触れた情報は自分で調理し、使うかを自分で判断する。全部は使えない</td><td>52字／35字</td></tr>
+<tr><td><a href="#cut-05">05 基礎まで。</a></td><td>0:58.4–1:24.6（26.2秒）</td><td>教えてもらえるレベルは低く基礎まで。詰まったところは一部分だけの手伝い</td><td>133字／65字</td></tr>
+<tr><td><a href="#cut-06">06 誰も、教えてくれない。</a></td><td>1:24.6–1:45.1（20.5秒）</td><td>お金をもらう側では誰も教えてくれない。学ぶだけではだめで、絶対に無理</td><td>102字／46字</td></tr>
+<tr><td><a href="#cut-07">07 飯が、食える。</a></td><td>1:45.1–1:59.8（14.7秒）</td><td>完成している人はいない。学び続ければ飯が食え、仕事ができる</td><td>70字／32字</td></tr>
+<tr><td><a href="#cut-08">08 景色は、変わる。</a></td><td>1:59.8–2:19.7（19.9秒）</td><td>主語を自分にすると絶対に伸びる。卒業した人から景色は変わる</td><td>82字／47字</td></tr>
+<tr><td><a href="#cut-09">09 エンドロゴ</a></td><td>2:19.7–2:25.2（5.5秒）</td><td>制作表示</td><td>0字／0字</td></tr>
+</tbody></table></div>
+<p class="small">字数は空白と改行を除き、句読点を含みます。画面は各カットの「画面の文字」に掲げた文言の合計です。同じカットの中で、札の面と大書きが同じ語のときは一度だけ数えます。別のカットに同じ語が出るときは、カットごとに数えます。08の19.9秒には結びを受け取る約3秒を含みます。声の合計664字、画面の合計327字です。</p>
+
+<h2 id="cuts">カット表・絵コンテ</h2>
+<p>各カットの開始と終了を画像で示します。コマ画は構図の設計資料です。番号、はじめ、おわりは画像の外だけに書きます。章表示、テロップ帯、エンドクレジットは入れません。03の<a href="#motion">ドリーイン</a>2秒と、組み替わった瞬間の<a href="#motion">ラックフォーカス</a>0.5秒は、札が入れ替わる見せ場の時間として守ります。ほかの秒数、位置、角度は参考値です。制作側は動きの狙いと可読性を満たす方法を選べます。大きな画面運動を入口と出口だけに限定しません。カメラの名前は<a href="../docs/techniques/camera-cheatsheet.md">カメラワークと切り替えの名前</a>に合わせ、図の層に掛けます。03でぼかすのは「先生」の札とその文字だけで、「私」と「学ぶ」の文字はぼかしません。</p>
+
+<section class="cut" id="cut-01"><div class="cuthead"><div class="num">01</div><div><h3>主体的か、受動的か。</h3><p class="small">0:00.0–0:14.0 / 14.0秒 ・ 主張 ・ 声66字／画面20字</p></div></div>
+<div class="frames"><figure><a href="assets/storyboard/cut-01-start.webp"><img src="assets/storyboard/cut-01-start.webp" width="1280" height="720" alt="能力の差に、見える。左右に同じ札の列。"></a><figcaption><b>はじめ</b>　「能力の差に、見える。」左右の列は、同じ高さで揃っている。</figcaption></figure><figure><a href="assets/storyboard/cut-01-end.webp"><img src="assets/storyboard/cut-01-end.webp" width="1280" height="720" alt="主体的か、受動的か。左の列は前へ、右の列は灰のまま。"></a><figcaption><b>おわり</b>　「主体的か、受動的か。」左は前へ出て、右は灰のまま残る。</figcaption></figure></div>
+<div class="details"><div>
+<div class="label">画面の文字（表示順）</div>
+<p class="words">能力の差に、見える。<br>主体的か、受動的か。</p>
+<div class="label">ナレーション</div>
+<p class="voice">同じように教わっていても、伸びる人と止まる人がいます。能力の差に見えるかもしれません。実際は主体的に動くか、受動的に待つかの差です。</p>
+<div class="label">字組みと構図</div>
+<p>はじめは左上の一行と、左右に同じ四枚の札です。おわりは左上の大きな一行、左の列は大きく前へ、右の列は小さく灰のままです。札に文字は載せません。01は横に二列、08の結びは縦に積みます。</p>
+</div><div>
+<div class="label">文字・画面全体の動きと次への接続</div>
+<ul>
+<li>声は約0.5秒置いて入る。「能力の差に、見える。」は行のマスクから左へ入り、声の「能力の差に見えるかもしれません」に着地する。</li>
+<li>声の「実際は」から、左の列だけが前へ出て大きくなる。右の列は高さを変えず、灰になる。声の「差です」に「主体的か、受動的か。」を着地させる。</li>
+<li>読むあいだ、机の層は左の列に合わせてゆっくり流れ、左の札は流れより少し速い。右の列はほぼ置いたまま、灰の面だけが残る。字形は崩さない。</li>
+<li>左へ出た流れを、02の「教えてもらう、」の入口にする。ここで止めない。</li>
+</ul>
+<div class="label">カメラ</div>
+<p>机の層を、前へ出た列に合わせて少し左へ振る（<a href="../docs/techniques/camera-cheatsheet.md">パン</a>）。文字は正面のまま読む。</p>
+<div class="label">素材と扱い</div>
+<p>図形と文字。人の姿は描きません。二列は能力の差に見えて、動きで分かれる側です。</p>
+</div></div></section>
+
+<section class="cut" id="cut-02"><div class="cuthead"><div class="num">02</div><div><h3>学ぶ、に寄せる。</h3><p class="small">0:14.0–0:36.4 / 22.4秒 ・ 主張と留保 ・ 声112字／画面51字</p></div></div>
+<div class="frames"><figure><a href="assets/storyboard/cut-02-start.webp"><img src="assets/storyboard/cut-02-start.webp" width="1280" height="720" alt="教えてもらう、だけでは。下に小さな札が三つ。"></a><figcaption><b>はじめ</b>　「教えてもらう、だけでは。」下に、まだ言葉のない札が三つ。</figcaption></figure><figure><a href="assets/storyboard/cut-02-end.webp"><img src="assets/storyboard/cut-02-end.webp" width="1280" height="720" alt="学ぶ。身につける。右に灰の留保。"></a><figcaption><b>おわり</b>　「学ぶ。」が大きく、右は灰の「悪いわけでは、ない。」</figcaption></figure></div>
+<div class="details"><div>
+<div class="label">画面の文字（表示順）</div>
+<p class="words">教えてもらう、だけでは。<br>悪いわけでは、ない。<br>感謝は、忘れない。<br>自分に、どう活かすか。<br>学ぶ。<br>身につける。</p>
+<div class="label">ナレーション</div>
+<p class="voice">教えてもらうだけではそこまで身につきません。教えてもらうこと自体が悪いわけではありません。教えてくれる人がいるから、できています。その感謝を忘れる話ではありません。自分にどう活かすかです。学ぶ、身につける、に寄せた方がいい。</p>
+<div class="label">字組みと構図</div>
+<p>はじめは左に二段の大きな受動の句と、下に三枚の小さな札です。おわりは左に「学ぶ。」が特大、「身につける。」がその下、「自分に、どう活かすか。」はさらに小さい。右に灰の二行です。寄せた方がいい、という勧めの強さは声に残し、画面の「学ぶ。」を命令の行にはしません。</p>
+</div><div>
+<div class="label">文字・画面全体の動きと次への接続</div>
+<ul>
+<li>「教えてもらう、だけでは。」が行のマスクから入り、声の「身につきません」に着地する。下の三枚はまだ文になっていない部品です。</li>
+<li>声の「悪いわけではありません」で、句は小さく上へ退き、「悪いわけでは、ない。」が灰で残る。声の「感謝を忘れる話ではありません」で「感謝は、忘れない。」が灰で着地する。</li>
+<li>声の「自分にどう活かすかです」で、その行が左に着地する。声の「学ぶ」「身につける」で、二つの塊が逆方向から入る。「学ぶ。」の方が大きい。</li>
+<li>読むあいだ、「学ぶ。」と「身につける。」は逆向きにゆっくり流す。灰の二行は流さず、留保として残す。</li>
+<li>下に残した三枚を、03の主語、目的語、述語の札にする。</li>
+</ul>
+<div class="label">カメラ</div>
+<p>退く句から、着地した「学ぶ。」へ寄る。掛けるのは図の層です。文字は正面のまま。</p>
+<div class="label">素材と扱い</div>
+<p>図形と文字。コミュニティへ共有する場面は入れません。</p>
+</div></div></section>
+
+<section class="cut" id="cut-03"><div class="cuthead"><div class="num">03</div><div><h3>私が、学ぶ。</h3><p class="small">0:36.4–0:47.0 / 10.6秒 ・ 見せ場 ・ 声47字／画面31字</p></div></div>
+<div class="frames"><figure><a href="assets/storyboard/cut-03-start.webp"><img src="assets/storyboard/cut-03-start.webp" width="1280" height="720" alt="先生が、私に、教える。三枚の色の違う札。"></a><figcaption><b>はじめ</b>　青の「先生が」、橙の「私に」、緑の「教える」。</figcaption></figure><figure><a href="assets/storyboard/cut-03-end.webp"><img src="assets/storyboard/cut-03-end.webp" width="1280" height="720" alt="私が、学ぶ。先生はぼけている。"></a><figcaption><b>おわり</b>　「私が」「学ぶ」が前。「先生が」はぼけている。</figcaption></figure></div>
+<div class="details"><div>
+<div class="label">画面の文字（表示順）</div>
+<p class="words">先生が<br>私に<br>教える<br>私が<br>学ぶ<br>能動態。<br>主語は、自分。<br>かなり、変わる。</p>
+<div class="label">ナレーション</div>
+<p class="voice">自分を主体にします。受動態ではなく能動態です。主語を「学ぶ」にした方がいい。かなり変わります。</p>
+<div class="label">字組みと構図</div>
+<p>はじめは画面の中央に三枚が横一列です。青が主語、橙が目的語、緑が述語です。おわりは「私」が青の主語として前に大きく、「学ぶ」が緑でその右に同じ大きさです。「先生が」は左上で小さく、ぼけています。「主語は、自分。」と灰の「かなり、変わる。」は下、「能動態。」は下の右です。札の面の語は、その札の中に収めます。</p>
+</div><div>
+<div class="label">文字・画面全体の動きと次への接続</div>
+<ul>
+<li>三枚は02の下の札から、色を分けて中央へ揃う。面は「先生が」「私に」「教える」のまま。</li>
+<li>揃ったあと2秒、図の層だけを「私」の札へ寄せる（<a href="../docs/techniques/camera-cheatsheet.md">ドリーイン</a>）。ゆっくり。「私」の文字は正面のまま読む。この2秒はこの見せ場の時間として守る。</li>
+<li>声の「自分を主体にします」で、「私」が文頭へ滑り、札の色が橙から青へ替わる。声の「能動態です」で、緑の面が「教える」から「学ぶ」へまとめて替わる。1字ずつ記号には崩さない。</li>
+<li>替わった瞬間の0.5秒、「先生」の札とその文字だけをぼかす（<a href="../docs/techniques/camera-cheatsheet.md">ラックフォーカス</a>）。「私」と「学ぶ」はぼかさない。この0.5秒も守る。</li>
+<li>声の「かなり変わります」で、灰の「かなり、変わる。」が着地する。程度を消して、全部変わる、にはしない。</li>
+<li>着地のあと前の二枚は止めず、04の情報の札へ流す。</li>
+</ul>
+<div class="label">カメラ</div>
+<p>ドリーイン2秒の直後に、ラックフォーカス0.5秒。寄るのは図の層です。ぼかしは「先生」の札と、その札の文字に限る。</p>
+<div class="label">素材と扱い</div>
+<p>図形と文字。黒板にチョークの粉を散らす映像は使いません。扱いは<a href="#swap">差し替え候補</a>。</p>
+</div></div></section>
+
+<section class="cut" id="cut-04"><div class="cuthead"><div class="num">04</div><div><h3>自分で、判断する。</h3><p class="small">0:47.0–0:58.4 / 11.4秒 ・ 主張と留保 ・ 声52字／画面35字</p></div></div>
+<div class="frames"><figure><a href="assets/storyboard/cut-04-start.webp"><img src="assets/storyboard/cut-04-start.webp" width="1280" height="720" alt="自分で、調理する。札が重なって積んである。"></a><figcaption><b>はじめ</b>　「自分で、調理する。」札は、まだ一か所に積んである。</figcaption></figure><figure><a href="assets/storyboard/cut-04-end.webp"><img src="assets/storyboard/cut-04-end.webp" width="1280" height="720" alt="使う。と、使わない。手前と奥に分かれている。"></a><figcaption><b>おわり</b>　手前の「使う。」奥の灰の「使わない。」</figcaption></figure></div>
+<div class="details"><div>
+<div class="label">画面の文字（表示順）</div>
+<p class="words">自分で、調理する。<br>全部は、使えない。<br>使う。<br>使わない。<br>自分で、判断する。</p>
+<div class="label">ナレーション</div>
+<p class="voice">触れた情報は自分で調理します。全部が使えるわけではありません。使うのか、使わないのかを自分で判断します。</p>
+<div class="label">字組みと構図</div>
+<p>はじめは左上の一行と、中央に重なった札の山です。おわりは左上に「自分で、判断する。」、その下に灰の「全部は、使えない。」、左下に大きな「使う。」と三枚、右に小さい「使わない。」と二枚の灰の札です。調理は厨房の絵にはしません。札を分けて並べ替えることが、自分で調理することです。</p>
+</div><div>
+<div class="label">文字・画面全体の動きと次への接続</div>
+<ul>
+<li>山が右から流れ込み、声の「自分で調理します」に「自分で、調理する。」が着地する。</li>
+<li>声の「全部が使えるわけではありません」で、灰の「全部は、使えない。」が着地し、山が二つに割れ始める。</li>
+<li>声の「自分で判断します」で、手前の札が「使う。」へ寄り、奥の札が「使わない。」へ退く。手前ほど速い。</li>
+<li>読むあいだ、二つの流れは止めない。奥の札を05の短い基礎の塊の外側へ渡す。</li>
+</ul>
+<div class="label">カメラ</div>
+<p>手前の「使う。」へ図の層を寄せ、奥は遅く流す。文字の層には掛けません。</p>
+<div class="label">素材と扱い</div>
+<p>図形と文字。食材や調理器具は描きません。原稿の「調理」は情報を自分で分けることの言い方として、言葉の側に置きます。</p>
+</div></div></section>
+
+<section class="cut" id="cut-05"><div class="cuthead"><div class="num">05</div><div><h3>基礎まで。</h3><p class="small">0:58.4–1:24.6 / 26.2秒 ・ 根拠と留保 ・ 声133字／画面65字</p></div></div>
+<div class="frames"><figure><a href="assets/storyboard/cut-05-start.webp"><img src="assets/storyboard/cut-05-start.webp" width="1280" height="720" alt="基礎まで。短い青の塊。レベルは、低い。"></a><figcaption><b>はじめ</b>　「基礎まで。」の下に、短い青の塊。</figcaption></figure><figure><a href="assets/storyboard/cut-05-end.webp"><img src="assets/storyboard/cut-05-end.webp" width="1280" height="720" alt="プロにはなれない。右の列の一節だけが橙。"></a><figcaption><b>おわり</b>　高い列の、一節だけが橙。「一部分だけ、手伝う。」</figcaption></figure></div>
+<div class="details"><div>
+<div class="label">画面の文字（表示順）</div>
+<p class="words">まず教えてもらうのは、いい。<br>レベルは、低い。<br>基礎まで。<br>脱出できないと、プロにはなれない。<br>一部分だけ、手伝う。<br>違いは、かなり大きい。</p>
+<div class="label">ナレーション</div>
+<p class="voice">教えてもらうことが悪いとは言いません。初心者がまず教えてもらうのはいいです。教えてもらえるレベルは低いです。基礎にしかなりません。脱出できない限り、何かの道のプロにはなれません。詰まったところを聞くのは一部分だけを手伝ってもらうことです。この違いはかなり大きいです。</p>
+<div class="label">字組みと構図</div>
+<p>はじめは左上に灰の「まず教えてもらうのは、いい。」、右上に「レベルは、低い。」、左に特大の「基礎まで。」、その下に短い青の塊です。おわりは左に四段、右に六節の列です。橙は一節だけです。「脱出できないと、」は条件の行で、「プロにはなれない。」より小さくします。声は「何かの道のプロ」まで言い、画面の行は条件を残した短縮です。プロになれない、を条件なしの断定にはしません。</p>
+</div><div>
+<div class="label">文字・画面全体の動きと次への接続</div>
+<ul>
+<li>短い青の塊が置かれ、声の「基礎にしかなりません」に「基礎まで。」が着地する。声の「レベルは低いです」で「レベルは、低い。」が着地する。</li>
+<li>声の「まず教えてもらうのはいいです」のあいだ、灰の行は塊の上に残す。基礎の短さを、初心者を否定する絵にはしません。</li>
+<li>声の「プロにはなれません」で、列が下から上へ一節ずつ伸びる。「脱出できないと、」を先に着地させ、そのあと「プロにはなれない。」を大きくする。</li>
+<li>声の「一部分だけ」で、伸びた列の一節だけが橙になる。ほかの節には色を足さない。</li>
+<li>声の「かなり大きいです」で「違いは、かなり大きい。」が着地する。列は読むあいだも、わずかに上へ流れ続ける。</li>
+<li>橙の一節を06で画面の外へ出ていく札の先頭にする。</li>
+</ul>
+<div class="label">カメラ</div>
+<p>短い塊から、伸びる列の上へ昇って、橙の一節まで戻る（<a href="../docs/techniques/camera-cheatsheet.md">クレーンアップ</a>のあと、少し戻す）。文字は正面のまま。</p>
+<div class="label">素材と扱い</div>
+<p>図形と文字。学校の名、教室の写真、指導の場面は入れません。</p>
+</div></div></section>
+
+<section class="cut" id="cut-06"><div class="cuthead"><div class="num">06</div><div><h3>誰も、教えてくれない。</h3><p class="small">1:24.6–1:45.1 / 20.5秒 ・ 主張と留保 ・ 声102字／画面46字</p></div></div>
+<div class="frames"><figure><a href="assets/storyboard/cut-06-start.webp"><img src="assets/storyboard/cut-06-start.webp" width="1280" height="720" alt="誰も、教えてくれない。色の札が右へ出ていく。"></a><figcaption><b>はじめ</b>　色の札が、右の外へ出ていく途中。</figcaption></figure><figure><a href="assets/storyboard/cut-06-end.webp"><img src="assets/storyboard/cut-06-end.webp" width="1280" height="720" alt="絶対に、無理。右端にまだ出ていく札。"></a><figcaption><b>おわり</b>　「絶対に、無理。」右端に、まだ出ていく札が一枚。</figcaption></figure></div>
+<div class="details"><div>
+<div class="label">画面の文字（表示順）</div>
+<p class="words">誰も、教えてくれない。<br>自分で、学ぶ。<br>学ぶだけでは、だめ。<br>アウトプットを、出す。<br>絶対に、無理。</p>
+<div class="label">ナレーション</div>
+<p class="voice">お金をもらう立場になったら、誰も教えてくれません。自分で学びます。学ぶだけでもだめです。アウトプットを出していかなければいけません。教えられていないからできません、では、お金は取れません。絶対に無理です。</p>
+<div class="label">字組みと構図</div>
+<p>はじめは左上の一行と、右へ重なりながら出ていく三枚です。札に新しい語は書きません。おわりは左に四段です。「絶対に、無理。」がいちばん大きい。「学ぶだけでは、だめ。」はその上で小さく、学ぶだけで足りる、にはしません。お金の札や通貨の印は置きません。原稿の反語は声の「お金は取れません。絶対に無理です。」で受けます。</p>
+</div><div>
+<div class="label">文字・画面全体の動きと次への接続</div>
+<ul>
+<li>声の「誰も教えてくれません」で、色の札が右の外へ滑り、「誰も、教えてくれない。」が着地する。</li>
+<li>声の「自分で学びます」で、空いた中央に「自分で、学ぶ。」が大きく入る。</li>
+<li>声の「学ぶだけでもだめです」で「学ぶだけでは、だめ。」が着地し、その前から「アウトプットを、出す。」が手前へ出る。義務の強さは声の「なければいけません」に残す。</li>
+<li>声の「絶対に無理です」で「絶対に、無理。」が大きく着地する。右端の一枚はまだ外へ出ている途中のまま残し、教えてくれる側が完全に消えて安心、にはしません。</li>
+<li>手前へ出た一行を、07の開いた輪の回転へ渡す。</li>
+</ul>
+<div class="label">カメラ</div>
+<p>出ていく札を右へ追い、残った「絶対に、無理。」へ戻す。文字は正面のまま。</p>
+<div class="label">素材と扱い</div>
+<p>図形と文字。金額、社名、通貨の記号は出しません。</p>
+</div></div></section>
+
+<section class="cut" id="cut-07"><div class="cuthead"><div class="num">07</div><div><h3>飯が、食える。</h3><p class="small">1:45.1–1:59.8 / 14.7秒 ・ 根拠と結論 ・ 声70字／画面32字</p></div></div>
+<div class="frames"><figure><a href="assets/storyboard/cut-07-start.webp"><img src="assets/storyboard/cut-07-start.webp" width="1280" height="720" alt="完成している人は、いない。右に開いた輪。"></a><figcaption><b>はじめ</b>　「いない。」右の輪は、上の方が開いている。</figcaption></figure><figure><a href="assets/storyboard/cut-07-end.webp"><img src="assets/storyboard/cut-07-end.webp" width="1280" height="720" alt="飯が食える。輪の開きは別の位置へ回っている。"></a><figcaption><b>おわり</b>　「飯が食える。」輪は開いたまま、開きの位置が変わっている。</figcaption></figure></div>
+<div class="details"><div>
+<div class="label">画面の文字（表示順）</div>
+<p class="words">完成している人は、いない。<br>学び続けて、飯が食える。<br>仕事ができる。</p>
+<div class="label">ナレーション</div>
+<p class="voice">今プロの人だって、永遠に学び続けています。完成している人などはいません。完成していなくても、学び続けている人は飯が食えます。仕事ができます。</p>
+<div class="label">字組みと構図</div>
+<p>はじめは左に二段、「いない。」の方が大きい。右に開いた輪です。おわりは左に三段、「飯が食える。」がいちばん大きい。「仕事ができる。」はその下です。輪は閉じません。食器や食事の絵にはしません。飯が食える、は仕事で暮らせる、という原稿の言い方のまま置きます。</p>
+</div><div>
+<div class="label">文字・画面全体の動きと次への接続</div>
+<ul>
+<li>輪は最初から開いていて、カットのあいだ回転し続ける。閉じる絵にはしない。</li>
+<li>声の「完成している人などはいません」で「いない。」が大きく着地する。</li>
+<li>声の「飯が食えます」で「飯が食える。」が着地し、声の「仕事ができます」でその下の行が着地する。二つの行を、どちらか一方へまとめません。</li>
+<li>読むあいだも輪は回す。字形は崩さない。</li>
+<li>回る輪を、08で小さく残した「私が 学ぶ」の前へ渡す。</li>
+</ul>
+<div class="label">カメラ</div>
+<p>開いた輪の周囲を、図の層だけ少し回り込む（<a href="../docs/techniques/camera-cheatsheet.md">オービット</a>）。文字は正面のまま。</p>
+<div class="label">素材と扱い</div>
+<p>図形と文字。人の完成度を顔や体の絵で示しません。</p>
+</div></div></section>
+
+<section class="cut" id="cut-08"><div class="cuthead"><div class="num">08</div><div><h3>景色は、変わる。</h3><p class="small">1:59.8–2:19.7 / 19.9秒 ・ 本人の結論 ・ 声82字／画面47字</p></div></div>
+<div class="frames"><figure><a href="assets/storyboard/cut-08-start.webp"><img src="assets/storyboard/cut-08-start.webp" width="1280" height="720" alt="絶対に、伸びる。下に私が、学ぶ。"></a><figcaption><b>はじめ</b>　「絶対に、伸びる。」下に、落ち着いた「私が」「学ぶ」。</figcaption></figure><figure><a href="assets/storyboard/cut-08-end.webp"><img src="assets/storyboard/cut-08-end.webp" width="1280" height="720" alt="景色は、変わる。縦に三段。"></a><figcaption><b>おわり</b>　縦の三段。「景色は、変わる。」がいちばん大きい。</figcaption></figure></div>
+<div class="details"><div>
+<div class="label">画面の文字（表示順）</div>
+<p class="words">絶対に、伸びる。<br>歩みを止めたら、終わり。<br>主語は、自分。<br>学ぶ側に、回る。<br>景色は、変わる。<br>私が<br>学ぶ</p>
+<div class="label">ナレーション</div>
+<p class="voice">主語を自分にすると、絶対に伸びます。自分が歩みを止めたら、終わりだからです。学ぶ側に回ったかどうか。そこに尽きます。教えてもらうを卒業した人から、景色は変わります。</p>
+<div class="label">字組みと構図</div>
+<p>はじめは左に「絶対に、伸びる。」が大きく、その下に「歩みを止めたら、終わり。」、右下に03の結果である「私が」「学ぶ」の二枚です。先生の札はありません。おわりは左に縦の三段です。「景色は、変わる。」がいちばん大きい。01の横の二列とは組を変えます。「そこに尽きます」は声に残し、画面へは足しません。</p>
+</div><div>
+<div class="label">文字・画面全体の動きと次への接続</div>
+<ul>
+<li>声の「絶対に伸びます」で「絶対に、伸びる。」が着地する。声の「終わりだからです」で「歩みを止めたら、終わり。」がその下に着地する。理由の行を「伸びる」の行より大きくしません。</li>
+<li>二枚の札が左の縦組みへ吸い込まれ、「主語は、自分。」「学ぶ側に、回る。」が上から入る。</li>
+<li>声の「景色は変わります」に、いちばん大きい「景色は、変わる。」を着地させる。</li>
+<li>結びの約3秒も縦の塊をゆっくり寄せる。字形は崩さない。</li>
+<li>最後に図の層を右へ<a href="../docs/techniques/camera-cheatsheet.md">ホイップパン</a>し、ライムの全面へ渡す。ロゴの動きは、この振りが終わってから始める。</li>
+</ul>
+<div class="label">カメラ</div>
+<p>結びのあいだは文字の塊へ寄せてから、図の層だけをホイップパンする。ロゴの区間は固定です。振るあいだの短いぼかしに、白い加算は入れません。</p>
+<div class="label">素材と扱い</div>
+<p>図形と文字。視聴者への問いには閉じません。</p>
+</div></div></section>
+
+<section class="cut" id="cut-09"><div class="cuthead"><div class="num">09</div><div><h3>エンドロゴ</h3><p class="small">2:19.7–2:25.2 / 5.5秒 ・ 制作表示 ・ 声0字／画面0字</p></div></div>
+<div class="frames"><figure><a href="assets/storyboard/cut-09-start.webp"><img src="assets/storyboard/cut-09-start.webp" width="1280" height="720" alt="ライムの全面。o が上の方にある。"></a><figcaption><b>はじめ</b>　ライムの全面。o が上の方にある。</figcaption></figure><figure><a href="assets/storyboard/cut-09-end.webp"><img src="assets/storyboard/cut-09-end.webp" width="1280" height="720" alt="ライムの中央に、完成した原本のロゴ。"></a><figcaption><b>おわり</b>　中央に完成した原本のロゴ。ほかの文言はない。</figcaption></figure></div>
+<div class="details"><div>
+<div class="label">画面の文字（表示順）</div>
+<p class="words">なし（ロゴのみ）</p>
+<div class="label">ナレーション</div>
+<p class="voice">なし</p>
+<div class="label">字組みと構図</div>
+<p>背景は #d2ff1a。ロゴは中央。形、書体、色、比率は変えない。本編の要素は重ねません。</p>
+</div><div>
+<div class="label">文字・画面全体の動きと次への接続</div>
+<ul>
+<li>0–2.6秒：原本 SVG の o の落下、バウンド、定位置への移動。</li>
+<li>2.6–3.2秒：全体が左へスライド。3.0–4.0秒：「.work」が一文字ずつ出現。</li>
+<li>4.0–5.5秒：完成状態を1.5秒保持して終える。</li>
+</ul>
+<div class="label">カメラ</div>
+<p>ロゴの区間は固定。本編からの振りは、この動きが始まる前に終えます。</p>
+<div class="label">素材と扱い</div>
+<p>リポジトリ直下の <a href="../okady-work-logo.svg">okady-work-logo.svg</a>。フレーム時刻から再現します。</p>
+</div></div></section>
+
+<h2 id="details" class="part">詳細（ここから下は補足）</h2>
+
+<h2 id="roles">声・文字・素材の分担</h2>
+<div class="tablewrap"><table><thead><tr><th>担当</th><th>受け持つこと</th><th>扱い</th></tr></thead><tbody>
+<tr><td>声</td><td>能力の差に見えること、主体と受動の差、身につかないこと、悪くないこと、感謝、自分にどう活かすか、寄せた方がいいこと、能動態、かなり変わること、調理と判断、全部は使えないこと、初心者はまず教えてもらうのはいいこと、レベルが低いこと、基礎、何かの道のプロ、一部分だけの手伝い、誰も教えてくれないこと、学ぶだけではだめなこと、アウトプット、絶対に無理、完成していないこと、飯が食えること、絶対に伸びること、景色は変わること</td><td>画面の短い語と意味を合わせる。画面の全文の朗読にはしない。カット単位のまとまった文で渡す。</td></tr>
+<tr><td>文字</td><td>主体的か受動的か、学ぶ、身につける、私が学ぶ、自分で判断する、基礎まで、一部分だけ手伝う、誰も教えてくれない、絶対に無理、飯が食える、景色は変わる</td><td>説明の全文は載せない。01は横の二列、08は縦の三段で組を変える。</td></tr>
+<tr><td>図形</td><td>二列の札、三色の文の札、使うと使わないの山、短い基礎の塊、高い列、出ていく札、開いた輪</td><td>一つの形に複数の意味を持たせない。対応は<a href="#symbols">記号と色</a>。</td></tr>
+<tr><td>動画</td><td>なし</td><td>写真も、生成映像も、この企画の本線には使わない</td></tr>
+</tbody></table></div>
+<p>ナレーションありの構成です。音声の制作は制作側の担当で、音源がまだ無いことは引き渡しを止める理由にしません。読みは「主体的＝しゅたいてき」「受動的＝じゅどうてき」「受動態＝じゅどうたい」「能動態＝のうどうたい」「アウトプット＝アウトプット」です。</p>
+
+<h2 id="claim-map">主張・根拠・留保の対応</h2>
+<div class="tablewrap"><table><thead><tr><th>役割</th><th>内容</th><th>カット</th></tr></thead><tbody>
+<tr><td>主張</td><td>伸びる人と止まる人の差は、能力ではなく、主体的に動くか、受動的に待つか。</td><td>01</td></tr>
+<tr><td>留保</td><td>教えてもらうだけではそこまで身につかない。教えてもらうこと自体が悪いわけではない。教えてくれる人がいるからできている。その感謝を忘れる話ではない。</td><td>02</td></tr>
+<tr><td>主張</td><td>考え方は自分にどう活かすか。言葉は学ぶ、身につける、に寄せた方がいい。</td><td>02</td></tr>
+<tr><td>主張</td><td>自分を主体にする。受動態ではなく能動態。主語を学ぶにした方がいい。かなり変わる。</td><td>03</td></tr>
+<tr><td>主張</td><td>触れた情報は自分で調理し、使うか使わないかを自分で判断する。</td><td>04</td></tr>
+<tr><td>留保</td><td>全部が使えるわけではない。</td><td>04</td></tr>
+<tr><td>留保</td><td>教えてもらうことが悪いとは言わない。初心者がまず教えてもらうのはいい。</td><td>05</td></tr>
+<tr><td>根拠</td><td>教えてもらえるレベルは低い。基礎にしかならない。脱出できない限り、何かの道のプロにはなれない。</td><td>05</td></tr>
+<tr><td>主張</td><td>詰まったところを聞くのは、一部分だけを手伝ってもらうこと。この違いはかなり大きい。</td><td>05</td></tr>
+<tr><td>主張</td><td>お金をもらう立場になったら、誰も教えてくれない。自分で学ぶ。教えられていないから、ではお金は取れない。絶対に無理。</td><td>06</td></tr>
+<tr><td>留保</td><td>学ぶだけでもだめ。アウトプットを出していかなければいけない。</td><td>06</td></tr>
+<tr><td>根拠</td><td>今プロの人だって永遠に学び続けている。完成している人はいない。</td><td>07</td></tr>
+<tr><td>結論</td><td>完成していなくても、学び続けている人は飯が食える。仕事ができる。主語を自分にすると絶対に伸び、歩みを止めたら終わり。学ぶ側に回った人から、景色は変わる。</td><td>07、08</td></tr>
+</tbody></table></div>
+<p>原稿の文との対応、画面の文言と要約の区別、この動画に載せなかった論点は <a href="references.md">references.md</a>。</p>
+
+<h2 id="handoff">企画側／制作側</h2>
+<div class="tablewrap"><table><thead><tr><th>企画側で用意するもの</th><th>制作側で仕上げるもの</th></tr></thead><tbody>
+<tr><td>現行の文言、声の原稿、配分、絵コンテ18枚、原稿との対応、演出の採否、曲の条件</td><td>three.js と文字層の実装、細かな動きと同期、ナレーション、BGMと効果音、代表区間の試作と全編の書き出し</td></tr>
+<tr><td>静止コマの文字配置の点検</td><td>動いている全カットの安全域と重なりの検査、実速再生</td></tr>
+</tbody></table></div>
+<p>企画と絵コンテはこの一式です。ナレーション、BGM、効果音、本編は制作側が担当します。企画側は音源を作りません。これ以外の画像や動画が必要になったら、必要な内容を企画側へ返します。制作側は動画AIで新規の素材を作りません。</p>
+<div class="box"><b>実装の推奨：</b>Remotion＋three.js。札の奥行き、03のラックフォーカス、04の手前と奥の速度差に three.js を使います。「先生」のぼかしは図の層の後処理で、その札の文字だけを同じ時刻でぼかします。「私」と「学ぶ」の文字は DOM／CSS のまま、行のマスクと詰め組で組み、カメラは図の層に掛けます。文字の塊も移動と拡大をします。状態はフレーム時刻から決め、実時間の物理や <code>requestAnimationFrame</code> のループを本編の動きにしません。ナレーションの候補は Gemini 3.8 Flash TTS、または Eleven v4。名称はユーザー指定の候補で、実行時に識別子を確認します。キーは環境変数から読み、値は書きません。</div>
+
+<h2 id="design">デザインシステム（映像の文字・色・グリッド）</h2>
+<p>紙色 #F4F1EA、墨 #1A1916、灰 #625D56、主語の青 #1F4E89、目的語の橙 #C87224、述語の緑 #186E48。ライム #d2ff1a はロゴだけに使います。文字は Noto Sans JP、見出し700–900、補足400–500。制作側が OFL に沿って用意します。このフォルダには同梱しません。企画書の配色とは別です。</p>
+<div class="tablewrap"><table><thead><tr><th>段</th><th>1920×1080の参考値</th><th>用途</th></tr></thead><tbody>
+<tr><td>大きな語</td><td>140–200px</td><td>02の「学ぶ。」、03の「私が」「学ぶ」、05の「基礎まで。」、06の「絶対に、無理。」、08の「景色は、変わる。」</td></tr>
+<tr><td>主文</td><td>80–120px</td><td>01の「主体的か、受動的か。」、04の「自分で、判断する。」、07の「飯が食える。」</td></tr>
+<tr><td>短い語</td><td>40–64px</td><td>灰の留保、札の面の語、05の条件の行</td></tr>
+</tbody></table></div>
+<p>外側余白は96pxを目安にします。文字の安全域は左右64px、上下48px。1280×720の絵コンテでは左右48px、上下36pxです。01は左右の二列、02は左の動詞と右の灰、03は中央の三枚から前の二枚、04は山から手前と奥、05は短い塊から高い列、06は出ていく札から左の四段、07は左の文字と右の輪、08は横の二枚から縦の三段です。</p>
+
+<h2 id="motion">動きの言語</h2>
+<div class="tablewrap"><table><thead><tr><th>動作</th><th>意味と使う場所</th><th>読む間・次へのつながり</th></tr></thead><tbody>
+<tr><td>揃った二列の、片方だけが前へ出る</td><td>01。能力の差に見えて、動く側と待つ側が分かれる。</td><td>机を流し、左の列を02の部品の札へ渡す。</td></tr>
+<tr><td>受動の句が退き、二つの動詞が逆から入る</td><td>02。言葉を学ぶ、身につける、へ寄せる。灰は留保。</td><td>下の三枚を03の文の札にする。</td></tr>
+<tr><td>寄ってから、主語が滑り、述語の面が替わる</td><td>03。2秒のドリーインのあと、「私」が文頭へ滑り、「教える」が「学ぶ」になる。0.5秒のラックフォーカスで「先生」だけをぼかす。</td><td>着地のあとも前の二枚を流し、04の山へ渡す。</td></tr>
+<tr><td>山が手前と奥に割れる</td><td>04。自分で調理し、使うか使わないかを判断する。全部は使えない。</td><td>奥の流れを05の短い塊の外へ渡す。</td></tr>
+<tr><td>短い塊の横で、列が一節だけ色を変える</td><td>05。基礎まで。手伝いが付くのは一節だけ。</td><td>橙の一節を06の、出ていく札にする。</td></tr>
+<tr><td>色の札が画面の外へ出る</td><td>06。お金をもらう側では誰も教えてくれない。絶対に無理。</td><td>手前の一行を07の輪の回転へ渡す。</td></tr>
+<tr><td>開いた輪が回り続ける</td><td>07。完成していない。それでも学び続ければ飯が食える。</td><td>輪は閉じずに、08の「私が 学ぶ」へ渡す。</td></tr>
+<tr><td>縦の結びが着地し、右へ振る</td><td>08。絶対に伸びる。歩みを止めたら終わり。景色は変わる。</td><td>結びの約3秒も塊を寄せ、ホイップパンでロゴへ渡す。</td></tr>
+</tbody></table></div>
+<p>1字ずつの常時の揺れ、拍ごとの脈動、文字の崩壊は使いません。文字を読ませるために画面全体を静止させず、文量、動かす層、構図で調整します。イージングの値は制作側の裁量です。03の2秒と0.5秒、ロゴの秒、決め語を声のどの語に合わせるかは、各カットに書いてあります。声の語と画面の変化を並べ、3秒以上変化のない区間を残しません。</p>
+
+<h2 id="symbols">記号と色</h2>
+<div class="tablewrap"><table><thead><tr><th>記号</th><th>意味</th></tr></thead><tbody>
+<tr><td>墨の大きな語</td><td>本人の決め語。01の「主体的か、受動的か。」、02の「学ぶ。」、03の「私が」「学ぶ」、06の「絶対に、無理。」、08の「景色は、変わる。」</td></tr>
+<tr><td>灰の語</td><td>留保と程度。02の「悪いわけでは、ない。」「感謝は、忘れない。」、03の「かなり、変わる。」、04の「全部は、使えない。」「使わない。」、05の「まず教えてもらうのは、いい。」</td></tr>
+<tr><td>青の札</td><td>主語。はじめは「先生が」、組み替えのあと「私が」</td></tr>
+<tr><td>橙の札</td><td>目的語の「私に」。05では、手伝いが付いた一節だけ</td></tr>
+<tr><td>緑の札</td><td>述語。はじめは「教える」、あとは「学ぶ」</td></tr>
+<tr><td>短い青の塊</td><td>教えてもらえる基礎。レベルは低い。05のはじめだけ</td></tr>
+<tr><td>高い列</td><td>自分で学ぶ側の道のり。橙は一節だけ。05</td></tr>
+<tr><td>開いた輪</td><td>完成していないこと。閉じない。07</td></tr>
+</tbody></table></div>
+
+<h2 id="character">キャラ設定</h2>
+<p>人物、顔、手は描きません。「先生」は札の語で、人の姿ではありません。吹き出しは出しません。会社名、学校名、作品の絵柄、人名、SNSの画面は出しません。</p>
+
+<h2 id="swap">差し替え候補</h2>
+<p>白い教室の黒板に書かれた文字が、チョークの粉を散らしながら並び替わる映像は、AI生成・未承認・未生成です。今回は生成しません。人物は描きません。本線は、制作側が描く色の違う札です。主語、目的語、述語を入れ替えます。</p>
+<p>札は03、06、08に続きます。その一部だけを黒板の映像や実写にはしません。黒板を後から使う場合は、札が出る区間の質感を揃え、クレジット消費の承認が要ります。この企画ではその承認をしていません。</p>
+
+<h2 id="assets">素材</h2>
+<div class="tablewrap"><table><thead><tr><th>ファイル</th><th>役割</th><th>使用区間</th></tr></thead><tbody>
+<tr><td><code>assets/storyboard/cut-XX-start.webp</code> と <code>cut-XX-end.webp</code></td><td>絵コンテ18枚。1280×720。09はライム。ほかは明るい紙色の図形と文字</td><td>本編に貼る完成素材ではない</td></tr>
+<tr><td><a href="../okady-work-logo.svg">okady-work-logo.svg</a></td><td>エンドロゴ</td><td>09の全区間。リポジトリ直下の原本。一式を移すときもこの相対位置を保つ</td></tr>
+</tbody></table></div>
+<p>新たに取得する写真、動画、フォントファイルはありません。Noto Sans JP は制作側が用意します。このフォルダには同梱しません。</p>
+
+<h2 id="sound">音</h2>
+<div class="box">
+<p>BGMと効果音は制作側が作ります。企画側は音源を作らず、条件だけを書きます。音源がまだ無いことは、引き渡しを止める理由にしません。</p>
+</div>
+<ul>
+<li>トーン：机の上で主語が自分へ移る、乾いた前への足取り。重くしない。暗い教室の音にはしない。声の邪魔をしない音色にする。</li>
+<li>リズム：札が滑る、着地する、組み替わる動きを支える、拍のはっきりした刻み。ゆっくりした曲に合わせて映像を遅くしない。</li>
+<li>展開：03の寄りで溜め、「学ぶ」に替わった瞬間に一段上げる。08は結びへ向けて開く。</li>
+<li>尺と終わり方：エンドロゴの終わりまで覆い、ロゴの終了に合わせて収める。</li>
+<li>効果音：札の滑り、決め語の着地、述語の面が替わる一撃。意味のない飾りの音は入れない。</li>
+</ul>
+
+<h2 id="evidence">根拠</h2>
+<p>原稿との対応は <a href="references.md">references.md</a>。演出候補の確認と採否は <a href="effects-direction.md">effects-direction.md</a>。採否の履歴を本編の作業手順には混ぜません。</p>
+
+<h2 id="done">完成条件・確認状態</h2>
+<ul>
+<li>01と08で、差は主体的か受動的かということと、教えてもらうを卒業した人から景色は変わるという本人の結論まで閉じる。08の「歩みを止めたら、終わり。」は、伸びる、の行より小さく残す。</li>
+<li>02は教えてもらうだけでは身につかないこと、悪いわけではないこと、感謝、自分にどう活かすか、学ぶと身につけるに寄せた方がいいことを、声か画面に残す。</li>
+<li>03は「先生が 私に 教える」の「私」が文頭へ滑り、「教える」が「学ぶ」になって「私が 学ぶ」になる。直前のドリーインは2秒、替わった瞬間のラックフォーカスは0.5秒。「先生」だけをぼかす。白い加算は入れない。</li>
+<li>04は触れた情報を自分で調理し、使うか使わないかを自分で判断すること、全部が使えるわけではないことを残す。厨房の絵にはしない。</li>
+<li>05は初心者がまず教えてもらうのはいいこと、レベルは低いこと、基礎までであること、脱出できない限り何かの道のプロにはなれないこと、詰まったところは一部分だけの手伝いで、その違いはかなり大きいことを残す。画面の「プロにはなれない。」から条件の行を外さない。</li>
+<li>06はお金をもらう立場では誰も教えてくれないこと、学ぶだけではだめなこと、アウトプットを出していかなければいけないこと、教えられていないからではお金は取れず絶対に無理であることを残す。通貨の印は置かない。</li>
+<li>07は完成している人はいないこと、学び続けていれば飯が食えて仕事ができることを残す。輪は閉じない。食器は描かない。</li>
+<li>札は顔にしない。人物、企業名、学校名、作品の絵柄、SNSの画面は出さない。</li>
+<li>章表示、テロップ帯、エンドクレジット、白フラッシュは入れない。エンドロゴはライムの単独画面で、原本の動き、中央、1.5秒の保持を再生して確認する。</li>
+<li>絵コンテ18枚（1280×720）を、左右48px・上下36pxの安全域、文字同士、文字と図形（札、塊、列、輪）の交差で検査した。はみ出し0、文字同士の重なり0、文字と図形の交差0。札の面に置いた語はその札との交差を意図した重なりとして検査から外した（03はじめの三枚、03おわりの「私が」「学ぶ」とぼかした「先生が」、08はじめの「私が」「学ぶ」）。相対輝度（0.2126R＋0.7152G＋0.0722B、0〜255）の平均は18枚で226.0、最小は03おわりの200.6、最大は01はじめの235.9。紙色の地は #F4F1EA。ロゴの地 #d2ff1a の09おわりは221.2。03おわりが低いのは、前に出た青と緑の札が大きいためで、地は紙色のままである。ロゴの字形と、09はじめの輪はこの検査の文字対象外。終了ロゴは左右150px、上下約203pxから約517pxで、安全域の内側。この検査は静止コマの配置で、本編の合格ではない。</li>
+<li>本編は未制作。実速再生は未確認。制作側は全カットを0.25秒ごとに取り、左右64px・上下48pxの安全域、文字同士、文字と図の交差を検査する。声の語の時刻と画面の変化を並べ、3秒以上変化のない区間を名指しする。最初の試作は03。そのあと01、08–09、最後に全編を確認する。</li>
+</ul>
+</main>
+<footer><div class="inner">企画：2026-11-26　根拠：<a href="references.md">references.md</a>　演出：<a href="effects-direction.md">effects-direction.md</a></div></footer>
+</body></html>
