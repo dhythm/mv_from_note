@@ -1,0 +1,22 @@
+{
+ "model": "seedance_2.5_flash",
+ "mode": "t2v",
+ "ratio": "16:9",
+ "resolution": "480p",
+ "count": 2,
+ "style": "Photorealistic top-down overhead shot looking straight down at a clean warm off-white paper desk surface, soft diffuse daylight from the upper left, gentle soft shadows, minimal composition with generous empty space, restrained palette of warm cream, ink black and deep navy blue. Only hands and forearms in a charcoal grey sleeve appear; no faces, no bodies. No text, no letters, no numbers, no logos, no screens. Calm, precise, quiet. Locked-off camera, single continuous shot, natural real-time motion.",
+ "shots": {
+  "cut01_notebooks": {
+   "duration": 6,
+   "prompt": "The left half of the frame stays empty paper for the whole shot. On the right half, two identical closed notebooks with plain cream covers lie side by side with a gap between them. A hand enters from the bottom edge, opens the left one of the two notebooks to blank pages, picks up a slim matte black pen and starts drawing quick loose scribbled lines across the page, keeps going. The other notebook on the far right stays closed and untouched for the whole shot; nobody touches it."
+  },
+  "cut04_sort": {
+   "duration": 6,
+   "prompt": "The left half of the frame stays empty paper for the whole shot. On the right half lies a loose messy pile of about seven plain blank cream index cards with rounded corners. A hand enters from the bottom edge and sorts the pile one card at a time: it pulls three cards toward the bottom edge and lines them up neatly in a row close to the camera side, and pushes two other cards away toward the top edge of the frame. The hand works with calm decision, then withdraws."
+  },
+  "cut07_pages": {
+   "duration": 6,
+   "prompt": "The left half of the frame stays empty paper for the whole shot. On the right half lies one thick open notebook with blank cream pages, already half filled with loose scribbled pencil lines that are not letters. A hand holding a slim matte black pen draws a few more quick scribbled lines, then turns the page to a fresh blank spread and immediately keeps drawing lines without stopping. The motion is steady and continuous, as a daily habit."
+  }
+ }
+}

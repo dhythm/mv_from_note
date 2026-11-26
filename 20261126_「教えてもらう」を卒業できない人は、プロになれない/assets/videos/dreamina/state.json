@@ -1,0 +1,37 @@
+{
+ "projectId": "e0e9d1f5-f43f-4682-ab05-abce1a2c31cb",
+ "items": {
+  "cut01_notebooks": {
+   "nodeId": "node_e8855hze11",
+   "submitId": "a90e851e-1e5e-4765-b9cd-96dfef922d09",
+   "resources": [
+    "463e9a3b-ebfb-4a8b-a94c-962bcc73a068",
+    "68734d00-b80d-4693-8057-a12b4a25e151"
+   ],
+   "adopted": "v1"
+  },
+  "cut04_sort": {
+   "nodeId": "node_xbw5dcwsp2",
+   "submitId": "ea29d1d9-df00-4bbb-9d2d-eb41dc5cd33d",
+   "resources": [
+    "4e45a586-7a3a-4be7-815e-3a3556f147c8",
+    "f8d9a887-d0c3-4650-b6c0-39a71c9808f3"
+   ],
+   "adopted": "v2"
+  },
+  "cut07_pages": {
+   "nodeId": "node_8ka394sy48",
+   "submitId": "edfb1826-7b49-4509-97ab-666191a2b277",
+   "resources": [
+    "3cd50823-b104-4d7a-89a9-3d06449abd58",
+    "f6533e4c-122c-4675-a375-fec796c98e04"
+   ],
+   "adopted": "v2"
+  }
+ },
+ "credits": {
+  "quoted": 468,
+  "balanceBefore": 37364,
+  "balanceAfter": 36896
+ }
+}
