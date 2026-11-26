@@ -1,0 +1,15 @@
+{
+ "fps": 30,
+ "bpm": 120,
+ "logoDur": 5.5,
+ "cuts": [
+  {"id": "01", "beats": 28, "voice": 0.35},
+  {"id": "02", "beats": 42, "voice": 0.35},
+  {"id": "03", "beats": 27, "voice": 0.35},
+  {"id": "04", "beats": 22, "voice": 0.35},
+  {"id": "05", "beats": 52, "voice": 0.35},
+  {"id": "06", "beats": 37, "voice": 0.35},
+  {"id": "07", "beats": 30, "voice": 0.35},
+  {"id": "08", "beats": 38, "voice": 0.35}
+ ]
+}
