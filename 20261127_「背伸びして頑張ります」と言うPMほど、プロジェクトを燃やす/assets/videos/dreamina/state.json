@@ -1,0 +1,8 @@
+{
+ "projectId": "d2a5ecff-04ab-4eb3-ab07-c5edd28603c5",
+ "items": {
+  "cut03_thesis": {"nodeId": "node_dwhnh7rjvd", "submitId": "f1ce58a5-dd09-4577-b0fe-71380c54a441", "resources": {"v1": "8829d7f7-2a16-42df-9d6b-13c0719db25e (failed: Generated audio copyright verification failed / 課金なし)", "v2": "e72abe13-eca4-42ca-8a72-d51268278009"}, "adopted": "v2"},
+  "cut04_night": {"nodeId": "node_12t8k31ey8", "submitId": "45ed5365-8c02-4a70-9860-7ecea20a5061", "resources": {"v1": "226c988d-d325-4708-9f9d-a99dd44ef29f", "v2": "d85b83f0-4e9a-4e3d-9935-ff80d5423cf3"}, "adopted": "v2"}
+ },
+ "credits": {"quoted": 312, "approvedBy": "user (2026-11-27, in chat)", "balanceBefore": 36827, "balanceAfter": 36593, "spent": 234}
+}
