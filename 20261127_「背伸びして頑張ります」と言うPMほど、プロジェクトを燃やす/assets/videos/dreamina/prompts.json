@@ -1,0 +1,12 @@
+{
+ "model": "seedance_2.5_flash",
+ "mode": "t2v",
+ "ratio": "16:9",
+ "resolution": "480p",
+ "count": 2,
+ "style": "Photorealistic top-down overhead shot looking straight down at a warm off-white desk surface, soft natural light, gentle soft shadows, minimal composition with generous empty space, restrained palette of warm cream, ink black, deep navy blue and a touch of rust orange. Only hands and forearms in a charcoal grey sleeve appear; no faces, no bodies. No text, no letters, no numbers, no logos, no readable screens. Locked-off camera, single continuous shot, natural real-time motion.",
+ "shots": {
+  "cut03_thesis": {"duration": 6, "prompt": "The left half of the frame stays empty desk for the whole shot. On the right half, a thick stack of plain cream manuscript paper and a small blank tear-off desk calendar pad with no printing. A hand holding a slim black pen writes quick loose scribbled lines that are not letters on the top sheet, pauses, tears one blank page off the calendar pad and drops it aside, then goes straight back to writing. A few torn calendar pages already lie scattered beside the pad. Steady, slightly hurried."},
+  "cut04_night": {"duration": 6, "prompt": "Late evening. The left half of the frame stays an empty desk in shadow for the whole shot. On the right half, under a single warm desk lamp, the keyboard half of an open laptop seen from straight above, with the screen out of frame. Two hands type fast and without pause. Beside the laptop: an empty coffee mug, a second empty mug, and a few crumpled blank sticky notes. The light is warm and dim, the mood is tired but working on."}
+ }
+}
